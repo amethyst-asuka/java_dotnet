@@ -1044,93 +1044,94 @@ Namespace java.awt
 			End If
 			Return compArray
 
-		''' <summary>
-		''' Returns a <code>float</code> array containing only the color
-		''' components of the <code>Color</code> in the
-		''' <code>ColorSpace</code> specified by the <code>cspace</code>
-		''' parameter. If <code>compArray</code> is <code>null</code>, an array
-		''' with length equal to the number of components in
-		''' <code>cspace</code> is created for the return value.  Otherwise,
-		''' <code>compArray</code> must have at least this length, and it is
-		''' filled in with the components and returned. </summary>
-		''' <param name="cspace"> a specified <code>ColorSpace</code> </param>
-		''' <param name="compArray"> an array that this method fills with the color
-		'''          components of this <code>Color</code> in the specified
-		'''          <code>ColorSpace</code> </param>
-		''' <returns> the color components in a <code>float</code> array. </returns>
-		public Single() getColorComponents(java.awt.color.ColorSpace cspace, Single() compArray)
-			If cs Is Nothing Then cs = java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB)
-			Dim f As Single()
-			If fvalue Is Nothing Then
-				f = New Single(2){}
-				f(0) = (CSng(red))/255f
-				f(1) = (CSng(green))/255f
-				f(2) = (CSng(blue))/255f
-			Else
-				f = fvalue
-			End If
-			Dim tmp As Single() = cs.toCIEXYZ(f)
-			Dim tmpout As Single() = cspace.fromCIEXYZ(tmp)
-			If compArray Is Nothing Then Return tmpout
-			For i As Integer = 0 To tmpout.Length - 1
-				compArray(i) = tmpout(i)
-			Next i
-			Return compArray
+        ''' <summary>
+        ''' Returns a <code>float</code> array containing only the color
+        ''' components of the <code>Color</code> in the
+        ''' <code>ColorSpace</code> specified by the <code>cspace</code>
+        ''' parameter. If <code>compArray</code> is <code>null</code>, an array
+        ''' with length equal to the number of components in
+        ''' <code>cspace</code> is created for the return value.  Otherwise,
+        ''' <code>compArray</code> must have at least this length, and it is
+        ''' filled in with the components and returned. </summary>
+        ''' <param name="cspace"> a specified <code>ColorSpace</code> </param>
+        ''' <param name="compArray"> an array that this method fills with the color
+        '''          components of this <code>Color</code> in the specified
+        '''          <code>ColorSpace</code> </param>
+        ''' <returns> the color components in a <code>float</code> array. </returns>
+        Public Function getColorComponents(java.awt.color.ColorSpace cspace, Single() compArray) As Single()
+            If cs Is Nothing Then cs = java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB)
+            Dim f As Single()
+            If fvalue Is Nothing Then
+                f = New Single(2) {}
+                f(0) = (CSng(red)) / 255.0F
+                f(1) = (CSng(green)) / 255.0F
+                f(2) = (CSng(blue)) / 255.0F
+            Else
+                f = fvalue
+            End If
+            Dim tmp As Single() = cs.toCIEXYZ(f)
+            Dim tmpout As Single() = cspace.fromCIEXYZ(tmp)
+            If compArray Is Nothing Then Return tmpout
+            For i As Integer = 0 To tmpout.Length - 1
+                compArray(i) = tmpout(i)
+            Next i
+            Return compArray
+        End Function
+        ''' <summary>
+        ''' Returns the <code>ColorSpace</code> of this <code>Color</code>. </summary>
+        ''' <returns> this <code>Color</code> object's <code>ColorSpace</code>. </returns>
+        Public Function colorSpace() As java.awt.color.ColorSpace
+            If cs Is Nothing Then cs = java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB)
+            Return cs
+        End Function
+        ''' <summary>
+        ''' Creates and returns a <seealso cref="PaintContext"/> used to
+        ''' generate a solid color field pattern.
+        ''' See the <seealso cref="Paint#createContext specification"/> of the
+        ''' method in the <seealso cref="Paint"/> interface for information
+        ''' on null parameter handling.
+        ''' </summary>
+        ''' <param name="cm"> the preferred <seealso cref="ColorModel"/> which represents the most convenient
+        '''           format for the caller to receive the pixel data, or {@code null}
+        '''           if there is no preference. </param>
+        ''' <param name="r"> the device space bounding box
+        '''                     of the graphics primitive being rendered. </param>
+        ''' <param name="r2d"> the user space bounding box
+        '''                   of the graphics primitive being rendered. </param>
+        ''' <param name="xform"> the <seealso cref="AffineTransform"/> from user
+        '''              space into device space. </param>
+        ''' <param name="hints"> the set of hints that the context object can use to
+        '''              choose between rendering alternatives. </param>
+        ''' <returns> the {@code PaintContext} for
+        '''         generating color patterns. </returns>
+        ''' <seealso cref= Paint </seealso>
+        ''' <seealso cref= PaintContext </seealso>
+        ''' <seealso cref= ColorModel </seealso>
+        ''' <seealso cref= Rectangle </seealso>
+        ''' <seealso cref= Rectangle2D </seealso>
+        ''' <seealso cref= AffineTransform </seealso>
+        ''' <seealso cref= RenderingHints </seealso>
+        Public Function createContext(java.awt.image.ColorModel cm, Rectangle r, java.awt.geom.Rectangle2D r2d, java.awt.geom.AffineTransform xform, RenderingHints hints) As PaintContext
+            Return New ColorPaintContext(RGB, cm)
+        End Function
 
-		''' <summary>
-		''' Returns the <code>ColorSpace</code> of this <code>Color</code>. </summary>
-		''' <returns> this <code>Color</code> object's <code>ColorSpace</code>. </returns>
-		public java.awt.color.ColorSpace colorSpace
-			If cs Is Nothing Then cs = java.awt.color.ColorSpace.getInstance(java.awt.color.ColorSpace.CS_sRGB)
-			Return cs
-
-		''' <summary>
-		''' Creates and returns a <seealso cref="PaintContext"/> used to
-		''' generate a solid color field pattern.
-		''' See the <seealso cref="Paint#createContext specification"/> of the
-		''' method in the <seealso cref="Paint"/> interface for information
-		''' on null parameter handling.
-		''' </summary>
-		''' <param name="cm"> the preferred <seealso cref="ColorModel"/> which represents the most convenient
-		'''           format for the caller to receive the pixel data, or {@code null}
-		'''           if there is no preference. </param>
-		''' <param name="r"> the device space bounding box
-		'''                     of the graphics primitive being rendered. </param>
-		''' <param name="r2d"> the user space bounding box
-		'''                   of the graphics primitive being rendered. </param>
-		''' <param name="xform"> the <seealso cref="AffineTransform"/> from user
-		'''              space into device space. </param>
-		''' <param name="hints"> the set of hints that the context object can use to
-		'''              choose between rendering alternatives. </param>
-		''' <returns> the {@code PaintContext} for
-		'''         generating color patterns. </returns>
-		''' <seealso cref= Paint </seealso>
-		''' <seealso cref= PaintContext </seealso>
-		''' <seealso cref= ColorModel </seealso>
-		''' <seealso cref= Rectangle </seealso>
-		''' <seealso cref= Rectangle2D </seealso>
-		''' <seealso cref= AffineTransform </seealso>
-		''' <seealso cref= RenderingHints </seealso>
-		public synchronized PaintContext createContext(java.awt.image.ColorModel cm, Rectangle r, java.awt.geom.Rectangle2D r2d, java.awt.geom.AffineTransform xform, RenderingHints hints)
-			Return New ColorPaintContext(rGB, cm)
-
-		''' <summary>
-		''' Returns the transparency mode for this <code>Color</code>.  This is
-		''' required to implement the <code>Paint</code> interface. </summary>
-		''' <returns> this <code>Color</code> object's transparency mode. </returns>
-		''' <seealso cref= Paint </seealso>
-		''' <seealso cref= Transparency </seealso>
-		''' <seealso cref= #createContext </seealso>
-		public Integer transparency
-			Dim alpha_Renamed As Integer = alpha
-			If alpha_Renamed = &Hff Then
-				Return Transparency.OPAQUE
-			ElseIf alpha_Renamed = 0 Then
-				Return Transparency.BITMASK
-			Else
-				Return Transparency.TRANSLUCENT
-			End If
-
-	End Class
+        ''' <summary>
+        ''' Returns the transparency mode for this <code>Color</code>.  This is
+        ''' required to implement the <code>Paint</code> interface. </summary>
+        ''' <returns> this <code>Color</code> object's transparency mode. </returns>
+        ''' <seealso cref= Paint </seealso>
+        ''' <seealso cref= Transparency </seealso>
+        ''' <seealso cref= #createContext </seealso>
+        Public Function transparency() As Integer
+            Dim alpha_Renamed As Integer = alpha
+            If alpha_Renamed = &HFF Then
+                Return Transparency.OPAQUE
+            ElseIf alpha_Renamed = 0 Then
+                Return Transparency.BITMASK
+            Else
+                Return Transparency.TRANSLUCENT
+            End If
+        End Function
+    End Class
 
 End Namespace

@@ -6,7 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
     <MyType>Windows</MyType>
-    <RootNamespace>oracle</RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>java</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>

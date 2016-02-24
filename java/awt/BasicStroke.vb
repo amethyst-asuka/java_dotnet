@@ -356,41 +356,42 @@ Namespace java.awt
 			End If
 			Return hash
 
-		''' <summary>
-		''' Returns true if this BasicStroke represents the same
-		''' stroking operation as the given argument.
-		''' </summary>
-	   ''' <summary>
-	   ''' Tests if a specified object is equal to this <code>BasicStroke</code>
-	   ''' by first testing if it is a <code>BasicStroke</code> and then comparing
-	   ''' its width, join, cap, miter limit, dash, and dash phase attributes with
-	   ''' those of this <code>BasicStroke</code>. </summary>
-	   ''' <param name="obj"> the specified object to compare to this
-	   '''              <code>BasicStroke</code> </param>
-	   ''' <returns> <code>true</code> if the width, join, cap, miter limit, dash, and
-	   '''            dash phase are the same for both objects;
-	   '''            <code>false</code> otherwise. </returns>
-		public Boolean Equals(Object obj)
-			If Not(TypeOf obj Is BasicStroke) Then Return False
+        ''' <summary>
+        ''' Returns true if this BasicStroke represents the same
+        ''' stroking operation as the given argument.
+        ''' </summary>
+        ''' <summary>
+        ''' Tests if a specified object is equal to this <code>BasicStroke</code>
+        ''' by first testing if it is a <code>BasicStroke</code> and then comparing
+        ''' its width, join, cap, miter limit, dash, and dash phase attributes with
+        ''' those of this <code>BasicStroke</code>. </summary>
+        ''' <param name="obj"> the specified object to compare to this
+        '''              <code>BasicStroke</code> </param>
+        ''' <returns> <code>true</code> if the width, join, cap, miter limit, dash, and
+        '''            dash phase are the same for both objects;
+        '''            <code>false</code> otherwise. </returns>
+        Public Overloads Function Equals(obj As Object) As Boolean
+            If Not (TypeOf obj Is BasicStroke) Then Return False
 
-			Dim bs As BasicStroke = CType(obj, BasicStroke)
-			If width <> bs.width Then Return False
+            Dim bs As BasicStroke = CType(obj, BasicStroke)
+            If width <> bs.width Then Return False
 
-			If join <> bs.join Then Return False
+            If join <> bs.join Then Return False
 
-			If cap <> bs.cap Then Return False
+            If cap <> bs.cap Then Return False
 
-			If miterlimit <> bs.miterlimit Then Return False
+            If miterlimit <> bs.miterlimit Then Return False
 
-			If dash IsNot Nothing Then
-				If dash_phase <> bs.dash_phase Then Return False
+            If dash IsNot Nothing Then
+                If dash_phase <> bs.dash_phase Then Return False
 
-				If Not Array.Equals(dash, bs.dash) Then Return False
-			ElseIf bs.dash IsNot Nothing Then
-				Return False
-			End If
+                If Not Array.Equals(dash, bs.dash) Then Return False
+            ElseIf bs.dash IsNot Nothing Then
+                Return False
+            End If
 
-			Return True
-	End Class
+            Return True
+        End Function
+    End Class
 
 End Namespace

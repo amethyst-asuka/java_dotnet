@@ -348,43 +348,43 @@ Namespace java.applet
 			End Get
 		End Property
 
-		''' <summary>
-		''' Gets the locale of the applet. It allows the applet
-		''' to maintain its own locale separated from the locale
-		''' of the browser or appletviewer.
-		''' </summary>
-		''' <returns>  the locale of the applet; if no locale has
-		'''          been set, the default locale is returned.
-		''' @since   JDK1.1 </returns>
-		Public Property Overrides locale As java.util.Locale
-			Get
-			  Dim locale_Renamed As java.util.Locale = MyBase.locale
-			  If locale_Renamed Is Nothing Then Return java.util.Locale.default
-			  Return locale_Renamed
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the locale of the applet. It allows the applet
+        ''' to maintain its own locale separated from the locale
+        ''' of the browser or appletviewer.
+        ''' </summary>
+        ''' <returns>  the locale of the applet; if no locale has
+        '''          been set, the default locale is returned.
+        ''' @since   JDK1.1 </returns>
+        Public Overrides Property locale As java.util.Locale
+            Get
+                Dim locale_Renamed As java.util.Locale = MyBase.locale
+                If locale_Renamed Is Nothing Then Return java.util.Locale.default
+                Return locale_Renamed
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns information about the parameters that are understood by
-		''' this applet. An applet should override this method to return an
-		''' array of <code>Strings</code> describing these parameters.
-		''' <p>
-		''' Each element of the array should be a set of three
-		''' <code>Strings</code> containing the name, the type, and a
-		''' description. For example:
-		''' <blockquote><pre>
-		''' String pinfo[][] = {
-		'''   {"fps",    "1-10",    "frames per second"},
-		'''   {"repeat", "boolean", "repeat image loop"},
-		'''   {"imgs",   "url",     "images directory"}
-		''' };
-		''' </pre></blockquote>
-		''' <p>
-		''' The implementation of this method provided by the
-		''' <code>Applet</code> class returns <code>null</code>.
-		''' </summary>
-		''' <returns>  an array describing the parameters this applet looks for. </returns>
-		Public Overridable Property parameterInfo As String()()
+        ''' <summary>
+        ''' Returns information about the parameters that are understood by
+        ''' this applet. An applet should override this method to return an
+        ''' array of <code>Strings</code> describing these parameters.
+        ''' <p>
+        ''' Each element of the array should be a set of three
+        ''' <code>Strings</code> containing the name, the type, and a
+        ''' description. For example:
+        ''' <blockquote><pre>
+        ''' String pinfo[][] = {
+        '''   {"fps",    "1-10",    "frames per second"},
+        '''   {"repeat", "boolean", "repeat image loop"},
+        '''   {"imgs",   "url",     "images directory"}
+        ''' };
+        ''' </pre></blockquote>
+        ''' <p>
+        ''' The implementation of this method provided by the
+        ''' <code>Applet</code> class returns <code>null</code>.
+        ''' </summary>
+        ''' <returns>  an array describing the parameters this applet looks for. </returns>
+        Public Overridable Property parameterInfo As String()()
 			Get
 				Return Nothing
 			End Get

@@ -176,55 +176,55 @@ Namespace java.awt.dnd
 		Friend Const dragSourceListenerK As String = "dragSourceL"
 		Friend Const dragSourceMotionListenerK As String = "dragSourceMotionL"
 
-		''' <summary>
-		''' Gets the <code>DragSource</code> object associated with
-		''' the underlying platform.
-		''' </summary>
-		''' <returns> the platform DragSource </returns>
-		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
-		'''            returns true </exception>
-		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Property Shared defaultDragSource As DragSource
-			Get
-				If java.awt.GraphicsEnvironment.headless Then
-					Throw New java.awt.HeadlessException
-				Else
-					Return dflt
-				End If
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the <code>DragSource</code> object associated with
+        ''' the underlying platform.
+        ''' </summary>
+        ''' <returns> the platform DragSource </returns>
+        ''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
+        '''            returns true </exception>
+        ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
+        Public Shared ReadOnly Property defaultDragSource As DragSource
+            Get
+                If java.awt.GraphicsEnvironment.headless Then
+                    Throw New java.awt.HeadlessException
+                Else
+                    Return dflt
+                End If
+            End Get
+        End Property
 
-		''' <summary>
-		''' Reports
-		''' whether or not drag
-		''' <code>Image</code> support
-		''' is available on the underlying platform.
-		''' <P> </summary>
-		''' <returns> if the Drag Image support is available on this platform </returns>
+        ''' <summary>
+        ''' Reports
+        ''' whether or not drag
+        ''' <code>Image</code> support
+        ''' is available on the underlying platform.
+        ''' <P> </summary>
+        ''' <returns> if the Drag Image support is available on this platform </returns>
 
-		Public Property Shared dragImageSupported As Boolean
-			Get
-				Dim t As java.awt.Toolkit = java.awt.Toolkit.defaultToolkit
-    
-				Dim supported As Boolean?
-    
-				Try
-					supported = CBool(java.awt.Toolkit.defaultToolkit.getDesktopProperty("DnD.isDragImageSupported"))
-    
-					Return supported
-				Catch e As Exception
-					Return False
-				End Try
-			End Get
-		End Property
+        Public Shared ReadOnly Property dragImageSupported As Boolean
+            Get
+                Dim t As java.awt.Toolkit = java.awt.Toolkit.defaultToolkit
 
-		''' <summary>
-		''' Creates a new <code>DragSource</code>.
-		''' </summary>
-		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
-		'''            returns true </exception>
-		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Sub New()
+                Dim supported As Boolean?
+
+                Try
+                    supported = CBool(java.awt.Toolkit.defaultToolkit.getDesktopProperty("DnD.isDragImageSupported"))
+
+                    Return supported
+                Catch e As Exception
+                    Return False
+                End Try
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Creates a new <code>DragSource</code>.
+        ''' </summary>
+        ''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless()
+        '''            returns true </exception>
+        ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
+        Public Sub New()
 			If java.awt.GraphicsEnvironment.headless Then Throw New java.awt.HeadlessException
 		End Sub
 
@@ -421,32 +421,28 @@ Namespace java.awt.dnd
 		''' <returns> the <code>FlavorMap</code> for this <code>DragSource</code> </returns>
 
 		Public Overridable Property flavorMap As java.awt.datatransfer.FlavorMap
-			Get
-				Return flavorMap
-			End Get
-		End Property
 
-		''' <summary>
-		''' Creates a new <code>DragGestureRecognizer</code>
-		''' that implements the specified
-		''' abstract subclass of
-		''' <code>DragGestureRecognizer</code>, and
-		''' sets the specified <code>Component</code>
-		''' and <code>DragGestureListener</code> on
-		''' the newly created object.
-		''' <P> </summary>
-		''' <param name="recognizerAbstractClass"> the requested abstract type </param>
-		''' <param name="actions">                 the permitted source drag actions </param>
-		''' <param name="c">                       the <code>Component</code> target </param>
-		''' <param name="dgl">        the <code>DragGestureListener</code> to notify
-		''' <P> </param>
-		''' <returns> the new <code>DragGestureRecognizer</code> or <code>null</code>
-		'''    if the <code>Toolkit.createDragGestureRecognizer</code> method
-		'''    has no implementation available for
-		'''    the requested <code>DragGestureRecognizer</code>
-		'''    subclass and returns <code>null</code> </returns>
+        ''' <summary>
+        ''' Creates a new <code>DragGestureRecognizer</code>
+        ''' that implements the specified
+        ''' abstract subclass of
+        ''' <code>DragGestureRecognizer</code>, and
+        ''' sets the specified <code>Component</code>
+        ''' and <code>DragGestureListener</code> on
+        ''' the newly created object.
+        ''' <P> </summary>
+        ''' <param name="recognizerAbstractClass"> the requested abstract type </param>
+        ''' <param name="actions">                 the permitted source drag actions </param>
+        ''' <param name="c">                       the <code>Component</code> target </param>
+        ''' <param name="dgl">        the <code>DragGestureListener</code> to notify
+        ''' <P> </param>
+        ''' <returns> the new <code>DragGestureRecognizer</code> or <code>null</code>
+        '''    if the <code>Toolkit.createDragGestureRecognizer</code> method
+        '''    has no implementation available for
+        '''    the requested <code>DragGestureRecognizer</code>
+        '''    subclass and returns <code>null</code> </returns>
 
-		Public Overridable Function createDragGestureRecognizer(Of T As DragGestureRecognizer)(ByVal recognizerAbstractClass As Class, ByVal c As java.awt.Component, ByVal actions As Integer, ByVal dgl As DragGestureListener) As T
+        Public Overridable Function createDragGestureRecognizer(Of T As DragGestureRecognizer)(ByVal recognizerAbstractClass As Class, ByVal c As java.awt.Component, ByVal actions As Integer, ByVal dgl As DragGestureListener) As T
 			Return java.awt.Toolkit.defaultToolkit.createDragGestureRecognizer(recognizerAbstractClass, Me, c, actions, dgl)
 		End Function
 
