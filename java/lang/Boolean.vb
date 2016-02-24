@@ -58,68 +58,68 @@ Namespace java.lang
 		''' </summary>
 		Public Shared ReadOnly [FALSE] As Boolean? = New Boolean?(False)
 
-		''' <summary>
-		''' The Class object representing the primitive type boolean.
-		''' 
-		''' @since   JDK1.1
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared ReadOnly TYPE As Class = CType(Class.getPrimitiveClass("boolean"), [Class])
+        ''' <summary>
+        ''' The Class object representing the primitive type boolean.
+        ''' 
+        ''' @since   JDK1.1
+        ''' </summary>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Public Shared ReadOnly TYPE As [Class] = CType([Class].getPrimitiveClass("boolean"), [Class])
 
-		''' <summary>
-		''' The value of the Boolean.
-		''' 
-		''' @serial
-		''' </summary>
-		Private ReadOnly value As Boolean
+        ''' <summary>
+        ''' The value of the Boolean.
+        ''' 
+        ''' @serial
+        ''' </summary>
+        Private ReadOnly value As Boolean
 
 		''' <summary>
 		''' use serialVersionUID from JDK 1.0.2 for interoperability </summary>
 		Private Const serialVersionUID As Long = -3665804199014368530L
 
-		''' <summary>
-		''' Allocates a {@code Boolean} object representing the
-		''' {@code value} argument.
-		''' 
-		''' <p><b>Note: It is rarely appropriate to use this constructor.
-		''' Unless a <i>new</i> instance is required, the static factory
-		''' <seealso cref="#valueOf(boolean)"/> is generally a better choice. It is
-		''' likely to yield significantly better space and time performance.</b>
-		''' </summary>
-		''' <param name="value">   the value of the {@code Boolean}. </param>
-		Function java.lang.Boolean(ByVal value As Boolean) As [Public]
-			Me.value = value
-		End Function
+        ''' <summary>
+        ''' Allocates a {@code Boolean} object representing the
+        ''' {@code value} argument.
+        ''' 
+        ''' <p><b>Note: It is rarely appropriate to use this constructor.
+        ''' Unless a <i>new</i> instance is required, the static factory
+        ''' <seealso cref="#valueOf(boolean)"/> is generally a better choice. It is
+        ''' likely to yield significantly better space and time performance.</b>
+        ''' </summary>
+        ''' <param name="value">   the value of the {@code Boolean}. </param>
+        Sub New(ByVal value As Boolean)
+            Me.value = value
+        End Sub
 
-		''' <summary>
-		''' Allocates a {@code Boolean} object representing the value
-		''' {@code true} if the string argument is not {@code null}
-		''' and is equal, ignoring case, to the string {@code "true"}.
-		''' Otherwise, allocate a {@code Boolean} object representing the
-		''' value {@code false}. Examples:<p>
-		''' {@code new Boolean("True")} produces a {@code Boolean} object
-		''' that represents {@code true}.<br>
-		''' {@code new Boolean("yes")} produces a {@code Boolean} object
-		''' that represents {@code false}.
-		''' </summary>
-		''' <param name="s">   the string to be converted to a {@code Boolean}. </param>
-		Function java.lang.Boolean(ByVal s As String) As [Public]
-			Me(parseBoolean(s))
-		End Function
+        ''' <summary>
+        ''' Allocates a {@code Boolean} object representing the value
+        ''' {@code true} if the string argument is not {@code null}
+        ''' and is equal, ignoring case, to the string {@code "true"}.
+        ''' Otherwise, allocate a {@code Boolean} object representing the
+        ''' value {@code false}. Examples:<p>
+        ''' {@code new Boolean("True")} produces a {@code Boolean} object
+        ''' that represents {@code true}.<br>
+        ''' {@code new Boolean("yes")} produces a {@code Boolean} object
+        ''' that represents {@code false}.
+        ''' </summary>
+        ''' <param name="s">   the string to be converted to a {@code Boolean}. </param>
+        Sub New(ByVal s As String)
+            Me.New(parseBoolean(s))
+        End Sub
 
-		''' <summary>
-		''' Parses the string argument as a boolean.  The {@code boolean}
-		''' returned represents the value {@code true} if the string argument
-		''' is not {@code null} and is equal, ignoring case, to the string
-		''' {@code "true"}. <p>
-		''' Example: {@code Boolean.parseBoolean("True")} returns {@code true}.<br>
-		''' Example: {@code Boolean.parseBoolean("yes")} returns {@code false}.
-		''' </summary>
-		''' <param name="s">   the {@code String} containing the boolean
-		'''                 representation to be parsed </param>
-		''' <returns>     the boolean represented by the string argument
-		''' @since 1.5 </returns>
-		Public Shared Function parseBoolean(ByVal s As String) As Boolean
+        ''' <summary>
+        ''' Parses the string argument as a boolean.  The {@code boolean}
+        ''' returned represents the value {@code true} if the string argument
+        ''' is not {@code null} and is equal, ignoring case, to the string
+        ''' {@code "true"}. <p>
+        ''' Example: {@code Boolean.parseBoolean("True")} returns {@code true}.<br>
+        ''' Example: {@code Boolean.parseBoolean("yes")} returns {@code false}.
+        ''' </summary>
+        ''' <param name="s">   the {@code String} containing the boolean
+        '''                 representation to be parsed </param>
+        ''' <returns>     the boolean represented by the string argument
+        ''' @since 1.5 </returns>
+        Public Shared Function parseBoolean(ByVal s As String) As Boolean
 			Return ((s IsNot Nothing) AndAlso s.equalsIgnoreCase("true"))
 		End Function
 

@@ -171,63 +171,63 @@ Namespace java.lang
 			Return self.ordinal_Renamed - other.ordinal_Renamed
 		End Function
 
-		''' <summary>
-		''' Returns the Class object corresponding to this enum constant's
-		''' enum type.  Two enum constants e1 and  e2 are of the
-		''' same enum type if and only if
-		'''   e1.getDeclaringClass() == e2.getDeclaringClass().
-		''' (The value returned by this method may differ from the one returned
-		''' by the <seealso cref="Object#getClass"/> method for enum constants with
-		''' constant-specific class bodies.)
-		''' </summary>
-		''' <returns> the Class object corresponding to this enum constant's
-		'''     enum type </returns>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property declaringClass As Class
-			Get
-				Dim clazz As Class = Me.GetType()
-				Dim zuper As Class = clazz.BaseType
-				Return If(zuper Is GetType(System.Enum), CType(clazz, [Class]), CType(zuper, [Class]))
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the Class object corresponding to this enum constant's
+        ''' enum type.  Two enum constants e1 and  e2 are of the
+        ''' same enum type if and only if
+        '''   e1.getDeclaringClass() == e2.getDeclaringClass().
+        ''' (The value returned by this method may differ from the one returned
+        ''' by the <seealso cref="Object#getClass"/> method for enum constants with
+        ''' constant-specific class bodies.)
+        ''' </summary>
+        ''' <returns> the Class object corresponding to this enum constant's
+        '''     enum type </returns>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Public Property declaringClass As [Class]
+            Get
+                Dim clazz As [Class] = Me.GetType()
+                Dim zuper As [Class] = clazz.BaseType
+                Return If(zuper Is GetType(System.Enum), CType(clazz, [Class]), CType(zuper, [Class]))
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the enum constant of the specified enum type with the
-		''' specified name.  The name must match exactly an identifier used
-		''' to declare an enum constant in this type.  (Extraneous whitespace
-		''' characters are not permitted.)
-		''' 
-		''' <p>Note that for a particular enum type {@code T}, the
-		''' implicitly declared {@code public static T valueOf(String)}
-		''' method on that enum may be used instead of this method to map
-		''' from a name to the corresponding enum constant.  All the
-		''' constants of an enum type can be obtained by calling the
-		''' implicit {@code public static T[] values()} method of that
-		''' type.
-		''' </summary>
-		''' @param <T> The enum type whose constant is to be returned </param>
-		''' <param name="enumType"> the {@code Class} object of the enum type from which
-		'''      to return a constant </param>
-		''' <param name="name"> the name of the constant to return </param>
-		''' <returns> the enum constant of the specified enum type with the
-		'''      specified name </returns>
-		''' <exception cref="IllegalArgumentException"> if the specified enum type has
-		'''         no constant with the specified name, or the specified
-		'''         class object does not represent an enum type </exception>
-		''' <exception cref="NullPointerException"> if {@code enumType} or {@code name}
-		'''         is null
-		''' @since 1.5 </exception>
-		Public Shared Function valueOf(Of T As System.Enum(Of T))(ByVal enumType As Class, ByVal name As String) As T
-			Dim result As T = enumType.enumConstantDirectory()(name)
-			If result IsNot Nothing Then Return result
-			If name Is Nothing Then Throw New NullPointerException("Name is null")
-			Throw New IllegalArgumentException("No enum constant " & enumType.canonicalName & "." & name)
-		End Function
+        ''' <summary>
+        ''' Returns the enum constant of the specified enum type with the
+        ''' specified name.  The name must match exactly an identifier used
+        ''' to declare an enum constant in this type.  (Extraneous whitespace
+        ''' characters are not permitted.)
+        ''' 
+        ''' <p>Note that for a particular enum type {@code T}, the
+        ''' implicitly declared {@code public static T valueOf(String)}
+        ''' method on that enum may be used instead of this method to map
+        ''' from a name to the corresponding enum constant.  All the
+        ''' constants of an enum type can be obtained by calling the
+        ''' implicit {@code public static T[] values()} method of that
+        ''' type.
+        ''' </summary>
+        ''' @param <T> The enum type whose constant is to be returned </param>
+        ''' <param name="enumType"> the {@code Class} object of the enum type from which
+        '''      to return a constant </param>
+        ''' <param name="name"> the name of the constant to return </param>
+        ''' <returns> the enum constant of the specified enum type with the
+        '''      specified name </returns>
+        ''' <exception cref="IllegalArgumentException"> if the specified enum type has
+        '''         no constant with the specified name, or the specified
+        '''         class object does not represent an enum type </exception>
+        ''' <exception cref="NullPointerException"> if {@code enumType} or {@code name}
+        '''         is null
+        ''' @since 1.5 </exception>
+        Public Shared Function valueOf(Of T As System.Enum(Of T))(ByVal enumType As [Class], ByVal name As String) As T
+            Dim result As T = enumType.enumConstantDirectory()(name)
+            If result IsNot Nothing Then Return result
+            If name Is Nothing Then Throw New NullPointerException("Name is null")
+            Throw New IllegalArgumentException("No enum constant " & enumType.canonicalName & "." & name)
+        End Function
 
-		''' <summary>
-		''' enum classes cannot have finalize methods.
-		''' </summary>
-		Protected Overrides Sub Finalize()
+        ''' <summary>
+        ''' enum classes cannot have finalize methods.
+        ''' </summary>
+        Protected Overrides Sub Finalize()
 		End Sub
 
 		''' <summary>

@@ -41,41 +41,41 @@ Namespace java.lang
  ' rawtypes are part of the public api
 		Private Shadows Const serialVersionUID As Long = -6046998521960521108L
 
-		''' <summary>
-		''' The type of the missing enum constant.
-		''' </summary>
-		Private enumType_Renamed As Class
+        ''' <summary>
+        ''' The type of the missing enum constant.
+        ''' </summary>
+        Private enumType_Renamed As [Class]
 
-		''' <summary>
-		''' The name of the missing enum constant.
-		''' </summary>
-		Private constantName_Renamed As String
+        ''' <summary>
+        ''' The name of the missing enum constant.
+        ''' </summary>
+        Private constantName_Renamed As String
 
-		''' <summary>
-		''' Constructs an <tt>EnumConstantNotPresentException</tt> for the
-		''' specified constant.
-		''' </summary>
-		''' <param name="enumType"> the type of the missing enum constant </param>
-		''' <param name="constantName"> the name of the missing enum constant </param>
-		Public Sub New(ByVal enumType As Class, ByVal constantName As String)
-			MyBase.New(enumType.name & "." & constantName)
-			Me.enumType_Renamed = enumType
-			Me.constantName_Renamed = constantName
-		End Sub
+        ''' <summary>
+        ''' Constructs an <tt>EnumConstantNotPresentException</tt> for the
+        ''' specified constant.
+        ''' </summary>
+        ''' <param name="enumType"> the type of the missing enum constant </param>
+        ''' <param name="constantName"> the name of the missing enum constant </param>
+        Public Sub New(ByVal enumType As [Class], ByVal constantName As String)
+            MyBase.New(enumType.name & "." & constantName)
+            Me.enumType_Renamed = enumType
+            Me.constantName_Renamed = constantName
+        End Sub
 
-		''' <summary>
-		''' Returns the type of the missing enum constant.
-		''' </summary>
-		''' <returns> the type of the missing enum constant </returns>
-		Public Overridable Function enumType() As Class
-			Return enumType_Renamed
-		End Function
+        ''' <summary>
+        ''' Returns the type of the missing enum constant.
+        ''' </summary>
+        ''' <returns> the type of the missing enum constant </returns>
+        Public Overridable Function enumType() As [Class]
+            Return enumType_Renamed
+        End Function
 
-		''' <summary>
-		''' Returns the name of the missing enum constant.
-		''' </summary>
-		''' <returns> the name of the missing enum constant </returns>
-		Public Overridable Function constantName() As String
+        ''' <summary>
+        ''' Returns the name of the missing enum constant.
+        ''' </summary>
+        ''' <returns> the name of the missing enum constant </returns>
+        Public Overridable Function constantName() As String
 			Return constantName_Renamed
 		End Function
 	End Class

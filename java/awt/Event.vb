@@ -720,26 +720,26 @@ Namespace java.awt
 			End Select
 		End Sub
 
-		''' <summary>
-		''' <b>NOTE:</b> The <code>Event</code> class is obsolete and is
-		''' available only for backwards compatibility.  It has been replaced
-		''' by the <code>AWTEvent</code> class and its subclasses.
-		''' </summary>
-		Friend Overridable Property consumed As Boolean
-			Get
-				Return consumed
-			End Get
-		End Property
+        ''' <summary>
+        ''' <b>NOTE:</b> The <code>Event</code> class is obsolete and is
+        ''' available only for backwards compatibility.  It has been replaced
+        ''' by the <code>AWTEvent</code> class and its subclasses.
+        ''' </summary>
+        Friend Overridable ReadOnly Property consumed As Boolean
+            Get
+                Return consumed
+            End Get
+        End Property
 
-	'    
-	'     * <b>NOTE:</b> The <code>Event</code> class is obsolete and is
-	'     * available only for backwards compatibility.  It has been replaced
-	'     * by the <code>AWTEvent</code> class and its subclasses.
-	'     * <p>
-	'     * Returns the integer key-code associated with the key in this event,
-	'     * as described in java.awt.Event.
-	'     
-		Friend Shared Function getOldEventKey(ByVal e As KeyEvent) As Integer
+        '    
+        '     * <b>NOTE:</b> The <code>Event</code> class is obsolete and is
+        '     * available only for backwards compatibility.  It has been replaced
+        '     * by the <code>AWTEvent</code> class and its subclasses.
+        '     * <p>
+        '     * Returns the integer key-code associated with the key in this event,
+        '     * as described in java.awt.Event.
+        '     
+        Friend Shared Function getOldEventKey(ByVal e As KeyEvent) As Integer
 			Dim keyCode As Integer = e.keyCode
 			For i As Integer = 0 To actionKeyCodes.Length - 1
 				If actionKeyCodes(i)(0) = keyCode Then Return actionKeyCodes(i)(1)
@@ -747,36 +747,36 @@ Namespace java.awt
 			Return AscW(e.keyChar)
 		End Function
 
-	'    
-	'     * <b>NOTE:</b> The <code>Event</code> class is obsolete and is
-	'     * available only for backwards compatibility.  It has been replaced
-	'     * by the <code>AWTEvent</code> class and its subclasses.
-	'     * <p>
-	'     * Returns a new KeyEvent char which corresponds to the int key
-	'     * of this old event.
-	'     
-		Friend Overridable Property keyEventChar As Char
-			Get
-			   For i As Integer = 0 To actionKeyCodes.Length - 1
-					If actionKeyCodes(i)(1) = key Then Return KeyEvent.CHAR_UNDEFINED
-			   Next i
-			   Return ChrW(key)
-			End Get
-		End Property
+        '    
+        '     * <b>NOTE:</b> The <code>Event</code> class is obsolete and is
+        '     * available only for backwards compatibility.  It has been replaced
+        '     * by the <code>AWTEvent</code> class and its subclasses.
+        '     * <p>
+        '     * Returns a new KeyEvent char which corresponds to the int key
+        '     * of this old event.
+        '     
+        Friend Overridable ReadOnly Property keyEventChar As Char
+            Get
+                For i As Integer = 0 To actionKeyCodes.Length - 1
+                    If actionKeyCodes(i)(1) = key Then Return KeyEvent.CHAR_UNDEFINED
+                Next i
+                Return ChrW(key)
+            End Get
+        End Property
 
-		''' <summary>
-		''' <b>NOTE:</b> The <code>Event</code> class is obsolete and is
-		''' available only for backwards compatibility.  It has been replaced
-		''' by the <code>AWTEvent</code> class and its subclasses.
-		''' <p>
-		''' Returns a string representing the state of this <code>Event</code>.
-		''' This method is intended to be used only for debugging purposes, and the
-		''' content and format of the returned string may vary between
-		''' implementations. The returned string may be empty but may not be
-		''' <code>null</code>.
-		''' </summary>
-		''' <returns>    the parameter string of this event </returns>
-		Protected Friend Overridable Function paramString() As String
+        ''' <summary>
+        ''' <b>NOTE:</b> The <code>Event</code> class is obsolete and is
+        ''' available only for backwards compatibility.  It has been replaced
+        ''' by the <code>AWTEvent</code> class and its subclasses.
+        ''' <p>
+        ''' Returns a string representing the state of this <code>Event</code>.
+        ''' This method is intended to be used only for debugging purposes, and the
+        ''' content and format of the returned string may vary between
+        ''' implementations. The returned string may be empty but may not be
+        ''' <code>null</code>.
+        ''' </summary>
+        ''' <returns>    the parameter string of this event </returns>
+        Protected Friend Overridable Function paramString() As String
 			Dim str As String = "id=" & id & ",x=" & x & ",y=" & y
 			If key <> 0 Then str &= ",key=" & key
 			If shiftDown() Then str &= ",shift"

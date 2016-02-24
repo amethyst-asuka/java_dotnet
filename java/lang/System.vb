@@ -259,40 +259,45 @@ Namespace java.lang
 		Private Shared Sub setErr0(ByVal err As PrintStream)
 		End Sub
 
-		''' <summary>
-		''' Sets the System security.
-		''' 
-		''' <p> If there is a security manager already installed, this method first
-		''' calls the security manager's <code>checkPermission</code> method
-		''' with a <code>RuntimePermission("setSecurityManager")</code>
-		''' permission to ensure it's ok to replace the existing
-		''' security manager.
-		''' This may result in throwing a <code>SecurityException</code>.
-		''' 
-		''' <p> Otherwise, the argument is established as the current
-		''' security manager. If the argument is <code>null</code> and no
-		''' security manager has been established, then no action is taken and
-		''' the method simply returns.
-		''' </summary>
-		''' <param name="s">   the security manager. </param>
-		''' <exception cref="SecurityException">  if the security manager has already
-		'''             been set and its <code>checkPermission</code> method
-		'''             doesn't allow it to be replaced. </exception>
-		''' <seealso cref= #getSecurityManager </seealso>
-		''' <seealso cref= SecurityManager#checkPermission </seealso>
-		''' <seealso cref= java.lang.RuntimePermission </seealso>
-		Public Shared Property securityManager As SecurityManager
-			Set(ByVal s As SecurityManager)
-				Try
-					s.checkPackageAccess("java.lang")
-				Catch e As Exception
-					' no-op
-				End Try
-				securityManager0 = s
-			End Set
-		End Property
+        ''' <summary>
+        ''' Sets the System security.
+        ''' 
+        ''' <p> If there is a security manager already installed, this method first
+        ''' calls the security manager's <code>checkPermission</code> method
+        ''' with a <code>RuntimePermission("setSecurityManager")</code>
+        ''' permission to ensure it's ok to replace the existing
+        ''' security manager.
+        ''' This may result in throwing a <code>SecurityException</code>.
+        ''' 
+        ''' <p> Otherwise, the argument is established as the current
+        ''' security manager. If the argument is <code>null</code> and no
+        ''' security manager has been established, then no action is taken and
+        ''' the method simply returns.
+        ''' </summary>
+        ''' <param name="s">   the security manager. </param>
+        ''' <exception cref="SecurityException">  if the security manager has already
+        '''             been set and its <code>checkPermission</code> method
+        '''             doesn't allow it to be replaced. </exception>
+        ''' <seealso cref= #getSecurityManager </seealso>
+        ''' <seealso cref= SecurityManager#checkPermission </seealso>
+        ''' <seealso cref= java.lang.RuntimePermission </seealso>
+        Public Shared Property securityManager As SecurityManager
+            Get
+                Return _securityManager
+            End Get
+            Set(ByVal s As SecurityManager)
+                Try
+                    s.checkPackageAccess("java.lang")
+                Catch e As Exception
+                    ' no-op
+                End Try
+                securityManager0 = s
+            End Set
+        End Property
 
-		<MethodImpl(MethodImplOptions.Synchronized)> _
+        Shared _securityManager As SecurityManager
+
+        <MethodImpl(MethodImplOptions.Synchronized)> _
 		Private Shared Property securityManager0 As SecurityManager
 			Set(ByVal s As SecurityManager)
 				Dim sm As SecurityManager = securityManager

@@ -322,100 +322,100 @@ Namespace java.lang
 			Return loadClass(name, False)
 		End Function
 
-		''' <summary>
-		''' Loads the class with the specified <a href="#name">binary name</a>.  The
-		''' default implementation of this method searches for classes in the
-		''' following order:
-		''' 
-		''' <ol>
-		''' 
-		'''   <li><p> Invoke <seealso cref="#findLoadedClass(String)"/> to check if the class
-		'''   has already been loaded.  </p></li>
-		''' 
-		'''   <li><p> Invoke the <seealso cref="#loadClass(String) <tt>loadClass</tt>"/> method
-		'''   on the parent class loader.  If the parent is <tt>null</tt> the class
-		'''   loader built-in to the virtual machine is used, instead.  </p></li>
-		''' 
-		'''   <li><p> Invoke the <seealso cref="#findClass(String)"/> method to find the
-		'''   class.  </p></li>
-		''' 
-		''' </ol>
-		''' 
-		''' <p> If the class was found using the above steps, and the
-		''' <tt>resolve</tt> flag is true, this method will then invoke the {@link
-		''' #resolveClass(Class)} method on the resulting <tt>Class</tt> object.
-		''' 
-		''' <p> Subclasses of <tt>ClassLoader</tt> are encouraged to override {@link
-		''' #findClass(String)}, rather than this method.  </p>
-		''' 
-		''' <p> Unless overridden, this method synchronizes on the result of
-		''' <seealso cref="#getClassLoadingLock <tt>getClassLoadingLock</tt>"/> method
-		''' during the entire class loading process.
-		''' </summary>
-		''' <param name="name">
-		'''         The <a href="#name">binary name</a> of the class
-		''' </param>
-		''' <param name="resolve">
-		'''         If <tt>true</tt> then resolve the class
-		''' </param>
-		''' <returns>  The resulting <tt>Class</tt> object
-		''' </returns>
-		''' <exception cref="ClassNotFoundException">
-		'''          If the class could not be found </exception>
-		Protected Friend Overridable Function loadClass(ByVal name As String, ByVal resolve As Boolean) As Class
-			SyncLock getClassLoadingLock(name)
-				' First, check if the class has already been loaded
-				Dim c As Class = findLoadedClass(name)
-				If c Is Nothing Then
-					Dim t0 As Long = System.nanoTime()
-					Try
-						If parent IsNot Nothing Then
-							c = parent.loadClass(name, False)
-						Else
-							c = findBootstrapClassOrNull(name)
-						End If
-					Catch e As ClassNotFoundException
-						' ClassNotFoundException thrown if class not found
-						' from the non-null parent class loader
-					End Try
+        ''' <summary>
+        ''' Loads the class with the specified <a href="#name">binary name</a>.  The
+        ''' default implementation of this method searches for classes in the
+        ''' following order:
+        ''' 
+        ''' <ol>
+        ''' 
+        '''   <li><p> Invoke <seealso cref="#findLoadedClass(String)"/> to check if the class
+        '''   has already been loaded.  </p></li>
+        ''' 
+        '''   <li><p> Invoke the <seealso cref="#loadClass(String) <tt>loadClass</tt>"/> method
+        '''   on the parent class loader.  If the parent is <tt>null</tt> the class
+        '''   loader built-in to the virtual machine is used, instead.  </p></li>
+        ''' 
+        '''   <li><p> Invoke the <seealso cref="#findClass(String)"/> method to find the
+        '''   class.  </p></li>
+        ''' 
+        ''' </ol>
+        ''' 
+        ''' <p> If the class was found using the above steps, and the
+        ''' <tt>resolve</tt> flag is true, this method will then invoke the {@link
+        ''' #resolveClass(Class)} method on the resulting <tt>Class</tt> object.
+        ''' 
+        ''' <p> Subclasses of <tt>ClassLoader</tt> are encouraged to override {@link
+        ''' #findClass(String)}, rather than this method.  </p>
+        ''' 
+        ''' <p> Unless overridden, this method synchronizes on the result of
+        ''' <seealso cref="#getClassLoadingLock <tt>getClassLoadingLock</tt>"/> method
+        ''' during the entire class loading process.
+        ''' </summary>
+        ''' <param name="name">
+        '''         The <a href="#name">binary name</a> of the class
+        ''' </param>
+        ''' <param name="resolve">
+        '''         If <tt>true</tt> then resolve the class
+        ''' </param>
+        ''' <returns>  The resulting <tt>Class</tt> object
+        ''' </returns>
+        ''' <exception cref="ClassNotFoundException">
+        '''          If the class could not be found </exception>
+        Protected Friend Overridable Function loadClass(ByVal name As String, ByVal resolve As Boolean) As [Class]
+            SyncLock getClassLoadingLock(name)
+                ' First, check if the class has already been loaded
+                Dim c As [Class] = findLoadedClass(name)
+                If c Is Nothing Then
+                    Dim t0 As Long = System.nanoTime()
+                    Try
+                        If parent IsNot Nothing Then
+                            c = parent.loadClass(name, False)
+                        Else
+                            c = findBootstrapClassOrNull(name)
+                        End If
+                    Catch e As ClassNotFoundException
+                        ' ClassNotFoundException thrown if class not found
+                        ' from the non-null parent class loader
+                    End Try
 
-					If c Is Nothing Then
-						' If still not found, then invoke findClass in order
-						' to find the class.
-						Dim t1 As Long = System.nanoTime()
-						c = findClass(name)
+                    If c Is Nothing Then
+                        ' If still not found, then invoke findClass in order
+                        ' to find the class.
+                        Dim t1 As Long = System.nanoTime()
+                        c = findClass(name)
 
-						' this is the defining class loader; record the stats
-						sun.misc.PerfCounter.parentDelegationTime.addTime(t1 - t0)
-						sun.misc.PerfCounter.findClassTime.addElapsedTimeFrom(t1)
-						sun.misc.PerfCounter.findClasses.increment()
-					End If
-				End If
-				If resolve Then resolveClass(c)
-				Return c
-			End SyncLock
-		End Function
+                        ' this is the defining class loader; record the stats
+                        sun.misc.PerfCounter.parentDelegationTime.addTime(t1 - t0)
+                        sun.misc.PerfCounter.findClassTime.addElapsedTimeFrom(t1)
+                        sun.misc.PerfCounter.findClasses.increment()
+                    End If
+                End If
+                If resolve Then resolveClass(c)
+                Return c
+            End SyncLock
+        End Function
 
-		''' <summary>
-		''' Returns the lock object for class loading operations.
-		''' For backward compatibility, the default implementation of this method
-		''' behaves as follows. If this ClassLoader object is registered as
-		''' parallel capable, the method returns a dedicated object associated
-		''' with the specified class name. Otherwise, the method returns this
-		''' ClassLoader object.
-		''' </summary>
-		''' <param name="className">
-		'''         The name of the to-be-loaded class
-		''' </param>
-		''' <returns> the lock for class loading operations
-		''' </returns>
-		''' <exception cref="NullPointerException">
-		'''         If registered as parallel capable and <tt>className</tt> is null
-		''' </exception>
-		''' <seealso cref= #loadClass(String, boolean)
-		''' 
-		''' @since  1.7 </seealso>
-		Protected Friend Overridable Function getClassLoadingLock(ByVal className As String) As Object
+        ''' <summary>
+        ''' Returns the lock object for class loading operations.
+        ''' For backward compatibility, the default implementation of this method
+        ''' behaves as follows. If this ClassLoader object is registered as
+        ''' parallel capable, the method returns a dedicated object associated
+        ''' with the specified class name. Otherwise, the method returns this
+        ''' ClassLoader object.
+        ''' </summary>
+        ''' <param name="className">
+        '''         The name of the to-be-loaded class
+        ''' </param>
+        ''' <returns> the lock for class loading operations
+        ''' </returns>
+        ''' <exception cref="NullPointerException">
+        '''         If registered as parallel capable and <tt>className</tt> is null
+        ''' </exception>
+        ''' <seealso cref= #loadClass(String, boolean)
+        ''' 
+        ''' @since  1.7 </seealso>
+        Protected Friend Overridable Function getClassLoadingLock(ByVal className As String) As Object
 			Dim lock As Object = Me
 			If parallelLockMap IsNot Nothing Then
 				Dim newLock As New Object
@@ -438,25 +438,25 @@ Namespace java.lang
 			End If
 		End Function
 
-		' Invoked by the VM after loading class with this loader.
-		Private Sub checkPackageAccess(ByVal cls As Class, ByVal pd As java.security.ProtectionDomain)
-			Dim sm As SecurityManager = System.securityManager
-			If sm IsNot Nothing Then
-				If sun.reflect.misc.ReflectUtil.isNonPublicProxyClass(cls) Then
-					For Each intf As Class In cls.interfaces
-						checkPackageAccess(intf, pd)
-					Next intf
-					Return
-				End If
+        ' Invoked by the VM after loading class with this loader.
+        Private Sub checkPackageAccess(ByVal cls As [Class], ByVal pd As java.security.ProtectionDomain)
+            Dim sm As SecurityManager = System.securityManager
+            If sm IsNot Nothing Then
+                If sun.reflect.misc.ReflectUtil.isNonPublicProxyClass(cls) Then
+                    For Each intf As [Class] In cls.interfaces
+                        checkPackageAccess(intf, pd)
+                    Next intf
+                    Return
+                End If
 
-				Dim name As String = cls.name
-				Dim i As Integer = name.LastIndexOf("."c)
-				If i <> -1 Then java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
-			End If
-			domains.add(pd)
-		End Sub
+                Dim name As String = cls.name
+                Dim i As Integer = name.LastIndexOf("."c)
+                If i <> -1 Then java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+            End If
+            domains.add(pd)
+        End Sub
 
-		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
+        Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Void

@@ -99,8 +99,8 @@ Namespace java.lang
 		'''          to type {@code byte}.
 		''' @since   JDK1.1 </returns>
 		Public Overridable Function byteValue() As SByte
-			Return CByte(intValue())
-		End Function
+            Return CSByte(intValue())
+        End Function
 
 		''' <summary>
 		''' Returns the value of the specified number as a {@code short},

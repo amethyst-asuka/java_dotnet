@@ -58,25 +58,25 @@ Namespace java.lang
 		''' </summary>
 		Public Const MAX_VALUE As SByte = 127
 
-		''' <summary>
-		''' The {@code Class} instance representing the primitive type
-		''' {@code byte}.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared ReadOnly TYPE As Class = CType(Class.getPrimitiveClass("byte"), [Class])
+        ''' <summary>
+        ''' The {@code Class} instance representing the primitive type
+        ''' {@code byte}.
+        ''' </summary>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Public Shared ReadOnly TYPE As [Class] = CType([Class].getPrimitiveClass("byte"), [Class])
 
-		''' <summary>
-		''' Returns a new {@code String} object representing the
-		''' specified {@code byte}. The radix is assumed to be 10.
-		''' </summary>
-		''' <param name="b"> the {@code byte} to be converted </param>
-		''' <returns> the string representation of the specified {@code byte} </returns>
-		''' <seealso cref= java.lang.Integer#toString(int) </seealso>
-		Public Shared Function ToString(ByVal b As SByte) As String
-			Return Convert.ToString(CInt(b), 10)
-		End Function
+        ''' <summary>
+        ''' Returns a new {@code String} object representing the
+        ''' specified {@code byte}. The radix is assumed to be 10.
+        ''' </summary>
+        ''' <param name="b"> the {@code byte} to be converted </param>
+        ''' <returns> the string representation of the specified {@code byte} </returns>
+        ''' <seealso cref= java.lang.Integer#toString(int) </seealso>
+        Public Overloads Shared Function ToString(ByVal b As SByte) As String
+            Return Convert.ToString(CInt(b), 10)
+        End Function
 
-		Private Class ByteCache
+        Private Class ByteCache
 			Private Sub New()
 			End Sub
 
@@ -149,8 +149,8 @@ Namespace java.lang
 		Public Shared Function parseByte(ByVal s As String, ByVal radix As Integer) As SByte
 			Dim i As Integer = Convert.ToInt32(s, radix)
 			If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value out of range. Value:""" & s & """ Radix:" & radix)
-			Return CByte(i)
-		End Function
+            Return CSByte(i)
+        End Function
 
 		''' <summary>
 		''' Parses the string argument as a signed decimal {@code
@@ -268,8 +268,8 @@ Namespace java.lang
 		'''            contain a parsable {@code byte}. </exception>
 		''' <seealso cref= java.lang.Byte#parseByte(java.lang.String, int) </seealso>
 		Public Shared Function decode(ByVal nm As String) As Byte
-			Dim i As Integer = Integer.decode(nm)
-			If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value " & i & " out of range from input " & nm)
+            Dim i As Integer = [Integer].decode(nm)
+            If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value " & i & " out of range from input " & nm)
 			Return valueOf(CByte(i))
 		End Function
 

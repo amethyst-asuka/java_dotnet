@@ -157,152 +157,152 @@ Namespace java.lang
 			Me.value = java.util.Arrays.copyOf(value, value.Length)
 		End Sub
 
-		''' <summary>
-		''' Allocates a new {@code String} that contains characters from a subarray
-		''' of the character array argument. The {@code offset} argument is the
-		''' index of the first character of the subarray and the {@code count}
-		''' argument specifies the length of the subarray. The contents of the
-		''' subarray are copied; subsequent modification of the character array does
-		''' not affect the newly created string.
-		''' </summary>
-		''' <param name="value">
-		'''         Array that is the source of characters
-		''' </param>
-		''' <param name="offset">
-		'''         The initial offset
-		''' </param>
-		''' <param name="count">
-		'''         The length
-		''' </param>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If the {@code offset} and {@code count} arguments index
-		'''          characters outside the bounds of the {@code value} array </exception>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public String(char value() , int offset, int count)
-			If offset < 0 Then Throw New StringIndexOutOfBoundsException(offset)
-			If count <= 0 Then
-				If count < 0 Then Throw New StringIndexOutOfBoundsException(count)
-				If offset <= value.Length Then
-					Me.value = "".value
-					Return
-				End If
-			End If
-			' Note: offset or count might be near -1>>>1.
-			If offset > value.Length - count Then Throw New StringIndexOutOfBoundsException(offset + count)
-			Me.value = java.util.Arrays.copyOfRange(value, offset, offset+count)
+        ''' <summary>
+        ''' Allocates a new {@code String} that contains characters from a subarray
+        ''' of the character array argument. The {@code offset} argument is the
+        ''' index of the first character of the subarray and the {@code count}
+        ''' argument specifies the length of the subarray. The contents of the
+        ''' subarray are copied; subsequent modification of the character array does
+        ''' not affect the newly created string.
+        ''' </summary>
+        ''' <param name="value">
+        '''         Array that is the source of characters
+        ''' </param>
+        ''' <param name="offset">
+        '''         The initial offset
+        ''' </param>
+        ''' <param name="count">
+        '''         The length
+        ''' </param>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If the {@code offset} and {@code count} arguments index
+        '''          characters outside the bounds of the {@code value} array </exception>
+        'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
+        Sub New(value As Char(), offset As Integer, count As Integer)
+            If offset < 0 Then Throw New StringIndexOutOfBoundsException(offset)
+            If count <= 0 Then
+                If count < 0 Then Throw New StringIndexOutOfBoundsException(count)
+                If offset <= value.Length Then
+                    Me.value = "".value
+                    Return
+                End If
+            End If
+            ' Note: offset or count might be near -1>>>1.
+            If offset > value.Length - count Then Throw New StringIndexOutOfBoundsException(offset + count)
+            Me.value = java.util.Arrays.copyOfRange(value, offset, offset + count)
+        End Sub
+        ''' <summary>
+        ''' Allocates a new {@code String} that contains characters from a subarray
+        ''' of the <a href="Character.html#unicode">Unicode code point</a> array
+        ''' argument.  The {@code offset} argument is the index of the first code
+        ''' point of the subarray and the {@code count} argument specifies the
+        ''' length of the subarray.  The contents of the subarray are converted to
+        ''' {@code char}s; subsequent modification of the {@code int} array does not
+        ''' affect the newly created string.
+        ''' </summary>
+        ''' <param name="codePoints">
+        '''         Array that is the source of Unicode code points
+        ''' </param>
+        ''' <param name="offset">
+        '''         The initial offset
+        ''' </param>
+        ''' <param name="count">
+        '''         The length
+        ''' </param>
+        ''' <exception cref="IllegalArgumentException">
+        '''          If any invalid Unicode code point is found in {@code
+        '''          codePoints}
+        ''' </exception>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If the {@code offset} and {@code count} arguments index
+        '''          characters outside the bounds of the {@code codePoints} array
+        ''' 
+        ''' @since  1.5 </exception>
+        Sub New(codePoints As Integer(), offset As Integer, count As Integer)
+            If offset < 0 Then Throw New StringIndexOutOfBoundsException(offset)
+            If count <= 0 Then
+                If count < 0 Then Throw New StringIndexOutOfBoundsException(count)
+                If offset <= codePoints.Length Then
+                    Me.value = "".value
+                    Return
+                End If
+            End If
+            ' Note: offset or count might be near -1>>>1.
+            If offset > codePoints.Length - count Then Throw New StringIndexOutOfBoundsException(offset + count)
 
-		''' <summary>
-		''' Allocates a new {@code String} that contains characters from a subarray
-		''' of the <a href="Character.html#unicode">Unicode code point</a> array
-		''' argument.  The {@code offset} argument is the index of the first code
-		''' point of the subarray and the {@code count} argument specifies the
-		''' length of the subarray.  The contents of the subarray are converted to
-		''' {@code char}s; subsequent modification of the {@code int} array does not
-		''' affect the newly created string.
-		''' </summary>
-		''' <param name="codePoints">
-		'''         Array that is the source of Unicode code points
-		''' </param>
-		''' <param name="offset">
-		'''         The initial offset
-		''' </param>
-		''' <param name="count">
-		'''         The length
-		''' </param>
-		''' <exception cref="IllegalArgumentException">
-		'''          If any invalid Unicode code point is found in {@code
-		'''          codePoints}
-		''' </exception>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If the {@code offset} and {@code count} arguments index
-		'''          characters outside the bounds of the {@code codePoints} array
-		''' 
-		''' @since  1.5 </exception>
-		public String(Integer() codePoints, Integer offset, Integer count)
-			If offset < 0 Then Throw New StringIndexOutOfBoundsException(offset)
-			If count <= 0 Then
-				If count < 0 Then Throw New StringIndexOutOfBoundsException(count)
-				If offset <= codePoints.length Then
-					Me.value = "".value
-					Return
-				End If
-			End If
-			' Note: offset or count might be near -1>>>1.
-			If offset > codePoints.length - count Then Throw New StringIndexOutOfBoundsException(offset + count)
+            Dim [end] As Integer = offset + count
 
-			Dim [end] As Integer = offset + count
+            ' Pass 1: Compute precise size of char[]
+            Dim n As Integer = count
+            For i As Integer = offset To [end] - 1
+                Dim c As Integer = codePoints(i)
+                If Character.isBmpCodePoint(c) Then
+                    Continue For
+                ElseIf Character.isValidCodePoint(c) Then
+                    n += 1
+                Else
+                    Throw New IllegalArgumentException(Convert.ToString(c))
+                End If
+            Next i
 
-			' Pass 1: Compute precise size of char[]
-			Dim n As Integer = count
-			For i As Integer = offset To [end] - 1
-				Dim c As Integer = codePoints(i)
-				If Character.isBmpCodePoint(c) Then
-					Continue For
-				ElseIf Character.isValidCodePoint(c) Then
-					n += 1
-				Else
-					Throw New IllegalArgumentException(Convert.ToString(c))
-				End If
-			Next i
+            ' Pass 2: Allocate and fill in char[]
+            Dim v As Char() = New Char(n - 1) {}
 
-			' Pass 2: Allocate and fill in char[]
-			Dim v As Char() = New Char(n - 1){}
+            Dim i As Integer = offset
+            Dim j As Integer = 0
+            Do While i < [end]
+                Dim c As Integer = codePoints(i)
+                If Character.isBmpCodePoint(c) Then
+                    v(j) = ChrW(c)
+                Else
+                    Character.toSurrogates(c, v, j)
+                    j += 1
+                End If
+                i += 1
+                j += 1
+            Loop
 
-			Dim i As Integer = offset
-			Dim j As Integer = 0
-			Do While i < [end]
-				Dim c As Integer = codePoints(i)
-				If Character.isBmpCodePoint(c) Then
-					v(j) = ChrW(c)
-				Else
-					Character.toSurrogates(c, v, j)
-					j += 1
-				End If
-				i += 1
-				j += 1
-			Loop
-
-			Me.value = v
-
-		''' <summary>
-		''' Allocates a new {@code String} constructed from a subarray of an array
-		''' of 8-bit integer values.
-		''' 
-		''' <p> The {@code offset} argument is the index of the first byte of the
-		''' subarray, and the {@code count} argument specifies the length of the
-		''' subarray.
-		''' 
-		''' <p> Each {@code byte} in the subarray is converted to a {@code char} as
-		''' specified in the method above.
-		''' </summary>
-		''' @deprecated This method does not properly convert bytes into characters.
-		''' As of JDK&nbsp;1.1, the preferred way to do this is via the
-		''' {@code String} constructors that take a {@link
-		''' java.nio.charset.Charset}, charset name, or that use the platform's
-		''' default charset.
-		''' 
-		''' <param name="ascii">
-		'''         The bytes to be converted to characters
-		''' </param>
-		''' <param name="hibyte">
-		'''         The top 8 bits of each 16-bit Unicode code unit
-		''' </param>
-		''' <param name="offset">
-		'''         The initial offset </param>
-		''' <param name="count">
-		'''         The length
-		''' </param>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If the {@code offset} or {@code count} argument is invalid
-		''' </exception>
-		''' <seealso cref=  #String(byte[], int) </seealso>
-		''' <seealso cref=  #String(byte[], int, int, java.lang.String) </seealso>
-		''' <seealso cref=  #String(byte[], int, int, java.nio.charset.Charset) </seealso>
-		''' <seealso cref=  #String(byte[], int, int) </seealso>
-		''' <seealso cref=  #String(byte[], java.lang.String) </seealso>
-		''' <seealso cref=  #String(byte[], java.nio.charset.Charset) </seealso>
-		''' <seealso cref=  #String(byte[]) </seealso>
-		<Obsolete("This method does not properly convert bytes into characters.")> _
+            Me.value = v
+        End Sub
+        ''' <summary>
+        ''' Allocates a new {@code String} constructed from a subarray of an array
+        ''' of 8-bit integer values.
+        ''' 
+        ''' <p> The {@code offset} argument is the index of the first byte of the
+        ''' subarray, and the {@code count} argument specifies the length of the
+        ''' subarray.
+        ''' 
+        ''' <p> Each {@code byte} in the subarray is converted to a {@code char} as
+        ''' specified in the method above.
+        ''' </summary>
+        ''' @deprecated This method does not properly convert bytes into characters.
+        ''' As of JDK&nbsp;1.1, the preferred way to do this is via the
+        ''' {@code String} constructors that take a {@link
+        ''' java.nio.charset.Charset}, charset name, or that use the platform's
+        ''' default charset.
+        ''' 
+        ''' <param name="ascii">
+        '''         The bytes to be converted to characters
+        ''' </param>
+        ''' <param name="hibyte">
+        '''         The top 8 bits of each 16-bit Unicode code unit
+        ''' </param>
+        ''' <param name="offset">
+        '''         The initial offset </param>
+        ''' <param name="count">
+        '''         The length
+        ''' </param>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If the {@code offset} or {@code count} argument is invalid
+        ''' </exception>
+        ''' <seealso cref=  #String(byte[], int) </seealso>
+        ''' <seealso cref=  #String(byte[], int, int, java.lang.String) </seealso>
+        ''' <seealso cref=  #String(byte[], int, int, java.nio.charset.Charset) </seealso>
+        ''' <seealso cref=  #String(byte[], int, int) </seealso>
+        ''' <seealso cref=  #String(byte[], java.lang.String) </seealso>
+        ''' <seealso cref=  #String(byte[], java.nio.charset.Charset) </seealso>
+        ''' <seealso cref=  #String(byte[]) </seealso>
+        <Obsolete("This method does not properly convert bytes into characters.")> _
 		public String(SByte ascii() , Integer hibyte, Integer offset, Integer count)
 			checkBounds(ascii, offset, count)
 			Dim value As Char() = New Char(count - 1){}

@@ -222,8 +222,8 @@ Namespace java.lang
 
 		Friend Overrides Function getDirectionality(ByVal ch As Integer) As SByte
 			Dim val As Integer = getProperties(ch)
-			Dim directionality_Renamed As SByte = CByte((val And &H78000000) >> 27)
-			If directionality_Renamed = &HF Then directionality_Renamed = Character.DIRECTIONALITY_UNDEFINED
+            Dim directionality_Renamed As SByte = CSByte((val And &H78000000) >> 27)
+            If directionality_Renamed = &HF Then directionality_Renamed = Character.DIRECTIONALITY_UNDEFINED
 			Return directionality_Renamed
 		End Function
 
