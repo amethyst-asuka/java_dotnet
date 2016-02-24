@@ -1,6 +1,7 @@
 Imports Microsoft.VisualBasic
 Imports System
 Imports java.lang
+Imports java.math.BigInteger
 
 '
 ' * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -1192,7 +1193,7 @@ Namespace java.math
         ''' 
         ''' </summary>
         Friend Overridable Function divideKnuth(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger, ByVal needRemainder As Boolean) As MutableBigInteger
-            If b.intLen = 0 Then Throw New ArithmeticException("BigInteger divide by zero")
+            If b.intLen = 0 Then Throw New java.lang.ArithmeticException("BigInteger divide by zero")
 
             ' Dividend is zero
             If intLen = 0 Then
@@ -2015,7 +2016,7 @@ Namespace java.math
         '     * Calculate the multiplicative inverse of this mod 2^k.
         '     
         Friend Overridable Function modInverseMP2(ByVal k As Integer) As MutableBigInteger
-            If even Then Throw New ArithmeticException("Non-invertible. (GCD != 1)")
+            If even Then Throw New java.lang.ArithmeticException("Non-invertible. (GCD != 1)")
 
             If k > 64 Then Return euclidModInverse(k)
 
@@ -2091,7 +2092,7 @@ Namespace java.math
             ' The Almost Inverse Algorithm
             Do While Not f.ONE
                 ' If gcd(f, g) != 1, number is not invertible modulo mod
-                If f.zero Then Throw New ArithmeticException("BigInteger not invertible.")
+                If f.zero Then Throw New java.lang.ArithmeticException("BigInteger not invertible.")
 
                 ' If f < g exchange f, g and c, d
                 If f.compare(g) < 0 Then
@@ -2193,7 +2194,7 @@ Namespace java.math
             Do While Not b.ONE
                 r = a.divide(b, q)
 
-                If r.intLen = 0 Then Throw New ArithmeticException("BigInteger not invertible.")
+                If r.intLen = 0 Then Throw New java.lang.ArithmeticException("BigInteger not invertible.")
 
                 swapper = r
                 a = swapper
@@ -2212,7 +2213,7 @@ Namespace java.math
 
                 r = b.divide(a, q)
 
-                If r.intLen = 0 Then Throw New ArithmeticException("BigInteger not invertible.")
+                If r.intLen = 0 Then Throw New java.lang.ArithmeticException("BigInteger not invertible.")
 
                 swapper = b
                 b = r

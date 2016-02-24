@@ -189,7 +189,7 @@ Namespace java.math
         ''' <summary>
         ''' This mask is used to obtain the value of an int as if it were unsigned.
         ''' </summary>
-        Friend Const LONG_MASK As Long = &HFFFFFFFFL
+        Public Const LONG_MASK As Long = &HFFFFFFFFL
 
         ''' <summary>
         ''' This constant limits {@code mag.length} of BigIntegers to the supported

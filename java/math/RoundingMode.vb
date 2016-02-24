@@ -26,6 +26,8 @@
 '
 ' * Portions Copyright IBM Corporation, 2001. All Rights Reserved.
 ' 
+Imports java.lang
+
 Namespace java.math
 
     ''' <summary>
@@ -89,7 +91,7 @@ Namespace java.math
     ''' @author  Mike Cowlishaw
     ''' @author  Joseph D. Darcy
     ''' @since 1.5 </seealso>
-    Public Enum RoundingMode
+    Public Class RoundingMode
 
         ''' <summary>
         ''' Rounding mode to round away from zero.  Always increments the
@@ -114,7 +116,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-6</td>
         ''' </table>
         ''' </summary>
-        UP = BigDecimal.ROUND_UP
+        Public Shared ReadOnly Property UP As RoundingMode = BigDecimal.ROUND_UP
 
         ''' <summary>
         ''' Rounding mode to round towards zero.  Never increments the digit
@@ -138,7 +140,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-5</td>
         ''' </table>
         ''' </summary>
-        DOWN = BigDecimal.ROUND_DOWN
+        Public Shared ReadOnly Property DOWN As RoundingMode = BigDecimal.ROUND_DOWN
 
         ''' <summary>
         ''' Rounding mode to round towards positive infinity.  If the
@@ -163,7 +165,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-5</td>
         ''' </table>
         ''' </summary>
-        CEILING = BigDecimal.ROUND_CEILING
+        Public Shared ReadOnly Property CEILING As RoundingMode = BigDecimal.ROUND_CEILING
 
         ''' <summary>
         ''' Rounding mode to round towards negative infinity.  If the
@@ -188,7 +190,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-6</td>
         ''' </table>
         ''' </summary>
-        FLOOR = BigDecimal.ROUND_FLOOR
+        Public Shared ReadOnly Property FLOOR As RoundingMode = BigDecimal.ROUND_FLOOR
 
         ''' <summary>
         ''' Rounding mode to round towards {@literal "nearest neighbor"}
@@ -215,7 +217,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-6</td>
         ''' </table>
         ''' </summary>
-        HALF_UP = BigDecimal.ROUND_HALF_UP
+        Public Shared ReadOnly Property HALF_UP As RoundingMode = BigDecimal.ROUND_HALF_UP
 
         ''' <summary>
         ''' Rounding mode to round towards {@literal "nearest neighbor"}
@@ -241,7 +243,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-5</td>
         ''' </table>
         ''' </summary>
-        HALF_DOWN = BigDecimal.ROUND_HALF_DOWN
+        Public Shared ReadOnly Property HALF_DOWN As RoundingMode = BigDecimal.ROUND_HALF_DOWN
 
         ''' <summary>
         ''' Rounding mode to round towards the {@literal "nearest neighbor"}
@@ -274,7 +276,7 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>-6</td>
         ''' </table>
         ''' </summary>
-        HALF_EVEN = BigDecimal.ROUND_HALF_EVEN
+        Public Shared ReadOnly Property HALF_EVEN As RoundingMode = BigDecimal.ROUND_HALF_EVEN
 
         ''' <summary>
         ''' Rounding mode to assert that the requested operation has an exact
@@ -298,21 +300,61 @@ Namespace java.math
         ''' <tr align=right><td>-5.5</td> <td>throw {@code ArithmeticException}</td>
         ''' </table>
         ''' </summary>
-        UNNECESSARY = BigDecimal.ROUND_UNNECESSARY
+        Public Shared ReadOnly Property UNNECESSARY As RoundingMode = BigDecimal.ROUND_UNNECESSARY
 
         ' Corresponding BigDecimal rounding constant
-        'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain fields in .NET:
-        '		final int oldMode;
+        Dim oldMode As Integer
 
         ''' <summary>
         ''' Constructor
         ''' </summary>
         ''' <param name="oldMode"> The {@code BigDecimal} constant corresponding to
         '''        this mode </param>
-        'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-        '		private RoundingMode(int oldMode)
-        '	{
-        '		Me.oldMode = oldMode;
-        '	}
-    End Enum
+        Sub New(oldMode As Integer)
+            Me.oldMode = oldMode
+        End Sub
+
+        Public Shared Widening Operator CType(n As Integer) As RoundingMode
+            Return New RoundingMode(n)
+        End Operator
+
+        ''' <summary>
+        ''' Returns the {@code RoundingMode} object corresponding to a
+        ''' legacy integer rounding mode constant in <seealso cref="BigDecimal"/>.
+        ''' </summary>
+        ''' <param name="rm"> legacy integer rounding mode to convert </param>
+        ''' <returns> {@code RoundingMode} corresponding to the given integer. </returns>
+        ''' <exception cref="IllegalArgumentException"> integer is out of range </exception>
+        Public Function valueOf(rm As Integer) As RoundingMode
+
+            Select Case rm
+                Case BigDecimal.ROUND_UP
+                    Return RoundingMode.UP
+
+                Case BigDecimal.ROUND_DOWN
+                    Return RoundingMode.DOWN
+
+                Case BigDecimal.ROUND_CEILING
+                    Return RoundingMode.CEILING
+
+                Case BigDecimal.ROUND_FLOOR
+                    Return RoundingMode.FLOOR
+
+                Case BigDecimal.ROUND_HALF_UP
+                    Return RoundingMode.HALF_UP
+
+                Case BigDecimal.ROUND_HALF_DOWN
+                    Return RoundingMode.HALF_DOWN
+
+                Case BigDecimal.ROUND_HALF_EVEN
+                    Return RoundingMode.HALF_EVEN
+
+                Case BigDecimal.ROUND_UNNECESSARY
+                    Return RoundingMode.UNNECESSARY
+
+                Case Else
+                    Throw New IllegalArgumentException("argument out of range")
+            End Select
+        End Function
+    End Class
 End Namespace
