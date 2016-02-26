@@ -250,7 +250,7 @@ Namespace javax.naming.event
         ''' <returns> The possibly null binding of the object after the change. </returns>
         Public Overridable ReadOnly Property newBinding As javax.naming.Binding
             Get
-                Return newBinding
+                Return _newBinding
             End Get
         End Property
 
@@ -262,7 +262,7 @@ Namespace javax.naming.event
         ''' <returns> The possibly null change information of this event. </returns>
         Public Overridable ReadOnly Property changeInfo As Object
             Get
-                Return changeInfo
+                Return _changeInfo
             End Get
         End Property
 
