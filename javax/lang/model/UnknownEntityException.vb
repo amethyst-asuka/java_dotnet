@@ -1,4 +1,5 @@
 Imports System
+Imports java.lang
 
 '
 ' * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
@@ -43,9 +44,9 @@ Namespace javax.lang.model
 	''' <seealso cref= javax.lang.model.type.UnknownTypeException
 	''' @since 1.7 </seealso>
 	Public Class UnknownEntityException
-		Inherits Exception
+        Inherits java.lang.Exception
 
-		Private Const serialVersionUID As Long = 269L
+        Private Const serialVersionUID As Long = 269L
 
 		''' <summary>
 		''' Creates a new {@code UnknownEntityException} with the specified

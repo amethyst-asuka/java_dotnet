@@ -125,10 +125,10 @@ Namespace java.lang.annotation
 		''' <returns> a string representation of this annotation </returns>
 		Function ToString() As String
 
-		''' <summary>
-		''' Returns the annotation type of this annotation. </summary>
-		''' <returns> the annotation type of this annotation </returns>
-		Function annotationType() As Class
-	End Interface
+        ''' <summary>
+        ''' Returns the annotation type of this annotation. </summary>
+        ''' <returns> the annotation type of this annotation </returns>
+        Function annotationType() As [Class]
+    End Interface
 
 End Namespace
