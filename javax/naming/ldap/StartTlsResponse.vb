@@ -97,7 +97,7 @@ Namespace javax.naming.ldap
 		''' Retrieves the StartTLS response's object identifier string.
 		''' </summary>
 		''' <returns> The object identifier string, "1.3.6.1.4.1.1466.20037". </returns>
-		Public Overridable Property iD As String Implements ExtendedResponse.getID
+	ReadOnly	Public Overridable Property iD As String Implements ExtendedResponse.getID
 			Get
 				Return OID
 			End Get
@@ -109,7 +109,7 @@ Namespace javax.naming.ldap
 		''' returned.
 		''' </summary>
 		''' <returns> The null value. </returns>
-		Public Overridable Property encodedValue As SByte() Implements ExtendedResponse.getEncodedValue
+	ReadOnly	Public Overridable Property encodedValue As SByte() Implements ExtendedResponse.getEncodedValue
 			Get
 				Return Nothing
 			End Get

@@ -89,7 +89,7 @@ Namespace javax.naming.ldap
 		''' 
 		''' @serial
 		''' </summary>
-		Private resultCode As Integer = 0
+		Private _resultCode As Integer = 0
 
 		''' <summary>
 		''' The ID of the attribute that caused the sort to fail.
@@ -125,9 +125,9 @@ Namespace javax.naming.ldap
 		''' If an error occurred during sorting a NamingException is thrown.
 		''' </summary>
 		''' <returns>    true if the search results have been sorted. </returns>
-		Public Property sorted As Boolean
+	ReadOnly	Public Property sorted As Boolean
 			Get
-				Return (resultCode = 0) ' a result code of zero indicates success
+				Return (_resultCode = 0) ' a result code of zero indicates success
 			End Get
 		End Property
 
@@ -135,9 +135,9 @@ Namespace javax.naming.ldap
 		''' Retrieves the LDAP result code of the sort operation.
 		''' </summary>
 		''' <returns>    The result code. A zero value indicates success. </returns>
-		Public Property resultCode As Integer
+	ReadOnly	Public Property resultCode As Integer
 			Get
-				Return resultCode
+				Return _resultCode
 			End Get
 		End Property
 
@@ -146,7 +146,7 @@ Namespace javax.naming.ldap
 		''' Returns null if no ID was returned by the server.
 		''' </summary>
 		''' <returns> The possibly null ID of the bad attribute. </returns>
-		Public Property attributeID As String
+	ReadOnly	Public Property attributeID As String
 			Get
 				Return badAttrId
 			End Get
@@ -157,7 +157,7 @@ Namespace javax.naming.ldap
 		''' </summary>
 		''' <returns> A NamingException or null if the result code indicates
 		'''         success. </returns>
-		Public Property exception As NamingException
+	ReadOnly	Public Property exception As NamingException
 			Get
     
 				Return com.sun.jndi.ldap.LdapCtx.mapErrorCode(resultCode, Nothing)

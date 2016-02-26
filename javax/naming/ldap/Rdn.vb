@@ -235,7 +235,7 @@ Namespace javax.naming.ldap
 		''' to the type returned by <seealso cref="#getType() getType()"/> method.
 		''' </summary>
 		''' <returns> The non-null attribute value. </returns>
-		Public Overridable Property value As Object
+readonly	Public Overridable Property value As Object
 			Get
 				Return entries(0).value
 			End Get
@@ -254,7 +254,7 @@ Namespace javax.naming.ldap
 		''' value corresponding to the type returned by this method.
 		''' </summary>
 		''' <returns> The non-null attribute type. </returns>
-		Public Overridable Property type As String
+	readonly		Public Overridable Property type As String
 			Get
 				Return entries(0).type
 			End Get
@@ -381,24 +381,15 @@ Namespace javax.naming.ldap
 		Private Class RdnEntry
 			Implements IComparable(Of RdnEntry)
 
-			Private type As String
-			Private value As Object
-
-			' If non-null, a cannonical representation of the value suitable
+					' If non-null, a cannonical representation of the value suitable
 			' for comparison using String.compareTo()
 			Private comparable As String = Nothing
 
-			Friend Overridable Property type As String
-				Get
-					Return type
-				End Get
-			End Property
+		readonly		Friend Overridable Property type As String
+			
 
-			Friend Overridable Property value As Object
-				Get
-					Return value
-				End Get
-			End Property
+		readonly		Friend Overridable Property value As Object
+			
 
 			Public Overridable Function compareTo(ByVal that As RdnEntry) As Integer
 				Dim diff As Integer = type.compareToIgnoreCase(that.type)
@@ -424,7 +415,7 @@ Namespace javax.naming.ldap
 				Return type & "=" & escapeValue(value)
 			End Function
 
-			Private Property valueComparable As String
+		readonly 	Private Property valueComparable As String
 				Get
 					If comparable IsNot Nothing Then Return comparable ' return cached result
     

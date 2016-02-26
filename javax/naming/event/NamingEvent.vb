@@ -182,7 +182,7 @@ Namespace javax.naming.event
 		''' <seealso cref= #OBJECT_REMOVED </seealso>
 		''' <seealso cref= #OBJECT_RENAMED </seealso>
 		''' <seealso cref= #OBJECT_CHANGED </seealso>
-		Public Overridable Property type As Integer
+	ReadOnly	Public Overridable Property type As Integer
 			Get
 				Return type
 			End Get
@@ -202,7 +202,7 @@ Namespace javax.naming.event
 		''' for more information on threading issues.
 		''' </summary>
 		''' <returns> The non-null context that fired this event. </returns>
-		Public Overridable Property eventContext As EventContext
+	ReadOnly	Public Overridable Property eventContext As EventContext
 			Get
 				Return CType(source, EventContext)
 			End Get
@@ -225,7 +225,7 @@ Namespace javax.naming.event
 		''' such information is unavailable.
 		''' </summary>
 		''' <returns> The possibly null binding of the object before the change. </returns>
-		Public Overridable Property oldBinding As javax.naming.Binding
+	ReadOnly	Public Overridable Property oldBinding As javax.naming.Binding
 			Get
 				Return oldBinding
 			End Get
@@ -248,7 +248,7 @@ Namespace javax.naming.event
 		''' such information is unavailable.
 		''' </summary>
 		''' <returns> The possibly null binding of the object after the change. </returns>
-		Public Overridable Property newBinding As javax.naming.Binding
+	ReadOnly	Public Overridable Property newBinding As javax.naming.Binding
 			Get
 				Return newBinding
 			End Get
@@ -260,7 +260,7 @@ Namespace javax.naming.event
 		''' it could be an ID that identifies the change in a change log on the server.
 		''' </summary>
 		''' <returns> The possibly null change information of this event. </returns>
-		Public Overridable Property changeInfo As Object
+	ReadOnly	Public Overridable Property changeInfo As Object
 			Get
 				Return changeInfo
 			End Get

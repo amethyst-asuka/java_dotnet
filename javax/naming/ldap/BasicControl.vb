@@ -87,7 +87,7 @@ Namespace javax.naming.ldap
 		''' Retrieves the control's object identifier string.
 		''' </summary>
 		''' <returns> The non-null object identifier string. </returns>
-		Public Overridable Property iD As String Implements Control.getID
+	ReadOnly	Public Overridable Property iD As String Implements Control.getID
 			Get
 				Return id
 			End Get
@@ -97,7 +97,7 @@ Namespace javax.naming.ldap
 		''' Determines the control's criticality.
 		''' </summary>
 		''' <returns> true if the control is critical; false otherwise. </returns>
-		Public Overridable Property critical As Boolean Implements Control.isCritical
+	ReadOnly	Public Overridable Property critical As Boolean Implements Control.isCritical
 			Get
 				Return criticality
 			End Get
@@ -111,7 +111,7 @@ Namespace javax.naming.ldap
 		''' <returns> A possibly null byte array representing the control's
 		'''          ASN.1 BER encoded value. It is not cloned - any changes to the
 		'''          returned value will affect the contents of the control. </returns>
-		Public Overridable Property encodedValue As SByte() Implements Control.getEncodedValue
+	ReadOnly	Public Overridable Property encodedValue As SByte() Implements Control.getEncodedValue
 			Get
 				Return value
 			End Get

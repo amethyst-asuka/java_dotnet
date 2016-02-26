@@ -151,13 +151,13 @@ Namespace javax.naming
 		''' <seealso cref= Binding#getObject </seealso>
 		''' <seealso cref= Binding#getClassName </seealso>
 		''' <seealso cref= #setClassName </seealso>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Function getClassName() As String 'JavaToDotNetTempPropertyGetclassName
 		Public Overridable Property className As String
 			Get
 				Return className
 			End Get
 			Set(ByVal name As String)
+					Me.className = name
+			End Set
 		End Property
 
 		''' <summary>
@@ -179,9 +179,6 @@ Namespace javax.naming
 			End Set
 		End Property
 
-
-			Me.className = name
-		End Sub
 
 		''' <summary>
 		''' Determines whether the name of this binding is

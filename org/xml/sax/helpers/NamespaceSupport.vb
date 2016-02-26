@@ -582,9 +582,9 @@ Namespace org.xml.sax.helpers
 	'              throw new IllegalStateException (
 	'                  "can't declare any more prefixes in this context");
 				If Not declSeen Then copyTables()
-				If declarations Is Nothing Then declarations = New List(Of )
+                If declarations Is Nothing Then declarations = New List(Of String)
 
-				prefix = prefix.intern()
+                prefix = prefix.intern()
 				uri = uri.intern()
 				If "".Equals(prefix) Then
 					If "".Equals(uri) Then
@@ -709,66 +709,66 @@ Namespace org.xml.sax.helpers
 			End Function
 
 
-			''' <summary>
-			''' Return an enumeration of prefixes declared in this context.
-			''' </summary>
-			''' <returns> An enumeration of prefixes (possibly empty). </returns>
-			''' <seealso cref= org.xml.sax.helpers.NamespaceSupport#getDeclaredPrefixes </seealso>
-			Friend Property declaredPrefixes As System.Collections.IEnumerator
-				Get
-					If declarations Is Nothing Then
-						Return EMPTY_ENUMERATION
-					Else
-						Return java.util.Collections.enumeration(declarations)
-					End If
-				End Get
-			End Property
+            ''' <summary>
+            ''' Return an enumeration of prefixes declared in this context.
+            ''' </summary>
+            ''' <returns> An enumeration of prefixes (possibly empty). </returns>
+            ''' <seealso cref= org.xml.sax.helpers.NamespaceSupport#getDeclaredPrefixes </seealso>
+            Friend ReadOnly Property declaredPrefixes As System.Collections.IEnumerator
+                Get
+                    If declarations Is Nothing Then
+                        Return EMPTY_ENUMERATION
+                    Else
+                        Return java.util.Collections.enumeration(declarations)
+                    End If
+                End Get
+            End Property
 
-			''' <summary>
-			''' Return an enumeration of all prefixes currently in force.
-			''' 
-			''' <p>The default prefix, if in force, is <em>not</em>
-			''' returned, and will have to be checked for separately.</p>
-			''' </summary>
-			''' <returns> An enumeration of prefixes (never empty). </returns>
-			''' <seealso cref= org.xml.sax.helpers.NamespaceSupport#getPrefixes </seealso>
-			Friend Property prefixes As System.Collections.IEnumerator
-				Get
-					If prefixTable Is Nothing Then
-						Return EMPTY_ENUMERATION
-					Else
-						Return java.util.Collections.enumeration(prefixTable.Keys)
-					End If
-				End Get
-			End Property
-
-
-
-			'//////////////////////////////////////////////////////////////
-			' Internal methods.
-			'//////////////////////////////////////////////////////////////
+            ''' <summary>
+            ''' Return an enumeration of all prefixes currently in force.
+            ''' 
+            ''' <p>The default prefix, if in force, is <em>not</em>
+            ''' returned, and will have to be checked for separately.</p>
+            ''' </summary>
+            ''' <returns> An enumeration of prefixes (never empty). </returns>
+            ''' <seealso cref= org.xml.sax.helpers.NamespaceSupport#getPrefixes </seealso>
+            Friend ReadOnly Property prefixes As System.Collections.IEnumerator
+                Get
+                    If prefixTable Is Nothing Then
+                        Return EMPTY_ENUMERATION
+                    Else
+                        Return java.util.Collections.enumeration(prefixTable.Keys)
+                    End If
+                End Get
+            End Property
 
 
-			''' <summary>
-			''' Copy on write for the internal tables in this context.
-			''' 
-			''' <p>This class is optimized for the normal case where most
-			''' elements do not contain Namespace declarations.</p>
-			''' </summary>
-			Private Sub copyTables()
+
+            '//////////////////////////////////////////////////////////////
+            ' Internal methods.
+            '//////////////////////////////////////////////////////////////
+
+
+            ''' <summary>
+            ''' Copy on write for the internal tables in this context.
+            ''' 
+            ''' <p>This class is optimized for the normal case where most
+            ''' elements do not contain Namespace declarations.</p>
+            ''' </summary>
+            Private Sub copyTables()
 				If prefixTable IsNot Nothing Then
-					prefixTable = New Dictionary(Of )(prefixTable)
-				Else
-					prefixTable = New Dictionary(Of )
-				End If
+                    prefixTable = New Dictionary(Of String, String)(prefixTable)
+                Else
+                    prefixTable = New Dictionary(Of String, String)
+                End If
 				If uriTable IsNot Nothing Then
-					uriTable = New Dictionary(Of )(uriTable)
-				Else
-					uriTable = New Dictionary(Of )
-				End If
-				elementNameTable = New Dictionary(Of )
-				attributeNameTable = New Dictionary(Of )
-				declSeen = True
+                    uriTable = New Dictionary(Of String, String)(uriTable)
+                Else
+                    uriTable = New Dictionary(Of String, String)
+                End If
+                elementNameTable = New Dictionary(Of String, String())
+                attributeNameTable = New Dictionary(Of String, String())
+                declSeen = True
 			End Sub
 
 

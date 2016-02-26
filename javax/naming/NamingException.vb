@@ -71,7 +71,7 @@ Namespace javax.naming
 		''' @serial </summary>
 		''' <seealso cref= #getResolvedName </seealso>
 		''' <seealso cref= #setResolvedName </seealso>
-		Protected Friend resolvedName As Name
+		Protected Friend _resolvedName As Name
 		''' <summary>
 		''' Contains the object to which resolution of the part of the name was
 		''' successful. Can be null.
@@ -81,7 +81,7 @@ Namespace javax.naming
 		''' @serial </summary>
 		''' <seealso cref= #getResolvedObj </seealso>
 		''' <seealso cref= #setResolvedObj </seealso>
-		Protected Friend resolvedObj As Object
+		Protected Friend _resolvedObj As Object
 		''' <summary>
 		''' Contains the remaining name that has not been resolved yet.
 		''' It is a composite name and can be null.
@@ -93,7 +93,7 @@ Namespace javax.naming
 		''' <seealso cref= #setRemainingName </seealso>
 		''' <seealso cref= #appendRemainingName </seealso>
 		''' <seealso cref= #appendRemainingComponent </seealso>
-		Protected Friend remainingName As Name
+		Protected Friend _remainingName As Name
 
 		''' <summary>
 		''' Contains the original exception that caused this NamingException to
@@ -112,7 +112,7 @@ Namespace javax.naming
 		''' <seealso cref= #setRootCause(Throwable) </seealso>
 		''' <seealso cref= #initCause(Throwable) </seealso>
 		''' <seealso cref= #getCause </seealso>
-		Protected Friend rootException As Exception = Nothing
+		Protected Friend _rootException As Exception = Nothing
 
 		''' <summary>
 		''' Constructs a new NamingException with an explanation.
@@ -150,13 +150,13 @@ Namespace javax.naming
 		''' <seealso cref= #setResolvedName </seealso>
 		Public Overridable Property resolvedName As Name
 			Get
-				Return resolvedName
+				Return _resolvedName
 			End Get
 			Set(ByVal name As Name)
 				If name IsNot Nothing Then
-					resolvedName = CType(name.clone(), Name)
+					_resolvedName = CType(name.clone(), Name)
 				Else
-					resolvedName = Nothing
+					_resolvedName = Nothing
 				End If
 			End Set
 		End Property
@@ -171,13 +171,13 @@ Namespace javax.naming
 		''' <seealso cref= #appendRemainingComponent </seealso>
 		Public Overridable Property remainingName As Name
 			Get
-				Return remainingName
+				Return _remainingName
 			End Get
 			Set(ByVal name As Name)
 				If name IsNot Nothing Then
-					remainingName = CType(name.clone(), Name)
+					_remainingName = CType(name.clone(), Name)
 				Else
-					remainingName = Nothing
+					_remainingName = Nothing
 				End If
 			End Set
 		End Property
@@ -192,10 +192,10 @@ Namespace javax.naming
 		''' <seealso cref= #setResolvedObj </seealso>
 		Public Overridable Property resolvedObj As Object
 			Get
-				Return resolvedObj
+				Return _resolvedObj
 			End Get
 			Set(ByVal obj As Object)
-				resolvedObj = obj
+				_resolvedObj = obj
 			End Set
 		End Property
 
@@ -207,7 +207,7 @@ Namespace javax.naming
 		'''         detail message for this exception.
 		''' </returns>
 		''' <seealso cref= java.lang.Throwable#getMessage </seealso>
-		Public Overridable Property explanation As String
+	ReadOnly	Public Overridable Property explanation As String
 			Get
 				Return message
 			End Get
@@ -281,10 +281,10 @@ Namespace javax.naming
 		''' <seealso cref= #getCause </seealso>
 		Public Overridable Property rootCause As Exception
 			Get
-				Return rootException
+				Return _rootException
 			End Get
 			Set(ByVal e As Exception)
-				If e IsNot Me Then rootException = e
+				If e IsNot Me Then _rootException = e
 			End Set
 		End Property
 
@@ -299,7 +299,7 @@ Namespace javax.naming
 		'''          cause is nonexistent or unknown. </returns>
 		''' <seealso cref= #initCause(Throwable)
 		''' @since 1.4 </seealso>
-		Public Overridable Property cause As Exception
+	ReadOnly	Public Overridable Property cause As Exception
 			Get
 				Return rootCause
 			End Get

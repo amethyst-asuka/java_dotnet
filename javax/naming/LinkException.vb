@@ -74,7 +74,7 @@ Namespace javax.naming
 		''' @serial </summary>
 		''' <seealso cref= #getLinkResolvedName </seealso>
 		''' <seealso cref= #setLinkResolvedName </seealso>
-		Protected Friend linkResolvedName As Name
+		Protected Friend _linkResolvedName As Name
 
 		''' <summary>
 		''' Contains the object to which resolution of the part of the link was successful.
@@ -84,7 +84,7 @@ Namespace javax.naming
 		''' @serial </summary>
 		''' <seealso cref= #getLinkResolvedObj </seealso>
 		''' <seealso cref= #setLinkResolvedObj </seealso>
-		Protected Friend linkResolvedObj As Object
+		Protected Friend _linkResolvedObj As Object
 
 		''' <summary>
 		''' Contains the remaining link name that has not been resolved yet.
@@ -95,7 +95,7 @@ Namespace javax.naming
 		''' @serial </summary>
 		''' <seealso cref= #getLinkRemainingName </seealso>
 		''' <seealso cref= #setLinkRemainingName </seealso>
-		Protected Friend linkRemainingName As Name
+		Protected Friend _linkRemainingName As Name
 
 		''' <summary>
 		''' Contains the exception of why resolution of the link failed.
@@ -105,7 +105,7 @@ Namespace javax.naming
 		''' @serial </summary>
 		''' <seealso cref= #getLinkExplanation </seealso>
 		''' <seealso cref= #setLinkExplanation </seealso>
-		Protected Friend linkExplanation As String
+		Protected Friend _linkExplanation As String
 
 		''' <summary>
 		''' Constructs a new instance of LinkException with an explanation
@@ -142,13 +142,17 @@ Namespace javax.naming
 		'''          the link resolved name field has not been set. </returns>
 		''' <seealso cref= #getLinkResolvedObj </seealso>
 		''' <seealso cref= #setLinkResolvedName </seealso>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Function getLinkResolvedName() As Name 'JavaToDotNetTempPropertyGetlinkResolvedName
 		Public Overridable Property linkResolvedName As Name
 			Get
-				Return Me.linkResolvedName
+				Return Me._linkResolvedName
 			End Get
 			Set(ByVal name As Name)
+				If name IsNot Nothing Then
+				Me._linkResolvedName = CType(name.clone(), Name)
+			Else
+				Me._linkResolvedName = Nothing
+			End If
+			End Set
 		End Property
 
 		''' <summary>
@@ -157,13 +161,17 @@ Namespace javax.naming
 		'''          It is a composite name. It can be null, which means
 		'''          the link remaining name field has not been set. </returns>
 		''' <seealso cref= #setLinkRemainingName </seealso>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Function getLinkRemainingName() As Name 'JavaToDotNetTempPropertyGetlinkRemainingName
 		Public Overridable Property linkRemainingName As Name
 			Get
-				Return Me.linkRemainingName
+				Return Me._linkRemainingName
 			End Get
 			Set(ByVal name As Name)
+				If name IsNot Nothing Then
+				Me._linkRemainingName = CType(name.clone(), Name)
+			Else
+				Me._linkRemainingName = Nothing
+			End If
+			End Set
 		End Property
 
 		''' <summary>
@@ -174,13 +182,13 @@ Namespace javax.naming
 		''' If null, it means the link resolved object field has not been set. </returns>
 		''' <seealso cref= #getLinkResolvedName </seealso>
 		''' <seealso cref= #setLinkResolvedObj </seealso>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Function getLinkResolvedObj() As Object 'JavaToDotNetTempPropertyGetlinkResolvedObj
 		Public Overridable Property linkResolvedObj As Object
 			Get
-				Return Me.linkResolvedObj
+				Return Me._linkResolvedObj
 			End Get
 			Set(ByVal obj As Object)
+				Me._linkResolvedObj = Obj
+			End Set
 		End Property
 
 		''' <summary>
@@ -194,32 +202,14 @@ Namespace javax.naming
 		''' <seealso cref= #setLinkExplanation </seealso>
 		Public Overridable Property linkExplanation As String
 			Get
-				Return Me.linkExplanation
+				Return Me._linkExplanation
 			End Get
 			Set(ByVal msg As String)
-				Me.linkExplanation = msg
+				Me._linkExplanation = msg
 			End Set
 		End Property
-
-
-			If name IsNot Nothing Then
-				Me.linkResolvedName = CType(name.clone(), Name)
-			Else
-				Me.linkResolvedName = Nothing
-			End If
-		End Sub
-
-			If name IsNot Nothing Then
-				Me.linkRemainingName = CType(name.clone(), Name)
-			Else
-				Me.linkRemainingName = Nothing
-			End If
-		End Sub
-
-			Me.linkResolvedObj = obj
-		End Sub
-
-		''' <summary>
+		
+			''' <summary>
 		''' Generates the string representation of this exception.
 		''' This string consists of the NamingException information plus
 		''' the link's remaining name.

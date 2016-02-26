@@ -70,14 +70,14 @@ Namespace javax.naming.ldap
 		''' 
 		''' @serial
 		''' </summary>
-		Private resultSize As Integer
+		Private _resultSize As Integer
 
 		''' <summary>
 		''' A server-generated cookie.
 		''' 
 		''' @serial
 		''' </summary>
-		Private cookie As SByte()
+		Private _cookie As SByte()
 
 		''' <summary>
 		''' Constructs a paged-results response control.
@@ -107,7 +107,7 @@ Namespace javax.naming.ldap
 		''' <returns> The number of entries in the search result, or zero if unknown. </returns>
 		Public Property resultSize As Integer
 			Get
-				Return resultSize
+				Return _resultSize
 			End Get
 		End Property
 
@@ -118,12 +118,12 @@ Namespace javax.naming.ldap
 		''' <returns> A possibly null server-generated cookie. It is not cloned - any
 		'''         changes to the cookie will update the control's state and thus
 		'''         are not recommended. </returns>
-		Public Property cookie As SByte()
+	ReadOnly	Public Property cookie As SByte()
 			Get
-				If cookie.Length = 0 Then
+				If _cookie.Length = 0 Then
 					Return Nothing
 				Else
-					Return cookie
+					Return _cookie
 				End If
 			End Get
 		End Property

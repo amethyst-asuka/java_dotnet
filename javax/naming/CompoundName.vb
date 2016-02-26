@@ -317,7 +317,7 @@ Namespace javax.naming
 		''' A compound name is empty if it has zero components.
 		''' </summary>
 		''' <returns> true if this compound name is empty, false otherwise. </returns>
-		Public Overridable Property empty As Boolean Implements Name.isEmpty
+	 ReadOnly	Public Overridable Property empty As Boolean Implements Name.isEmpty
 			Get
 				Return (impl.empty)
 			End Get
@@ -331,7 +331,7 @@ Namespace javax.naming
 		''' </summary>
 		''' <returns> A non-null enumeration of the components of this
 		''' compound name. Each element of the enumeration is of class String. </returns>
-		Public Overridable Property all As System.Collections.IEnumerator(Of String) Implements Name.getAll
+	ReadOnly	Public Overridable Property all As System.Collections.IEnumerator(Of String) Implements Name.getAll
 			Get
 				Return (impl.all)
 			End Get

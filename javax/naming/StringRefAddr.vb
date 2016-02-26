@@ -58,7 +58,7 @@ Namespace javax.naming
 		''' Can be null.
 		''' @serial
 		''' </summary>
-		Private contents As String
+		Private _contents As String
 		''' <summary>
 		''' Constructs a new instance of StringRefAddr using its address type
 		''' and contents.
@@ -67,16 +67,16 @@ Namespace javax.naming
 		''' <param name="addr"> The possibly null contents of the address in the form of a string. </param>
 		Public Sub New(ByVal addrType As String, ByVal addr As String)
 			MyBase.New(addrType)
-			contents = addr
+			_contents = addr
 		End Sub
 
 		''' <summary>
 		''' Retrieves the contents of this address. The result is a string.
 		''' </summary>
 		''' <returns> The possibly null address contents. </returns>
-		Public Property Overrides content As Object
+	ReadOnly	Public Property Overrides content As Object
 			Get
-				Return contents
+				Return _contents
 			End Get
 		End Property
 

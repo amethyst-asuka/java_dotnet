@@ -98,7 +98,7 @@ Namespace javax.naming
 		''' <returns> The non-null name of this link. </returns>
 		''' <exception cref="MalformedLinkException"> If a link name could not be extracted </exception>
 		''' <exception cref="NamingException"> If a naming exception was encountered. </exception>
-		Public Overridable Property linkName As String
+	ReadOnly	Public Overridable Property linkName As String
 			Get
 				If className IsNot Nothing AndAlso className.Equals(linkClassName) Then
 					Dim addr As RefAddr = [get](linkAddrType)

@@ -87,7 +87,7 @@ Namespace javax.naming.ldap
 	''' <seealso cref= javax.naming.spi.NamingManager#setInitialContextFactoryBuilder
 	''' @since 1.3 </seealso>
 
-	Public Class InitialLdapContext
+	Public Class InitialLdapContext(Of T1)
 		Inherits InitialDirContext
 		Implements LdapContext
 
@@ -130,7 +130,7 @@ Namespace javax.naming.ldap
 		''' <seealso cref= #reconnect </seealso>
 		''' <seealso cref= LdapContext#reconnect </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Sub New(Of T1)(ByVal environment As Dictionary(Of T1), ByVal connCtls As Control())
+		Public Sub New(ByVal environment As Dictionary(Of T1), ByVal connCtls As Control())
 			MyBase.New(True) ' don't initialize yet
 
 			' Clone environment since caller owns it.
@@ -157,7 +157,7 @@ Namespace javax.naming.ldap
 		''' <exception cref="NotContextException"> If the initial context is not an
 		''' instance of <tt>LdapContext</tt>. </exception>
 		''' <exception cref="NamingException"> If a naming exception was encountered. </exception>
-		Private Property defaultLdapInitCtx As LdapContext
+	ReadOnly	Private Property defaultLdapInitCtx As LdapContext
 			Get
 				Dim answer As Context = defaultInitCtx
     
@@ -187,7 +187,7 @@ Namespace javax.naming.ldap
 			defaultLdapInitCtx.reconnect(connCtls)
 		End Sub
 
-		Public Overridable Property connectControls As Control() Implements LdapContext.getConnectControls
+	ReadOnly	Public Overridable Property connectControls As Control() Implements LdapContext.getConnectControls
 			Get
 				Return defaultLdapInitCtx.connectControls
 			End Get
@@ -203,7 +203,7 @@ Namespace javax.naming.ldap
 		End Property
 
 
-		Public Overridable Property responseControls As Control() Implements LdapContext.getResponseControls
+	readonly	Public Overridable Property responseControls As Control() Implements LdapContext.getResponseControls
 			Get
 				Return defaultLdapInitCtx.responseControls
 			End Get

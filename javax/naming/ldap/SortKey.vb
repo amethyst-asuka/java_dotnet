@@ -49,7 +49,7 @@ Namespace javax.naming.ldap
 	'    
 	'     * The ID of the matching rule to use for ordering attribute values.
 	'     
-		Private matchingRuleID As String = Nothing
+		Private _matchingRuleID As String = Nothing
 
 		''' <summary>
 		''' Creates the default sort key for an attribute. Entries will be sorted
@@ -80,14 +80,14 @@ Namespace javax.naming.ldap
 
 			Me.attrID = attrID
 			reverseOrder = ((Not ascendingOrder))
-			Me.matchingRuleID = matchingRuleID
+			Me._matchingRuleID = matchingRuleID
 		End Sub
 
 		''' <summary>
 		''' Retrieves the attribute ID of the sort key.
 		''' </summary>
 		''' <returns>    The non-null Attribute ID of the sort key. </returns>
-		Public Overridable Property attributeID As String
+	ReadOnly	Public Overridable Property attributeID As String
 			Get
 				Return attrID
 			End Get
@@ -97,7 +97,7 @@ Namespace javax.naming.ldap
 		''' Determines the sort order.
 		''' </summary>
 		''' <returns>    true if the sort order is ascending, false if descending. </returns>
-		Public Overridable Property ascending As Boolean
+	ReadOnly	Public Overridable Property [ascending] As Boolean
 			Get
 				Return ((Not reverseOrder))
 			End Get
@@ -109,9 +109,9 @@ Namespace javax.naming.ldap
 		''' <returns>    The possibly null matching rule ID. If null then the
 		'''            ordering matching rule defined for the sort key attribute
 		'''            is used. </returns>
-		Public Overridable Property matchingRuleID As String
+	ReadOnly	Public Overridable Property matchingRuleID As String
 			Get
-				Return matchingRuleID
+				Return _matchingRuleID
 			End Get
 		End Property
 	End Class

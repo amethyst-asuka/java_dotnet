@@ -65,7 +65,7 @@ Namespace javax.naming.event
 		''' <summary>
 		''' Retrieves the exception that was thrown. </summary>
 		''' <returns> The exception that was thrown. </returns>
-		Public Overridable Property exception As javax.naming.NamingException
+	ReadOnly	Public Overridable Property exception As javax.naming.NamingException
 			Get
 				Return exception
 			End Get
@@ -75,7 +75,7 @@ Namespace javax.naming.event
 		''' Retrieves the <tt>EventContext</tt> that fired this event.
 		''' This returns the same object as <tt>EventObject.getSource()</tt>. </summary>
 		''' <returns> The non-null <tt>EventContext</tt> that fired this event. </returns>
-		Public Overridable Property eventContext As EventContext
+	ReadOnly	Public Overridable Property eventContext As EventContext
 			Get
 				Return CType(source, EventContext)
 			End Get

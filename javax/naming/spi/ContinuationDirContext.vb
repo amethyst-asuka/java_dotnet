@@ -38,11 +38,11 @@ Namespace javax.naming.spi
 	''' @since 1.3
 	''' </summary>
 
-	Friend Class ContinuationDirContext
+	Friend Class ContinuationDirContext(Of T1)
 		Inherits ContinuationContext
 		Implements javax.naming.directory.DirContext
 
-		Friend Sub New(Of T1)(ByVal cpe As javax.naming.CannotProceedException, ByVal env As Dictionary(Of T1))
+		Friend Sub New(ByVal cpe As javax.naming.CannotProceedException, ByVal env As Dictionary(Of T1))
 			MyBase.New(cpe, env)
 		End Sub
 
@@ -234,13 +234,13 @@ Namespace javax.naming.spi
 				Me.name = name
 			End Sub
 
-			Friend Overridable Property dirContext As javax.naming.directory.DirContext
+		ReadOnly	Friend Overridable Property dirContext As javax.naming.directory.DirContext
 				Get
 					Return ctx
 				End Get
 			End Property
 
-			Friend Overridable Property name As javax.naming.Name
+		ReadOnly	Friend Overridable Property name As javax.naming.Name
 				Get
 					Return name
 				End Get
@@ -256,13 +256,13 @@ Namespace javax.naming.spi
 				Me.str = str
 			End Sub
 
-			Friend Overridable Property dirContext As javax.naming.directory.DirContext
+		ReadOnly	Friend Overridable Property dirContext As javax.naming.directory.DirContext
 				Get
 					Return ctx
 				End Get
 			End Property
 
-			Friend Overridable Property [string] As String
+		ReadOnly	Friend Overridable Property [string] As String
 				Get
 					Return str
 				End Get

@@ -64,7 +64,7 @@ Namespace javax.naming.ldap
 		''' Returns the unsolicited notification. </summary>
 		''' <returns> The non-null unsolicited notification that caused this
 		''' event to be fired. </returns>
-		Public Overridable Property notification As UnsolicitedNotification
+	ReadOnly	Public Overridable Property notification As UnsolicitedNotification
 			Get
 				Return notice
 			End Get

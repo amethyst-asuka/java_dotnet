@@ -140,54 +140,54 @@ Namespace javax.naming.spi
 	''' </exception>
 	''' <seealso cref= DirectoryManager#getStateToBind </seealso>
 		Function getStateToBind(Of T1)(ByVal obj As Object, ByVal name As Name, ByVal nameCtx As Context, ByVal environment As Dictionary(Of T1), ByVal inAttrs As javax.naming.directory.Attributes) As Result
-
-
-			''' <summary>
+	
+	End Interface
+	
+	
+		''' <summary>
 			''' An object/attributes pair for returning the result of
 			''' DirStateFactory.getStateToBind().
 			''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static class Result
-	'	{
-	'		''' <summary>
-	'		''' The possibly null object to be bound.
-	'		''' </summary>
-	'		private Object obj;
-	'
-	'
-	'		''' <summary>
-	'		''' The possibly null attributes to be bound.
-	'		''' </summary>
-	'		private Attributes attrs;
-	'
-	'		''' <summary>
-	'		''' Constructs an instance of Result.
-	'		''' </summary>
-	'		''' <param name="obj"> The possibly null object to be bound. </param>
-	'		''' <param name="outAttrs"> The possibly null attributes to be bound. </param>
-	'		public Result(Object obj, Attributes outAttrs)
-	'		{
-	'			Me.obj = obj;
-	'			Me.attrs = outAttrs;
-	'		}
-	'
-	'		''' <summary>
-	'		''' Retrieves the object to be bound. </summary>
-	'		''' <returns> The possibly null object to be bound. </returns>
-	'		public Object getObject()
-	'		{
-	'			Return obj;
-	'		};
-	'
-	'		''' <summary>
-	'		''' Retrieves the attributes to be bound. </summary>
-	'		''' <returns> The possibly null attributes to be bound. </returns>
-	'		public Attributes getAttributes()
-	'		{
-	'			Return attrs;
-	'		};
-	'
-	'	}
-	End Interface
+		public  class Result
 
+			''' <summary>
+			''' The possibly null object to be bound.
+			''' </summary>
+			private  obj As Object
+	
+	
+			''' <summary>
+			''' The possibly null attributes to be bound.
+			''' </summary>
+			private  attrs As Attributes
+	
+			''' <summary>
+			''' Constructs an instance of Result.
+			''' </summary>
+			''' <param name="obj"> The possibly null object to be bound. </param>
+			''' <param name="outAttrs"> The possibly null attributes to be bound. </param>
+			public sub new (obj as Object , outAttrs as  Attributes)
+			
+				Me.obj = obj
+				Me.attrs = outAttrs
+				end sub
+		'		''' <summary>
+			''' Retrieves the object to be bound. </summary>
+			''' <returns> The possibly null object to be bound. </returns>
+			Public  ReadOnly Property  [Object]() As Object
+				Get 
+					Return obj
+				End Get
+						end property
+	
+			''' <summary>
+			''' Retrieves the attributes to be bound. </summary>
+			''' <returns> The possibly null attributes to be bound. </returns>
+			Public  ReadOnly Property Attributes() As Attributes
+				Get 
+					Return attrs
+				End Get
+			End Property
+			
+end Class 
 End Namespace

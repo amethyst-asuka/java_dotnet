@@ -182,9 +182,9 @@ Namespace javax.naming
 		''' </summary>
 		''' <returns> The non-null fully-qualified class name of the object.
 		'''         (e.g. "java.lang.String") </returns>
-		Public Overridable Property className As String
+	ReadOnly	Public Overridable Property className As String
 			Get
-				Return className
+				Return _className
 			End Get
 		End Property
 
@@ -194,7 +194,7 @@ Namespace javax.naming
 		''' </summary>
 		''' <returns> The possibly null fully-qualified class name of the factory.
 		'''         (e.g. "java.lang.String") </returns>
-		Public Overridable Property factoryClassName As String
+	ReadOnly	Public Overridable Property factoryClassName As String
 			Get
 				Return classFactory
 			End Get
@@ -209,9 +209,9 @@ Namespace javax.naming
 		''' </summary>
 		''' <returns> The possibly null string containing the
 		'''                 location for loading in the factory's class. </returns>
-		Public Overridable Property factoryClassLocation As String
+	ReadOnly	Public Overridable Property factoryClassLocation As String
 			Get
-				Return classFactoryLocation
+				Return _classFactoryLocation
 			End Get
 		End Property
 

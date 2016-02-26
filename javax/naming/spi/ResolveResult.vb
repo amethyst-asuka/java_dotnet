@@ -49,14 +49,14 @@ Namespace javax.naming.spi
 		''' Constructors should always initialize this.
 		''' @serial
 		''' </summary>
-		Protected Friend resolvedObj As Object
+		Protected Friend _resolvedObj As Object
 		''' <summary>
 		''' Field containing the remaining name yet to be resolved.
 		''' It can be null only when constructed using a subclass.
 		''' Constructors should always initialize this.
 		''' @serial
 		''' </summary>
-		Protected Friend remainingName As javax.naming.Name
+		Protected Friend _remainingName As javax.naming.Name
 
 		''' <summary>
 		''' Constructs an instance of ResolveResult with the
@@ -105,14 +105,14 @@ Namespace javax.naming.spi
 		''' <seealso cref= #setRemainingName </seealso>
 		Public Overridable Property remainingName As javax.naming.Name
 			Get
-				Return Me.remainingName
+				Return Me._remainingName
 			End Get
 			Set(ByVal name As javax.naming.Name)
 				If name IsNot Nothing Then
-					Me.remainingName = CType(name.clone(), javax.naming.Name)
+					Me._remainingName = CType(name.clone(), javax.naming.Name)
 				Else
 					' ??? should throw illegal argument exception
-					Me.remainingName = Nothing
+					Me._remainingName = Nothing
 				End If
 			End Set
 		End Property
@@ -122,13 +122,14 @@ Namespace javax.naming.spi
 		''' </summary>
 		''' <returns> The Object to which resolution was successful. Cannot be null. </returns>
 		''' <seealso cref= #setResolvedObj </seealso>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Overridable Function getResolvedObj() As Object 'JavaToDotNetTempPropertyGetresolvedObj
 		Public Overridable Property resolvedObj As Object
 			Get
-				Return Me.resolvedObj
+				Return Me._resolvedObj
 			End Get
 			Set(ByVal obj As Object)
+					Me._resolvedObj = obj
+			' ??? should check for null?
+			End Set
 		End Property
 
 
@@ -172,10 +173,6 @@ Namespace javax.naming.spi
 				End Try
 				appendRemainingName(rname)
 			End If
-		End Sub
-
-			Me.resolvedObj = obj
-			' ??? should check for null?
 		End Sub
 
 		Private Const serialVersionUID As Long = -4552108072002407559L

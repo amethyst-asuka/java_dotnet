@@ -50,7 +50,7 @@ Namespace javax.naming.spi
 			Me.env = env
 		End Sub
 
-		Protected Friend Overridable Property targetContext As Context
+	ReadOnly	Protected Friend Overridable Property targetContext As Context
 			Get
 				If contCtx Is Nothing Then
 					If cpe.resolvedObj Is Nothing Then Throw CType(cpe.fillInStackTrace(), NamingException)
