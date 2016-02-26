@@ -188,146 +188,146 @@ Namespace java.awt.image
 			Return dataBuffer_Renamed
 
 
-		''' <summary>
-		''' Returns data for a single pixel in a primitive array of type
-		''' TransferType.  For a BandedSampleModel, this will be the same
-		''' as the data type, and samples will be returned one per array
-		''' element.  Generally, obj
-		''' should be passed in as null, so that the Object will be created
-		''' automatically and will be of the right primitive data type.
-		''' <p>
-		''' The following code illustrates transferring data for one pixel from
-		''' DataBuffer <code>db1</code>, whose storage layout is described by
-		''' BandedSampleModel <code>bsm1</code>, to DataBuffer <code>db2</code>,
-		''' whose storage layout is described by
-		''' BandedSampleModel <code>bsm2</code>.
-		''' The transfer will generally be more efficient than using
-		''' getPixel/setPixel.
-		''' <pre>
-		'''       BandedSampleModel bsm1, bsm2;
-		'''       DataBufferInt db1, db2;
-		'''       bsm2.setDataElements(x, y, bsm1.getDataElements(x, y, null, db1),
-		'''                            db2);
-		''' </pre>
-		''' Using getDataElements/setDataElements to transfer between two
-		''' DataBuffer/SampleModel pairs is legitimate if the SampleModels have
-		''' the same number of bands, corresponding bands have the same number of
-		''' bits per sample, and the TransferTypes are the same.
-		''' <p>
-		''' If obj is non-null, it should be a primitive array of type TransferType.
-		''' Otherwise, a ClassCastException is thrown.  An
-		''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
-		''' not in bounds, or if obj is non-null and is not large enough to hold
-		''' the pixel data. </summary>
-		''' <param name="x">         The X coordinate of the pixel location </param>
-		''' <param name="y">         The Y coordinate of the pixel location </param>
-		''' <param name="obj">       If non-null, a primitive array in which to return
-		'''                  the pixel data. </param>
-		''' <param name="data">      The DataBuffer containing the image data. </param>
-		''' <returns> the data for the specified pixel. </returns>
-		''' <seealso cref= #setDataElements(int, int, Object, DataBuffer) </seealso>
-		public Object getDataElements(Integer x, Integer y, Object obj, DataBuffer data)
-			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
-			Dim type As Integer = transferType
-			Dim numDataElems As Integer = numDataElements
-			Dim pixelOffset As Integer = y*scanlineStride + x
+        ''' <summary>
+        ''' Returns data for a single pixel in a primitive array of type
+        ''' TransferType.  For a BandedSampleModel, this will be the same
+        ''' as the data type, and samples will be returned one per array
+        ''' element.  Generally, obj
+        ''' should be passed in as null, so that the Object will be created
+        ''' automatically and will be of the right primitive data type.
+        ''' <p>
+        ''' The following code illustrates transferring data for one pixel from
+        ''' DataBuffer <code>db1</code>, whose storage layout is described by
+        ''' BandedSampleModel <code>bsm1</code>, to DataBuffer <code>db2</code>,
+        ''' whose storage layout is described by
+        ''' BandedSampleModel <code>bsm2</code>.
+        ''' The transfer will generally be more efficient than using
+        ''' getPixel/setPixel.
+        ''' <pre>
+        '''       BandedSampleModel bsm1, bsm2;
+        '''       DataBufferInt db1, db2;
+        '''       bsm2.setDataElements(x, y, bsm1.getDataElements(x, y, null, db1),
+        '''                            db2);
+        ''' </pre>
+        ''' Using getDataElements/setDataElements to transfer between two
+        ''' DataBuffer/SampleModel pairs is legitimate if the SampleModels have
+        ''' the same number of bands, corresponding bands have the same number of
+        ''' bits per sample, and the TransferTypes are the same.
+        ''' <p>
+        ''' If obj is non-null, it should be a primitive array of type TransferType.
+        ''' Otherwise, a ClassCastException is thrown.  An
+        ''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
+        ''' not in bounds, or if obj is non-null and is not large enough to hold
+        ''' the pixel data. </summary>
+        ''' <param name="x">         The X coordinate of the pixel location </param>
+        ''' <param name="y">         The Y coordinate of the pixel location </param>
+        ''' <param name="obj">       If non-null, a primitive array in which to return
+        '''                  the pixel data. </param>
+        ''' <param name="data">      The DataBuffer containing the image data. </param>
+        ''' <returns> the data for the specified pixel. </returns>
+        ''' <seealso cref= #setDataElements(int, int, Object, DataBuffer) </seealso>
+        Public Overrides Function getDataElements(x As Integer, y As Integer, obj As Object, data As DataBuffer) As Object
+            If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
+            Dim type As Integer = transferType
+            Dim numDataElems As Integer = numDataElements
+            Dim pixelOffset As Integer = y * scanlineStride + x
 
-			Select Case type
+            Select Case type
 
-			Case DataBuffer.TYPE_BYTE
+                Case DataBuffer.TYPE_BYTE
 
-				Dim bdata As SByte()
+                    Dim bdata As SByte()
 
-				If obj Is Nothing Then
-					bdata = New SByte(numDataElems - 1){}
-				Else
-					bdata = CType(obj, SByte())
-				End If
+                    If obj Is Nothing Then
+                        bdata = New SByte(numDataElems - 1) {}
+                    Else
+                        bdata = CType(obj, SByte())
+                    End If
 
-				For i As Integer = 0 To numDataElems - 1
-					bdata(i) = CByte(data.getElem(bankIndices(i), pixelOffset + bandOffsets(i)))
-				Next i
+                    For i As Integer = 0 To numDataElems - 1
+                        bdata(i) = CByte(data.getElem(bankIndices(i), pixelOffset + bandOffsets(i)))
+                    Next i
 
-				obj = CObj(bdata)
+                    obj = CObj(bdata)
 
-			Case DataBuffer.TYPE_USHORT, DataBuffer.TYPE_SHORT
+                Case DataBuffer.TYPE_USHORT, DataBuffer.TYPE_SHORT
 
-				Dim sdata As Short()
+                    Dim sdata As Short()
 
-				If obj Is Nothing Then
-					sdata = New Short(numDataElems - 1){}
-				Else
-					sdata = CType(obj, Short())
-				End If
+                    If obj Is Nothing Then
+                        sdata = New Short(numDataElems - 1) {}
+                    Else
+                        sdata = CType(obj, Short())
+                    End If
 
-				For i As Integer = 0 To numDataElems - 1
-					sdata(i) = CShort(Fix(data.getElem(bankIndices(i), pixelOffset + bandOffsets(i))))
-				Next i
+                    For i As Integer = 0 To numDataElems - 1
+                        sdata(i) = CShort(Fix(data.getElem(bankIndices(i), pixelOffset + bandOffsets(i))))
+                    Next i
 
-				obj = CObj(sdata)
+                    obj = CObj(sdata)
 
-			Case DataBuffer.TYPE_INT
+                Case DataBuffer.TYPE_INT
 
-				Dim idata As Integer()
+                    Dim idata As Integer()
 
-				If obj Is Nothing Then
-					idata = New Integer(numDataElems - 1){}
-				Else
-					idata = CType(obj, Integer())
-				End If
+                    If obj Is Nothing Then
+                        idata = New Integer(numDataElems - 1) {}
+                    Else
+                        idata = CType(obj, Integer())
+                    End If
 
-				For i As Integer = 0 To numDataElems - 1
-					idata(i) = data.getElem(bankIndices(i), pixelOffset + bandOffsets(i))
-				Next i
+                    For i As Integer = 0 To numDataElems - 1
+                        idata(i) = data.getElem(bankIndices(i), pixelOffset + bandOffsets(i))
+                    Next i
 
-				obj = CObj(idata)
+                    obj = CObj(idata)
 
-			Case DataBuffer.TYPE_FLOAT
+                Case DataBuffer.TYPE_FLOAT
 
-				Dim fdata As Single()
+                    Dim fdata As Single()
 
-				If obj Is Nothing Then
-					fdata = New Single(numDataElems - 1){}
-				Else
-					fdata = CType(obj, Single())
-				End If
+                    If obj Is Nothing Then
+                        fdata = New Single(numDataElems - 1) {}
+                    Else
+                        fdata = CType(obj, Single())
+                    End If
 
-				For i As Integer = 0 To numDataElems - 1
-					fdata(i) = data.getElemFloat(bankIndices(i), pixelOffset + bandOffsets(i))
-				Next i
+                    For i As Integer = 0 To numDataElems - 1
+                        fdata(i) = data.getElemFloat(bankIndices(i), pixelOffset + bandOffsets(i))
+                    Next i
 
-				obj = CObj(fdata)
+                    obj = CObj(fdata)
 
-			Case DataBuffer.TYPE_DOUBLE
+                Case DataBuffer.TYPE_DOUBLE
 
-				Dim ddata As Double()
+                    Dim ddata As Double()
 
-				If obj Is Nothing Then
-					ddata = New Double(numDataElems - 1){}
-				Else
-					ddata = CType(obj, Double())
-				End If
+                    If obj Is Nothing Then
+                        ddata = New Double(numDataElems - 1) {}
+                    Else
+                        ddata = CType(obj, Double())
+                    End If
 
-				For i As Integer = 0 To numDataElems - 1
-					ddata(i) = data.getElemDouble(bankIndices(i), pixelOffset + bandOffsets(i))
-				Next i
+                    For i As Integer = 0 To numDataElems - 1
+                        ddata(i) = data.getElemDouble(bankIndices(i), pixelOffset + bandOffsets(i))
+                    Next i
 
-				obj = CObj(ddata)
-			End Select
+                    obj = CObj(ddata)
+            End Select
 
-			Return obj
-
-		''' <summary>
-		''' Returns all samples for the specified pixel in an int array.
-		''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
-		''' not in bounds. </summary>
-		''' <param name="x">         The X coordinate of the pixel location </param>
-		''' <param name="y">         The Y coordinate of the pixel location </param>
-		''' <param name="iArray">    If non-null, returns the samples in this array </param>
-		''' <param name="data">      The DataBuffer containing the image data </param>
-		''' <returns> the samples for the specified pixel. </returns>
-		''' <seealso cref= #setPixel(int, int, int[], DataBuffer) </seealso>
-		public Integer() getPixel(Integer x, Integer y, Integer iArray(), DataBuffer data)
+            Return obj
+        End Function
+        ''' <summary>
+        ''' Returns all samples for the specified pixel in an int array.
+        ''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
+        ''' not in bounds. </summary>
+        ''' <param name="x">         The X coordinate of the pixel location </param>
+        ''' <param name="y">         The Y coordinate of the pixel location </param>
+        ''' <param name="iArray">    If non-null, returns the samples in this array </param>
+        ''' <param name="data">      The DataBuffer containing the image data </param>
+        ''' <returns> the samples for the specified pixel. </returns>
+        ''' <seealso cref= #setPixel(int, int, int[], DataBuffer) </seealso>
+        Public Integer() getPixel(Integer x, Integer y, Integer iArray(), DataBuffer data)
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 
 			Dim pixels_Renamed As Integer()

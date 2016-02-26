@@ -745,191 +745,191 @@ Namespace java.awt
 			Dim i As Integer = If(intval IsNot Nothing, intval, v)
 			Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, (i >> 0) And &HFF)
 
-		''' <summary>
-		''' Converts the components of a color, as specified by the HSB
-		''' model, to an equivalent set of values for the default RGB model.
-		''' <p>
-		''' The <code>saturation</code> and <code>brightness</code> components
-		''' should be floating-point values between zero and one
-		''' (numbers in the range 0.0-1.0).  The <code>hue</code> component
-		''' can be any floating-point number.  The floor of this number is
-		''' subtracted from it to create a fraction between 0 and 1.  This
-		''' fractional number is then multiplied by 360 to produce the hue
-		''' angle in the HSB color model.
-		''' <p>
-		''' The integer that is returned by <code>HSBtoRGB</code> encodes the
-		''' value of a color in bits 0-23 of an integer value that is the same
-		''' format used by the method <seealso cref="#getRGB() getRGB"/>.
-		''' This integer can be supplied as an argument to the
-		''' <code>Color</code> constructor that takes a single integer argument. </summary>
-		''' <param name="hue">   the hue component of the color </param>
-		''' <param name="saturation">   the saturation of the color </param>
-		''' <param name="brightness">   the brightness of the color </param>
-		''' <returns>    the RGB value of the color with the indicated hue,
-		'''                            saturation, and brightness. </returns>
-		''' <seealso cref=       java.awt.Color#getRGB() </seealso>
-		''' <seealso cref=       java.awt.Color#Color(int) </seealso>
-		''' <seealso cref=       java.awt.image.ColorModel#getRGBdefault()
-		''' @since     JDK1.0 </seealso>
-		public static Integer HSBtoRGB(Single hue, Single saturation, Single brightness)
-			Dim r As Integer = 0, g As Integer = 0, b As Integer = 0
-			If saturation = 0 Then
-					b = CInt(Fix(brightness * 255.0f + 0.5f))
-						g = b
-						r = g
-			Else
-				Dim h As Single = (hue - CSng(Math.Floor(hue))) * 6.0f
-				Dim f As Single = h - CSng(Math.Floor(h))
-				Dim p As Single = brightness * (1.0f - saturation)
-				Dim q As Single = brightness * (1.0f - saturation * f)
-				Dim t As Single = brightness * (1.0f - (saturation * (1.0f - f)))
-				Select Case CInt(Fix(h))
-				Case 0
-					r = CInt(Fix(brightness * 255.0f + 0.5f))
-					g = CInt(Fix(t * 255.0f + 0.5f))
-					b = CInt(Fix(p * 255.0f + 0.5f))
-				Case 1
-					r = CInt(Fix(q * 255.0f + 0.5f))
-					g = CInt(Fix(brightness * 255.0f + 0.5f))
-					b = CInt(Fix(p * 255.0f + 0.5f))
-				Case 2
-					r = CInt(Fix(p * 255.0f + 0.5f))
-					g = CInt(Fix(brightness * 255.0f + 0.5f))
-					b = CInt(Fix(t * 255.0f + 0.5f))
-				Case 3
-					r = CInt(Fix(p * 255.0f + 0.5f))
-					g = CInt(Fix(q * 255.0f + 0.5f))
-					b = CInt(Fix(brightness * 255.0f + 0.5f))
-				Case 4
-					r = CInt(Fix(t * 255.0f + 0.5f))
-					g = CInt(Fix(p * 255.0f + 0.5f))
-					b = CInt(Fix(brightness * 255.0f + 0.5f))
-				Case 5
-					r = CInt(Fix(brightness * 255.0f + 0.5f))
-					g = CInt(Fix(p * 255.0f + 0.5f))
-					b = CInt(Fix(q * 255.0f + 0.5f))
-				End Select
-			End If
-			Return &Hff000000L Or (r << 16) Or (g << 8) Or (b << 0)
+        ''' <summary>
+        ''' Converts the components of a color, as specified by the HSB
+        ''' model, to an equivalent set of values for the default RGB model.
+        ''' <p>
+        ''' The <code>saturation</code> and <code>brightness</code> components
+        ''' should be floating-point values between zero and one
+        ''' (numbers in the range 0.0-1.0).  The <code>hue</code> component
+        ''' can be any floating-point number.  The floor of this number is
+        ''' subtracted from it to create a fraction between 0 and 1.  This
+        ''' fractional number is then multiplied by 360 to produce the hue
+        ''' angle in the HSB color model.
+        ''' <p>
+        ''' The integer that is returned by <code>HSBtoRGB</code> encodes the
+        ''' value of a color in bits 0-23 of an integer value that is the same
+        ''' format used by the method <seealso cref="#getRGB() getRGB"/>.
+        ''' This integer can be supplied as an argument to the
+        ''' <code>Color</code> constructor that takes a single integer argument. </summary>
+        ''' <param name="hue">   the hue component of the color </param>
+        ''' <param name="saturation">   the saturation of the color </param>
+        ''' <param name="brightness">   the brightness of the color </param>
+        ''' <returns>    the RGB value of the color with the indicated hue,
+        '''                            saturation, and brightness. </returns>
+        ''' <seealso cref=       java.awt.Color#getRGB() </seealso>
+        ''' <seealso cref=       java.awt.Color#Color(int) </seealso>
+        ''' <seealso cref=       java.awt.image.ColorModel#getRGBdefault()
+        ''' @since     JDK1.0 </seealso> 
+        Public Shared Function HSBtoRGB(Single hue, Single saturation, Single brightness) As Integer
+            Dim r As Integer = 0, g As Integer = 0, b As Integer = 0
+            If saturation = 0 Then
+                b = CInt(Fix(brightness * 255.0F + 0.5F))
+                g = b
+                r = g
+            Else
+                Dim h As Single = (hue - CSng(Math.Floor(hue))) * 6.0F
+                Dim f As Single = h - CSng(Math.Floor(h))
+                Dim p As Single = brightness * (1.0F - saturation)
+                Dim q As Single = brightness * (1.0F - saturation * f)
+                Dim t As Single = brightness * (1.0F - (saturation * (1.0F - f)))
+                Select Case CInt(Fix(h))
+                    Case 0
+                        r = CInt(Fix(brightness * 255.0F + 0.5F))
+                        g = CInt(Fix(t * 255.0F + 0.5F))
+                        b = CInt(Fix(p * 255.0F + 0.5F))
+                    Case 1
+                        r = CInt(Fix(q * 255.0F + 0.5F))
+                        g = CInt(Fix(brightness * 255.0F + 0.5F))
+                        b = CInt(Fix(p * 255.0F + 0.5F))
+                    Case 2
+                        r = CInt(Fix(p * 255.0F + 0.5F))
+                        g = CInt(Fix(brightness * 255.0F + 0.5F))
+                        b = CInt(Fix(t * 255.0F + 0.5F))
+                    Case 3
+                        r = CInt(Fix(p * 255.0F + 0.5F))
+                        g = CInt(Fix(q * 255.0F + 0.5F))
+                        b = CInt(Fix(brightness * 255.0F + 0.5F))
+                    Case 4
+                        r = CInt(Fix(t * 255.0F + 0.5F))
+                        g = CInt(Fix(p * 255.0F + 0.5F))
+                        b = CInt(Fix(brightness * 255.0F + 0.5F))
+                    Case 5
+                        r = CInt(Fix(brightness * 255.0F + 0.5F))
+                        g = CInt(Fix(p * 255.0F + 0.5F))
+                        b = CInt(Fix(q * 255.0F + 0.5F))
+                End Select
+            End If
+            Return &HFF000000L Or (r << 16) Or (g << 8) Or (b << 0)
+        End Function
+        ''' <summary>
+        ''' Converts the components of a color, as specified by the default RGB
+        ''' model, to an equivalent set of values for hue, saturation, and
+        ''' brightness that are the three components of the HSB model.
+        ''' <p>
+        ''' If the <code>hsbvals</code> argument is <code>null</code>, then a
+        ''' new array is allocated to return the result. Otherwise, the method
+        ''' returns the array <code>hsbvals</code>, with the values put into
+        ''' that array. </summary>
+        ''' <param name="r">   the red component of the color </param>
+        ''' <param name="g">   the green component of the color </param>
+        ''' <param name="b">   the blue component of the color </param>
+        ''' <param name="hsbvals">  the array used to return the
+        '''                     three HSB values, or <code>null</code> </param>
+        ''' <returns>    an array of three elements containing the hue, saturation,
+        '''                     and brightness (in that order), of the color with
+        '''                     the indicated red, green, and blue components. </returns>
+        ''' <seealso cref=       java.awt.Color#getRGB() </seealso>
+        ''' <seealso cref=       java.awt.Color#Color(int) </seealso>
+        ''' <seealso cref=       java.awt.image.ColorModel#getRGBdefault()
+        ''' @since     JDK1.0 </seealso>
+        Public Shared Function RGBtoHSB(Integer r, Integer g, Integer b, Single() hsbvals) As Single()
+            Dim hue, saturation, brightness As Single
+            If hsbvals Is Nothing Then hsbvals = New Single(2) {}
+            Dim cmax As Integer = If(r > g, r, g)
+            If b > cmax Then cmax = b
+            Dim cmin As Integer = If(r < g, r, g)
+            If b < cmin Then cmin = b
 
-		''' <summary>
-		''' Converts the components of a color, as specified by the default RGB
-		''' model, to an equivalent set of values for hue, saturation, and
-		''' brightness that are the three components of the HSB model.
-		''' <p>
-		''' If the <code>hsbvals</code> argument is <code>null</code>, then a
-		''' new array is allocated to return the result. Otherwise, the method
-		''' returns the array <code>hsbvals</code>, with the values put into
-		''' that array. </summary>
-		''' <param name="r">   the red component of the color </param>
-		''' <param name="g">   the green component of the color </param>
-		''' <param name="b">   the blue component of the color </param>
-		''' <param name="hsbvals">  the array used to return the
-		'''                     three HSB values, or <code>null</code> </param>
-		''' <returns>    an array of three elements containing the hue, saturation,
-		'''                     and brightness (in that order), of the color with
-		'''                     the indicated red, green, and blue components. </returns>
-		''' <seealso cref=       java.awt.Color#getRGB() </seealso>
-		''' <seealso cref=       java.awt.Color#Color(int) </seealso>
-		''' <seealso cref=       java.awt.image.ColorModel#getRGBdefault()
-		''' @since     JDK1.0 </seealso>
-		public static Single() RGBtoHSB(Integer r, Integer g, Integer b, Single() hsbvals)
-			Dim hue, saturation, brightness As Single
-			If hsbvals Is Nothing Then hsbvals = New Single(2){}
-			Dim cmax As Integer = If(r > g, r, g)
-			If b > cmax Then cmax = b
-			Dim cmin As Integer = If(r < g, r, g)
-			If b < cmin Then cmin = b
-
-			brightness = (CSng(cmax)) / 255.0f
-			If cmax <> 0 Then
-				saturation = (CSng(cmax - cmin)) / (CSng(cmax))
-			Else
-				saturation = 0
-			End If
-			If saturation = 0 Then
-				hue = 0
-			Else
-				Dim redc As Single = (CSng(cmax - r)) / (CSng(cmax - cmin))
-				Dim greenc As Single = (CSng(cmax - g)) / (CSng(cmax - cmin))
-				Dim bluec As Single = (CSng(cmax - b)) / (CSng(cmax - cmin))
-				If r = cmax Then
-					hue = bluec - greenc
-				ElseIf g = cmax Then
-					hue = 2.0f + redc - bluec
-				Else
-					hue = 4.0f + greenc - redc
-				End If
-				hue = hue / 6.0f
-				If hue < 0 Then hue = hue + 1.0f
-			End If
-			hsbvals(0) = hue
-			hsbvals(1) = saturation
-			hsbvals(2) = brightness
-			Return hsbvals
-
-		''' <summary>
-		''' Creates a <code>Color</code> object based on the specified values
-		''' for the HSB color model.
-		''' <p>
-		''' The <code>s</code> and <code>b</code> components should be
-		''' floating-point values between zero and one
-		''' (numbers in the range 0.0-1.0).  The <code>h</code> component
-		''' can be any floating-point number.  The floor of this number is
-		''' subtracted from it to create a fraction between 0 and 1.  This
-		''' fractional number is then multiplied by 360 to produce the hue
-		''' angle in the HSB color model. </summary>
-		''' <param name="h">   the hue component </param>
-		''' <param name="s">   the saturation of the color </param>
-		''' <param name="b">   the brightness of the color </param>
-		''' <returns>  a <code>Color</code> object with the specified hue,
-		'''                                 saturation, and brightness.
-		''' @since   JDK1.0 </returns>
-		public static Color getHSBColor(Single h, Single s, Single b)
+            brightness = (CSng(cmax)) / 255.0F
+            If cmax <> 0 Then
+                saturation = (CSng(cmax - cmin)) / (CSng(cmax))
+            Else
+                saturation = 0
+            End If
+            If saturation = 0 Then
+                hue = 0
+            Else
+                Dim redc As Single = (CSng(cmax - r)) / (CSng(cmax - cmin))
+                Dim greenc As Single = (CSng(cmax - g)) / (CSng(cmax - cmin))
+                Dim bluec As Single = (CSng(cmax - b)) / (CSng(cmax - cmin))
+                If r = cmax Then
+                    hue = bluec - greenc
+                ElseIf g = cmax Then
+                    hue = 2.0F + redc - bluec
+                Else
+                    hue = 4.0F + greenc - redc
+                End If
+                hue = hue / 6.0F
+                If hue < 0 Then hue = hue + 1.0F
+            End If
+            hsbvals(0) = hue
+            hsbvals(1) = saturation
+            hsbvals(2) = brightness
+            Return hsbvals
+        End Function
+        ''' <summary>
+        ''' Creates a <code>Color</code> object based on the specified values
+        ''' for the HSB color model.
+        ''' <p>
+        ''' The <code>s</code> and <code>b</code> components should be
+        ''' floating-point values between zero and one
+        ''' (numbers in the range 0.0-1.0).  The <code>h</code> component
+        ''' can be any floating-point number.  The floor of this number is
+        ''' subtracted from it to create a fraction between 0 and 1.  This
+        ''' fractional number is then multiplied by 360 to produce the hue
+        ''' angle in the HSB color model. </summary>
+        ''' <param name="h">   the hue component </param>
+        ''' <param name="s">   the saturation of the color </param>
+        ''' <param name="b">   the brightness of the color </param>
+        ''' <returns>  a <code>Color</code> object with the specified hue,
+        '''                                 saturation, and brightness.
+        ''' @since   JDK1.0 </returns>
+        Public static Color getHSBColor(Single h, Single s, Single b)
 			Return New Color(HSBtoRGB(h, s, b))
 
-		''' <summary>
-		''' Returns a <code>float</code> array containing the color and alpha
-		''' components of the <code>Color</code>, as represented in the default
-		''' sRGB color space.
-		''' If <code>compArray</code> is <code>null</code>, an array of length
-		''' 4 is created for the return value.  Otherwise,
-		''' <code>compArray</code> must have length 4 or greater,
-		''' and it is filled in with the components and returned. </summary>
-		''' <param name="compArray"> an array that this method fills with
-		'''                  color and alpha components and returns </param>
-		''' <returns> the RGBA components in a <code>float</code> array. </returns>
-		public Single() getRGBComponents(Single() compArray)
-			Dim f As Single()
-			If compArray Is Nothing Then
-				f = New Single(3){}
-			Else
-				f = compArray
-			End If
-			If frgbvalue Is Nothing Then
-				f(0) = (CSng(red))/255f
-				f(1) = (CSng(green))/255f
-				f(2) = (CSng(blue))/255f
-				f(3) = (CSng(alpha))/255f
-			Else
-				f(0) = frgbvalue(0)
-				f(1) = frgbvalue(1)
-				f(2) = frgbvalue(2)
-				f(3) = falpha
-			End If
-			Return f
-
-		''' <summary>
-		''' Returns a <code>float</code> array containing only the color
-		''' components of the <code>Color</code>, in the default sRGB color
-		''' space.  If <code>compArray</code> is <code>null</code>, an array of
-		''' length 3 is created for the return value.  Otherwise,
-		''' <code>compArray</code> must have length 3 or greater, and it is
-		''' filled in with the components and returned. </summary>
-		''' <param name="compArray"> an array that this method fills with color
-		'''          components and returns </param>
-		''' <returns> the RGB components in a <code>float</code> array. </returns>
-		public Single() getRGBColorComponents(Single() compArray)
+        ''' <summary>
+        ''' Returns a <code>float</code> array containing the color and alpha
+        ''' components of the <code>Color</code>, as represented in the default
+        ''' sRGB color space.
+        ''' If <code>compArray</code> is <code>null</code>, an array of length
+        ''' 4 is created for the return value.  Otherwise,
+        ''' <code>compArray</code> must have length 4 or greater,
+        ''' and it is filled in with the components and returned. </summary>
+        ''' <param name="compArray"> an array that this method fills with
+        '''                  color and alpha components and returns </param>
+        ''' <returns> the RGBA components in a <code>float</code> array. </returns>
+        Public Function getRGBComponents(Single() compArray) As Single()
+            Dim f As Single()
+            If compArray Is Nothing Then
+                f = New Single(3) {}
+            Else
+                f = compArray
+            End If
+            If frgbvalue Is Nothing Then
+                f(0) = (CSng(red)) / 255.0F
+                f(1) = (CSng(green)) / 255.0F
+                f(2) = (CSng(blue)) / 255.0F
+                f(3) = (CSng(alpha)) / 255.0F
+            Else
+                f(0) = frgbvalue(0)
+                f(1) = frgbvalue(1)
+                f(2) = frgbvalue(2)
+                f(3) = falpha
+            End If
+            Return f
+        End Function
+        ''' <summary>
+        ''' Returns a <code>float</code> array containing only the color
+        ''' components of the <code>Color</code>, in the default sRGB color
+        ''' space.  If <code>compArray</code> is <code>null</code>, an array of
+        ''' length 3 is created for the return value.  Otherwise,
+        ''' <code>compArray</code> must have length 3 or greater, and it is
+        ''' filled in with the components and returned. </summary>
+        ''' <param name="compArray"> an array that this method fills with color
+        '''          components and returns </param>
+        ''' <returns> the RGB components in a <code>float</code> array. </returns>
+        Public Single() getRGBColorComponents(Single() compArray)
 			Dim f As Single()
 			If compArray Is Nothing Then
 				f = New Single(2){}

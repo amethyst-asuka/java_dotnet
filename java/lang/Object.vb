@@ -45,65 +45,65 @@ Namespace java.lang
 			registerNatives()
 		End Sub
 
-		''' <summary>
-		''' Returns the runtime class of this {@code Object}. The returned
-		''' {@code Class} object is the object that is locked by {@code
-		''' static synchronized} methods of the represented class.
-		''' 
-		''' <p><b>The actual result type is {@code Class<? extends |X|>}
-		''' where {@code |X|} is the erasure of the static type of the
-		''' expression on which {@code getClass} is called.</b> For
-		''' example, no cast is required in this code fragment:</p>
-		''' 
-		''' <p>
-		''' {@code Number n = 0;                             }<br>
-		''' {@code Class<? extends Number> c = n.getClass(); }
-		''' </p>
-		''' </summary>
-		''' <returns> The {@code Class} object that represents the runtime
-		'''         class of this object.
-		''' @jls 15.8.2 Class Literals </returns>
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
-		Public final Function getClass() As  [Class]
-		End Function
+        ''' <summary>
+        ''' Returns the runtime class of this {@code Object}. The returned
+        ''' {@code Class} object is the object that is locked by {@code
+        ''' static synchronized} methods of the represented class.
+        ''' 
+        ''' <p><b>The actual result type is {@code Class<? extends |X|>}
+        ''' where {@code |X|} is the erasure of the static type of the
+        ''' expression on which {@code getClass} is called.</b> For
+        ''' example, no cast is required in this code fragment:</p>
+        ''' 
+        ''' <p>
+        ''' {@code Number n = 0;                             }<br>
+        ''' {@code Class<? extends Number> c = n.getClass(); }
+        ''' </p>
+        ''' </summary>
+        ''' <returns> The {@code Class} object that represents the runtime
+        '''         class of this object.
+        ''' @jls 15.8.2 Class Literals </returns>
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")>
+        Public Shared Function getClass() As [Class]
+        End Function
 
-		''' <summary>
-		''' Returns a hash code value for the object. This method is
-		''' supported for the benefit of hash tables such as those provided by
-		''' <seealso cref="java.util.HashMap"/>.
-		''' <p>
-		''' The general contract of {@code hashCode} is:
-		''' <ul>
-		''' <li>Whenever it is invoked on the same object more than once during
-		'''     an execution of a Java application, the {@code hashCode} method
-		'''     must consistently return the same integer, provided no information
-		'''     used in {@code equals} comparisons on the object is modified.
-		'''     This integer need not remain consistent from one execution of an
-		'''     application to another execution of the same application.
-		''' <li>If two objects are equal according to the {@code equals(Object)}
-		'''     method, then calling the {@code hashCode} method on each of
-		'''     the two objects must produce the same integer result.
-		''' <li>It is <em>not</em> required that if two objects are unequal
-		'''     according to the <seealso cref="java.lang.Object#equals(java.lang.Object)"/>
-		'''     method, then calling the {@code hashCode} method on each of the
-		'''     two objects must produce distinct integer results.  However, the
-		'''     programmer should be aware that producing distinct integer results
-		'''     for unequal objects may improve the performance of hash tables.
-		''' </ul>
-		''' <p>
-		''' As much as is reasonably practical, the hashCode method defined by
-		''' class {@code Object} does return distinct integers for distinct
-		''' objects. (This is typically implemented by converting the internal
-		''' address of the object into an integer, but this implementation
-		''' technique is not required by the
-		''' Java&trade; programming language.)
-		''' </summary>
-		''' <returns>  a hash code value for this object. </returns>
-		''' <seealso cref=     java.lang.Object#equals(java.lang.Object) </seealso>
-		''' <seealso cref=     java.lang.System#identityHashCode </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
+        ''' <summary>
+        ''' Returns a hash code value for the object. This method is
+        ''' supported for the benefit of hash tables such as those provided by
+        ''' <seealso cref="java.util.HashMap"/>.
+        ''' <p>
+        ''' The general contract of {@code hashCode} is:
+        ''' <ul>
+        ''' <li>Whenever it is invoked on the same object more than once during
+        '''     an execution of a Java application, the {@code hashCode} method
+        '''     must consistently return the same integer, provided no information
+        '''     used in {@code equals} comparisons on the object is modified.
+        '''     This integer need not remain consistent from one execution of an
+        '''     application to another execution of the same application.
+        ''' <li>If two objects are equal according to the {@code equals(Object)}
+        '''     method, then calling the {@code hashCode} method on each of
+        '''     the two objects must produce the same integer result.
+        ''' <li>It is <em>not</em> required that if two objects are unequal
+        '''     according to the <seealso cref="java.lang.Object#equals(java.lang.Object)"/>
+        '''     method, then calling the {@code hashCode} method on each of the
+        '''     two objects must produce distinct integer results.  However, the
+        '''     programmer should be aware that producing distinct integer results
+        '''     for unequal objects may improve the performance of hash tables.
+        ''' </ul>
+        ''' <p>
+        ''' As much as is reasonably practical, the hashCode method defined by
+        ''' class {@code Object} does return distinct integers for distinct
+        ''' objects. (This is typically implemented by converting the internal
+        ''' address of the object into an integer, but this implementation
+        ''' technique is not required by the
+        ''' Java&trade; programming language.)
+        ''' </summary>
+        ''' <returns>  a hash code value for this object. </returns>
+        ''' <seealso cref=     java.lang.Object#equals(java.lang.Object) </seealso>
+        ''' <seealso cref=     java.lang.System#identityHashCode </seealso>
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")> _
 		Public Function GetHashCode() As Integer
 		End Function
 
