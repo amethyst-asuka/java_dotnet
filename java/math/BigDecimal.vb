@@ -723,7 +723,7 @@ Namespace java.math
         ''' exponent; if the string contains an exponent, the exponent is
         ''' subtracted from the scale.  The value of the resulting scale
         ''' must lie between {@code Integer.MIN_VALUE} and
-        ''' {@code Integer.MAX_VALUE}, inclusive.
+        ''' {@code  [Integer].MAX_VALUE}, inclusive.
         ''' 
         ''' <p>The character-to-digit mapping is provided by {@link
         ''' java.lang.Character#digit} set to convert to radix 10.  The
@@ -2511,7 +2511,7 @@ Namespace java.math
                         Return rb.compareMagnitude(val.intVal)
                     End If ' sdiff > 0
                 Else
-                    ' The cases sdiff > Integer.MAX_VALUE intentionally fall through.
+                    ' The cases sdiff >  [Integer].MAX_VALUE intentionally fall through.
                     ys = longMultiplyPowerTen(ys, CInt(sdiff))
                     If sdiff <= Integer.MaxValue AndAlso (ys = INFLATED_Renamed OrElse ys = INFLATED_Renamed) AndAlso xs = INFLATED_Renamed Then
                         rb = val.bigMultiplyPowerTen(CInt(sdiff))

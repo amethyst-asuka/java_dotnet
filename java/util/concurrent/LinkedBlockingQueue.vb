@@ -131,7 +131,7 @@ Namespace java.util.concurrent
 		End Class
 
 		''' <summary>
-		''' The capacity bound, or Integer.MAX_VALUE if none </summary>
+		''' The capacity bound, or  [Integer].MAX_VALUE if none </summary>
 		Private ReadOnly capacity As Integer
 
 		''' <summary>
@@ -295,7 +295,7 @@ Namespace java.util.concurrent
 		End Sub
 
 		' this doc comment is overridden to remove the reference to collections
-		' greater in size than Integer.MAX_VALUE
+		' greater in size than  [Integer].MAX_VALUE
 		''' <summary>
 		''' Returns the number of elements in this queue.
 		''' </summary>

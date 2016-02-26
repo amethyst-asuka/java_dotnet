@@ -88,9 +88,9 @@ Namespace java.util.logging
 
 		''' <summary>
 		''' OFF is a special level that can be used to turn off logging.
-		''' This level is initialized to <CODE>Integer.MAX_VALUE</CODE>.
+		''' This level is initialized to <CODE> [Integer].MAX_VALUE</CODE>.
 		''' </summary>
-		Public Shared ReadOnly [OFF] As New Level("OFF",Integer.MAX_VALUE, defaultBundle)
+		Public Shared ReadOnly [OFF] As New Level("OFF", [Integer].MAX_VALUE, defaultBundle)
 
 		''' <summary>
 		''' SEVERE is a message level indicating a serious failure.
@@ -412,7 +412,7 @@ Namespace java.util.logging
 		''' <exception cref="NullPointerException"> if the name is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the value is not valid.
 		''' Valid values are integers between <CODE>Integer.MIN_VALUE</CODE>
-		''' and <CODE>Integer.MAX_VALUE</CODE>, and all known level names.
+		''' and <CODE> [Integer].MAX_VALUE</CODE>, and all known level names.
 		''' Known names are the levels defined by this class (e.g., <CODE>FINE</CODE>,
 		''' <CODE>FINER</CODE>, <CODE>FINEST</CODE>), or created by this class with
 		''' appropriate package access, or new levels defined or created

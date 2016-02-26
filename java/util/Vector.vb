@@ -248,7 +248,7 @@ Namespace java.util
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer = Integer.MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
 
 		Private Sub grow(ByVal minCapacity As Integer)
 			' overflow-conscious code

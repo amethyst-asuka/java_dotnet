@@ -170,8 +170,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of elements in this set.  If this set
-		''' contains more than {@code Integer.MAX_VALUE} elements, it
-		''' returns {@code Integer.MAX_VALUE}.
+		''' contains more than {@code  [Integer].MAX_VALUE} elements, it
+		''' returns {@code  [Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the

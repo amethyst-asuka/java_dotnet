@@ -493,7 +493,7 @@ Namespace java.util.concurrent
 		''' The largest possible (non-power of two) array size.
 		''' Needed by toArray and related methods.
 		''' </summary>
-		Friend Shared ReadOnly MAX_ARRAY_SIZE As Integer = Integer.MAX_VALUE - 8
+		Friend Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' The default concurrency level for this table. Unused but

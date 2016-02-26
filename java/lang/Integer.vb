@@ -436,7 +436,7 @@ Namespace java.lang
             End If
         End Sub
 
-        Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999, Integer.MAX_VALUE}
+        Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999,  [Integer].MAX_VALUE}
 
         ' Requires positive x
         Friend Shared Function stringSize(ByVal x As Integer) As Integer
@@ -622,7 +622,7 @@ Namespace java.lang
                 If firstChar = "-"c Then
                     Throw New NumberFormatException(String.Format("Illegal leading minus sign " & "on unsigned string {0}.", s))
                 Else
-                    If len <= 5 OrElse (radix = 10 AndAlso len <= 9) Then ' Integer.MAX_VALUE in base 10 is 10 digits -  Integer.MAX_VALUE in Character.MAX_RADIX is 6 digits
+                    If len <= 5 OrElse (radix = 10 AndAlso len <= 9) Then '  [Integer].MAX_VALUE in base 10 is 10 digits -   [Integer].MAX_VALUE in Character.MAX_RADIX is 6 digits
                         Return parseInt(s, radix)
                     Else
                         Dim ell As Long = Convert.ToInt64(s, radix)
@@ -734,7 +734,7 @@ Namespace java.lang
                     Try
                         Dim i As Integer = parseInt(integerCacheHighPropValue)
                         i = Math.max(i, 127)
-                        ' Maximum array size is Integer.MAX_VALUE
+                        ' Maximum array size is  [Integer].MAX_VALUE
                         h = Math.min(i, Integer.MaxValue - (-low) - 1)
                     Catch nfe As NumberFormatException
                         ' If the property cannot be parsed into an int, ignore it.

@@ -27,27 +27,29 @@
 
 ' -- This file was mechanically generated: Do not edit! -- //
 
+Imports java.lang
+
 Namespace java.nio
 
 
-	''' <summary>
-	''' Unchecked exception thrown when a relative <i>put</i> operation reaches
-	''' the target buffer's limit.
-	''' 
-	''' @since 1.4
-	''' </summary>
+    ''' <summary>
+    ''' Unchecked exception thrown when a relative <i>put</i> operation reaches
+    ''' the target buffer's limit.
+    ''' 
+    ''' @since 1.4
+    ''' </summary>
 
-	Public Class BufferOverflowException
-		Inherits RuntimeException
+    Public Class BufferOverflowException
+        Inherits RuntimeException
 
-		Private Shadows Const serialVersionUID As Long = -5484897634319144535L
+        Private Shadows Const serialVersionUID As Long = -5484897634319144535L
 
-		''' <summary>
-		''' Constructs an instance of this class.
-		''' </summary>
-		Public Sub New()
-		End Sub
+        ''' <summary>
+        ''' Constructs an instance of this class.
+        ''' </summary>
+        Public Sub New()
+        End Sub
 
-	End Class
+    End Class
 
 End Namespace

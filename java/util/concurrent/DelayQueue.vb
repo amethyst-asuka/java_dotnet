@@ -381,10 +381,10 @@ Namespace java.util.concurrent
 		End Sub
 
 		''' <summary>
-		''' Always returns {@code Integer.MAX_VALUE} because
+		''' Always returns {@code  [Integer].MAX_VALUE} because
 		''' a {@code DelayQueue} is not capacity constrained.
 		''' </summary>
-		''' <returns> {@code Integer.MAX_VALUE} </returns>
+		''' <returns> {@code  [Integer].MAX_VALUE} </returns>
 		Public Overridable Function remainingCapacity() As Integer Implements BlockingQueue(Of E).remainingCapacity
 			Return Integer.MaxValue
 		End Function

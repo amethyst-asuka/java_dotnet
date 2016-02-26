@@ -1004,9 +1004,9 @@ Namespace java.awt
 	'             fix for 4623196.
 	'             * If user try to create a very big grid we can
 	'             * get NegativeArraySizeException because of integer value
-	'             * overflow (EMPIRICMULTIPLIER*gridSize might be more then Integer.MAX_VALUE).
+	'             * overflow (EMPIRICMULTIPLIER*gridSize might be more then  [Integer].MAX_VALUE).
 	'             * We need to detect this situation and try to create a
-	'             * grid with Integer.MAX_VALUE size instead.
+	'             * grid with  [Integer].MAX_VALUE size instead.
 	'             
 				maximumArrayXIndex = If(EMPIRICMULTIPLIER * arraySizes(0) > Integer.MaxValue, Integer.MaxValue, EMPIRICMULTIPLIER*CInt(arraySizes(0)))
 				maximumArrayYIndex = If(EMPIRICMULTIPLIER * arraySizes(1) > Integer.MaxValue, Integer.MaxValue, EMPIRICMULTIPLIER*CInt(arraySizes(1)))

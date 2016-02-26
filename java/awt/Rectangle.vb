@@ -778,7 +778,7 @@ Namespace java.awt
 		''' <p>
 		''' If the resulting {@code Rectangle} would have a dimension
 		''' too large to be expressed as an {@code int}, the result
-		''' will have a dimension of {@code Integer.MAX_VALUE} along
+		''' will have a dimension of {@code  [Integer].MAX_VALUE} along
 		''' that dimension. </summary>
 		''' <param name="r"> the specified <code>Rectangle</code> </param>
 		''' <returns>    the smallest <code>Rectangle</code> containing both
@@ -913,7 +913,7 @@ Namespace java.awt
 		''' <p>
 		''' If the resulting {@code Rectangle} would have a dimension
 		''' too large to be expressed as an {@code int}, the result
-		''' will have a dimension of {@code Integer.MAX_VALUE} along
+		''' will have a dimension of {@code  [Integer].MAX_VALUE} along
 		''' that dimension. </summary>
 		''' <param name="r"> the specified <code>Rectangle</code> </param>
 		Public Overridable Sub add(ByVal r As Rectangle)

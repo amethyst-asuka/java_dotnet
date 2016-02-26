@@ -1192,7 +1192,7 @@ Namespace java.text
             ' Optimization for 1, 2 and 4 digit numbers. This should
             ' cover most cases of formatting date/time related items.
             ' Note: This optimization code assumes that maxDigits is
-            ' either 2 or Integer.MAX_VALUE (maxIntCount in format()).
+            ' either 2 or  [Integer].MAX_VALUE (maxIntCount in format()).
             Try
                 If AscW(zeroDigit) = 0 Then zeroDigit = CType(numberFormat, DecimalFormat).decimalFormatSymbols.zeroDigit
                 If value >= 0 Then

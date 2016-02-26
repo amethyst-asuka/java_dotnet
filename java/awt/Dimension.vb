@@ -147,8 +147,8 @@ Namespace java.awt
 		''' Sets the size of this <code>Dimension</code> object to
 		''' the specified width and height in double precision.
 		''' Note that if <code>width</code> or <code>height</code>
-		''' are larger than <code>Integer.MAX_VALUE</code>, they will
-		''' be reset to <code>Integer.MAX_VALUE</code>.
+		''' are larger than <code> [Integer].MAX_VALUE</code>, they will
+		''' be reset to <code> [Integer].MAX_VALUE</code>.
 		''' </summary>
 		''' <param name="width">  the new width for the <code>Dimension</code> object </param>
 		''' <param name="height"> the new height for the <code>Dimension</code> object

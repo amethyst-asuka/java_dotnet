@@ -1609,8 +1609,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of key-value mappings in this map.  If this map
-		''' contains more than {@code Integer.MAX_VALUE} elements, it
-		''' returns {@code Integer.MAX_VALUE}.
+		''' contains more than {@code  [Integer].MAX_VALUE} elements, it
+		''' returns {@code  [Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the
@@ -3432,7 +3432,7 @@ Namespace java.util.concurrent
 		''' remaining number of elements of a skip list when advancing
 		''' either across or down decreases by about 25%. To make this
 		''' observation useful, we need to know initial size, which we
-		''' don't. But we can just use Integer.MAX_VALUE so that we
+		''' don't. But we can just use  [Integer].MAX_VALUE so that we
 		''' don't prematurely zero out while splitting.
 		''' </summary>
 		Friend MustInherit Class CSLMSpliterator(Of K, V)

@@ -457,7 +457,7 @@ Namespace java.sql
 
 	'  
 	'   * Starting with Java SE 8, JDBC has added support for returning an update
-	'   * count > Integer.MAX_VALUE.  Because of this the following changes were made
+	'   * count >  [Integer].MAX_VALUE.  Because of this the following changes were made
 	'   * to BatchUpdateException:
 	'   * <ul>
 	'   * <li>Add field longUpdateCounts</li>

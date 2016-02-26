@@ -129,8 +129,8 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns the number of key-value mappings in this map.  If the
-		''' map contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
-		''' <tt>Integer.MAX_VALUE</tt>.
+		''' map contains more than <tt> [Integer].MAX_VALUE</tt> elements, returns
+		''' <tt> [Integer].MAX_VALUE</tt>.
 		''' </summary>
 		''' <returns> the number of key-value mappings in this map </returns>
 		Function size() As Integer

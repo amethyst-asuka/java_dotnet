@@ -661,8 +661,8 @@ Namespace java.lang
 		''' equal to the value of {@code Integer.MIN_VALUE}, the result is
 		''' equal to the value of {@code Integer.MIN_VALUE}.
 		''' <li>If the argument is positive infinity or any value greater than or
-		''' equal to the value of {@code Integer.MAX_VALUE}, the result is
-		''' equal to the value of {@code Integer.MAX_VALUE}.</ul>
+		''' equal to the value of {@code  [Integer].MAX_VALUE}, the result is
+		''' equal to the value of {@code  [Integer].MAX_VALUE}.</ul>
 		''' </summary>
 		''' <param name="a">   a floating-point value to be rounded to an integer. </param>
 		''' <returns>  the value of the argument rounded to the nearest

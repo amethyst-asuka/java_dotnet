@@ -515,7 +515,7 @@ Namespace java.security.cert
 		''' subject of the certificate is a CA, otherwise -1.
 		''' If the subject of the certificate is a CA and
 		''' {@code pathLenConstraint} does not appear,
-		''' {@code Integer.MAX_VALUE} is returned to indicate that there is no
+		''' {@code  [Integer].MAX_VALUE} is returned to indicate that there is no
 		''' limit to the allowed length of the certification path. </returns>
 		Public MustOverride ReadOnly Property basicConstraints As Integer
 

@@ -155,7 +155,7 @@ Namespace java.awt
 		''' The double values will be rounded to integer values.
 		''' Any number smaller than <code>Integer.MIN_VALUE</code>
 		''' will be reset to <code>MIN_VALUE</code>, and any number
-		''' larger than <code>Integer.MAX_VALUE</code> will be
+		''' larger than <code> [Integer].MAX_VALUE</code> will be
 		''' reset to <code>MAX_VALUE</code>.
 		''' </summary>
 		''' <param name="x"> the X coordinate of the new location </param>

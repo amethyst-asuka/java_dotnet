@@ -144,8 +144,8 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns the number of elements in this collection.  If this collection
-		''' contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
-		''' <tt>Integer.MAX_VALUE</tt>.
+		''' contains more than <tt> [Integer].MAX_VALUE</tt> elements, returns
+		''' <tt> [Integer].MAX_VALUE</tt>.
 		''' </summary>
 		''' <returns> the number of elements in this collection </returns>
 		Function size() As Integer

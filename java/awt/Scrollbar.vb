@@ -667,7 +667,7 @@ Namespace java.awt
 		''' following constraints:
 		''' <code>maximum</code> must be greater than <code>minimum</code>,
 		''' <code>maximum - minimum</code> must not be greater
-		'''     than <code>Integer.MAX_VALUE</code>,
+		'''     than <code> [Integer].MAX_VALUE</code>,
 		''' <code>visibleAmount</code> must be greater than zero.
 		''' <code>visibleAmount</code> must not be greater than
 		'''     <code>maximum - minimum</code>,

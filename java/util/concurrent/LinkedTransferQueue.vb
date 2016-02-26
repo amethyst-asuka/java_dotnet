@@ -1372,8 +1372,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of elements in this queue.  If this queue
-		''' contains more than {@code Integer.MAX_VALUE} elements, returns
-		''' {@code Integer.MAX_VALUE}.
+		''' contains more than {@code  [Integer].MAX_VALUE} elements, returns
+		''' {@code  [Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the
@@ -1428,10 +1428,10 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <summary>
-		''' Always returns {@code Integer.MAX_VALUE} because a
+		''' Always returns {@code  [Integer].MAX_VALUE} because a
 		''' {@code LinkedTransferQueue} is not capacity constrained.
 		''' </summary>
-		''' <returns> {@code Integer.MAX_VALUE} (as specified by
+		''' <returns> {@code  [Integer].MAX_VALUE} (as specified by
 		'''         {@link java.util.concurrent.BlockingQueue#remainingCapacity()
 		'''         BlockingQueue.remainingCapacity}) </returns>
 		Public Overridable Function remainingCapacity() As Integer

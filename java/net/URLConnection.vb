@@ -445,7 +445,7 @@ Namespace java.net
 		''' </summary>
 		''' <returns>  the content length of the resource that this connection's URL
 		'''          references, {@code -1} if the content length is not known,
-		'''          or if the content length is greater than Integer.MAX_VALUE. </returns>
+		'''          or if the content length is greater than  [Integer].MAX_VALUE. </returns>
 		Public Overridable Property contentLength As Integer
 			Get
 				Dim l As Long = contentLengthLong

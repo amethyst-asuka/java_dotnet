@@ -80,8 +80,8 @@ Namespace java.io
 		''' </summary>
 		Private peekc As Integer = NEED_CHAR
 
-		Private Shared ReadOnly NEED_CHAR As Integer = Integer.MAX_VALUE
-		Private Shared ReadOnly SKIP_LF As Integer = Integer.MAX_VALUE - 1
+		Private Shared ReadOnly NEED_CHAR As Integer =  [Integer].MAX_VALUE
+		Private Shared ReadOnly SKIP_LF As Integer =  [Integer].MAX_VALUE - 1
 
 		Private pushedBack As Boolean
 		Private forceLower As Boolean

@@ -67,12 +67,12 @@ Namespace java.util
 
 		Private count As Long
 		Private sum As Long
-		Private min As Integer = Integer.MAX_VALUE
+		Private min As Integer =  [Integer].MAX_VALUE
 		Private max As Integer = Integer.MIN_VALUE
 
 		''' <summary>
 		''' Construct an empty instance with zero count, zero sum,
-		''' {@code Integer.MAX_VALUE} min, {@code Integer.MIN_VALUE} max and zero
+		''' {@code  [Integer].MAX_VALUE} min, {@code Integer.MIN_VALUE} max and zero
 		''' average.
 		''' </summary>
 		Public Sub New()
@@ -123,10 +123,10 @@ Namespace java.util
 		End Property
 
 		''' <summary>
-		''' Returns the minimum value recorded, or {@code Integer.MAX_VALUE} if no
+		''' Returns the minimum value recorded, or {@code  [Integer].MAX_VALUE} if no
 		''' values have been recorded.
 		''' </summary>
-		''' <returns> the minimum value, or {@code Integer.MAX_VALUE} if none </returns>
+		''' <returns> the minimum value, or {@code  [Integer].MAX_VALUE} if none </returns>
 		Public Property min As Integer
 			Get
 				Return min

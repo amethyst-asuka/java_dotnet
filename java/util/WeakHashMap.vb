@@ -467,7 +467,7 @@ Namespace java.util
 		''' number of keys in this map reaches its threshold.
 		''' 
 		''' If current capacity is MAXIMUM_CAPACITY, this method does not
-		''' resize the map, but sets threshold to Integer.MAX_VALUE.
+		''' resize the map, but sets threshold to  [Integer].MAX_VALUE.
 		''' This has the effect of preventing future calls.
 		''' </summary>
 		''' <param name="newCapacity"> the new capacity, MUST be a power of two;

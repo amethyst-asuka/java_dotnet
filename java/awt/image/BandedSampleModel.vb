@@ -119,7 +119,7 @@ Namespace java.awt.image
 		'''         width and height. </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>w</code> or
 		'''         <code>h</code> equals either
-		'''         <code>Integer.MAX_VALUE</code> or
+		'''         <code> [Integer].MAX_VALUE</code> or
 		'''         <code>Integer.MIN_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>

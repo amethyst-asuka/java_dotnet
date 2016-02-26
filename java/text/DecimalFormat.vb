@@ -792,7 +792,7 @@ Namespace java.text
 	'     Fast-path formatting will be used for format(double ...) methods iff a
 	'     * number of conditions are met (see checkAndSetFastPathStatus()):
 	'     * - Only if instance properties meet the right predefined conditions.
-	'     * - The abs value of the double to format is <= Integer.MAX_VALUE.
+	'     * - The abs value of the double to format is <=  [Integer].MAX_VALUE.
 	'     *
 	'     * The basic approach is to split the binary to decimal conversion of a
 	'     * double value into two phases:
@@ -804,7 +804,7 @@ Namespace java.text
 	'     * straightforward. The conversion of the fraction is more subtle and relies
 	'     * on some rounding properties of double to the decimal precisions in
 	'     * question.  Using the terminology of BigDecimal, this fast-path algorithm
-	'     * is applied when a double value has a magnitude less than Integer.MAX_VALUE
+	'     * is applied when a double value has a magnitude less than  [Integer].MAX_VALUE
 	'     * and rounding is to nearest even and the destination format has two or
 	'     * three digits of *scale* (digits after the decimal point).
 	'     *
@@ -3624,7 +3624,7 @@ Namespace java.text
 
 		''' <summary>
 		''' Maximum valid integer value for applying fast-path algorithm </summary>
-		Private Shared ReadOnly MAX_INT_AS_DOUBLE As Double = CDbl(Integer.MAX_VALUE)
+		Private Shared ReadOnly MAX_INT_AS_DOUBLE As Double = CDbl( [Integer].MAX_VALUE)
 
 		''' <summary>
 		''' The digit arrays used in the fast-path methods for collecting digits.
@@ -3702,8 +3702,8 @@ Namespace java.text
 		Friend Const DOUBLE_FRACTION_DIGITS As Integer = 340
 
 		' Upper limit on integer and fraction digits for BigDecimal and BigInteger
-		Friend Shared ReadOnly MAXIMUM_INTEGER_DIGITS As Integer = Integer.MAX_VALUE
-		Friend Shared ReadOnly MAXIMUM_FRACTION_DIGITS As Integer = Integer.MAX_VALUE
+		Friend Shared ReadOnly MAXIMUM_INTEGER_DIGITS As Integer =  [Integer].MAX_VALUE
+		Friend Shared ReadOnly MAXIMUM_FRACTION_DIGITS As Integer =  [Integer].MAX_VALUE
 
 		' Proclaim JDK 1.1 serial compatibility.
 		Friend Shadows Const serialVersionUID As Long = 864413376551465018L

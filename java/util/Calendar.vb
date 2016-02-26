@@ -820,7 +820,7 @@ Namespace java.util
 		''' <summary>
 		''' Pseudo-time-stamps which specify when each field was set. There
 		''' are two special values, UNSET and COMPUTED. Values from
-		''' MINIMUM_USER_SET to Integer.MAX_VALUE are legal user set values.
+		''' MINIMUM_USER_SET to  [Integer].MAX_VALUE are legal user set values.
 		''' </summary>
 		<NonSerialized> _
 		Private stamp As Integer()

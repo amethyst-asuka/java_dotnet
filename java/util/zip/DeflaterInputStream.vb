@@ -205,7 +205,7 @@ Namespace java.util.zip
 		''' This method may block until the specified number of bytes are read and
 		''' skipped. <em>Note:</em> While {@code n} is given as a {@code long},
 		''' the maximum number of bytes which can be skipped is
-		''' {@code Integer.MAX_VALUE}.
+		''' {@code  [Integer].MAX_VALUE}.
 		''' </summary>
 		''' <param name="n"> number of bytes to be skipped </param>
 		''' <returns> the actual number of bytes skipped </returns>

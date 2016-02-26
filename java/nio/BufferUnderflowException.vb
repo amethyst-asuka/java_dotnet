@@ -27,6 +27,8 @@
 
 ' -- This file was mechanically generated: Do not edit! -- //
 
+Imports java.lang
+
 Namespace java.nio
 
 

@@ -122,7 +122,7 @@ Namespace java.awt.image
 		'''         is not greater than 0 </exception>
 		''' <exception cref="IllegalArgumentException"> if the product of <code>w</code>
 		'''         and <code>h</code> is greater than
-		'''         <code>Integer.MAX_VALUE</code> </exception>
+		'''         <code> [Integer].MAX_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
 		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal numBands As Integer)

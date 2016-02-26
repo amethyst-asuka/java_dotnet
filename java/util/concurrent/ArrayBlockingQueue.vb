@@ -423,7 +423,7 @@ Namespace java.util.concurrent
 		End Function
 
 		' this doc comment is overridden to remove the reference to collections
-		' greater in size than Integer.MAX_VALUE
+		' greater in size than  [Integer].MAX_VALUE
 		''' <summary>
 		''' Returns the number of elements in this queue.
 		''' </summary>

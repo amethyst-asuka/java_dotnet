@@ -62,7 +62,7 @@ Namespace java.math
         ' defaults for constructors
         Private Const DEFAULT_DIGITS As Integer = 9
         Private Const DEFAULT_ROUNDINGMODE As RoundingMode = roundingMode.HALF_UP
-        ' Smallest values for digits (Maximum is Integer.MAX_VALUE)
+        ' Smallest values for digits (Maximum is  [Integer].MAX_VALUE)
         Private Const MIN_DIGITS As Integer = 0
 
         ' Serialization version

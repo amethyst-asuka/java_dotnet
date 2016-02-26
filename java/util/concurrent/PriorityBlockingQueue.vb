@@ -129,7 +129,7 @@ Namespace java.util.concurrent
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer = Integer.MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' Priority queue represented as a balanced binary heap: the two
@@ -603,9 +603,9 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <summary>
-		''' Always returns {@code Integer.MAX_VALUE} because
+		''' Always returns {@code  [Integer].MAX_VALUE} because
 		''' a {@code PriorityBlockingQueue} is not capacity constrained. </summary>
-		''' <returns> {@code Integer.MAX_VALUE} always </returns>
+		''' <returns> {@code  [Integer].MAX_VALUE} always </returns>
 		Public Overridable Function remainingCapacity() As Integer Implements BlockingQueue(Of E).remainingCapacity
 			Return Integer.MaxValue
 		End Function

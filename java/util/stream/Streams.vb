@@ -73,7 +73,7 @@ Namespace java.util.stream
 			Implements java.util.Spliterator.OfInt
 
 			' Can never be greater that upTo, this avoids overflow if upper bound
-			' is Integer.MAX_VALUE
+			' is  [Integer].MAX_VALUE
 			' All elements are traversed if from == upTo & last == 0
 			Private [from] As Integer
 			Private ReadOnly upTo As Integer
@@ -124,7 +124,7 @@ Namespace java.util.stream
 			End Sub
 
 			Public Overrides Function estimateSize() As Long
-				' Ensure ranges of size > Integer.MAX_VALUE report the correct size
+				' Ensure ranges of size >  [Integer].MAX_VALUE report the correct size
 				Return (CLng(upTo)) - [from] + last
 			End Function
 
@@ -160,7 +160,7 @@ Namespace java.util.stream
 			''' side of the range.
 			''' 
 			''' <p>This is optimized for cases such as IntStream.ints() that is
-			''' implemented as range of 0 to Integer.MAX_VALUE but is likely to be
+			''' implemented as range of 0 to  [Integer].MAX_VALUE but is likely to be
 			''' augmented with a limit operation that limits the number of elements
 			''' to a count lower than this threshold.
 			''' </summary>

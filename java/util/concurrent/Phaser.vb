@@ -65,7 +65,7 @@ Namespace java.util.concurrent
 	''' generation of a phaser has an associated phase number. The phase
 	''' number starts at zero, and advances when all parties arrive at the
 	''' phaser, wrapping around to zero after reaching {@code
-	''' Integer.MAX_VALUE}. The use of phase numbers enables independent
+	'''  [Integer].MAX_VALUE}. The use of phase numbers enables independent
 	''' control of actions upon arrival at a phaser and upon awaiting
 	''' others, via two kinds of methods that may be invoked by any
 	''' registered party:
@@ -207,7 +207,7 @@ Namespace java.util.concurrent
 	''' 
 	''' <p>Related constructions may be used to await particular phase numbers
 	''' in contexts where you are sure that the phase will never wrap around
-	''' {@code Integer.MAX_VALUE}. For example:
+	''' {@code  [Integer].MAX_VALUE}. For example:
 	''' 
 	'''  <pre> {@code
 	''' void awaitPhase(Phaser phaser, int phase) {
@@ -295,7 +295,7 @@ Namespace java.util.concurrent
 		Private state As Long
 
 		Private Const MAX_PARTIES As Integer = &Hffff
-		Private Shared ReadOnly MAX_PHASE As Integer = Integer.MAX_VALUE
+		Private Shared ReadOnly MAX_PHASE As Integer =  [Integer].MAX_VALUE
 		Private Const PARTIES_SHIFT As Integer = 16
 		Private Const PHASE_SHIFT As Integer = 32
 		Private Const UNARRIVED_MASK As Integer = &Hffff ' to mask ints
@@ -782,7 +782,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the current phase number. The maximum phase number is
-		''' {@code Integer.MAX_VALUE}, after which it restarts at
+		''' {@code  [Integer].MAX_VALUE}, after which it restarts at
 		''' zero. Upon termination, the phase number is negative,
 		''' in which case the prevailing phase prior to termination
 		''' may be obtained via {@code getPhase() + Integer.MIN_VALUE}.

@@ -94,8 +94,8 @@ Namespace java.math
     ''' a null object reference for any input parameter.
     ''' 
     ''' BigInteger must support values in the range
-    ''' -2<sup>{@code Integer.MAX_VALUE}</sup> (exclusive) to
-    ''' +2<sup>{@code Integer.MAX_VALUE}</sup> (exclusive)
+    ''' -2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive) to
+    ''' +2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive)
     ''' and may support values outside of that range.
     ''' 
     ''' The range of probable prime values is limited and may be less than
@@ -105,8 +105,8 @@ Namespace java.math
     ''' @implNote
     ''' BigInteger constructors and operations throw {@code ArithmeticException} when
     ''' the result is out of the supported range of
-    ''' -2<sup>{@code Integer.MAX_VALUE}</sup> (exclusive) to
-    ''' +2<sup>{@code Integer.MAX_VALUE}</sup> (exclusive).
+    ''' -2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive) to
+    ''' +2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive).
     ''' </summary>
     ''' <seealso cref=     BigDecimal
     ''' @author  Josh Bloch
@@ -2377,7 +2377,7 @@ Namespace java.math
             Return (If(invertResult, result.modInverse(m), result))
         End Function
 
-        Friend Shared bnExpModThreshTable As Integer() = {7, 25, 81, 241, 673, 1793, Integer.MAX_VALUE}
+        Friend Shared bnExpModThreshTable As Integer() = {7, 25, 81, 241, 673, 1793,  [Integer].MAX_VALUE}
 
         ''' <summary>
         ''' Returns a BigInteger whose value is x to the power of y mod z.

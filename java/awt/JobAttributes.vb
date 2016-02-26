@@ -248,7 +248,7 @@ Namespace java.awt
 		''' Constructs a <code>JobAttributes</code> instance with default
 		''' values for every attribute.  The dialog defaults to
 		''' <code>DialogType.NATIVE</code>.  Min page defaults to
-		''' <code>1</code>.  Max page defaults to <code>Integer.MAX_VALUE</code>.
+		''' <code>1</code>.  Max page defaults to <code> [Integer].MAX_VALUE</code>.
 		''' Destination defaults to <code>DestinationType.PRINTER</code>.
 		''' Selection defaults to <code>DefaultSelectionType.ALL</code>.
 		''' Number of copies defaults to <code>1</code>. Multiple document handling defaults
