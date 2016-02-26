@@ -73,8 +73,8 @@ Namespace java.lang.management
 	'''         </li>
 	'''     <li>Construct an MXBean proxy instance that forwards the
 	'''         method calls to a given <seealso cref="MBeanServer MBeanServer"/> by calling
-	'''         the <seealso cref="#getPlatformMXBean(MBeanServerConnection, Class)"/> or
-	'''         <seealso cref="#getPlatformMXBeans(MBeanServerConnection, Class)"/> method.
+	'''         the <seealso cref="#getPlatformMXBean(MBeanServerConnection, [Class])"/> or
+	'''         <seealso cref="#getPlatformMXBeans(MBeanServerConnection, [Class])"/> method.
 	'''         The <seealso cref="#newPlatformMXBeanProxy newPlatformMXBeanProxy"/> method
 	'''         can also be used to construct an MXBean proxy instance of
 	'''         a given {@code ObjectName}.
@@ -279,7 +279,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> a <seealso cref="ClassLoadingMXBean"/> object for
 		''' the Java virtual machine. </returns>
-		Public Property Shared classLoadingMXBean As ClassLoadingMXBean
+		Public Property Shared classLoadingMXBean As  [Class]LoadingMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.classLoadingMXBean
 			End Get
@@ -559,12 +559,12 @@ Namespace java.lang.management
 		''' </exception>
 		''' <exception cref="java.io.IOException"> if a communication problem
 		''' occurred when accessing the <tt>MBeanServerConnection</tt>. </exception>
-		Public Shared Function newPlatformMXBeanProxy(Of T)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanName As String, ByVal mxbeanInterface As Class) As T
+		Public Shared Function newPlatformMXBeanProxy(Of T)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanName As String, ByVal mxbeanInterface As [Class]) As T
 
 			' Only allow MXBean interfaces from rt.jar loaded by the
 			' bootstrap class loader
-			Dim cls As Class = mxbeanInterface
-			Dim loader As ClassLoader = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+			Dim cls As  [Class] = mxbeanInterface
+			Dim loader As  [Class]Loader = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			If Not sun.misc.VM.isSystemDomainLoader(loader) Then Throw New IllegalArgumentException(mxbeanName & " is not a platform MXBean")
 
 			Try
@@ -573,7 +573,7 @@ Namespace java.lang.management
 				Dim intfName As String = mxbeanInterface.name
 				If Not connection.isInstanceOf(objName, intfName) Then Throw New IllegalArgumentException(mxbeanName & " is not an instance of " & mxbeanInterface)
 
-				Dim interfaces As Class()
+				Dim interfaces As  [Class]()
 				' check if the registered MBean is a notification emitter
 				Dim emitter As Boolean = connection.isInstanceOf(objName, NOTIF_EMITTER)
 
@@ -588,7 +588,7 @@ Namespace java.lang.management
 		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Implements java.security.PrivilegedAction(Of T)
 
-			Public Overridable Function run() As ClassLoader
+			Public Overridable Function run() As  [Class]Loader
 				Return cls.classLoader
 			End Function
 		End Class
@@ -620,7 +620,7 @@ Namespace java.lang.management
 		''' not a singleton platform MXBean.
 		''' 
 		''' @since 1.7 </exception>
-		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(ByVal mxbeanInterface As Class) As T
+		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(ByVal mxbeanInterface As [Class]) As T
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -653,7 +653,7 @@ Namespace java.lang.management
 		''' is not a platform management interface.
 		''' 
 		''' @since 1.7 </exception>
-		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(ByVal mxbeanInterface As Class) As IList(Of T)
+		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(ByVal mxbeanInterface As [Class]) As IList(Of T)
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -674,7 +674,7 @@ Namespace java.lang.management
 		''' does not implement <seealso cref="CompilationMXBean"/>);
 		''' otherwise, this method is equivalent to calling:
 		''' <pre>
-		'''     {@link #getPlatformMXBeans(MBeanServerConnection, Class)
+		'''     {@link #getPlatformMXBeans(MBeanServerConnection, [Class])
 		'''        getPlatformMXBeans(connection, mxbeanInterface)}.get(0);
 		''' </pre>
 		''' </summary>
@@ -697,7 +697,7 @@ Namespace java.lang.management
 		''' </exception>
 		''' <seealso cref= #newPlatformMXBeanProxy
 		''' @since 1.7 </seealso>
-		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanInterface As Class) As T
+		Public Shared Function getPlatformMXBean(Of T As PlatformManagedObject)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanInterface As [Class]) As T
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)
@@ -738,7 +738,7 @@ Namespace java.lang.management
 		''' </exception>
 		''' <seealso cref= #newPlatformMXBeanProxy
 		''' @since 1.7 </seealso>
-		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanInterface As Class) As IList(Of T)
+		Public Shared Function getPlatformMXBeans(Of T As PlatformManagedObject)(ByVal connection As javax.management.MBeanServerConnection, ByVal mxbeanInterface As [Class]) As IList(Of T)
 			Dim pc As PlatformComponent = PlatformComponent.getPlatformComponent(mxbeanInterface)
 			If pc Is Nothing Then
 				Dim mbean As T = sun.management.ExtendedPlatformComponent.getMXBean(mxbeanInterface)

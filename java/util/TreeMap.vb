@@ -203,7 +203,7 @@ Namespace java.util
 			Try
 				buildFromSorted(m.size(), m.entrySet().GetEnumerator(), Nothing, Nothing)
 			Catch cannotHappen As java.io.IOException
-			Catch cannotHappen As ClassNotFoundException
+			Catch cannotHappen As  [Class]NotFoundException
 			End Try
 		End Sub
 
@@ -319,7 +319,7 @@ Namespace java.util
 					Try
 						buildFromSorted(mapSize, map.entrySet().GetEnumerator(), Nothing, Nothing)
 					Catch cannotHappen As java.io.IOException
-					Catch cannotHappen As ClassNotFoundException
+					Catch cannotHappen As  [Class]NotFoundException
 					End Try
 					Return
 				End If
@@ -657,7 +657,7 @@ Namespace java.util
 			Try
 				clone_Renamed.buildFromSorted(size_Renamed, entrySet().GetEnumerator(), Nothing, Nothing)
 			Catch cannotHappen As java.io.IOException
-			Catch cannotHappen As ClassNotFoundException
+			Catch cannotHappen As  [Class]NotFoundException
 			End Try
 
 			Return clone_Renamed
@@ -2619,7 +2619,7 @@ Namespace java.util
 			Try
 				buildFromSorted([set].size(), [set].GetEnumerator(), Nothing, defaultVal)
 			Catch cannotHappen As java.io.IOException
-			Catch cannotHappen As ClassNotFoundException
+			Catch cannotHappen As  [Class]NotFoundException
 			End Try
 		End Sub
 

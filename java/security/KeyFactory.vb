@@ -363,7 +363,7 @@ Namespace java.security
 		''' <exception cref="InvalidKeySpecException"> if the requested key specification is
 		''' inappropriate for the given key, or the given key cannot be processed
 		''' (e.g., the given key has an unrecognized algorithm or format). </exception>
-		Public Function getKeySpec(Of T As java.security.spec.KeySpec)(ByVal key As Key, ByVal keySpec As Class) As T
+		Public Function getKeySpec(Of T As java.security.spec.KeySpec)(ByVal key As Key, ByVal keySpec As [Class]) As T
 			If serviceIterator Is Nothing Then Return spi.engineGetKeySpec(key, keySpec)
 			Dim failure As Exception = Nothing
 			Dim mySpi As KeyFactorySpi = spi

@@ -59,7 +59,7 @@ Namespace java.beans.beancontext
 		''' <param name="serviceProvider">  the <code>BeanContextServiceProvider</code>
 		''' associated with the service </param>
 		''' <returns> true if the service was successful added, false otherwise </returns>
-		Function addService(ByVal serviceClass As Class, ByVal serviceProvider As java.beans.beancontext.BeanContextServiceProvider) As Boolean
+		Function addService(ByVal serviceClass As [Class], ByVal serviceProvider As java.beans.beancontext.BeanContextServiceProvider) As Boolean
 
 		''' <summary>
 		''' BeanContextServiceProviders wishing to remove
@@ -79,14 +79,14 @@ Namespace java.beans.beancontext
 		''' <code>BeanContextServices</code> wishes to immediately
 		''' terminate service to all currently outstanding references
 		''' to the specified service. </param>
-		Sub revokeService(ByVal serviceClass As Class, ByVal serviceProvider As java.beans.beancontext.BeanContextServiceProvider, ByVal revokeCurrentServicesNow As Boolean)
+		Sub revokeService(ByVal serviceClass As [Class], ByVal serviceProvider As java.beans.beancontext.BeanContextServiceProvider, ByVal revokeCurrentServicesNow As Boolean)
 
 		''' <summary>
 		''' Reports whether or not a given service is
 		''' currently available from this context. </summary>
 		''' <param name="serviceClass"> the service in question </param>
 		''' <returns> true if the service is available </returns>
-		Function hasService(ByVal serviceClass As Class) As Boolean
+		Function hasService(ByVal serviceClass As [Class]) As Boolean
 
 		''' <summary>
 		''' A <code>BeanContextChild</code>, or any arbitrary object
@@ -107,7 +107,7 @@ Namespace java.beans.beancontext
 		''' <exception cref="TooManyListenersException"> if there are too many listeners </exception>
 		''' <returns> a reference to this context's named
 		''' Service as requested or <code>null</code> </returns>
-		Function getService(ByVal child As BeanContextChild, ByVal requestor As Object, ByVal serviceClass As Class, ByVal serviceSelector As Object, ByVal bcsrl As BeanContextServiceRevokedListener) As Object
+		Function getService(ByVal child As BeanContextChild, ByVal requestor As Object, ByVal serviceClass As [Class], ByVal serviceSelector As Object, ByVal bcsrl As BeanContextServiceRevokedListener) As Object
 
 		''' <summary>
 		''' Releases a <code>BeanContextChild</code>'s
@@ -133,7 +133,7 @@ Namespace java.beans.beancontext
 		''' <param name="serviceClass"> the specified service </param>
 		''' <returns> the currently available service selectors
 		''' for the named serviceClass </returns>
-		Function getCurrentServiceSelectors(ByVal serviceClass As Class) As IEnumerator
+		Function getCurrentServiceSelectors(ByVal serviceClass As [Class]) As IEnumerator
 
 		''' <summary>
 		''' Adds a <code>BeanContextServicesListener</code> to this BeanContext </summary>

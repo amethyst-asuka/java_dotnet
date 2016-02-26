@@ -58,7 +58,7 @@ Namespace java.sql
 		''' <returns> an object that implements the interface. May be a proxy for the actual implementing object. </returns>
 		''' <exception cref="java.sql.SQLException"> If no object found that implements the interface
 		''' @since 1.6 </exception>
-			 Function unwrap(Of T)(ByVal iface As Class) As T
+			 Function unwrap(Of T)(ByVal iface As [Class]) As T
 
 		''' <summary>
 		''' Returns true if this either implements the interface argument or is directly or indirectly a wrapper
@@ -74,7 +74,7 @@ Namespace java.sql
 		''' <exception cref="java.sql.SQLException">  if an error occurs while determining whether this is a wrapper
 		''' for an object with the given interface.
 		''' @since 1.6 </exception>
-		Function isWrapperFor(ByVal iface As Class) As Boolean
+		Function isWrapperFor(ByVal iface As [Class]) As Boolean
 
 	End Interface
 

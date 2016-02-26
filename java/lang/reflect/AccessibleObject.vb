@@ -159,7 +159,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overridable Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T Implements AnnotatedElement.getAnnotation
+		Public Overridable Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
 			Throw New AssertionError("All subclasses should override this method")
 		End Function
 
@@ -167,13 +167,13 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function isAnnotationPresent(ByVal annotationClass As Class) As Boolean Implements AnnotatedElement.isAnnotationPresent
+		Public Overrides Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean Implements AnnotatedElement.isAnnotationPresent
 			Return outerInstance.isAnnotationPresent(annotationClass)
 		End Function
 
 	   ''' <exception cref="NullPointerException"> {@inheritDoc}
 	   ''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As Class) As T() Implements AnnotatedElement.getAnnotationsByType
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
 			Throw New AssertionError("All subclasses should override this method")
 		End Function
 
@@ -188,7 +188,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T Implements AnnotatedElement.getDeclaredAnnotation
+		Public Overrides Function getDeclaredAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getDeclaredAnnotation
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotation is the same as
 			' getAnnotation.
@@ -197,7 +197,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(ByVal annotationClass As Class) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
+		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotationsByType is the same as
 			' getAnnotationsByType.
@@ -218,7 +218,7 @@ Namespace java.lang.reflect
 
 		' For non-public members or members in package-private classes,
 		' it is necessary to perform somewhat expensive security checks.
-		' If the security check succeeds for a given class, it will
+		' If the security check succeeds for a given [Class], it will
 		' always succeed (it is not affected by the granting or revoking
 		' of permissions); we speed up the check in the common case by
 		' remembering the last Class for which the check succeeded.
@@ -234,15 +234,15 @@ Namespace java.lang.reflect
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		Friend securityCheckCache As Object
 
-		Friend Overridable Sub checkAccess(ByVal caller As Class, ByVal clazz As Class, ByVal obj As Object, ByVal modifiers As Integer)
+		Friend Overridable Sub checkAccess(ByVal caller As [Class], ByVal clazz As [Class], ByVal obj As Object, ByVal modifiers As Integer)
 			If caller Is clazz Then ' quick check Return ' ACCESS IS OK
 			Dim cache As Object = securityCheckCache ' read volatile
-			Dim targetClass As Class = clazz
+			Dim targetClass As  [Class] = clazz
 			targetClass = obj.GetType()
 			If obj IsNot Nothing AndAlso Modifier.isProtected(modifiers) AndAlso (targetClass IsNot clazz) Then
 				' Must match a 2-list of { caller, targetClass }.
 				If TypeOf cache Is Class() Then
-					Dim cache2 As Class() = CType(cache, Class())
+					Dim cache2 As  [Class]() = CType(cache, Class())
 					If cache2(1) Is targetClass AndAlso cache2(0) Is caller Then Return ' ACCESS IS OK
 					' (Test cache[1] first since range check for [1]
 					' subsumes range check for [0].)
@@ -257,7 +257,7 @@ Namespace java.lang.reflect
 		End Sub
 
 		' Keep all this slow stuff out of line:
-		Friend Overridable Sub slowCheckMemberAccess(ByVal caller As Class, ByVal clazz As Class, ByVal obj As Object, ByVal modifiers As Integer, ByVal targetClass As Class)
+		Friend Overridable Sub slowCheckMemberAccess(ByVal caller As [Class], ByVal clazz As [Class], ByVal obj As Object, ByVal modifiers As Integer, ByVal targetClass As [Class])
 			sun.reflect.Reflection.ensureMemberAccess(caller, clazz, obj, modifiers)
 
 			' Success: Update the cache.

@@ -43,7 +43,7 @@ Namespace java.lang.invoke
 			Me.referenceKind = referenceKind
 		End Sub
 
-		Public Property Overrides declaringClass As Class Implements MethodHandleInfo.getDeclaringClass
+		Public Property Overrides declaringClass As  [Class] Implements MethodHandleInfo.getDeclaringClass
 			Get
 				Return member.declaringClass
 			End Get
@@ -77,11 +77,11 @@ Namespace java.lang.invoke
 			Return MethodHandleInfo.ToString(referenceKind, declaringClass, name, methodType)
 		End Function
 
-		Public Overrides Function reflectAs(Of T As Member)(ByVal expected As Class, ByVal lookup As Lookup) As T Implements MethodHandleInfo.reflectAs
+		Public Overrides Function reflectAs(Of T As Member)(ByVal expected As [Class], ByVal lookup As Lookup) As T Implements MethodHandleInfo.reflectAs
 			If member.methodHandleInvoke AndAlso (Not member.varargs) Then Throw New IllegalArgumentException("cannot reflect signature polymorphic method")
 			Dim mem As Member = AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Try
-				Dim defc As Class = declaringClass
+				Dim defc As  [Class] = declaringClass
 				Dim refKind As SByte = CByte(referenceKind)
 				lookup.checkAccess(refKind, defc, convertToMemberName(refKind, mem))
 			Catch ex As IllegalAccessException
@@ -104,7 +104,7 @@ Namespace java.lang.invoke
 
 		Private Function reflectUnchecked() As Member
 			Dim refKind As SByte = CByte(referenceKind)
-			Dim defc As Class = declaringClass
+			Dim defc As  [Class] = declaringClass
 			Dim isPublic As Boolean = Modifier.isPublic(modifiers)
 			If MethodHandleNatives.refKindIsMethod(refKind) Then
 				If isPublic Then

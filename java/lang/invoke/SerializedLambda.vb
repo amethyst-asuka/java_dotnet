@@ -43,7 +43,7 @@ Namespace java.lang.invoke
 	''' 
 	''' <p>{@code SerializedLambda} has a {@code readResolve} method that looks for
 	''' a (possibly private) static method called
-	''' {@code $deserializeLambda$(SerializedLambda)} in the capturing class, invokes
+	''' {@code $deserializeLambda$(SerializedLambda)} in the capturing [Class], invokes
 	''' that with itself as the first argument, and returns the result.  Lambda classes
 	''' implementing {@code $deserializeLambda$} are responsible for validating
 	''' that the properties of the {@code SerializedLambda} are consistent with a
@@ -53,7 +53,7 @@ Namespace java.lang.invoke
 	<Serializable> _
 	Public NotInheritable Class SerializedLambda
 		Private Const serialVersionUID As Long = 8025925345765570181L
-		Private ReadOnly capturingClass As Class
+		Private ReadOnly capturingClass As  [Class]
 		Private ReadOnly functionalInterfaceClass As String
 		Private ReadOnly functionalInterfaceMethodName As String
 		Private ReadOnly functionalInterfaceMethodSignature As String
@@ -89,7 +89,7 @@ Namespace java.lang.invoke
 		''' <param name="capturedArgs"> The dynamic arguments to the lambda factory site,
 		'''                     which represent variables captured by
 		'''                     the lambda </param>
-		Public Sub New(ByVal capturingClass As Class, ByVal functionalInterfaceClass As String, ByVal functionalInterfaceMethodName As String, ByVal functionalInterfaceMethodSignature As String, ByVal implMethodKind As Integer, ByVal implClass As String, ByVal implMethodName As String, ByVal implMethodSignature As String, ByVal instantiatedMethodType As String, ByVal capturedArgs As Object())
+		Public Sub New(ByVal capturingClass As [Class], ByVal functionalInterfaceClass As String, ByVal functionalInterfaceMethodName As String, ByVal functionalInterfaceMethodSignature As String, ByVal implMethodKind As Integer, ByVal implClass As String, ByVal implMethodName As String, ByVal implMethodSignature As String, ByVal instantiatedMethodType As String, ByVal capturedArgs As Object())
 			Me.capturingClass = capturingClass
 			Me.functionalInterfaceClass = functionalInterfaceClass
 			Me.functionalInterfaceMethodName = functionalInterfaceMethodName

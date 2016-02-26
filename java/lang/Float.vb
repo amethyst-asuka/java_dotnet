@@ -124,175 +124,175 @@ Namespace java.lang
 		''' </summary>
 		Public Const SIZE As Integer = 32
 
-		''' <summary>
-		''' The number of bytes used to represent a {@code float} value.
-		''' 
-		''' @since 1.8
-		''' </summary>
-		Public Shared ReadOnly BYTES As Integer = SIZE \ Byte.SIZE
+        ''' <summary>
+        ''' The number of bytes used to represent a {@code float} value.
+        ''' 
+        ''' @since 1.8
+        ''' </summary>
+        Public Shared ReadOnly BYTES As Integer = SIZE \ [Byte].SIZE
 
-		''' <summary>
-		''' The {@code Class} instance representing the primitive type
-		''' {@code float}.
-		''' 
-		''' @since JDK1.1
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared ReadOnly TYPE As Class = CType(Class.getPrimitiveClass("float"), [Class])
+        ''' <summary>
+        ''' The {@code Class} instance representing the primitive type
+        ''' {@code float}.
+        ''' 
+        ''' @since JDK1.1
+        ''' </summary>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Public Shared ReadOnly TYPE As [Class] = CType([Class].getPrimitiveClass("float"), [Class])
 
-		''' <summary>
-		''' Returns a string representation of the {@code float}
-		''' argument. All characters mentioned below are ASCII characters.
-		''' <ul>
-		''' <li>If the argument is NaN, the result is the string
-		''' "{@code NaN}".
-		''' <li>Otherwise, the result is a string that represents the sign and
-		'''     magnitude (absolute value) of the argument. If the sign is
-		'''     negative, the first character of the result is
-		'''     '{@code -}' ({@code '\u005Cu002D'}); if the sign is
-		'''     positive, no sign character appears in the result. As for
-		'''     the magnitude <i>m</i>:
-		''' <ul>
-		''' <li>If <i>m</i> is infinity, it is represented by the characters
-		'''     {@code "Infinity"}; thus, positive infinity produces
-		'''     the result {@code "Infinity"} and negative infinity
-		'''     produces the result {@code "-Infinity"}.
-		''' <li>If <i>m</i> is zero, it is represented by the characters
-		'''     {@code "0.0"}; thus, negative zero produces the result
-		'''     {@code "-0.0"} and positive zero produces the result
-		'''     {@code "0.0"}.
-		''' <li> If <i>m</i> is greater than or equal to 10<sup>-3</sup> but
-		'''      less than 10<sup>7</sup>, then it is represented as the
-		'''      integer part of <i>m</i>, in decimal form with no leading
-		'''      zeroes, followed by '{@code .}'
-		'''      ({@code '\u005Cu002E'}), followed by one or more
-		'''      decimal digits representing the fractional part of
-		'''      <i>m</i>.
-		''' <li> If <i>m</i> is less than 10<sup>-3</sup> or greater than or
-		'''      equal to 10<sup>7</sup>, then it is represented in
-		'''      so-called "computerized scientific notation." Let <i>n</i>
-		'''      be the unique integer such that 10<sup><i>n</i> </sup>&le;
-		'''      <i>m</i> {@literal <} 10<sup><i>n</i>+1</sup>; then let <i>a</i>
-		'''      be the mathematically exact quotient of <i>m</i> and
-		'''      10<sup><i>n</i></sup> so that 1 &le; <i>a</i> {@literal <} 10.
-		'''      The magnitude is then represented as the integer part of
-		'''      <i>a</i>, as a single decimal digit, followed by
-		'''      '{@code .}' ({@code '\u005Cu002E'}), followed by
-		'''      decimal digits representing the fractional part of
-		'''      <i>a</i>, followed by the letter '{@code E}'
-		'''      ({@code '\u005Cu0045'}), followed by a representation
-		'''      of <i>n</i> as a decimal integer, as produced by the
-		'''      method <seealso cref="java.lang.Integer#toString(int)"/>.
-		''' 
-		''' </ul>
-		''' </ul>
-		''' How many digits must be printed for the fractional part of
-		''' <i>m</i> or <i>a</i>? There must be at least one digit
-		''' to represent the fractional part, and beyond that as many, but
-		''' only as many, more digits as are needed to uniquely distinguish
-		''' the argument value from adjacent values of type
-		''' {@code float}. That is, suppose that <i>x</i> is the
-		''' exact mathematical value represented by the decimal
-		''' representation produced by this method for a finite nonzero
-		''' argument <i>f</i>. Then <i>f</i> must be the {@code float}
-		''' value nearest to <i>x</i>; or, if two {@code float} values are
-		''' equally close to <i>x</i>, then <i>f</i> must be one of
-		''' them and the least significant bit of the significand of
-		''' <i>f</i> must be {@code 0}.
-		''' 
-		''' <p>To create localized string representations of a floating-point
-		''' value, use subclasses of <seealso cref="java.text.NumberFormat"/>.
-		''' </summary>
-		''' <param name="f">   the float to be converted. </param>
-		''' <returns> a string representation of the argument. </returns>
-		Public Shared Function ToString(ByVal f As Single) As String
-			Return sun.misc.FloatingDecimal.toJavaFormatString(f)
-		End Function
+        ''' <summary>
+        ''' Returns a string representation of the {@code float}
+        ''' argument. All characters mentioned below are ASCII characters.
+        ''' <ul>
+        ''' <li>If the argument is NaN, the result is the string
+        ''' "{@code NaN}".
+        ''' <li>Otherwise, the result is a string that represents the sign and
+        '''     magnitude (absolute value) of the argument. If the sign is
+        '''     negative, the first character of the result is
+        '''     '{@code -}' ({@code '\u005Cu002D'}); if the sign is
+        '''     positive, no sign character appears in the result. As for
+        '''     the magnitude <i>m</i>:
+        ''' <ul>
+        ''' <li>If <i>m</i> is infinity, it is represented by the characters
+        '''     {@code "Infinity"}; thus, positive infinity produces
+        '''     the result {@code "Infinity"} and negative infinity
+        '''     produces the result {@code "-Infinity"}.
+        ''' <li>If <i>m</i> is zero, it is represented by the characters
+        '''     {@code "0.0"}; thus, negative zero produces the result
+        '''     {@code "-0.0"} and positive zero produces the result
+        '''     {@code "0.0"}.
+        ''' <li> If <i>m</i> is greater than or equal to 10<sup>-3</sup> but
+        '''      less than 10<sup>7</sup>, then it is represented as the
+        '''      integer part of <i>m</i>, in decimal form with no leading
+        '''      zeroes, followed by '{@code .}'
+        '''      ({@code '\u005Cu002E'}), followed by one or more
+        '''      decimal digits representing the fractional part of
+        '''      <i>m</i>.
+        ''' <li> If <i>m</i> is less than 10<sup>-3</sup> or greater than or
+        '''      equal to 10<sup>7</sup>, then it is represented in
+        '''      so-called "computerized scientific notation." Let <i>n</i>
+        '''      be the unique integer such that 10<sup><i>n</i> </sup>&le;
+        '''      <i>m</i> {@literal <} 10<sup><i>n</i>+1</sup>; then let <i>a</i>
+        '''      be the mathematically exact quotient of <i>m</i> and
+        '''      10<sup><i>n</i></sup> so that 1 &le; <i>a</i> {@literal <} 10.
+        '''      The magnitude is then represented as the integer part of
+        '''      <i>a</i>, as a single decimal digit, followed by
+        '''      '{@code .}' ({@code '\u005Cu002E'}), followed by
+        '''      decimal digits representing the fractional part of
+        '''      <i>a</i>, followed by the letter '{@code E}'
+        '''      ({@code '\u005Cu0045'}), followed by a representation
+        '''      of <i>n</i> as a decimal integer, as produced by the
+        '''      method <seealso cref="java.lang.Integer#toString(int)"/>.
+        ''' 
+        ''' </ul>
+        ''' </ul>
+        ''' How many digits must be printed for the fractional part of
+        ''' <i>m</i> or <i>a</i>? There must be at least one digit
+        ''' to represent the fractional part, and beyond that as many, but
+        ''' only as many, more digits as are needed to uniquely distinguish
+        ''' the argument value from adjacent values of type
+        ''' {@code float}. That is, suppose that <i>x</i> is the
+        ''' exact mathematical value represented by the decimal
+        ''' representation produced by this method for a finite nonzero
+        ''' argument <i>f</i>. Then <i>f</i> must be the {@code float}
+        ''' value nearest to <i>x</i>; or, if two {@code float} values are
+        ''' equally close to <i>x</i>, then <i>f</i> must be one of
+        ''' them and the least significant bit of the significand of
+        ''' <i>f</i> must be {@code 0}.
+        ''' 
+        ''' <p>To create localized string representations of a floating-point
+        ''' value, use subclasses of <seealso cref="java.text.NumberFormat"/>.
+        ''' </summary>
+        ''' <param name="f">   the float to be converted. </param>
+        ''' <returns> a string representation of the argument. </returns>
+        Public Overloads Shared Function ToString(ByVal f As Single) As String
+            Return sun.misc.FloatingDecimal.toJavaFormatString(f)
+        End Function
 
-		''' <summary>
-		''' Returns a hexadecimal string representation of the
-		''' {@code float} argument. All characters mentioned below are
-		''' ASCII characters.
-		''' 
-		''' <ul>
-		''' <li>If the argument is NaN, the result is the string
-		'''     "{@code NaN}".
-		''' <li>Otherwise, the result is a string that represents the sign and
-		''' magnitude (absolute value) of the argument. If the sign is negative,
-		''' the first character of the result is '{@code -}'
-		''' ({@code '\u005Cu002D'}); if the sign is positive, no sign character
-		''' appears in the result. As for the magnitude <i>m</i>:
-		''' 
-		''' <ul>
-		''' <li>If <i>m</i> is infinity, it is represented by the string
-		''' {@code "Infinity"}; thus, positive infinity produces the
-		''' result {@code "Infinity"} and negative infinity produces
-		''' the result {@code "-Infinity"}.
-		''' 
-		''' <li>If <i>m</i> is zero, it is represented by the string
-		''' {@code "0x0.0p0"}; thus, negative zero produces the result
-		''' {@code "-0x0.0p0"} and positive zero produces the result
-		''' {@code "0x0.0p0"}.
-		''' 
-		''' <li>If <i>m</i> is a {@code float} value with a
-		''' normalized representation, substrings are used to represent the
-		''' significand and exponent fields.  The significand is
-		''' represented by the characters {@code "0x1."}
-		''' followed by a lowercase hexadecimal representation of the rest
-		''' of the significand as a fraction.  Trailing zeros in the
-		''' hexadecimal representation are removed unless all the digits
-		''' are zero, in which case a single zero is used. Next, the
-		''' exponent is represented by {@code "p"} followed
-		''' by a decimal string of the unbiased exponent as if produced by
-		''' a call to <seealso cref="Integer#toString(int) Integer.toString"/> on the
-		''' exponent value.
-		''' 
-		''' <li>If <i>m</i> is a {@code float} value with a subnormal
-		''' representation, the significand is represented by the
-		''' characters {@code "0x0."} followed by a
-		''' hexadecimal representation of the rest of the significand as a
-		''' fraction.  Trailing zeros in the hexadecimal representation are
-		''' removed. Next, the exponent is represented by
-		''' {@code "p-126"}.  Note that there must be at
-		''' least one nonzero digit in a subnormal significand.
-		''' 
-		''' </ul>
-		''' 
-		''' </ul>
-		''' 
-		''' <table border>
-		''' <caption>Examples</caption>
-		''' <tr><th>Floating-point Value</th><th>Hexadecimal String</th>
-		''' <tr><td>{@code 1.0}</td> <td>{@code 0x1.0p0}</td>
-		''' <tr><td>{@code -1.0}</td>        <td>{@code -0x1.0p0}</td>
-		''' <tr><td>{@code 2.0}</td> <td>{@code 0x1.0p1}</td>
-		''' <tr><td>{@code 3.0}</td> <td>{@code 0x1.8p1}</td>
-		''' <tr><td>{@code 0.5}</td> <td>{@code 0x1.0p-1}</td>
-		''' <tr><td>{@code 0.25}</td>        <td>{@code 0x1.0p-2}</td>
-		''' <tr><td>{@code Float.MAX_VALUE}</td>
-		'''     <td>{@code 0x1.fffffep127}</td>
-		''' <tr><td>{@code Minimum Normal Value}</td>
-		'''     <td>{@code 0x1.0p-126}</td>
-		''' <tr><td>{@code Maximum Subnormal Value}</td>
-		'''     <td>{@code 0x0.fffffep-126}</td>
-		''' <tr><td>{@code Float.MIN_VALUE}</td>
-		'''     <td>{@code 0x0.000002p-126}</td>
-		''' </table> </summary>
-		''' <param name="f">   the {@code float} to be converted. </param>
-		''' <returns> a hex string representation of the argument.
-		''' @since 1.5
-		''' @author Joseph D. Darcy </returns>
-		Public Shared Function toHexString(ByVal f As Single) As String
+        ''' <summary>
+        ''' Returns a hexadecimal string representation of the
+        ''' {@code float} argument. All characters mentioned below are
+        ''' ASCII characters.
+        ''' 
+        ''' <ul>
+        ''' <li>If the argument is NaN, the result is the string
+        '''     "{@code NaN}".
+        ''' <li>Otherwise, the result is a string that represents the sign and
+        ''' magnitude (absolute value) of the argument. If the sign is negative,
+        ''' the first character of the result is '{@code -}'
+        ''' ({@code '\u005Cu002D'}); if the sign is positive, no sign character
+        ''' appears in the result. As for the magnitude <i>m</i>:
+        ''' 
+        ''' <ul>
+        ''' <li>If <i>m</i> is infinity, it is represented by the string
+        ''' {@code "Infinity"}; thus, positive infinity produces the
+        ''' result {@code "Infinity"} and negative infinity produces
+        ''' the result {@code "-Infinity"}.
+        ''' 
+        ''' <li>If <i>m</i> is zero, it is represented by the string
+        ''' {@code "0x0.0p0"}; thus, negative zero produces the result
+        ''' {@code "-0x0.0p0"} and positive zero produces the result
+        ''' {@code "0x0.0p0"}.
+        ''' 
+        ''' <li>If <i>m</i> is a {@code float} value with a
+        ''' normalized representation, substrings are used to represent the
+        ''' significand and exponent fields.  The significand is
+        ''' represented by the characters {@code "0x1."}
+        ''' followed by a lowercase hexadecimal representation of the rest
+        ''' of the significand as a fraction.  Trailing zeros in the
+        ''' hexadecimal representation are removed unless all the digits
+        ''' are zero, in which case a single zero is used. Next, the
+        ''' exponent is represented by {@code "p"} followed
+        ''' by a decimal string of the unbiased exponent as if produced by
+        ''' a call to <seealso cref="Integer#toString(int) Integer.toString"/> on the
+        ''' exponent value.
+        ''' 
+        ''' <li>If <i>m</i> is a {@code float} value with a subnormal
+        ''' representation, the significand is represented by the
+        ''' characters {@code "0x0."} followed by a
+        ''' hexadecimal representation of the rest of the significand as a
+        ''' fraction.  Trailing zeros in the hexadecimal representation are
+        ''' removed. Next, the exponent is represented by
+        ''' {@code "p-126"}.  Note that there must be at
+        ''' least one nonzero digit in a subnormal significand.
+        ''' 
+        ''' </ul>
+        ''' 
+        ''' </ul>
+        ''' 
+        ''' <table border>
+        ''' <caption>Examples</caption>
+        ''' <tr><th>Floating-point Value</th><th>Hexadecimal String</th>
+        ''' <tr><td>{@code 1.0}</td> <td>{@code 0x1.0p0}</td>
+        ''' <tr><td>{@code -1.0}</td>        <td>{@code -0x1.0p0}</td>
+        ''' <tr><td>{@code 2.0}</td> <td>{@code 0x1.0p1}</td>
+        ''' <tr><td>{@code 3.0}</td> <td>{@code 0x1.8p1}</td>
+        ''' <tr><td>{@code 0.5}</td> <td>{@code 0x1.0p-1}</td>
+        ''' <tr><td>{@code 0.25}</td>        <td>{@code 0x1.0p-2}</td>
+        ''' <tr><td>{@code Float.MAX_VALUE}</td>
+        '''     <td>{@code 0x1.fffffep127}</td>
+        ''' <tr><td>{@code Minimum Normal Value}</td>
+        '''     <td>{@code 0x1.0p-126}</td>
+        ''' <tr><td>{@code Maximum Subnormal Value}</td>
+        '''     <td>{@code 0x0.fffffep-126}</td>
+        ''' <tr><td>{@code Float.MIN_VALUE}</td>
+        '''     <td>{@code 0x0.000002p-126}</td>
+        ''' </table> </summary>
+        ''' <param name="f">   the {@code float} to be converted. </param>
+        ''' <returns> a hex string representation of the argument.
+        ''' @since 1.5
+        ''' @author Joseph D. Darcy </returns>
+        Public Shared Function toHexString(ByVal f As Single) As String
 			If Math.Abs(f) < sun.misc.FloatConsts.MIN_NORMAL AndAlso f <> 0.0f Then ' float subnormal
-				' Adjust exponent to create subnormal double, then
-				' replace subnormal double exponent with subnormal float
-				' exponent
-				Dim s As String = Double.toHexString(Math.scalb(CDbl(f), sun.misc.DoubleConsts.MIN_EXPONENT- sun.misc.FloatConsts.MIN_EXPONENT))
-														 ' -1022+126 
-				Return s.replaceFirst("p-1022$", "p-126")
+                ' Adjust exponent to create subnormal double, then
+                ' replace subnormal double exponent with subnormal float
+                ' exponent
+                Dim s As String = [Double].toHexString(Math.scalb(CDbl(f), sun.misc.DoubleConsts.MIN_EXPONENT - sun.misc.FloatConsts.MIN_EXPONENT))
+                ' -1022+126 
+                Return s.replaceFirst("p-1022$", "p-126")
 			Else ' double string will be the same as float string
-				Return Double.toHexString(f)
-			End If
+                Return [Double].toHexString(f)
+            End If
 		End Function
 
 		''' <summary>
@@ -522,40 +522,40 @@ Namespace java.lang
 			value = parseFloat(s)
 		End Sub
 
-		''' <summary>
-		''' Returns {@code true} if this {@code Float} value is a
-		''' Not-a-Number (NaN), {@code false} otherwise.
-		''' </summary>
-		''' <returns>  {@code true} if the value represented by this object is
-		'''          NaN; {@code false} otherwise. </returns>
-		Public Property naN As Boolean
-			Get
-				Return isNaN(value)
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns {@code true} if this {@code Float} value is a
+        ''' Not-a-Number (NaN), {@code false} otherwise.
+        ''' </summary>
+        ''' <returns>  {@code true} if the value represented by this object is
+        '''          NaN; {@code false} otherwise. </returns>
+        Public ReadOnly Property naN As Boolean
+            Get
+                Return isNaN(value)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns {@code true} if this {@code Float} value is
-		''' infinitely large in magnitude, {@code false} otherwise.
-		''' </summary>
-		''' <returns>  {@code true} if the value represented by this object is
-		'''          positive infinity or negative infinity;
-		'''          {@code false} otherwise. </returns>
-		Public Property infinite As Boolean
-			Get
-				Return isInfinite(value)
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns {@code true} if this {@code Float} value is
+        ''' infinitely large in magnitude, {@code false} otherwise.
+        ''' </summary>
+        ''' <returns>  {@code true} if the value represented by this object is
+        '''          positive infinity or negative infinity;
+        '''          {@code false} otherwise. </returns>
+        Public ReadOnly Property infinite As Boolean
+            Get
+                Return isInfinite(value)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns a string representation of this {@code Float} object.
-		''' The primitive {@code float} value represented by this object
-		''' is converted to a {@code String} exactly as if by the method
-		''' {@code toString} of one argument.
-		''' </summary>
-		''' <returns>  a {@code String} representation of this object. </returns>
-		''' <seealso cref= java.lang.Float#toString(float) </seealso>
-		Public Overrides Function ToString() As String
+        ''' <summary>
+        ''' Returns a string representation of this {@code Float} object.
+        ''' The primitive {@code float} value represented by this object
+        ''' is converted to a {@code String} exactly as if by the method
+        ''' {@code toString} of one argument.
+        ''' </summary>
+        ''' <returns>  a {@code String} representation of this object. </returns>
+        ''' <seealso cref= java.lang.Float#toString(float) </seealso>
+        Public Overrides Function ToString() As String
 			Return Convert.ToString(value)
 		End Function
 
@@ -632,60 +632,60 @@ Namespace java.lang
 		''' </summary>
 		''' <returns> a hash code value for this object. </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return Float.hashCode(value)
-		End Function
+            Return Float.GetHashCode(value)
+        End Function
 
-		''' <summary>
-		''' Returns a hash code for a {@code float} value; compatible with
-		''' {@code Float.hashCode()}.
-		''' </summary>
-		''' <param name="value"> the value to hash </param>
-		''' <returns> a hash code value for a {@code float} value.
-		''' @since 1.8 </returns>
-		Public Shared Function GetHashCode(ByVal value As Single) As Integer
-			Return floatToIntBits(value)
-		End Function
+        ''' <summary>
+        ''' Returns a hash code for a {@code float} value; compatible with
+        ''' {@code Float.hashCode()}.
+        ''' </summary>
+        ''' <param name="value"> the value to hash </param>
+        ''' <returns> a hash code value for a {@code float} value.
+        ''' @since 1.8 </returns>
+        Public Overloads Shared Function GetHashCode(ByVal value As Single) As Integer
+            Return floatToIntBits(value)
+        End Function
 
-		''' 
-		''' <summary>
-		''' Compares this object against the specified object.  The result
-		''' is {@code true} if and only if the argument is not
-		''' {@code null} and is a {@code Float} object that
-		''' represents a {@code float} with the same value as the
-		''' {@code float} represented by this object. For this
-		''' purpose, two {@code float} values are considered to be the
-		''' same if and only if the method <seealso cref="#floatToIntBits(float)"/>
-		''' returns the identical {@code int} value when applied to
-		''' each.
-		''' 
-		''' <p>Note that in most cases, for two instances of class
-		''' {@code Float}, {@code f1} and {@code f2}, the value
-		''' of {@code f1.equals(f2)} is {@code true} if and only if
-		''' 
-		''' <blockquote><pre>
-		'''   f1.floatValue() == f2.floatValue()
-		''' </pre></blockquote>
-		''' 
-		''' <p>also has the value {@code true}. However, there are two exceptions:
-		''' <ul>
-		''' <li>If {@code f1} and {@code f2} both represent
-		'''     {@code Float.NaN}, then the {@code equals} method returns
-		'''     {@code true}, even though {@code Float.NaN==Float.NaN}
-		'''     has the value {@code false}.
-		''' <li>If {@code f1} represents {@code +0.0f} while
-		'''     {@code f2} represents {@code -0.0f}, or vice
-		'''     versa, the {@code equal} test has the value
-		'''     {@code false}, even though {@code 0.0f==-0.0f}
-		'''     has the value {@code true}.
-		''' </ul>
-		''' 
-		''' This definition allows hash tables to operate properly.
-		''' </summary>
-		''' <param name="obj"> the object to be compared </param>
-		''' <returns>  {@code true} if the objects are the same;
-		'''          {@code false} otherwise. </returns>
-		''' <seealso cref= java.lang.Float#floatToIntBits(float) </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        ''' 
+        ''' <summary>
+        ''' Compares this object against the specified object.  The result
+        ''' is {@code true} if and only if the argument is not
+        ''' {@code null} and is a {@code Float} object that
+        ''' represents a {@code float} with the same value as the
+        ''' {@code float} represented by this object. For this
+        ''' purpose, two {@code float} values are considered to be the
+        ''' same if and only if the method <seealso cref="#floatToIntBits(float)"/>
+        ''' returns the identical {@code int} value when applied to
+        ''' each.
+        ''' 
+        ''' <p>Note that in most cases, for two instances of class
+        ''' {@code Float}, {@code f1} and {@code f2}, the value
+        ''' of {@code f1.equals(f2)} is {@code true} if and only if
+        ''' 
+        ''' <blockquote><pre>
+        '''   f1.floatValue() == f2.floatValue()
+        ''' </pre></blockquote>
+        ''' 
+        ''' <p>also has the value {@code true}. However, there are two exceptions:
+        ''' <ul>
+        ''' <li>If {@code f1} and {@code f2} both represent
+        '''     {@code Float.NaN}, then the {@code equals} method returns
+        '''     {@code true}, even though {@code Float.NaN==Float.NaN}
+        '''     has the value {@code false}.
+        ''' <li>If {@code f1} represents {@code +0.0f} while
+        '''     {@code f2} represents {@code -0.0f}, or vice
+        '''     versa, the {@code equal} test has the value
+        '''     {@code false}, even though {@code 0.0f==-0.0f}
+        '''     has the value {@code true}.
+        ''' </ul>
+        ''' 
+        ''' This definition allows hash tables to operate properly.
+        ''' </summary>
+        ''' <param name="obj"> the object to be compared </param>
+        ''' <returns>  {@code true} if the objects are the same;
+        '''          {@code false} otherwise. </returns>
+        ''' <seealso cref= java.lang.Float#floatToIntBits(float) </seealso>
+        Public Overrides Function Equals(ByVal obj As Object) As Boolean
 			Return (TypeOf obj Is Float) AndAlso (floatToIntBits(CSng(obj).value) = floatToIntBits(value))
 		End Function
 
@@ -931,9 +931,13 @@ Namespace java.lang
 			Return Math.Min(a, b)
 		End Function
 
-		''' <summary>
-		''' use serialVersionUID from JDK 1.0.2 for interoperability </summary>
-		Private Const serialVersionUID As Long = -2671257302660747028L
-	End Class
+        ''' <summary>
+        ''' use serialVersionUID from JDK 1.0.2 for interoperability </summary>
+        Private Const serialVersionUID As Long = -2671257302660747028L
+
+        Public Shared Widening Operator CType(s As Single) As Float
+            Return New Float(s)
+        End Operator
+    End Class
 
 End Namespace

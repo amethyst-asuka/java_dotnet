@@ -481,7 +481,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getActionListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then
 				l = actionListener

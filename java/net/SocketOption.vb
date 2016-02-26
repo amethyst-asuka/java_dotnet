@@ -52,7 +52,7 @@ Namespace java.net
 		''' Returns the type of the socket option value.
 		''' </summary>
 		''' <returns> the type of the socket option value </returns>
-		Function type() As Class
+		Function type() As  [Class]
 	End Interface
 
 End Namespace

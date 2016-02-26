@@ -342,7 +342,7 @@ Namespace java.util.prefs
 		''' <exception cref="SecurityException"> if a security manager is present and
 		'''         it denies <tt>RuntimePermission("preferences")</tt>. </exception>
 		''' <seealso cref=    RuntimePermission </seealso>
-		Public Shared Function userNodeForPackage(ByVal c As Class) As Preferences
+		Public Shared Function userNodeForPackage(ByVal c As [Class]) As Preferences
 			Return userRoot().node(nodeName(c))
 		End Function
 
@@ -385,7 +385,7 @@ Namespace java.util.prefs
 		''' <exception cref="SecurityException"> if a security manager is present and
 		'''         it denies <tt>RuntimePermission("preferences")</tt>. </exception>
 		''' <seealso cref=    RuntimePermission </seealso>
-		Public Shared Function systemNodeForPackage(ByVal c As Class) As Preferences
+		Public Shared Function systemNodeForPackage(ByVal c As [Class]) As Preferences
 			Return systemRoot().node(nodeName(c))
 		End Function
 
@@ -395,7 +395,7 @@ Namespace java.util.prefs
 		''' </summary>
 		''' <exception cref="IllegalArgumentException"> if the package has node preferences
 		'''         node associated with it. </exception>
-		Private Shared Function nodeName(ByVal c As Class) As String
+		Private Shared Function nodeName(ByVal c As [Class]) As String
 			If c.array Then Throw New IllegalArgumentException("Arrays have no associated preferences node.")
 			Dim className As String = c.name
 			Dim pkgEndIndex As Integer = className.LastIndexOf("."c)
@@ -1169,7 +1169,7 @@ Namespace java.util.prefs
 		''' <p>This method is an exception to the general rule that the results of
 		''' concurrently executing multiple methods in this class yields
 		''' results equivalent to some serial execution.  The method behaves
-		''' as if implemented on top of the other public methods in this class,
+		''' as if implemented on top of the other public methods in this [Class],
 		''' notably <seealso cref="#node(String)"/> and <seealso cref="#put(String, String)"/>.
 		''' </summary>
 		''' <param name="is"> the input stream from which to read the XML document. </param>

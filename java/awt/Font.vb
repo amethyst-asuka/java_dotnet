@@ -1533,7 +1533,7 @@ Namespace java.awt
 							Return values.Equals(font_Renamed.attributeValues)
 						End If
 					End If
-				Catch e As ClassCastException
+				Catch e As  [Class]CastException
 				End Try
 			End If
 			Return False

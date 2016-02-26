@@ -361,7 +361,7 @@ Namespace java.awt.dnd
 	'         
 
 			' We don't need to worry about client code changing the values of
-			' these variables. Since TransferableProxy is a protected class, only
+			' these variables. Since TransferableProxy is a protected [Class], only
 			' subclasses of DropTargetContext can access it. And DropTargetContext
 			' cannot be subclassed by client code because it does not have a
 			' public constructor.

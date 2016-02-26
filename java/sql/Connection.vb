@@ -562,7 +562,7 @@ Namespace java.sql
 		''' this method
 		''' @since 1.2 </exception>
 		''' <seealso cref= #setTypeMap </seealso>
-		Property typeMap As IDictionary(Of String, Class)
+		Property typeMap As IDictionary(Of String, [Class])
 
 
 		'--------------------------JDBC 3.0-----------------------------

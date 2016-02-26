@@ -1004,7 +1004,7 @@ Namespace java.awt
 
 		''' <summary>
 		''' Adds a PropertyChangeListener to the listener list. The listener is
-		''' registered for all bound properties of this class, including the
+		''' registered for all bound properties of this [Class], including the
 		''' following:
 		''' <ul>
 		'''    <li>whether the KeyboardFocusManager is currently managing focus
@@ -1174,7 +1174,7 @@ Namespace java.awt
 
 		''' <summary>
 		''' Adds a VetoableChangeListener to the listener list. The listener is
-		''' registered for all vetoable properties of this class, including the
+		''' registered for all vetoable properties of this [Class], including the
 		''' following:
 		''' <ul>
 		'''    <li>the focus owner ("focusOwner")</li>

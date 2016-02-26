@@ -35,7 +35,7 @@ Namespace java.io
 	''' PrintStream}.  It does not contain methods for writing raw bytes, for which
 	''' a program should use unencoded byte streams.
 	''' 
-	''' <p> Unlike the <seealso cref="PrintStream"/> class, if automatic flushing is enabled
+	''' <p> Unlike the <seealso cref="PrintStream"/> [Class], if automatic flushing is enabled
 	''' it will be done only when one of the <tt>println</tt>, <tt>printf</tt>, or
 	''' <tt>format</tt> methods is invoked, rather than whenever a newline character
 	''' happens to be output.  These methods use the platform's own notion of line

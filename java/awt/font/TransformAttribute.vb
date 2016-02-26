@@ -137,7 +137,7 @@ Namespace java.awt.font
 					Dim that As TransformAttribute = CType(rhs, TransformAttribute)
 					If transform Is Nothing Then Return that.transform Is Nothing
 					Return transform.Equals(that.transform)
-				Catch e As ClassCastException
+				Catch e As  [Class]CastException
 				End Try
 			End If
 			Return False

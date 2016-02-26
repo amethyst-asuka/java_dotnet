@@ -99,7 +99,7 @@ Namespace java.lang.annotation
 		'''     <seealso cref="Character"/>, <seealso cref="Double"/>, <seealso cref="Float"/>, <seealso cref="Integer"/>,
 		'''     <seealso cref="Long"/>, <seealso cref="Short"/>, or <seealso cref="Boolean"/>).
 		''' 
-		''' <li>The hash code of a string, enum, class, or annotation member-value
+		''' <li>The hash code of a string, enum, [Class], or annotation member-value
 		''' I     <tt><i>v</i></tt> is computed as by calling
 		'''     <tt><i>v</i>.hashCode()</tt>.  (In the case of annotation
 		'''     member values, this is a recursive definition.)

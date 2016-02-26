@@ -201,34 +201,34 @@ Namespace java.awt
 			End Get
 		End Property
 
-	'    
-	'     * --- Accessibility Support ---
-	'     *
-	'     
+        '    
+        '     * --- Accessibility Support ---
+        '     *
+        '     
 
-		''' <summary>
-		''' Gets the AccessibleContext associated with this Canvas.
-		''' For canvases, the AccessibleContext takes the form of an
-		''' AccessibleAWTCanvas.
-		''' A new AccessibleAWTCanvas instance is created if necessary.
-		''' </summary>
-		''' <returns> an AccessibleAWTCanvas that serves as the
-		'''         AccessibleContext of this Canvas
-		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
-			Get
-				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTCanvas(Me)
-				Return accessibleContext
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the AccessibleContext associated with this Canvas.
+        ''' For canvases, the AccessibleContext takes the form of an
+        ''' AccessibleAWTCanvas.
+        ''' A new AccessibleAWTCanvas instance is created if necessary.
+        ''' </summary>
+        ''' <returns> an AccessibleAWTCanvas that serves as the
+        '''         AccessibleContext of this Canvas
+        ''' @since 1.3 </returns>
+        Public Overrides ReadOnly Property accessibleContext As AccessibleContext
+            Get
+                If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTCanvas(Me)
+                Return accessibleContext
+            End Get
+        End Property
 
-		''' <summary>
-		''' This class implements accessibility support for the
-		''' <code>Canvas</code> class.  It provides an implementation of the
-		''' Java Accessibility API appropriate to canvas user-interface elements.
-		''' @since 1.3
-		''' </summary>
-		Protected Friend Class AccessibleAWTCanvas
+        ''' <summary>
+        ''' This class implements accessibility support for the
+        ''' <code>Canvas</code> class.  It provides an implementation of the
+        ''' Java Accessibility API appropriate to canvas user-interface elements.
+        ''' @since 1.3
+        ''' </summary>
+        Protected Friend Class AccessibleAWTCanvas
 			Inherits AccessibleAWTComponent
 
 			Private ReadOnly outerInstance As Canvas

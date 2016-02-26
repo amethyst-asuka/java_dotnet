@@ -1547,7 +1547,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  a file attribute view of the specified type, or {@code null} if
 		'''          the attribute view type is not available </returns>
-		Public Shared Function getFileAttributeView(Of V As java.nio.file.attribute.FileAttributeView)(ByVal path As Path, ByVal type As Class, ParamArray ByVal options As LinkOption()) As V
+		Public Shared Function getFileAttributeView(Of V As java.nio.file.attribute.FileAttributeView)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As V
 			Return provider(path).getFileAttributeView(path, type, options)
 		End Function
 
@@ -1604,7 +1604,7 @@ Namespace java.nio.file
 		'''          method is invoked to check read access to the file. If this
 		'''          method is invoked to read security sensitive attributes then the
 		'''          security manager may be invoke to check for additional permissions. </exception>
-		Public Shared Function readAttributes(Of A As java.nio.file.attribute.BasicFileAttributes)(ByVal path As Path, ByVal type As Class, ParamArray ByVal options As LinkOption()) As A
+		Public Shared Function readAttributes(Of A As java.nio.file.attribute.BasicFileAttributes)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As A
 			Return provider(path).readAttributes(path, type, options)
 		End Function
 

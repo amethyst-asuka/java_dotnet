@@ -33,7 +33,7 @@ Namespace java.rmi.activation
 	''' create/recreate an activation group in which to activate objects.
 	''' Such a descriptor contains: <ul>
 	''' <li> the group's class name,
-	''' <li> the group's code location (the location of the group's class), and
+	''' <li> the group's code location (the location of the group's [Class]), and
 	''' <li> a "marshalled" object that can contain group specific
 	''' initialization data. </ul> <p>
 	''' 

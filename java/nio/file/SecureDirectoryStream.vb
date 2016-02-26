@@ -256,7 +256,7 @@ Namespace java.nio.file
 		''' <returns>  a new file attribute view of the specified type bound to
 		'''          this directory stream, or {@code null} if the attribute view
 		'''          type is not available </returns>
-		 Function getFileAttributeView(Of V As FileAttributeView)(ByVal type As Class) As V
+		 Function getFileAttributeView(Of V As FileAttributeView)(ByVal type As [Class]) As V
 
 		''' <summary>
 		''' Returns a new file attribute view to access the file attributes of a file
@@ -290,7 +290,7 @@ Namespace java.nio.file
 		'''          this directory stream, or {@code null} if the attribute view
 		'''          type is not available
 		'''  </returns>
-		 Function getFileAttributeView(Of V As FileAttributeView)(ByVal path As T, ByVal type As Class, ParamArray ByVal options As LinkOption()) As V
+		 Function getFileAttributeView(Of V As FileAttributeView)(ByVal path As T, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As V
 	End Interface
 
 End Namespace

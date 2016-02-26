@@ -104,7 +104,7 @@ Namespace java.awt.datatransfer
 		Implements java.io.Externalizable, Cloneable
 
 		Private Const serialVersionUID As Long = 8367026044764648243L
-		Private Shared ReadOnly ioInputStreamClass As Class = GetType(java.io.InputStream)
+		Private Shared ReadOnly ioInputStreamClass As  [Class] = GetType(java.io.InputStream)
 
 		''' <summary>
 		''' Tries to load a class from: the bootstrap loader, the system loader,
@@ -114,22 +114,22 @@ Namespace java.awt.datatransfer
 		''' <param name="fallback"> the fallback loader </param>
 		''' <returns> the class loaded </returns>
 		''' <exception cref="ClassNotFoundException"> if class is not found </exception>
-		Protected Friend Shared Function tryToLoadClass(ByVal className As String, ByVal fallback As ClassLoader) As Class
+		Protected Friend Shared Function tryToLoadClass(ByVal className As String, ByVal fallback As  [Class]Loader) As  [Class]
 			sun.reflect.misc.ReflectUtil.checkPackageAccess(className)
 			Try
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(GET_CLASSLOADER_PERMISSION)
-				Dim loader As ClassLoader = ClassLoader.systemClassLoader
+				Dim loader As  [Class]Loader = ClassLoader.systemClassLoader
 				Try
 					' bootstrap class loader and system class loader if present
 					Return Type.GetType(className, True, loader)
-				Catch exception_Renamed As ClassNotFoundException
+				Catch exception_Renamed As  [Class]NotFoundException
 					' thread context class loader if and only if present
 					loader = Thread.CurrentThread.contextClassLoader
 					If loader IsNot Nothing Then
 						Try
 							Return Type.GetType(className, True, loader)
-						Catch e As ClassNotFoundException
+						Catch e As  [Class]NotFoundException
 							' fallback to user's class loader
 						End Try
 					End If
@@ -143,7 +143,7 @@ Namespace java.awt.datatransfer
 	'    
 	'     * private initializer
 	'     
-		Private Shared Function createConstant(ByVal rc As Class, ByVal prn As String) As DataFlavor
+		Private Shared Function createConstant(ByVal rc As [Class], ByVal prn As String) As DataFlavor
 			Try
 				Return New DataFlavor(rc, prn)
 			Catch e As Exception
@@ -174,7 +174,7 @@ Namespace java.awt.datatransfer
 		End Function
 
 		''' <summary>
-		''' The <code>DataFlavor</code> representing a Java Unicode String class,
+		''' The <code>DataFlavor</code> representing a Java Unicode String [Class],
 		''' where:
 		''' <pre>
 		'''     representationClass = java.lang.String
@@ -184,7 +184,7 @@ Namespace java.awt.datatransfer
 		Public Shared ReadOnly stringFlavor As DataFlavor = createConstant(GetType(String), "Unicode String")
 
 		''' <summary>
-		''' The <code>DataFlavor</code> representing a Java Image class,
+		''' The <code>DataFlavor</code> representing a Java Image [Class],
 		''' where:
 		''' <pre>
 		'''     representationClass = java.awt.Image
@@ -312,7 +312,7 @@ Namespace java.awt.datatransfer
 		''' </summary>
 		''' <exception cref="NullPointerException"> if either <code>primaryType</code>,
 		'''            <code>subType</code> or <code>representationClass</code> is null </exception>
-		Private Sub New(ByVal primaryType As String, ByVal subType As String, ByVal params As MimeTypeParameterList, ByVal representationClass As Class, ByVal humanPresentableName As String)
+		Private Sub New(ByVal primaryType As String, ByVal subType As String, ByVal params As MimeTypeParameterList, ByVal representationClass As [Class], ByVal humanPresentableName As String)
 			MyBase.New()
 			If primaryType Is Nothing Then Throw New NullPointerException("primaryType")
 			If subType Is Nothing Then Throw New NullPointerException("subType")
@@ -354,7 +354,7 @@ Namespace java.awt.datatransfer
 		'''                 this flavor; if this parameter is <code>null</code>
 		'''                 then the value of the the MIME Content Type is used </param>
 		''' <exception cref="NullPointerException"> if <code>representationClass</code> is null </exception>
-		Public Sub New(ByVal representationClass As Class, ByVal humanPresentableName As String)
+		Public Sub New(ByVal representationClass As [Class], ByVal humanPresentableName As String)
 			Me.New("application", "x-java-serialized-object", Nothing, representationClass, humanPresentableName)
 			If representationClass Is Nothing Then Throw New NullPointerException("representationClass")
 		End Sub
@@ -394,7 +394,7 @@ Namespace java.awt.datatransfer
 				initialize(mimeType_Renamed, humanPresentableName, Me.GetType().classLoader)
 			Catch mtpe As MimeTypeParseException
 				Throw New IllegalArgumentException("failed to parse:" & mimeType_Renamed)
-			Catch cnfe As ClassNotFoundException
+			Catch cnfe As  [Class]NotFoundException
 				Throw New IllegalArgumentException("can't find specified class: " & cnfe.Message)
 			End Try
 		End Sub
@@ -424,7 +424,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalArgumentException"> if <code>mimeType</code> is
 		'''                 invalid </exception>
 		''' <exception cref="NullPointerException"> if <code>mimeType</code> is null </exception>
-		Public Sub New(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As ClassLoader)
+		Public Sub New(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  [Class]Loader)
 			MyBase.New()
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 			Try
@@ -472,7 +472,7 @@ Namespace java.awt.datatransfer
 	   ''' <exception cref="NullPointerException"> if <code>mimeType</code> is null
 	   ''' </exception>
 	   ''' <seealso cref= #tryToLoadClass </seealso>
-		Private Sub initialize(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As ClassLoader)
+		Private Sub initialize(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  [Class]Loader)
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 
 			Me.mimeType = New MimeType(mimeType_Renamed) ' throws
@@ -505,7 +505,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' String representation of this <code>DataFlavor</code> and its
 		''' parameters. The resulting <code>String</code> contains the name of
-		''' the <code>DataFlavor</code> class, this flavor's MIME type, and its
+		''' the <code>DataFlavor</code> [Class], this flavor's MIME type, and its
 		''' representation class. If this flavor has a primary MIME type of "text",
 		''' supports the charset parameter, and has an encoded representation, the
 		''' flavor's charset is also included. See <code>selectBestTextFlavor</code>
@@ -640,7 +640,7 @@ Namespace java.awt.datatransfer
 		''' <code>java.io.InputStream</code>, <code>java.nio.ByteBuffer</code>,
 		''' <code>[B</code>, &lt;all others&gt;.
 		''' <p>
-		''' If two or more flavors share the best representation class, or if no
+		''' If two or more flavors share the best representation [Class], or if no
 		''' flavor has one of the three specified representations, then one of those
 		''' flavors will be chosen non-deterministically.
 		''' <p>
@@ -650,7 +650,7 @@ Namespace java.awt.datatransfer
 		''' <code>java.io.Reader</code>, <code>java.lang.String</code>,
 		''' <code>java.nio.CharBuffer</code>, <code>[C</code>, &lt;all others&gt;.
 		''' <p>
-		''' If two or more flavors share the best representation class, and that
+		''' If two or more flavors share the best representation [Class], and that
 		''' representation is one of the four explicitly listed, then one of those
 		''' flavors will be chosen non-deterministically. If, however, no flavor has
 		''' one of the four specified representations, the flavors will then be
@@ -666,7 +666,7 @@ Namespace java.awt.datatransfer
 		''' <code>java.io.InputStream</code>, <code>java.nio.ByteBuffer</code>,
 		''' <code>[B</code>, &lt;all others&gt;.
 		''' <p>
-		''' If two or more flavors share the best representation class, or if no
+		''' If two or more flavors share the best representation [Class], or if no
 		''' flavor has one of the three specified representations, then one of those
 		''' flavors will be chosen non-deterministically.
 		''' </summary>
@@ -823,7 +823,7 @@ Namespace java.awt.datatransfer
 		''' <returns> the <code>Class</code> which objects supporting this
 		''' <code>DataFlavor</code> will return when this <code>DataFlavor</code>
 		''' is requested </returns>
-		Public Overridable Property representationClass As Class
+		Public Overridable Property representationClass As  [Class]
 			Get
 				Return representationClass
 			End Get
@@ -1078,7 +1078,7 @@ Namespace java.awt.datatransfer
 			End Get
 		End Property
 
-		Public Property defaultRepresentationClass As Class
+		Public Property defaultRepresentationClass As  [Class]
 			Get
 				Return ioInputStreamClass
 			End Get
@@ -1340,7 +1340,7 @@ Namespace java.awt.datatransfer
 		''' <summary>
 		''' Java class of objects this DataFlavor represents * </summary>
 
-		Private representationClass As Class
+		Private representationClass As  [Class]
 
 	End Class ' class DataFlavor
 

@@ -810,7 +810,7 @@ Namespace java.security
 	'     * rather than from Signature. It represents a Signature with an
 	'     * encapsulated, provider-supplied SPI object (of type SignatureSpi).
 	'     * If the provider implementation is an instance of SignatureSpi, the
-	'     * getInstance() methods above return an instance of this class, with
+	'     * getInstance() methods above return an instance of this [Class], with
 	'     * the SPI object encapsulated.
 	'     *
 	'     * Note: All SPI methods from the original Signature class have been

@@ -967,7 +967,7 @@ Namespace java.text
 
 		End Class
 
-		' the map class associated with this string class, giving access to the attributes of one run
+		' the map class associated with this string [Class], giving access to the attributes of one run
 
 		Private NotInheritable Class AttributeMap
 			Inherits AbstractMap(Of java.text.AttributedCharacterIterator.Attribute, Object)

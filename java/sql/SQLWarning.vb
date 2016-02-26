@@ -182,7 +182,7 @@ Namespace java.sql
 			Get
 				Try
 					Return (CType(nextException, SQLWarning))
-				Catch ex As ClassCastException
+				Catch ex As  [Class]CastException
 					' The chained value isn't a SQLWarning.
 					' This is a programming error by whoever added it to
 					' the SQLWarning chain.  We throw a Java "Error".

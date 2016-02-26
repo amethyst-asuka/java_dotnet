@@ -72,7 +72,7 @@ Namespace java.lang.reflect
 		''' instance exceed 255. </exception>
 		''' <exception cref="NegativeArraySizeException"> if the specified {@code length}
 		''' is negative </exception>
-		Public Shared Function newInstance(ByVal componentType As Class, ByVal length As Integer) As Object
+		Public Shared Function newInstance(ByVal componentType As [Class], ByVal length As Integer) As Object
 			Return newArray(componentType, length)
 		End Function
 
@@ -83,7 +83,7 @@ Namespace java.lang.reflect
 		''' represents a non-array class or interface, the new array
 		''' has {@code dimensions.length} dimensions and
 		''' {@code componentType} as its component type. If
-		''' {@code componentType} represents an array class, the
+		''' {@code componentType} represents an array [Class], the
 		''' number of dimensions of the new array is equal to the sum
 		''' of {@code dimensions.length} and the number of
 		''' dimensions of {@code componentType}. In this case, the
@@ -106,7 +106,7 @@ Namespace java.lang.reflect
 		''' instance exceed 255. </exception>
 		''' <exception cref="NegativeArraySizeException"> if any of the components in
 		''' the specified {@code dimensions} argument is negative. </exception>
-		Public Shared Function newInstance(ByVal componentType As Class, ParamArray ByVal dimensions As Integer()) As Object
+		Public Shared Function newInstance(ByVal componentType As [Class], ParamArray ByVal dimensions As Integer()) As Object
 			Return multiNewArray(componentType, dimensions)
 		End Function
 
@@ -497,12 +497,12 @@ Namespace java.lang.reflect
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function newArray(ByVal componentType As Class, ByVal length As Integer) As Object
+		Private Shared Function newArray(ByVal componentType As [Class], ByVal length As Integer) As Object
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function multiNewArray(ByVal componentType As Class, ByVal dimensions As Integer()) As Object
+		Private Shared Function multiNewArray(ByVal componentType As [Class], ByVal dimensions As Integer()) As Object
 		End Function
 
 

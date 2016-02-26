@@ -37,7 +37,7 @@ Namespace java.security
 	''' The KeyPairGenerator class is used to generate pairs of
 	''' public and private keys. Key pair generators are constructed using the
 	''' {@code getInstance} factory methods (static methods that
-	''' return instances of a given class).
+	''' return instances of a given [Class]).
 	''' 
 	''' <p>A Key pair generator for a particular algorithm creates a public/private
 	''' key pair that can be used with this algorithm. It also associates
@@ -475,7 +475,7 @@ Namespace java.security
 	'     * with an encapsulated, provider-supplied SPI object (of type
 	'     * KeyPairGeneratorSpi).
 	'     * If the provider implementation is an instance of KeyPairGeneratorSpi,
-	'     * the getInstance() methods above return an instance of this class, with
+	'     * the getInstance() methods above return an instance of this [Class], with
 	'     * the SPI object encapsulated.
 	'     *
 	'     * Note: All SPI methods from the original KeyPairGenerator class have been

@@ -58,14 +58,14 @@ Namespace java.beans
 	''' <p>
 	''' The reason that listeners created with <code>EventHandler</code>
 	''' have such a small
-	''' footprint is that the <code>Proxy</code> class, on which
+	''' footprint is that the <code>Proxy</code> [Class], on which
 	''' the <code>EventHandler</code> relies, shares implementations
 	''' of identical
 	''' interfaces. For example, if you use
 	''' the <code>EventHandler</code> <code>create</code> methods to make
 	''' all the <code>ActionListener</code>s in an application,
 	''' all the action listeners will be instances of a single class
-	''' (one created by the <code>Proxy</code> class).
+	''' (one created by the <code>Proxy</code> [Class]).
 	''' In general, listeners based on
 	''' the <code>Proxy</code> class require one listener class
 	''' to be created per <em>listener type</em> (interface),
@@ -424,7 +424,7 @@ Namespace java.beans
 			End If
 
 			If listenerMethodName Is Nothing OrElse listenerMethodName.Equals(methodName) Then
-				Dim argTypes As Class() = Nothing
+				Dim argTypes As  [Class]() = Nothing
 				Dim newArgs As Object() = Nothing
 
 				If eventPropertyName Is Nothing Then ' Nullary method.
@@ -492,7 +492,7 @@ Namespace java.beans
 		''' <exception cref="NullPointerException"> if <code>action</code> is null
 		''' </exception>
 		''' <seealso cref= #create(Class, Object, String, String) </seealso>
-		Public Shared Function create(Of T)(ByVal listenerInterface As Class, ByVal target As Object, ByVal action As String) As T
+		Public Shared Function create(Of T)(ByVal listenerInterface As [Class], ByVal target As Object, ByVal action As String) As T
 			Return create(listenerInterface, target, action, Nothing, Nothing)
 		End Function
 
@@ -547,7 +547,7 @@ Namespace java.beans
 		''' <exception cref="NullPointerException"> if <code>action</code> is null
 		''' </exception>
 		''' <seealso cref= #create(Class, Object, String, String, String) </seealso>
-		Public Shared Function create(Of T)(ByVal listenerInterface As Class, ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String) As T
+		Public Shared Function create(Of T)(ByVal listenerInterface As [Class], ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String) As T
 			Return create(listenerInterface, target, action, eventPropertyName, Nothing)
 		End Function
 
@@ -634,12 +634,12 @@ Namespace java.beans
 		''' <exception cref="NullPointerException"> if <code>action</code> is null
 		''' </exception>
 		''' <seealso cref= EventHandler </seealso>
-		Public Shared Function create(Of T)(ByVal listenerInterface As Class, ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String, ByVal listenerMethodName As String) As T
+		Public Shared Function create(Of T)(ByVal listenerInterface As [Class], ByVal target As Object, ByVal action As String, ByVal eventPropertyName As String, ByVal listenerMethodName As String) As T
 			' Create this first to verify target/action are non-null
 			Dim handler As New EventHandler(target, action, eventPropertyName, listenerMethodName)
 			If listenerInterface Is Nothing Then Throw New NullPointerException("listenerInterface must be non-null")
-			Dim loader As ClassLoader = getClassLoader(listenerInterface)
-			Dim interfaces As Class() = {listenerInterface}
+			Dim loader As  [Class]Loader = getClassLoader(listenerInterface)
+			Dim interfaces As  [Class]() = {listenerInterface}
 			Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T)
 		End Function
 
@@ -652,9 +652,9 @@ Namespace java.beans
 			End Function
 		End Class
 
-		Private Shared Function getClassLoader(ByVal type As Class) As ClassLoader
+		Private Shared Function getClassLoader(ByVal type As [Class]) As  [Class]Loader
 			sun.reflect.misc.ReflectUtil.checkPackageAccess(type)
-			Dim loader As ClassLoader = type.classLoader
+			Dim loader As  [Class]Loader = type.classLoader
 			If loader Is Nothing Then
 				loader = Thread.CurrentThread.contextClassLoader ' avoid use of BCP
 				If loader Is Nothing Then loader = ClassLoader.systemClassLoader

@@ -134,7 +134,7 @@ Namespace java.util.concurrent.atomic
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim ak As Class = GetType(Cell)
+					Dim ak As  [Class] = GetType(Cell)
 					valueOffset = UNSAFE.objectFieldOffset(ak.getDeclaredField("value"))
 				Catch e As Exception
 					Throw New [Error](e)
@@ -412,10 +412,10 @@ Namespace java.util.concurrent.atomic
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim sk As Class = GetType(Striped64)
+				Dim sk As  [Class] = GetType(Striped64)
 				BASE = UNSAFE.objectFieldOffset(sk.getDeclaredField("base"))
 				CELLSBUSY = UNSAFE.objectFieldOffset(sk.getDeclaredField("cellsBusy"))
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				PROBE = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomProbe"))
 			Catch e As Exception
 				Throw New [Error](e)

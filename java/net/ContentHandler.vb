@@ -93,7 +93,7 @@ Namespace java.net
 		''' <exception cref="IOException">  if an I/O error occurs while reading the object.
 		''' @since 1.3 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function getContent(ByVal urlc As URLConnection, ByVal classes As Class()) As Object
+		Public Overridable Function getContent(ByVal urlc As URLConnection, ByVal classes As  [Class]()) As Object
 			Dim obj As Object = getContent(urlc)
 
 			For i As Integer = 0 To classes.Length - 1

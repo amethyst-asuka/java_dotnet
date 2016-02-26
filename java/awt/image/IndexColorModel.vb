@@ -105,7 +105,7 @@ Namespace java.awt.image
 	''' type <code>transferType</code>, the array length is always one.
 	''' The transfer types supported are <code>DataBuffer.TYPE_BYTE</code> and
 	''' <code>DataBuffer.TYPE_USHORT</code>.  A single int pixel
-	''' representation is valid for all objects of this class, since it is
+	''' representation is valid for all objects of this [Class], since it is
 	''' always possible to represent pixel values used with this class in a
 	''' single int.  Therefore, methods that use this representation do
 	''' not throw an <code>IllegalArgumentException</code> due to an invalid

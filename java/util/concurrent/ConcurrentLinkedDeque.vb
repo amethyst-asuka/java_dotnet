@@ -333,7 +333,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(Node)
+					Dim k As  [Class] = GetType(Node)
 					prevOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("prev"))
 					itemOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("item"))
 					nextOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("next"))
@@ -1623,7 +1623,7 @@ Namespace java.util.concurrent
 			NEXT_TERMINATOR.prev = NEXT_TERMINATOR
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ConcurrentLinkedDeque)
+				Dim k As  [Class] = GetType(ConcurrentLinkedDeque)
 				headOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("head"))
 				tailOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("tail"))
 			Catch e As Exception

@@ -345,7 +345,7 @@ Namespace java.beans
 			d.marked = True
 			Dim target As Object = exp.target
 			mark(exp)
-			If Not(TypeOf target Is Class) Then
+			If Not(TypeOf target Is [Class]) Then
 				statementList(target).add(exp)
 				' Pending: Why does the reference count need to
 				' be incremented here?
@@ -580,7 +580,7 @@ Namespace java.beans
 					Return
 				End If
 
-				Dim primitiveType As Class = primitiveTypeFor(value.GetType())
+				Dim primitiveType As  [Class] = primitiveTypeFor(value.GetType())
 				If primitiveType IsNot Nothing AndAlso target Is value.GetType() AndAlso methodName.Equals("new") Then
 					Dim primitiveTypeName As String = primitiveType.name
 					' Make sure that character types are quoted correctly.
@@ -738,7 +738,7 @@ Namespace java.beans
 		End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function primitiveTypeFor(ByVal wrapper As Class) As Class
+		Friend Shared Function primitiveTypeFor(ByVal wrapper As [Class]) As  [Class]
 			If wrapper Is GetType(Boolean) Then Return Boolean.TYPE
 			If wrapper Is GetType(Byte) Then Return Byte.TYPE
 			If wrapper Is GetType(Character) Then Return Character.TYPE

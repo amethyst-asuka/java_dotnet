@@ -29,7 +29,7 @@ Namespace java.util
 
 	''' <summary>
 	''' The <code>Dictionary</code> class is the abstract parent of any
-	''' class, such as <code>Hashtable</code>, which maps keys to values.
+	''' [Class], such as <code>Hashtable</code>, which maps keys to values.
 	''' Every key and every value is an object. In any one <tt>Dictionary</tt>
 	''' object, every key is associated with at most one value. Given a
 	''' <tt>Dictionary</tt> and a key, the associated element can be looked up.

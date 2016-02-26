@@ -40,7 +40,7 @@ Namespace java.lang
 		''' the keyword {@code void}.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared ReadOnly TYPE As Class = CType(Class.getPrimitiveClass("void"), [Class])
+		Public Shared ReadOnly TYPE As  [Class] = CType(Class.getPrimitiveClass("void"), [Class])
 
 	'    
 	'     * The Void class cannot be instantiated.

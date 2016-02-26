@@ -33,8 +33,8 @@ Namespace java.lang
 	''' reasons including but not limited to:
 	''' 
 	''' <ul>
-	''' <li> the class object represents an abstract class, an interface,
-	'''      an array class, a primitive type, or {@code void}
+	''' <li> the class object represents an abstract [Class], an interface,
+	'''      an array [Class], a primitive type, or {@code void}
 	''' <li> the class has no nullary constructor
 	''' </ul>
 	''' 

@@ -55,10 +55,10 @@ Namespace java.net
 
 		Shared Sub New()
 			Try
-				Dim httpClazz As Class = Type.GetType(httpURLClazzStr, True, Nothing)
+				Dim httpClazz As  [Class] = Type.GetType(httpURLClazzStr, True, Nothing)
 				httpField = httpClazz.getDeclaredField("http")
 				doTunneling_Renamed = httpClazz.getDeclaredMethod(doTunnelingStr)
-				Dim netClientClazz As Class = Type.GetType(netClientClazzStr, True, Nothing)
+				Dim netClientClazz As  [Class] = Type.GetType(netClientClazzStr, True, Nothing)
 				serverSocketField = netClientClazz.getDeclaredField("serverSocket")
 
 				java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)

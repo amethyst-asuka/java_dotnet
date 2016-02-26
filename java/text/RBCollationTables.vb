@@ -97,7 +97,7 @@ Namespace java.text
 			''' <summary>
 			''' This function is used by RBTableBuilder to fill in all the members of this
 			''' object.  (Effectively, the builder class functions as a "friend" of this
-			''' class, but to avoid changing too much of the logic, it carries around "shadow"
+			''' [Class], but to avoid changing too much of the logic, it carries around "shadow"
 			''' copies of all these variables until the end of the build process and then
 			''' copies them en masse into the actual tables object once all the construction
 			''' logic is complete.  This function does that "copying en masse". </summary>

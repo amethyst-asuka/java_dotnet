@@ -52,7 +52,7 @@ Namespace java.util.concurrent
 	''' engaged in a ForkJoin computation, commenced in the {@link
 	''' ForkJoinPool#commonPool()} via <seealso cref="#fork"/>, <seealso cref="#invoke"/>, or
 	''' related methods.  Once started, it will usually in turn start other
-	''' subtasks.  As indicated by the name of this class, many programs
+	''' subtasks.  As indicated by the name of this [Class], many programs
 	''' using {@code ForkJoinTask} employ only methods <seealso cref="#fork"/> and
 	''' <seealso cref="#join"/>, or derivatives such as {@link
 	''' #invokeAll(ForkJoinTask...) invokeAll}.  However, this class also
@@ -584,7 +584,7 @@ Namespace java.util.concurrent
 				ex = e.ex
 				If e Is Nothing OrElse ex Is Nothing Then Return Nothing
 				If e.thrower <> Thread.CurrentThread.id Then
-					Dim ec As Class = ex.GetType()
+					Dim ec As  [Class] = ex.GetType()
 					Try
 	'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 						Dim noArgCtor As Constructor(Of ?) = Nothing
@@ -593,7 +593,7 @@ Namespace java.util.concurrent
 						For i As Integer = 0 To cs.Length - 1
 	'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 							Dim c As Constructor(Of ?) = cs(i)
-							Dim ps As Class() = c.parameterTypes
+							Dim ps As  [Class]() = c.parameterTypes
 							If ps.Length = 0 Then
 								noArgCtor = c
 							ElseIf ps.Length = 1 AndAlso ps(0) Is GetType(Throwable) Then
@@ -1562,7 +1562,7 @@ Namespace java.util.concurrent
 			exceptionTable = New ExceptionNode(EXCEPTION_MAP_CAPACITY - 1){}
 			Try
 				U = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ForkJoinTask)
+				Dim k As  [Class] = GetType(ForkJoinTask)
 				STATUS = U.objectFieldOffset(k.getDeclaredField("status"))
 			Catch e As Exception
 				Throw New [Error](e)

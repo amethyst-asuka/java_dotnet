@@ -38,7 +38,7 @@ Namespace java.lang
 	''' java.lang.Object#equals(java.lang.Object) equals} and {@link
 	''' java.lang.Object#hashCode() hashCode} methods.  The result of comparing two
 	''' objects that implement <tt>CharSequence</tt> is therefore, in general,
-	''' undefined.  Each object may be implemented by a different class, and there
+	''' undefined.  Each object may be implemented by a different [Class], and there
 	''' is no guarantee that each class will be capable of testing its instances
 	''' for equality with those of the other.  It is therefore inappropriate to use
 	''' arbitrary <tt>CharSequence</tt> instances as elements in a set or as keys in

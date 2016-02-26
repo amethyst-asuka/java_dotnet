@@ -41,7 +41,7 @@
 ''' accommodate applications such as debuggers, interpreters, object
 ''' inspectors, class browsers, and services such as Object
 ''' Serialization and JavaBeans that need access to either the public
-''' members of a target object (based on its runtime class) or the
+''' members of a target object (based on its runtime [Class]) or the
 ''' members declared by a given class.
 ''' 
 ''' @since JDK1.1

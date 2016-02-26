@@ -937,7 +937,7 @@ Namespace java.nio.file.spi
 		''' </param>
 		''' <returns>  a file attribute view of the specified type, or {@code null} if
 		'''          the attribute view type is not available </returns>
-		Public MustOverride Function getFileAttributeView(Of V As FileAttributeView)(ByVal path As Path, ByVal type As Class, ParamArray ByVal options As LinkOption()) As V
+		Public MustOverride Function getFileAttributeView(Of V As FileAttributeView)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As V
 
 		''' <summary>
 		''' Reads a file's attributes as a bulk operation. This method works in
@@ -964,7 +964,7 @@ Namespace java.nio.file.spi
 		'''          In the case of the default provider, a security manager is
 		'''          installed, its <seealso cref="SecurityManager#checkRead(String) checkRead"/>
 		'''          method is invoked to check read access to the file </exception>
-		Public MustOverride Function readAttributes(Of A As BasicFileAttributes)(ByVal path As Path, ByVal type As Class, ParamArray ByVal options As LinkOption()) As A
+		Public MustOverride Function readAttributes(Of A As BasicFileAttributes)(ByVal path As Path, ByVal type As [Class], ParamArray ByVal options As LinkOption()) As A
 
 		''' <summary>
 		''' Reads a set of file attributes as a bulk operation. This method works in

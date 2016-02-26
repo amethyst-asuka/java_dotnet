@@ -49,7 +49,7 @@ Namespace java.text
 	''' goes away.  This object carries all of the state which is only needed
 	''' during the build process, plus a "shadow" copy of all of the state
 	''' that will go into the tables object itself.  This object communicates
-	''' with RBCollationTables through a separate class, RBCollationTables.BuildAPI,
+	''' with RBCollationTables through a separate [Class], RBCollationTables.BuildAPI,
 	''' this is an inner class of RBCollationTables and provides a separate
 	''' private API for communication with RBTableBuilder.
 	''' This class isn't just an inner class of RBCollationTables itself because

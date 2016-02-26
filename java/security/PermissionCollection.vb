@@ -43,7 +43,7 @@ Namespace java.security
 	''' <p>When it is desirable to group together a number of Permission objects
 	''' of the same type, the {@code newPermissionCollection} method on that
 	''' particular type of Permission object should first be called. The default
-	''' behavior (from the Permission class) is to simply return null.
+	''' behavior (from the Permission [Class]) is to simply return null.
 	''' Subclasses of class Permission override the method if they need to store
 	''' their permissions in a particular PermissionCollection object in order
 	''' to provide the correct semantics when the

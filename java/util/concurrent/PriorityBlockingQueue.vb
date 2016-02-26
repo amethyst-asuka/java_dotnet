@@ -41,7 +41,7 @@ Namespace java.util.concurrent
 
 	''' <summary>
 	''' An unbounded <seealso cref="BlockingQueue blocking queue"/> that uses
-	''' the same ordering rules as class <seealso cref="PriorityQueue"/> and supplies
+	''' the same ordering rules As  [Class] <seealso cref="PriorityQueue"/> and supplies
 	''' blocking retrieval operations.  While this queue is logically
 	''' unbounded, attempted additions may fail due to resource exhaustion
 	''' (causing {@code OutOfMemoryError}). This class does not permit
@@ -906,7 +906,7 @@ Namespace java.util.concurrent
 		''' <summary>
 		''' Saves this queue to a stream (that is, serializes it).
 		''' 
-		''' For compatibility with previous version of this class, elements
+		''' For compatibility with previous version of this [Class], elements
 		''' are first copied to a java.util.PriorityQueue, which is then
 		''' serialized.
 		''' </summary>
@@ -1043,7 +1043,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(PriorityBlockingQueue)
+				Dim k As  [Class] = GetType(PriorityBlockingQueue)
 				allocationSpinLockOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("allocationSpinLock"))
 			Catch e As Exception
 				Throw New [Error](e)

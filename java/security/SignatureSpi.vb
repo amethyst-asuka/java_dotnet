@@ -32,7 +32,7 @@ Namespace java.security
 
 	''' <summary>
 	''' This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
-	''' for the {@code Signature} class, which is used to provide the
+	''' for the {@code Signature} [Class], which is used to provide the
 	''' functionality of a digital signature algorithm. Digital signatures are used
 	''' for authentication and integrity assurance of digital data.
 	''' .

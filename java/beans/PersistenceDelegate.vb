@@ -198,8 +198,8 @@ Namespace java.beans
 		''' <param name="out"> The stream to which any initialization statements should be written.
 		''' </param>
 		''' <exception cref="NullPointerException"> if {@code out} is {@code null} </exception>
-		Protected Friend Overridable Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
-			Dim superType As Class = type.BaseType
+		Protected Friend Overridable Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+			Dim superType As  [Class] = type.BaseType
 			Dim info As PersistenceDelegate = out.getPersistenceDelegate(superType)
 			info.initialize(superType, oldInstance, newInstance, out)
 		End Sub

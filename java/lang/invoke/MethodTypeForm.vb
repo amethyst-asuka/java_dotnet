@@ -128,7 +128,7 @@ Namespace java.lang.invoke
 		Protected Friend Sub New(ByVal erasedType As MethodType)
 			Me.erasedType_Renamed = erasedType
 
-			Dim ptypes As Class() = erasedType.ptypes()
+			Dim ptypes As  [Class]() = erasedType.ptypes()
 			Dim ptypeCount As Integer = ptypes.Length
 			Dim pslotCount As Integer = ptypeCount ' temp. estimate
 			Dim rtypeCount As Integer = 1 ' temp. estimate
@@ -138,10 +138,10 @@ Namespace java.lang.invoke
 
 			' Walk the argument types, looking for primitives.
 			Dim pac As Integer = 0, lac As Integer = 0, prc As Integer = 0, lrc As Integer = 0
-			Dim epts As Class() = ptypes
-			Dim bpts As Class() = epts
+			Dim epts As  [Class]() = ptypes
+			Dim bpts As  [Class]() = epts
 			For i As Integer = 0 To epts.Length - 1
-				Dim pt As Class = epts(i)
+				Dim pt As  [Class] = epts(i)
 				If pt IsNot GetType(Object) Then
 					pac += 1
 					Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forPrimitiveType(pt)
@@ -153,8 +153,8 @@ Namespace java.lang.invoke
 				End If
 			Next i
 			pslotCount += lac ' #slots = #args + #longs
-			Dim rt As Class = erasedType.returnType()
-			Dim bt As Class = rt
+			Dim rt As  [Class] = erasedType.returnType()
+			Dim bt As  [Class] = rt
 			If rt IsNot GetType(Object) Then
 				prc += 1 ' even void.class counts as a prim here
 				Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forPrimitiveType(rt)
@@ -189,7 +189,7 @@ Namespace java.lang.invoke
 				argToSlotTab = New Integer(1+ptypeCount - 1){}
 				argToSlotTab(0) = slot ' argument "-1" is past end of slots
 				For i As Integer = 0 To epts.Length - 1
-					Dim pt As Class = epts(i)
+					Dim pt As  [Class] = epts(i)
 					Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forBasicType(pt)
 					If w.doubleWord Then slot -= 1
 					slot -= 1
@@ -313,10 +313,10 @@ Namespace java.lang.invoke
 		''' Otherwise return null.
 		''' </summary>
 		Public Shared Function canonicalize(ByVal mt As MethodType, ByVal howRet As Integer, ByVal howArgs As Integer) As MethodType
-			Dim ptypes As Class() = mt.ptypes()
-			Dim ptc As Class() = MethodTypeForm.canonicalizeAll(ptypes, howArgs)
-			Dim rtype As Class = mt.returnType()
-			Dim rtc As Class = MethodTypeForm.canonicalize(rtype, howRet)
+			Dim ptypes As  [Class]() = mt.ptypes()
+			Dim ptc As  [Class]() = MethodTypeForm.canonicalizeAll(ptypes, howArgs)
+			Dim rtype As  [Class] = mt.returnType()
+			Dim rtc As  [Class] = MethodTypeForm.canonicalize(rtype, howRet)
 			If ptc Is Nothing AndAlso rtc Is Nothing Then Return Nothing
 			' Find the erased version of the method type:
 			If rtc Is Nothing Then rtc = rtype
@@ -328,8 +328,8 @@ Namespace java.lang.invoke
 		''' Canonicalize the given return or param type.
 		'''  Return null if the type is already canonicalized.
 		''' </summary>
-		Friend Shared Function canonicalize(ByVal t As Class, ByVal how As Integer) As Class
-			Dim ct As Class
+		Friend Shared Function canonicalize(ByVal t As [Class], ByVal how As Integer) As  [Class]
+			Dim ct As  [Class]
 			If t Is GetType(Object) Then
 				' no change, ever
 			ElseIf Not t.primitive Then
@@ -374,12 +374,12 @@ Namespace java.lang.invoke
 		''' Canonicalize each param type in the given array.
 		'''  Return null if all types are already canonicalized.
 		''' </summary>
-		Friend Shared Function canonicalizeAll(ByVal ts As Class(), ByVal how As Integer) As Class()
-			Dim cs As Class() = Nothing
+		Friend Shared Function canonicalizeAll(ByVal ts As  [Class](), ByVal how As Integer) As  [Class]()
+			Dim cs As  [Class]() = Nothing
 			Dim imax As Integer = ts.Length
 			Dim i As Integer = 0
 			Do While i < imax
-				Dim c As Class = canonicalize(ts(i), how)
+				Dim c As  [Class] = canonicalize(ts(i), how)
 				If c Is GetType(void) Then c = Nothing ' a Void parameter was unwrapped to void; ignore
 				If c IsNot Nothing Then
 					If cs Is Nothing Then cs = ts.clone()

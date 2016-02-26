@@ -33,7 +33,7 @@ Namespace java.rmi.activation
 	''' activate an object: <ul>
 	''' <li> the object's group identifier,
 	''' <li> the object's fully-qualified class name,
-	''' <li> the object's code location (the location of the class), a codebase URL
+	''' <li> the object's code location (the location of the [Class]), a codebase URL
 	''' path,
 	''' <li> the object's restart "mode", and,
 	''' <li> a "marshalled" object that can contain object specific

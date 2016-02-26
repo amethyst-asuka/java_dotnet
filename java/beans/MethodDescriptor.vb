@@ -78,10 +78,10 @@ Namespace java.beans
 			Get
 				Dim method_Renamed As Method = Me.methodRef.get()
 				If method_Renamed Is Nothing Then
-					Dim cls As Class = class0
+					Dim cls As  [Class] = class0
 					Dim name_Renamed As String = name
 					If (cls IsNot Nothing) AndAlso (name_Renamed IsNot Nothing) Then
-						Dim params_Renamed As Class() = params
+						Dim params_Renamed As  [Class]() = params
 						If params_Renamed Is Nothing Then
 							For i As Integer = 0 To 2
 								' Find methods for up to 2 params. We are guessing here.
@@ -109,9 +109,9 @@ Namespace java.beans
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Private Sub setParams(ByVal param As Class[]) 'JavaToDotNetTempPropertySetparams
-		Private Property params As Class()
-			Set(ByVal param As Class())
+        Private Sub setParams(ByVal param As  [Class][]) 'JavaToDotNetTempPropertySetparams
+		Private Property params As  [Class]()
+			Set(ByVal param As  [Class]())
 				If param Is Nothing Then Return
 				paramNames = New String(param.Length - 1){}
 				params = New List(Of )(param.Length)
@@ -130,12 +130,12 @@ Namespace java.beans
 			End Get
 		End Property
 
-			Dim clss As Class() = New [Class](params.Count - 1){}
+			Dim clss As  [Class]() = New [Class](params.Count - 1){}
 
 			For i As Integer = 0 To params.Count - 1
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Dim ref As Reference(Of ? As Class) = CType(params(i), Reference(Of ? As Class))
-				Dim cls As Class = ref.get()
+				Dim ref As Reference(Of ? As [Class]) = CType(params(i), Reference(Of ? As [Class]))
+				Dim cls As  [Class] = ref.get()
 				If cls Is Nothing Then
 					Return Nothing
 				Else

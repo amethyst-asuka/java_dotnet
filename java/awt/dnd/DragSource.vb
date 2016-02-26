@@ -442,7 +442,7 @@ Namespace java.awt.dnd
         '''    the requested <code>DragGestureRecognizer</code>
         '''    subclass and returns <code>null</code> </returns>
 
-        Public Overridable Function createDragGestureRecognizer(Of T As DragGestureRecognizer)(ByVal recognizerAbstractClass As Class, ByVal c As java.awt.Component, ByVal actions As Integer, ByVal dgl As DragGestureListener) As T
+        Public Overridable Function createDragGestureRecognizer(Of T As DragGestureRecognizer)(ByVal recognizerAbstractClass As [Class], ByVal c As java.awt.Component, ByVal actions As Integer, ByVal dgl As DragGestureListener) As T
 			Return java.awt.Toolkit.defaultToolkit.createDragGestureRecognizer(recognizerAbstractClass, Me, c, actions, dgl)
 		End Function
 
@@ -611,7 +611,7 @@ Namespace java.awt.dnd
 		''' <seealso cref= #getDragSourceListeners </seealso>
 		''' <seealso cref= #getDragSourceMotionListeners
 		''' @since 1.4 </seealso>
-		Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(DragSourceListener) Then
 				l = listener

@@ -50,10 +50,10 @@ Namespace java.lang.reflect
 	Public NotInheritable Class Constructor(Of T)
 		Inherits Executable
 
-		Private clazz As Class
+		Private clazz As  [Class]
 		Private slot As Integer
-		Private parameterTypes As Class()
-		Private exceptionTypes As Class()
+		Private parameterTypes As  [Class]()
+		Private exceptionTypes As  [Class]()
 		Private modifiers As Integer
 		' Generics and annotations support
 		<NonSerialized> _
@@ -106,7 +106,7 @@ Namespace java.lang.reflect
 		''' instantiation of these objects in Java code from the java.lang
 		''' package via sun.reflect.LangReflectAccess.
 		''' </summary>
-		Friend Sub New(ByVal declaringClass As Class, ByVal parameterTypes As Class(), ByVal checkedExceptions As Class(), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte())
+		Friend Sub New(ByVal declaringClass As [Class], ByVal parameterTypes As  [Class](), ByVal checkedExceptions As  [Class](), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte())
 			Me.clazz = declaringClass
 			Me.parameterTypes = parameterTypes
 			Me.exceptionTypes = checkedExceptions
@@ -152,7 +152,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides declaringClass As Class
+		Public Property Overrides declaringClass As  [Class]
 			Get
 				Return clazz
 			End Get
@@ -196,7 +196,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides parameterTypes As Class()
+		Public Property Overrides parameterTypes As  [Class]()
 			Get
 				Return parameterTypes.clone()
 			End Get
@@ -226,7 +226,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides exceptionTypes As Class()
+		Public Property Overrides exceptionTypes As  [Class]()
 			Get
 				Return exceptionTypes.clone()
 			End Get
@@ -272,7 +272,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' Returns a string describing this {@code Constructor}.  The string is
 		''' formatted as the constructor access modifiers, if any,
-		''' followed by the fully-qualified name of the declaring class,
+		''' followed by the fully-qualified name of the declaring [Class],
 		''' followed by a parenthesized, comma-separated list of the
 		''' constructor's formal parameter types.  For example:
 		''' <pre>
@@ -300,7 +300,7 @@ Namespace java.lang.reflect
 		''' constructor access modifiers, if any, followed by an
 		''' angle-bracketed comma separated list of the constructor's type
 		''' parameters, if any, followed by the fully-qualified name of the
-		''' declaring class, followed by a parenthesized, comma-separated
+		''' declaring [Class], followed by a parenthesized, comma-separated
 		''' list of the constructor's generic formal parameter types.
 		''' 
 		''' If this constructor was declared to take a variable number of
@@ -338,7 +338,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' Uses the constructor represented by this {@code Constructor} object to
 		''' create and initialize a new instance of the constructor's
-		''' declaring class, with the specified initialization parameters.
+		''' declaring [Class], with the specified initialization parameters.
 		''' Individual parameters are automatically unwrapped to match
 		''' primitive formal parameters, and both primitive and reference
 		''' parameters are subject to method invocation conversions as necessary.
@@ -386,7 +386,7 @@ Namespace java.lang.reflect
 		Public Function newInstance(ParamArray ByVal initargs As Object()) As T
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, Nothing, modifiers)
 				End If
 			End If
@@ -485,7 +485,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException">  {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T
+		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
 			Return MyBase.getAnnotation(annotationClass)
 		End Function
 
@@ -510,7 +510,7 @@ Namespace java.lang.reflect
 		End Property
 
 		Friend Overrides Sub handleParameterNumberMismatch(ByVal resultLength As Integer, ByVal numParameters As Integer)
-			Dim declaringClass_Renamed As Class = declaringClass
+			Dim declaringClass_Renamed As  [Class] = declaringClass
 			If declaringClass_Renamed.enum OrElse declaringClass_Renamed.anonymousClass OrElse declaringClass_Renamed.localClass Then
 				Return ' Can't do reliable parameter counting
 			Else

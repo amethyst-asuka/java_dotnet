@@ -105,7 +105,7 @@ Namespace java.lang
 		'''          If {@code clazz} is {@code null} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public Shared Function compileClass(ByVal clazz As Class) As Boolean
+		Public Shared Function compileClass(ByVal clazz As [Class]) As Boolean
 		End Function
 
 		''' <summary>

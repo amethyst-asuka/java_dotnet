@@ -35,7 +35,7 @@ Namespace java.awt
 	''' keys and associated values which allow an application to provide input
 	''' into the choice of algorithms used by other classes which perform
 	''' rendering and image manipulation services.
-	''' The <seealso cref="java.awt.Graphics2D"/> class, and classes that implement
+	''' The <seealso cref="java.awt.Graphics2D"/> [Class], and classes that implement
 	''' <seealso cref="java.awt.image.BufferedImageOp"/> and
 	''' <seealso cref="java.awt.image.RasterOp"/> all provide methods to get and
 	''' possibly to set individual or groups of {@code RenderingHints}
@@ -71,7 +71,7 @@ Namespace java.awt
 	''' The keys used to control the hints are all special values that
 	''' subclass the associated <seealso cref="RenderingHints.Key"/> class.
 	''' Many common hints are expressed below as static constants in this
-	''' class, but the list is not meant to be exhaustive.
+	''' [Class], but the list is not meant to be exhaustive.
 	''' Other hints may be created by other packages by defining new objects
 	''' which subclass the {@code Key} class and defining the associated values.
 	''' </summary>

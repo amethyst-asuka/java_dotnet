@@ -33,7 +33,7 @@ Namespace java.util.prefs
 
 	''' <summary>
 	''' This class provides a skeletal implementation of the <seealso cref="Preferences"/>
-	''' class, greatly easing the task of implementing it.
+	''' [Class], greatly easing the task of implementing it.
 	''' 
 	''' <p><strong>This class is for <tt>Preferences</tt> implementers only.
 	''' Normal users of the <tt>Preferences</tt> facility should have no need to

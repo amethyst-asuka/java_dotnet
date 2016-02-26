@@ -90,7 +90,7 @@ Namespace java.lang.instrument
 		''' is true and the current configuration of the JVM does not allow
 		''' retransformation (<seealso cref="#isRetransformClassesSupported"/> is false)
 		''' @since 1.6 </exception>
-		Sub addTransformer(ByVal transformer As ClassFileTransformer, ByVal canRetransform As Boolean)
+		Sub addTransformer(ByVal transformer As  [Class]FileTransformer, ByVal canRetransform As Boolean)
 
 		''' <summary>
 		''' Registers the supplied transformer.
@@ -100,7 +100,7 @@ Namespace java.lang.instrument
 		''' <param name="transformer">          the transformer to register </param>
 		''' <exception cref="java.lang.NullPointerException"> if passed a <code>null</code> transformer </exception>
 		''' <seealso cref=    #addTransformer(ClassFileTransformer,boolean) </seealso>
-		Sub addTransformer(ByVal transformer As ClassFileTransformer)
+		Sub addTransformer(ByVal transformer As  [Class]FileTransformer)
 
 		''' <summary>
 		''' Unregisters the supplied transformer. Future class definitions will
@@ -114,7 +114,7 @@ Namespace java.lang.instrument
 		''' <returns>  true if the transformer was found and removed, false if the
 		'''           transformer was not found </returns>
 		''' <exception cref="java.lang.NullPointerException"> if passed a <code>null</code> transformer </exception>
-		Function removeTransformer(ByVal transformer As ClassFileTransformer) As Boolean
+		Function removeTransformer(ByVal transformer As  [Class]FileTransformer) As Boolean
 
 		''' <summary>
 		''' Returns whether or not the current JVM configuration supports retransformation
@@ -242,7 +242,7 @@ Namespace java.lang.instrument
 		''' <seealso cref= #addTransformer </seealso>
 		''' <seealso cref= java.lang.instrument.ClassFileTransformer
 		''' @since 1.6 </seealso>
-		Sub retransformClasses(ParamArray ByVal classes As Class())
+		Sub retransformClasses(ParamArray ByVal classes As  [Class]())
 
 		''' <summary>
 		''' Returns whether or not the current JVM configuration supports redefinition
@@ -325,7 +325,7 @@ Namespace java.lang.instrument
 		''' <seealso cref= #isRedefineClassesSupported </seealso>
 		''' <seealso cref= #addTransformer </seealso>
 		''' <seealso cref= java.lang.instrument.ClassFileTransformer </seealso>
-		Sub redefineClasses(ParamArray ByVal definitions As ClassDefinition())
+		Sub redefineClasses(ParamArray ByVal definitions As  [Class]Definition())
 
 
 		''' <summary>
@@ -354,14 +354,14 @@ Namespace java.lang.instrument
 		''' <seealso cref= #redefineClasses </seealso>
 		''' <seealso cref= #isRedefineClassesSupported
 		''' @since 1.6 </seealso>
-		Function isModifiableClass(ByVal theClass As Class) As Boolean
+		Function isModifiableClass(ByVal theClass As [Class]) As Boolean
 
 		''' <summary>
 		''' Returns an array of all classes currently loaded by the JVM.
 		''' </summary>
 		''' <returns> an array containing all the classes loaded by the JVM, zero-length if there are none </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		ReadOnly Property allLoadedClasses As Class()
+		ReadOnly Property allLoadedClasses As  [Class]()
 
 		''' <summary>
 		''' Returns an array of all classes for which <code>loader</code> is an initiating loader.
@@ -372,7 +372,7 @@ Namespace java.lang.instrument
 		''' <returns> an array containing all the classes for which loader is an initiating loader,
 		'''          zero-length if there are none </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Function getInitiatedClasses(ByVal loader As ClassLoader) As Class()
+		Function getInitiatedClasses(ByVal loader As  [Class]Loader) As  [Class]()
 
 		''' <summary>
 		''' Returns an implementation-specific approximation of the amount of storage consumed by
@@ -392,7 +392,7 @@ Namespace java.lang.instrument
 		''' bootstrap class loader.
 		''' 
 		''' <p> When the virtual machine's built-in class loader, known as the "bootstrap
-		''' class loader", unsuccessfully searches for a class, the entries in the {@link
+		''' class loader", unsuccessfully searches for a [Class], the entries in the {@link
 		''' java.util.jar.JarFile JAR file} will be searched as well.
 		''' 
 		''' <p> This method may be used multiple times to add multiple JAR files to be
@@ -442,7 +442,7 @@ Namespace java.lang.instrument
 		''' 
 		''' When the system class loader for delegation (see
 		''' <seealso cref="java.lang.ClassLoader#getSystemClassLoader getSystemClassLoader()"/>)
-		''' unsuccessfully searches for a class, the entries in the {@link
+		''' unsuccessfully searches for a [Class], the entries in the {@link
 		''' java.util.jar.JarFile JarFile} will be searched as well.
 		''' 
 		''' <p> This method may be used multiple times to add multiple JAR files to be
@@ -531,7 +531,7 @@ Namespace java.lang.instrument
 		''' <p>
 		''' We could transform the class file (with the
 		''' ClassFileTransformer during the initial definition
-		''' of the class) so that this becomes:
+		''' of the [Class]) so that this becomes:
 		''' <pre>
 		'''   boolean foo(int x) {
 		'''     <i>... record entry to foo ...</i>
@@ -627,7 +627,7 @@ Namespace java.lang.instrument
 		'''           (see <seealso cref="#addTransformer(ClassFileTransformer,boolean) addTransformer"/>).
 		''' 
 		''' @since 1.6 </exception>
-		Sub setNativeMethodPrefix(ByVal transformer As ClassFileTransformer, ByVal prefix As String)
+		Sub setNativeMethodPrefix(ByVal transformer As  [Class]FileTransformer, ByVal prefix As String)
 	End Interface
 
 End Namespace

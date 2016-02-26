@@ -51,7 +51,7 @@ Namespace java.util
 	''' 
 	''' <p>Unlike the other abstract collection implementations, the programmer does
 	''' <i>not</i> have to provide an iterator implementation; the iterator and
-	''' list iterator are implemented by this class, on top of the "random access"
+	''' list iterator are implemented by this [Class], on top of the "random access"
 	''' methods:
 	''' <seealso cref="#get(int)"/>,
 	''' <seealso cref="#set(int, Object) set(int, E)"/>,

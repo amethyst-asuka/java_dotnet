@@ -76,15 +76,15 @@ Namespace java.lang.invoke
 		''' Info about local variables in compiled lambda form </summary>
 		Private ReadOnly localsMap As Integer() ' index
 		Private ReadOnly localTypes As BasicType() ' basic type
-		Private ReadOnly localClasses As Class() ' type
+		Private ReadOnly localClasses As  [Class]() ' type
 
 		''' <summary>
 		''' ASM bytecode generation. </summary>
-		Private cw As ClassWriter
+		Private cw As  [Class]Writer
 		Private mv As MethodVisitor
 
 		Private Shared ReadOnly MEMBERNAME_FACTORY As MemberName.Factory = MemberName.factory
-		Private Shared ReadOnly HOST_CLASS As Class = GetType(LambdaForm)
+		Private Shared ReadOnly HOST_CLASS As  [Class] = GetType(LambdaForm)
 
 		''' <summary>
 		''' Main constructor; other constructors delegate to this one. </summary>
@@ -272,20 +272,20 @@ Namespace java.lang.invoke
 		''' Extract the MemberName of a newly-defined method.
 		''' </summary>
 		Private Function loadMethod(ByVal classFile As SByte()) As MemberName
-			Dim invokerClass As Class = loadAndInitializeInvokerClass(classFile, cpPatches(classFile))
+			Dim invokerClass As  [Class] = loadAndInitializeInvokerClass(classFile, cpPatches(classFile))
 			Return resolveInvokerMember(invokerClass, invokerName, invokerType)
 		End Function
 
 		''' <summary>
 		''' Define a given class as anonymous class in the runtime system.
 		''' </summary>
-		Private Shared Function loadAndInitializeInvokerClass(ByVal classBytes As SByte(), ByVal patches As Object()) As Class
-			Dim invokerClass As Class = UNSAFE.defineAnonymousClass(HOST_CLASS, classBytes, patches)
+		Private Shared Function loadAndInitializeInvokerClass(ByVal classBytes As SByte(), ByVal patches As Object()) As  [Class]
+			Dim invokerClass As  [Class] = UNSAFE.defineAnonymousClass(HOST_CLASS, classBytes, patches)
 			UNSAFE.ensureClassInitialized(invokerClass) ' Make sure the class is initialized; VM might complain.
 			Return invokerClass
 		End Function
 
-		Private Shared Function resolveInvokerMember(ByVal invokerClass As Class, ByVal name As String, ByVal type As MethodType) As MemberName
+		Private Shared Function resolveInvokerMember(ByVal invokerClass As [Class], ByVal name As String, ByVal type As MethodType) As MemberName
 			Dim member As New MemberName(invokerClass, name, type, REF_invokeStatic)
 			'System.out.println("resolveInvokerMember => "+member);
 			'for (Method m : invokerClass.getDeclaredMethods())  System.out.println("  "+m);
@@ -551,7 +551,7 @@ Namespace java.lang.invoke
 		''' <param name="ptype"> type of value present on stack </param>
 		''' <param name="pclass"> type of value required on stack </param>
 		''' <param name="arg"> compile-time representation of value on stack (Node, constant) or null if none </param>
-		Private Sub emitImplicitConversion(ByVal ptype As BasicType, ByVal pclass As Class, ByVal arg As Object)
+		Private Sub emitImplicitConversion(ByVal ptype As BasicType, ByVal pclass As [Class], ByVal arg As Object)
 			assert(basicType(pclass) Is ptype) ' boxing/unboxing handled by caller
 			If pclass Is ptype.basicTypeClass() AndAlso ptype IsNot L_TYPE Then Return ' nothing to do
 			Select Case ptype
@@ -571,9 +571,9 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Update localClasses type map.  Return true if the information is already present. </summary>
-		Private Function assertStaticType(ByVal cls As Class, ByVal n As Name) As Boolean
+		Private Function assertStaticType(ByVal cls As [Class], ByVal n As Name) As Boolean
 			Dim local As Integer = n.index()
-			Dim aclass As Class = localClasses(local)
+			Dim aclass As  [Class] = localClasses(local)
 			If aclass IsNot Nothing AndAlso (aclass Is cls OrElse aclass.IsSubclassOf(cls)) Then
 				Return True ' type info is already present
 			ElseIf aclass Is Nothing OrElse cls.IsSubclassOf(aclass) Then
@@ -582,7 +582,7 @@ Namespace java.lang.invoke
 			Return False
 		End Function
 
-		Private Sub emitReferenceCast(ByVal cls As Class, ByVal arg As Object)
+		Private Sub emitReferenceCast(ByVal cls As [Class], ByVal arg As Object)
 			Dim writeBack As Name = Nothing ' local to write back result
 			If TypeOf arg Is Name Then
 				Dim n As Name = CType(arg, Name)
@@ -633,7 +633,7 @@ Namespace java.lang.invoke
 			mv.visitInsn(opcode)
 		End Sub
 
-		Private Shared Function getInternalName(ByVal c As Class) As String
+		Private Shared Function getInternalName(ByVal c As [Class]) As String
 			If c Is GetType(Object) Then
 				Return OBJ
 			ElseIf c Is GetType(Object()) Then
@@ -720,7 +720,7 @@ Namespace java.lang.invoke
 						i = i+2 ' Jump to the end of GWC idiom
 						Continue For
 					Case NEW_ARRAY
-						Dim rtype As Class = name.function.methodType().returnType()
+						Dim rtype As  [Class] = name.function.methodType().returnType()
 						If isStaticallyNameable(rtype) Then
 							emitNewArray(name)
 							Continue For
@@ -773,7 +773,7 @@ Namespace java.lang.invoke
 
 		Friend Overridable Sub emitArrayOp(ByVal name As Name, ByVal arrayOpcode As Integer)
 			Debug.Assert(arrayOpcode = Opcodes.AALOAD OrElse arrayOpcode = Opcodes.AASTORE)
-			Dim elementType As Class = name.function.methodType().parameterType(0).componentType
+			Dim elementType As  [Class] = name.function.methodType().parameterType(0).componentType
 			Debug.Assert(elementType IsNot Nothing)
 			emitPushArguments(name)
 			If elementType.primitive Then
@@ -811,7 +811,7 @@ Namespace java.lang.invoke
 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, MH, "invokeBasic", type.basicType().toMethodDescriptorString(), False)
 		End Sub
 
-		Private Shared STATICALLY_INVOCABLE_PACKAGES As Class() = { GetType(Object), GetType(Arrays), GetType(sun.misc.Unsafe) }
+		Private Shared STATICALLY_INVOCABLE_PACKAGES As  [Class]() = { GetType(Object), GetType(Arrays), GetType(sun.misc.Unsafe) }
 
 		Friend Shared Function isStaticallyInvocable(ByVal name As Name) As Boolean
 			Return isStaticallyInvocable(name.function.member())
@@ -820,14 +820,14 @@ Namespace java.lang.invoke
 		Friend Shared Function isStaticallyInvocable(ByVal member As MemberName) As Boolean
 			If member Is Nothing Then Return False
 			If member.constructor Then Return False
-			Dim cls_Renamed As Class = member.declaringClass
+			Dim cls_Renamed As  [Class] = member.declaringClass
 			If cls_Renamed.array OrElse cls_Renamed.primitive Then Return False ' FIXME
 			If cls_Renamed.anonymousClass OrElse cls_Renamed.localClass Then Return False ' inner class of some sort
 			If cls_Renamed.classLoader IsNot GetType(MethodHandle).classLoader Then Return False ' not on BCP
 			If sun.reflect.misc.ReflectUtil.isVMAnonymousClass(cls_Renamed) Then ' FIXME: switch to supported API once it is added Return False
 			Dim mtype As MethodType = member.methodOrFieldType
 			If Not isStaticallyNameable(mtype.returnType()) Then Return False
-			For Each ptype As Class In mtype.parameterArray()
+			For Each ptype As  [Class] In mtype.parameterArray()
 				If Not isStaticallyNameable(ptype) Then Return False
 			Next ptype
 			If (Not member.private) AndAlso sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls_Renamed) Then Return True ' in java.lang.invoke package
@@ -835,7 +835,7 @@ Namespace java.lang.invoke
 			Return False
 		End Function
 
-		Friend Shared Function isStaticallyNameable(ByVal cls As Class) As Boolean
+		Friend Shared Function isStaticallyNameable(ByVal cls As [Class]) As Boolean
 			If cls Is GetType(Object) Then Return True
 			Do While cls.array
 				cls = cls.componentType
@@ -846,7 +846,7 @@ Namespace java.lang.invoke
 			If cls.classLoader IsNot GetType(Object).classLoader Then Return False
 			If sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls) Then Return True
 			If Not Modifier.isPublic(cls.modifiers) Then Return False
-			For Each pkgcls As Class In STATICALLY_INVOCABLE_PACKAGES
+			For Each pkgcls As  [Class] In STATICALLY_INVOCABLE_PACKAGES
 				If sun.invoke.util.VerifyAccess.isSamePackage(pkgcls, cls) Then Return True
 			Next pkgcls
 			Return False
@@ -861,7 +861,7 @@ Namespace java.lang.invoke
 		''' </summary>
 		Friend Overridable Sub emitStaticInvoke(ByVal member As MemberName, ByVal name As Name)
 			assert(member.Equals(name.function.member()))
-			Dim defc As Class = member.declaringClass
+			Dim defc As  [Class] = member.declaringClass
 			Dim cname As String = getInternalName(defc)
 			Dim mname As String = member.name
 			Dim mtype As String
@@ -887,14 +887,14 @@ Namespace java.lang.invoke
 			End If
 			' Issue a type assertion for the result, so we can avoid casts later.
 			If name.type = L_TYPE Then
-				Dim rtype As Class = member.invocationType.returnType()
+				Dim rtype As  [Class] = member.invocationType.returnType()
 				assert((Not rtype.primitive))
 				If rtype IsNot GetType(Object) AndAlso (Not rtype.interface) Then assertStaticType(rtype, name)
 			End If
 		End Sub
 
 		Friend Overridable Sub emitNewArray(ByVal name As Name)
-			Dim rtype As Class = name.function.methodType().returnType()
+			Dim rtype As  [Class] = name.function.methodType().returnType()
 			If name.arguments.length = 0 Then
 				' The array will be a constant.
 				Dim emptyArray As Object
@@ -909,7 +909,7 @@ Namespace java.lang.invoke
 				emitReferenceCast(rtype, emptyArray)
 				Return
 			End If
-			Dim arrayElementType As Class = rtype.componentType
+			Dim arrayElementType As  [Class] = rtype.componentType
 			assert(arrayElementType IsNot Nothing)
 			emitIconstInsn(name.arguments.length)
 			Dim xas As Integer = Opcodes.AASTORE
@@ -955,10 +955,10 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Check if MemberName is a call to a method named {@code name} in class {@code declaredClass}.
 		''' </summary>
-		Private Function memberRefersTo(ByVal member As MemberName, ByVal declaringClass As Class, ByVal name As String) As Boolean
+		Private Function memberRefersTo(ByVal member As MemberName, ByVal declaringClass As [Class], ByVal name As String) As Boolean
 			Return member IsNot Nothing AndAlso member.declaringClass Is declaringClass AndAlso member.name.Equals(name)
 		End Function
-		Private Function nameRefersTo(ByVal name As Name, ByVal declaringClass As Class, ByVal methodName As String) As Boolean
+		Private Function nameRefersTo(ByVal name As Name, ByVal declaringClass As [Class], ByVal methodName As String) As Boolean
 			Return name.function IsNot Nothing AndAlso memberRefersTo(name.function.member(), declaringClass, methodName)
 		End Function
 
@@ -1036,7 +1036,7 @@ Namespace java.lang.invoke
 			mv.visitJumpInsn(Opcodes.IFEQ, L_fallback)
 
 			' invoke selectAlternativeName.arguments[1]
-			Dim preForkClasses As Class() = localClasses.clone()
+			Dim preForkClasses As  [Class]() = localClasses.clone()
 			emitPushArgument(selectAlternativeName, 1) ' get 2nd argument of selectAlternative
 			emitAstoreInsn(receiver.index()) ' store the MH in the receiver slot
 			emitStaticInvoke(invokeBasicName)
@@ -1091,7 +1091,7 @@ Namespace java.lang.invoke
 			Dim L_handler As New Label
 			Dim L_done As New Label
 
-			Dim returnType As Class = result.function.resolvedHandle.type().returnType()
+			Dim returnType As  [Class] = result.function.resolvedHandle.type().returnType()
 			Dim type As MethodType = args.function.resolvedHandle.type().dropParameterTypes(0,1).changeReturnType(returnType)
 
 			mv.visitTryCatchBlock(L_startBlock, L_endBlock, L_handler, "java/lang/Throwable")
@@ -1146,11 +1146,11 @@ Namespace java.lang.invoke
 
 		Private Sub emitPushArgument(ByVal name As Name, ByVal paramIndex As Integer)
 			Dim arg As Object = name.arguments(paramIndex)
-			Dim ptype As Class = name.function.methodType().parameterType(paramIndex)
+			Dim ptype As  [Class] = name.function.methodType().parameterType(paramIndex)
 			emitPushArgument(ptype, arg)
 		End Sub
 
-		Private Sub emitPushArgument(ByVal ptype As Class, ByVal arg As Object)
+		Private Sub emitPushArgument(ByVal ptype As [Class], ByVal arg As Object)
 			Dim bptype As BasicType = basicType(ptype)
 			If TypeOf arg Is Name Then
 				Dim n As Name = CType(arg, Name)
@@ -1180,7 +1180,7 @@ Namespace java.lang.invoke
 		''' </summary>
 		Private Sub emitReturn(ByVal onStack As Name)
 			' return statement
-			Dim rclass As Class = invokerType.returnType()
+			Dim rclass As  [Class] = invokerType.returnType()
 			Dim rtype As BasicType = lambdaForm.returnType()
 			assert(rtype Is basicType(rclass)) ' must agree
 			If rtype Is V_TYPE Then
@@ -1329,7 +1329,7 @@ Namespace java.lang.invoke
 
 			' fill parameter array
 			For i As Integer = 0 To invokerType.parameterCount() - 1
-				Dim ptype As Class = invokerType.parameterType(i)
+				Dim ptype As  [Class] = invokerType.parameterType(i)
 				mv.visitInsn(Opcodes.DUP)
 				emitIconstInsn(i)
 				emitLoadInsn(basicType(ptype), i)
@@ -1344,7 +1344,7 @@ Namespace java.lang.invoke
 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, LF, "interpretWithArguments", "([Ljava/lang/Object;)Ljava/lang/Object;", False)
 
 			' maybe unbox
-			Dim rtype As Class = invokerType.returnType()
+			Dim rtype As  [Class] = invokerType.returnType()
 			If rtype.primitive AndAlso rtype IsNot GetType(void) Then emitUnboxing(sun.invoke.util.Wrapper.forPrimitiveType(rtype))
 
 			' return statement
@@ -1388,9 +1388,9 @@ Namespace java.lang.invoke
 				mv.visitInsn(Opcodes.AALOAD)
 
 				' Maybe unbox
-				Dim dptype As Class = dstType.parameterType(i)
+				Dim dptype As  [Class] = dstType.parameterType(i)
 				If dptype.primitive Then
-					Dim sptype As Class = dstType.basicType().wrap().parameterType(i)
+					Dim sptype As  [Class] = dstType.basicType().wrap().parameterType(i)
 					Dim dstWrapper As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forBasicType(dptype)
 					Dim srcWrapper As sun.invoke.util.Wrapper = If(dstWrapper.subwordOrInt, sun.invoke.util.Wrapper.INT, dstWrapper) ' narrow subword from int
 					emitUnboxing(srcWrapper)
@@ -1403,7 +1403,7 @@ Namespace java.lang.invoke
 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, MH, "invokeBasic", targetDesc, False)
 
 			' Box primitive types
-			Dim rtype As Class = dstType.returnType()
+			Dim rtype As  [Class] = dstType.returnType()
 			If rtype IsNot GetType(void) AndAlso rtype.primitive Then
 				Dim srcWrapper As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forBasicType(rtype)
 				Dim dstWrapper As sun.invoke.util.Wrapper = If(srcWrapper.subwordOrInt, sun.invoke.util.Wrapper.INT, srcWrapper) ' widen subword to int

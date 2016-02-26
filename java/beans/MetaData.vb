@@ -55,7 +55,7 @@ Namespace java.beans
 
 		' Note this will be called by all classes when they reach the
 		' top of their superclass chain.
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 		End Sub
 		Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
 			Return Nothing
@@ -106,11 +106,11 @@ Namespace java.beans
 
 		Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
 			' System.out.println("instantiate: " + type + " " + oldInstance);
-			Dim oldClass As Class = oldInstance.GetType()
+			Dim oldClass As  [Class] = oldInstance.GetType()
 			Return New Expression(oldInstance, GetType(Array), "newInstance", New Object(){oldClass.componentType, New Integer?(Array.getLength(oldInstance))})
 		End Function
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			Dim n As Integer = Array.getLength(oldInstance)
 			For i As Integer = 0 To n - 1
 				Dim index As Object = New Integer?(i)
@@ -135,7 +135,7 @@ Namespace java.beans
 		Inherits PersistenceDelegate
 
 		Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
-			Dim type As Class = oldInstance.GetType()
+			Dim type As  [Class] = oldInstance.GetType()
 			Dim p As java.lang.reflect.Proxy = CType(oldInstance, java.lang.reflect.Proxy)
 			' This unappealing hack is not required but makes the
 			' representation of EventHandlers much more concise.
@@ -179,7 +179,7 @@ Namespace java.beans
 		End Function
 
 		Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
-			Dim c As Class = CType(oldInstance, [Class])
+			Dim c As  [Class] = CType(oldInstance, [Class])
 			' As of 1.3 it is not possible to call Class.forName("int"),
 			' so we have to generate different code for primitive types.
 			' This is needed for arrays whose subtype may be primitive.
@@ -272,9 +272,9 @@ Namespace java.beans
 		Private Property Shared nanosMethod As Method
 			Get
 				Try
-					Dim c As Class = Type.GetType("java.sql.Timestamp", True, Nothing)
+					Dim c As  [Class] = Type.GetType("java.sql.Timestamp", True, Nothing)
 					Return c.getMethod("getNanos")
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					Return Nothing
 				Catch e As NoSuchMethodException
 					Throw New AssertionError(e)
@@ -299,7 +299,7 @@ Namespace java.beans
 			End Try
 		End Function
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			' assumes oldInstance and newInstance are Timestamps
 			Dim nanos_Renamed As Integer = getNanos(oldInstance)
 			If nanos_Renamed <> getNanos(newInstance) Then out.writeStatement(New Statement(oldInstance, "setNanos", New Object() {nanos_Renamed}))
@@ -340,7 +340,7 @@ Namespace java.beans
 			Return (oldC.size() = newC.size()) AndAlso oldC.containsAll(newC)
 		End Function
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			' do not initialize these custom collections in default way
 		End Sub
 
@@ -665,7 +665,7 @@ Namespace java.beans
 	Friend Class java_util_Collection_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim oldO As ICollection(Of ?) = CType(oldInstance, ICollection)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -684,7 +684,7 @@ Namespace java.beans
 	Friend Class java_util_List_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim oldO As IList(Of ?) = CType(oldInstance, IList(Of ?))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -720,7 +720,7 @@ Namespace java.beans
 	Friend Class java_util_Map_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			' System.out.println("Initializing: " + newInstance);
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim oldMap As IDictionary(Of ?, ?) = CType(oldInstance, IDictionary)
@@ -858,7 +858,7 @@ Namespace java.beans
 					End If
 				End If
 			Next key
-			Dim type As Class = font.GetType()
+			Dim type As  [Class] = font.GetType()
 			If count = clone.size() Then Return New Expression(font, type, "new", New Object(){family, style, size})
 			If type Is GetType(java.awt.Font) Then Return New Expression(font, type, "getFont", New Object(){clone})
 			Return New Expression(font, type, "new", New Object(){java.awt.Font.getFont(clone)})
@@ -898,7 +898,7 @@ Namespace java.beans
 				End If
 			End If
 			If args Is Nothing Then Throw New IllegalStateException("Unsupported KeyStroke: " & key)
-			Dim type As Class = key.GetType()
+			Dim type As  [Class] = key.GetType()
 			Dim name As String = type.name
 			' get short name of the class
 			Dim index As Integer = name.LastIndexOf("."c) + 1
@@ -910,7 +910,7 @@ Namespace java.beans
 	Friend Class StaticFieldsPersistenceDelegate
 		Inherits PersistenceDelegate
 
-		Protected Friend Overridable Sub installFields(ByVal out As Encoder, ByVal cls As Class)
+		Protected Friend Overridable Sub installFields(ByVal out As Encoder, ByVal cls As [Class])
 			If Modifier.isPublic(cls.modifiers) AndAlso isPackageAccessible(cls) Then
 				Dim fields As Field() = cls.fields
 				For i As Integer = 0 To fields.Length - 1
@@ -965,7 +965,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_Component_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim c As java.awt.Component = CType(oldInstance, java.awt.Component)
 			Dim c2 As java.awt.Component = CType(newInstance, java.awt.Component)
@@ -1006,7 +1006,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_Container_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			' Ignore the children of a JScrollPane.
 			' Pending(milne) find a better way to do this.
@@ -1033,7 +1033,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_Choice_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim m As java.awt.Choice = CType(oldInstance, java.awt.Choice)
 			Dim n As java.awt.Choice = CType(newInstance, java.awt.Choice)
@@ -1047,7 +1047,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_Menu_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim m As java.awt.Menu = CType(oldInstance, java.awt.Menu)
 			Dim n As java.awt.Menu = CType(newInstance, java.awt.Menu)
@@ -1061,7 +1061,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_MenuBar_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim m As java.awt.MenuBar = CType(oldInstance, java.awt.MenuBar)
 			Dim n As java.awt.MenuBar = CType(newInstance, java.awt.MenuBar)
@@ -1075,7 +1075,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_List_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim m As java.awt.List = CType(oldInstance, java.awt.List)
 			Dim n As java.awt.List = CType(newInstance, java.awt.List)
@@ -1093,7 +1093,7 @@ Namespace java.beans
 		Inherits DefaultPersistenceDelegate
 
 		Private Shared ReadOnly CONSTRAINTS As String() = { java.awt.BorderLayout.NORTH, java.awt.BorderLayout.SOUTH, java.awt.BorderLayout.EAST, java.awt.BorderLayout.WEST, java.awt.BorderLayout.CENTER, java.awt.BorderLayout.PAGE_START, java.awt.BorderLayout.PAGE_END, java.awt.BorderLayout.LINE_START, java.awt.BorderLayout.LINE_END }
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim oldLayout As java.awt.BorderLayout = CType(oldInstance, java.awt.BorderLayout)
 			Dim newLayout As java.awt.BorderLayout = CType(newInstance, java.awt.BorderLayout)
@@ -1110,7 +1110,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_CardLayout_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			If getVector(newInstance).empty Then
 				For Each card As Object In getVector(oldInstance)
@@ -1133,7 +1133,7 @@ Namespace java.beans
 	Friend NotInheritable Class java_awt_GridBagLayout_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			If getHashtable(newInstance).empty Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1161,7 +1161,7 @@ Namespace java.beans
 	Friend NotInheritable Class javax_swing_JFrame_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim oldC As java.awt.Window = CType(oldInstance, java.awt.Window)
 			Dim newC As java.awt.Window = CType(newInstance, java.awt.Window)
@@ -1183,7 +1183,7 @@ Namespace java.beans
 	Friend NotInheritable Class javax_swing_DefaultListModel_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			' Note, the "size" property will be set here.
 			MyBase.initialize(type, oldInstance, newInstance, out)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1200,7 +1200,7 @@ Namespace java.beans
 	Friend NotInheritable Class javax_swing_DefaultComboBoxModel_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim m As javax.swing.DefaultComboBoxModel(Of ?) = CType(oldInstance, javax.swing.DefaultComboBoxModel(Of ?))
@@ -1215,7 +1215,7 @@ Namespace java.beans
 	Friend NotInheritable Class javax_swing_tree_DefaultMutableTreeNode_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim m As javax.swing.tree.DefaultMutableTreeNode = CType(oldInstance, javax.swing.tree.DefaultMutableTreeNode)
 			Dim n As javax.swing.tree.DefaultMutableTreeNode = CType(newInstance, javax.swing.tree.DefaultMutableTreeNode)
@@ -1238,7 +1238,7 @@ Namespace java.beans
 	Friend NotInheritable Class javax_swing_JTabbedPane_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim p As javax.swing.JTabbedPane = CType(oldInstance, javax.swing.JTabbedPane)
 			For i As Integer = 0 To p.tabCount - 1
@@ -1274,7 +1274,7 @@ Namespace java.beans
 	Friend NotInheritable Class javax_swing_JMenu_PersistenceDelegate
 		Inherits DefaultPersistenceDelegate
 
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			Dim m As javax.swing.JMenu = CType(oldInstance, javax.swing.JMenu)
 			Dim c As java.awt.Component() = m.menuComponents
@@ -1372,7 +1372,7 @@ Namespace java.beans
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Shared Function getPersistenceDelegate(ByVal type As Class) As PersistenceDelegate
+		Public Shared Function getPersistenceDelegate(ByVal type As [Class]) As PersistenceDelegate
 			If type Is Nothing Then Return nullPersistenceDelegate
 			If type.IsSubclassOf(GetType(System.Enum)) Then Return enumPersistenceDelegate
 			If Nothing IsNot XMLEncoder.primitiveTypeFor(type) Then Return primitivePersistenceDelegate
@@ -1401,10 +1401,10 @@ Namespace java.beans
 				internalPersistenceDelegates.put(typeName, defaultPersistenceDelegate_Renamed)
 				Try
 					Dim name As String = type.name
-					Dim c As Class = Type.GetType("java.beans.MetaData$" & name.replace("."c, "_"c) & "_PersistenceDelegate")
+					Dim c As  [Class] = Type.GetType("java.beans.MetaData$" & name.replace("."c, "_"c) & "_PersistenceDelegate")
 					pd = CType(c.newInstance(), PersistenceDelegate)
 					internalPersistenceDelegates.put(typeName, pd)
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					Dim properties As String() = getConstructorProperties(type)
 					If properties IsNot Nothing Then
 						pd = New DefaultPersistenceDelegate(properties)
@@ -1418,7 +1418,7 @@ Namespace java.beans
 			Return If(pd IsNot Nothing, pd, defaultPersistenceDelegate_Renamed)
 		End Function
 
-		Private Shared Function getConstructorProperties(ByVal type As Class) As String()
+		Private Shared Function getConstructorProperties(ByVal type As [Class]) As String()
 			Dim names As String() = Nothing
 			Dim length As Integer = 0
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -1438,7 +1438,7 @@ Namespace java.beans
 		End Function
 
 		Private Shared Function isValid(Of T1)(ByVal constructor As Constructor(Of T1), ByVal names As String()) As Boolean
-			Dim parameters As Class() = constructor.parameterTypes
+			Dim parameters As  [Class]() = constructor.parameterTypes
 			If names.Length <> parameters.Length Then Return False
 			For Each name As String In names
 				If name Is Nothing Then Return False
@@ -1446,7 +1446,7 @@ Namespace java.beans
 			Return True
 		End Function
 
-		Private Shared Function getBeanAttribute(ByVal type As Class, ByVal attribute As String) As Object
+		Private Shared Function getBeanAttribute(ByVal type As [Class], ByVal attribute As String) As Object
 			Try
 				Return Introspector.getBeanInfo(type).beanDescriptor.getValue(attribute)
 			Catch exception_Renamed As IntrospectionException
@@ -1478,7 +1478,7 @@ Namespace java.beans
 					Dim field As Field = Type.GetType(className).getDeclaredField(fieldName)
 					field.accessible = True
 					Return field
-				Catch exception_Renamed As ClassNotFoundException
+				Catch exception_Renamed As  [Class]NotFoundException
 					Throw New IllegalStateException("Could not find class", exception_Renamed)
 				Catch exception_Renamed As NoSuchFieldException
 					Throw New IllegalStateException("Could not find field", exception_Renamed)

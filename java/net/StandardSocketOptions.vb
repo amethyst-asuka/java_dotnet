@@ -336,15 +336,15 @@ Namespace java.net
 			Implements SocketOption(Of T)
 
 			Private ReadOnly name_Renamed As String
-			Private ReadOnly type_Renamed As Class
-			Friend Sub New(ByVal name As String, ByVal type As Class)
+			Private ReadOnly type_Renamed As  [Class]
+			Friend Sub New(ByVal name As String, ByVal type As [Class])
 				Me.name_Renamed = name
 				Me.type_Renamed = type
 			End Sub
 			Public Overrides Function name() As String Implements SocketOption(Of T).name
 				Return name_Renamed
 			End Function
-			Public Overrides Function type() As Class Implements SocketOption(Of T).type
+			Public Overrides Function type() As  [Class] Implements SocketOption(Of T).type
 				Return type_Renamed
 			End Function
 			Public Overrides Function ToString() As String

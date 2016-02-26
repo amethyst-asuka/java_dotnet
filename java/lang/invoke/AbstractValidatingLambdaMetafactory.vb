@@ -49,20 +49,20 @@ Namespace java.lang.invoke
 	'     *         System.out.printf(">>> %s\n", iii.foo(44));
 	'     * }}
 	'     
-		Friend ReadOnly targetClass As Class ' The class calling the meta-factory via invokedynamic "class X"
+		Friend ReadOnly targetClass As  [Class] ' The class calling the meta-factory via invokedynamic "class X"
 		Friend ReadOnly invokedType As MethodType ' The type of the invoked method "(CC)II"
-		Friend ReadOnly samBase As Class ' The type of the returned instance "interface JJ"
+		Friend ReadOnly samBase As  [Class] ' The type of the returned instance "interface JJ"
 		Friend ReadOnly samMethodName As String ' Name of the SAM method "foo"
 		Friend ReadOnly samMethodType As MethodType ' Type of the SAM method "(Object)Object"
 		Friend ReadOnly implMethod As MethodHandle ' Raw method handle for the implementation method
 		Friend ReadOnly implInfo As MethodHandleInfo ' Info about the implementation method handle "MethodHandleInfo[5 CC.impl(int)String]"
 		Friend ReadOnly implKind As Integer ' Invocation kind for implementation "5"=invokevirtual
 		Friend ReadOnly implIsInstanceMethod As Boolean ' Is the implementation an instance method "true"
-		Friend ReadOnly implDefiningClass As Class ' Type defining the implementation "class CC"
+		Friend ReadOnly implDefiningClass As  [Class] ' Type defining the implementation "class CC"
 		Friend ReadOnly implMethodType As MethodType ' Type of the implementation method "(int)String"
 		Friend ReadOnly instantiatedMethodType As MethodType ' Instantiated erased functional interface method type "(Integer)Object"
 		Friend ReadOnly isSerializable As Boolean ' Should the returned instance be serializable
-		Friend ReadOnly markerInterfaces As Class() ' Additional marker interfaces to be implemented
+		Friend ReadOnly markerInterfaces As  [Class]() ' Additional marker interfaces to be implemented
 		Friend ReadOnly additionalBridges As MethodType() ' Signatures of additional methods to bridge
 
 
@@ -102,7 +102,7 @@ Namespace java.lang.invoke
 		'''                          bridged to the implementation method </param>
 		''' <exception cref="LambdaConversionException"> If any of the meta-factory protocol
 		''' invariants are violated </exception>
-		Friend Sub New(ByVal caller As MethodHandles.Lookup, ByVal invokedType As MethodType, ByVal samMethodName As String, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType, ByVal isSerializable As Boolean, ByVal markerInterfaces As Class(), ByVal additionalBridges As MethodType())
+		Friend Sub New(ByVal caller As MethodHandles.Lookup, ByVal invokedType As MethodType, ByVal samMethodName As String, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType, ByVal isSerializable As Boolean, ByVal markerInterfaces As  [Class](), ByVal additionalBridges As MethodType())
 			If (caller.lookupModes() And MethodHandles.Lookup.PRIVATE) = 0 Then Throw New LambdaConversionException(String.Format("Invalid caller: {0}", caller.lookupClass().name))
 			Me.targetClass = caller.lookupClass()
 			Me.invokedType = invokedType
@@ -125,7 +125,7 @@ Namespace java.lang.invoke
 
 			If Not samBase.interface Then Throw New LambdaConversionException(String.Format("Functional interface {0} is not an interface", samBase.name))
 
-			For Each c As Class In markerInterfaces
+			For Each c As  [Class] In markerInterfaces
 				If Not c.interface Then Throw New LambdaConversionException(String.Format("Marker interface {0} is not an interface", c.name))
 			Next c
 		End Sub
@@ -164,7 +164,7 @@ Namespace java.lang.invoke
 			Dim capturedStart As Integer
 			Dim samStart As Integer
 			If implIsInstanceMethod Then
-				Dim receiverClass As Class
+				Dim receiverClass As  [Class]
 
 				' implementation is an instance method, adjust for receiver in captured variables / SAM arguments
 				If capturedArity = 0 Then
@@ -182,7 +182,7 @@ Namespace java.lang.invoke
 				' check receiver type
 				If Not receiverClass.IsSubclassOf(implDefiningClass) Then Throw New LambdaConversionException(String.Format("Invalid receiver type {0}; not a subtype of implementation type {1}", receiverClass, implDefiningClass))
 
-			   Dim implReceiverClass As Class = implMethod.type().parameterType(0)
+			   Dim implReceiverClass As  [Class] = implMethod.type().parameterType(0)
 			   If implReceiverClass IsNot implDefiningClass AndAlso (Not receiverClass.IsSubclassOf(implReceiverClass)) Then Throw New LambdaConversionException(String.Format("Invalid receiver type {0}; not a subtype of implementation receiver type {1}", receiverClass, implReceiverClass))
 			Else
 				' no receiver
@@ -193,22 +193,22 @@ Namespace java.lang.invoke
 			' Check for exact match on non-receiver captured arguments
 			Dim implFromCaptured As Integer = capturedArity - capturedStart
 			For i As Integer = 0 To implFromCaptured - 1
-				Dim implParamType As Class = implMethodType.parameterType(i)
-				Dim capturedParamType As Class = invokedType.parameterType(i + capturedStart)
+				Dim implParamType As  [Class] = implMethodType.parameterType(i)
+				Dim capturedParamType As  [Class] = invokedType.parameterType(i + capturedStart)
 				If Not capturedParamType.Equals(implParamType) Then Throw New LambdaConversionException(String.Format("Type mismatch in captured lambda parameter {0:D}: expecting {1}, found {2}", i, capturedParamType, implParamType))
 			Next i
 			' Check for adaptation match on SAM arguments
 			Dim samOffset As Integer = samStart - implFromCaptured
 			For i As Integer = implFromCaptured To implArity - 1
-				Dim implParamType As Class = implMethodType.parameterType(i)
-				Dim instantiatedParamType As Class = instantiatedMethodType.parameterType(i + samOffset)
+				Dim implParamType As  [Class] = implMethodType.parameterType(i)
+				Dim instantiatedParamType As  [Class] = instantiatedMethodType.parameterType(i + samOffset)
 				If Not isAdaptableTo(instantiatedParamType, implParamType, True) Then Throw New LambdaConversionException(String.Format("Type mismatch for lambda argument {0:D}: {1} is not convertible to {2}", i, instantiatedParamType, implParamType))
 			Next i
 
 			' Adaptation match: return type
-			Dim expectedType As Class = instantiatedMethodType.returnType()
-			Dim actualReturnType As Class = If(implKind = MethodHandleInfo.REF_newInvokeSpecial, implDefiningClass, implMethodType.returnType())
-			Dim samReturnType As Class = samMethodType.returnType()
+			Dim expectedType As  [Class] = instantiatedMethodType.returnType()
+			Dim actualReturnType As  [Class] = If(implKind = MethodHandleInfo.REF_newInvokeSpecial, implDefiningClass, implMethodType.returnType())
+			Dim samReturnType As  [Class] = samMethodType.returnType()
 			If Not isAdaptableToAsReturn(actualReturnType, expectedType) Then Throw New LambdaConversionException(String.Format("Type mismatch for lambda return: {0} is not convertible to {1}", actualReturnType, expectedType))
 			If Not isAdaptableToAsReturnStrict(expectedType, samReturnType) Then Throw New LambdaConversionException(String.Format("Type mismatch for lambda expected return: {0} is not convertible to {1}", expectedType, samReturnType))
 			For Each bridgeMT As MethodType In additionalBridges
@@ -222,7 +222,7 @@ Namespace java.lang.invoke
 		''' <param name="toType"> Type to convert to </param>
 		''' <param name="strict"> If true, do strict checks, else allow that fromType may be parameterized </param>
 		''' <returns> True if 'fromType' can be passed to an argument of 'toType' </returns>
-		Private Function isAdaptableTo(ByVal fromType As Class, ByVal toType As Class, ByVal [strict] As Boolean) As Boolean
+		Private Function isAdaptableTo(ByVal fromType As [Class], ByVal toType As [Class], ByVal [strict] As Boolean) As Boolean
 			If fromType.Equals(toType) Then Return True
 			If fromType.primitive Then
 				Dim wfrom As sun.invoke.util.Wrapper = forPrimitiveType(fromType)
@@ -258,10 +258,10 @@ Namespace java.lang.invoke
 		''' Check type adaptability for return types --
 		''' special handling of void type) and parameterized fromType </summary>
 		''' <returns> True if 'fromType' can be converted to 'toType' </returns>
-		Private Function isAdaptableToAsReturn(ByVal fromType As Class, ByVal toType As Class) As Boolean
+		Private Function isAdaptableToAsReturn(ByVal fromType As [Class], ByVal toType As [Class]) As Boolean
 			Return toType.Equals(GetType(void)) OrElse (Not fromType.Equals(GetType(void))) AndAlso isAdaptableTo(fromType, toType, False)
 		End Function
-		Private Function isAdaptableToAsReturnStrict(ByVal fromType As Class, ByVal toType As Class) As Boolean
+		Private Function isAdaptableToAsReturnStrict(ByVal fromType As [Class], ByVal toType As [Class]) As Boolean
 			If fromType.Equals(GetType(void)) Then Return toType.Equals(GetType(void))
 			Return isAdaptableTo(fromType, toType, True)
 		End Function

@@ -492,50 +492,50 @@ Namespace java.awt
 			End Get
 		End Property
 
-		''' <summary>
-		''' Returns an array of all the objects currently registered
-		''' as <code><em>Foo</em>Listener</code>s
-		''' upon this <code>Choice</code>.
-		''' <code><em>Foo</em>Listener</code>s are registered using the
-		''' <code>add<em>Foo</em>Listener</code> method.
-		''' 
-		''' <p>
-		''' You can specify the <code>listenerType</code> argument
-		''' with a class literal, such as
-		''' <code><em>Foo</em>Listener.class</code>.
-		''' For example, you can query a
-		''' <code>Choice</code> <code>c</code>
-		''' for its item listeners with the following code:
-		''' 
-		''' <pre>ItemListener[] ils = (ItemListener[])(c.getListeners(ItemListener.class));</pre>
-		''' 
-		''' If no such listeners exist, this method returns an empty array.
-		''' </summary>
-		''' <param name="listenerType"> the type of listeners requested; this parameter
-		'''          should specify an interface that descends from
-		'''          <code>java.util.EventListener</code> </param>
-		''' <returns> an array of all objects registered as
-		'''          <code><em>Foo</em>Listener</code>s on this choice,
-		'''          or an empty array if no such
-		'''          listeners have been added </returns>
-		''' <exception cref="ClassCastException"> if <code>listenerType</code>
-		'''          doesn't specify a class or interface that implements
-		'''          <code>java.util.EventListener</code>
-		''' </exception>
-		''' <seealso cref= #getItemListeners
-		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
-			Dim l As java.util.EventListener = Nothing
-			If listenerType Is GetType(ItemListener) Then
-				l = itemListener
-			Else
-				Return MyBase.getListeners(listenerType)
-			End If
-			Return AWTEventMulticaster.getListeners(l, listenerType)
-		End Function
+        ''' <summary>
+        ''' Returns an array of all the objects currently registered
+        ''' as <code><em>Foo</em>Listener</code>s
+        ''' upon this <code>Choice</code>.
+        ''' <code><em>Foo</em>Listener</code>s are registered using the
+        ''' <code>add<em>Foo</em>Listener</code> method.
+        ''' 
+        ''' <p>
+        ''' You can specify the <code>listenerType</code> argument
+        ''' with a class literal, such as
+        ''' <code><em>Foo</em>Listener.class</code>.
+        ''' For example, you can query a
+        ''' <code>Choice</code> <code>c</code>
+        ''' for its item listeners with the following code:
+        ''' 
+        ''' <pre>ItemListener[] ils = (ItemListener[])(c.getListeners(ItemListener.class));</pre>
+        ''' 
+        ''' If no such listeners exist, this method returns an empty array.
+        ''' </summary>
+        ''' <param name="listenerType"> the type of listeners requested; this parameter
+        '''          should specify an interface that descends from
+        '''          <code>java.util.EventListener</code> </param>
+        ''' <returns> an array of all objects registered as
+        '''          <code><em>Foo</em>Listener</code>s on this choice,
+        '''          or an empty array if no such
+        '''          listeners have been added </returns>
+        ''' <exception cref="ClassCastException"> if <code>listenerType</code>
+        '''          doesn't specify a class or interface that implements
+        '''          <code>java.util.EventListener</code>
+        ''' </exception>
+        ''' <seealso cref= #getItemListeners
+        ''' @since 1.3 </seealso>
+        Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
+            Dim l As java.util.EventListener = Nothing
+            If listenerType Is GetType(ItemListener) Then
+                l = itemListener
+            Else
+                Return MyBase.getListeners(listenerType)
+            End If
+            Return AWTEventMulticaster.getListeners(l, listenerType)
+        End Function
 
-		' REMIND: remove when filtering is done at lower level
-		Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
+        ' REMIND: remove when filtering is done at lower level
+        Friend Overrides Function eventEnabled(ByVal e As AWTEvent) As Boolean
 			If e.id = ItemEvent.ITEM_STATE_CHANGED Then
 				If (eventMask And AWTEvent.ITEM_EVENT_MASK) <> 0 OrElse itemListener IsNot Nothing Then Return True
 				Return False
@@ -727,7 +727,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleAction associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleAction interface on behalf of itself.
 			''' </summary>

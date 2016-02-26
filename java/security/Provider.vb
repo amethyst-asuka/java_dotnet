@@ -1167,16 +1167,16 @@ Namespace java.security
 			Friend ReadOnly supportsParameter As Boolean
 			Friend ReadOnly constructorParameterClassName As String
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-			Private constructorParameterClass As Class
+			Private constructorParameterClass As  [Class]
 
 			Friend Sub New(ByVal name As String, ByVal sp As Boolean, ByVal paramName As String)
 				Me.name = name
 				Me.supportsParameter = sp
 				Me.constructorParameterClassName = paramName
 			End Sub
-			Friend Overridable Property constructorParameterClass As Class
+			Friend Overridable Property constructorParameterClass As  [Class]
 				Get
-					Dim clazz As Class = constructorParameterClass
+					Dim clazz As  [Class] = constructorParameterClass
 					If clazz Is Nothing Then
 						clazz = Type.GetType(constructorParameterClassName)
 						constructorParameterClass = clazz
@@ -1297,12 +1297,12 @@ Namespace java.security
 			Private supportedFormats As String()
 
 			' names of the supported key (super) classes
-			Private supportedClasses As Class()
+			Private supportedClasses As  [Class]()
 
 			' whether this service has been registered with the Provider
 			Private registered As Boolean
 
-			Private Shared ReadOnly CLASS0 As Class() = New [Class](){}
+			Private Shared ReadOnly CLASS0 As  [Class]() = New [Class](){}
 
 			' this constructor and these methods are used for parsing
 			' the legacy string properties.
@@ -1461,18 +1461,18 @@ Namespace java.security
 					If cap Is Nothing Then Return newInstanceGeneric(constructorParameter)
 					If cap.constructorParameterClassName Is Nothing Then
 						If constructorParameter IsNot Nothing Then Throw New InvalidParameterException("constructorParameter not used with " & type & " engines")
-						Dim clazz As Class = implClass
-						Dim empty As Class() = {}
+						Dim clazz As  [Class] = implClass
+						Dim empty As  [Class]() = {}
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 						Dim con As Constructor(Of ?) = clazz.getConstructor(empty)
 						Return con.newInstance()
 					Else
-						Dim paramClass As Class = cap.constructorParameterClass
+						Dim paramClass As  [Class] = cap.constructorParameterClass
 						If constructorParameter IsNot Nothing Then
-							Dim argClass As Class = constructorParameter.GetType()
+							Dim argClass As  [Class] = constructorParameter.GetType()
 							If argClass.IsSubclassOf(paramClass) = False Then Throw New InvalidParameterException("constructorParameter must be instanceof " & cap.constructorParameterClassName.replace("$"c, "."c) & " for engine type " & type)
 						End If
-						Dim clazz As Class = implClass
+						Dim clazz As  [Class] = implClass
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 						Dim cons As Constructor(Of ?) = clazz.getConstructor(paramClass)
 						Return cons.newInstance(constructorParameter)
@@ -1487,13 +1487,13 @@ Namespace java.security
 			End Function
 
 			' return the implementation Class object for this service
-			Private Property implClass As Class
+			Private Property implClass As  [Class]
 				Get
 					Try
 						Dim ref As Reference(Of [Class]) = classRef
-						Dim clazz As Class = If(ref Is Nothing, Nothing, ref.get())
+						Dim clazz As  [Class] = If(ref Is Nothing, Nothing, ref.get())
 						If clazz Is Nothing Then
-							Dim cl As ClassLoader = provider_Renamed.GetType().classLoader
+							Dim cl As  [Class]Loader = provider_Renamed.GetType().classLoader
 							If cl Is Nothing Then
 								clazz = Type.GetType(className)
 							Else
@@ -1503,7 +1503,7 @@ Namespace java.security
 							classRef = New WeakReference(Of [Class])(clazz)
 						End If
 						Return clazz
-					Catch e As ClassNotFoundException
+					Catch e As  [Class]NotFoundException
 						Throw New NoSuchAlgorithmException("class configured for " & type & " (provider: " & provider_Renamed.name & ") cannot be found.", e)
 					End Try
 				End Get
@@ -1515,11 +1515,11 @@ Namespace java.security
 			''' use the first matching constructor.
 			''' </summary>
 			Private Function newInstanceGeneric(ByVal constructorParameter As Object) As Object
-				Dim clazz As Class = implClass
+				Dim clazz As  [Class] = implClass
 				If constructorParameter Is Nothing Then
 					' create instance with public no-arg constructor if it exists
 					Try
-						Dim empty As Class() = {}
+						Dim empty As  [Class]() = {}
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 						Dim con As Constructor(Of ?) = clazz.getConstructor(empty)
 						Return con.newInstance()
@@ -1527,13 +1527,13 @@ Namespace java.security
 						Throw New NoSuchAlgorithmException("No public no-arg " & "constructor found in class " & className)
 					End Try
 				End If
-				Dim argClass As Class = constructorParameter.GetType()
+				Dim argClass As  [Class] = constructorParameter.GetType()
 				Dim cons As Constructor() = clazz.constructors
 				' find first public constructor that can take the
 				' argument as parameter
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				For Each con As Constructor(Of ?) In cons
-					Dim paramTypes As Class() = con.parameterTypes
+					Dim paramTypes As  [Class]() = con.parameterTypes
 					If paramTypes.Length <> 1 Then Continue For
 					If argClass.IsSubclassOf(paramTypes(0)) = False Then Continue For
 					Return con.newInstance(constructorParameter)
@@ -1597,7 +1597,7 @@ Namespace java.security
 							Dim classNames As String() = s.Split("\|")
 							Dim classList As List(Of [Class]) = New List(Of [Class])(classNames.Length)
 							For Each className_Renamed As String In classNames
-								Dim clazz As Class = getKeyClass(className_Renamed)
+								Dim clazz As  [Class] = getKeyClass(className_Renamed)
 								If clazz IsNot Nothing Then classList.add(clazz)
 							Next className_Renamed
 							supportedClasses = classList.ToArray(CLASS0)
@@ -1611,16 +1611,16 @@ Namespace java.security
 			End Function
 
 			' get the key class object of the specified name
-			Private Function getKeyClass(ByVal name As String) As Class
+			Private Function getKeyClass(ByVal name As String) As  [Class]
 				Try
 					Return Type.GetType(name)
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					' ignore
 				End Try
 				Try
-					Dim cl As ClassLoader = provider_Renamed.GetType().classLoader
+					Dim cl As  [Class]Loader = provider_Renamed.GetType().classLoader
 					If cl IsNot Nothing Then Return cl.loadClass(name)
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					' ignore
 				End Try
 				Return Nothing
@@ -1638,8 +1638,8 @@ Namespace java.security
 
 			Private Function supportsKeyClass(ByVal key As Key) As Boolean
 				If supportedClasses Is Nothing Then Return False
-				Dim keyClass_Renamed As Class = key.GetType()
-				For Each clazz As Class In supportedClasses
+				Dim keyClass_Renamed As  [Class] = key.GetType()
+				For Each clazz As  [Class] In supportedClasses
 					If keyClass_Renamed.IsSubclassOf(clazz) Then Return True
 				Next clazz
 				Return False

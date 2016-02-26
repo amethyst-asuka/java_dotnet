@@ -234,7 +234,7 @@ Namespace java.lang.invoke
 		''' </summary>
 		Public Shared ReadOnly FLAG_BRIDGES As Integer = 1 << 2
 
-		Private Shared ReadOnly EMPTY_CLASS_ARRAY As Class() = New [Class](){}
+		Private Shared ReadOnly EMPTY_CLASS_ARRAY As  [Class]() = New [Class](){}
 		Private Shared ReadOnly EMPTY_MT_ARRAY As MethodType() = New MethodType(){}
 
 		''' <summary>
@@ -420,7 +420,7 @@ Namespace java.lang.invoke
 			Dim implMethod As MethodHandle = CType(args(1), MethodHandle)
 			Dim instantiatedMethodType As MethodType = CType(args(2), MethodType)
 			Dim flags As Integer = CInt(Fix(args(3)))
-			Dim markerInterfaces As Class()
+			Dim markerInterfaces As  [Class]()
 			Dim bridges As MethodType()
 			Dim argIndex As Integer = 4
 			If (flags And FLAG_MARKERS) <> 0 Then
@@ -445,7 +445,7 @@ Namespace java.lang.invoke
 			Dim isSerializable As Boolean = ((flags And FLAG_SERIALIZABLE) <> 0)
 			If isSerializable Then
 				Dim foundSerializableSupertype As Boolean = invokedType.returnType().IsSubclassOf(GetType(java.io.Serializable))
-				For Each c As Class In markerInterfaces
+				For Each c As  [Class] In markerInterfaces
 					foundSerializableSupertype = foundSerializableSupertype Or c.IsSubclassOf(GetType(java.io.Serializable))
 				Next c
 				If Not foundSerializableSupertype Then

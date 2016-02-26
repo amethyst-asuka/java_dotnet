@@ -538,7 +538,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(Node)
+					Dim k As  [Class] = GetType(Node)
 					valueOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("value"))
 					nextOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("next"))
 				Catch e As Exception
@@ -614,7 +614,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(Index)
+					Dim k As  [Class] = GetType(Index)
 					rightOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("right"))
 				Catch e As Exception
 					Throw New [Error](e)
@@ -1954,7 +1954,7 @@ Namespace java.util.concurrent
 					If k Is Nothing OrElse v Is Nothing OrElse (Not v.Equals([get](k))) Then Return False
 				Next e
 				Return True
-			Catch unused As ClassCastException
+			Catch unused As  [Class]CastException
 				Return False
 			Catch unused As NullPointerException
 				Return False
@@ -2457,7 +2457,7 @@ Namespace java.util.concurrent
 				Try
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the java.util.Collection 'containsAll' method:
 					Return containsAll(c) AndAlso c.containsAll(Me)
-				Catch unused As ClassCastException
+				Catch unused As  [Class]CastException
 					Return False
 				Catch unused As NullPointerException
 					Return False
@@ -2603,7 +2603,7 @@ Namespace java.util.concurrent
 				Try
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the java.util.Collection 'containsAll' method:
 					Return containsAll(c) AndAlso c.containsAll(Me)
-				Catch unused As ClassCastException
+				Catch unused As  [Class]CastException
 					Return False
 				Catch unused As NullPointerException
 					Return False
@@ -3832,9 +3832,9 @@ q = row
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ConcurrentSkipListMap)
+				Dim k As  [Class] = GetType(ConcurrentSkipListMap)
 				headOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("head"))
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				SECONDARY = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomSecondarySeed"))
 
 			Catch e As Exception

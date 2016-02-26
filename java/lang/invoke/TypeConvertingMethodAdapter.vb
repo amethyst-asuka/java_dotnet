@@ -184,7 +184,7 @@ Namespace java.lang.invoke
 		''' <param name="arg"> </param>
 		''' <param name="target"> </param>
 		''' <param name="functional"> </param>
-		Friend Overridable Sub convertType(ByVal arg As Class, ByVal target As Class, ByVal functional As Class)
+		Friend Overridable Sub convertType(ByVal arg As [Class], ByVal target As [Class], ByVal functional As [Class])
 			If arg.Equals(target) AndAlso arg.Equals(functional) Then Return
 			If arg Is Void.TYPE OrElse target Is Void.TYPE Then Return
 			If arg.primitive Then

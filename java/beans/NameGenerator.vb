@@ -62,7 +62,7 @@ Namespace java.beans
 		''' Returns the root name of the class.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function unqualifiedClassName(ByVal type As Class) As String
+		Public Shared Function unqualifiedClassName(ByVal type As [Class]) As String
 			If type.array Then Return unqualifiedClassName(type.componentType) & "Array"
 			Dim name As String = type.name
 			Return name.Substring(name.LastIndexOf("."c)+1)
@@ -90,7 +90,7 @@ Namespace java.beans
 			Else
 				Dim result As String = valueToName(instance)
 				If result IsNot Nothing Then Return result
-				Dim type As Class = instance.GetType()
+				Dim type As  [Class] = instance.GetType()
 				Dim className As String = unqualifiedClassName(type)
 
 				Dim size As Integer? = nameToCount(className)

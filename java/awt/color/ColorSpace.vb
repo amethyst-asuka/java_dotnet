@@ -48,7 +48,7 @@ Namespace java.awt.color
 	''' methods that transform colors in a specific color space to/from sRGB
 	''' and to/from a well-defined CIEXYZ color space.
 	''' <p>
-	''' For purposes of the methods in this class, colors are represented as
+	''' For purposes of the methods in this [Class], colors are represented as
 	''' arrays of color components represented as floats in a normalized range
 	''' defined by each ColorSpace.  For many ColorSpaces (e.g. sRGB), this
 	''' range is 0.0 to 1.0.  However, some ColorSpaces have components whose

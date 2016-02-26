@@ -494,7 +494,7 @@ Namespace java.security
 		'''          specified {@code entryClass}, false otherwise
 		''' 
 		''' @since 1.5 </returns>
-		Public Overridable Function engineEntryInstanceOf(ByVal [alias] As String, ByVal entryClass As Class) As Boolean
+		Public Overridable Function engineEntryInstanceOf(ByVal [alias] As String, ByVal entryClass As [Class]) As Boolean
 			If entryClass Is GetType(KeyStore.TrustedCertificateEntry) Then Return engineIsCertificateEntry([alias])
 			If entryClass Is GetType(KeyStore.PrivateKeyEntry) Then Return engineIsKeyEntry([alias]) AndAlso engineGetCertificate([alias]) IsNot Nothing
 			If entryClass Is GetType(KeyStore.SecretKeyEntry) Then Return engineIsKeyEntry([alias]) AndAlso engineGetCertificate([alias]) Is Nothing

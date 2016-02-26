@@ -70,7 +70,7 @@ Namespace java.security
 		'''             {@code checkCreateClassLoader} method doesn't allow
 		'''             creation of a class loader. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Protected Friend Sub New(ByVal parent As ClassLoader)
+		Protected Friend Sub New(ByVal parent As  [Class]Loader)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security_Renamed As SecurityManager = System.securityManager
@@ -99,14 +99,14 @@ Namespace java.security
 		End Sub
 
 		''' <summary>
-		''' Converts an array of bytes into an instance of class Class,
+		''' Converts an array of bytes into an instance of class [Class],
 		''' with an optional CodeSource. Before the
 		''' class can be used it must be resolved.
 		''' <p>
 		''' If a non-null CodeSource is supplied a ProtectionDomain is
 		''' constructed and associated with the class being defined.
 		''' <p> </summary>
-		''' <param name="name"> the expected name of the class, or {@code null}
+		''' <param name="name"> the expected name of the [Class], or {@code null}
 		'''                  if not known, using '.' and not '/' as the separator
 		'''                  and without a trailing ".class" suffix. </param>
 		''' <param name="b">    the bytes that make up the class data. The bytes in
@@ -125,9 +125,9 @@ Namespace java.security
 		''' </exception>
 		''' <exception cref="SecurityException"> if an attempt is made to add this class
 		'''             to a package that contains classes that were signed by
-		'''             a different set of certificates than this class, or if
+		'''             a different set of certificates than this [Class], or if
 		'''             the class name begins with "java.". </exception>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal cs As CodeSource) As Class
+		Protected Friend Function defineClass(ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer, ByVal cs As CodeSource) As  [Class]
 			Return defineClass(name, b, [off], len, getProtectionDomain(cs))
 		End Function
 
@@ -139,7 +139,7 @@ Namespace java.security
 		''' If a non-null CodeSource is supplied a ProtectionDomain is
 		''' constructed and associated with the class being defined.
 		''' <p> </summary>
-		''' <param name="name"> the expected name of the class, or {@code null}
+		''' <param name="name"> the expected name of the [Class], or {@code null}
 		'''                  if not known, using '.' and not '/' as the separator
 		'''                  and without a trailing ".class" suffix. </param>
 		''' <param name="b">    the bytes that make up the class data.  The bytes from positions
@@ -152,11 +152,11 @@ Namespace java.security
 		''' <exception cref="ClassFormatError"> if the data did not contain a valid class </exception>
 		''' <exception cref="SecurityException"> if an attempt is made to add this class
 		'''             to a package that contains classes that were signed by
-		'''             a different set of certificates than this class, or if
+		'''             a different set of certificates than this [Class], or if
 		'''             the class name begins with "java.".
 		''' 
 		''' @since  1.5 </exception>
-		Protected Friend Function defineClass(ByVal name As String, ByVal b As java.nio.ByteBuffer, ByVal cs As CodeSource) As Class
+		Protected Friend Function defineClass(ByVal name As String, ByVal b As java.nio.ByteBuffer, ByVal cs As CodeSource) As  [Class]
 			Return defineClass(name, b, getProtectionDomain(cs))
 		End Function
 

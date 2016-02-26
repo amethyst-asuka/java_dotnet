@@ -93,7 +93,7 @@ Namespace java.beans
 			Me.constructor = If(constructorPropertyNames Is Nothing, EMPTY, constructorPropertyNames.clone())
 		End Sub
 
-		Private Shared Function definesEquals(ByVal type As Class) As Boolean
+		Private Shared Function definesEquals(ByVal type As [Class]) As Boolean
 			Try
 				Return type Is type.getMethod("equals", GetType(Object)).declaringClass
 			Catch e As NoSuchMethodException
@@ -146,7 +146,7 @@ Namespace java.beans
 		''' <seealso cref= #DefaultPersistenceDelegate(String[]) </seealso>
 		Protected Friend Overrides Function instantiate(ByVal oldInstance As Object, ByVal out As Encoder) As Expression
 			Dim nArgs As Integer = constructor.Length
-			Dim type As Class = oldInstance.GetType()
+			Dim type As  [Class] = oldInstance.GetType()
 			Dim constructorArgs As Object() = New Object(nArgs - 1){}
 			For i As Integer = 0 To nArgs - 1
 				Try
@@ -159,7 +159,7 @@ Namespace java.beans
 			Return New Expression(oldInstance, oldInstance.GetType(), "new", constructorArgs)
 		End Function
 
-		Private Function findMethod(ByVal type As Class, ByVal [property] As String) As Method
+		Private Function findMethod(ByVal type As [Class], ByVal [property] As String) As Method
 			If [property] Is Nothing Then Throw New IllegalArgumentException("Property name is null")
 			Dim pd As PropertyDescriptor = getPropertyDescriptor(type, [property])
 			If pd Is Nothing Then Throw New IllegalStateException("Could not find property by the name " & [property])
@@ -168,7 +168,7 @@ Namespace java.beans
 			Return method
 		End Function
 
-		Private Sub doProperty(ByVal type As Class, ByVal pd As PropertyDescriptor, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Private Sub doProperty(ByVal type As [Class], ByVal pd As PropertyDescriptor, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			Dim getter As Method = pd.readMethod
 			Dim setter As Method = pd.writeMethod
 
@@ -204,7 +204,7 @@ Namespace java.beans
 		End Sub
 
 		' Write out the properties of this instance.
-		Private Sub initBean(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Private Sub initBean(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			For Each field As Field In type.fields
 				If Not ReflectUtil.isPackageAccessible(field.declaringClass) Then Continue For
 				Dim [mod] As Integer = field.modifiers
@@ -263,7 +263,7 @@ Namespace java.beans
 			If Not type.IsSubclassOf(GetType(java.awt.Component)) Then Return ' Just handle the listeners of Components for now.
 			For Each d As EventSetDescriptor In info.eventSetDescriptors
 				If d.transient Then Continue For
-				Dim listenerType As Class = d.listenerType
+				Dim listenerType As  [Class] = d.listenerType
 
 
 				' The ComponentListener is added automatically, when
@@ -358,13 +358,13 @@ Namespace java.beans
 		''' </exception>
 		''' <seealso cref= java.beans.Introspector#getBeanInfo </seealso>
 		''' <seealso cref= java.beans.PropertyDescriptor </seealso>
-		Protected Friend Overrides Sub initialize(ByVal type As Class, ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
+		Protected Friend Overrides Sub initialize(ByVal type As [Class], ByVal oldInstance As Object, ByVal newInstance As Object, ByVal out As Encoder)
 			' System.out.println("DefulatPD:initialize" + type);
 			MyBase.initialize(type, oldInstance, newInstance, out)
 			If oldInstance.GetType() Is type Then ' !type.isInterface()) { initBean(type, oldInstance, newInstance, out)
 		End Sub
 
-		Private Shared Function getPropertyDescriptor(ByVal type As Class, ByVal [property] As String) As PropertyDescriptor
+		Private Shared Function getPropertyDescriptor(ByVal type As [Class], ByVal [property] As String) As PropertyDescriptor
 			Try
 				For Each pd As PropertyDescriptor In Introspector.getBeanInfo(type).propertyDescriptors
 					If [property].Equals(pd.name) Then Return pd

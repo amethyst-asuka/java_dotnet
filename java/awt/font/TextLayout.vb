@@ -412,7 +412,7 @@ Namespace java.awt.font
 			Dim font_Renamed As java.awt.Font = Nothing
 			Try
 				font_Renamed = CType(attributes(TextAttribute.FONT), java.awt.Font)
-			Catch e As ClassCastException
+			Catch e As  [Class]CastException
 			End Try
 			If font_Renamed Is Nothing Then
 				If attributes(TextAttribute.FAMILY) IsNot Nothing Then

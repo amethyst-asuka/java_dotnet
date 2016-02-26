@@ -49,7 +49,7 @@ Namespace java.lang
 	''' <p>
 	''' When a Java Virtual Machine starts up, there is usually a single
 	''' non-daemon thread (which typically calls the method named
-	''' <code>main</code> of some designated class). The Java Virtual
+	''' <code>main</code> of some designated [Class]). The Java Virtual
 	''' Machine continues to execute threads until either of the following
 	''' occurs:
 	''' <ul>
@@ -162,7 +162,7 @@ Namespace java.lang
 		Private group As ThreadGroup
 
 		' The context ClassLoader for this thread 
-		Private contextClassLoader As ClassLoader
+		Private contextClassLoader As  [Class]Loader
 
 		' The inherited AccessControlContext of this thread 
 		Private inheritedAccessControlContext As java.security.AccessControlContext
@@ -848,9 +848,9 @@ Namespace java.lang
 		''' <p> If this thread is blocked in an invocation of the {@link
 		''' Object#wait() wait()}, <seealso cref="Object#wait(long) wait(long)"/>, or {@link
 		''' Object#wait(long, int) wait(long, int)} methods of the <seealso cref="Object"/>
-		''' class, or of the <seealso cref="#join()"/>, <seealso cref="#join(long)"/>, {@link
+		''' [Class], or of the <seealso cref="#join()"/>, <seealso cref="#join(long)"/>, {@link
 		''' #join(long, int)}, <seealso cref="#sleep(long)"/>, or <seealso cref="#sleep(long, int)"/>,
-		''' methods of this class, then its interrupt status will be cleared and it
+		''' methods of this [Class], then its interrupt status will be cleared and it
 		''' will receive an <seealso cref="InterruptedException"/>.
 		''' 
 		''' <p> If this thread is blocked in an I/O operation upon an {@link
@@ -1353,14 +1353,14 @@ Namespace java.lang
 		''' 
 		''' @since 1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Property contextClassLoader As ClassLoader
+		Public Overridable Property contextClassLoader As  [Class]Loader
 			Get
 				If contextClassLoader Is Nothing Then Return Nothing
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then ClassLoader.checkClassLoaderPermission(contextClassLoader, sun.reflect.Reflection.callerClass)
 				Return contextClassLoader
 			End Get
-			Set(ByVal cl As ClassLoader)
+			Set(ByVal cl As  [Class]Loader)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("setContextClassLoader"))
 				contextClassLoader = cl
@@ -1526,7 +1526,7 @@ Namespace java.lang
 		''' security-sensitive non-final methods, or else the
 		''' "enableContextClassLoaderOverride" RuntimePermission is checked.
 		''' </summary>
-		Private Shared Function isCCLOverridden(ByVal cl As Class) As Boolean
+		Private Shared Function isCCLOverridden(ByVal cl As [Class]) As Boolean
 			If cl Is GetType(Thread) Then Return False
 
 			processQueue(Caches.subclassAuditsQueue, Caches.subclassAudits)
@@ -1545,7 +1545,7 @@ Namespace java.lang
 		''' override security-sensitive non-final methods.  Returns true if the
 		''' subclass overrides any of the methods, false otherwise.
 		''' </summary>
-		Private Shared Function auditSubclass(ByVal subcl As Class) As Boolean
+		Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
 			Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		   )
 			Return result
@@ -1555,7 +1555,7 @@ Namespace java.lang
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Boolean?
-				Dim cl As Class = subcl
+				Dim cl As  [Class] = subcl
 				Do While cl IsNot GetType(Thread)
 					Try
 						cl.getDeclaredMethod("getContextClassLoader", New [Class](){})
@@ -1563,7 +1563,7 @@ Namespace java.lang
 					Catch ex As NoSuchMethodException
 					End Try
 					Try
-						Dim params As Class() = {GetType(ClassLoader)}
+						Dim params As  [Class]() = {GetType(ClassLoader)}
 						cl.getDeclaredMethod("setContextClassLoader", params)
 						Return Boolean.TRUE
 					Catch ex As NoSuchMethodException
@@ -1835,7 +1835,7 @@ Namespace java.lang
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		Friend Shared Sub processQueue(Of T1 As WeakReference(Of [Class]), ?)(ByVal queue As ReferenceQueue(Of [Class]), ByVal map As java.util.concurrent.ConcurrentMap(Of T1))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Dim ref As Reference(Of ? As Class)
+			Dim ref As Reference(Of ? As [Class])
 			ref = queue.poll()
 			Do While ref IsNot Nothing
 				map.remove(ref)
@@ -1860,7 +1860,7 @@ Namespace java.lang
 			''' Create a new WeakClassKey to the given object, registered
 			''' with a queue.
 			''' </summary>
-			Friend Sub New(ByVal cl As Class, ByVal refQueue As ReferenceQueue(Of [Class]))
+			Friend Sub New(ByVal cl As [Class], ByVal refQueue As ReferenceQueue(Of [Class]))
 				MyBase.New(cl, refQueue)
 				hash = System.identityHashCode(cl)
 			End Sub

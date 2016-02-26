@@ -53,7 +53,7 @@ Namespace java.io
 	''' <li>Whether the characters of identifiers are converted to lowercase.
 	''' </ul>
 	''' <p>
-	''' A typical application first constructs an instance of this class,
+	''' A typical application first constructs an instance of this [Class],
 	''' sets up the syntax tables, and then repeatedly loops calling the
 	''' {@code nextToken} method in each iteration of the loop until
 	''' it returns the value {@code TT_EOF}.

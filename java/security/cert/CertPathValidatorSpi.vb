@@ -31,7 +31,7 @@ Namespace java.security.cert
 	''' The <i>Service Provider Interface</i> (<b>SPI</b>)
 	''' for the <seealso cref="CertPathValidator CertPathValidator"/> class. All
 	''' {@code CertPathValidator} implementations must include a class (the
-	''' SPI class) that extends this class ({@code CertPathValidatorSpi})
+	''' SPI [Class]) that extends this class ({@code CertPathValidatorSpi})
 	''' and implements all of its methods. In general, instances of this class
 	''' should only be accessed through the {@code CertPathValidator} class.
 	''' For details, see the Java Cryptography Architecture.

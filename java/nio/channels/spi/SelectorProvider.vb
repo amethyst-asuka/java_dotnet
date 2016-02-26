@@ -80,10 +80,10 @@ Namespace java.nio.channels.spi
 			Dim cn As String = System.getProperty("java.nio.channels.spi.SelectorProvider")
 			If cn Is Nothing Then Return False
 			Try
-				Dim c As Class = Type.GetType(cn, True, ClassLoader.systemClassLoader)
+				Dim c As  [Class] = Type.GetType(cn, True, ClassLoader.systemClassLoader)
 				provider_Renamed = CType(c.newInstance(), SelectorProvider)
 				Return True
-			Catch x As ClassNotFoundException
+			Catch x As  [Class]NotFoundException
 				Throw New java.util.ServiceConfigurationError(Nothing, x)
 			Catch x As IllegalAccessException
 				Throw New java.util.ServiceConfigurationError(Nothing, x)

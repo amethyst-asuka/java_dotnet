@@ -114,7 +114,7 @@ Namespace java.util.jar
 		''' <ul>
 		''' <li><p>If the system property <tt>java.util.jar.Pack200.Packer</tt>
 		''' is defined, then the value is taken to be the fully-qualified name
-		''' of a concrete implementation class, which must implement Packer.
+		''' of a concrete implementation [Class], which must implement Packer.
 		''' This class is loaded and instantiated.  If this process fails
 		''' then an unspecified error is thrown.</p></li>
 		''' 
@@ -140,7 +140,7 @@ Namespace java.util.jar
 		''' <ul>
 		''' <li><p>If the system property <tt>java.util.jar.Pack200.Unpacker</tt>
 		''' is defined, then the value is taken to be the fully-qualified
-		''' name of a concrete implementation class, which must implement Unpacker.
+		''' name of a concrete implementation [Class], which must implement Unpacker.
 		''' The class is loaded and instantiated.  If this process fails
 		''' then an unspecified error is thrown.</p></li>
 		''' 
@@ -200,7 +200,7 @@ Namespace java.util.jar
 		''' Both packing steps should
 		''' use precisely the same options, and the segment limit may also
 		''' need to be set to "-1", to prevent accidental variation of segment
-		''' boundaries as class file sizes change slightly.
+		''' boundaries As  [Class] file sizes change slightly.
 		''' <p>
 		''' (Here's why this works:  Any reordering the packer does
 		''' of any classfile structures is idempotent, so the second packing
@@ -789,14 +789,14 @@ Namespace java.util.jar
 		Private Const PACK_PROVIDER As String = "java.util.jar.Pack200.Packer"
 		Private Const UNPACK_PROVIDER As String = "java.util.jar.Pack200.Unpacker"
 
-		Private Shared packerImpl As Class
-		Private Shared unpackerImpl As Class
+		Private Shared packerImpl As  [Class]
+		Private Shared unpackerImpl As  [Class]
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Private Shared Function newInstance(ByVal prop As String) As Object
 			Dim implName As String = "(unknown)"
 			Try
-				Dim impl As Class = If(PACK_PROVIDER.Equals(prop), packerImpl, unpackerImpl)
+				Dim impl As  [Class] = If(PACK_PROVIDER.Equals(prop), packerImpl, unpackerImpl)
 				If impl Is Nothing Then
 					' The first time, we must decide which class to use.
 					implName = java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction(prop,""))
@@ -810,7 +810,7 @@ Namespace java.util.jar
 				End If
 				' We have a class.  Now instantiate it.
 				Return impl.newInstance()
-			Catch e As ClassNotFoundException
+			Catch e As  [Class]NotFoundException
 				Throw New [Error]("Class not found: " & implName & ":" & vbLf & "check property " & prop & " in your properties file.", e)
 			Catch e As InstantiationException
 				Throw New [Error]("Could not instantiate: " & implName & ":" & vbLf & "check property " & prop & " in your properties file.", e)

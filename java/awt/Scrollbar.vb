@@ -830,7 +830,7 @@ Namespace java.awt
 		'''          <code>java.util.EventListener</code>
 		''' 
 		''' @since 1.3 </exception>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(AdjustmentListener) Then
 				l = adjustmentListener
@@ -1055,7 +1055,7 @@ Namespace java.awt
 			''' <summary>
 			''' Get the <code>AccessibleValue</code> associated with this
 			''' object.  In the implementation of the Java Accessibility
-			''' API for this class, return this object, which is
+			''' API for this [Class], return this object, which is
 			''' responsible for implementing the
 			''' <code>AccessibleValue</code> interface on behalf of itself.
 			''' </summary>

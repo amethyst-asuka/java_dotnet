@@ -741,7 +741,7 @@ Namespace java.awt.datatransfer
 						Dim toAdd As DataFlavor = Nothing
 						Try
 							toAdd = New DataFlavor(mt)
-						Catch cannotHappen As ClassNotFoundException
+						Catch cannotHappen As  [Class]NotFoundException
 						End Try
 						returnValue.add(toAdd)
 					Next mt
@@ -766,7 +766,7 @@ Namespace java.awt.datatransfer
 								' or another equivalent charset with a
 								' different name, is used.
 								If df.Equals(DataFlavor.plainTextFlavor) Then df = DataFlavor.plainTextFlavor
-							Catch cannotHappen As ClassNotFoundException
+							Catch cannotHappen As  [Class]NotFoundException
 							End Try
 
 							returnValue.add(df)
@@ -783,7 +783,7 @@ Namespace java.awt.datatransfer
 					Dim toAdd As DataFlavor = Nothing
 					Try
 						toAdd = New DataFlavor(baseType & ";class=" & encodedTextClassName)
-					Catch cannotHappen As ClassNotFoundException
+					Catch cannotHappen As  [Class]NotFoundException
 					End Try
 					returnValue.add(toAdd)
 				Next encodedTextClassName

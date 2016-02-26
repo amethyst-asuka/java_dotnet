@@ -112,7 +112,7 @@ Namespace java.security
 		''' <exception cref="InvalidKeySpecException"> if the requested key specification is
 		''' inappropriate for the given key, or the given key cannot be dealt with
 		''' (e.g., the given key has an unrecognized format). </exception>
-		Protected Friend MustOverride Function engineGetKeySpec(Of T As java.security.spec.KeySpec)(ByVal key As Key, ByVal keySpec As Class) As T
+		Protected Friend MustOverride Function engineGetKeySpec(Of T As java.security.spec.KeySpec)(ByVal key As Key, ByVal keySpec As [Class]) As T
 
 		''' <summary>
 		''' Translates a key object, whose provider may be unknown or

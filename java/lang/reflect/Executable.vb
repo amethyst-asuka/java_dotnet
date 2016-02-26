@@ -64,7 +64,7 @@ Namespace java.lang.reflect
 
 		Friend MustOverride ReadOnly Property genericInfo As sun.reflect.generics.repository.ConstructorRepository
 
-		Friend Overridable Function equalParamTypes(ByVal params1 As Class(), ByVal params2 As Class()) As Boolean
+		Friend Overridable Function equalParamTypes(ByVal params1 As  [Class](), ByVal params2 As  [Class]()) As Boolean
 			' Avoid unnecessary cloning 
 			If params1.Length = params2.Length Then
 				For i As Integer = 0 To params1.Length - 1
@@ -79,7 +79,7 @@ Namespace java.lang.reflect
 			Return sun.reflect.annotation.AnnotationParser.parseParameterAnnotations(parameterAnnotations, sun.misc.SharedSecrets.javaLangAccess.getConstantPool(declaringClass), declaringClass)
 		End Function
 
-		Friend Overridable Sub separateWithCommas(ByVal types As Class(), ByVal sb As StringBuilder)
+		Friend Overridable Sub separateWithCommas(ByVal types As  [Class](), ByVal sb As StringBuilder)
 			For j As Integer = 0 To types.Length - 1
 				sb.append(types(j).typeName)
 				If j < (types.Length - 1) Then sb.append(",")
@@ -101,7 +101,7 @@ Namespace java.lang.reflect
 			End If
 		End Sub
 
-		Friend Overridable Function sharedToString(ByVal modifierMask As Integer, ByVal isDefault As Boolean, ByVal parameterTypes As Class(), ByVal exceptionTypes As Class()) As String
+		Friend Overridable Function sharedToString(ByVal modifierMask As Integer, ByVal isDefault As Boolean, ByVal parameterTypes As  [Class](), ByVal exceptionTypes As  [Class]()) As String
 			Try
 				Dim sb As New StringBuilder
 
@@ -164,7 +164,7 @@ Namespace java.lang.reflect
 				If exceptions.Length > 0 Then
 					sb.append(" throws ")
 					For k As Integer = 0 To exceptions.Length - 1
-						sb.append(If(TypeOf exceptions(k) Is Class, CType(exceptions(k), [Class]).name, exceptions(k).ToString()))
+						sb.append(If(TypeOf exceptions(k) Is [Class], CType(exceptions(k), [Class]).name, exceptions(k).ToString()))
 						If k < (exceptions.Length - 1) Then sb.append(","c)
 					Next k
 				End If
@@ -184,7 +184,7 @@ Namespace java.lang.reflect
 		''' Returns the {@code Class} object representing the class or interface
 		''' that declares the executable represented by this object.
 		''' </summary>
-		Public MustOverride ReadOnly Property declaringClass As Class Implements Member.getDeclaringClass
+		Public MustOverride ReadOnly Property declaringClass As  [Class] Implements Member.getDeclaringClass
 
 		''' <summary>
 		''' Returns the name of the executable represented by this object.
@@ -221,7 +221,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <returns> the parameter types for the executable this object
 		''' represents </returns>
-		Public MustOverride ReadOnly Property parameterTypes As Class()
+		Public MustOverride ReadOnly Property parameterTypes As  [Class]()
 
 		''' <summary>
 		''' Returns the number of formal parameters (whether explicitly
@@ -445,7 +445,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <returns> the exception types declared as being thrown by the
 		''' executable this object represents </returns>
-		Public MustOverride ReadOnly Property exceptionTypes As Class()
+		Public MustOverride ReadOnly Property exceptionTypes As  [Class]()
 
 		''' <summary>
 		''' Returns an array of {@code Type} objects that represent the
@@ -541,7 +541,7 @@ Namespace java.lang.reflect
 		'''    the executable represented by this object </returns>
 		Public MustOverride ReadOnly Property parameterAnnotations As Annotation()()
 
-		Friend Overridable Function sharedGetParameterAnnotations(ByVal parameterTypes As Class(), ByVal parameterAnnotations As SByte()) As Annotation()()
+		Friend Overridable Function sharedGetParameterAnnotations(ByVal parameterTypes As  [Class](), ByVal parameterAnnotations As SByte()) As Annotation()()
 			Dim numParameters As Integer = parameterTypes.Length
 			If parameterAnnotations Is Nothing Then Return New Annotation(numParameters - 1)(0){}
 
@@ -556,7 +556,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException">  {@inheritDoc} </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T Implements AnnotatedElement.getAnnotation
+		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
 			java.util.Objects.requireNonNull(annotationClass)
 			Return annotationClass.cast(declaredAnnotations().get(annotationClass))
 		End Function
@@ -565,7 +565,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As Class) As T() Implements AnnotatedElement.getAnnotationsByType
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
 			java.util.Objects.requireNonNull(annotationClass)
 
 			Return sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass)

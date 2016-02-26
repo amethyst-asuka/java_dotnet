@@ -50,7 +50,7 @@ Namespace java.awt.geom
 	''' <h3><a name="quadrantapproximation">Handling 90-Degree Rotations</a></h3>
 	''' <p>
 	''' In some variations of the <code>rotate</code> methods in the
-	''' <code>AffineTransform</code> class, a double-precision argument
+	''' <code>AffineTransform</code> [Class], a double-precision argument
 	''' specifies the angle of rotation in radians.
 	''' These methods have special handling for rotations of approximately
 	''' 90 degrees (including multiples such as 180, 270, and 360 degrees),

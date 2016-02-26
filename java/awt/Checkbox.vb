@@ -54,7 +54,7 @@ Namespace java.awt
 	''' <p>
 	''' The button labeled <code>one</code> is in the "on" state, and the
 	''' other two are in the "off" state. In this example, which uses the
-	''' <code>GridLayout</code> class, the states of the three check
+	''' <code>GridLayout</code> [Class], the states of the three check
 	''' boxes are set independently.
 	''' <p>
 	''' Alternatively, several check boxes can be grouped together under
@@ -443,7 +443,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getItemListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ItemListener) Then
 				l = itemListener
@@ -665,7 +665,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleAction associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleAction interface on behalf of itself.
 			''' </summary>
@@ -678,7 +678,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleValue associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleValue interface on behalf of itself.
 			''' </summary>

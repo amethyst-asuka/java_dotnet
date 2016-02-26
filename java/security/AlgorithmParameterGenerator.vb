@@ -31,7 +31,7 @@ Namespace java.security
 	''' set of
 	''' parameters to be used with a certain algorithm. Parameter generators
 	''' are constructed using the {@code getInstance} factory methods
-	''' (static methods that return instances of a given class).
+	''' (static methods that return instances of a given [Class]).
 	''' 
 	''' <P>The object that will generate the parameters can be initialized
 	''' in two different ways: in an algorithm-independent manner, or in an

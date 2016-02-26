@@ -31,7 +31,7 @@ Namespace java.security
 
 
 	''' <summary>
-	''' The BasicPermission class extends the Permission class, and
+	''' The BasicPermission class extends the Permission [Class], and
 	''' can be used as the base class for permissions that want to
 	''' follow the same naming convention as BasicPermission.
 	''' <P>
@@ -146,7 +146,7 @@ Namespace java.security
 		''' <P>
 		''' More specifically, this method returns true if:
 		''' <ul>
-		''' <li> <i>p</i>'s class is the same as this object's class, and
+		''' <li> <i>p</i>'s class is the same as this object's [Class], and
 		''' <li> <i>p</i>'s name equals or (in the case of wildcards)
 		'''      is implied by this object's
 		'''      name. For example, "a.b.*" implies "a.b.c".
@@ -304,14 +304,14 @@ Namespace java.security
 		''' BasicPermissionCollection belongs.
 		''' </summary>
 		''' <seealso cref= #serialPersistentFields </seealso>
-		Private permClass As Class
+		Private permClass As  [Class]
 
 		''' <summary>
 		''' Create an empty BasicPermissionCollection object.
 		''' 
 		''' </summary>
 
-		Public Sub New(ByVal clazz As Class)
+		Public Sub New(ByVal clazz As [Class])
 			perms = New Dictionary(Of String, Permission)(11)
 			all_allowed = False
 			permClass = clazz

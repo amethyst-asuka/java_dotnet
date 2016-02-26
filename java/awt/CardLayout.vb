@@ -510,8 +510,8 @@ Namespace java.awt
 			If f.defaulted("vector") Then
 				'  pre-1.4 stream
 				Dim tab As Dictionary(Of String, Component) = CType(f.get("tab", Nothing), Hashtable)
-				vector = New List(Of )
-				If tab IsNot Nothing AndAlso tab.Count > 0 Then
+                vector = New List(Of Card)
+                If tab IsNot Nothing AndAlso tab.Count > 0 Then
 					Dim e As System.Collections.IEnumerator(Of String) = tab.Keys.GetEnumerator()
 'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
 					Do While e.hasMoreElements()

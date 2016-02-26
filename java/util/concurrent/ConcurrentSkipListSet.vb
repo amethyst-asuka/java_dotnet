@@ -290,7 +290,7 @@ Namespace java.util.concurrent
 			Try
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the java.util.Collection 'containsAll' method:
 				Return containsAll(c) AndAlso c.containsAll(Me)
-			Catch unused As ClassCastException
+			Catch unused As  [Class]CastException
 				Return False
 			Catch unused As NullPointerException
 				Return False
@@ -473,7 +473,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ConcurrentSkipListSet)
+				Dim k As  [Class] = GetType(ConcurrentSkipListSet)
 				mapOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("m"))
 			Catch e As Exception
 				Throw New [Error](e)

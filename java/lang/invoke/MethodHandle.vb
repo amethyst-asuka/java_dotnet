@@ -76,7 +76,7 @@ Namespace java.lang.invoke
 	''' Implementations may (or may not) create internal subclasses of {@code MethodHandle}
 	''' which may be visible via the <seealso cref="java.lang.Object#getClass Object.getClass"/>
 	''' operation.  The programmer should not draw conclusions about a method handle
-	''' from its specific class, as the method handle class hierarchy (if any)
+	''' from its specific [Class], as the method handle class hierarchy (if any)
 	''' may change from time to time or across implementations from different vendors.
 	''' 
 	''' <h1>Method handle compilation</h1>
@@ -232,7 +232,7 @@ Namespace java.lang.invoke
 	''' throw such errors.
 	''' <p>
 	''' As a corollary of this, access to protected members is restricted
-	''' to receivers only of the accessing class, or one of its subclasses,
+	''' to receivers only of the accessing [Class], or one of its subclasses,
 	''' and the accessing class must in turn be a subclass (or package sibling)
 	''' of the protected member's defining class.
 	''' If a method reference refers to a protected non-static method or field
@@ -298,7 +298,7 @@ Namespace java.lang.invoke
 	''' to throw <seealso cref="java.lang.Throwable Throwable"/>,
 	''' which is to say that there is no static restriction on what a method handle
 	''' can throw.  Since the JVM does not distinguish between checked
-	''' and unchecked exceptions (other than by their class, of course),
+	''' and unchecked exceptions (other than by their [Class], of course),
 	''' there is no particular effect on bytecode shape from ascribing
 	''' checked exceptions to method handle invocations.  But in Java source
 	''' code, methods which perform method handle calls must either explicitly
@@ -343,7 +343,7 @@ Namespace java.lang.invoke
 	''' <p>
 	''' As a special case,
 	''' when the Core Reflection API is used to view the signature polymorphic
-	''' methods {@code invokeExact} or plain {@code invoke} in this class,
+	''' methods {@code invokeExact} or plain {@code invoke} in this [Class],
 	''' they appear as ordinary non-polymorphic methods.
 	''' Their reflective appearance, as viewed by
 	''' <seealso cref="java.lang.Class#getDeclaredMethod Class.getDeclaredMethod"/>,
@@ -740,7 +740,7 @@ Namespace java.lang.invoke
 		'''     (Specifically, <em>T0</em> must convert to <em>T1</em> by a widening primitive conversion.)
 		''' <li>If <em>T0</em> is a primitive and <em>T1</em> a reference,
 		'''     a Java casting conversion (JLS 5.5) is applied if one exists.
-		'''     (Specifically, the value is boxed from <em>T0</em> to its wrapper class,
+		'''     (Specifically, the value is boxed from <em>T0</em> to its wrapper [Class],
 		'''     which is then widened as needed to <em>T1</em>.)
 		''' <li>If <em>T0</em> is a reference and <em>T1</em> a primitive, an unboxing
 		'''     conversion will be applied at runtime, possibly followed
@@ -750,7 +750,7 @@ Namespace java.lang.invoke
 		'''     (In the case where <em>T0</em> is Object, these are the conversions
 		'''     allowed by <seealso cref="java.lang.reflect.Method#invoke java.lang.reflect.Method.invoke"/>.)
 		'''     The unboxing conversion must have a possibility of success, which means that
-		'''     if <em>T0</em> is not itself a wrapper class, there must exist at least one
+		'''     if <em>T0</em> is not itself a wrapper [Class], there must exist at least one
 		'''     wrapper class <em>TW</em> which is a subtype of <em>T0</em> and whose unboxed
 		'''     primitive value can be widened to <em>T1</em>.
 		''' <li>If the return type <em>T1</em> is marked as void, any returned value is discarded
@@ -895,7 +895,7 @@ Namespace java.lang.invoke
 		'''         <a href="MethodHandle.html#maxarity">too many parameters</a> </exception>
 		''' <exception cref="WrongMethodTypeException"> if the implied {@code asType} call fails </exception>
 		''' <seealso cref= #asCollector </seealso>
-		Public Overridable Function asSpreader(ByVal arrayType As Class, ByVal arrayLength As Integer) As MethodHandle
+		Public Overridable Function asSpreader(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodHandle
 			Dim postSpreadType As MethodType = asSpreaderChecks(arrayType, arrayLength)
 			Dim arity As Integer = type().parameterCount()
 			Dim spreadArgPos As Integer = arity - arrayLength
@@ -910,15 +910,15 @@ Namespace java.lang.invoke
 		''' See if {@code asSpreader} can be validly called with the given arguments.
 		''' Return the type of the method handle call after spreading but before conversions.
 		''' </summary>
-		Private Function asSpreaderChecks(ByVal arrayType As Class, ByVal arrayLength As Integer) As MethodType
+		Private Function asSpreaderChecks(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodType
 			spreadArrayChecks(arrayType, arrayLength)
 			Dim nargs As Integer = type().parameterCount()
 			If nargs < arrayLength OrElse arrayLength < 0 Then Throw newIllegalArgumentException("bad spread array length")
-			Dim arrayElement As Class = arrayType.componentType
+			Dim arrayElement As  [Class] = arrayType.componentType
 			Dim mtype As MethodType = type()
 			Dim match As Boolean = True, fail As Boolean = False
 			For i As Integer = nargs - arrayLength To nargs - 1
-				Dim ptype As Class = mtype.parameterType(i)
+				Dim ptype As  [Class] = mtype.parameterType(i)
 				If ptype IsNot arrayElement Then
 					match = False
 					If Not MethodType.canConvert(arrayElement, ptype) Then
@@ -935,8 +935,8 @@ Namespace java.lang.invoke
 			Throw newInternalError("should not return", Nothing)
 		End Function
 
-		Private Sub spreadArrayChecks(ByVal arrayType As Class, ByVal arrayLength As Integer)
-			Dim arrayElement As Class = arrayType.componentType
+		Private Sub spreadArrayChecks(ByVal arrayType As [Class], ByVal arrayLength As Integer)
+			Dim arrayElement As  [Class] = arrayType.componentType
 			If arrayElement Is Nothing Then Throw newIllegalArgumentException("not an array type", arrayType)
 			If (arrayLength And &H7F) <> arrayLength Then
 				If (arrayLength And &HFF) <> arrayLength Then Throw newIllegalArgumentException("array length is not legal", arrayLength)
@@ -1015,7 +1015,7 @@ Namespace java.lang.invoke
 		''' <exception cref="WrongMethodTypeException"> if the implied {@code asType} call fails </exception>
 		''' <seealso cref= #asSpreader </seealso>
 		''' <seealso cref= #asVarargsCollector </seealso>
-		Public Overridable Function asCollector(ByVal arrayType As Class, ByVal arrayLength As Integer) As MethodHandle
+		Public Overridable Function asCollector(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodHandle
 			asCollectorChecks(arrayType, arrayLength)
 			Dim collectArgPos As Integer = type().parameterCount() - 1
 			Dim mh As BoundMethodHandle = rebind()
@@ -1032,11 +1032,11 @@ Namespace java.lang.invoke
 		''' Return false if the last parameter is not an exact match to arrayType.
 		''' </summary>
 		'non-public
-	 Friend Overridable Function asCollectorChecks(ByVal arrayType As Class, ByVal arrayLength As Integer) As Boolean
+	 Friend Overridable Function asCollectorChecks(ByVal arrayType As [Class], ByVal arrayLength As Integer) As Boolean
 			spreadArrayChecks(arrayType, arrayLength)
 			Dim nargs As Integer = type().parameterCount()
 			If nargs <> 0 Then
-				Dim lastParam As Class = type().parameterType(nargs-1)
+				Dim lastParam As  [Class] = type().parameterType(nargs-1)
 				If lastParam Is arrayType Then Return True
 				If arrayType.IsSubclassOf(lastParam) Then Return False
 			End If
@@ -1192,7 +1192,7 @@ Namespace java.lang.invoke
 		''' <seealso cref= #asCollector </seealso>
 		''' <seealso cref= #isVarargsCollector </seealso>
 		''' <seealso cref= #asFixedArity </seealso>
-		Public Overridable Function asVarargsCollector(ByVal arrayType As Class) As MethodHandle
+		Public Overridable Function asVarargsCollector(ByVal arrayType As [Class]) As MethodHandle
 			arrayType.GetType() ' explicit NPE
 			Dim lastMatch As Boolean = asCollectorChecks(arrayType, 0)
 			If varargsCollector AndAlso lastMatch Then Return Me
@@ -1339,7 +1339,7 @@ Namespace java.lang.invoke
 		'non-public
 		Friend Overridable Function setVarargs(ByVal member As MemberName) As MethodHandle
 			If Not member.varargs Then Return Me
-			Dim arrayType As Class = type().lastParameterType()
+			Dim arrayType As  [Class] = type().lastParameterType()
 			If arrayType.array Then Return MethodHandleImpl.makeVarargsCollector(Me, arrayType)
 			Throw member.makeAccessException("cannot make variable arity", Nothing)
 		End Function
@@ -1379,7 +1379,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-		Friend Overridable Function internalCallerClass() As Class
+		Friend Overridable Function internalCallerClass() As  [Class]
 			Return Nothing ' caller-bound MH for @CallerSensitive method returns caller
 		End Function
 

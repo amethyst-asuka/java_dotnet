@@ -28,7 +28,7 @@ Namespace java.security
 
 	''' <summary>
 	''' <p> This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
-	''' for the {@code KeyPairGenerator} class, which is used to generate
+	''' for the {@code KeyPairGenerator} [Class], which is used to generate
 	''' pairs of public and private keys.
 	''' 
 	''' <p> All the abstract methods in this class must be implemented by each

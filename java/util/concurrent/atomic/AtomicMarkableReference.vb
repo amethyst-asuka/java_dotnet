@@ -177,7 +177,7 @@ Namespace java.util.concurrent.atomic
 			Return UNSAFE.compareAndSwapObject(Me, pairOffset, cmp, val)
 		End Function
 
-		Friend Shared Function objectFieldOffset(ByVal UNSAFE As sun.misc.Unsafe, ByVal field As String, ByVal klazz As Class) As Long
+		Friend Shared Function objectFieldOffset(ByVal UNSAFE As sun.misc.Unsafe, ByVal field As String, ByVal klazz As [Class]) As Long
 			Try
 				Return UNSAFE.objectFieldOffset(klazz.getDeclaredField(field))
 			Catch e As NoSuchFieldException

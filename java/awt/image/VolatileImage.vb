@@ -108,7 +108,7 @@ Namespace java.awt.image
 	''' } while (vImg.contentsLost());
 	''' </pre>
 	''' <P>
-	''' Note that this class subclasses from the <seealso cref="Image"/> class, which
+	''' Note that this class subclasses from the <seealso cref="Image"/> [Class], which
 	''' includes methods that take an <seealso cref="ImageObserver"/> parameter for
 	''' asynchronous notifications as information is received from
 	''' a potential <seealso cref="ImageProducer"/>.  Since this <code>VolatileImage</code>

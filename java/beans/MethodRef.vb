@@ -67,7 +67,7 @@ Namespace java.beans
 			Return If(isPackageAccessible(method.declaringClass), method, Nothing)
 		End Function
 
-		Private Shared Function find(ByVal type As Class, ByVal signature As String) As Method
+		Private Shared Function find(ByVal type As [Class], ByVal signature As String) As Method
 			If type IsNot Nothing Then
 				For Each method As Method In type.methods
 					If type.Equals(method.declaringClass) Then

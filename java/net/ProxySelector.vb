@@ -68,7 +68,7 @@ Namespace java.net
 
 		Shared Sub New()
 			Try
-				Dim c As Class = Type.GetType("sun.net.spi.DefaultProxySelector")
+				Dim c As  [Class] = Type.GetType("sun.net.spi.DefaultProxySelector")
 				If c IsNot Nothing AndAlso c.IsSubclassOf(GetType(ProxySelector)) Then theProxySelector = CType(c.newInstance(), ProxySelector)
 			Catch e As Exception
 				theProxySelector = Nothing

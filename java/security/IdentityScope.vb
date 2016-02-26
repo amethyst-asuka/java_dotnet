@@ -81,7 +81,7 @@ Namespace java.security
 
 				Try
 					Type.GetType(classname)
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					'Security.error("unable to establish a system scope from " +
 					'             classname);
 					Console.WriteLine(e.ToString())

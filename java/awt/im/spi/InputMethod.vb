@@ -275,7 +275,7 @@ Namespace java.awt.im.spi
 		''' This method is called
 		''' <ul>
 		''' <li>before calling <seealso cref="#activate activate"/> on an instance of a different input
-		'''     method class,
+		'''     method [Class],
 		''' <li>before calling <seealso cref="#dispose dispose"/> on this input method.
 		''' </ul>
 		''' The method is only called when the input method is inactive.

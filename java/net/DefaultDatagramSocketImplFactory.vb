@@ -45,7 +45,7 @@ Namespace java.net
 	''' </summary>
 
 	Friend Class DefaultDatagramSocketImplFactory
-		Friend Shared prefixImplClass As Class = Nothing
+		Friend Shared prefixImplClass As  [Class] = Nothing
 
 		' the windows version. 
 		Private Shared version As Single

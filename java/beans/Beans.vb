@@ -58,7 +58,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As ClassLoader, ByVal beanName As String) As Object
+		Public Shared Function instantiate(ByVal cls As  [Class]Loader, ByVal beanName As String) As Object
 			Return Beans.instantiate(cls, beanName, Nothing, Nothing)
 		End Function
 
@@ -79,7 +79,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As ClassLoader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext) As Object
+		Public Shared Function instantiate(ByVal cls As  [Class]Loader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext) As Object
 			Return Beans.instantiate(cls, beanName, beanContext, Nothing)
 		End Function
 
@@ -134,7 +134,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As ClassLoader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext, ByVal initializer As AppletInitializer) As Object
+		Public Shared Function instantiate(ByVal cls As  [Class]Loader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext, ByVal initializer As AppletInitializer) As Object
 
 			Dim ins As java.io.InputStream
 			Dim oins As java.io.ObjectInputStream = Nothing
@@ -178,7 +178,7 @@ Namespace java.beans
 					' Drop through and try opening the class.  But remember
 					' the exception in case we can't find the class either.
 					serex = ex
-				Catch ex As ClassNotFoundException
+				Catch ex As  [Class]NotFoundException
 					ins.close()
 					Throw ex
 				End Try
@@ -186,11 +186,11 @@ Namespace java.beans
 
 			If result Is Nothing Then
 				' No serialized object, try just instantiating the class
-				Dim cl As Class
+				Dim cl As  [Class]
 
 				Try
 					cl = com.sun.beans.finder.ClassFinder.findClass(beanName, cls)
-				Catch ex As ClassNotFoundException
+				Catch ex As  [Class]NotFoundException
 					' There is no appropriate class.  If we earlier tried to
 					' deserialize an object and got an IO exception, throw that,
 					' otherwise rethrow the ClassNotFoundException.
@@ -336,7 +336,7 @@ Namespace java.beans
 		''' <param name="bean">        Object from which we want to obtain a view. </param>
 		''' <param name="targetType">  The type of view we'd like to get.
 		'''  </param>
-		Public Shared Function getInstanceOf(ByVal bean As Object, ByVal targetType As Class) As Object
+		Public Shared Function getInstanceOf(ByVal bean As Object, ByVal targetType As [Class]) As Object
 			Return bean
 		End Function
 
@@ -350,7 +350,7 @@ Namespace java.beans
 		''' <param name="targetType">  The type of view we'd like to get. </param>
 		''' <returns> "true" if the given bean supports the given targetType.
 		'''  </returns>
-		Public Shared Function isInstanceOf(ByVal bean As Object, ByVal targetType As Class) As Boolean
+		Public Shared Function isInstanceOf(ByVal bean As Object, ByVal targetType As [Class]) As Boolean
 			Return Introspector.isSubclass(bean.GetType(), targetType)
 		End Function
 
@@ -408,13 +408,13 @@ Namespace java.beans
 	Friend Class ObjectInputStreamWithLoader
 		Inherits java.io.ObjectInputStream
 
-		Private loader As ClassLoader
+		Private loader As  [Class]Loader
 
 		''' <summary>
 		''' Loader must be non-null;
 		''' </summary>
 
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal loader As ClassLoader)
+		Public Sub New(ByVal [in] As java.io.InputStream, ByVal loader As  [Class]Loader)
 
 			MyBase.New([in])
 			If loader Is Nothing Then Throw New IllegalArgumentException("Illegal null argument to ObjectInputStreamWithLoader")
@@ -425,7 +425,7 @@ Namespace java.beans
 		''' Use the given ClassLoader rather than using the system class
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Protected Friend Overridable Function resolveClass(ByVal classDesc As java.io.ObjectStreamClass) As Class
+		Protected Friend Overridable Function resolveClass(ByVal classDesc As java.io.ObjectStreamClass) As  [Class]
 
 			Dim cname As String = classDesc.name
 			Return com.sun.beans.finder.ClassFinder.resolveClass(cname, Me.loader)

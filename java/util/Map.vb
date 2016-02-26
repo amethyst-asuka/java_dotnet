@@ -33,16 +33,16 @@ Namespace java.util
 	''' An object that maps keys to values.  A map cannot contain duplicate keys;
 	''' each key can map to at most one value.
 	''' 
-	''' <p>This interface takes the place of the <tt>Dictionary</tt> class, which
+	''' <p>This interface takes the place of the <tt>Dictionary</tt> [Class], which
 	''' was a totally abstract class rather than an interface.
 	''' 
 	''' <p>The <tt>Map</tt> interface provides three <i>collection views</i>, which
 	''' allow a map's contents to be viewed as a set of keys, collection of values,
 	''' or set of key-value mappings.  The <i>order</i> of a map is defined as
 	''' the order in which the iterators on the map's collection views return their
-	''' elements.  Some map implementations, like the <tt>TreeMap</tt> class, make
+	''' elements.  Some map implementations, like the <tt>TreeMap</tt> [Class], make
 	''' specific guarantees as to their order; others, like the <tt>HashMap</tt>
-	''' class, do not.
+	''' [Class], do not.
 	''' 
 	''' <p>Note: great care must be exercised if mutable objects are used as map
 	''' keys.  The behavior of a map is not specified if the value of an object is
@@ -567,7 +567,7 @@ Namespace java.util
 		''' <summary>
 		''' Performs the given action for each entry in this map until all entries
 		''' have been processed or the action throws an exception.   Unless
-		''' otherwise specified by the implementing class, actions are performed in
+		''' otherwise specified by the implementing [Class], actions are performed in
 		''' the order of entry set iteration (if an iteration order is specified.)
 		''' Exceptions thrown by the action are relayed to the caller.
 		''' 

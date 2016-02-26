@@ -51,7 +51,7 @@ Namespace java.util
 	''' The <tt>List</tt> interface provides four methods for positional (indexed)
 	''' access to list elements.  Lists (like Java arrays) are zero based.  Note
 	''' that these operations may execute in time proportional to the index value
-	''' for some implementations (the <tt>LinkedList</tt> class, for
+	''' for some implementations (the <tt>LinkedList</tt> [Class], for
 	''' example). Thus, iterating over the elements in a list is typically
 	''' preferable to indexing through it if the caller does not know the
 	''' implementation.<p>

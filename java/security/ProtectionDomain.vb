@@ -102,7 +102,7 @@ Namespace java.security
 		Private codesource As CodeSource
 
 		' ClassLoader the protection domain was consed from 
-		Private classloader As ClassLoader
+		Private classloader As  [Class]Loader
 
 		' Principals running-as within this protection domain 
 		Private principals As Principal()
@@ -173,7 +173,7 @@ Namespace java.security
 		''' <seealso cref= Policy#refresh </seealso>
 		''' <seealso cref= Policy#getPermissions(ProtectionDomain)
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal codesource As CodeSource, ByVal permissions As PermissionCollection, ByVal classloader As ClassLoader, ByVal principals As Principal())
+		Public Sub New(ByVal codesource As CodeSource, ByVal permissions As PermissionCollection, ByVal classloader As  [Class]Loader, ByVal principals As Principal())
 			Me.codesource = codesource
 			If permissions IsNot Nothing Then
 				Me.permissions = permissions
@@ -201,7 +201,7 @@ Namespace java.security
 		''' <returns> the ClassLoader of this domain which may be null.
 		''' 
 		''' @since 1.4 </returns>
-		Public Property classLoader As ClassLoader
+		Public Property classLoader As  [Class]Loader
 			Get
 				Return Me.classloader
 			End Get
@@ -385,7 +385,7 @@ Namespace java.security
 					Do While e.hasMoreElements()
 'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
 						Dim pdp As Permission = e.nextElement()
-						Dim pdpClass As Class = pdp.GetType()
+						Dim pdpClass As  [Class] = pdp.GetType()
 						Dim pdpActions As String = pdp.actions
 						Dim pdpName As String = pdp.name
 						For i As Integer = 0 To plVector.Count - 1

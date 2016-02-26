@@ -474,7 +474,7 @@ Namespace java.security
 	'     * rather than from MessageDigest. It represents a MessageDigest with an
 	'     * encapsulated, provider-supplied SPI object (of type MessageDigestSpi).
 	'     * If the provider implementation is an instance of MessageDigestSpi,
-	'     * the getInstance() methods above return an instance of this class, with
+	'     * the getInstance() methods above return an instance of this [Class], with
 	'     * the SPI object encapsulated.
 	'     *
 	'     * Note: All SPI methods from the original MessageDigest class have been

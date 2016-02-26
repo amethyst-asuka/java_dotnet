@@ -1023,7 +1023,7 @@ Namespace java.net
 		''' <exception cref="IOException">  if an I/O exception occurs. </exception>
 		''' <seealso cref=        java.net.URLConnection#getContent(Class[])
 		''' @since 1.3 </seealso>
-		Public Function getContent(ByVal classes As Class()) As Object
+		Public Function getContent(ByVal classes As  [Class]()) As Object
 			Return openConnection().getContent(classes)
 		End Function
 
@@ -1106,11 +1106,11 @@ Namespace java.net
 						Dim packagePrefix As String = packagePrefixIter.nextToken().Trim()
 						Try
 							Dim clsName As String = packagePrefix & "." & protocol & ".Handler"
-							Dim cls As Class = Nothing
+							Dim cls As  [Class] = Nothing
 							Try
 								cls = Type.GetType(clsName)
-							Catch e As ClassNotFoundException
-								Dim cl As ClassLoader = ClassLoader.systemClassLoader
+							Catch e As  [Class]NotFoundException
+								Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 								If cl IsNot Nothing Then cls = cl.loadClass(clsName)
 							End Try
 							If cls IsNot Nothing Then handler = CType(cls.newInstance(), URLStreamHandler)

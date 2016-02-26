@@ -418,7 +418,7 @@ Namespace java.time.format
 	''' <ol>
 	''' <li>The chronology is determined.
 	''' The chronology of the result is either the chronology that was parsed,
-	''' or if no chronology was parsed, it is the chronology set on this class,
+	''' or if no chronology was parsed, it is the chronology set on this [Class],
 	''' or if that is null, it is {@code IsoChronology}.
 	''' <li>The {@code ChronoField} date fields are resolved.
 	''' This is achieved using <seealso cref="Chronology#resolveDate(Map, ResolverStyle)"/>.

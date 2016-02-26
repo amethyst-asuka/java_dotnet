@@ -32,7 +32,7 @@ Namespace java.nio.channels
 	''' <p> A file-lock object is created each time a lock is acquired on a file via
 	''' one of the <seealso cref="FileChannel#lock(long,long,boolean) lock"/> or {@link
 	''' FileChannel#tryLock(long,long,boolean) tryLock} methods of the
-	''' <seealso cref="FileChannel"/> class, or the {@link
+	''' <seealso cref="FileChannel"/> [Class], or the {@link
 	''' AsynchronousFileChannel#lock(long,long,boolean,Object,CompletionHandler) lock}
 	''' or <seealso cref="AsynchronousFileChannel#tryLock(long,long,boolean) tryLock"/>
 	''' methods of the <seealso cref="AsynchronousFileChannel"/> class.

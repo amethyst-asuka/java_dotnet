@@ -300,7 +300,7 @@ Namespace java.util.concurrent
 				Shared Sub New()
 					Try
 						UNSAFE = sun.misc.Unsafe.unsafe
-						Dim k As Class = GetType(SNode)
+						Dim k As  [Class] = GetType(SNode)
 						matchOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("match"))
 						nextOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("next"))
 					Catch e As Exception
@@ -529,7 +529,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(TransferStack)
+					Dim k As  [Class] = GetType(TransferStack)
 					headOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("head"))
 				Catch e As Exception
 					Throw New [Error](e)
@@ -607,7 +607,7 @@ Namespace java.util.concurrent
 				Shared Sub New()
 					Try
 						UNSAFE = sun.misc.Unsafe.unsafe
-						Dim k As Class = GetType(QNode)
+						Dim k As  [Class] = GetType(QNode)
 						itemOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("item"))
 						nextOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("next"))
 					Catch e As Exception
@@ -831,7 +831,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(TransferQueue)
+					Dim k As  [Class] = GetType(TransferQueue)
 					headOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("head"))
 					tailOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("tail"))
 					cleanMeOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("cleanMe"))
@@ -1177,7 +1177,7 @@ Namespace java.util.concurrent
 		End Sub
 
 		' Unsafe mechanics
-		Friend Shared Function objectFieldOffset(ByVal UNSAFE As sun.misc.Unsafe, ByVal field As String, ByVal klazz As Class) As Long
+		Friend Shared Function objectFieldOffset(ByVal UNSAFE As sun.misc.Unsafe, ByVal field As String, ByVal klazz As [Class]) As Long
 			Try
 				Return UNSAFE.objectFieldOffset(klazz.getDeclaredField(field))
 			Catch e As NoSuchFieldException

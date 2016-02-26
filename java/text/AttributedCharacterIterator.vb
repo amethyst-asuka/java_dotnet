@@ -94,7 +94,7 @@ Namespace java.text
 	'		''' </summary>
 	'		private String name;
 	'
-	'		' table of all instances in this class, used by readResolve
+	'		' table of all instances in this [Class], used by readResolve
 	'		private static final Map<String, Attribute> instanceMap = New HashMap<>(7);
 	'
 	'		''' <summary>

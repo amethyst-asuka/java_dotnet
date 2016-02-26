@@ -45,7 +45,7 @@ Namespace java.util
 	''' 
 	''' <p> Both null values and the null key are supported. This class has
 	''' performance characteristics similar to those of the <tt>HashMap</tt>
-	''' class, and has the same efficiency parameters of <em>initial capacity</em>
+	''' [Class], and has the same efficiency parameters of <em>initial capacity</em>
 	''' and <em>load factor</em>.
 	''' 
 	''' <p> Like most collection classes, this class is not synchronized.

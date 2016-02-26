@@ -118,7 +118,7 @@ Namespace java.util.regex
 	''' <tr align="left"><th colspan="2" id="classes">Character classes</th></tr>
 	''' 
 	''' <tr><td valign="top" headers="construct classes">{@code [abc]}</td>
-	'''     <td headers="matches">{@code a}, {@code b}, or {@code c} (simple class)</td></tr>
+	'''     <td headers="matches">{@code a}, {@code b}, or {@code c} (simple [Class])</td></tr>
 	''' <tr><td valign="top" headers="construct classes">{@code [^abc]}</td>
 	'''     <td headers="matches">Any character except {@code a}, {@code b}, or {@code c} (negation)</td></tr>
 	''' <tr><td valign="top" headers="construct classes">{@code [a-zA-Z]}</td>
@@ -428,7 +428,7 @@ Namespace java.util.regex
 	'''    <p> Note that a different set of metacharacters are in effect inside
 	'''    a character class than outside a character class. For instance, the
 	'''    regular expression <tt>.</tt> loses its special meaning inside a
-	'''    character class, while the expression <tt>-</tt> becomes a range
+	'''    character [Class], while the expression <tt>-</tt> becomes a range
 	'''    forming metacharacter.
 	''' 
 	''' <h3><a name="lt">Line terminators</a></h3>
@@ -717,7 +717,7 @@ Namespace java.util.regex
 	'''    as back references; a backslash-escaped number greater than <tt>9</tt> is
 	'''    treated as a back reference if at least that many subexpressions exist,
 	'''    otherwise it is interpreted, if possible, as an octal escape.  In this
-	'''    class octal escapes must always begin with a zero. In this class,
+	'''    class octal escapes must always begin with a zero. In this [Class],
 	'''    <tt>\1</tt> through <tt>\9</tt> are always interpreted as back
 	'''    references, and a larger number is accepted as a back reference if at
 	'''    least that many subexpressions exist at that point in the regular
@@ -732,7 +732,7 @@ Namespace java.util.regex
 	'''    unless the matcher is reset.  </p></li>
 	''' 
 	'''    <li><p> In Perl, embedded flags at the top level of an expression affect
-	'''    the whole expression.  In this class, embedded flags always take effect
+	'''    the whole expression.  In this [Class], embedded flags always take effect
 	'''    at the point at which they appear, whether they are at the top level or
 	'''    within a group; in the latter case, flags are restored at the end of the
 	'''    group just as in Perl.  </p></li>
@@ -1627,14 +1627,14 @@ Namespace java.util.regex
 				' which a single definite value (0x0B) is expected. For
 				' compatibility concern '\013'/0x0B is returned if isrange.
 		''' <summary>
-		''' Parse a character class, and return the node that matches it.
+		''' Parse a character [Class], and return the node that matches it.
 		''' 
 		''' Consumes a ] on the way out if consume is true. Usually consume
 		''' is true except for the case of [abc&&def] where def is a separate
 		''' right hand node with "understood" brackets.
 		''' </summary>
-						' Negates if first char in a class, otherwise literal
-							' ^ not first in class, treat as literal
+						' Negates if first char in a [Class], otherwise literal
+							' ^ not first in [Class], treat as literal
 							' treat as a literal &
 	'         Bits can only handle codepoints in [u+0000-u+00ff] range.
 	'           Use "single" node instead of bits when dealing with unicode

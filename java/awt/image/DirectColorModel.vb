@@ -71,7 +71,7 @@ Namespace java.awt.image
 	''' <code>ColorModel</code>.
 	''' <p>
 	''' A single int pixel representation is valid for all objects of this
-	''' class, since it is always possible to represent pixel values used with
+	''' [Class], since it is always possible to represent pixel values used with
 	''' this class in a single int.  Therefore, methods which use this
 	''' representation will not throw an <code>IllegalArgumentException</code>
 	''' due to an invalid pixel value.

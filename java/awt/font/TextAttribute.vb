@@ -205,7 +205,7 @@ Namespace java.awt.font
 	''' <tr>
 	''' <td valign="TOP"><seealso cref="#INPUT_METHOD_HIGHLIGHT"/></td>
 	''' <td valign="TOP"><seealso cref="java.awt.im.InputMethodHighlight"/>,<br><seealso cref="java.text.Annotation"/></td>
-	''' <td valign="TOP">(see class)</td>
+	''' <td valign="TOP">(see [Class])</td>
 	''' <td valign="TOP">null (do not apply input highlighting)</td>
 	''' </tr>
 	''' <tr style="background-color:#eeeeff">
@@ -252,7 +252,7 @@ Namespace java.awt.font
 	Public NotInheritable Class TextAttribute
 		Inherits java.text.AttributedCharacterIterator.Attribute
 
-		' table of all instances in this class, used by readResolve
+		' table of all instances in this [Class], used by readResolve
 		Private Shared ReadOnly instanceMap As IDictionary(Of String, TextAttribute) = New Dictionary(Of String, TextAttribute)(29)
 
 		''' <summary>

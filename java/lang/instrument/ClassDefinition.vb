@@ -39,7 +39,7 @@ Namespace java.lang.instrument
 		''' <summary>
 		'''  The class to redefine
 		''' </summary>
-		Private ReadOnly mClass As Class
+		Private ReadOnly mClass As  [Class]
 
 		''' <summary>
 		'''  The replacement class file bytes
@@ -54,7 +54,7 @@ Namespace java.lang.instrument
 		''' <param name="theClassFile"> the new class file bytes
 		''' </param>
 		''' <exception cref="java.lang.NullPointerException"> if the supplied class or array is <code>null</code>. </exception>
-		Public Sub New(ByVal theClass As Class, ByVal theClassFile As SByte())
+		Public Sub New(ByVal theClass As [Class], ByVal theClassFile As SByte())
 			If theClass Is Nothing OrElse theClassFile Is Nothing Then Throw New NullPointerException
 			mClass = theClass
 			mClassFile = theClassFile
@@ -64,7 +64,7 @@ Namespace java.lang.instrument
 		''' Returns the class.
 		''' </summary>
 		''' <returns>    the <code>Class</code> object referred to. </returns>
-		Public Property definitionClass As Class
+		Public Property definitionClass As  [Class]
 			Get
 				Return mClass
 			End Get

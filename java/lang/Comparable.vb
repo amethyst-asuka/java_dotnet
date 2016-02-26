@@ -42,7 +42,7 @@ Namespace java.lang
 	''' with equals</i> if and only if <tt>e1.compareTo(e2) == 0</tt> has
 	''' the same boolean value as <tt>e1.equals(e2)</tt> for every
 	''' <tt>e1</tt> and <tt>e2</tt> of class <tt>C</tt>.  Note that <tt>null</tt>
-	''' is not an instance of any class, and <tt>e.compareTo(null)</tt> should
+	''' is not an instance of any [Class], and <tt>e.compareTo(null)</tt> should
 	''' throw a <tt>NullPointerException</tt> even though <tt>e.equals(null)</tt>
 	''' returns <tt>false</tt>.<p>
 	''' 

@@ -158,7 +158,7 @@ Namespace java.awt
 			''' A popup window is a temporary window such as a drop-down menu or a
 			''' tooltip. On some platforms, windows of that type may be forcibly
 			''' made undecorated even if they are instances of the {@code Frame} or
-			''' {@code Dialog} class, and have decorations enabled.
+			''' {@code Dialog} [Class], and have decorations enabled.
 			''' </summary>
 			POPUP
 		End Enum
@@ -1911,7 +1911,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getWindowListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(WindowFocusListener) Then
 				l = windowFocusListener
@@ -2485,7 +2485,7 @@ Namespace java.awt
 
 		''' <summary>
 		''' Adds a PropertyChangeListener to the listener list. The listener is
-		''' registered for all bound properties of this class, including the
+		''' registered for all bound properties of this [Class], including the
 		''' following:
 		''' <ul>
 		'''    <li>this Window's font ("font")</li>

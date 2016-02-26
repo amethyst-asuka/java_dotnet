@@ -751,7 +751,7 @@ Namespace java.text
 			' Proclaim serial compatibility with 1.4 FCS
 			Private Const serialVersionUID As Long = 7441350119349544720L
 
-			' table of all instances in this class, used by readResolve
+			' table of all instances in this [Class], used by readResolve
 			Private Shared ReadOnly instanceMap As IDictionary(Of String, Field) = New Dictionary(Of String, Field)(18)
 			' Maps from Calendar constant (such as Calendar.ERA) to Field
 			' constant (such as Field.ERA).

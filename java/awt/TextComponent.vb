@@ -525,7 +525,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getTextListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(TextListener) Then
 				l = textListener
@@ -788,7 +788,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleText associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleText interface on behalf of itself.
 			''' </summary>

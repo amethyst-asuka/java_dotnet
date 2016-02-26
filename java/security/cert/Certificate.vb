@@ -43,7 +43,7 @@ Namespace java.security.cert
 	''' some types of information (like a public key).
 	''' <p>
 	''' X.509, PGP, and SDSI certificates can all be implemented by
-	''' subclassing the Certificate class, even though they contain different
+	''' subclassing the Certificate [Class], even though they contain different
 	''' sets of information, and they store and retrieve the information in
 	''' different ways.
 	''' </summary>

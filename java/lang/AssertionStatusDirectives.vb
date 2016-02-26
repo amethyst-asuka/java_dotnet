@@ -51,7 +51,7 @@ Namespace java.lang
 		''' <tt>false</tt> indicates that it should have classes disabled.
 		''' This array must have the same number of elements as <tt>classes</tt>.
 		''' 
-		''' <p>In the case of conflicting directives for the same class, the
+		''' <p>In the case of conflicting directives for the same [Class], the
 		''' last directive for a given class wins.  In other words, if a string
 		''' <tt>s</tt> appears multiple times in the <tt>classes</tt> array
 		''' and <tt>i</tt> is the highest integer for which

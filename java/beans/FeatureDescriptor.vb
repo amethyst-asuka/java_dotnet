@@ -46,7 +46,7 @@ Namespace java.beans
 		Private Const TRANSIENT As String = "transient"
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private classRef As Reference(Of ? As Class)
+		Private classRef As Reference(Of ? As [Class])
 
 		''' <summary>
 		''' Constructs a <code>FeatureDescriptor</code>.
@@ -253,8 +253,8 @@ Namespace java.beans
 
 		' Package private methods for recreating the weak/soft referent
 
-		Friend Overridable Property class0 As Class
-			Set(ByVal cls As Class)
+		Friend Overridable Property class0 As  [Class]
+			Set(ByVal cls As [Class])
 				Me.classRef = getWeakReference(cls)
 			End Set
 			Get
@@ -292,7 +292,7 @@ Namespace java.beans
 		''' </returns>
 		''' <seealso cref= Method#getGenericReturnType </seealso>
 		''' <seealso cref= Method#getReturnType </seealso>
-		Friend Shared Function getReturnType(ByVal base As Class, ByVal method As Method) As Class
+		Friend Shared Function getReturnType(ByVal base As [Class], ByVal method As Method) As  [Class]
 			If base Is Nothing Then base = method.declaringClass
 			Return com.sun.beans.TypeResolver.erase(com.sun.beans.TypeResolver.resolveInClass(base, method.genericReturnType))
 		End Function
@@ -306,7 +306,7 @@ Namespace java.beans
 		''' </returns>
 		''' <seealso cref= Method#getGenericParameterTypes </seealso>
 		''' <seealso cref= Method#getParameterTypes </seealso>
-		Friend Shared Function getParameterTypes(ByVal base As Class, ByVal method As Method) As Class()
+		Friend Shared Function getParameterTypes(ByVal base As [Class], ByVal method As Method) As  [Class]()
 			If base Is Nothing Then base = method.declaringClass
 			Return com.sun.beans.TypeResolver.erase(com.sun.beans.TypeResolver.resolveInClass(base, method.genericParameterTypes))
 		End Function

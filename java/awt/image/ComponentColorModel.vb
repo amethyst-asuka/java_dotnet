@@ -149,7 +149,7 @@ Namespace java.awt.image
 	''' responsibility of applications to appropriately scale pixel data before
 	''' rendering such that color components fall within the normalized range
 	''' of the <code>ColorSpace</code> (obtained using the <code>getMinValue</code>
-	''' and <code>getMaxValue</code> methods of the <code>ColorSpace</code> class)
+	''' and <code>getMaxValue</code> methods of the <code>ColorSpace</code> [Class])
 	''' and the alpha component is between 0.0 and 1.0.  If color or alpha
 	''' component values fall outside these ranges, rendering results are
 	''' indeterminate.

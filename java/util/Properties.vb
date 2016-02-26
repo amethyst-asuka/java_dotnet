@@ -1093,11 +1093,11 @@ Namespace java.util
 		''' </summary>
 		Private Class XmlSupport
 
-			Private Shared Function loadProviderFromProperty(ByVal cl As ClassLoader) As sun.util.spi.XmlPropertiesProvider
+			Private Shared Function loadProviderFromProperty(ByVal cl As  [Class]Loader) As sun.util.spi.XmlPropertiesProvider
 				Dim cn As String = System.getProperty("sun.util.spi.XmlPropertiesProvider")
 				If cn Is Nothing Then Return Nothing
 				Try
-					Dim c As Class = Type.GetType(cn, True, cl)
+					Dim c As  [Class] = Type.GetType(cn, True, cl)
 					Return CType(c.newInstance(), sun.util.spi.XmlPropertiesProvider)
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
 				Catch ClassNotFoundException Or IllegalAccessException Or InstantiationException x
@@ -1105,7 +1105,7 @@ Namespace java.util
 				End Try
 			End Function
 
-			Private Shared Function loadProviderAsService(ByVal cl As ClassLoader) As sun.util.spi.XmlPropertiesProvider
+			Private Shared Function loadProviderAsService(ByVal cl As  [Class]Loader) As sun.util.spi.XmlPropertiesProvider
 				Dim [iterator] As [Iterator](Of sun.util.spi.XmlPropertiesProvider) = ServiceLoader.load(GetType(sun.util.spi.XmlPropertiesProvider), cl).GetEnumerator()
 				Return If([iterator].hasNext(), [iterator].next(), Nothing)
 			End Function
@@ -1118,7 +1118,7 @@ Namespace java.util
 				Implements java.security.PrivilegedAction(Of T)
 
 				Public Overridable Function run() As sun.util.spi.XmlPropertiesProvider
-					Dim cl As ClassLoader = ClassLoader.systemClassLoader
+					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 					Dim provider As sun.util.spi.XmlPropertiesProvider = loadProviderFromProperty(cl)
 					If provider IsNot Nothing Then Return provider
 					provider = loadProviderAsService(cl)

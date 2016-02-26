@@ -131,7 +131,7 @@ Namespace java.rmi.server
 		''' <li>If an exception is thrown by <code>RemoteRef.invoke</code> and
 		''' that exception is a checked exception that is not assignable to any
 		''' exception in the <code>throws</code> clause of the method
-		''' implemented by the <code>proxy</code>'s class, then that exception
+		''' implemented by the <code>proxy</code>'s [Class], then that exception
 		''' is wrapped in an <seealso cref="UnexpectedException"/> and the wrapped
 		''' exception is thrown.  Otherwise, the exception thrown by
 		''' <code>invoke</code> is thrown by this method.
@@ -200,14 +200,14 @@ Namespace java.rmi.server
 				Return ref.invoke(CType(proxy, java.rmi.Remote), method, args, getMethodHash(method))
 			Catch e As Exception
 				If Not(TypeOf e Is RuntimeException) Then
-					Dim cl As Class = proxy.GetType()
+					Dim cl As  [Class] = proxy.GetType()
 					Try
 						method = cl.getMethod(method.name, method.parameterTypes)
 					Catch nsme As NoSuchMethodException
 						Throw CType((New IllegalArgumentException).initCause(nsme), IllegalArgumentException)
 					End Try
-					Dim thrownType As Class = e.GetType()
-					For Each declaredType As Class In method.exceptionTypes
+					Dim thrownType As  [Class] = e.GetType()
+					For Each declaredType As  [Class] In method.exceptionTypes
 						If thrownType.IsSubclassOf(declaredType) Then Throw e
 					Next declaredType
 					e = New java.rmi.UnexpectedException("unexpected exception", e)
@@ -222,7 +222,7 @@ Namespace java.rmi.server
 		''' 
 		''' </summary>
 		Private Function proxyToString(ByVal proxy As Object) As String
-			Dim interfaces As Class() = proxy.GetType().GetInterfaces()
+			Dim interfaces As  [Class]() = proxy.GetType().GetInterfaces()
 			If interfaces.Length = 0 Then Return "Proxy[" & Me & "]"
 			Dim iface As String = interfaces(0).name
 			If iface.Equals("java.rmi.Remote") AndAlso interfaces.Length > 1 Then iface = interfaces(1).name
@@ -261,7 +261,7 @@ Namespace java.rmi.server
 			Friend Sub New()
 			End Sub
 
-			Protected Friend Overridable Function computeValue(ByVal remoteClass As Class) As IDictionary(Of Method, Long?)
+			Protected Friend Overridable Function computeValue(ByVal remoteClass As [Class]) As IDictionary(Of Method, Long?)
 				Return New WeakHashMapAnonymousInnerClassHelper(Of K, V)
 			End Function
 

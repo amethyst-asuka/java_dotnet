@@ -47,7 +47,7 @@ Namespace java.util
 	''' to.  (For example, the algorithm used by <tt>sort</tt> does not have to be
 	''' a mergesort, but it does have to be <i>stable</i>.)
 	''' 
-	''' <p>The "destructive" algorithms contained in this class, that is, the
+	''' <p>The "destructive" algorithms contained in this [Class], that is, the
 	''' algorithms that modify the collection on which they operate, are specified
 	''' to throw <tt>UnsupportedOperationException</tt> if the collection does not
 	''' support the appropriate mutation primitive(s), such as the <tt>set</tt>
@@ -3340,12 +3340,12 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code c} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified collection
 		''' @since 1.5 </returns>
-		Public Shared Function checkedCollection(Of E)(ByVal c As Collection(Of E), ByVal type As Class) As Collection(Of E)
+		Public Shared Function checkedCollection(Of E)(ByVal c As Collection(Of E), ByVal type As [Class]) As Collection(Of E)
 			Return New CheckedCollection(Of )(c, type)
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function zeroLengthArray(Of T)(ByVal type As Class) As T()
+		Friend Shared Function zeroLengthArray(Of T)(ByVal type As [Class]) As T()
 			Return CType(Array.newInstance(type, 0), T())
 		End Function
 
@@ -3359,7 +3359,7 @@ Namespace java.util
 			Private Const serialVersionUID As Long = 1578914078182001775L
 
 			Friend ReadOnly c As Collection(Of E)
-			Friend ReadOnly type As Class
+			Friend ReadOnly type As  [Class]
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Friend Overridable Function typeCheck(ByVal o As Object) As E
@@ -3371,7 +3371,7 @@ Namespace java.util
 				Return "Attempt to insert " & o.GetType() & " element into collection with element type " & type
 			End Function
 
-			Friend Sub New(ByVal c As Collection(Of E), ByVal type As Class)
+			Friend Sub New(ByVal c As Collection(Of E), ByVal type As [Class])
 				Me.c = Objects.requireNonNull(c, "c")
 				Me.type = Objects.requireNonNull(type, "type")
 			End Sub
@@ -3526,7 +3526,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code queue} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified queue
 		''' @since 1.8 </returns>
-		Public Shared Function checkedQueue(Of E)(ByVal queue As Queue(Of E), ByVal type As Class) As Queue(Of E)
+		Public Shared Function checkedQueue(Of E)(ByVal queue As Queue(Of E), ByVal type As [Class]) As Queue(Of E)
 			Return New CheckedQueue(Of )(queue, type)
 		End Function
 
@@ -3541,7 +3541,7 @@ Namespace java.util
 			Private Const serialVersionUID As Long = 1433151992604707767L
 			Friend ReadOnly queue As Queue(Of E)
 
-			Friend Sub New(ByVal queue As Queue(Of E), ByVal elementType As Class)
+			Friend Sub New(ByVal queue As Queue(Of E), ByVal elementType As [Class])
 				MyBase.New(queue, elementType)
 				Me.queue = queue
 			End Sub
@@ -3595,7 +3595,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code s} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified set
 		''' @since 1.5 </returns>
-		Public Shared Function checkedSet(Of E)(ByVal s As [Set](Of E), ByVal type As Class) As [Set](Of E)
+		Public Shared Function checkedSet(Of E)(ByVal s As [Set](Of E), ByVal type As [Class]) As [Set](Of E)
 			Return New CheckedSet(Of )(s, type)
 		End Function
 
@@ -3609,7 +3609,7 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 4694047833775013803L
 
-			Friend Sub New(ByVal s As [Set](Of E), ByVal elementType As Class)
+			Friend Sub New(ByVal s As [Set](Of E), ByVal elementType As [Class])
 				MyBase.New(s, elementType)
 			End Sub
 
@@ -3648,7 +3648,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code s} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified sorted set
 		''' @since 1.5 </returns>
-		Public Shared Function checkedSortedSet(Of E)(ByVal s As SortedSet(Of E), ByVal type As Class) As SortedSet(Of E)
+		Public Shared Function checkedSortedSet(Of E)(ByVal s As SortedSet(Of E), ByVal type As [Class]) As SortedSet(Of E)
 			Return New CheckedSortedSet(Of )(s, type)
 		End Function
 
@@ -3664,7 +3664,7 @@ Namespace java.util
 
 			Private ReadOnly ss As SortedSet(Of E)
 
-			Friend Sub New(ByVal s As SortedSet(Of E), ByVal type As Class)
+			Friend Sub New(ByVal s As SortedSet(Of E), ByVal type As [Class])
 				MyBase.New(s, type)
 				ss = s
 			End Sub
@@ -3719,7 +3719,7 @@ Namespace java.util
 	''' <param name="type"> the type of element that {@code s} is permitted to hold </param>
 	''' <returns> a dynamically typesafe view of the specified navigable set
 	''' @since 1.8 </returns>
-		Public Shared Function checkedNavigableSet(Of E)(ByVal s As NavigableSet(Of E), ByVal type As Class) As NavigableSet(Of E)
+		Public Shared Function checkedNavigableSet(Of E)(ByVal s As NavigableSet(Of E), ByVal type As [Class]) As NavigableSet(Of E)
 			Return New CheckedNavigableSet(Of )(s, type)
 		End Function
 
@@ -3735,7 +3735,7 @@ Namespace java.util
 
 			Private ReadOnly ns As NavigableSet(Of E)
 
-			Friend Sub New(ByVal s As NavigableSet(Of E), ByVal type As Class)
+			Friend Sub New(ByVal s As NavigableSet(Of E), ByVal type As [Class])
 				MyBase.New(s, type)
 				ns = s
 			End Sub
@@ -3814,7 +3814,7 @@ Namespace java.util
 		''' <param name="type"> the type of element that {@code list} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified list
 		''' @since 1.5 </returns>
-		Public Shared Function checkedList(Of E)(ByVal list As List(Of E), ByVal type As Class) As List(Of E)
+		Public Shared Function checkedList(Of E)(ByVal list As List(Of E), ByVal type As [Class]) As List(Of E)
 			Return (If(TypeOf list Is RandomAccess, New CheckedRandomAccessList(Of )(list, type), New CheckedList(Of )(list, type)))
 		End Function
 
@@ -3828,7 +3828,7 @@ Namespace java.util
 			Private Const serialVersionUID As Long = 65247728283967356L
 			Friend ReadOnly list As List(Of E)
 
-			Friend Sub New(ByVal list As List(Of E), ByVal type As Class)
+			Friend Sub New(ByVal list As List(Of E), ByVal type As [Class])
 				MyBase.New(list, type)
 				Me.list = list
 			End Sub
@@ -3943,7 +3943,7 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 1638200125423088369L
 
-			Friend Sub New(ByVal list As List(Of E), ByVal type As Class)
+			Friend Sub New(ByVal list As List(Of E), ByVal type As [Class])
 				MyBase.New(list, type)
 			End Sub
 
@@ -3987,7 +3987,7 @@ Namespace java.util
 		''' <param name="valueType"> the type of value that {@code m} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified map
 		''' @since 1.5 </returns>
-		Public Shared Function checkedMap(Of K, V)(ByVal m As Map(Of K, V), ByVal keyType As Class, ByVal valueType As Class) As Map(Of K, V)
+		Public Shared Function checkedMap(Of K, V)(ByVal m As Map(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class]) As Map(Of K, V)
 			Return New CheckedMap(Of )(m, keyType, valueType)
 		End Function
 
@@ -4002,8 +4002,8 @@ Namespace java.util
 			Private Const serialVersionUID As Long = 5742860141034234728L
 
 			Private ReadOnly m As Map(Of K, V)
-			Friend ReadOnly keyType As Class
-			Friend ReadOnly valueType As Class
+			Friend ReadOnly keyType As  [Class]
+			Friend ReadOnly valueType As  [Class]
 
 			Private Sub typeCheck(ByVal key As Object, ByVal value As Object)
 				If key IsNot Nothing AndAlso (Not keyType.isInstance(key)) Then Throw New ClassCastException(badKeyMsg(key))
@@ -4029,7 +4029,7 @@ Namespace java.util
 				Return "Attempt to insert " & value.GetType() & " value into map with value type " & valueType
 			End Function
 
-			Friend Sub New(ByVal m As Map(Of K, V), ByVal keyType As Class, ByVal valueType As Class)
+			Friend Sub New(ByVal m As Map(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class])
 				Me.m = Objects.requireNonNull(m)
 				Me.keyType = Objects.requireNonNull(keyType)
 				Me.valueType = Objects.requireNonNull(valueType)
@@ -4176,9 +4176,9 @@ Namespace java.util
 				Implements Set(Of KeyValuePair(Of K, V))
 
 				Private ReadOnly s As [Set](Of KeyValuePair(Of K, V))
-				Private ReadOnly valueType As Class
+				Private ReadOnly valueType As  [Class]
 
-				Friend Sub New(ByVal s As [Set](Of KeyValuePair(Of K, V)), ByVal valueType As Class)
+				Friend Sub New(ByVal s As [Set](Of KeyValuePair(Of K, V)), ByVal valueType As [Class])
 					Me.s = s
 					Me.valueType = valueType
 				End Sub
@@ -4210,7 +4210,7 @@ Namespace java.util
 
 				Public Overridable Function [iterator]() As [Iterator](Of KeyValuePair(Of K, V)) Implements Set(Of KeyValuePair(Of K, V)).iterator
 					Dim i As [Iterator](Of KeyValuePair(Of K, V)) = s.GetEnumerator()
-					Dim valueType As Class = Me.valueType
+					Dim valueType As  [Class] = Me.valueType
 
 					Return New IteratorAnonymousInnerClassHelper(Of E)
 				End Function
@@ -4321,7 +4321,7 @@ Namespace java.util
 					Return that.size() = s.size() AndAlso containsAll(that) ' Invokes safe containsAll() above
 				End Function
 
-				Friend Shared Function checkedEntry(Of K, V, T)(ByVal e As KeyValuePair(Of K, V), ByVal valueType As Class) As CheckedEntry(Of K, V, T)
+				Friend Shared Function checkedEntry(Of K, V, T)(ByVal e As KeyValuePair(Of K, V), ByVal valueType As [Class]) As CheckedEntry(Of K, V, T)
 					Return New CheckedEntry(Of )(e, valueType)
 				End Function
 
@@ -4336,9 +4336,9 @@ Namespace java.util
 					Implements KeyValuePair(Of K, V)
 
 					Private ReadOnly e As KeyValuePair(Of K, V)
-					Private ReadOnly valueType As Class
+					Private ReadOnly valueType As  [Class]
 
-					Friend Sub New(ByVal e As KeyValuePair(Of K, V), ByVal valueType As Class)
+					Friend Sub New(ByVal e As KeyValuePair(Of K, V), ByVal valueType As [Class])
 						Me.e = Objects.requireNonNull(e)
 						Me.valueType = Objects.requireNonNull(valueType)
 					End Sub
@@ -4414,7 +4414,7 @@ Namespace java.util
 		''' <param name="valueType"> the type of value that {@code m} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified map
 		''' @since 1.5 </returns>
-		Public Shared Function checkedSortedMap(Of K, V)(ByVal m As SortedMap(Of K, V), ByVal keyType As Class, ByVal valueType As Class) As SortedMap(Of K, V)
+		Public Shared Function checkedSortedMap(Of K, V)(ByVal m As SortedMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class]) As SortedMap(Of K, V)
 			Return New CheckedSortedMap(Of )(m, keyType, valueType)
 		End Function
 
@@ -4430,7 +4430,7 @@ Namespace java.util
 
 			Private ReadOnly sm As SortedMap(Of K, V)
 
-			Friend Sub New(ByVal m As SortedMap(Of K, V), ByVal keyType As Class, ByVal valueType As Class)
+			Friend Sub New(ByVal m As SortedMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class])
 				MyBase.New(m, keyType, valueType)
 				sm = m
 			End Sub
@@ -4493,7 +4493,7 @@ Namespace java.util
 		''' <param name="valueType"> the type of value that {@code m} is permitted to hold </param>
 		''' <returns> a dynamically typesafe view of the specified map
 		''' @since 1.8 </returns>
-		Public Shared Function checkedNavigableMap(Of K, V)(ByVal m As NavigableMap(Of K, V), ByVal keyType As Class, ByVal valueType As Class) As NavigableMap(Of K, V)
+		Public Shared Function checkedNavigableMap(Of K, V)(ByVal m As NavigableMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class]) As NavigableMap(Of K, V)
 			Return New CheckedNavigableMap(Of )(m, keyType, valueType)
 		End Function
 
@@ -4509,7 +4509,7 @@ Namespace java.util
 
 			Private ReadOnly nm As NavigableMap(Of K, V)
 
-			Friend Sub New(ByVal m As NavigableMap(Of K, V), ByVal keyType As Class, ByVal valueType As Class)
+			Friend Sub New(ByVal m As NavigableMap(Of K, V), ByVal keyType As [Class], ByVal valueType As [Class])
 				MyBase.New(m, keyType, valueType)
 				nm = m
 			End Sub

@@ -72,7 +72,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL(), ByVal parent As ClassLoader)
+		Public Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -81,7 +81,7 @@ Namespace java.net
 			Me.acc = java.security.AccessController.context
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal parent As ClassLoader, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader, ByVal acc As java.security.AccessControlContext)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -148,7 +148,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL(), ByVal parent As ClassLoader, ByVal factory As URLStreamHandlerFactory)
+		Public Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader, ByVal factory As URLStreamHandlerFactory)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -303,8 +303,8 @@ Namespace java.net
 		''' <exception cref="ClassNotFoundException"> if the class could not be found,
 		'''            or if the loader is closed. </exception>
 		''' <exception cref="NullPointerException"> if {@code name} is {@code null}. </exception>
-		Protected Friend Overrides Function findClass(ByVal name As String) As Class
-			Dim result As Class
+		Protected Friend Overrides Function findClass(ByVal name As String) As  [Class]
+			Dim result As  [Class]
 			Try
 				result = java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 			Catch pae As java.security.PrivilegedActionException
@@ -317,7 +317,7 @@ Namespace java.net
 		Private Class PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 			Implements java.security.PrivilegedExceptionAction(Of T)
 
-			Public Overridable Function run() As Class
+			Public Overridable Function run() As  [Class]
 				Dim path As String = name.replace("."c, "/"c).concat(".class")
 				Dim res As sun.misc.Resource = outerInstance.ucp.getResource(path, False)
 				If res IsNot Nothing Then
@@ -376,7 +376,7 @@ Namespace java.net
 	'     * Resource. The resulting Class must be resolved before it can be
 	'     * used.
 	'     
-		Private Function defineClass(ByVal name As String, ByVal res As sun.misc.Resource) As Class
+		Private Function defineClass(ByVal name As String, ByVal res As sun.misc.Resource) As  [Class]
 			Dim t0 As Long = System.nanoTime()
 			Dim i As Integer = name.LastIndexOf("."c)
 			Dim url As URL = res.codeSourceURL
@@ -638,7 +638,7 @@ Namespace java.net
 		''' <param name="parent"> the parent class loader for delegation </param>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <returns> the resulting class loader </returns>
-		Public Shared Function newInstance(ByVal urls As URL(), ByVal parent As ClassLoader) As URLClassLoader
+		Public Shared Function newInstance(ByVal urls As URL(), ByVal parent As  [Class]Loader) As URLClassLoader
 			' Save the caller's context
 			Dim acc As java.security.AccessControlContext = java.security.AccessController.context
 			' Need a privileged block to create the class loader
@@ -707,7 +707,7 @@ Namespace java.net
 			ClassLoader.registerAsParallelCapable()
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal parent As ClassLoader, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader, ByVal acc As java.security.AccessControlContext)
 			MyBase.New(urls, parent, acc)
 		End Sub
 
@@ -715,7 +715,7 @@ Namespace java.net
 			MyBase.New(urls, acc)
 		End Sub
 
-		Public NotOverridable Overrides Function loadClass(ByVal name As String, ByVal resolve As Boolean) As Class
+		Public NotOverridable Overrides Function loadClass(ByVal name As String, ByVal resolve As Boolean) As  [Class]
 			' First check if we have permission to access the package. This
 			' should go away once we've added support for exported packages.
 			Dim sm As SecurityManager = System.securityManager

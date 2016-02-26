@@ -1502,15 +1502,15 @@ Namespace java.util.concurrent.locks
 		Shared Sub New()
 			Try
 				U = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(StampedLock)
-				Dim wk As Class = GetType(WNode)
+				Dim k As  [Class] = GetType(StampedLock)
+				Dim wk As  [Class] = GetType(WNode)
 				STATE = U.objectFieldOffset(k.getDeclaredField("state"))
 				WHEAD = U.objectFieldOffset(k.getDeclaredField("whead"))
 				WTAIL = U.objectFieldOffset(k.getDeclaredField("wtail"))
 				WSTATUS = U.objectFieldOffset(wk.getDeclaredField("status"))
 				WNEXT = U.objectFieldOffset(wk.getDeclaredField("next"))
 				WCOWAIT = U.objectFieldOffset(wk.getDeclaredField("cowait"))
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				PARKBLOCKER = U.objectFieldOffset(tk.getDeclaredField("parkBlocker"))
 
 			Catch e As Exception

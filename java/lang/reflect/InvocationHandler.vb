@@ -57,7 +57,7 @@ Namespace java.lang.reflect
 		''' arguments passed in the method invocation on the proxy instance,
 		''' or {@code null} if interface method takes no arguments.
 		''' Arguments of primitive types are wrapped in instances of the
-		''' appropriate primitive wrapper class, such as
+		''' appropriate primitive wrapper [Class], such as
 		''' {@code java.lang.Integer} or {@code java.lang.Boolean}.
 		''' </param>
 		''' <returns>  the value to return from the method invocation on the

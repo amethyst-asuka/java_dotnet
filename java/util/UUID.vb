@@ -268,7 +268,7 @@ Namespace java.util
 		Public Function [variant]() As Integer
 			' This field is composed of a varying number of bits.
 			' 0    -    -    Reserved for NCS backward compatibility
-			' 1    0    -    The IETF aka Leach-Salz variant (used by this class)
+			' 1    0    -    The IETF aka Leach-Salz variant (used by this [Class])
 			' 1    1    0    Reserved, Microsoft backward compatibility
 			' 1    1    1    Reserved for future definition.
 			Return CInt(Fix((CLng(CULng(leastSigBits) >> (64 - (CLng(CULng(leastSigBits) >> 62))))) And (leastSigBits >> 63)))

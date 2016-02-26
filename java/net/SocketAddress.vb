@@ -30,7 +30,7 @@ Namespace java.net
 	''' 
 	''' <summary>
 	''' This class represents a Socket Address with no protocol attachment.
-	''' As an abstract class, it is meant to be subclassed with a specific,
+	''' As an abstract [Class], it is meant to be subclassed with a specific,
 	''' protocol dependent, implementation.
 	''' <p>
 	''' It provides an immutable object used by sockets for binding, connecting, or

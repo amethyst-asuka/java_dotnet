@@ -314,7 +314,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getActionListeners
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then
 				l = actionListener
@@ -463,38 +463,38 @@ Namespace java.awt
 		End Sub
 
 
-	'///////////////
-	' Accessibility support
-	'//////////////
+        '///////////////
+        ' Accessibility support
+        '//////////////
 
-		''' <summary>
-		''' Gets the <code>AccessibleContext</code> associated with
-		''' this <code>Button</code>. For buttons, the
-		''' <code>AccessibleContext</code> takes the form of an
-		''' <code>AccessibleAWTButton</code>.
-		''' A new <code>AccessibleAWTButton</code> instance is
-		''' created if necessary.
-		''' </summary>
-		''' <returns> an <code>AccessibleAWTButton</code> that serves as the
-		'''         <code>AccessibleContext</code> of this <code>Button</code>
-		''' @beaninfo
-		'''       expert: true
-		'''  description: The AccessibleContext associated with this Button.
-		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
-			Get
-				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTButton(Me)
-				Return accessibleContext
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the <code>AccessibleContext</code> associated with
+        ''' this <code>Button</code>. For buttons, the
+        ''' <code>AccessibleContext</code> takes the form of an
+        ''' <code>AccessibleAWTButton</code>.
+        ''' A new <code>AccessibleAWTButton</code> instance is
+        ''' created if necessary.
+        ''' </summary>
+        ''' <returns> an <code>AccessibleAWTButton</code> that serves as the
+        '''         <code>AccessibleContext</code> of this <code>Button</code>
+        ''' @beaninfo
+        '''       expert: true
+        '''  description: The AccessibleContext associated with this Button.
+        ''' @since 1.3 </returns>
+        Public Overrides Property accessibleContext As AccessibleContext
+            Get
+                If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTButton(Me)
+                Return accessibleContext
+            End Get
+        End Property
 
-		''' <summary>
-		''' This class implements accessibility support for the
-		''' <code>Button</code> class.  It provides an implementation of the
-		''' Java Accessibility API appropriate to button user-interface elements.
-		''' @since 1.3
-		''' </summary>
-		Protected Friend Class AccessibleAWTButton
+        ''' <summary>
+        ''' This class implements accessibility support for the
+        ''' <code>Button</code> class.  It provides an implementation of the
+        ''' Java Accessibility API appropriate to button user-interface elements.
+        ''' @since 1.3
+        ''' </summary>
+        Protected Friend Class AccessibleAWTButton
 			Inherits AccessibleAWTComponent
 			Implements AccessibleAction, AccessibleValue
 
@@ -530,7 +530,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleAction associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleAction interface on behalf of itself.
 			''' </summary>
@@ -543,7 +543,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleValue associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleValue interface on behalf of itself.
 			''' </summary>

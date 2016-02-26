@@ -54,7 +54,7 @@ Namespace java.security
 	''' <p>Other permission classes may not yet exist during Policy
 	''' initialization. For example, a referenced permission class may
 	''' be in a JAR file that will later be loaded.
-	''' For each such class, an UnresolvedPermission is instantiated.
+	''' For each such [Class], an UnresolvedPermission is instantiated.
 	''' Thus, an UnresolvedPermission is essentially a "placeholder"
 	''' containing information about the permission.
 	''' 
@@ -66,7 +66,7 @@ Namespace java.security
 	''' the appropriate class type is instantiated, based on the
 	''' information in the UnresolvedPermission.
 	''' 
-	''' <p> To instantiate the new class, UnresolvedPermission assumes
+	''' <p> To instantiate the new [Class], UnresolvedPermission assumes
 	''' the class provides a zero, one, and/or two-argument constructor.
 	''' The zero-argument constructor would be used to instantiate
 	''' a permission without a name and without actions.
@@ -131,7 +131,7 @@ Namespace java.security
 		''' <summary>
 		''' Creates a new UnresolvedPermission containing the permission
 		''' information needed later to actually create a Permission of the
-		''' specified class, when the permission is resolved.
+		''' specified [Class], when the permission is resolved.
 		''' </summary>
 		''' <param name="type"> the class name of the Permission class that will be
 		''' created when this unresolved permission is resolved. </param>
@@ -196,9 +196,9 @@ Namespace java.security
 		End Sub
 
 
-		Private Shared ReadOnly PARAMS0 As Class() = { }
-		Private Shared ReadOnly PARAMS1 As Class() = { GetType(String) }
-		Private Shared ReadOnly PARAMS2 As Class() = { GetType(String), GetType(String) }
+		Private Shared ReadOnly PARAMS0 As  [Class]() = { }
+		Private Shared ReadOnly PARAMS1 As  [Class]() = { GetType(String) }
+		Private Shared ReadOnly PARAMS2 As  [Class]() = { GetType(String), GetType(String) }
 
 		''' <summary>
 		''' try and resolve this permission using the class loader of the permission
@@ -223,7 +223,7 @@ Namespace java.security
 				Next i
 			End If
 			Try
-				Dim pc As Class = p.GetType()
+				Dim pc As  [Class] = p.GetType()
 
 				If name Is Nothing AndAlso actions Is Nothing Then
 					Try

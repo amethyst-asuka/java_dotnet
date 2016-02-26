@@ -51,7 +51,7 @@ Namespace java.sql
 	''' <code>getDrivers</code> have been enhanced to support the Java Standard Edition
 	''' <a href="../../../technotes/guides/jar/jar.html#Service%20Provider">Service Provider</a> mechanism. JDBC 4.0 Drivers must
 	''' include the file <code>META-INF/services/java.sql.Driver</code>. This file contains the name of the JDBC drivers
-	''' implementation of <code>java.sql.Driver</code>.  For example, to load the <code>my.sql.Driver</code> class,
+	''' implementation of <code>java.sql.Driver</code>.  For example, to load the <code>my.sql.Driver</code> [Class],
 	''' the <code>META-INF/services/java.sql.Driver</code> file would contain the entry:
 	''' <pre>
 	''' <code>my.sql.Driver</code>
@@ -243,7 +243,7 @@ Namespace java.sql
 
 			println("DriverManager.getDriver(""" & url & """)")
 
-			Dim callerClass As Class = sun.reflect.Reflection.callerClass
+			Dim callerClass As  [Class] = sun.reflect.Reflection.callerClass
 
 			' Walk through the loaded registeredDrivers attempting to locate someone
 			' who understands the given URL.
@@ -383,7 +383,7 @@ Namespace java.sql
 			Get
 				Dim result As New List(Of Driver)
     
-				Dim callerClass As Class = sun.reflect.Reflection.callerClass
+				Dim callerClass As  [Class] = sun.reflect.Reflection.callerClass
     
 				' Walk through the loaded registeredDrivers.
 				For Each aDriver As DriverInfo In registeredDrivers
@@ -474,15 +474,15 @@ Namespace java.sql
 
 		' Indicates whether the class object that would be created if the code calling
 		' DriverManager is accessible.
-		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal caller As Class) As Boolean
-			Dim callerCL As ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
+		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal caller As [Class]) As Boolean
+			Dim callerCL As  [Class]Loader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 			Return isDriverAllowed(driver, callerCL)
 		End Function
 
-		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal classLoader_Renamed As ClassLoader) As Boolean
+		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal classLoader_Renamed As  [Class]Loader) As Boolean
 			Dim result As Boolean = False
 			If driver IsNot Nothing Then
-				Dim aClass As Class = Nothing
+				Dim aClass As  [Class] = Nothing
 				Try
 					aClass = Type.GetType(driver.GetType().name, True, classLoader_Renamed)
 				Catch ex As Exception
@@ -565,14 +565,14 @@ Namespace java.sql
 
 
 		'  Worker method called by the public getConnection() methods.
-		Private Shared Function getConnection(ByVal url As String, ByVal info As java.util.Properties, ByVal caller As Class) As Connection
+		Private Shared Function getConnection(ByVal url As String, ByVal info As java.util.Properties, ByVal caller As [Class]) As Connection
 	'        
 	'         * When callerCl is null, we should check the application's
 	'         * (which is invoking this class indirectly)
 	'         * classloader, so that the JDBC driver class outside rt.jar
 	'         * can be loaded from here.
 	'         
-			Dim callerCL As ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
+			Dim callerCL As  [Class]Loader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 			SyncLock GetType(DriverManager)
 				' synchronize loading of the correct classloader.
 				If callerCL Is Nothing Then callerCL = Thread.CurrentThread.contextClassLoader

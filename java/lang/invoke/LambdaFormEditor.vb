@@ -528,9 +528,9 @@ Namespace java.lang.invoke
 			Return putInCache(key, form)
 		End Function
 
-		Friend Overridable Function spreadArgumentsForm(ByVal pos As Integer, ByVal arrayType As Class, ByVal arrayLength As Integer) As LambdaForm
-			Dim elementType As Class = arrayType.componentType
-			Dim erasedArrayType As Class = arrayType
+		Friend Overridable Function spreadArgumentsForm(ByVal pos As Integer, ByVal arrayType As [Class], ByVal arrayLength As Integer) As LambdaForm
+			Dim elementType As  [Class] = arrayType.componentType
+			Dim erasedArrayType As  [Class] = arrayType
 			If Not elementType.primitive Then erasedArrayType = GetType(Object())
 			Dim bt As BasicType = basicType(elementType)
 			Dim elementTypeKey As Integer = bt.ordinal()
@@ -591,8 +591,8 @@ Namespace java.lang.invoke
 			Dim collectorType As MethodType = arrayCollector.type()
 			Dim collectorArity As Integer = collectorType.parameterCount()
 			assert(arrayCollector.intrinsicName() Is Intrinsic.NEW_ARRAY)
-			Dim arrayType As Class = collectorType.returnType()
-			Dim elementType As Class = arrayType.componentType
+			Dim arrayType As  [Class] = collectorType.returnType()
+			Dim elementType As  [Class] = arrayType.componentType
 			Dim argType As BasicType = basicType(elementType)
 			Dim argTypeKey As Integer = argType.ordinal()
 			If argType.basicTypeClass() IsNot elementType Then

@@ -127,7 +127,7 @@ Namespace java.util.logging
 			Dim handlerName As String = Me.GetType().name
 			Dim targetName As String = manager.getProperty(handlerName & ".target")
 			If targetName Is Nothing Then Throw New RuntimeException("The handler " & handlerName & " does not specify a target")
-			Dim clz As Class
+			Dim clz As  [Class]
 			Try
 				clz = ClassLoader.systemClassLoader.loadClass(targetName)
 				target = CType(clz.newInstance(), Handler)

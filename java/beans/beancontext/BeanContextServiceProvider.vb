@@ -70,7 +70,7 @@ Namespace java.beans.beancontext
 	   ''' for a particular service, or <code>null</code> if not applicable.
 	   ''' </param>
 	   ''' <returns> a reference to the requested service </returns>
-		Function getService(ByVal bcs As BeanContextServices, ByVal requestor As Object, ByVal serviceClass As Class, ByVal serviceSelector As Object) As Object
+		Function getService(ByVal bcs As BeanContextServices, ByVal requestor As Object, ByVal serviceClass As [Class], ByVal serviceSelector As Object) As Object
 
 		''' <summary>
 		''' Invoked by <code>BeanContextServices</code>,
@@ -91,14 +91,14 @@ Namespace java.beans.beancontext
 		''' gets the current service selectors for the specified service.
 		''' A service selector is a service specific parameter,
 		''' typical examples of which could include: a
-		''' parameter to a constructor for the service implementation class,
+		''' parameter to a constructor for the service implementation [Class],
 		''' a value for a particular service's property, or a key into a
 		''' map of existing implementations.
 		''' </summary>
 		''' <param name="bcs">           the <code>BeanContextServices</code> for this request </param>
 		''' <param name="serviceClass">  the specified service </param>
 		''' <returns>   the current service selectors for the specified serviceClass </returns>
-		Function getCurrentServiceSelectors(ByVal bcs As BeanContextServices, ByVal serviceClass As Class) As IEnumerator
+		Function getCurrentServiceSelectors(ByVal bcs As BeanContextServices, ByVal serviceClass As [Class]) As IEnumerator
 	End Interface
 
 End Namespace

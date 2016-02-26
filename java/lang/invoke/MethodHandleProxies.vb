@@ -140,20 +140,20 @@ Namespace java.lang.invoke
 		' generated adapter classes.
 		'
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function asInterfaceInstance(Of T)(ByVal intfc As Class, ByVal target As MethodHandle) As T
+		Public Shared Function asInterfaceInstance(Of T)(ByVal intfc As [Class], ByVal target As MethodHandle) As T
 			If (Not intfc.interface) OrElse (Not Modifier.isPublic(intfc.modifiers)) Then Throw newIllegalArgumentException("not a public interface", intfc.name)
 			Dim mh As MethodHandle
 			If System.securityManager IsNot Nothing Then
-				Dim caller As Class = sun.reflect.Reflection.callerClass
-				Dim ccl As ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
+				Dim caller As  [Class] = sun.reflect.Reflection.callerClass
+				Dim ccl As  [Class]Loader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 				sun.reflect.misc.ReflectUtil.checkProxyPackageAccess(ccl, intfc)
 				mh = If(ccl IsNot Nothing, bindCaller(target, caller), target)
 			Else
 				mh = target
 			End If
-			Dim proxyLoader As ClassLoader = intfc.classLoader
+			Dim proxyLoader As  [Class]Loader = intfc.classLoader
 			If proxyLoader Is Nothing Then
-				Dim cl As ClassLoader = Thread.CurrentThread.contextClassLoader ' avoid use of BCP
+				Dim cl As  [Class]Loader = Thread.CurrentThread.contextClassLoader ' avoid use of BCP
 				proxyLoader = If(cl IsNot Nothing, cl, ClassLoader.systemClassLoader)
 			End If
 			Dim methods As Method() = getSingleNameMethods(intfc)
@@ -172,7 +172,7 @@ Namespace java.lang.invoke
 			If System.securityManager IsNot Nothing Then
 				' sun.invoke.WrapperInstance is a restricted interface not accessible
 				' by any non-null class loader.
-				Dim loader As ClassLoader = proxyLoader
+				Dim loader As  [Class]Loader = proxyLoader
 				proxy_Renamed = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Else
 				proxy_Renamed = Proxy.newProxyInstance(proxyLoader, New [Class](){ intfc, GetType(sun.invoke.WrapperInstance) }, ih)
@@ -206,7 +206,7 @@ Namespace java.lang.invoke
 			End Function
 		End Class
 
-		Private Shared Function bindCaller(ByVal target As MethodHandle, ByVal hostClass As Class) As MethodHandle
+		Private Shared Function bindCaller(ByVal target As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
 			Dim cbmh As MethodHandle = MethodHandleImpl.bindCaller(target, hostClass)
 			If target.varargsCollector Then
 				Dim type As MethodType = cbmh.type()
@@ -227,7 +227,7 @@ Namespace java.lang.invoke
 		Private Shared Function asWrapperInstance(ByVal x As Object) As sun.invoke.WrapperInstance
 			Try
 				If x IsNot Nothing Then Return CType(x, sun.invoke.WrapperInstance)
-			Catch ex As ClassCastException
+			Catch ex As  [Class]CastException
 			End Try
 			Throw newIllegalArgumentException("not a wrapper instance")
 		End Function
@@ -251,7 +251,7 @@ Namespace java.lang.invoke
 		''' <param name="x"> any reference </param>
 		''' <returns> the single-method interface type for which the wrapper was created </returns>
 		''' <exception cref="IllegalArgumentException"> if the reference x is not to a wrapper instance </exception>
-		Public Shared Function wrapperInstanceType(ByVal x As Object) As Class
+		Public Shared Function wrapperInstanceType(ByVal x As Object) As  [Class]
 			Return asWrapperInstance(x).wrapperInstanceType
 		End Function
 
@@ -280,7 +280,7 @@ Namespace java.lang.invoke
 			Return Nothing
 		End Function
 
-		Private Shared Function getSingleNameMethods(ByVal intfc As Class) As Method()
+		Private Shared Function getSingleNameMethods(ByVal intfc As [Class]) As Method()
 			Dim methods As New List(Of Method)
 			Dim uniqueName As String = Nothing
 			For Each m As Method In intfc.methods

@@ -401,7 +401,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setObject
 		''' @since 1.2 </seealso>
-		Function getObject(ByVal parameterIndex As Integer, ByVal map As IDictionary(Of String, Class)) As Object
+		Function getObject(ByVal parameterIndex As Integer, ByVal map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of the designated JDBC <code>REF(&lt;structured-type&gt;)</code>
@@ -1485,7 +1485,7 @@ Namespace java.sql
 		''' this method </exception>
 		''' <seealso cref= #setObject
 		''' @since 1.4 </seealso>
-		Function getObject(ByVal parameterName As String, ByVal map As IDictionary(Of String, Class)) As Object
+		Function getObject(ByVal parameterName As String, ByVal map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of a JDBC <code>REF(&lt;structured-type&gt;)</code>
@@ -2298,7 +2298,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal parameterIndex As Integer, ByVal type As Class) As T
+		  Function getObject(Of T)(ByVal parameterIndex As Integer, ByVal type As [Class]) As T
 
 
 		''' <summary>
@@ -2327,7 +2327,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal parameterName As String, ByVal type As Class) As T
+		  Function getObject(Of T)(ByVal parameterName As String, ByVal type As [Class]) As T
 
 		 '------------------------- JDBC 4.2 -----------------------------------
 

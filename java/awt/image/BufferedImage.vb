@@ -594,9 +594,9 @@ Namespace java.awt.image
 		End Sub
 
 		Private Shared Function isStandard(ByVal cm As ColorModel, ByVal wr As WritableRaster) As Boolean
-			Dim cmClass As Class = cm.GetType()
-			Dim wrClass As Class = wr.GetType()
-			Dim smClass As Class = wr.sampleModel.GetType()
+			Dim cmClass As  [Class] = cm.GetType()
+			Dim wrClass As  [Class] = wr.GetType()
+			Dim smClass As  [Class] = wr.sampleModel.GetType()
 
 			Dim checkClassLoadersAction As java.security.PrivilegedAction(Of Boolean?) = New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Return java.security.AccessController.doPrivileged(checkClassLoadersAction)
@@ -606,7 +606,7 @@ Namespace java.awt.image
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overrides Function run() As Boolean?
-				Dim std As ClassLoader = GetType(System).classLoader
+				Dim std As  [Class]Loader = GetType(System).classLoader
 
 				Return (cmClass.classLoader Is std) AndAlso (smClass.classLoader Is std) AndAlso (wrClass.classLoader Is std)
 			End Function

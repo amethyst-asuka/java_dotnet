@@ -193,7 +193,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				U = sun.misc.Unsafe.unsafe
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				THREADLOCALS = U.objectFieldOffset(tk.getDeclaredField("threadLocals"))
 				INHERITABLETHREADLOCALS = U.objectFieldOffset(tk.getDeclaredField("inheritableThreadLocals"))
 				INHERITEDACCESSCONTROLCONTEXT = U.objectFieldOffset(tk.getDeclaredField("inheritedAccessControlContext"))
@@ -229,12 +229,12 @@ Namespace java.util.concurrent
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-            Public Overrides Function getContextClassLoader() As ClassLoader ' to always report system loaderJavaToDotNetTempPropertyGetcontextClassLoader
-			Public Property Overrides contextClassLoader As ClassLoader
+            Public Overrides Function getContextClassLoader() As  [Class]Loader ' to always report system loaderJavaToDotNetTempPropertyGetcontextClassLoader
+			Public Property Overrides contextClassLoader As  [Class]Loader
 				Get
 					Return ClassLoader.systemClassLoader
 				End Get
-				Set(ByVal cl As ClassLoader)
+				Set(ByVal cl As  [Class]Loader)
 			End Property
 
 			Public Overrides Property uncaughtExceptionHandler As UncaughtExceptionHandler
@@ -252,8 +252,8 @@ Namespace java.util.concurrent
 			Private Shared Function createThreadGroup() As ThreadGroup
 				Try
 					Dim u As sun.misc.Unsafe = sun.misc.Unsafe.unsafe
-					Dim tk As Class = GetType(Thread)
-					Dim gk As Class = GetType(ThreadGroup)
+					Dim tk As  [Class] = GetType(Thread)
+					Dim gk As  [Class] = GetType(ThreadGroup)
 					Dim tg As Long = u.objectFieldOffset(tk.getDeclaredField("group"))
 					Dim gp As Long = u.objectFieldOffset(gk.getDeclaredField("parent"))
 					Dim group As ThreadGroup = CType(u.getObject(Thread.CurrentThread, tg), ThreadGroup)

@@ -45,7 +45,7 @@ Namespace java.lang
     ''' represented as {@code Class} objects.
     ''' 
     ''' <p> {@code Class} has no public constructor. Instead {@code Class}
-    ''' objects are constructed automatically by the Java Virtual Machine as classes
+    ''' objects are constructed automatically by the Java Virtual Machine As  [Class]es
     ''' are loaded and by calls to the {@code defineClass} method in the class
     ''' loader.
     ''' 
@@ -101,7 +101,7 @@ Namespace java.lang
         '     * This constructor is not used and prevents the default constructor being
         '     * generated.
         '     
-        Private Sub New(ByVal loader As ClassLoader)
+        Private Sub New(ByVal loader As  [Class]Loader)
             ' Initialize final field for classLoader.  The initialization value of non-null
             ' prevents future JIT optimizations from assuming this final field is null.
             classLoader = loader
@@ -245,7 +245,7 @@ Namespace java.lang
         ''' obtain any of the {@code Class} objects representing primitive
         ''' types or void.
         ''' 
-        ''' <p> If {@code name} denotes an array class, the component type of
+        ''' <p> If {@code name} denotes an array [Class], the component type of
         ''' the array class is loaded but not initialized.
         ''' 
         ''' <p> For example, in an instance method the expression:
@@ -288,7 +288,7 @@ Namespace java.lang
         ''' <seealso cref=       java.lang.ClassLoader
         ''' @since     1.2 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Function forName(ByVal name As String, ByVal initialize As Boolean, ByVal loader As ClassLoader) As [Class]
+        Public Shared Function forName(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  [Class]Loader) As [Class]
             Dim caller As [Class] = Nothing
             Dim sm As SecurityManager = System.securityManager
             If sm IsNot Nothing Then
@@ -296,7 +296,7 @@ Namespace java.lang
                 ' is present.  Avoid the overhead of making this call otherwise.
                 caller = sun.reflect.Reflection.callerClass
                 If sun.misc.VM.isSystemDomainLoader(loader) Then
-                    Dim ccl As ClassLoader = classLoader.getClassLoader(caller)
+                    Dim ccl As  [Class]Loader = classLoader.getClassLoader(caller)
                     If Not sun.misc.VM.isSystemDomainLoader(ccl) Then sm.checkPermission(sun.security.util.SecurityConstants.GET_CLASSLOADER_PERMISSION)
                 End If
             End If
@@ -307,7 +307,7 @@ Namespace java.lang
         ''' Called after security check for system loader access checks have been made. </summary>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function forName0(ByVal name As String, ByVal initialize As Boolean, ByVal loader As ClassLoader, ByVal caller As Class) As Class
+        Private Shared Function forName0(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  [Class]Loader, ByVal caller As [Class]) As  [Class]
 		End Function
 
         ''' <summary>
@@ -331,8 +331,8 @@ Namespace java.lang
         ''' <exception cref="IllegalAccessException">  if the class or its nullary
         '''          constructor is not accessible. </exception>
         ''' <exception cref="InstantiationException">
-        '''          if this {@code Class} represents an abstract class,
-        '''          an interface, an array class, a primitive type, or void;
+        '''          if this {@code Class} represents an abstract [Class],
+        '''          an interface, an array [Class], a primitive type, or void;
         '''          or if the class has no nullary constructor;
         '''          or if the instantiation fails for some other reason. </exception>
         ''' <exception cref="ExceptionInInitializerError"> if the initialization
@@ -414,10 +414,10 @@ Namespace java.lang
         ''' otherwise.
         ''' 
         ''' <p> Specifically, if this {@code Class} object represents a
-        ''' declared class, this method returns {@code true} if the specified
+        ''' declared [Class], this method returns {@code true} if the specified
         ''' {@code Object} argument is an instance of the represented class (or
         ''' of any of its subclasses); it returns {@code false} otherwise. If
-        ''' this {@code Class} object represents an array class, this method
+        ''' this {@code Class} object represents an array [Class], this method
         ''' returns {@code true} if the specified {@code Object} argument
         ''' can be converted to an object of the array class by an identity
         ''' conversion or by a widening reference conversion; it returns
@@ -551,7 +551,7 @@ Namespace java.lang
         End Property
 
         ''' <summary>
-        ''' Returns the  name of the entity (class, interface, array class,
+        ''' Returns the  name of the entity (class, interface, array [Class],
         ''' primitive type, or void) represented by this {@code Class} object,
         ''' as a {@code String}.
         ''' 
@@ -645,9 +645,9 @@ Namespace java.lang
         ''' <seealso cref= SecurityManager#checkPermission </seealso>
         ''' <seealso cref= java.lang.RuntimePermission </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public ReadOnly Property classLoader As ClassLoader
+        Public ReadOnly Property classLoader As  [Class]Loader
             Get
-                Dim cl As ClassLoader = classLoader0
+                Dim cl As  [Class]Loader = classLoader0
                 If cl Is Nothing Then Return Nothing
                 Dim sm As SecurityManager = System.securityManager
                 If sm IsNot Nothing Then classLoader.checkClassLoaderPermission(cl, sun.reflect.Reflection.callerClass)
@@ -656,7 +656,7 @@ Namespace java.lang
         End Property
 
         ' Package-private to allow ClassLoader access
-        Friend ReadOnly Property classLoader0 As ClassLoader
+        Friend ReadOnly Property classLoader0 As  [Class]Loader
             Get
                 Return classLoader
             End Get
@@ -665,7 +665,7 @@ Namespace java.lang
         ' Initialized in JVM not by private constructor
         ' This field is filtered from reflection access, i.e. getDeclaredField
         ' will throw NoSuchFieldException
-        Private ReadOnly classLoader As ClassLoader
+        Private ReadOnly classLoader As  [Class]Loader
 
         ''' <summary>
         ''' Returns an array of {@code TypeVariable} objects that represent the
@@ -699,7 +699,7 @@ Namespace java.lang
         ''' Returns the {@code Class} representing the superclass of the entity
         ''' (class, interface, primitive type or void) represented by this
         ''' {@code Class}.  If this {@code Class} represents either the
-        ''' {@code Object} class, an interface, a primitive type, or void, then
+        ''' {@code Object} [Class], an interface, a primitive type, or void, then
         ''' null is returned.  If this object represents an array class then the
         ''' {@code Class} object representing the {@code Object} class is
         ''' returned.
@@ -724,7 +724,7 @@ Namespace java.lang
         ''' java.lang.reflect.ParameterizedType ParameterizedType} for the
         ''' semantics of the creation process for parameterized types.  If
         ''' this {@code Class} represents either the {@code Object}
-        ''' class, an interface, a primitive type, or void, then null is
+        ''' [Class], an interface, a primitive type, or void, then null is
         ''' returned.  If this object represents an array class then the
         ''' {@code Class} object representing the {@code Object} class is
         ''' returned.
@@ -765,7 +765,7 @@ Namespace java.lang
         ''' if the class loader created the package instance with the attributes
         ''' from the manifest.
         ''' </summary>
-        ''' <returns> the package of the class, or null if no package
+        ''' <returns> the package of the [Class], or null if no package
         '''         information is available from the archive or codebase. </returns>
         Public ReadOnly Property package As Package
             Get
@@ -778,7 +778,7 @@ Namespace java.lang
         ''' Determines the interfaces implemented by the class or interface
         ''' represented by this object.
         ''' 
-        ''' <p> If this object represents a class, the return value is an array
+        ''' <p> If this object represents a [Class], the return value is an array
         ''' containing objects representing all interfaces implemented by the
         ''' class. The order of the interface objects in the array corresponds to
         ''' the order of the interface names in the {@code implements} clause
@@ -824,7 +824,7 @@ Namespace java.lang
                     ' no cloning required
                     Return interfaces0
                 Else
-                    Dim interfaces_Renamed As Class() = rd.interfaces
+                    Dim interfaces_Renamed As  [Class]() = rd.interfaces
                     If interfaces_Renamed Is Nothing Then
                         interfaces_Renamed = interfaces0
                         rd.interfaces = interfaces_Renamed
@@ -854,12 +854,12 @@ Namespace java.lang
         ''' for the semantics of the creation process for parameterized
         ''' types.
         ''' 
-        ''' <p> If this object represents a class, the return value is an
+        ''' <p> If this object represents a [Class], the return value is an
         ''' array containing objects representing all interfaces
         ''' implemented by the class. The order of the interface objects in
         ''' the array corresponds to the order of the interface names in
         ''' the {@code implements} clause of the declaration of the class
-        ''' represented by this object.  In the case of an array class, the
+        ''' represented by this object.  In the case of an array [Class], the
         ''' interfaces {@code Cloneable} and {@code Serializable} are
         ''' returned in that order.
         ''' 
@@ -919,13 +919,13 @@ Namespace java.lang
         ''' {@code abstract} and {@code interface}; they should be decoded
         ''' using the methods of class {@code Modifier}.
         ''' 
-        ''' <p> If the underlying class is an array class, then its
+        ''' <p> If the underlying class is an array [Class], then its
         ''' {@code public}, {@code private} and {@code protected}
         ''' modifiers are the same as those of its component type.  If this
         ''' {@code Class} represents a primitive type or void, its
         ''' {@code public} modifier is always {@code true}, and its
         ''' {@code protected} and {@code private} modifiers are always
-        ''' {@code false}. If this object represents an array class, a
+        ''' {@code false}. If this object represents an array [Class], a
         ''' primitive type or void, then its {@code final} modifier is always
         ''' {@code true} and its interface modifier is always
         ''' {@code false}. The values of its other modifiers are not determined
@@ -946,7 +946,7 @@ Namespace java.lang
         ''' <summary>
         ''' Gets the signers of this class.
         ''' </summary>
-        ''' <returns>  the signers of this class, or null if there are no signers.  In
+        ''' <returns>  the signers of this [Class], or null if there are no signers.  In
         '''          particular, this method returns null if this object represents
         '''          a primitive type or void.
         ''' @since   JDK1.1 </returns>
@@ -976,7 +976,7 @@ Namespace java.lang
         ''' class is a local or anonymous class immediately enclosed by a type
         ''' declaration, instance initializer or static initializer.
         ''' </summary>
-        ''' <returns> the immediately enclosing method of the underlying class, if
+        ''' <returns> the immediately enclosing method of the underlying [Class], if
         '''     that class is a local or anonymous class; otherwise {@code null}.
         ''' </returns>
         ''' <exception cref="SecurityException">
@@ -1033,7 +1033,7 @@ Namespace java.lang
                     '             
                     For Each m As Method In enclosingCandidate.declaredMethods
                         If m.name.Equals(enclosingInfo.name) Then
-                            Dim candidateParamClasses As Class() = m.parameterTypes
+                            Dim candidateParamClasses As  [Class]() = m.parameterTypes
                             If candidateParamClasses.Length = parameterClasses.Length Then
                                 Dim matches As Boolean = True
                                 For i As Integer = 0 To candidateParamClasses.Length - 1
@@ -1093,7 +1093,7 @@ Namespace java.lang
                     ' descriptor (null iff name is).
                     descriptor = CStr(enclosingInfo(2))
                     Assert((name IsNot Nothing AndAlso descriptor IsNot Nothing) OrElse name = descriptor)
-                Catch cce As ClassCastException
+                Catch cce As  [Class]CastException
                     Throw New InternalError("Invalid type in enclosing method information", cce)
                 End Try
             End Sub
@@ -1151,7 +1151,7 @@ Namespace java.lang
         ''' or anonymous class immediately enclosed by a type declaration,
         ''' instance initializer or static initializer.
         ''' </summary>
-        ''' <returns> the immediately enclosing constructor of the underlying class, if
+        ''' <returns> the immediately enclosing constructor of the underlying [Class], if
         '''     that class is a local or anonymous class; otherwise {@code null}. </returns>
         ''' <exception cref="SecurityException">
         '''         If a security manager, <i>s</i>, is present and any of the
@@ -1187,7 +1187,7 @@ Namespace java.lang
 
                     Dim typeInfo As sun.reflect.generics.repository.ConstructorRepository = sun.reflect.generics.repository.ConstructorRepository.make(enclosingInfo.descriptor, factory)
                     Dim parameterTypes As Type() = typeInfo.parameterTypes
-                    Dim parameterClasses As Class() = New [Class](parameterTypes.Length - 1) {}
+                    Dim parameterClasses As  [Class]() = New [Class](parameterTypes.Length - 1) {}
 
                     ' Convert Types to Classes; returned types *should*
                     ' be class objects since the methodDescriptor's used
@@ -1197,7 +1197,7 @@ Namespace java.lang
                     Next i
 
                     ' Perform access check
-                    Dim enclosingCandidate As Class = enclosingInfo.enclosingClass
+                    Dim enclosingCandidate As  [Class] = enclosingInfo.enclosingClass
                     enclosingCandidate.checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, True)
                     '            
                     '             * Loop over all declared constructors; match number
@@ -1205,7 +1205,7 @@ Namespace java.lang
                     '             
                     'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
                     For Each c As Constructor(Of ?) In enclosingCandidate.declaredConstructors
-                        Dim candidateParamClasses As Class() = c.parameterTypes
+                        Dim candidateParamClasses As  [Class]() = c.parameterTypes
                         If candidateParamClasses.Length = parameterClasses.Length Then
                             Dim matches As Boolean = True
                             For i As Integer = 0 To candidateParamClasses.Length - 1
@@ -1227,10 +1227,10 @@ Namespace java.lang
 
         ''' <summary>
         ''' If the class or interface represented by this {@code Class} object
-        ''' is a member of another class, returns the {@code Class} object
+        ''' is a member of another [Class], returns the {@code Class} object
         ''' representing the class in which it was declared.  This method returns
         ''' null if this class or interface is not a member of any other class.  If
-        ''' this {@code Class} object represents an array class, a primitive
+        ''' this {@code Class} object represents an array [Class], a primitive
         ''' type, or void,then this method returns null.
         ''' </summary>
         ''' <returns> the declaring class for this class </returns>
@@ -1284,13 +1284,13 @@ Namespace java.lang
                 ' attribute if and only if it is a local class or an
                 ' anonymous class.
                 Dim enclosingInfo As EnclosingMethodInfo = enclosingMethodInfo
-                Dim enclosingCandidate As Class
+                Dim enclosingCandidate As  [Class]
     
 				If enclosingInfo Is Nothing Then
                     ' This is a top level or a nested class or an inner class (a, b, or c)
                     enclosingCandidate = declaringClass
                 Else
-                    Dim enclosingClass_Renamed As Class = enclosingInfo.enclosingClass
+                    Dim enclosingClass_Renamed As  [Class] = enclosingInfo.enclosingClass
                     ' This is a local class or an anonymous class (d or e)
                     If enclosingClass_Renamed Is Me OrElse enclosingClass_Renamed Is Nothing Then
                         Throw New InternalError("Malformed enclosing method information")
@@ -1332,7 +1332,7 @@ Namespace java.lang
                 ' (for anonymous classes): 1 or more digits.
 
                 ' Since getSimpleBinaryName() will strip the binary name of
-                ' the immediatly enclosing class, we are now looking at a
+                ' the immediatly enclosing [Class], we are now looking at a
                 ' string that matches the regular expression "\$[0-9]*"
                 ' followed by a simple name (considering the simple of an
                 ' anonymous class to be the empty string).
@@ -1405,7 +1405,7 @@ Namespace java.lang
                     End If
                 End If
                 If localOrAnonymousClass Then Return Nothing
-                Dim enclosingClass_Renamed As Class = enclosingClass
+                Dim enclosingClass_Renamed As  [Class] = enclosingClass
                 If enclosingClass_Renamed Is Nothing Then ' top level class
                     Return name
                 Else
@@ -1453,7 +1453,7 @@ Namespace java.lang
         End Property
 
         ''' <summary>
-        ''' Returns the "simple binary name" of the underlying class, i.e.,
+        ''' Returns the "simple binary name" of the underlying [Class], i.e.,
         ''' the binary name without the leading enclosing class name.
         ''' Returns {@code null} if the underlying class is a top level
         ''' class.
@@ -1493,7 +1493,7 @@ Namespace java.lang
         ''' array of length 0 if this {@code Class} object has no public member
         ''' classes or interfaces.  This method also returns an array of length 0 if
         ''' this {@code Class} object represents a primitive type, an array
-        ''' class, or void.
+        ''' [Class], or void.
         ''' </summary>
         ''' <returns> the array of {@code Class} objects representing the public
         '''         members of this class </returns>
@@ -1524,11 +1524,11 @@ Namespace java.lang
         Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
             Implements java.security.PrivilegedAction(Of T)
 
-            Public Overridable Function run() As Class()
+            Public Overridable Function run() As  [Class]()
 				Dim list As IList(Of [Class]) = New List(Of [Class])
-                Dim currentClass As Class = Class.this
+                Dim currentClass As  [Class] = Class.this
 				Do While currentClass IsNot Nothing
-                    Dim members As Class() = currentClass.declaredClasses
+                    Dim members As  [Class]() = currentClass.declaredClasses
                     For i As Integer = 0 To members.Length - 1
                         If Modifier.isPublic(members(i).modifiers) Then list.Add(members(i))
                     Next i
@@ -1548,7 +1548,7 @@ Namespace java.lang
         ''' no accessible public fields, then this method returns an array of length
         ''' 0.
         ''' 
-        ''' <p> If this {@code Class} object represents a class, then this method
+        ''' <p> If this {@code Class} object represents a [Class], then this method
         ''' returns the public fields of the class and of all its superclasses.
         ''' 
         ''' <p> If this {@code Class} object represents an interface, then this
@@ -1646,12 +1646,12 @@ Namespace java.lang
         ''' Returns an array containing {@code Constructor} objects reflecting
         ''' all the public constructors of the class represented by this
         ''' {@code Class} object.  An array of length 0 is returned if the
-        ''' class has no public constructors, or if the class is an array class, or
+        ''' class has no public constructors, or if the class is an array [Class], or
         ''' if the class reflects a primitive type or void.
         ''' 
         ''' Note that while this method returns an array of {@code
         ''' Constructor<T>} objects (that is an array of constructors from
-        ''' this class), the return type of this method is {@code
+        ''' this [Class]), the return type of this method is {@code
         ''' Constructor<?>[]} and <em>not</em> {@code Constructor<T>[]} as
         ''' might be expected.  This less informative return type is
         ''' necessary since after being returned from this method, the
@@ -1801,7 +1801,7 @@ Namespace java.lang
         ''' @jls 8.4 Method Declarations
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getMethod(ByVal name As String, ParamArray ByVal parameterTypes As Class()) As Method
+        Public Function getMethod(ByVal name As String, ParamArray ByVal parameterTypes As  [Class]()) As Method
 			checkMemberAccess(Member.PUBLIC, sun.reflect.Reflection.callerClass, True)
             Dim method_Renamed As Method = getMethod0(name, parameterTypes, True)
             If method_Renamed Is Nothing Then Throw New NoSuchMethodException(name & "." & name + argumentTypesToString(parameterTypes))
@@ -1838,7 +1838,7 @@ Namespace java.lang
         ''' 
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getConstructor(ParamArray ByVal parameterTypes As Class()) As Constructor(Of T)
+        Public Function getConstructor(ParamArray ByVal parameterTypes As  [Class]()) As Constructor(Of T)
 			checkMemberAccess(Member.PUBLIC, sun.reflect.Reflection.callerClass, True)
             Return getConstructor0(parameterTypes, Member.PUBLIC)
         End Function
@@ -1849,10 +1849,10 @@ Namespace java.lang
         ''' classes and interfaces declared as members of the class represented by
         ''' this {@code Class} object. This includes public, protected, default
         ''' (package) access, and private classes and interfaces declared by the
-        ''' class, but excludes inherited classes and interfaces.  This method
+        ''' [Class], but excludes inherited classes and interfaces.  This method
         ''' returns an array of length 0 if the class declares no classes or
         ''' interfaces as members, or if this {@code Class} object represents a
-        ''' primitive type, an array class, or void.
+        ''' primitive type, an array [Class], or void.
         ''' </summary>
         ''' <returns> the array of {@code Class} objects representing all the
         '''         declared members of this class </returns>
@@ -1879,7 +1879,7 @@ Namespace java.lang
         ''' 
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Property declaredClasses As Class()
+        Public Property declaredClasses As  [Class]()
 			Get
                 checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, False)
                 Return declaredClasses0
@@ -2005,7 +2005,7 @@ Namespace java.lang
         ''' returned are not sorted and are not in any particular order.  If the
         ''' class has a default constructor, it is included in the returned array.
         ''' This method returns an array of length 0 if this {@code Class}
-        ''' object represents an interface, a primitive type, an array class, or
+        ''' object represents an interface, a primitive type, an array [Class], or
         ''' void.
         ''' 
         ''' <p> See <em>The Java Language Specification</em>, section 8.2.
@@ -2100,7 +2100,7 @@ Namespace java.lang
         ''' method, and the {@code parameterTypes} parameter is an array of
         ''' {@code Class} objects that identify the method's formal parameter
         ''' types, in declared order.  If more than one method with the same
-        ''' parameter types is declared in a class, and one of these methods has a
+        ''' parameter types is declared in a [Class], and one of these methods has a
         ''' return type that is more specific than any of the others, that method is
         ''' returned; otherwise one of the methods is chosen arbitrarily.  If the
         ''' name is "&lt;init&gt;"or "&lt;clinit&gt;" a {@code NoSuchMethodException}
@@ -2140,7 +2140,7 @@ Namespace java.lang
         ''' @jls 8.4 Method Declarations
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getDeclaredMethod(ByVal name As String, ParamArray ByVal parameterTypes As Class()) As Method
+        Public Function getDeclaredMethod(ByVal name As String, ParamArray ByVal parameterTypes As  [Class]()) As Method
 			checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, True)
             Dim method_Renamed As Method = searchMethods(privateGetDeclaredMethods(False), name, parameterTypes)
             If method_Renamed Is Nothing Then Throw New NoSuchMethodException(name & "." & name + argumentTypesToString(parameterTypes))
@@ -2186,7 +2186,7 @@ Namespace java.lang
         ''' 
         ''' @since JDK1.1 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getDeclaredConstructor(ParamArray ByVal parameterTypes As Class()) As Constructor(Of T)
+        Public Function getDeclaredConstructor(ParamArray ByVal parameterTypes As  [Class]()) As Constructor(Of T)
 			checkMemberAccess(Member.DECLARED, sun.reflect.Reflection.callerClass, True)
             Return getConstructor0(parameterTypes, Member.DECLARED)
         End Function
@@ -2227,7 +2227,7 @@ Namespace java.lang
         ''' @since  JDK1.1 </exception>
         Public Function getResourceAsStream(ByVal name As String) As java.io.InputStream
             name = resolveName(name)
-            Dim cl As ClassLoader = classLoader0
+            Dim cl As  [Class]Loader = classLoader0
             If cl Is Nothing Then Return classLoader.getSystemResourceAsStream(name)
             Return cl.getResourceAsStream(name)
         End Function
@@ -2267,7 +2267,7 @@ Namespace java.lang
         ''' @since  JDK1.1 </returns>
         Public Function getResource(ByVal name As String) As java.net.URL
             name = resolveName(name)
-            Dim cl As ClassLoader = classLoader0
+            Dim cl As  [Class]Loader = classLoader0
             If cl Is Nothing Then Return classLoader.getSystemResource(name)
             Return cl.getResource(name)
         End Function
@@ -2330,7 +2330,7 @@ Namespace java.lang
         '     
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Friend Shared Function getPrimitiveClass(ByVal name As String) As Class
+        Friend Shared Function getPrimitiveClass(ByVal name As String) As  [Class]
 		End Function
 
         '    
@@ -2342,7 +2342,7 @@ Namespace java.lang
         '     * <p> Default policy: allow all clients access with normal Java access
         '     * control.
         '     
-        Private Sub checkMemberAccess(ByVal which As Integer, ByVal caller As Class, ByVal checkProxyInterfaces As Boolean)
+        Private Sub checkMemberAccess(ByVal which As Integer, ByVal caller As [Class], ByVal checkProxyInterfaces As Boolean)
             Dim s As SecurityManager = System.securityManager
             If s IsNot Nothing Then
                 '             Default policy allows access to all {@link Member#PUBLIC} members,
@@ -2350,8 +2350,8 @@ Namespace java.lang
                 '             * In all other cases, it requires RuntimePermission("accessDeclaredMembers")
                 '             * permission.
                 '             
-                Dim ccl As ClassLoader = classLoader.getClassLoader(caller)
-                Dim cl As ClassLoader = classLoader0
+                Dim ccl As  [Class]Loader = classLoader.getClassLoader(caller)
+                Dim cl As  [Class]Loader = classLoader0
                 If which <> Member.PUBLIC Then
                     If ccl IsNot cl Then s.checkPermission(sun.security.util.SecurityConstants.CHECK_MEMBER_ACCESS_PERMISSION)
                 End If
@@ -2364,10 +2364,10 @@ Namespace java.lang
         '     * class under the current package access policy. If access is denied,
         '     * throw a SecurityException.
         '     
-        Private Sub checkPackageAccess(ByVal ccl As ClassLoader, ByVal checkProxyInterfaces As Boolean)
+        Private Sub checkPackageAccess(ByVal ccl As  [Class]Loader, ByVal checkProxyInterfaces As Boolean)
             Dim s As SecurityManager = System.securityManager
             If s IsNot Nothing Then
-                Dim cl As ClassLoader = classLoader0
+                Dim cl As  [Class]Loader = classLoader0
 
                 If sun.reflect.misc.ReflectUtil.needsPackageAccessCheck(ccl, cl) Then
                     Dim name_Renamed As String = Me.name
@@ -2390,7 +2390,7 @@ Namespace java.lang
         Private Function resolveName(ByVal name As String) As String
             If name Is Nothing Then Return name
             If Not name.StartsWith("/") Then
-                Dim c As Class = Me
+                Dim c As  [Class] = Me
                 Do While c.array
                     c = c.componentType
                 Loop
@@ -2424,15 +2424,15 @@ Namespace java.lang
                 Return unsafe.objectFieldOffset(field)
             End Function
 
-            Friend Shared Function casReflectionData(Of T)(ByVal clazz As Class, ByVal oldData As SoftReference(Of ReflectionData(Of T)), ByVal newData As SoftReference(Of ReflectionData(Of T))) As Boolean
+            Friend Shared Function casReflectionData(Of T)(ByVal clazz As [Class], ByVal oldData As SoftReference(Of ReflectionData(Of T)), ByVal newData As SoftReference(Of ReflectionData(Of T))) As Boolean
                 Return unsafe.compareAndSwapObject(clazz, reflectionDataOffset, oldData, newData)
             End Function
 
-            Friend Shared Function casAnnotationType(Of T)(ByVal clazz As Class, ByVal oldType As AnnotationType, ByVal newType As AnnotationType) As Boolean
+            Friend Shared Function casAnnotationType(Of T)(ByVal clazz As [Class], ByVal oldType As AnnotationType, ByVal newType As AnnotationType) As Boolean
                 Return unsafe.compareAndSwapObject(clazz, annotationTypeOffset, oldType, newType)
             End Function
 
-            Friend Shared Function casAnnotationData(Of T)(ByVal clazz As Class, ByVal oldData As AnnotationData, ByVal newData As AnnotationData) As Boolean
+            Friend Shared Function casAnnotationData(Of T)(ByVal clazz As [Class], ByVal oldData As AnnotationData, ByVal newData As AnnotationData) As Boolean
                 Return unsafe.compareAndSwapObject(clazz, annotationDataOffset, oldData, newData)
             End Function
         End Class
@@ -2464,7 +2464,7 @@ Namespace java.lang
             'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
             Friend declaredPublicMethods As Method()
             'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-            Friend interfaces As Class()
+            Friend interfaces As  [Class]()
 
 			' Value of classRedefinedCount when we created this ReflectionData instance
 			Friend ReadOnly redefinedCount As Integer
@@ -2618,7 +2618,7 @@ Namespace java.lang
             addAll(fields_Renamed, tmp)
 
             ' Direct superinterfaces, recursively
-            For Each c As Class In interfaces
+            For Each c As  [Class] In interfaces
                 If Not traversedInterfaces.contains(c) Then
                     traversedInterfaces.add(c)
                     addAll(fields_Renamed, c.privateGetPublicFields(traversedInterfaces))
@@ -2627,7 +2627,7 @@ Namespace java.lang
 
             ' Direct superclass, recursively
             If Not [interface] Then
-                Dim c As Class = superclass
+                Dim c As  [Class] = superclass
                 If c IsNot Nothing Then addAll(fields_Renamed, c.privateGetPublicFields(traversedInterfaces))
             End If
 
@@ -2855,8 +2855,8 @@ Namespace java.lang
 
             ' Returns true if m1 is more specific than m2
             Friend Shared Function hasMoreSpecificClass(ByVal m1 As Method, ByVal m2 As Method) As Boolean
-                Dim m1Class As Class = m1.declaringClass
-                Dim m2Class As Class = m2.declaringClass
+                Dim m1Class As  [Class] = m1.declaringClass
+                Dim m2Class As  [Class] = m2.declaringClass
                 Return m1Class IsNot m2Class AndAlso m1Class.IsSubclassOf(m2Class)
             End Function
         End Class
@@ -2884,11 +2884,11 @@ Namespace java.lang
             ' out concrete implementations inherited from superclasses at
             ' the end.
             Dim inheritedMethods As New MethodArray
-            For Each i As Class In interfaces
+            For Each i As  [Class] In interfaces
                 inheritedMethods.addInterfaceMethods(i.privateGetPublicMethods())
             Next i
             If Not [interface] Then
-                Dim c As Class = superclass
+                Dim c As  [Class] = superclass
                 If c IsNot Nothing Then
                     Dim supers As New MethodArray
                     supers.addAll(c.privateGetPublicMethods())
@@ -2935,7 +2935,7 @@ Namespace java.lang
             ' Note: the intent is that the search algorithm this routine
             ' uses be equivalent to the ordering imposed by
             ' privateGetPublicFields(). It fetches only the declared
-            ' public fields for each class, however, to reduce the number
+            ' public fields for each [Class], however, to reduce the number
             ' of Field objects which have to be created for the common
             ' case where the field being requested is declared in the
             ' class which is being queried.
@@ -2944,15 +2944,15 @@ Namespace java.lang
             res = searchFields(privateGetDeclaredFields(True), name)
             If res IsNot Nothing Then Return res
             ' Direct superinterfaces, recursively
-            Dim interfaces_Renamed As Class() = interfaces
+            Dim interfaces_Renamed As  [Class]() = interfaces
             For i As Integer = 0 To interfaces_Renamed.Length - 1
-                Dim c As Class = interfaces_Renamed(i)
+                Dim c As  [Class] = interfaces_Renamed(i)
                 res = c.getField0(name)
                 If res IsNot Nothing Then Return res
             Next i
             ' Direct superclass, recursively
             If Not [interface] Then
-                Dim c As Class = superclass
+                Dim c As  [Class] = superclass
                 If c IsNot Nothing Then
                     res = c.getField0(name)
                     If res IsNot Nothing Then Return res
@@ -2961,7 +2961,7 @@ Namespace java.lang
             Return Nothing
         End Function
 
-        Private Shared Function searchMethods(ByVal methods As Method(), ByVal name As String, ByVal parameterTypes As Class()) As Method
+        Private Shared Function searchMethods(ByVal methods As Method(), ByVal name As String, ByVal parameterTypes As  [Class]()) As Method
 			Dim res As Method = Nothing
             Dim internedName As String = name.Intern()
             For i As Integer = 0 To methods.Length - 1
@@ -2972,7 +2972,7 @@ Namespace java.lang
             Return (If(res Is Nothing, res, reflectionFactory.copyMethod(res)))
         End Function
 
-        Private Function getMethod0(ByVal name As String, ByVal parameterTypes As Class(), ByVal includeStaticMethods As Boolean) As Method
+        Private Function getMethod0(ByVal name As String, ByVal parameterTypes As  [Class](), ByVal includeStaticMethods As Boolean) As Method
 			Dim interfaceCandidates As New MethodArray(2)
             Dim res As Method = privateGetMethodRecursive(name, parameterTypes, includeStaticMethods, interfaceCandidates)
             If res IsNot Nothing Then Return res
@@ -2982,11 +2982,11 @@ Namespace java.lang
             Return interfaceCandidates.first ' may be null
         End Function
 
-        Private Function privateGetMethodRecursive(ByVal name As String, ByVal parameterTypes As Class(), ByVal includeStaticMethods As Boolean, ByVal allInterfaceCandidates As MethodArray) As Method
+        Private Function privateGetMethodRecursive(ByVal name As String, ByVal parameterTypes As  [Class](), ByVal includeStaticMethods As Boolean, ByVal allInterfaceCandidates As MethodArray) As Method
 			' Note: the intent is that the search algorithm this routine
 			' uses be equivalent to the ordering imposed by
 			' privateGetPublicMethods(). It fetches only the declared
-			' public methods for each class, however, to reduce the
+			' public methods for each [Class], however, to reduce the
 			' number of Method objects which have to be created for the
 			' common case where the method being requested is declared in
 			' the class which is being queried.
@@ -3006,15 +3006,15 @@ Namespace java.lang
             End If
             ' Search superclass's methods
             If Not [interface] Then
-                Dim c As Class = superclass
+                Dim c As  [Class] = superclass
                 If c IsNot Nothing Then
                     res = c.getMethod0(name, parameterTypes, True)
                     If res IsNot Nothing Then Return res
                 End If
             End If
             ' Search superinterfaces' methods
-            Dim interfaces_Renamed As Class() = interfaces
-            For Each c As Class In interfaces_Renamed
+            Dim interfaces_Renamed As  [Class]() = interfaces
+            For Each c As  [Class] In interfaces_Renamed
                 res = c.getMethod0(name, parameterTypes, False)
                 If res IsNot Nothing Then allInterfaceCandidates.add(res)
             Next c
@@ -3022,7 +3022,7 @@ Namespace java.lang
             Return Nothing
         End Function
 
-        Private Function getConstructor0(ByVal parameterTypes As Class(), ByVal which As Integer) As Constructor(Of T)
+        Private Function getConstructor0(ByVal parameterTypes As  [Class](), ByVal which As Integer) As Constructor(Of T)
 			Dim constructors_Renamed As Constructor(Of T)() = privateGetDeclaredConstructors((which = Member.PUBLIC))
             For Each constructor_Renamed As Constructor(Of T) In constructors_Renamed
                 If arrayContentsEq(parameterTypes, constructor_Renamed.parameterTypes) Then Return reflectionFactory.copyConstructor(constructor_Renamed)
@@ -3089,16 +3089,16 @@ Namespace java.lang
         End Function
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Function getDeclaredClasses0() As Class()
+        Private Function getDeclaredClasses0() As  [Class]()
 		End Function
 
-        Private Shared Function argumentTypesToString(ByVal argTypes As Class()) As String
+        Private Shared Function argumentTypesToString(ByVal argTypes As  [Class]()) As String
 			Dim buf As New StringBuilder
             buf.append("(")
             If argTypes IsNot Nothing Then
                 For i As Integer = 0 To argTypes.Length - 1
                     If i > 0 Then buf.append(", ")
-                    Dim c As Class = argTypes(i)
+                    Dim c As  [Class] = argTypes(i)
                     buf.append(If(c Is Nothing, "null", c.name))
                 Next i
             End If
@@ -3134,7 +3134,7 @@ Namespace java.lang
         ''' class if it were to be initialized at the time this method is invoked.
         ''' If this class has had its assertion status set, the most recent
         ''' setting will be returned; otherwise, if any package default assertion
-        ''' status pertains to this class, the most recent setting for the most
+        ''' status pertains to this [Class], the most recent setting for the most
         ''' specific pertinent package default assertion status is returned;
         ''' otherwise, if this class is not a system class (i.e., it has a
         ''' class loader) its class loader's default assertion status is returned;
@@ -3153,8 +3153,8 @@ Namespace java.lang
         ''' <seealso cref=    java.lang.ClassLoader#setDefaultAssertionStatus
         ''' @since  1.4 </seealso>
         Public Function desiredAssertionStatus() As Boolean
-            Dim loader As ClassLoader = classLoader
-            ' If the loader is null this is a system class, so ask the VM
+            Dim loader As  [Class]Loader = classLoader
+            ' If the loader is null this is a system [Class], so ask the VM
             If loader Is Nothing Then Return desiredAssertionStatus0(Me)
 
             ' If the classloader has been initialized with the assertion
@@ -3168,7 +3168,7 @@ Namespace java.lang
         ' Retrieves the desired assertion status of this class from the VM
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function desiredAssertionStatus0(ByVal clazz As Class) As Boolean
+        Private Shared Function desiredAssertionStatus0(ByVal clazz As [Class]) As Boolean
         End Function
 
         ''' <summary>
@@ -3349,7 +3349,7 @@ Namespace java.lang
         '''    the class itself).
         ''' @since 1.5 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function asSubclass(Of U)(ByVal clazz As Class) As Class
+        Public Function asSubclass(Of U)(ByVal clazz As [Class]) As  [Class]
 			If Me.IsSubclassOf(clazz) Then
                 Return CType(Me, [Class])
             Else
@@ -3360,7 +3360,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.5 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Function getAnnotation(Of A As annotation)(ByVal annotationClass As Class) As A
+        Public Function getAnnotation(Of A As annotation)(ByVal annotationClass As [Class]) As A
             java.util.Objects.requireNonNull(annotationClass)
 
             Return CType(annotationData().annotations(annotationClass), A)
@@ -3370,13 +3370,13 @@ Namespace java.lang
         ''' {@inheritDoc} </summary>
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.5 </exception>
-        Public Overrides Function isAnnotationPresent(ByVal annotationClass As Class) As Boolean Implements AnnotatedElement.isAnnotationPresent
+        Public Overrides Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean Implements AnnotatedElement.isAnnotationPresent
             Return outerInstance.isAnnotationPresent(annotationClass)
         End Function
 
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.8 </exception>
-        Public Overrides Function getAnnotationsByType(Of A As annotation)(ByVal annotationClass As Class) As A()
+        Public Overrides Function getAnnotationsByType(Of A As annotation)(ByVal annotationClass As [Class]) As A()
             java.util.Objects.requireNonNull(annotationClass)
 
             Dim annotationData As AnnotationData = annotationData()
@@ -3395,7 +3395,7 @@ Namespace java.lang
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.8 </exception>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overrides Function getDeclaredAnnotation(Of A As annotation)(ByVal annotationClass As Class) As A
+        Public Overrides Function getDeclaredAnnotation(Of A As annotation)(ByVal annotationClass As [Class]) As A
             java.util.Objects.requireNonNull(annotationClass)
 
             Return CType(annotationData().declaredAnnotations(annotationClass), A)
@@ -3403,7 +3403,7 @@ Namespace java.lang
 
         ''' <exception cref="NullPointerException"> {@inheritDoc}
         ''' @since 1.8 </exception>
-        Public Overrides Function getDeclaredAnnotationsByType(Of A As annotation)(ByVal annotationClass As Class) As A()
+        Public Overrides Function getDeclaredAnnotationsByType(Of A As annotation)(ByVal annotationClass As [Class]) As A()
             java.util.Objects.requireNonNull(annotationClass)
 
             Return AnnotationSupport.getDirectlyAndIndirectlyPresent(annotationData().declaredAnnotations, annotationClass)
@@ -3453,12 +3453,12 @@ Namespace java.lang
 
         Private Function createAnnotationData(ByVal classRedefinedCount As Integer) As AnnotationData
             Dim declaredAnnotations_Renamed As IDictionary(Of [Class], annotation) = AnnotationParser.parseAnnotations(rawAnnotations, constantPool, Me)
-            Dim superClass As Class = superClass
+            Dim superClass As  [Class] = superClass
             Dim annotations_Renamed As IDictionary(Of [Class], annotation) = Nothing
             If superClass IsNot Nothing Then
                 Dim superAnnotations As IDictionary(Of [Class], annotation) = superClass.annotationData().annotations
                 For Each e As KeyValuePair(Of [Class], annotation) In superAnnotations
-                    Dim annotationClass As Class = e.Key
+                    Dim annotationClass As  [Class] = e.Key
                     If annotationType.getInstance(annotationClass).inherited Then
                         If annotations_Renamed Is Nothing Then ' lazy construction annotations_Renamed = New java.util.LinkedHashMap(Of )((Math.Max(declaredAnnotations_Renamed.Count, Math.Min(12, declaredAnnotations_Renamed.Count + superAnnotations.Count)) * 4 + 2) / 3)
                             annotations_Renamed(annotationClass) = e.Value
@@ -3503,7 +3503,7 @@ Namespace java.lang
         '     * Maintained by the ClassValue class.
         '     
         <NonSerialized>
-        Friend classValueMap As ClassValue.ClassValueMap
+        Friend classValueMap As  [Class]Value.ClassValueMap
 
         ''' <summary>
         ''' Returns an {@code AnnotatedType} object that represents the use of a
@@ -3517,7 +3517,7 @@ Namespace java.lang
         ''' value is an {@code AnnotatedType} object representing an element with no
         ''' annotations.
         ''' 
-        ''' <p> If this {@code Class} represents either the {@code Object} class, an
+        ''' <p> If this {@code Class} represents either the {@code Object} [Class], an
         ''' interface type, an array type, a primitive type, or void, the return
         ''' value is {@code null}.
         ''' </summary>
@@ -3538,7 +3538,7 @@ Namespace java.lang
         ''' superinterface in '... implements Foo' is distinct from the
         ''' <em>declaration</em> of type Foo.)
         ''' 
-        ''' <p> If this {@code Class} object represents a class, the return value is
+        ''' <p> If this {@code Class} object represents a [Class], the return value is
         ''' an array containing objects representing the uses of interface types to
         ''' specify interfaces implemented by the class. The order of the objects in
         ''' the array corresponds to the order of the interface types used in the
@@ -3556,7 +3556,7 @@ Namespace java.lang
         ''' the return value is an array of length 0.
         ''' 
         ''' <p> If this {@code Class} object represents either the {@code Object}
-        ''' class, an array type, a primitive type, or void, the return value is an
+        ''' [Class], an array type, a primitive type, or void, the return value is an
         ''' array of length 0.
         ''' </summary>
         ''' <returns> an array representing the superinterfaces

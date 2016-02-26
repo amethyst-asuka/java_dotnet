@@ -145,7 +145,7 @@ Namespace java.util.concurrent
 	'     * Both head and tail are permitted to lag.  In fact, failing to
 	'     * update them every time one could is a significant optimization
 	'     * (fewer CASes). As with LinkedTransferQueue (see the internal
-	'     * documentation for that class), we use a slack threshold of two;
+	'     * documentation for that [Class]), we use a slack threshold of two;
 	'     * that is, we update head/tail when the current pointer appears
 	'     * to be two or more steps away from the first/last node.
 	'     *
@@ -208,7 +208,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(Node)
+					Dim k As  [Class] = GetType(Node)
 					itemOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("item"))
 					nextOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("next"))
 				Catch e As Exception
@@ -947,7 +947,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ConcurrentLinkedQueue)
+				Dim k As  [Class] = GetType(ConcurrentLinkedQueue)
 				headOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("head"))
 				tailOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("tail"))
 			Catch e As Exception

@@ -158,33 +158,33 @@ Namespace java.lang
 			append(seq)
 		End Sub
 
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function length() As Integer Implements CharSequence.length
-			Return count
-		End Function
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Function length() As Integer Implements CharSequence.length
+            Return Count()
+        End Function
 
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Function capacity() As Integer
-			Return value.Length
-		End Function
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Function capacity() As Integer
+            Return value.Length
+        End Function
 
 
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub ensureCapacity(ByVal minimumCapacity As Integer)
-			If minimumCapacity > value.Length Then expandCapacity(minimumCapacity)
-		End Sub
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Sub ensureCapacity(ByVal minimumCapacity As Integer)
+            If minimumCapacity > value.Length Then expandCapacity(minimumCapacity)
+        End Sub
 
-		''' <summary>
-		''' @since      1.5
-		''' </summary>
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overrides Sub trimToSize()
-			MyBase.trimToSize()
-		End Sub
+        ''' <summary>
+        ''' @since      1.5
+        ''' </summary>
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Sub trimToSize()
+            MyBase.trimToSize()
+        End Sub
 
-		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		''' <seealso cref=        #length() </seealso>
-		<MethodImpl(MethodImplOptions.Synchronized)> _
+        ''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
+        ''' <seealso cref=        #length() </seealso>
+        <MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overrides Property length As Integer
 			Set(ByVal newLength As Integer)
 				toStringCache = Nothing

@@ -44,7 +44,7 @@ Namespace java.util.concurrent.locks
 	''' 
 	''' <p>This class associates, with each thread that uses it, a permit
 	''' (in the sense of the {@link java.util.concurrent.Semaphore
-	''' Semaphore} class). A call to {@code park} will return immediately
+	''' Semaphore} [Class]). A call to {@code park} will return immediately
 	''' if the permit is available, consuming it in the process; otherwise
 	''' it <em>may</em> block.  A call to {@code unpark} makes the permit
 	''' available, if it was not already available. (Unlike with Semaphores
@@ -394,7 +394,7 @@ Namespace java.util.concurrent.locks
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				parkBlockerOffset = UNSAFE.objectFieldOffset(tk.getDeclaredField("parkBlocker"))
 				SEED = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomSeed"))
 				PROBE = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomProbe"))

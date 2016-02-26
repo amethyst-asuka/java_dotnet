@@ -34,7 +34,7 @@ Namespace java.rmi
 	''' @author  Roger Riggs
 	''' @since   JDK1.1 </summary>
 	''' @deprecated Use <seealso cref="java.lang.SecurityException"/> instead.
-	''' Application code should never directly reference this class, and
+	''' Application code should never directly reference this [Class], and
 	''' <code>RMISecurityManager</code> no longer throws this subclass of
 	''' <code>java.lang.SecurityException</code>. 
 	<Obsolete("Use <seealso cref="java.lang.SecurityException"/> instead.")> _

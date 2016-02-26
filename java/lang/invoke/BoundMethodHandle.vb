@@ -88,7 +88,7 @@ Namespace java.lang.invoke
 			Return Species_L.make(type, form, x)
 		End Function
 
-		Friend Overrides Function bindArgumentL(ByVal pos As Integer, ByVal value As Object) As BoundMethodHandle ' there is a default binder in the super class, for 'L' types only
+		Friend Overrides Function bindArgumentL(ByVal pos As Integer, ByVal value As Object) As BoundMethodHandle ' there is a default binder in the super [Class], for 'L' types only
 		'non-public
 			Return editor().bindArgumentL(Me, pos, value)
 		End Function
@@ -289,7 +289,7 @@ Namespace java.lang.invoke
 		Friend Class SpeciesData
 			Private ReadOnly typeChars As String
 			Private ReadOnly typeCodes As BasicType()
-			Private ReadOnly clazz As Class
+			Private ReadOnly clazz As  [Class]
 			' Bootstrapping requires circular relations MH -> BMH -> SpeciesData -> MH
 			' Therefore, we need a non-final link in the chain.  Use array elements.
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -316,7 +316,7 @@ Namespace java.lang.invoke
 			Friend Overridable Function fieldSignature() As Object
 				Return typeChars
 			End Function
-			Public Overridable Function fieldHolder() As Class
+			Public Overridable Function fieldHolder() As  [Class]
 				Return clazz
 			End Function
 			Public Overrides Function ToString() As String
@@ -349,7 +349,7 @@ Namespace java.lang.invoke
 
 			Friend Shared ReadOnly EMPTY As New SpeciesData("", GetType(BoundMethodHandle))
 
-			Private Sub New(ByVal types As String, ByVal clazz As Class)
+			Private Sub New(ByVal types As String, ByVal clazz As [Class])
 				Me.typeChars = types
 				Me.typeCodes = basicTypes(types)
 				Me.clazz = clazz
@@ -395,11 +395,11 @@ Namespace java.lang.invoke
 			Shared Sub New() ' make bootstrap predictable
 				CACHE("") = EMPTY
 				' pre-fill the BMH speciesdata cache with BMH's inner classes
-				Dim rootCls As Class = GetType(BoundMethodHandle)
+				Dim rootCls As  [Class] = GetType(BoundMethodHandle)
 				Try
-					For Each c As Class In rootCls.declaredClasses
+					For Each c As  [Class] In rootCls.declaredClasses
 						If c.IsSubclassOf(rootCls) Then
-							Dim cbmh As Class = c.asSubclass(GetType(BoundMethodHandle))
+							Dim cbmh As  [Class] = c.asSubclass(GetType(BoundMethodHandle))
 							Dim d As SpeciesData = Factory.speciesDataFromConcreteBMHClass(cbmh)
 							assert(d IsNot Nothing) : cbmh.name
 							assert(d.clazz Is cbmh)
@@ -447,7 +447,7 @@ Namespace java.lang.invoke
 				assert(d IsNot Nothing AndAlso (Not d.placeholder))
 				Return d
 			End Function
-			Shared Function getForClass(ByVal types As String, ByVal clazz As Class) As SpeciesData
+			Shared Function getForClass(ByVal types As String, ByVal clazz As [Class]) As SpeciesData
 				' clazz is a new class which is initializing its SPECIES_DATA field
 				Return updateCache(types, New SpeciesData(types, clazz))
 			End Function
@@ -576,7 +576,7 @@ Namespace java.lang.invoke
 			''' </summary>
 			''' <param name="types"> the type signature, wherein reference types are erased to 'L' </param>
 			''' <returns> the generated concrete BMH class </returns>
-			Friend Shared Function generateConcreteBMHClass(ByVal types As String) As Class
+			Friend Shared Function generateConcreteBMHClass(ByVal types As String) As  [Class]
 				Dim cw As New jdk.internal.org.objectweb.asm.ClassWriter(jdk.internal.org.objectweb.asm.ClassWriter.COMPUTE_MAXS + jdk.internal.org.objectweb.asm.ClassWriter.COMPUTE_FRAMES)
 
 				Dim shortTypes As String = LambdaForm.shortenSignature(types)
@@ -733,7 +733,7 @@ Namespace java.lang.invoke
 				' load class
 				Dim classFile As SByte() = cw.toByteArray()
 				InvokerBytecodeGenerator.maybeDump(className, classFile)
-				Dim bmhClass As Class = UNSAFE.defineClass(className, classFile, 0, classFile.Length, GetType(BoundMethodHandle).classLoader, Nothing).asSubclass(GetType(BoundMethodHandle))
+				Dim bmhClass As  [Class] = UNSAFE.defineClass(className, classFile, 0, classFile.Length, GetType(BoundMethodHandle).classLoader, Nothing).asSubclass(GetType(BoundMethodHandle))
 					'UNSAFE.defineAnonymousClass(BoundMethodHandle.class, classFile, null).asSubclass(BoundMethodHandle.class);
 				UNSAFE.ensureClassInitialized(bmhClass)
 
@@ -773,9 +773,9 @@ Namespace java.lang.invoke
 			' Getter MH generation.
 			'
 
-			Private Shared Function makeGetter(ByVal cbmhClass As Class, ByVal types As String, ByVal index As Integer) As MethodHandle
+			Private Shared Function makeGetter(ByVal cbmhClass As [Class], ByVal types As String, ByVal index As Integer) As MethodHandle
 				Dim fieldName As String = makeFieldName(types, index)
-				Dim fieldType As Class = sun.invoke.util.Wrapper.forBasicType(types.Chars(index)).primitiveType()
+				Dim fieldType As  [Class] = sun.invoke.util.Wrapper.forBasicType(types.Chars(index)).primitiveType()
 				Try
 					Return LOOKUP.findGetter(cbmhClass, fieldName, fieldType)
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
@@ -784,7 +784,7 @@ Namespace java.lang.invoke
 				End Try
 			End Function
 
-			Friend Shared Function makeGetters(ByVal cbmhClass As Class, ByVal types As String, ByVal mhs As MethodHandle()) As MethodHandle()
+			Friend Shared Function makeGetters(ByVal cbmhClass As [Class], ByVal types As String, ByVal mhs As MethodHandle()) As MethodHandle()
 				If mhs Is Nothing Then mhs = New MethodHandle(types.length() - 1){}
 				For i As Integer = 0 To mhs.Length - 1
 					mhs(i) = makeGetter(cbmhClass, types, i)
@@ -793,7 +793,7 @@ Namespace java.lang.invoke
 				Return mhs
 			End Function
 
-			Friend Shared Function makeCtors(ByVal cbmh As Class, ByVal types As String, ByVal mhs As MethodHandle()) As MethodHandle()
+			Friend Shared Function makeCtors(ByVal cbmh As [Class], ByVal types As String, ByVal mhs As MethodHandle()) As MethodHandle()
 				If mhs Is Nothing Then mhs = New MethodHandle(0){}
 				If types.Equals("") Then ' hack for empty BMH species Return mhs
 				mhs(0) = makeCbmhCtor(cbmh, types)
@@ -812,7 +812,7 @@ Namespace java.lang.invoke
 			' Auxiliary methods.
 			'
 
-			Friend Shared Function speciesDataFromConcreteBMHClass(ByVal cbmh As Class) As SpeciesData
+			Friend Shared Function speciesDataFromConcreteBMHClass(ByVal cbmh As [Class]) As SpeciesData
 				Try
 					Dim F_SPECIES_DATA As Field = cbmh.getDeclaredField("SPECIES_DATA")
 					Return CType(F_SPECIES_DATA.get(Nothing), SpeciesData)
@@ -839,7 +839,7 @@ Namespace java.lang.invoke
 				Return buf.append(")"c).append(If(ctor, "V", BMH_SIG)).ToString()
 			End Function
 
-			Friend Shared Function makeCbmhCtor(ByVal cbmh As Class, ByVal types As String) As MethodHandle
+			Friend Shared Function makeCbmhCtor(ByVal cbmh As [Class], ByVal types As String) As MethodHandle
 				Try
 					Return LOOKUP.findStatic(cbmh, "make", MethodType.fromMethodDescriptorString(makeSignature(types, False), Nothing))
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:

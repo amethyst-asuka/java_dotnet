@@ -30,7 +30,7 @@ Namespace java.beans
 	''' in which a single method is applied to a target and a set of
 	''' arguments to return a result - as in <code>"a.getFoo()"</code>.
 	''' <p>
-	''' In addition to the properties of the super class, the
+	''' In addition to the properties of the super [Class], the
 	''' <code>Expression</code> object provides a <em>value</em> which
 	''' is the object returned when this expression is evaluated.
 	''' The return value is typically not provided by the caller and

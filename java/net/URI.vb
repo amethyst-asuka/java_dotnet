@@ -422,7 +422,7 @@ Namespace java.net
 	''' a structured string that supports the syntactic, scheme-independent
 	''' operations of comparison, normalization, resolution, and relativization.
 	''' 
-	''' <p> An instance of the <seealso cref="URL"/> class, by contrast, represents the
+	''' <p> An instance of the <seealso cref="URL"/> [Class], by contrast, represents the
 	''' syntactic components of a URL together with some of the information required
 	''' to access the resource that it describes.  A URL must be absolute, that is,
 	''' it must always specify a scheme.  A URL string is parsed according to its
@@ -2769,7 +2769,7 @@ Namespace java.net
 			' The various scan and parse methods that follow use a uniform
 			' convention of taking the current start position and end index as
 			' their first two arguments.  The start is inclusive while the end is
-			' exclusive, just as in the String class, i.e., a start/end pair
+			' exclusive, just as in the String [Class], i.e., a start/end pair
 			' denotes the left-open interval [start, end) of the input string.
 			'
 			' These methods never proceed past the end position.  They may return

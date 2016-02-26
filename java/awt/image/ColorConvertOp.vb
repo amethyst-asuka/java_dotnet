@@ -597,7 +597,7 @@ Namespace java.awt.image
 		''' Returns the location of the destination point given a
 		''' point in the source.  If <code>dstPt</code> is non-null,
 		''' it will be used to hold the return value.  Note that
-		''' for this class, the destination point will be the same
+		''' for this [Class], the destination point will be the same
 		''' as the source point. </summary>
 		''' <param name="srcPt"> the specified source <code>Point2D</code> </param>
 		''' <param name="dstPt"> the destination <code>Point2D</code> </param>

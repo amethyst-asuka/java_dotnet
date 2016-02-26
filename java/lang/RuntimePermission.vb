@@ -66,7 +66,7 @@ Namespace java.lang
 	''' <tr>
 	'''   <td>getClassLoader</td>
 	'''   <td>Retrieval of a class loader (e.g., the class loader for the calling
-	''' class)</td>
+	''' [Class])</td>
 	'''   <td>This would grant an attacker permission to get the
 	''' class loader for a particular class. This is dangerous because
 	''' having access to a class's class loader allows the attacker to

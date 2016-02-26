@@ -50,14 +50,14 @@ Namespace java.lang.reflect
 	Public NotInheritable Class Method
 		Inherits Executable
 
-		Private clazz As Class
+		Private clazz As  [Class]
 		Private slot As Integer
 		' This is guaranteed to be interned by the VM in the 1.4
 		' reflection implementation
 		Private name As String
-		Private returnType As Class
-		Private parameterTypes As Class()
-		Private exceptionTypes As Class()
+		Private returnType As  [Class]
+		Private parameterTypes As  [Class]()
+		Private exceptionTypes As  [Class]()
 		Private modifiers As Integer
 		' Generics and annotations support
 		<NonSerialized> _
@@ -107,7 +107,7 @@ Namespace java.lang.reflect
 		''' instantiation of these objects in Java code from the java.lang
 		''' package via sun.reflect.LangReflectAccess.
 		''' </summary>
-		Friend Sub New(ByVal declaringClass As Class, ByVal name As String, ByVal parameterTypes As Class(), ByVal returnType As Class, ByVal checkedExceptions As Class(), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte(), ByVal annotationDefault As SByte())
+		Friend Sub New(ByVal declaringClass As [Class], ByVal name As String, ByVal parameterTypes As  [Class](), ByVal returnType As [Class], ByVal checkedExceptions As  [Class](), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte(), ByVal annotationDefault As SByte())
 			Me.clazz = declaringClass
 			Me.name = name
 			Me.parameterTypes = parameterTypes
@@ -165,7 +165,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides declaringClass As Class
+		Public Property Overrides declaringClass As  [Class]
 			Get
 				Return clazz
 			End Get
@@ -210,7 +210,7 @@ Namespace java.lang.reflect
 		''' of the method represented by this {@code Method} object.
 		''' </summary>
 		''' <returns> the return type for the method this object represents </returns>
-		Public Property returnType As Class
+		Public Property returnType As  [Class]
 			Get
 				Return returnType
 			End Get
@@ -252,7 +252,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides parameterTypes As Class()
+		Public Property Overrides parameterTypes As  [Class]()
 			Get
 				Return parameterTypes.clone()
 			End Get
@@ -283,7 +283,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides exceptionTypes As Class()
+		Public Property Overrides exceptionTypes As  [Class]()
 			Get
 				Return exceptionTypes.clone()
 			End Get
@@ -471,7 +471,7 @@ Namespace java.lang.reflect
 		Public Function invoke(ByVal obj As Object, ParamArray ByVal args As Object()) As Object
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -585,7 +585,7 @@ Namespace java.lang.reflect
 		Public Property defaultValue As Object
 			Get
 				If annotationDefault Is Nothing Then Return Nothing
-				Dim memberType As Class = sun.reflect.annotation.AnnotationType.invocationHandlerReturnType(returnType)
+				Dim memberType As  [Class] = sun.reflect.annotation.AnnotationType.invocationHandlerReturnType(returnType)
 				Dim result As Object = sun.reflect.annotation.AnnotationParser.parseMemberValue(memberType, java.nio.ByteBuffer.wrap(annotationDefault), sun.misc.SharedSecrets.javaLangAccess.getConstantPool(declaringClass), declaringClass)
 				If TypeOf result Is sun.reflect.annotation.ExceptionProxy Then Throw New AnnotationFormatError("Invalid default: " & Me)
 				Return result
@@ -596,7 +596,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException">  {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T
+		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
 			Return MyBase.getAnnotation(annotationClass)
 		End Function
 

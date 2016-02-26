@@ -28,7 +28,7 @@ Namespace java.security
 
 	''' <summary>
 	''' This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
-	''' for the {@code AlgorithmParameters} class, which is used to manage
+	''' for the {@code AlgorithmParameters} [Class], which is used to manage
 	''' algorithm parameters.
 	''' 
 	''' <p> All the abstract methods in this class must be implemented by each
@@ -101,7 +101,7 @@ Namespace java.security
 		''' </returns>
 		''' <exception cref="InvalidParameterSpecException"> if the requested parameter
 		''' specification is inappropriate for this parameter object. </exception>
-		Protected Friend MustOverride Function engineGetParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(ByVal paramSpec As Class) As T
+		Protected Friend MustOverride Function engineGetParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(ByVal paramSpec As [Class]) As T
 
 		''' <summary>
 		''' Returns the parameters in their primary encoding format.

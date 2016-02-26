@@ -1407,7 +1407,7 @@ Namespace java.security
 		'''          initialized (loaded)
 		''' 
 		''' @since 1.5 </exception>
-		Public Function entryInstanceOf(ByVal [alias] As String, ByVal entryClass As Class) As Boolean
+		Public Function entryInstanceOf(ByVal [alias] As String, ByVal entryClass As [Class]) As Boolean
 
 			If [alias] Is Nothing OrElse entryClass Is Nothing Then Throw New NullPointerException("invalid null input")
 			If Not initialized Then Throw New KeyStoreException("Uninitialized keystore")

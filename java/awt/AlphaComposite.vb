@@ -207,7 +207,7 @@ Namespace java.awt
 	''' <ul>
 	''' <li>
 	''' Many sources, such as some of the opaque image types listed
-	''' in the <code>BufferedImage</code> class, do not store alpha values
+	''' in the <code>BufferedImage</code> [Class], do not store alpha values
 	''' for their pixels.  Such sources supply an alpha of 1.0 for
 	''' all of their pixels.
 	''' 

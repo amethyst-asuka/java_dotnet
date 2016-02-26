@@ -404,7 +404,7 @@ Namespace java.awt.font
 						Return newStyles
 					End If
 				End If
-			Catch e As ClassCastException
+			Catch e As  [Class]CastException
 			End Try
 
 			Return oldStyles

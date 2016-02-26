@@ -87,7 +87,7 @@ Namespace java.util
 		''' 
 		''' @serial
 		''' </summary>
-		Private ReadOnly keyType As Class
+		Private ReadOnly keyType As  [Class]
 
 		''' <summary>
 		''' All of the values comprising K.  (Cached for performance.)
@@ -143,7 +143,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="keyType"> the class object of the key type for this enum map </param>
 		''' <exception cref="NullPointerException"> if <tt>keyType</tt> is null </exception>
-		Public Sub New(ByVal keyType As Class)
+		Public Sub New(ByVal keyType As [Class])
 			Me.keyType = keyType
 			keyUniverse = getKeyUniverse(keyType)
 			vals = New Object(keyUniverse.Length - 1){}
@@ -316,7 +316,7 @@ Namespace java.util
 			If key Is Nothing Then Return False
 
 			' Cheaper than instanceof Enum followed by getDeclaringClass
-			Dim keyClass As Class = key.GetType()
+			Dim keyClass As  [Class] = key.GetType()
 			Return keyClass Is keyType OrElse keyClass.BaseType Is keyType
 		End Function
 
@@ -783,7 +783,7 @@ Namespace java.util
 		''' Throws an exception if e is not of the correct type for this enum set.
 		''' </summary>
 		Private Sub typeCheck(ByVal key As K)
-			Dim keyClass As Class = key.GetType()
+			Dim keyClass As  [Class] = key.GetType()
 			If keyClass IsNot keyType AndAlso keyClass.BaseType IsNot keyType Then Throw New ClassCastException(keyClass & " != " & keyType)
 		End Sub
 
@@ -791,7 +791,7 @@ Namespace java.util
 		''' Returns all of the values comprising K.
 		''' The result is uncloned, cached, and shared by all callers.
 		''' </summary>
-		Private Shared Function getKeyUniverse(Of K As System.Enum(Of K))(ByVal keyType As Class) As K()
+		Private Shared Function getKeyUniverse(Of K As System.Enum(Of K))(ByVal keyType As [Class]) As K()
 			Return sun.misc.SharedSecrets.javaLangAccess.getEnumConstantsShared(keyType)
 		End Function
 

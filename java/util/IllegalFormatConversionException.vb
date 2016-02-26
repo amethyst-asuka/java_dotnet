@@ -41,7 +41,7 @@ Namespace java.util
 		Private Shadows Const serialVersionUID As Long = 17000126L
 
 		Private c As Char
-		Private arg As Class
+		Private arg As  [Class]
 
 		''' <summary>
 		''' Constructs an instance of this class with the mismatched conversion and
@@ -52,7 +52,7 @@ Namespace java.util
 		''' </param>
 		''' <param name="arg">
 		'''         Class of the mismatched argument </param>
-		Public Sub New(ByVal c As Char, ByVal arg As Class)
+		Public Sub New(ByVal c As Char, ByVal arg As [Class])
 			If arg Is Nothing Then Throw New NullPointerException
 			Me.c = c
 			Me.arg = arg
@@ -72,7 +72,7 @@ Namespace java.util
 		''' Returns the class of the mismatched argument.
 		''' </summary>
 		''' <returns>   The class of the mismatched argument </returns>
-		Public Overridable Property argumentClass As Class
+		Public Overridable Property argumentClass As  [Class]
 			Get
 				Return arg
 			End Get

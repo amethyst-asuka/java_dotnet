@@ -205,7 +205,7 @@ Namespace java.io
 
 		''' <summary>
 		''' table mapping primitive type names to corresponding class objects </summary>
-		Private Shared ReadOnly primClasses As New Dictionary(Of String, Class)(8, 1.0F)
+		Private Shared ReadOnly primClasses As New Dictionary(Of String, [Class])(8, 1.0F)
 		Shared Sub New()
 			primClasses("boolean") = GetType(Boolean)
 			primClasses("byte") = GetType(SByte)
@@ -327,7 +327,7 @@ Namespace java.io
 
 		''' <summary>
 		''' Read an object from the ObjectInputStream.  The class of the object, the
-		''' signature of the class, and the values of the non-transient and
+		''' signature of the [Class], and the values of the non-transient and
 		''' non-static fields of the class and all of its supertypes are read.
 		''' Default deserializing for a class can be overriden using the writeObject
 		''' and readObject methods.  Objects referenced by this object are read
@@ -362,7 +362,7 @@ Namespace java.io
 			Try
 				Dim obj As Object = readObject0(False)
 				[handles].markDependency(outerHandle, passHandle)
-				Dim ex As ClassNotFoundException = [handles].lookupException(passHandle)
+				Dim ex As  [Class]NotFoundException = [handles].lookupException(passHandle)
 				If ex IsNot Nothing Then Throw ex
 				If depth = 0 Then vlist.doCallbacks()
 				Return obj
@@ -442,7 +442,7 @@ Namespace java.io
 			Try
 				Dim obj As Object = readObject0(True)
 				[handles].markDependency(outerHandle, passHandle)
-				Dim ex As ClassNotFoundException = [handles].lookupException(passHandle)
+				Dim ex As  [Class]NotFoundException = [handles].lookupException(passHandle)
 				If ex IsNot Nothing Then Throw ex
 				If depth = 0 Then vlist.doCallbacks()
 				Return obj
@@ -472,7 +472,7 @@ Namespace java.io
 			defaultReadFields(curObj, curDesc)
 			bin.blockDataMode = True
 			If Not curDesc.hasWriteObjectData() Then defaultDataEnd = True
-			Dim ex As ClassNotFoundException = [handles].lookupException(passHandle)
+			Dim ex As  [Class]NotFoundException = [handles].lookupException(passHandle)
 			If ex IsNot Nothing Then Throw ex
 		End Sub
 
@@ -532,8 +532,8 @@ Namespace java.io
 		''' each unique class in the stream.  This method can be implemented by
 		''' subclasses to use an alternate loading mechanism but must return a
 		''' <code>Class</code> object. Once returned, if the class is not an array
-		''' class, its serialVersionUID is compared to the serialVersionUID of the
-		''' serialized class, and if there is a mismatch, the deserialization fails
+		''' [Class], its serialVersionUID is compared to the serialVersionUID of the
+		''' serialized [Class], and if there is a mismatch, the deserialization fails
 		''' and an <seealso cref="InvalidClassException"/> is thrown.
 		''' 
 		''' <p>The default implementation of this method in
@@ -562,12 +562,12 @@ Namespace java.io
 		''' <exception cref="IOException"> any of the usual Input/Output exceptions. </exception>
 		''' <exception cref="ClassNotFoundException"> if class of a serialized object cannot
 		'''          be found. </exception>
-		Protected Friend Overridable Function resolveClass(ByVal desc As ObjectStreamClass) As Class
+		Protected Friend Overridable Function resolveClass(ByVal desc As ObjectStreamClass) As  [Class]
 			Dim name As String = desc.name
 			Try
 				Return Type.GetType(name, False, latestUserDefinedLoader())
-			Catch ex As ClassNotFoundException
-				Dim cl As Class = primClasses(name)
+			Catch ex As  [Class]NotFoundException
+				Dim cl As  [Class] = primClasses(name)
 				If cl IsNot Nothing Then
 					Return cl
 				Else
@@ -626,15 +626,15 @@ Namespace java.io
 		'''                named interfaces could not be found </exception>
 		''' <seealso cref= ObjectOutputStream#annotateProxyClass(Class)
 		''' @since 1.3 </seealso>
-		Protected Friend Overridable Function resolveProxyClass(ByVal interfaces As String()) As Class
-			Dim latestLoader As ClassLoader = latestUserDefinedLoader()
-			Dim nonPublicLoader As ClassLoader = Nothing
+		Protected Friend Overridable Function resolveProxyClass(ByVal interfaces As String()) As  [Class]
+			Dim latestLoader As  [Class]Loader = latestUserDefinedLoader()
+			Dim nonPublicLoader As  [Class]Loader = Nothing
 			Dim hasNonPublicInterface As Boolean = False
 
 			' define proxy in class loader of non-public interface(s), if any
-			Dim classObjs As Class() = New [Class](interfaces.Length - 1){}
+			Dim classObjs As  [Class]() = New [Class](interfaces.Length - 1){}
 			For i As Integer = 0 To interfaces.Length - 1
-				Dim cl As Class = Type.GetType(interfaces(i), False, latestLoader)
+				Dim cl As  [Class] = Type.GetType(interfaces(i), False, latestLoader)
 				If (cl.modifiers And Modifier.PUBLIC) = 0 Then
 					If hasNonPublicInterface Then
 						If nonPublicLoader IsNot cl.classLoader Then Throw New IllegalAccessError("conflicting non-public interface class loaders")
@@ -1111,7 +1111,7 @@ Namespace java.io
 		''' "enableSubclassImplementation" SerializablePermission is checked.
 		''' </summary>
 		Private Sub verifySubclass()
-			Dim cl As Class = Me.GetType()
+			Dim cl As  [Class] = Me.GetType()
 			If cl Is GetType(ObjectInputStream) Then Return
 			Dim sm As SecurityManager = System.securityManager
 			If sm Is Nothing Then Return
@@ -1131,7 +1131,7 @@ Namespace java.io
 		''' override security-sensitive non-final methods.  Returns true if subclass
 		''' is "safe", false otherwise.
 		''' </summary>
-		Private Shared Function auditSubclass(ByVal subcl As Class) As Boolean
+		Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
 			Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		   )
 			Return result
@@ -1141,7 +1141,7 @@ Namespace java.io
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Boolean?
-				Dim cl As Class = subcl
+				Dim cl As  [Class] = subcl
 				Do While cl IsNot GetType(ObjectInputStream)
 					Try
 						cl.getDeclaredMethod("readUnshared", CType(Nothing, Class()))
@@ -1323,13 +1323,13 @@ Namespace java.io
 		''' ClassNotFoundException will be associated with the class' handle in the
 		''' handle table).
 		''' </summary>
-		Private Function readClass(ByVal unshared As Boolean) As Class
+		Private Function readClass(ByVal unshared As Boolean) As  [Class]
 			If bin.readByte() <> TC_CLASS Then Throw New InternalError
 			Dim desc As ObjectStreamClass = readClassDesc(False)
-			Dim cl As Class = desc.forClass()
+			Dim cl As  [Class] = desc.forClass()
 			passHandle = [handles].assign(If(unshared, unsharedMarker, cl))
 
-			Dim resolveEx As ClassNotFoundException = desc.resolveException
+			Dim resolveEx As  [Class]NotFoundException = desc.resolveException
 			If resolveEx IsNot Nothing Then [handles].markException(passHandle, resolveEx)
 
 			[handles].finish(passHandle)
@@ -1388,8 +1388,8 @@ Namespace java.io
 				ifaces(i) = bin.readUTF()
 			Next i
 
-			Dim cl As Class = Nothing
-			Dim resolveEx As ClassNotFoundException = Nothing
+			Dim cl As  [Class] = Nothing
+			Dim resolveEx As  [Class]NotFoundException = Nothing
 			bin.blockDataMode = True
 			Try
 				cl = resolveProxyClass(ifaces)
@@ -1403,7 +1403,7 @@ Namespace java.io
 					' to condition this call to isCustomSubclass == true here.
 					sun.reflect.misc.ReflectUtil.checkProxyPackageAccess(Me.GetType().classLoader, cl.interfaces)
 				End If
-			Catch ex As ClassNotFoundException
+			Catch ex As  [Class]NotFoundException
 				resolveEx = ex
 			End Try
 			skipCustomData()
@@ -1431,12 +1431,12 @@ Namespace java.io
 			Dim readDesc As ObjectStreamClass = Nothing
 			Try
 				readDesc = readClassDescriptor()
-			Catch ex As ClassNotFoundException
+			Catch ex As  [Class]NotFoundException
 				Throw CType((New InvalidClassException("failed to read class descriptor")).initCause(ex), IOException)
 			End Try
 
-			Dim cl As Class = Nothing
-			Dim resolveEx As ClassNotFoundException = Nothing
+			Dim cl As  [Class] = Nothing
+			Dim resolveEx As  [Class]NotFoundException = Nothing
 			bin.blockDataMode = True
 			Dim checksRequired As Boolean = customSubclass
 			Try
@@ -1446,7 +1446,7 @@ Namespace java.io
 				ElseIf checksRequired Then
 					sun.reflect.misc.ReflectUtil.checkPackageAccess(cl)
 				End If
-			Catch ex As ClassNotFoundException
+			Catch ex As  [Class]NotFoundException
 				resolveEx = ex
 			End Try
 			skipCustomData()
@@ -1491,7 +1491,7 @@ Namespace java.io
 			Dim len As Integer = bin.readInt()
 
 			Dim array As Object = Nothing
-			Dim cl As Class, ccl As Class = Nothing
+			Dim cl As [Class], ccl As  [Class] = Nothing
 			cl = desc.forClass()
 			If cl IsNot Nothing Then
 				ccl = cl.componentType
@@ -1499,7 +1499,7 @@ Namespace java.io
 			End If
 
 			Dim arrayHandle As Integer = [handles].assign(If(unshared, unsharedMarker, array))
-			Dim resolveEx As ClassNotFoundException = desc.resolveException
+			Dim resolveEx As  [Class]NotFoundException = desc.resolveException
 			If resolveEx IsNot Nothing Then [handles].markException(arrayHandle, resolveEx)
 
 			If ccl Is Nothing Then
@@ -1551,13 +1551,13 @@ Namespace java.io
 			If Not desc.enum Then Throw New InvalidClassException("non-enum class: " & desc)
 
 			Dim enumHandle As Integer = [handles].assign(If(unshared, unsharedMarker, Nothing))
-			Dim resolveEx As ClassNotFoundException = desc.resolveException
+			Dim resolveEx As  [Class]NotFoundException = desc.resolveException
 			If resolveEx IsNot Nothing Then [handles].markException(enumHandle, resolveEx)
 
 			Dim name As String = readString(False)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim result As System.Enum(Of ?) = Nothing
-			Dim cl As Class = desc.forClass()
+			Dim cl As  [Class] = desc.forClass()
 			If cl IsNot Nothing Then
 				Try
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -1576,7 +1576,7 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads and returns "ordinary" (i.e., not a String, Class,
+		''' Reads and returns "ordinary" (i.e., not a String, [Class],
 		''' ObjectStreamClass, array, or enum constant) object, or null if object's
 		''' class is unresolvable (in which case a ClassNotFoundException will be
 		''' associated with object's handle).  Sets passHandle to object's assigned
@@ -1588,7 +1588,7 @@ Namespace java.io
 			Dim desc As ObjectStreamClass = readClassDesc(False)
 			desc.checkDeserialize()
 
-			Dim cl As Class = desc.forClass()
+			Dim cl As  [Class] = desc.forClass()
 			If cl Is GetType(String) OrElse cl Is GetType(Class) OrElse cl Is GetType(ObjectStreamClass) Then Throw New InvalidClassException("invalid class descriptor")
 
 			Dim obj As Object
@@ -1599,7 +1599,7 @@ Namespace java.io
 			End Try
 
 			passHandle = [handles].assign(If(unshared, unsharedMarker, obj))
-			Dim resolveEx As ClassNotFoundException = desc.resolveException
+			Dim resolveEx As  [Class]NotFoundException = desc.resolveException
 			If resolveEx IsNot Nothing Then [handles].markException(passHandle, resolveEx)
 
 			If desc.externalizable Then
@@ -1635,7 +1635,7 @@ Namespace java.io
 				If obj IsNot Nothing Then
 					Try
 						obj.readExternal(Me)
-					Catch ex As ClassNotFoundException
+					Catch ex As  [Class]NotFoundException
 	'                    
 	'                     * In most cases, the handle table has already propagated
 	'                     * a CNFException to passHandle at this point; this mark
@@ -1687,7 +1687,7 @@ Namespace java.io
 
 							bin.blockDataMode = True
 							slotDesc.invokeReadObject(obj, Me)
-						Catch ex As ClassNotFoundException
+						Catch ex As  [Class]NotFoundException
 	'                        
 	'                         * In most cases, the handle table has already
 	'                         * propagated a CNFException to passHandle at this
@@ -1755,7 +1755,7 @@ Namespace java.io
 		''' passHandle is set to obj's handle before this method is called.
 		''' </summary>
 		Private Sub defaultReadFields(ByVal obj As Object, ByVal desc As ObjectStreamClass)
-			Dim cl As Class = desc.forClass()
+			Dim cl As  [Class] = desc.forClass()
 			If cl IsNot Nothing AndAlso obj IsNot Nothing AndAlso (Not cl.isInstance(obj)) Then Throw New ClassCastException
 
 			Dim primDataSize As Integer = desc.primDataSize
@@ -1826,7 +1826,7 @@ Namespace java.io
 		''' This method should not be removed or its signature changed without
 		''' corresponding modifications to the above class.
 		''' </summary>
-		Private Shared Function latestUserDefinedLoader() As ClassLoader
+		Private Shared Function latestUserDefinedLoader() As  [Class]Loader
 			Return sun.misc.VM.latestUserDefinedLoader()
 		End Function
 
@@ -1950,7 +1950,7 @@ Namespace java.io
 			''' class descriptor, returns -1.  Throws IllegalArgumentException if
 			''' neither incoming nor local class descriptor contains a match.
 			''' </summary>
-			Private Function getFieldOffset(ByVal name As String, ByVal type As Class) As Integer
+			Private Function getFieldOffset(ByVal name As String, ByVal type As [Class]) As Integer
 				Dim field As ObjectStreamField = desc.getField(name, type)
 				If field IsNot Nothing Then
 					Return field.offset
@@ -2933,7 +2933,7 @@ Namespace java.io
 
 		''' <summary>
 		''' Unsynchronized table which tracks wire handle to object mappings, as
-		''' well as ClassNotFoundExceptions associated with deserialized objects.
+		''' well As  [Class]NotFoundExceptions associated with deserialized objects.
 		''' This class implements an exception-propagation algorithm for
 		''' determining which objects should have ClassNotFoundExceptions associated
 		''' with them, taking into account cycles and discontinuities (e.g., skipped
@@ -3051,7 +3051,7 @@ Namespace java.io
 			''' referencing objects as appropriate.  The specified handle must be
 			''' "open" (i.e., assigned, but not finished yet).
 			''' </summary>
-			Friend Overridable Sub markException(ByVal handle As Integer, ByVal ex As ClassNotFoundException)
+			Friend Overridable Sub markException(ByVal handle As Integer, ByVal ex As  [Class]NotFoundException)
 				Select Case status(handle)
 					Case STATUS_UNKNOWN
 						status(handle) = STATUS_EXCEPTION
@@ -3140,7 +3140,7 @@ Namespace java.io
 			''' given handle.  Returns null if the given handle is NULL_HANDLE, or
 			''' if there is no ClassNotFoundException associated with the handle.
 			''' </summary>
-			Friend Overridable Function lookupException(ByVal handle As Integer) As ClassNotFoundException
+			Friend Overridable Function lookupException(ByVal handle As Integer) As  [Class]NotFoundException
 				Return If(handle <> NULL_HANDLE AndAlso status(handle) = STATUS_EXCEPTION, CType(entries(handle), ClassNotFoundException), Nothing)
 			End Function
 

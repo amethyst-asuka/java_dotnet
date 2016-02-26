@@ -1502,7 +1502,7 @@ Namespace java.util.concurrent.locks
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				TID_OFFSET = UNSAFE.objectFieldOffset(tk.getDeclaredField("tid"))
 			Catch e As Exception
 				Throw New [Error](e)

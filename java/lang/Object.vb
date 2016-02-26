@@ -65,7 +65,7 @@ Namespace java.lang
 		''' @jls 15.8.2 Class Literals </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Public final Function getClass() As Class
+		Public final Function getClass() As  [Class]
 		End Function
 
 		''' <summary>
@@ -265,7 +265,7 @@ Namespace java.lang
 		''' <li>By executing a synchronized instance method of that object.
 		''' <li>By executing the body of a {@code synchronized} statement
 		'''     that synchronizes on the object.
-		''' <li>For objects of type {@code Class,} by executing a
+		''' <li>For objects of type {@code [Class],} by executing a
 		'''     synchronized static method of that class.
 		''' </ul>
 		''' <p>

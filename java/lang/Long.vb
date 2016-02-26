@@ -776,7 +776,7 @@ Namespace java.lang
         ''' frequently requested values.
         ''' 
         ''' Note that unlike the {@link Integer#valueOf(int)
-        ''' corresponding method} in the {@code Integer} class, this method
+        ''' corresponding method} in the {@code Integer} [Class], this method
         ''' is <em>not</em> required to cache values within a particular
         ''' range.
         ''' </summary>

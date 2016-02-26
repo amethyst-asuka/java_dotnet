@@ -27,7 +27,7 @@ Namespace java.lang
 
 	''' <summary>
 	''' Thrown when an incompatible class change has occurred to some class
-	''' definition. The definition of some class, on which the currently
+	''' definition. The definition of some [Class], on which the currently
 	''' executing method depends, has since changed.
 	''' 
 	''' @author  unascribed

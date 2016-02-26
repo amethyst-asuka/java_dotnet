@@ -2309,7 +2309,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getObject(ByVal columnIndex As Integer, ByVal map As IDictionary(Of String, Class)) As Object
+		Function getObject(ByVal columnIndex As Integer, ByVal map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -2395,7 +2395,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.2 </exception>
-		Function getObject(ByVal columnLabel As String, ByVal map As IDictionary(Of String, Class)) As Object
+		Function getObject(ByVal columnLabel As String, ByVal map As IDictionary(Of String, [Class])) As Object
 
 		''' <summary>
 		''' Retrieves the value of the designated column in the current row
@@ -3868,7 +3868,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal columnIndex As Integer, ByVal type As Class) As T
+		  Function getObject(Of T)(ByVal columnIndex As Integer, ByVal type As [Class]) As T
 
 
 		''' <summary>
@@ -3898,7 +3898,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.7 </exception>
-		  Function getObject(Of T)(ByVal columnLabel As String, ByVal type As Class) As T
+		  Function getObject(Of T)(ByVal columnLabel As String, ByVal type As [Class]) As T
 
 		'------------------------- JDBC 4.2 -----------------------------------
 

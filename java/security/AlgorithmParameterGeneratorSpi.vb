@@ -28,7 +28,7 @@ Namespace java.security
 
 	''' <summary>
 	''' This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
-	''' for the {@code AlgorithmParameterGenerator} class, which
+	''' for the {@code AlgorithmParameterGenerator} [Class], which
 	''' is used to generate a set of parameters to be used with a certain algorithm.
 	''' 
 	''' <p> All the abstract methods in this class must be implemented by each

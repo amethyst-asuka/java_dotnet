@@ -30,7 +30,7 @@ Namespace java.awt.geom
 
 	''' <summary>
 	''' This <code>Line2D</code> represents a line segment in {@code (x,y)}
-	''' coordinate space.  This class, like all of the Java 2D API, uses a
+	''' coordinate space.  This [Class], like all of the Java 2D API, uses a
 	''' default coordinate system called <i>user space</i> in which the y-axis
 	''' values increase downward and x-axis values increase to the right.  For
 	''' more information on the user space coordinate system, see the

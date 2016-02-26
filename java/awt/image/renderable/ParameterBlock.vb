@@ -655,10 +655,10 @@ Namespace java.awt.image.renderable
 		''' Returns an array of Class objects describing the types
 		''' of the parameters. </summary>
 		''' <returns> an array of <code>Class</code> objects. </returns>
-		Public Overridable Property paramClasses As Class()
+		Public Overridable Property paramClasses As  [Class]()
 			Get
 				Dim numParams As Integer = numParameters
-				Dim classes As Class() = New [Class](numParams - 1){}
+				Dim classes As  [Class]() = New [Class](numParams - 1){}
 				Dim i As Integer
     
 				For i = 0 To numParams - 1

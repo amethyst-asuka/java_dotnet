@@ -1898,7 +1898,7 @@ Namespace java.awt
 		''' <seealso cref= #getContainerListeners
 		''' 
 		''' @since 1.3 </seealso>
-		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overrides Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ContainerListener) Then
 				l = containerListener
@@ -3063,7 +3063,7 @@ Namespace java.awt
 
 		''' <summary>
 		''' Adds a PropertyChangeListener to the listener list. The listener is
-		''' registered for all bound properties of this class, including the
+		''' registered for all bound properties of this [Class], including the
 		''' following:
 		''' <ul>
 		'''    <li>this Container's font ("font")</li>

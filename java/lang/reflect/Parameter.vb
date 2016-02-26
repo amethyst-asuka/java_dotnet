@@ -216,9 +216,9 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <returns> a {@code Class} object identifying the declared
 		''' type of the parameter represented by this object </returns>
-		Public Property type As Class
+		Public Property type As  [Class]
 			Get
-				Dim tmp As Class = parameterClassCache
+				Dim tmp As  [Class] = parameterClassCache
 				If Nothing Is tmp Then
 					tmp = executable.parameterTypes(index)
 					parameterClassCache = tmp
@@ -243,7 +243,7 @@ Namespace java.lang.reflect
 
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 		<NonSerialized> _
-		Private parameterClassCache As Class = Nothing
+		Private parameterClassCache As  [Class] = Nothing
 
 		''' <summary>
 		''' Returns {@code true} if this parameter is implicitly declared
@@ -289,7 +289,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T Implements AnnotatedElement.getAnnotation
+		Public Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getAnnotation
 			java.util.Objects.requireNonNull(annotationClass)
 			Return annotationClass.cast(declaredAnnotations().get(annotationClass))
 		End Function
@@ -297,7 +297,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As Class) As T() Implements AnnotatedElement.getAnnotationsByType
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getAnnotationsByType
 			java.util.Objects.requireNonNull(annotationClass)
 
 			Return sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass)
@@ -313,7 +313,7 @@ Namespace java.lang.reflect
 		End Property
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Function getDeclaredAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T Implements AnnotatedElement.getDeclaredAnnotation
+		Public Function getDeclaredAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T Implements AnnotatedElement.getDeclaredAnnotation
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotation is the same as
 			' getAnnotation.
@@ -321,7 +321,7 @@ Namespace java.lang.reflect
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(ByVal annotationClass As Class) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
+		Public Overrides Function getDeclaredAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T() Implements AnnotatedElement.getDeclaredAnnotationsByType
 			' Only annotations on classes are inherited, for all other
 			' objects getDeclaredAnnotations is the same as
 			' getAnnotations.

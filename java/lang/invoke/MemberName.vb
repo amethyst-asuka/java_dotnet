@@ -37,7 +37,7 @@ Namespace java.lang.invoke
 	''' a method or field reference.
 	''' A member name refers to a field, method, constructor, or member type.
 	''' Every member name has a simple name (a string) and a type (either a Class or MethodType).
-	''' A member name may also have a non-null declaring class, or it may be simply
+	''' A member name may also have a non-null declaring [Class], or it may be simply
 	''' a naked name/type pair.
 	''' A member name may also have non-zero modifier flags.
 	''' Finally, a member name may be either resolved or unresolved.
@@ -63,7 +63,7 @@ Namespace java.lang.invoke
 	 Friend NotInheritable Class MemberName
 		 Implements Member, Cloneable
 
-		Private clazz As Class ' class in which the method is defined
+		Private clazz As  [Class] ' class in which the method is defined
 		Private name As String ' may be null if not yet materialized
 		Private type As Object ' may be null if not yet materialized
 		Private flags As Integer ' modifier bits; see reflect.Modifier
@@ -75,7 +75,7 @@ Namespace java.lang.invoke
 		''' Return the declaring class of this member.
 		'''  In the case of a bare name and type, the declaring class will be null.
 		''' </summary>
-		Public Property declaringClass As Class Implements Member.getDeclaringClass
+		Public Property declaringClass As  [Class] Implements Member.getDeclaringClass
 			Get
 				Return clazz
 			End Get
@@ -83,7 +83,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Utility method producing the class loader of the declaring class. </summary>
-		Public Property classLoader As ClassLoader
+		Public Property classLoader As  [Class]Loader
 			Get
 				Return clazz.classLoader
 			End Get
@@ -138,8 +138,8 @@ Namespace java.lang.invoke
 						type = res
 					ElseIf TypeOf type Is Object() Then
 						Dim typeInfo As Object() = CType(type, Object())
-						Dim ptypes As Class() = CType(typeInfo(1), Class())
-						Dim rtype As Class = CType(typeInfo(0), [Class])
+						Dim ptypes As  [Class]() = CType(typeInfo(1), Class())
+						Dim rtype As  [Class] = CType(typeInfo(0), [Class])
 						Dim res As MethodType = MethodType.methodType(rtype, ptypes)
 						type = res
 					End If
@@ -166,7 +166,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Utility method producing the parameter types of the method type. </summary>
-		Public Property parameterTypes As Class()
+		Public Property parameterTypes As  [Class]()
 			Get
 				Return methodType.parameterArray()
 			End Get
@@ -174,7 +174,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Utility method producing the return type of the method type. </summary>
-		Public Property returnType As Class
+		Public Property returnType As  [Class]
 			Get
 				Return methodType.returnType()
 			End Get
@@ -185,13 +185,13 @@ Namespace java.lang.invoke
 		'''  must be a field or type.
 		'''  If it is a type member, that type itself is returned.
 		''' </summary>
-		Public Property fieldType As Class
+		Public Property fieldType As  [Class]
 			Get
 				If type Is Nothing Then
 					expandFromVM()
 					If type Is Nothing Then Return Nothing
 				End If
-				If invocable Then Throw newIllegalArgumentException("not a field or nested class, no simple type")
+				If invocable Then Throw newIllegalArgumentException("not a field or nested [Class], no simple type")
     
 					' Get a snapshot of type which doesn't get changed by racing threads.
 					Dim type_Renamed As Object = Me.type
@@ -202,11 +202,11 @@ Namespace java.lang.invoke
 					If TypeOf type Is String Then
 						Dim sig As String = CStr(type)
 						Dim mtype As MethodType = MethodType.fromMethodDescriptorString("()" & sig, classLoader)
-						Dim res As Class = mtype.returnType()
+						Dim res As  [Class] = mtype.returnType()
 						type = res
 					End If
 					' Make sure type is a Class for racing threads.
-					Debug.Assert(TypeOf type Is Class, "bad field type " & type)
+					Debug.Assert(TypeOf type Is [Class], "bad field type " & type)
 				End SyncLock
 				Return CType(type, [Class])
 			End Get
@@ -312,7 +312,7 @@ Namespace java.lang.invoke
 			Dim vmtarget As Object = CType(vminfo, Object())(1)
 			If MethodHandleNatives.refKindIsField(refKind) Then
 				assert(vmindex >= 0) : vmindex & ":" & Me
-				assert(TypeOf vmtarget Is Class)
+				assert(TypeOf vmtarget Is [Class])
 			Else
 				If MethodHandleNatives.refKindDoesDispatch(refKind) Then
 					assert(vmindex >= 0) : vmindex & ":" & Me
@@ -527,13 +527,13 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Utility method to query whether this member is accessible from a given lookup class. </summary>
-		Public Function isAccessibleFrom(ByVal lookupClass As Class) As Boolean
+		Public Function isAccessibleFrom(ByVal lookupClass As [Class]) As Boolean
 			Return sun.invoke.util.VerifyAccess.isMemberAccessible(Me.declaringClass, Me.declaringClass, flags, lookupClass, ALL_ACCESS Or MethodHandles.Lookup.PACKAGE)
 		End Function
 
 		''' <summary>
 		''' Initialize a query.   It is not resolved. </summary>
-		Private Sub init(ByVal defClass As Class, ByVal name As String, ByVal type As Object, ByVal flags As Integer)
+		Private Sub init(ByVal defClass As [Class], ByVal name As String, ByVal type As Object, ByVal flags As Integer)
 			' defining class is allowed to be null (for a naked name/type pair)
 			'name.toString();  // null check
 			'type.equals(type);  // null check
@@ -697,7 +697,7 @@ Namespace java.lang.invoke
 		End Function
 		''' <summary>
 		''' Create a name for the given class.  The resulting name will be in a resolved state. </summary>
-		Public Sub New(ByVal type As Class)
+		Public Sub New(ByVal type As [Class])
 			init(type.declaringClass, type.simpleName, type, flagsMods(IS_TYPE, type.modifiers, REF_NONE))
 			initResolved(True)
 		End Sub
@@ -772,36 +772,36 @@ Namespace java.lang.invoke
 		' Construction from symbolic parts, for queries:
 		''' <summary>
 		''' Create a field or type name from the given components:
-		'''  Declaring class, name, type, reference kind.
+		'''  Declaring [Class], name, type, reference kind.
 		'''  The declaring class may be supplied as null if this is to be a bare name and type.
 		'''  The resulting name will in an unresolved state.
 		''' </summary>
-		Public Sub New(ByVal defClass As Class, ByVal name As String, ByVal type As Class, ByVal refKind As SByte)
+		Public Sub New(ByVal defClass As [Class], ByVal name As String, ByVal type As [Class], ByVal refKind As SByte)
 			init(defClass, name, type, flagsMods(IS_FIELD, 0, refKind))
 			initResolved(False)
 		End Sub
 		''' <summary>
 		''' Create a method or constructor name from the given components:
-		'''  Declaring class, name, type, reference kind.
+		'''  Declaring [Class], name, type, reference kind.
 		'''  It will be a constructor if and only if the name is {@code "&lt;init&gt;"}.
 		'''  The declaring class may be supplied as null if this is to be a bare name and type.
 		'''  The last argument is optional, a boolean which requests REF_invokeSpecial.
 		'''  The resulting name will in an unresolved state.
 		''' </summary>
-		Public Sub New(ByVal defClass As Class, ByVal name As String, ByVal type As MethodType, ByVal refKind As SByte)
+		Public Sub New(ByVal defClass As [Class], ByVal name As String, ByVal type As MethodType, ByVal refKind As SByte)
 			Dim initFlags As Integer = (If(name IsNot Nothing AndAlso name.Equals(CONSTRUCTOR_NAME), IS_CONSTRUCTOR, IS_METHOD))
 			init(defClass, name, type, flagsMods(initFlags, 0, refKind))
 			initResolved(False)
 		End Sub
 		''' <summary>
 		''' Create a method, constructor, or field name from the given components:
-		'''  Reference kind, declaring class, name, type.
+		'''  Reference kind, declaring [Class], name, type.
 		''' </summary>
-		Public Sub New(ByVal refKind As SByte, ByVal defClass As Class, ByVal name As String, ByVal type As Object)
+		Public Sub New(ByVal refKind As SByte, ByVal defClass As [Class], ByVal name As String, ByVal type As Object)
 			Dim kindFlags As Integer
 			If MethodHandleNatives.refKindIsField(refKind) Then
 				kindFlags = IS_FIELD
-				If Not(TypeOf type Is Class) Then Throw newIllegalArgumentException("not a field type")
+				If Not(TypeOf type Is [Class]) Then Throw newIllegalArgumentException("not a field type")
 			ElseIf MethodHandleNatives.refKindIsMethod(refKind) Then
 				kindFlags = IS_METHOD
 				If Not(TypeOf type Is MethodType) Then Throw newIllegalArgumentException("not a method type")
@@ -852,7 +852,7 @@ Namespace java.lang.invoke
 				If sun.invoke.util.VerifyAccess.isTypeVisible(type_Renamed, clazz) Then Return
 				Throw New LinkageError("bad method type alias: " & type_Renamed & " not visible from " & clazz)
 			Else
-				Dim type_Renamed As Class
+				Dim type_Renamed As  [Class]
 				If TypeOf Me.type Is Class Then
 					type_Renamed = CType(Me.type, [Class])
 				Else
@@ -957,7 +957,7 @@ Namespace java.lang.invoke
 			Private Shared ALLOWED_FLAGS As Integer = ALL_KINDS
 
 			'/ Queries
-			Friend Overridable Function getMembers(ByVal defc As Class, ByVal matchName As String, ByVal matchType As Object, ByVal matchFlags As Integer, ByVal lookupClass As Class) As IList(Of MemberName)
+			Friend Overridable Function getMembers(ByVal defc As [Class], ByVal matchName As String, ByVal matchType As Object, ByVal matchFlags As Integer, ByVal lookupClass As [Class]) As IList(Of MemberName)
 				matchFlags = matchFlags And ALLOWED_FLAGS
 				Dim matchSig As String = Nothing
 				If matchType IsNot Nothing Then
@@ -1017,7 +1017,7 @@ Namespace java.lang.invoke
 			'''  If lookup fails or access is not permitted, null is returned.
 			'''  Otherwise a fresh copy of the given member is returned, with modifier bits filled in.
 			''' </summary>
-			Private Function resolve(ByVal refKind As SByte, ByVal ref As MemberName, ByVal lookupClass As Class) As MemberName
+			Private Function resolve(ByVal refKind As SByte, ByVal ref As MemberName, ByVal lookupClass As [Class]) As MemberName
 				Dim m As MemberName = ref.clone() ' JVM will side-effect the ref
 				assert(refKind = m.referenceKind)
 				Try
@@ -1042,7 +1042,7 @@ Namespace java.lang.invoke
 			'''  If lookup fails or access is not permitted, a <seealso cref="ReflectiveOperationException"/> is thrown.
 			'''  Otherwise a fresh copy of the given member is returned, with modifier bits filled in.
 			''' </summary>
-			Public Overridable Function resolveOrFail(Of NoSuchMemberException As ReflectiveOperationException)(ByVal refKind As SByte, ByVal m As MemberName, ByVal lookupClass As Class, ByVal nsmClass As Class) As MemberName
+			Public Overridable Function resolveOrFail(Of NoSuchMemberException As ReflectiveOperationException)(ByVal refKind As SByte, ByVal m As MemberName, ByVal lookupClass As [Class], ByVal nsmClass As [Class]) As MemberName
 				Dim result As MemberName = resolve(refKind, m, lookupClass)
 				If result.resolved Then Return result
 				Dim ex As ReflectiveOperationException = result.makeAccessException()
@@ -1056,7 +1056,7 @@ Namespace java.lang.invoke
 			'''  If lookup fails or access is not permitted, return null.
 			'''  Otherwise a fresh copy of the given member is returned, with modifier bits filled in.
 			''' </summary>
-			Public Overridable Function resolveOrNull(ByVal refKind As SByte, ByVal m As MemberName, ByVal lookupClass As Class) As MemberName
+			Public Overridable Function resolveOrNull(ByVal refKind As SByte, ByVal m As MemberName, ByVal lookupClass As [Class]) As MemberName
 				Dim result As MemberName = resolve(refKind, m, lookupClass)
 				If result.resolved Then Return result
 				Return Nothing
@@ -1067,7 +1067,7 @@ Namespace java.lang.invoke
 			'''  Access checking is performed on behalf of the given {@code lookupClass}.
 			'''  Inaccessible members are not added to the last.
 			''' </summary>
-			Public Overridable Function getMethods(ByVal defc As Class, ByVal searchSupers As Boolean, ByVal lookupClass As Class) As IList(Of MemberName)
+			Public Overridable Function getMethods(ByVal defc As [Class], ByVal searchSupers As Boolean, ByVal lookupClass As [Class]) As IList(Of MemberName)
 				Return getMethods(defc, searchSupers, Nothing, Nothing, lookupClass)
 			End Function
 			''' <summary>
@@ -1077,7 +1077,7 @@ Namespace java.lang.invoke
 			'''  Access checking is performed on behalf of the given {@code lookupClass}.
 			'''  Inaccessible members are not added to the last.
 			''' </summary>
-			Public Overridable Function getMethods(ByVal defc As Class, ByVal searchSupers As Boolean, ByVal name As String, ByVal type As MethodType, ByVal lookupClass As Class) As IList(Of MemberName)
+			Public Overridable Function getMethods(ByVal defc As [Class], ByVal searchSupers As Boolean, ByVal name As String, ByVal type As MethodType, ByVal lookupClass As [Class]) As IList(Of MemberName)
 				Dim matchFlags As Integer = IS_METHOD Or (If(searchSupers, SEARCH_ALL_SUPERS, 0))
 				Return getMembers(defc, name, type, matchFlags, lookupClass)
 			End Function
@@ -1086,7 +1086,7 @@ Namespace java.lang.invoke
 			'''  Access checking is performed on behalf of the given {@code lookupClass}.
 			'''  Inaccessible members are not added to the last.
 			''' </summary>
-			Public Overridable Function getConstructors(ByVal defc As Class, ByVal lookupClass As Class) As IList(Of MemberName)
+			Public Overridable Function getConstructors(ByVal defc As [Class], ByVal lookupClass As [Class]) As IList(Of MemberName)
 				Return getMembers(defc, Nothing, Nothing, IS_CONSTRUCTOR, lookupClass)
 			End Function
 			''' <summary>
@@ -1095,7 +1095,7 @@ Namespace java.lang.invoke
 			'''  Access checking is performed on behalf of the given {@code lookupClass}.
 			'''  Inaccessible members are not added to the last.
 			''' </summary>
-			Public Overridable Function getFields(ByVal defc As Class, ByVal searchSupers As Boolean, ByVal lookupClass As Class) As IList(Of MemberName)
+			Public Overridable Function getFields(ByVal defc As [Class], ByVal searchSupers As Boolean, ByVal lookupClass As [Class]) As IList(Of MemberName)
 				Return getFields(defc, searchSupers, Nothing, Nothing, lookupClass)
 			End Function
 			''' <summary>
@@ -1105,7 +1105,7 @@ Namespace java.lang.invoke
 			'''  Access checking is performed on behalf of the given {@code lookupClass}.
 			'''  Inaccessible members are not added to the last.
 			''' </summary>
-			Public Overridable Function getFields(ByVal defc As Class, ByVal searchSupers As Boolean, ByVal name As String, ByVal type As Class, ByVal lookupClass As Class) As IList(Of MemberName)
+			Public Overridable Function getFields(ByVal defc As [Class], ByVal searchSupers As Boolean, ByVal name As String, ByVal type As [Class], ByVal lookupClass As [Class]) As IList(Of MemberName)
 				Dim matchFlags As Integer = IS_FIELD Or (If(searchSupers, SEARCH_ALL_SUPERS, 0))
 				Return getMembers(defc, name, type, matchFlags, lookupClass)
 			End Function
@@ -1115,7 +1115,7 @@ Namespace java.lang.invoke
 			'''  Access checking is performed on behalf of the given {@code lookupClass}.
 			'''  Inaccessible members are not added to the last.
 			''' </summary>
-			Public Overridable Function getNestedTypes(ByVal defc As Class, ByVal searchSupers As Boolean, ByVal lookupClass As Class) As IList(Of MemberName)
+			Public Overridable Function getNestedTypes(ByVal defc As [Class], ByVal searchSupers As Boolean, ByVal lookupClass As [Class]) As IList(Of MemberName)
 				Dim matchFlags As Integer = IS_TYPE Or (If(searchSupers, SEARCH_ALL_SUPERS, 0))
 				Return getMembers(defc, Nothing, Nothing, matchFlags, lookupClass)
 			End Function

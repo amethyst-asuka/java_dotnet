@@ -43,7 +43,7 @@ Namespace java.security
 	''' 
 	''' <p> If no Policy object has been installed in the runtime, a call to
 	''' {@code getPolicy} installs an instance of the default Policy
-	''' implementation (a default subclass implementation of this abstract class).
+	''' implementation (a default subclass implementation of this abstract [Class]).
 	''' The default Policy implementation can be changed by setting the value
 	''' of the {@code policy.provider} security property to the fully qualified
 	''' name of the desired Policy subclass implementation.
@@ -60,7 +60,7 @@ Namespace java.security
 	''' can perform SecurityManager-protected operations.  How a Policy object
 	''' retrieves its policy data is up to the Policy implementation itself.
 	''' The policy data may be stored, for example, in a flat ASCII file,
-	''' in a serialized binary file of the Policy class, or in a database.
+	''' in a serialized binary file of the Policy [Class], or in a database.
 	''' 
 	''' <p> The {@code refresh} method causes the policy object to
 	''' refresh/reload its data.  This operation is implementation-dependent.
@@ -215,9 +215,9 @@ Namespace java.security
 
 			Public Overridable Function run() As Policy
 				Try
-					Dim cl As ClassLoader = ClassLoader.systemClassLoader
+					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 					' we want the extension loader
-					Dim extcl As ClassLoader = Nothing
+					Dim extcl As  [Class]Loader = Nothing
 					Do While cl IsNot Nothing
 						extcl = cl
 						cl = cl.parent

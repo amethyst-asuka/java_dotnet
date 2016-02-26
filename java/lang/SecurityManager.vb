@@ -294,7 +294,7 @@ Namespace java.lang
 		''' <returns>  the execution stack. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Protected Friend Function getClassContext() As Class()
+		Protected Friend Function getClassContext() As  [Class]()
 		End Function
 
 		''' <summary>
@@ -333,15 +333,15 @@ Namespace java.lang
 		''' <seealso cref=  java.lang.ClassLoader#getSystemClassLoader() getSystemClassLoader </seealso>
 		''' <seealso cref=  #checkPermission(java.security.Permission) checkPermission </seealso>
 		<Obsolete("This type of security checking is not recommended.")> _
-		Protected Friend Overridable Function currentClassLoader() As ClassLoader
-			Dim cl As ClassLoader = currentClassLoader0()
+		Protected Friend Overridable Function currentClassLoader() As  [Class]Loader
+			Dim cl As  [Class]Loader = currentClassLoader0()
 			If (cl IsNot Nothing) AndAlso hasAllPermission() Then cl = Nothing
 			Return cl
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function currentClassLoader0() As ClassLoader
+		Private Function currentClassLoader0() As  [Class]Loader
 		End Function
 
 		''' <summary>
@@ -380,8 +380,8 @@ Namespace java.lang
 		''' <seealso cref=  java.lang.ClassLoader#getSystemClassLoader() getSystemClassLoader </seealso>
 		''' <seealso cref=  #checkPermission(java.security.Permission) checkPermission </seealso>
 		<Obsolete("This type of security checking is not recommended.")> _
-		Protected Friend Overridable Function currentLoadedClass() As Class
-			Dim c As Class = currentLoadedClass0()
+		Protected Friend Overridable Function currentLoadedClass() As  [Class]
+			Dim c As  [Class] = currentLoadedClass0()
 			If (c IsNot Nothing) AndAlso hasAllPermission() Then c = Nothing
 			Return c
 		End Function
@@ -1598,10 +1598,10 @@ Namespace java.lang
 		''' <seealso cref=        #checkPermission(java.security.Permission) checkPermission </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<Obsolete("This method relies on the caller being at a stack depth")> _
-		Public Overridable Sub checkMemberAccess(ByVal clazz As Class, ByVal which As Integer)
+		Public Overridable Sub checkMemberAccess(ByVal clazz As [Class], ByVal which As Integer)
 			If clazz Is Nothing Then Throw New NullPointerException("class can't be null")
 			If which <> Member.PUBLIC Then
-				Dim stack As Class() = classContext
+				Dim stack As  [Class]() = classContext
 	'            
 	'             * stack depth of 4 should be the caller of one of the
 	'             * methods in java.lang.Class that invoke checkMember
@@ -1652,7 +1652,7 @@ Namespace java.lang
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function currentLoadedClass0() As Class
+		Private Function currentLoadedClass0() As  [Class]
 		End Function
 
 		''' <summary>

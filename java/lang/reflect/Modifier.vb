@@ -315,7 +315,7 @@ Namespace java.lang.reflect
 
 		' Bits not (yet) exposed in the public API either because they
 		' have different meanings for fields and methods and there is no
-		' way to distinguish between the two in this class, or because
+		' way to distinguish between the two in this [Class], or because
 		' they are not Java programming language keywords
 		Friend Const BRIDGE As Integer = &H40
 		Friend Const VARARGS As Integer = &H80

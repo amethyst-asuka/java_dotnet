@@ -296,14 +296,14 @@ Namespace java.net
 			Implements java.security.PrivilegedExceptionAction(Of T)
 
 			Public Overridable Function run() As Void
-				Dim cl As Class() = New [Class](0){}
+				Dim cl As  [Class]() = New [Class](0){}
 				cl(0) = GetType(DatagramPacket)
 				outerInstance.impl.GetType().getDeclaredMethod("peekData", cl)
 				Return Nothing
 			End Function
 		End Class
 
-		Friend Shared implClass As Class = Nothing
+		Friend Shared implClass As  [Class] = Nothing
 
 		Friend Overridable Sub createImpl()
 			If impl Is Nothing Then

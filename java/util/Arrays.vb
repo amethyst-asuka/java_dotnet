@@ -110,7 +110,7 @@ Namespace java.util
 	'     * same form: Performing argument checks if necessary, and then
 	'     * expanding arguments into those required for the internal
 	'     * implementation methods residing in other package-private
-	'     * classes (except for legacyMergeSort, included in this class).
+	'     * classes (except for legacyMergeSort, included in this [Class]).
 	'     
 
 		''' <summary>
@@ -3088,7 +3088,7 @@ Namespace java.util
 		'''     <tt>original</tt> is not of a runtime type that can be stored in
 		'''     an array of class <tt>newType</tt>
 		''' @since 1.6 </exception>
-		Public Shared Function copyOf(Of T, U)(ByVal original As U(), ByVal newLength As Integer, ByVal newType As Class) As T()
+		Public Shared Function copyOf(Of T, U)(ByVal original As U(), ByVal newLength As Integer, ByVal newType As [Class]) As T()
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim copy As T() = If(CObj(newType) Is GetType(CObj(Object())), CType(New Object(newLength - 1){}, T()), CType(Array.newInstance(newType.componentType, newLength), T()))
 			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
@@ -3336,7 +3336,7 @@ Namespace java.util
 		'''     <tt>original</tt> is not of a runtime type that can be stored in
 		'''     an array of class <tt>newType</tt>.
 		''' @since 1.6 </exception>
-		Public Shared Function copyOfRange(Of T, U)(ByVal original As U(), ByVal [from] As Integer, ByVal [to] As Integer, ByVal newType As Class) As T()
+		Public Shared Function copyOfRange(Of T, U)(ByVal original As U(), ByVal [from] As Integer, ByVal [to] As Integer, ByVal newType As [Class]) As T()
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -4423,7 +4423,7 @@ Namespace java.util
 				If element Is Nothing Then
 					buf.append("null")
 				Else
-					Dim eClass As Class = element.GetType()
+					Dim eClass As  [Class] = element.GetType()
 
 					If eClass.array Then
 						If eClass Is GetType(SByte()) Then

@@ -146,7 +146,7 @@ Namespace java.nio.file.attribute
 			End Function
 
 			' check set only contains elements of the given type
-			Private Shared Sub checkSet(Of T1)(ByVal [set] As [Set](Of T1), ByVal type As Class)
+			Private Shared Sub checkSet(Of T1)(ByVal [set] As [Set](Of T1), ByVal type As [Class])
 				For Each e As Object In [set]
 					If e Is Nothing Then Throw New NullPointerException
 					type.cast(e)

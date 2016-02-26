@@ -32,7 +32,7 @@ Namespace java.awt.dnd
 	''' defines a <code>DragGestureRecognizer</code>
 	''' for mouse-based gestures.
 	''' 
-	''' Each platform implements its own concrete subclass of this class,
+	''' Each platform implements its own concrete subclass of this [Class],
 	''' available via the Toolkit.createDragGestureRecognizer() method,
 	''' to encapsulate
 	''' the recognition of the platform dependent mouse gesture(s) that initiate

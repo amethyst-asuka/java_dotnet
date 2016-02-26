@@ -71,7 +71,7 @@ Namespace java.awt.print
 				Dim nm As String = System.getProperty("java.awt.printerjob", Nothing)
 				Try
 					Return CType(Type.GetType(nm).newInstance(), PrinterJob)
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					Throw New java.awt.AWTError("PrinterJob not found: " & nm)
 				Catch e As InstantiationException
 				 Throw New java.awt.AWTError("Could not instantiate PrinterJob: " & nm)

@@ -1106,7 +1106,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(Phaser)
+				Dim k As  [Class] = GetType(Phaser)
 				stateOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("state"))
 			Catch e As Exception
 				Throw New [Error](e)

@@ -42,7 +42,7 @@ Namespace java.lang.invoke
 	''' <li>By calling one of the <a href="MethodHandles.Lookup.html#lookups">Lookup Factory Methods</a>,
 	'''     such as <seealso cref="Lookup#findVirtual Lookup.findVirtual"/>,
 	'''     to resolve a symbolic reference into a method handle.
-	'''     A symbolic reference consists of a class, name string, and type.
+	'''     A symbolic reference consists of a [Class], name string, and type.
 	''' <li>By calling the factory method <seealso cref="Lookup#unreflect Lookup.unreflect"/>
 	'''     or <seealso cref="Lookup#unreflectSpecial Lookup.unreflectSpecial"/>
 	'''     to convert a <seealso cref="Method"/> into a method handle.
@@ -61,7 +61,7 @@ Namespace java.lang.invoke
 	''' an equivalent method handle.
 	''' <p>
 	''' If the underlying method is <a href="MethodHandles.Lookup.html#callsens">caller sensitive</a>,
-	''' the direct method handle will have been "bound" to a particular caller class, the
+	''' the direct method handle will have been "bound" to a particular caller [Class], the
 	''' <seealso cref="java.lang.invoke.MethodHandles.Lookup#lookupClass() lookup class"/>
 	''' of the lookup object used to create it.
 	''' Cracking this method handle with a different lookup class will fail
@@ -135,7 +135,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Returns the class in which the cracked method handle's underlying member was defined. </summary>
 		''' <returns> the declaring class of the underlying member </returns>
-		ReadOnly Property declaringClass As Class
+		ReadOnly Property declaringClass As  [Class]
 
 		''' <summary>
 		''' Returns the name of the cracked method handle's underlying member.
@@ -179,7 +179,7 @@ Namespace java.lang.invoke
 		''' <exception cref="ClassCastException"> if the member is not of the expected type </exception>
 		''' <exception cref="NullPointerException"> if either argument is {@code null} </exception>
 		''' <exception cref="IllegalArgumentException"> if the underlying member is not accessible to the given lookup object </exception>
-		 Function reflectAs(Of T As Member)(ByVal expected As Class, ByVal lookup As Lookup) As T
+		 Function reflectAs(Of T As Member)(ByVal expected As [Class], ByVal lookup As Lookup) As T
 
 		''' <summary>
 		''' Returns the access modifiers of the underlying member. </summary>
@@ -255,7 +255,7 @@ Namespace java.lang.invoke
 		''' <exception cref="IllegalArgumentException"> if the first argument is not a valid
 		'''            <a href="MethodHandleInfo.html#refkinds">reference kind number</a> </exception>
 		''' <exception cref="NullPointerException"> if any reference argument is {@code null} </exception>
-		Shared Function ToString(ByVal kind As Integer, ByVal defc As Class, ByVal name As String, ByVal type As MethodType) As String
+		Shared Function ToString(ByVal kind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As MethodType) As String
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Objects.requireNonNull(name);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

@@ -507,7 +507,7 @@ Namespace java.util.concurrent
 
 			Private ReadOnly task As Callable(Of T)
 			Private ReadOnly acc As java.security.AccessControlContext
-			Private ReadOnly ccl As ClassLoader
+			Private ReadOnly ccl As  [Class]Loader
 
 			Friend Sub New(ByVal task As Callable(Of T))
 				Dim sm As SecurityManager = System.securityManager
@@ -539,7 +539,7 @@ Namespace java.util.concurrent
 
 				Public Overridable Function run() As T
 					Dim t As Thread = Thread.CurrentThread
-					Dim cl As ClassLoader = t.contextClassLoader
+					Dim cl As  [Class]Loader = t.contextClassLoader
 					If outerInstance.ccl Is cl Then
 						Return outerInstance.task.call()
 					Else
@@ -586,7 +586,7 @@ Namespace java.util.concurrent
 			Inherits DefaultThreadFactory
 
 			Private ReadOnly acc As java.security.AccessControlContext
-			Private ReadOnly ccl As ClassLoader
+			Private ReadOnly ccl As  [Class]Loader
 
 			Friend Sub New()
 				MyBase.New()

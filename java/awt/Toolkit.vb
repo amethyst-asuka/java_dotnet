@@ -704,20 +704,20 @@ Namespace java.awt
 		Private Shared Sub loadAssistiveTechnologies()
 			' Load any assistive technologies
 			If atNames IsNot Nothing Then
-				Dim cl As ClassLoader = ClassLoader.systemClassLoader
+				Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 				Dim parser As New StringTokenizer(atNames," ,")
 				Dim atName As String
 				Do While parser.hasMoreTokens()
 					atName = parser.nextToken()
 					Try
-						Dim clazz As Class
+						Dim clazz As  [Class]
 						If cl IsNot Nothing Then
 							clazz = cl.loadClass(atName)
 						Else
 							clazz = Type.GetType(atName)
 						End If
 						clazz.newInstance()
-					Catch e As ClassNotFoundException
+					Catch e As  [Class]NotFoundException
 						Throw New AWTError("Assistive Technology not found: " & atName)
 					Catch e As InstantiationException
 						Throw New AWTError("Could not instantiate Assistive" & " Technology: " & atName)
@@ -773,16 +773,16 @@ Namespace java.awt
 			Implements PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Void
-				Dim cls As Class = Nothing
+				Dim cls As  [Class] = Nothing
 				Dim nm As String = System.getProperty("awt.toolkit")
 				Try
 					cls = Type.GetType(nm)
-				Catch e As ClassNotFoundException
-					Dim cl As ClassLoader = ClassLoader.systemClassLoader
+				Catch e As  [Class]NotFoundException
+					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 					If cl IsNot Nothing Then
 						Try
 							cls = cl.loadClass(nm)
-						Catch ignored As ClassNotFoundException
+						Catch ignored As  [Class]NotFoundException
 							Throw New AWTError("Toolkit not found: " & nm)
 						End Try
 					End If
@@ -1232,7 +1232,7 @@ Namespace java.awt
 		''' key for menu shortcuts.
 		''' <p>
 		''' Menu shortcuts, which are embodied in the
-		''' <code>MenuShortcut</code> class, are handled by the
+		''' <code>MenuShortcut</code> [Class], are handled by the
 		''' <code>MenuBar</code> class.
 		''' <p>
 		''' By default, this method returns <code>Event.CTRL_MASK</code>.
@@ -1637,7 +1637,7 @@ Namespace java.awt
 		''' <returns> the new object or null.  Always returns null if
 		''' GraphicsEnvironment.isHeadless() returns true. </returns>
 		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		Public Overridable Function createDragGestureRecognizer(Of T As java.awt.dnd.DragGestureRecognizer)(ByVal abstractRecognizerClass As Class, ByVal ds As java.awt.dnd.DragSource, ByVal c As Component, ByVal srcActions As Integer, ByVal dgl As java.awt.dnd.DragGestureListener) As T
+		Public Overridable Function createDragGestureRecognizer(Of T As java.awt.dnd.DragGestureRecognizer)(ByVal abstractRecognizerClass As [Class], ByVal ds As java.awt.dnd.DragSource, ByVal c As Component, ByVal srcActions As Integer, ByVal dgl As java.awt.dnd.DragGestureListener) As T
 			Return Nothing
 		End Function
 

@@ -65,7 +65,7 @@ Namespace java.lang.invoke
 			End Get
 		End Property
 
-		Friend Overrides Function internalCallerClass() As Class
+		Friend Overrides Function internalCallerClass() As  [Class]
 			Return target.internalCallerClass()
 		End Function
 

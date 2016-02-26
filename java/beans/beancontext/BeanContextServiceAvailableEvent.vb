@@ -46,7 +46,7 @@ Namespace java.beans.beancontext
 		''' Construct a <code>BeanContextAvailableServiceEvent</code>. </summary>
 		''' <param name="bcs"> The context in which the service has become available </param>
 		''' <param name="sc"> A <code>Class</code> reference to the newly available service </param>
-		Public Sub New(ByVal bcs As java.beans.beancontext.BeanContextServices, ByVal sc As Class)
+		Public Sub New(ByVal bcs As java.beans.beancontext.BeanContextServices, ByVal sc As [Class])
 			MyBase.New(CType(bcs, BeanContext))
 
 			serviceClass = sc
@@ -64,7 +64,7 @@ Namespace java.beans.beancontext
 		''' <summary>
 		''' Gets the service class that is the subject of this notification. </summary>
 		''' <returns> A <code>Class</code> reference to the newly available service </returns>
-		Public Overridable Property serviceClass As Class
+		Public Overridable Property serviceClass As  [Class]
 			Get
 				Return serviceClass
 			End Get
@@ -86,7 +86,7 @@ Namespace java.beans.beancontext
 		''' <summary>
 		''' A <code>Class</code> reference to the newly available service
 		''' </summary>
-		Protected Friend serviceClass As Class
+		Protected Friend serviceClass As  [Class]
 	End Class
 
 End Namespace

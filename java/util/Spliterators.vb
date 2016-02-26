@@ -1210,11 +1210,11 @@ Namespace java.util
 		''' possible or difficult to efficiently partition elements in a manner
 		''' allowing balanced parallel computation.
 		''' 
-		''' <p>An alternative to using this class, that also permits limited
+		''' <p>An alternative to using this [Class], that also permits limited
 		''' parallelism, is to create a spliterator from an iterator
 		''' (see <seealso cref="#spliterator(Iterator, long, int)"/>.  Depending on the
 		''' circumstances using an iterator may be easier or more convenient than
-		''' extending this class, such as when there is already an iterator
+		''' extending this [Class], such as when there is already an iterator
 		''' available to use.
 		''' </summary>
 		''' <seealso cref= #spliterator(Iterator, long, int)
@@ -1329,7 +1329,7 @@ Namespace java.util
 		''' possible or difficult to efficiently partition elements in a manner
 		''' allowing balanced parallel computation.
 		''' 
-		''' <p>An alternative to using this class, that also permits limited
+		''' <p>An alternative to using this [Class], that also permits limited
 		''' parallelism, is to create a spliterator from an iterator
 		''' (see <seealso cref="#spliterator(java.util.PrimitiveIterator.OfInt, long, int)"/>.
 		''' Depending on the circumstances using an iterator may be easier or more
@@ -1435,7 +1435,7 @@ Namespace java.util
 		''' possible or difficult to efficiently partition elements in a manner
 		''' allowing balanced parallel computation.
 		''' 
-		''' <p>An alternative to using this class, that also permits limited
+		''' <p>An alternative to using this [Class], that also permits limited
 		''' parallelism, is to create a spliterator from an iterator
 		''' (see <seealso cref="#spliterator(java.util.PrimitiveIterator.OfLong, long, int)"/>.
 		''' Depending on the circumstances using an iterator may be easier or more
@@ -1541,7 +1541,7 @@ Namespace java.util
 		''' possible or difficult to efficiently partition elements in a manner
 		''' allowing balanced parallel computation.
 		''' 
-		''' <p>An alternative to using this class, that also permits limited
+		''' <p>An alternative to using this [Class], that also permits limited
 		''' parallelism, is to create a spliterator from an iterator
 		''' (see <seealso cref="#spliterator(java.util.PrimitiveIterator.OfDouble, long, int)"/>.
 		''' Depending on the circumstances using an iterator may be easier or more

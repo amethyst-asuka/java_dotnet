@@ -44,7 +44,7 @@ Namespace java.beans
 
 		Private listenerMethodsRef As Reference(Of Method())
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private listenerTypeRef As Reference(Of ? As Class)
+		Private listenerTypeRef As Reference(Of ? As [Class])
 
 		Private unicast As Boolean
 		Private inDefaultEventSet As Boolean = True
@@ -67,19 +67,19 @@ Namespace java.beans
 		'''          delivered to its target listener interface. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal sourceClass As Class, ByVal eventSetName As String, ByVal listenerType As Class, ByVal listenerMethodName As String)
+		Public Sub New(ByVal sourceClass As [Class], ByVal eventSetName As String, ByVal listenerType As [Class], ByVal listenerMethodName As String)
 			Me.New(sourceClass, eventSetName, listenerType, New String() { listenerMethodName }, Introspector.ADD_PREFIX + getListenerClassName(listenerType), Introspector.REMOVE_PREFIX + getListenerClassName(listenerType), Introspector.GET_PREFIX + getListenerClassName(listenerType) & "s")
 
 			Dim eventName As String = NameGenerator.capitalize(eventSetName) & "Event"
 			Dim listenerMethods_Renamed As Method() = listenerMethods
 			If listenerMethods_Renamed.Length > 0 Then
-				Dim args As Class() = getParameterTypes(class0, listenerMethods_Renamed(0))
+				Dim args As  [Class]() = getParameterTypes(class0, listenerMethods_Renamed(0))
 				' Check for EventSet compliance. Special case for vetoableChange. See 4529996
 				If (Not "vetoableChange".Equals(eventSetName)) AndAlso (Not args(0).name.EndsWith(eventName)) Then Throw New IntrospectionException("Method """ & listenerMethodName & """ should have argument """ & eventName & """")
 			End If
 		End Sub
 
-		Private Shared Function getListenerClassName(ByVal cls As Class) As String
+		Private Shared Function getListenerClassName(ByVal cls As [Class]) As String
 			Dim className As String = cls.name
 			Return className.Substring(className.LastIndexOf("."c) + 1)
 		End Function

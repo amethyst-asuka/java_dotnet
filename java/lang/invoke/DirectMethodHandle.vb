@@ -59,7 +59,7 @@ Namespace java.lang.invoke
 		End Sub
 
 		' Factory methods:
-		Shared Function make(ByVal refKind As SByte, ByVal receiver As Class, ByVal member As MemberName) As DirectMethodHandle
+		Shared Function make(ByVal refKind As SByte, ByVal receiver As [Class], ByVal member As MemberName) As DirectMethodHandle
 			Dim mtype As MethodType = member.methodOrFieldType
 			If Not member.static Then
 				If (Not receiver.IsSubclassOf(member.declaringClass)) OrElse member.constructor Then Throw New InternalError(member.ToString())
@@ -87,7 +87,7 @@ Namespace java.lang.invoke
 				End If
 			End If
 		End Function
-		Shared Function make(ByVal receiver As Class, ByVal member As MemberName) As DirectMethodHandle
+		Shared Function make(ByVal receiver As [Class], ByVal member As MemberName) As DirectMethodHandle
 			Dim refKind As SByte = member.referenceKind
 			If refKind = REF_invokeSpecial Then refKind = REF_invokeVirtual
 			Return make(refKind, receiver, member)
@@ -104,7 +104,7 @@ Namespace java.lang.invoke
 		End Function
 		Private Shared Function makeAllocator(ByVal ctor As MemberName) As DirectMethodHandle
 			assert(ctor.constructor AndAlso ctor.name.Equals("<init>"))
-			Dim instanceClass As Class = ctor.declaringClass
+			Dim instanceClass As  [Class] = ctor.declaringClass
 			ctor = ctor.asConstructor()
 			assert(ctor.constructor AndAlso ctor.referenceKind = REF_newInvokeSpecial) : ctor
 			Dim mtype As MethodType = ctor.methodType.changeReturnType(instanceClass)
@@ -289,7 +289,7 @@ Namespace java.lang.invoke
 				' No need to initialize the class on this kind of member.
 				Return False
 			End Select
-			Dim cls As Class = member.declaringClass
+			Dim cls As  [Class] = member.declaringClass
 			If cls Is GetType(sun.invoke.util.ValueConversions) OrElse cls Is GetType(MethodHandleImpl) OrElse cls Is GetType(Invokers) Then Return False
 			If sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls) OrElse sun.invoke.util.VerifyAccess.isSamePackage(GetType(sun.invoke.util.ValueConversions), cls) Then
 				' It is a system class.  It is probably in the process of
@@ -303,7 +303,7 @@ Namespace java.lang.invoke
 		Private Class EnsureInitialized
 			Inherits ClassValue(Of WeakReference(Of Thread))
 
-			Protected Friend Overrides Function computeValue(ByVal type As Class) As WeakReference(Of Thread)
+			Protected Friend Overrides Function computeValue(ByVal type As [Class]) As WeakReference(Of Thread)
 				UNSAFE.ensureClassInitialized(type)
 				If UNSAFE.shouldBeInitialized(type) Then Return New WeakReference(Of )(Thread.CurrentThread)
 				Return Nothing
@@ -322,7 +322,7 @@ Namespace java.lang.invoke
 			End If
 		End Sub
 		Private Shared Function checkInitialized(ByVal member As MemberName) As Boolean
-			Dim defc As Class = member.declaringClass
+			Dim defc As  [Class] = member.declaringClass
 			Dim ref As WeakReference(Of Thread) = EnsureInitialized.INSTANCE.get(defc)
 			If ref Is Nothing Then Return True ' the final state
 			Dim clinitThread As Thread = ref.get()
@@ -369,9 +369,9 @@ Namespace java.lang.invoke
 			Inherits DirectMethodHandle
 
 			Friend ReadOnly initMethod As MemberName
-			Friend ReadOnly instanceClass As Class
+			Friend ReadOnly instanceClass As  [Class]
 
-			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal constructor As MemberName, ByVal initMethod As MemberName, ByVal instanceClass As Class)
+			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal constructor As MemberName, ByVal initMethod As MemberName, ByVal instanceClass As [Class])
 				MyBase.New(mtype, form, constructor)
 				Me.initMethod = initMethod
 				Me.instanceClass = instanceClass
@@ -399,7 +399,7 @@ Namespace java.lang.invoke
 		Friend Class Accessor
 			Inherits DirectMethodHandle
 
-			Friend ReadOnly fieldType As Class
+			Friend ReadOnly fieldType As  [Class]
 			Friend ReadOnly fieldOffset As Integer
 			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal member As MemberName, ByVal fieldOffset As Integer)
 				MyBase.New(mtype, form, member)
@@ -442,7 +442,7 @@ Namespace java.lang.invoke
 		Friend Class StaticAccessor
 			Inherits DirectMethodHandle
 
-			Private ReadOnly fieldType As Class
+			Private ReadOnly fieldType As  [Class]
 			Private ReadOnly staticBase As Object
 			Private ReadOnly staticOffset As Long
 
@@ -499,7 +499,7 @@ Namespace java.lang.invoke
 			Return ((formOp * FT_LIMIT * 2) + (If(isVolatile, FT_LIMIT, 0)) + ftypeKind)
 		End Function
 		Private Shared ReadOnly ACCESSOR_FORMS As LambdaForm() = New LambdaForm(afIndex(AF_LIMIT, False, 0) - 1){}
-		Private Shared Function ftypeKind(ByVal ftype As Class) As Integer
+		Private Shared Function ftypeKind(ByVal ftype As [Class]) As Integer
 			If ftype.primitive Then
 				Return sun.invoke.util.Wrapper.forPrimitiveType(ftype).ordinal()
 			ElseIf sun.invoke.util.VerifyType.isNullReferenceConversion(GetType(Object), ftype) Then
@@ -515,7 +515,7 @@ Namespace java.lang.invoke
 		''' the same basicType and refKind.
 		''' </summary>
 		Private Shared Function preparedFieldLambdaForm(ByVal m As MemberName) As LambdaForm
-			Dim ftype As Class = m.fieldType
+			Dim ftype As  [Class] = m.fieldType
 			Dim isVolatile As Boolean = m.volatile
 			Dim formOp As SByte
 			Select Case m.referenceKind
@@ -541,7 +541,7 @@ Namespace java.lang.invoke
 			assert(lform.methodType().dropParameterTypes(0, 1).Equals(m.invocationType.basicType())) : java.util.Arrays.asList(m, m.invocationType.basicType(), lform, lform.methodType())
 			Return lform
 		End Function
-		Private Shared Function preparedFieldLambdaForm(ByVal formOp As SByte, ByVal isVolatile As Boolean, ByVal ftype As Class) As LambdaForm
+		Private Shared Function preparedFieldLambdaForm(ByVal formOp As SByte, ByVal isVolatile As Boolean, ByVal ftype As [Class]) As LambdaForm
 			Dim afIndex As Integer = afIndex(formOp, isVolatile, ftypeKind(ftype))
 			Dim lform As LambdaForm = ACCESSOR_FORMS(afIndex)
 			If lform IsNot Nothing Then Return lform
@@ -556,7 +556,7 @@ Namespace java.lang.invoke
 			Dim needsInit As Boolean = (formOp >= AF_GETSTATIC_INIT)
 			Dim needsCast As Boolean = (ftypeKind = FT_CHECKED_REF)
 			Dim fw As sun.invoke.util.Wrapper = (If(needsCast, sun.invoke.util.Wrapper.OBJECT, sun.invoke.util.Wrapper.values()(ftypeKind)))
-			Dim ft As Class = fw.primitiveType()
+			Dim ft As  [Class] = fw.primitiveType()
 			assert(ftypeKind(If(needsCast, GetType(String), ft)) = ftypeKind)
 			Dim tname As String = fw.primitiveSimpleName()
 			Dim ctname As String = Char.ToUpper(tname.Chars(0)) + tname.Substring(1)

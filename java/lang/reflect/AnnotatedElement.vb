@@ -70,7 +70,7 @@ Namespace java.lang.reflect
 	''' <li><i>A</i> is directly present on <i>E</i>; or
 	''' 
 	''' <li>No annotation of <i>A</i> 's type is directly present on
-	''' <i>E</i>, and <i>E</i> is a class, and <i>A</i> 's type is
+	''' <i>E</i>, and <i>E</i> is a [Class], and <i>A</i> 's type is
 	''' inheritable, and <i>A</i> is present on the superclass of <i>E</i>.
 	''' 
 	''' </ul>
@@ -83,7 +83,7 @@ Namespace java.lang.reflect
 	''' <li><i>A</i> is directly or indirectly present on <i>E</i>; or
 	''' 
 	''' <li>No annotation of <i>A</i> 's type is directly or indirectly
-	''' present on <i>E</i>, and <i>E</i> is a class, and <i>A</i>'s type
+	''' present on <i>E</i>, and <i>E</i> is a [Class], and <i>A</i>'s type
 	''' is inheritable, and <i>A</i> is associated with the superclass of
 	''' <i>E</i>.
 	''' 
@@ -241,7 +241,7 @@ Namespace java.lang.reflect
 		'''     type is present on this element, else false </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.5 </exception>
-		default Function isAnnotationPresent(ByVal annotationClass As Class) As Boolean
+		default Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			Return getAnnotation(annotationClass) != Nothing;
 
@@ -256,7 +256,7 @@ Namespace java.lang.reflect
 	   '''     present on this element, else null </returns>
 	   ''' <exception cref="NullPointerException"> if the given annotation class is null
 	   ''' @since 1.5 </exception>
-		 Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T
+		 Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
 
 		''' <summary>
 		''' Returns annotations that are <em>present</em> on this element.
@@ -305,11 +305,11 @@ Namespace java.lang.reflect
 		'''     associated with this element, else an array of length zero </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.8 </exception>
-		default Function getAnnotationsByType(ByVal annotationClass As Class) As T(Of T As Annotation)()
+		default Function getAnnotationsByType(ByVal annotationClass As [Class]) As T(Of T As Annotation)()
 	'         
 	'          * Definition of associated: directly or indirectly present OR
 	'          * neither directly nor indirectly present AND the element is
-	'          * a Class, the annotation type is inheritable, and the
+	'          * a [Class], the annotation type is inheritable, and the
 	'          * annotation type is associated with the superclass of the
 	'          * element.
 	'          
@@ -347,7 +347,7 @@ Namespace java.lang.reflect
 		'''     directly present on this element, else null </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.8 </exception>
-		default Function getDeclaredAnnotation(ByVal annotationClass As Class) As T(Of T As Annotation)
+		default Function getDeclaredAnnotation(ByVal annotationClass As [Class]) As T(Of T As Annotation)
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			 java.util.Objects.requireNonNull(annotationClass);
 			 ' Loop over all directly-present annotations looking for a matching one
@@ -403,7 +403,7 @@ Namespace java.lang.reflect
 		'''     directly or indirectly present on this element, else an array of length zero </returns>
 		''' <exception cref="NullPointerException"> if the given annotation class is null
 		''' @since 1.8 </exception>
-		default Function getDeclaredAnnotationsByType(ByVal annotationClass As Class) As T(Of T As Annotation)()
+		default Function getDeclaredAnnotationsByType(ByVal annotationClass As [Class]) As T(Of T As Annotation)()
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 			java.util.Objects.requireNonNull(annotationClass);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

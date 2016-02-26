@@ -30,7 +30,7 @@ Namespace java.security.cert
 	''' The <i>Service Provider Interface</i> (<b>SPI</b>)
 	''' for the <seealso cref="CertPathBuilder CertPathBuilder"/> class. All
 	''' {@code CertPathBuilder} implementations must include a class (the
-	''' SPI class) that extends this class ({@code CertPathBuilderSpi}) and
+	''' SPI [Class]) that extends this class ({@code CertPathBuilderSpi}) and
 	''' implements all of its methods. In general, instances of this class should
 	''' only be accessed through the {@code CertPathBuilder} class. For
 	''' details, see the Java Cryptography Architecture.

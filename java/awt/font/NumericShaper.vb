@@ -1053,7 +1053,7 @@ Namespace java.awt.font
 						Return contextual = rhs.contextual AndAlso rset.Equals(rhs.rangeSet) AndAlso srange = rhs.shapingRange
 					End If
 					Return rhs.mask = mask AndAlso rhs.key = key
-				Catch e As ClassCastException
+				Catch e As  [Class]CastException
 				End Try
 			End If
 			Return False

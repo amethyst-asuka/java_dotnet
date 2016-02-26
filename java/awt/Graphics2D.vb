@@ -398,7 +398,7 @@ Namespace java.awt
 
 		''' <summary>
 		''' Constructs a new <code>Graphics2D</code> object.  Since
-		''' <code>Graphics2D</code> is an abstract class, and since it must be
+		''' <code>Graphics2D</code> is an abstract [Class], and since it must be
 		''' customized by subclasses for different output devices,
 		''' <code>Graphics2D</code> objects cannot be created directly.
 		''' Instead, <code>Graphics2D</code> objects must be obtained from another
@@ -800,7 +800,7 @@ Namespace java.awt
 		''' <p>If this <code>Graphics2D</code> context is drawing to a
 		''' <code>Component</code> on the display screen and the
 		''' <code>Composite</code> is a custom object rather than an
-		''' instance of the <code>AlphaComposite</code> class, and if
+		''' instance of the <code>AlphaComposite</code> [Class], and if
 		''' there is a security manager, its <code>checkPermission</code>
 		''' method is called with an <code>AWTPermission("readDisplayPixels")</code>
 		''' permission. </summary>

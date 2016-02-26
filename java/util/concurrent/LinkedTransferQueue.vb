@@ -549,7 +549,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					UNSAFE = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(Node)
+					Dim k As  [Class] = GetType(Node)
 					itemOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("item"))
 					nextOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("next"))
 					waiterOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("waiter"))
@@ -1482,7 +1482,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(LinkedTransferQueue)
+				Dim k As  [Class] = GetType(LinkedTransferQueue)
 				headOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("head"))
 				tailOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("tail"))
 				sweepVotesOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("sweepVotes"))

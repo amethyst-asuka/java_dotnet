@@ -83,8 +83,8 @@ Namespace java.lang.invoke
 		Private Const serialVersionUID As Long = 292L ' {rtype, {ptype...}}
 
 		' The rtype and ptypes fields define the structural identity of the method type:
-		Private ReadOnly rtype_Renamed As Class
-		Private ReadOnly ptypes_Renamed As Class()
+		Private ReadOnly rtype_Renamed As  [Class]
+		Private ReadOnly ptypes_Renamed As  [Class]()
 
 		' The remaining fields are caches of various sorts:
 		Private MethodTypeForm As Stable ' erased form, plus cached data about primitives
@@ -95,7 +95,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Check the given parameters for validity and store them into the final fields.
 		''' </summary>
-		Private Sub New(ByVal rtype As Class, ByVal ptypes As Class(), ByVal trusted As Boolean)
+		Private Sub New(ByVal rtype As [Class], ByVal ptypes As  [Class](), ByVal trusted As Boolean)
 			checkRtype(rtype)
 			checkPtypes(ptypes)
 			Me.rtype_Renamed = rtype
@@ -108,7 +108,7 @@ Namespace java.lang.invoke
 		''' Does not check the given parameters for validity, and must be discarded after it is used as a searching key.
 		''' The parameters are reversed for this constructor, so that is is not accidentally used.
 		''' </summary>
-		Private Sub New(ByVal ptypes As Class(), ByVal rtype As Class)
+		Private Sub New(ByVal ptypes As  [Class](), ByVal rtype As [Class])
 			Me.rtype_Renamed = rtype
 			Me.ptypes_Renamed = ptypes
 		End Sub
@@ -118,11 +118,11 @@ Namespace java.lang.invoke
 		 Return form
 	 End Function
 		'trusted
-	 Friend Function rtype() As Class
+	 Friend Function rtype() As  [Class]
 		 Return rtype_Renamed
 	 End Function
 		'trusted
-	 Friend Function ptypes() As Class()
+	 Friend Function ptypes() As  [Class]()
 		 Return ptypes_Renamed
 	 End Function
 
@@ -168,18 +168,18 @@ Namespace java.lang.invoke
 		'non-public
 	 Friend Shared ReadOnly MAX_MH_INVOKER_ARITY As Integer = MAX_MH_ARITY-1 ' deduct one more for invoker
 
-		Private Shared Sub checkRtype(ByVal rtype As Class)
+		Private Shared Sub checkRtype(ByVal rtype As [Class])
 			java.util.Objects.requireNonNull(rtype)
 		End Sub
-		Private Shared Sub checkPtype(ByVal ptype As Class)
+		Private Shared Sub checkPtype(ByVal ptype As [Class])
 			java.util.Objects.requireNonNull(ptype)
 			If ptype Is GetType(void) Then Throw newIllegalArgumentException("parameter type cannot be void")
 		End Sub
 		''' <summary>
 		''' Return number of extra slots (count of long/double args). </summary>
-		Private Shared Function checkPtypes(ByVal ptypes As Class()) As Integer
+		Private Shared Function checkPtypes(ByVal ptypes As  [Class]()) As Integer
 			Dim slots As Integer = 0
-			For Each ptype As Class In ptypes
+			For Each ptype As  [Class] In ptypes
 				checkPtype(ptype)
 				If ptype Is GetType(Double) OrElse ptype Is GetType(Long) Then slots += 1
 			Next ptype
@@ -198,7 +198,7 @@ Namespace java.lang.invoke
 
 		Friend Shared ReadOnly internTable As New ConcurrentWeakInternSet(Of MethodType_Renamed)
 
-		Friend Shared ReadOnly NO_PTYPES As Class() = {}
+		Friend Shared ReadOnly NO_PTYPES As  [Class]() = {}
 
 		''' <summary>
 		''' Finds or creates an instance of the given method type. </summary>
@@ -207,7 +207,7 @@ Namespace java.lang.invoke
 		''' <returns> a method type with the given components </returns>
 		''' <exception cref="NullPointerException"> if {@code rtype} or {@code ptypes} or any element of {@code ptypes} is null </exception>
 		''' <exception cref="IllegalArgumentException"> if any element of {@code ptypes} is {@code void.class} </exception>
-		Public Shared Function methodType(ByVal rtype As Class, ByVal ptypes As Class()) As MethodType
+		Public Shared Function methodType(ByVal rtype As [Class], ByVal ptypes As  [Class]()) As MethodType
 			Return makeImpl(rtype, ptypes, False)
 		End Function
 
@@ -219,12 +219,12 @@ Namespace java.lang.invoke
 		''' <returns> a method type with the given components </returns>
 		''' <exception cref="NullPointerException"> if {@code rtype} or {@code ptypes} or any element of {@code ptypes} is null </exception>
 		''' <exception cref="IllegalArgumentException"> if any element of {@code ptypes} is {@code void.class} </exception>
-		Public Shared Function methodType(ByVal rtype As Class, ByVal ptypes As IList(Of [Class])) As MethodType
+		Public Shared Function methodType(ByVal rtype As [Class], ByVal ptypes As IList(Of [Class])) As MethodType
 			Dim notrust As Boolean = False ' random List impl. could return evil ptypes array
 			Return makeImpl(rtype, listToArray(ptypes), notrust)
 		End Function
 
-		Private Shared Function listToArray(ByVal ptypes As IList(Of [Class])) As Class()
+		Private Shared Function listToArray(ByVal ptypes As IList(Of [Class])) As  [Class]()
 			' sanity check the size before the toArray call, since size might be huge
 			checkSlotCount(ptypes.Count)
 			Return ptypes.ToArray(NO_PTYPES)
@@ -240,8 +240,8 @@ Namespace java.lang.invoke
 		''' <returns> a method type with the given components </returns>
 		''' <exception cref="NullPointerException"> if {@code rtype} or {@code ptype0} or {@code ptypes} or any element of {@code ptypes} is null </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code ptype0} or {@code ptypes} or any element of {@code ptypes} is {@code void.class} </exception>
-		Public Shared Function methodType(ByVal rtype As Class, ByVal ptype0 As Class, ParamArray ByVal ptypes As Class()) As MethodType
-			Dim ptypes1 As Class() = New [Class](1+ptypes.Length - 1){}
+		Public Shared Function methodType(ByVal rtype As [Class], ByVal ptype0 As [Class], ParamArray ByVal ptypes As  [Class]()) As MethodType
+			Dim ptypes1 As  [Class]() = New [Class](1+ptypes.Length - 1){}
 			ptypes1(0) = ptype0
 			Array.Copy(ptypes, 0, ptypes1, 1, ptypes.Length)
 			Return makeImpl(rtype, ptypes1, True)
@@ -254,7 +254,7 @@ Namespace java.lang.invoke
 		''' <param name="rtype">  the return type </param>
 		''' <returns> a method type with the given return value </returns>
 		''' <exception cref="NullPointerException"> if {@code rtype} is null </exception>
-		Public Shared Function methodType(ByVal rtype As Class) As MethodType
+		Public Shared Function methodType(ByVal rtype As [Class]) As MethodType
 			Return makeImpl(rtype, NO_PTYPES, True)
 		End Function
 
@@ -267,7 +267,7 @@ Namespace java.lang.invoke
 		''' <returns> a method type with the given return value and parameter type </returns>
 		''' <exception cref="NullPointerException"> if {@code rtype} or {@code ptype0} is null </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code ptype0} is {@code void.class} </exception>
-		Public Shared Function methodType(ByVal rtype As Class, ByVal ptype0 As Class) As MethodType
+		Public Shared Function methodType(ByVal rtype As [Class], ByVal ptype0 As [Class]) As MethodType
 			Return makeImpl(rtype, New [Class](){ ptype0 }, True)
 		End Function
 
@@ -280,7 +280,7 @@ Namespace java.lang.invoke
 		''' <param name="ptypes"> the method type which supplies the parameter types </param>
 		''' <returns> a method type with the given components </returns>
 		''' <exception cref="NullPointerException"> if {@code rtype} or {@code ptypes} is null </exception>
-		Public Shared Function methodType(ByVal rtype As Class, ByVal ptypes As MethodType) As MethodType
+		Public Shared Function methodType(ByVal rtype As [Class], ByVal ptypes As MethodType) As MethodType
 			Return makeImpl(rtype, ptypes.ptypes_Renamed, True)
 		End Function
 
@@ -291,7 +291,7 @@ Namespace java.lang.invoke
 		''' <param name="trusted"> whether the ptypes can be used without cloning </param>
 		''' <returns> the unique method type of the desired structure </returns>
 		'trusted
-	 Shared Function makeImpl(ByVal rtype As Class, ByVal ptypes As Class(), ByVal trusted As Boolean) As MethodType
+	 Shared Function makeImpl(ByVal rtype As [Class], ByVal ptypes As  [Class](), ByVal trusted As Boolean) As MethodType
 			Dim mt As MethodType = internTable.get(New MethodType(ptypes, rtype))
 			If mt IsNot Nothing Then Return mt
 			If ptypes.Length = 0 Then
@@ -324,7 +324,7 @@ Namespace java.lang.invoke
 				mt = objectOnlyTypes(ootIndex)
 				If mt IsNot Nothing Then Return mt
 			End If
-			Dim ptypes As Class() = New [Class](objectArgCount + ivarargs - 1){}
+			Dim ptypes As  [Class]() = New [Class](objectArgCount + ivarargs - 1){}
 			java.util.Arrays.fill(ptypes, GetType(Object))
 			If ivarargs <> 0 Then ptypes(objectArgCount) = GetType(Object())
 			mt = makeImpl(GetType(Object), ptypes, True)
@@ -353,10 +353,10 @@ Namespace java.lang.invoke
 		''' <exception cref="IndexOutOfBoundsException"> if {@code num} is not a valid index into {@code parameterArray()} </exception>
 		''' <exception cref="IllegalArgumentException"> if {@code nptype} is {@code void.class} </exception>
 		''' <exception cref="NullPointerException"> if {@code nptype} is null </exception>
-		Public Function changeParameterType(ByVal num As Integer, ByVal nptype As Class) As MethodType
+		Public Function changeParameterType(ByVal num As Integer, ByVal nptype As [Class]) As MethodType
 			If parameterType(num) Is nptype Then Return Me
 			checkPtype(nptype)
-			Dim nptypes As Class() = ptypes_Renamed.clone()
+			Dim nptypes As  [Class]() = ptypes_Renamed.clone()
 			nptypes(num) = nptype
 			Return makeImpl(rtype_Renamed, nptypes, True)
 		End Function
@@ -371,14 +371,14 @@ Namespace java.lang.invoke
 		''' <exception cref="IllegalArgumentException"> if any element of {@code ptypesToInsert} is {@code void.class}
 		'''                                  or if the resulting method type would have more than 255 parameter slots </exception>
 		''' <exception cref="NullPointerException"> if {@code ptypesToInsert} or any of its elements is null </exception>
-		Public Function insertParameterTypes(ByVal num As Integer, ParamArray ByVal ptypesToInsert As Class()) As MethodType
+		Public Function insertParameterTypes(ByVal num As Integer, ParamArray ByVal ptypesToInsert As  [Class]()) As MethodType
 			Dim len As Integer = ptypes_Renamed.Length
 			If num < 0 OrElse num > len Then Throw newIndexOutOfBoundsException(num)
 			Dim ins As Integer = checkPtypes(ptypesToInsert)
 			checkSlotCount(parameterSlotCount() + ptypesToInsert.Length + ins)
 			Dim ilen As Integer = ptypesToInsert.Length
 			If ilen = 0 Then Return Me
-			Dim nptypes As Class() = java.util.Arrays.copyOfRange(ptypes_Renamed, 0, len+ilen)
+			Dim nptypes As  [Class]() = java.util.Arrays.copyOfRange(ptypes_Renamed, 0, len+ilen)
 			Array.Copy(nptypes, num, nptypes, num+ilen, len-num)
 			Array.Copy(ptypesToInsert, 0, nptypes, num, ilen)
 			Return makeImpl(rtype_Renamed, nptypes, True)
@@ -392,7 +392,7 @@ Namespace java.lang.invoke
 		''' <exception cref="IllegalArgumentException"> if any element of {@code ptypesToInsert} is {@code void.class}
 		'''                                  or if the resulting method type would have more than 255 parameter slots </exception>
 		''' <exception cref="NullPointerException"> if {@code ptypesToInsert} or any of its elements is null </exception>
-		Public Function appendParameterTypes(ParamArray ByVal ptypesToInsert As Class()) As MethodType
+		Public Function appendParameterTypes(ParamArray ByVal ptypesToInsert As  [Class]()) As MethodType
 			Return insertParameterTypes(parameterCount(), ptypesToInsert)
 		End Function
 
@@ -436,7 +436,7 @@ Namespace java.lang.invoke
 		 '''                                  or if the resulting method type would have more than 255 parameter slots </exception>
 		 ''' <exception cref="NullPointerException"> if {@code ptypesToInsert} or any of its elements is null </exception>
 		'non-public
-	 Friend Function replaceParameterTypes(ByVal start As Integer, ByVal [end] As Integer, ParamArray ByVal ptypesToInsert As Class()) As MethodType
+	 Friend Function replaceParameterTypes(ByVal start As Integer, ByVal [end] As Integer, ParamArray ByVal ptypesToInsert As  [Class]()) As MethodType
 			If start = [end] Then Return insertParameterTypes(start, ptypesToInsert)
 			Dim len As Integer = ptypes_Renamed.Length
 			If Not(0 <= start AndAlso start <= [end] AndAlso [end] <= len) Then Throw newIndexOutOfBoundsException("start=" & start & " end=" & [end])
@@ -451,7 +451,7 @@ Namespace java.lang.invoke
 		''' <param name="arrayLength"> the number of parameter types to change </param>
 		''' <returns> the resulting type </returns>
 		'non-public
-	 Friend Function asSpreaderType(ByVal arrayType As Class, ByVal arrayLength As Integer) As MethodType
+	 Friend Function asSpreaderType(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodType
 			assert(parameterCount() >= arrayLength)
 			Dim spreadPos As Integer = ptypes_Renamed.Length - arrayLength
 			If arrayLength = 0 Then ' nothing to change Return Me
@@ -464,11 +464,11 @@ Namespace java.lang.invoke
 					Return res
 				End If
 			End If
-			Dim elemType As Class = arrayType.componentType
+			Dim elemType As  [Class] = arrayType.componentType
 			assert(elemType IsNot Nothing)
 			For i As Integer = spreadPos To ptypes_Renamed.Length - 1
 				If ptypes_Renamed(i) IsNot elemType Then
-					Dim fixedPtypes As Class() = ptypes_Renamed.clone()
+					Dim fixedPtypes As  [Class]() = ptypes_Renamed.clone()
 					java.util.Arrays.fill(fixedPtypes, i, ptypes_Renamed.Length, elemType)
 					Return methodType(rtype_Renamed, fixedPtypes)
 				End If
@@ -480,8 +480,8 @@ Namespace java.lang.invoke
 		''' Return the leading parameter type, which must exist and be a reference. </summary>
 		'''  <returns> the leading parameter type, after error checks </returns>
 		'non-public
-	 Friend Function leadingReferenceParameter() As Class
-			Dim ptype As Class
+	 Friend Function leadingReferenceParameter() As  [Class]
+			Dim ptype As  [Class]
 			ptype = ptypes_Renamed(0)
 			If ptypes_Renamed.Length = 0 OrElse ptype .primitive Then Throw newIllegalArgumentException("no leading reference parameter")
 			Return ptype
@@ -493,7 +493,7 @@ Namespace java.lang.invoke
 		''' <param name="arrayLength"> the number of parameter types to insert </param>
 		''' <returns> the resulting type </returns>
 		'non-public
-	 Friend Function asCollectorType(ByVal arrayType As Class, ByVal arrayLength As Integer) As MethodType
+	 Friend Function asCollectorType(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodType
 			assert(parameterCount() >= 1)
 			assert(arrayType.IsSubclassOf(lastParameterType()))
 			Dim res As MethodType
@@ -501,7 +501,7 @@ Namespace java.lang.invoke
 				res = genericMethodType(arrayLength)
 				If rtype_Renamed IsNot GetType(Object) Then res = res.changeReturnType(rtype_Renamed)
 			Else
-				Dim elemType As Class = arrayType.componentType
+				Dim elemType As  [Class] = arrayType.componentType
 				assert(elemType IsNot Nothing)
 				res = methodType(rtype_Renamed, java.util.Collections.nCopies(arrayLength, elemType))
 			End If
@@ -525,7 +525,7 @@ Namespace java.lang.invoke
 			Dim len As Integer = ptypes_Renamed.Length
 			If Not(0 <= start AndAlso start <= [end] AndAlso [end] <= len) Then Throw newIndexOutOfBoundsException("start=" & start & " end=" & [end])
 			If start = [end] Then Return Me
-			Dim nptypes As Class()
+			Dim nptypes As  [Class]()
 			If start = 0 Then
 				If [end] = len Then
 					' drop all parameters
@@ -553,7 +553,7 @@ Namespace java.lang.invoke
 		''' <param name="nrtype"> a return parameter type to replace the old one with </param>
 		''' <returns> the same type, except with the return type change </returns>
 		''' <exception cref="NullPointerException"> if {@code nrtype} is null </exception>
-		Public Function changeReturnType(ByVal nrtype As Class) As MethodType
+		Public Function changeReturnType(ByVal nrtype As [Class]) As MethodType
 			If returnType() Is nrtype Then Return Me
 			Return makeImpl(nrtype, ptypes_Renamed, True)
 		End Function
@@ -670,7 +670,7 @@ Namespace java.lang.invoke
 		''' <param name="num"> the index (zero-based) of the desired parameter type </param>
 		''' <returns> the selected parameter type </returns>
 		''' <exception cref="IndexOutOfBoundsException"> if {@code num} is not a valid index into {@code parameterArray()} </exception>
-		Public Function parameterType(ByVal num As Integer) As Class
+		Public Function parameterType(ByVal num As Integer) As  [Class]
 			Return ptypes_Renamed(num)
 		End Function
 		''' <summary>
@@ -682,7 +682,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' Returns the return type of this method type. </summary>
 		''' <returns> the return type </returns>
-		Public Function returnType() As Class
+		Public Function returnType() As  [Class]
 			Return rtype_Renamed
 		End Function
 
@@ -695,7 +695,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-	 Friend Function lastParameterType() As Class
+	 Friend Function lastParameterType() As  [Class]
 			Dim len As Integer = ptypes_Renamed.Length
 			Return If(len = 0, GetType(void), ptypes_Renamed(len-1))
 	 End Function
@@ -704,7 +704,7 @@ Namespace java.lang.invoke
 		''' Presents the parameter types as an array (a convenience method).
 		''' Changes to the array will not result in changes to the type. </summary>
 		''' <returns> the parameter types (as a fresh copy if necessary) </returns>
-		Public Function parameterArray() As Class()
+		Public Function parameterArray() As  [Class]()
 			Return ptypes_Renamed.clone()
 		End Function
 
@@ -733,7 +733,7 @@ Namespace java.lang.invoke
 		''' <seealso cref= List#hashCode() </seealso>
 		Public Overrides Function GetHashCode() As Integer
 		  Dim hashCode As Integer = 31 + rtype_Renamed.GetHashCode()
-		  For Each ptype As Class In ptypes_Renamed
+		  For Each ptype As  [Class] In ptypes_Renamed
 			  hashCode = 31*hashCode + ptype.GetHashCode()
 		  Next ptype
 		  Return hashCode
@@ -789,8 +789,8 @@ Namespace java.lang.invoke
 			Dim newForm As MethodTypeForm = newType.form()
 			If oldForm Is newForm Then Return True
 			If Not canConvert(returnType(), newType.returnType()) Then Return False
-			Dim srcTypes As Class() = newType.ptypes_Renamed
-			Dim dstTypes As Class() = ptypes_Renamed
+			Dim srcTypes As  [Class]() = newType.ptypes_Renamed
+			Dim dstTypes As  [Class]() = ptypes_Renamed
 			If srcTypes = dstTypes Then Return True
 			Dim argc As Integer
 			argc = srcTypes.Length
@@ -816,8 +816,8 @@ Namespace java.lang.invoke
 		Friend Function explicitCastEquivalentToAsType(ByVal newType As MethodType) As Boolean
 			If Me Is newType Then Return True
 			If Not explicitCastEquivalentToAsType(rtype_Renamed, newType.rtype_Renamed) Then Return False
-			Dim srcTypes As Class() = newType.ptypes_Renamed
-			Dim dstTypes As Class() = ptypes_Renamed
+			Dim srcTypes As  [Class]() = newType.ptypes_Renamed
+			Dim dstTypes As  [Class]() = ptypes_Renamed
 			If dstTypes = srcTypes Then Return True
 			assert(dstTypes.Length = srcTypes.Length)
 			For i As Integer = 0 To dstTypes.Length - 1
@@ -841,7 +841,7 @@ Namespace java.lang.invoke
 		''' Other than interfaces, reference-to-reference conversions are the same.
 		''' Boxing primitives to references is the same for both operators.
 		''' </summary>
-		Private Shared Function explicitCastEquivalentToAsType(ByVal src As Class, ByVal dst As Class) As Boolean
+		Private Shared Function explicitCastEquivalentToAsType(ByVal src As [Class], ByVal dst As [Class]) As Boolean
 			If src Is dst OrElse dst Is GetType(Object) OrElse dst Is GetType(void) Then Return True
 			If src.primitive Then
 				' Could be a prim/prim conversion, where casting is a strict superset.
@@ -856,7 +856,7 @@ Namespace java.lang.invoke
 			End If
 		End Function
 
-		Private Function canConvertParameters(ByVal srcTypes As Class(), ByVal dstTypes As Class()) As Boolean
+		Private Function canConvertParameters(ByVal srcTypes As  [Class](), ByVal dstTypes As  [Class]()) As Boolean
 			For i As Integer = 0 To srcTypes.Length - 1
 				If Not canConvert(srcTypes(i), dstTypes(i)) Then Return False
 			Next i
@@ -864,7 +864,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-		Friend Shared Function canConvert(ByVal src As Class, ByVal dst As Class) As Boolean
+		Friend Shared Function canConvert(ByVal src As [Class], ByVal dst As [Class]) As Boolean
 			' short-circuit a few cases:
 			If src Is dst OrElse src Is GetType(Object) OrElse dst Is GetType(Object) Then Return True
 			' the remainder of this logic is documented in MethodHandle.asType
@@ -999,12 +999,12 @@ Namespace java.lang.invoke
 		''' <exception cref="NullPointerException"> if the string is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the string is not well-formed </exception>
 		''' <exception cref="TypeNotPresentException"> if a named type cannot be found </exception>
-		Public Shared Function fromMethodDescriptorString(ByVal descriptor As String, ByVal loader As ClassLoader) As MethodType
+		Public Shared Function fromMethodDescriptorString(ByVal descriptor As String, ByVal loader As  [Class]Loader) As MethodType
 			If (Not descriptor.StartsWith("(")) OrElse descriptor.IndexOf(")"c) < 0 OrElse descriptor.IndexOf("."c) >= 0 Then ' also generates NPE if needed Throw newIllegalArgumentException("not a method descriptor: " & descriptor)
 			Dim types As IList(Of [Class]) = sun.invoke.util.BytecodeDescriptor.parseMethod(descriptor, loader)
-			Dim rtype As Class = types.Remove(types.Count - 1)
+			Dim rtype As  [Class] = types.Remove(types.Count - 1)
 			checkSlotCount(types.Count)
-			Dim ptypes As Class() = listToArray(types)
+			Dim ptypes As  [Class]() = listToArray(types)
 			Return makeImpl(rtype, ptypes, True)
 		End Function
 
@@ -1030,7 +1030,7 @@ Namespace java.lang.invoke
 		End Function
 
 		'non-public
-	 Friend Shared Function toFieldDescriptorString(ByVal cls As Class) As String
+	 Friend Shared Function toFieldDescriptorString(ByVal cls As [Class]) As String
 			Return sun.invoke.util.BytecodeDescriptor.unparse(cls)
 	 End Function
 
@@ -1082,8 +1082,8 @@ Namespace java.lang.invoke
 		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
 			s.defaultReadObject() ' requires serialPersistentFields to be an empty array
 
-			Dim returnType As Class = CType(s.readObject(), [Class])
-			Dim parameterArray As Class() = CType(s.readObject(), Class())
+			Dim returnType As  [Class] = CType(s.readObject(), [Class])
+			Dim parameterArray As  [Class]() = CType(s.readObject(), Class())
 
 			' Probably this object will never escape, but let's check
 			' the field values now, just to be sure.
@@ -1102,7 +1102,7 @@ Namespace java.lang.invoke
 			Me.rtype_Renamed = Nothing
 			Me.ptypes_Renamed = Nothing
 		End Sub
-		Private Sub MethodType_init(ByVal rtype As Class, ByVal ptypes As Class())
+		Private Sub MethodType_init(ByVal rtype As [Class], ByVal ptypes As  [Class]())
 			' In order to communicate these values to readResolve, we must
 			' store them into the implementation-specific final fields.
 			checkRtype(rtype)

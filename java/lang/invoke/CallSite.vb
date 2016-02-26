@@ -244,7 +244,7 @@ Namespace java.lang.invoke
 		'package-private
 
 		' this implements the upcall from the JVM, MethodHandleNatives.makeDynamicCallSite:
-		Shared Function makeSite(ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal info As Object, ByVal callerClass As Class) As CallSite
+		Shared Function makeSite(ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal info As Object, ByVal callerClass As [Class]) As CallSite
 								 ' Callee information:
 								 ' Extra arguments for BSM, if any:
 								 ' Caller information:

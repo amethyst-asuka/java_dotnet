@@ -1499,7 +1499,7 @@ Namespace java.net
 			Dim prefix As String = java.security.AccessController.doPrivileged(New GetPropertyAction("impl.prefix", ""))
 			Try
 				impl = Type.GetType("java.net." & prefix + implName).newInstance()
-			Catch e As ClassNotFoundException
+			Catch e As  [Class]NotFoundException
 				Console.Error.WriteLine("Class not found: java.net." & prefix + implName & ":" & vbLf & "check impl.prefix property " & "in your properties file.")
 			Catch e As InstantiationException
 				Console.Error.WriteLine("Could not instantiate: java.net." & prefix + implName & ":" & vbLf & "check impl.prefix property " & "in your properties file.")

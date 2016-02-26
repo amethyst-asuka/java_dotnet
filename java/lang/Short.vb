@@ -63,7 +63,7 @@ Namespace java.lang
 		''' {@code short}.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared ReadOnly TYPE As Class = CType(Class.getPrimitiveClass("short"), [Class])
+		Public Shared ReadOnly TYPE As  [Class] = CType(Class.getPrimitiveClass("short"), [Class])
 
 		''' <summary>
 		''' Returns a new {@code String} object representing the

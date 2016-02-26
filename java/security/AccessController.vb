@@ -552,14 +552,14 @@ Namespace java.security
 		''' <summary>
 		''' preserve the combiner across the doPrivileged call
 		''' </summary>
-		Private Shared Function preserveCombiner(ByVal combiner As DomainCombiner, ByVal caller As Class) As AccessControlContext
+		Private Shared Function preserveCombiner(ByVal combiner As DomainCombiner, ByVal caller As [Class]) As AccessControlContext
 			Return createWrapper(combiner, caller, Nothing, Nothing, Nothing)
 		End Function
 
 		''' <summary>
 		''' Create a wrapper to contain the limited privilege scope data.
 		''' </summary>
-		Private Shared Function createWrapper(ByVal combiner As DomainCombiner, ByVal caller As Class, ByVal parent As AccessControlContext, ByVal context As AccessControlContext, ByVal perms As Permission()) As AccessControlContext
+		Private Shared Function createWrapper(ByVal combiner As DomainCombiner, ByVal caller As [Class], ByVal parent As AccessControlContext, ByVal context As AccessControlContext, ByVal perms As Permission()) As AccessControlContext
 			Dim callerPD_Renamed As ProtectionDomain = getCallerPD(caller)
 			' check if caller is authorized to create context
 			If context IsNot Nothing AndAlso (Not context.authorized) AndAlso System.securityManager IsNot Nothing AndAlso (Not callerPD_Renamed.impliesCreateAccessControlContext()) Then
@@ -570,7 +570,7 @@ Namespace java.security
 			End If
 		End Function
 
-		Private Shared Function getCallerPD(ByVal caller As Class) As ProtectionDomain
+		Private Shared Function getCallerPD(ByVal caller As [Class]) As ProtectionDomain
 			Dim callerPd_Renamed As ProtectionDomain = doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 
 			Return callerPd_Renamed

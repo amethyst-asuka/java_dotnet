@@ -255,7 +255,7 @@ Namespace java.lang
 		'''          information is available from the archive or codebase. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Shared Function getPackage(ByVal name As String) As Package
-			Dim l As ClassLoader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
+			Dim l As  [Class]Loader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
 			If l IsNot Nothing Then
 				Return l.getPackage(name)
 			Else
@@ -277,7 +277,7 @@ Namespace java.lang
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Property Shared packages As Package()
 			Get
-				Dim l As ClassLoader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
+				Dim l As  [Class]Loader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
 				If l IsNot Nothing Then
 					Return l.packages
 				Else
@@ -303,12 +303,12 @@ Namespace java.lang
 		''' <param name="c"> the class to get the package of. </param>
 		''' <returns> the package of the class. It may be null if no package
 		'''          information is available from the archive or codebase.   </returns>
-		Shared Function getPackage(ByVal c As Class) As Package
+		Shared Function getPackage(ByVal c As [Class]) As Package
 			Dim name_Renamed As String = c.name
 			Dim i As Integer = name_Renamed.LastIndexOf("."c)
 			If i <> -1 Then
 				name_Renamed = name_Renamed.Substring(0, i)
-				Dim cl As ClassLoader = c.classLoader
+				Dim cl As  [Class]Loader = c.classLoader
 				If cl IsNot Nothing Then
 					Return cl.getPackage(name_Renamed)
 				Else
@@ -348,12 +348,12 @@ Namespace java.lang
 			Return "package " & pkgName + spec + ver
 		End Function
 
-		Private Property packageInfo As Class
+		Private Property packageInfo As  [Class]
 			Get
 				If packageInfo Is Nothing Then
 					Try
 					packageInfo = Type.GetType(pkgName & ".package-info", False, loader)
-					Catch ex As ClassNotFoundException
+					Catch ex As  [Class]NotFoundException
 						' store a proxy for the package info that has no annotations
 	'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 	'					class PackageInfoProxy
@@ -368,7 +368,7 @@ Namespace java.lang
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overridable Function getAnnotation(Of A As Annotation)(ByVal annotationClass As Class) As A
+		Public Overridable Function getAnnotation(Of A As Annotation)(ByVal annotationClass As [Class]) As A
 			Return packageInfo.getAnnotation(annotationClass)
 		End Function
 
@@ -376,13 +376,13 @@ Namespace java.lang
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function isAnnotationPresent(ByVal annotationClass As Class) As Boolean
+		Public Overrides Function isAnnotationPresent(ByVal annotationClass As [Class]) As Boolean
 			Return outerInstance.isAnnotationPresent(annotationClass)
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of A As Annotation)(ByVal annotationClass As Class) As A()
+		Public Overrides Function getAnnotationsByType(Of A As Annotation)(ByVal annotationClass As [Class]) As A()
 			Return packageInfo.getAnnotationsByType(annotationClass)
 		End Function
 
@@ -397,13 +397,13 @@ Namespace java.lang
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotation(Of A As Annotation)(ByVal annotationClass As Class) As A
+		Public Overrides Function getDeclaredAnnotation(Of A As Annotation)(ByVal annotationClass As [Class]) As A
 			Return packageInfo.getDeclaredAnnotation(annotationClass)
 		End Function
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getDeclaredAnnotationsByType(Of A As Annotation)(ByVal annotationClass As Class) As A()
+		Public Overrides Function getDeclaredAnnotationsByType(Of A As Annotation)(ByVal annotationClass As [Class]) As A()
 			Return packageInfo.getDeclaredAnnotationsByType(annotationClass)
 		End Function
 
@@ -426,7 +426,7 @@ Namespace java.lang
 		''' <param name="impltitle"> the title of the implementation </param>
 		''' <param name="implversion"> the version of the implementation </param>
 		''' <param name="implvendor"> the organization that maintains the implementation </param>
-		Friend Sub New(ByVal name As String, ByVal spectitle As String, ByVal specversion As String, ByVal specvendor As String, ByVal impltitle As String, ByVal implversion As String, ByVal implvendor As String, ByVal sealbase As java.net.URL, ByVal loader As ClassLoader)
+		Friend Sub New(ByVal name As String, ByVal spectitle As String, ByVal specversion As String, ByVal specvendor As String, ByVal impltitle As String, ByVal implversion As String, ByVal implvendor As String, ByVal sealbase As java.net.URL, ByVal loader As  [Class]Loader)
 			pkgName = name
 			Me.implTitle = impltitle
 			Me.implVersion = implversion
@@ -445,7 +445,7 @@ Namespace java.lang
 	'     * @param man the optional manifest for the package
 	'     * @param url the optional code source url for the package
 	'     
-		Private Sub New(ByVal name As String, ByVal man As java.util.jar.Manifest, ByVal url As java.net.URL, ByVal loader As ClassLoader)
+		Private Sub New(ByVal name As String, ByVal man As java.util.jar.Manifest, ByVal url As java.net.URL, ByVal loader As  [Class]Loader)
 			Dim path As String = name.replace("."c, "/"c) & "/"
 			Dim sealed_Renamed As String = Nothing
 			Dim specTitle As String= Nothing
@@ -599,9 +599,9 @@ Namespace java.lang
 		Private ReadOnly implVendor As String
 		Private ReadOnly sealBase As java.net.URL
 		<NonSerialized> _
-		Private ReadOnly loader As ClassLoader
+		Private ReadOnly loader As  [Class]Loader
 		<NonSerialized> _
-		Private packageInfo As Class
+		Private packageInfo As  [Class]
 	End Class
 
 End Namespace

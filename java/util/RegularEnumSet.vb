@@ -123,7 +123,7 @@ Namespace java.util
 		''' <returns> <tt>true</tt> if this set contains the specified element </returns>
 		public Boolean contains(Object e)
 			If e Is Nothing Then Return False
-			Dim eClass As Class = e.GetType()
+			Dim eClass As  [Class] = e.GetType()
 			If eClass IsNot elementType AndAlso eClass.BaseType IsNot elementType Then Return False
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
@@ -153,7 +153,7 @@ Namespace java.util
 		''' <returns> <tt>true</tt> if the set contained the specified element </returns>
 		public Boolean remove(Object e)
 			If e Is Nothing Then Return False
-			Dim eClass As Class = e.GetType()
+			Dim eClass As  [Class] = e.GetType()
 			If eClass IsNot elementType AndAlso eClass.BaseType IsNot elementType Then Return False
 
 			Dim oldElements As Long = elements

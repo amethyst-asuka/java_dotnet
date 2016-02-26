@@ -60,7 +60,7 @@ Namespace java.util
 		''' <param name="trippingClass"> Name of the class generating the message </param>
 		''' <param name="msg"> A message format string of the type expected by
 		''' <seealso cref="PlatformLogger"/> </param>
-		Friend Shared Sub trip(ByVal trippingClass As Class, ByVal msg As String)
+		Friend Shared Sub trip(ByVal trippingClass As [Class], ByVal msg As String)
 			sun.util.logging.PlatformLogger.getLogger(trippingClass.name).warning(msg, trippingClass.name)
 		End Sub
 	End Class

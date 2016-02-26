@@ -964,7 +964,7 @@ Namespace java.text
 			' Proclaim serial compatibility with 1.4 FCS
 			Private Const serialVersionUID As Long = 7494728892700160890L
 
-			' table of all instances in this class, used by readResolve
+			' table of all instances in this [Class], used by readResolve
 			Private Shared ReadOnly instanceMap As IDictionary(Of String, Field) = New Dictionary(Of String, Field)(11)
 
 			''' <summary>

@@ -845,7 +845,7 @@ Namespace java.nio.channels
 		''' <param name="mode">
 		'''         One of the constants <seealso cref="MapMode#READ_ONLY READ_ONLY"/>, {@link
 		'''         MapMode#READ_WRITE READ_WRITE}, or {@link MapMode#PRIVATE
-		'''         PRIVATE} defined in the <seealso cref="MapMode"/> class, according to
+		'''         PRIVATE} defined in the <seealso cref="MapMode"/> [Class], according to
 		'''         whether the file is to be mapped read-only, read/write, or
 		'''         privately (copy-on-write), respectively
 		''' </param>

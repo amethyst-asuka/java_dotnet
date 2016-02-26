@@ -71,8 +71,8 @@ Namespace java.util.concurrent.atomic
 		''' or the field is inaccessible to the caller according to Java language
 		''' access control </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function newUpdater(Of U)(ByVal tclass As Class, ByVal fieldName As String) As AtomicLongFieldUpdater(Of U)
-			Dim caller As Class = sun.reflect.Reflection.callerClass
+		Public Shared Function newUpdater(Of U)(ByVal tclass As [Class], ByVal fieldName As String) As AtomicLongFieldUpdater(Of U)
+			Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 			If AtomicLong.VM_SUPPORTS_LONG_CAS Then
 				Return New CASUpdater(Of U)(tclass, fieldName, caller)
 			Else
@@ -342,18 +342,18 @@ Namespace java.util.concurrent.atomic
 
 			Private Shared ReadOnly unsafe As sun.misc.Unsafe = sun.misc.Unsafe.unsafe
 			Private ReadOnly offset As Long
-			Private ReadOnly tclass As Class
-			Private ReadOnly cclass As Class
+			Private ReadOnly tclass As  [Class]
+			Private ReadOnly cclass As  [Class]
 
-			Friend Sub New(ByVal tclass As Class, ByVal fieldName As String, ByVal caller As Class)
+			Friend Sub New(ByVal tclass As [Class], ByVal fieldName As String, ByVal caller As [Class])
 				Dim field As Field
 				Dim modifiers As Integer
 				Try
 					field = java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 					modifiers = field.modifiers
 					sun.reflect.misc.ReflectUtil.ensureMemberAccess(caller, tclass, Nothing, modifiers)
-					Dim cl As ClassLoader = tclass.classLoader
-					Dim ccl As ClassLoader = caller.classLoader
+					Dim cl As  [Class]Loader = tclass.classLoader
+					Dim ccl As  [Class]Loader = caller.classLoader
 					If (ccl IsNot Nothing) AndAlso (ccl IsNot cl) AndAlso ((cl Is Nothing) OrElse (Not isAncestor(cl, ccl))) Then sun.reflect.misc.ReflectUtil.checkPackageAccess(tclass)
 				Catch pae As java.security.PrivilegedActionException
 					Throw New RuntimeException(pae.exception)
@@ -361,7 +361,7 @@ Namespace java.util.concurrent.atomic
 					Throw New RuntimeException(ex)
 				End Try
 
-				Dim fieldt As Class = field.type
+				Dim fieldt As  [Class] = field.type
 				If fieldt IsNot GetType(Long) Then Throw New IllegalArgumentException("Must be long type")
 
 				If Not Modifier.isVolatile(modifiers) Then Throw New IllegalArgumentException("Must be volatile type")
@@ -452,18 +452,18 @@ Namespace java.util.concurrent.atomic
 
 			Private Shared ReadOnly unsafe As sun.misc.Unsafe = sun.misc.Unsafe.unsafe
 			Private ReadOnly offset As Long
-			Private ReadOnly tclass As Class
-			Private ReadOnly cclass As Class
+			Private ReadOnly tclass As  [Class]
+			Private ReadOnly cclass As  [Class]
 
-			Friend Sub New(ByVal tclass As Class, ByVal fieldName As String, ByVal caller As Class)
+			Friend Sub New(ByVal tclass As [Class], ByVal fieldName As String, ByVal caller As [Class])
 				Dim field As Field = Nothing
 				Dim modifiers As Integer = 0
 				Try
 					field = java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 					modifiers = field.modifiers
 					sun.reflect.misc.ReflectUtil.ensureMemberAccess(caller, tclass, Nothing, modifiers)
-					Dim cl As ClassLoader = tclass.classLoader
-					Dim ccl As ClassLoader = caller.classLoader
+					Dim cl As  [Class]Loader = tclass.classLoader
+					Dim ccl As  [Class]Loader = caller.classLoader
 					If (ccl IsNot Nothing) AndAlso (ccl IsNot cl) AndAlso ((cl Is Nothing) OrElse (Not isAncestor(cl, ccl))) Then sun.reflect.misc.ReflectUtil.checkPackageAccess(tclass)
 				Catch pae As java.security.PrivilegedActionException
 					Throw New RuntimeException(pae.exception)
@@ -471,7 +471,7 @@ Namespace java.util.concurrent.atomic
 					Throw New RuntimeException(ex)
 				End Try
 
-				Dim fieldt As Class = field.type
+				Dim fieldt As  [Class] = field.type
 				If fieldt IsNot GetType(Long) Then Throw New IllegalArgumentException("Must be long type")
 
 				If Not Modifier.isVolatile(modifiers) Then Throw New IllegalArgumentException("Must be volatile type")
@@ -538,8 +538,8 @@ Namespace java.util.concurrent.atomic
 		''' classloader's delegation chain.
 		''' Equivalent to the inaccessible: first.isAncestor(second).
 		''' </summary>
-		Private Shared Function isAncestor(ByVal first As ClassLoader, ByVal second As ClassLoader) As Boolean
-			Dim acl As ClassLoader = first
+		Private Shared Function isAncestor(ByVal first As  [Class]Loader, ByVal second As  [Class]Loader) As Boolean
+			Dim acl As  [Class]Loader = first
 			Do
 				acl = acl.parent
 				If second Is acl Then Return True

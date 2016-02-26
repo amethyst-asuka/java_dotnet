@@ -42,7 +42,7 @@ Namespace java.beans
 		Inherits PropertyDescriptor
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private indexedPropertyTypeRef As Reference(Of ? As Class)
+		Private indexedPropertyTypeRef As Reference(Of ? As [Class])
 		Private ReadOnly indexedReadMethodRef As New MethodRef
 		Private ReadOnly indexedWriteMethodRef As New MethodRef
 
@@ -63,7 +63,7 @@ Namespace java.beans
 		''' <param name="beanClass"> The Class object for the target bean. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As Class)
+		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class])
 			Me.New(propertyName, beanClass, Introspector.GET_PREFIX + NameGenerator.capitalize(propertyName), Introspector.SET_PREFIX + NameGenerator.capitalize(propertyName), Introspector.GET_PREFIX + NameGenerator.capitalize(propertyName), Introspector.SET_PREFIX + NameGenerator.capitalize(propertyName))
 		End Sub
 
@@ -88,7 +88,7 @@ Namespace java.beans
 		'''          May be null if the property is read-only. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As Class, ByVal readMethodName As String, ByVal writeMethodName As String, ByVal indexedReadMethodName As String, ByVal indexedWriteMethodName As String)
+		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class], ByVal readMethodName As String, ByVal writeMethodName As String, ByVal indexedReadMethodName As String, ByVal indexedWriteMethodName As String)
 			MyBase.New(propertyName, beanClass, readMethodName, writeMethodName)
 
 			Me.indexedReadMethodName = indexedReadMethodName
@@ -138,7 +138,7 @@ Namespace java.beans
 		''' <exception cref="IntrospectionException"> if an exception occurs during introspection
 		''' 
 		''' @since 1.7 </exception>
-		Friend Sub New(ByVal bean As Class, ByVal base As String, ByVal read As Method, ByVal write As Method, ByVal readIndexed As Method, ByVal writeIndexed As Method)
+		Friend Sub New(ByVal bean As [Class], ByVal base As String, ByVal read As Method, ByVal write As Method, ByVal readIndexed As Method, ByVal writeIndexed As Method)
 			MyBase.New(bean, base, read, write)
 
 			indexedReadMethod0 = readIndexed
@@ -160,11 +160,11 @@ Namespace java.beans
 			Get
 				Dim indexedReadMethod_Renamed As Method = Me.indexedReadMethodRef.get()
 				If indexedReadMethod_Renamed Is Nothing Then
-					Dim cls As Class = class0
+					Dim cls As  [Class] = class0
 					If cls Is Nothing OrElse (indexedReadMethodName Is Nothing AndAlso (Not Me.indexedReadMethodRef.set)) Then Return Nothing
 					Dim nextMethodName As String = Introspector.GET_PREFIX + baseName
 					If indexedReadMethodName Is Nothing Then
-						Dim type As Class = indexedPropertyType0
+						Dim type As  [Class] = indexedPropertyType0
 						If type Is GetType(Boolean) OrElse type Is Nothing Then
 							indexedReadMethodName = Introspector.IS_PREFIX + baseName
 						Else
@@ -172,7 +172,7 @@ Namespace java.beans
 						End If
 					End If
     
-					Dim args As Class() = { GetType(Integer) }
+					Dim args As  [Class]() = { GetType(Integer) }
 					indexedReadMethod_Renamed = Introspector.findMethod(cls, indexedReadMethodName, 1, args)
 					If (indexedReadMethod_Renamed Is Nothing) AndAlso (Not indexedReadMethodName.Equals(nextMethodName)) Then
 						' no "is" method, so look for a "get" method.
@@ -218,27 +218,27 @@ Namespace java.beans
 			Get
 				Dim indexedWriteMethod_Renamed As Method = Me.indexedWriteMethodRef.get()
 				If indexedWriteMethod_Renamed Is Nothing Then
-					Dim cls As Class = class0
+					Dim cls As  [Class] = class0
 					If cls Is Nothing OrElse (indexedWriteMethodName Is Nothing AndAlso (Not Me.indexedWriteMethodRef.set)) Then Return Nothing
     
 					' We need the indexed type to ensure that we get the correct method.
 					' Cannot use the getIndexedPropertyType method since that could
 					' result in an infinite loop.
-					Dim type As Class = indexedPropertyType0
+					Dim type As  [Class] = indexedPropertyType0
 					If type Is Nothing Then
 						Try
 							type = findIndexedPropertyType(indexedReadMethod, Nothing)
 							indexedPropertyType = type
 						Catch ex As IntrospectionException
 							' Set iprop type to be the classic type
-							Dim propType As Class = propertyType
+							Dim propType As  [Class] = propertyType
 							If propType.array Then type = propType.componentType
 						End Try
 					End If
     
 					If indexedWriteMethodName Is Nothing Then indexedWriteMethodName = Introspector.SET_PREFIX + baseName
     
-					Dim args As Class() = If(type Is Nothing, Nothing, New [Class]()){ GetType(Integer), type }
+					Dim args As  [Class]() = If(type Is Nothing, Nothing, New [Class]()){ GetType(Integer), type }
 					indexedWriteMethod_Renamed = Introspector.findMethod(cls, indexedWriteMethodName, 2, args)
 					If indexedWriteMethod_Renamed IsNot Nothing Then
 						If Not indexedWriteMethod_Renamed.returnType.Equals(GetType(void)) Then indexedWriteMethod_Renamed = Nothing
@@ -250,7 +250,7 @@ Namespace java.beans
 			Set(ByVal writeMethod As Method)
     
 				' If the indexed property type has not been set, then set it.
-				Dim type As Class = findIndexedPropertyType(indexedReadMethod, writeMethod)
+				Dim type As  [Class] = findIndexedPropertyType(indexedReadMethod, writeMethod)
 				indexedPropertyType = type
 				indexedWriteMethod0 = writeMethod
 			End Set
@@ -281,9 +281,9 @@ Namespace java.beans
 		''' <returns> the {@code Class} object that represents the Java type info,
 		'''         or {@code null} if the type cannot be determined </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Property indexedPropertyType As Class
+		Public Overridable Property indexedPropertyType As  [Class]
 			Get
-				Dim type As Class = indexedPropertyType0
+				Dim type As  [Class] = indexedPropertyType0
 				If type Is Nothing Then
 					Try
 						type = findIndexedPropertyType(indexedReadMethod, indexedWriteMethod)
@@ -294,7 +294,7 @@ Namespace java.beans
 				End If
 				Return type
 			End Get
-			Set(ByVal type As Class)
+			Set(ByVal type As [Class])
 				Me.indexedPropertyTypeRef = getWeakReference(type)
 			End Set
 		End Property
@@ -302,24 +302,24 @@ Namespace java.beans
 		' Private methods which set get/set the Reference objects
 
 
-		Private Property indexedPropertyType0 As Class
+		Private Property indexedPropertyType0 As  [Class]
 			Get
 				Return If(Me.indexedPropertyTypeRef IsNot Nothing, Me.indexedPropertyTypeRef.get(), Nothing)
 			End Get
 		End Property
 
-		Private Function findIndexedPropertyType(ByVal indexedReadMethod As Method, ByVal indexedWriteMethod As Method) As Class
-			Dim indexedPropertyType_Renamed As Class = Nothing
+		Private Function findIndexedPropertyType(ByVal indexedReadMethod As Method, ByVal indexedWriteMethod As Method) As  [Class]
+			Dim indexedPropertyType_Renamed As  [Class] = Nothing
 
 			If indexedReadMethod IsNot Nothing Then
-				Dim params As Class() = getParameterTypes(class0, indexedReadMethod)
+				Dim params As  [Class]() = getParameterTypes(class0, indexedReadMethod)
 				If params.Length <> 1 Then Throw New IntrospectionException("bad indexed read method arg count")
 				If params(0) IsNot Integer.TYPE Then Throw New IntrospectionException("non int index to indexed read method")
 				indexedPropertyType_Renamed = getReturnType(class0, indexedReadMethod)
 				If indexedPropertyType_Renamed Is Void.TYPE Then Throw New IntrospectionException("indexed read method returns void")
 			End If
 			If indexedWriteMethod IsNot Nothing Then
-				Dim params As Class() = getParameterTypes(class0, indexedWriteMethod)
+				Dim params As  [Class]() = getParameterTypes(class0, indexedWriteMethod)
 				If params.Length <> 2 Then Throw New IntrospectionException("bad indexed write method arg count")
 				If params(0) IsNot Integer.TYPE Then Throw New IntrospectionException("non int index to indexed write method")
 				If indexedPropertyType_Renamed Is Nothing OrElse indexedPropertyType_Renamed.IsSubclassOf(params(1)) Then
@@ -328,7 +328,7 @@ Namespace java.beans
 					Throw New IntrospectionException("type mismatch between indexed read and indexed write methods: " & name)
 				End If
 			End If
-			Dim propertyType_Renamed As Class = propertyType
+			Dim propertyType_Renamed As  [Class] = propertyType
 			If propertyType_Renamed IsNot Nothing AndAlso ((Not propertyType_Renamed.array) OrElse propertyType_Renamed.componentType IsNot indexedPropertyType_Renamed) Then Throw New IntrospectionException("type mismatch between indexed and non-indexed methods: " & name)
 			Return indexedPropertyType_Renamed
 		End Function
@@ -412,7 +412,7 @@ Namespace java.beans
 			indexedReadMethodName = old.indexedReadMethodName
 		End Sub
 
-		Friend Overrides Sub updateGenericsFor(ByVal type As Class)
+		Friend Overrides Sub updateGenericsFor(ByVal type As [Class])
 			MyBase.updateGenericsFor(type)
 			Try
 				indexedPropertyType = findIndexedPropertyType(Me.indexedReadMethodRef.get(), Me.indexedWriteMethodRef.get())

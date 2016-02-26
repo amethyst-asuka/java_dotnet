@@ -32,7 +32,7 @@ Namespace java.security
 	''' <p>An {@code AlgorithmParameters} object for managing the parameters
 	''' for a particular algorithm can be obtained by
 	''' calling one of the {@code getInstance} factory methods
-	''' (static methods that return instances of a given class).
+	''' (static methods that return instances of a given [Class]).
 	''' 
 	''' <p>Once an {@code AlgorithmParameters} object is obtained, it must be
 	''' initialized via a call to {@code init}, using an appropriate parameter
@@ -299,7 +299,7 @@ Namespace java.security
 		''' <exception cref="InvalidParameterSpecException"> if the requested parameter
 		''' specification is inappropriate for this parameter object, or if this
 		''' parameter object has not been initialized. </exception>
-		Public Function getParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(ByVal paramSpec As Class) As T
+		Public Function getParameterSpec(Of T As java.security.spec.AlgorithmParameterSpec)(ByVal paramSpec As [Class]) As T
 			If Me.initialized = False Then Throw New java.security.spec.InvalidParameterSpecException("not initialized")
 			Return paramSpi.engineGetParameterSpec(paramSpec)
 		End Function

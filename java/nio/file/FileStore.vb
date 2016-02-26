@@ -34,7 +34,7 @@ Namespace java.nio.file
 	''' stores can be enumerated by invoking the {@link FileSystem#getFileStores
 	''' getFileStores} method.
 	''' 
-	''' <p> In addition to the methods defined by this class, a file store may support
+	''' <p> In addition to the methods defined by this [Class], a file store may support
 	''' one or more <seealso cref="FileStoreAttributeView FileStoreAttributeView"/> classes
 	''' that provide a read-only or updatable view of a set of file store attributes.
 	''' 
@@ -135,7 +135,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  {@code true} if, and only if, the file attribute view is
 		'''          supported </returns>
-		Public MustOverride Function supportsFileAttributeView(ByVal type As Class) As Boolean
+		Public MustOverride Function supportsFileAttributeView(ByVal type As [Class]) As Boolean
 
 		''' <summary>
 		''' Tells whether or not this file store supports the file attributes
@@ -170,7 +170,7 @@ Namespace java.nio.file
 		''' </param>
 		''' <returns>  a file store attribute view of the specified type or
 		'''          {@code null} if the attribute view is not available </returns>
-		Public MustOverride Function getFileStoreAttributeView(Of V As FileStoreAttributeView)(ByVal type As Class) As V
+		Public MustOverride Function getFileStoreAttributeView(Of V As FileStoreAttributeView)(ByVal type As [Class]) As V
 
 		''' <summary>
 		''' Reads the value of a file store attribute.

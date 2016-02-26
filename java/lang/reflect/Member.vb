@@ -57,7 +57,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <returns> an object representing the declaring class of the
 		''' underlying member </returns>
-		ReadOnly Property declaringClass As Class
+		ReadOnly Property declaringClass As  [Class]
 
 		''' <summary>
 		''' Returns the simple name of the underlying member or constructor

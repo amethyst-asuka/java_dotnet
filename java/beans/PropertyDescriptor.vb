@@ -37,11 +37,11 @@ Namespace java.beans
 		Inherits FeatureDescriptor
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private propertyTypeRef As Reference(Of ? As Class)
+		Private propertyTypeRef As Reference(Of ? As [Class])
 		Private ReadOnly readMethodRef As New MethodRef
 		Private ReadOnly writeMethodRef As New MethodRef
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private propertyEditorClassRef As Reference(Of ? As Class)
+		Private propertyEditorClassRef As Reference(Of ? As [Class])
 
 		Private bound As Boolean
 		Private constrained As Boolean
@@ -67,7 +67,7 @@ Namespace java.beans
 		'''          example sun.beans.OurButton.class. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As Class)
+		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class])
 			Me.New(propertyName, beanClass, Introspector.IS_PREFIX + NameGenerator.capitalize(propertyName), Introspector.SET_PREFIX + NameGenerator.capitalize(propertyName))
 		End Sub
 
@@ -84,7 +84,7 @@ Namespace java.beans
 		'''           value.  May be null if the property is read-only. </param>
 		''' <exception cref="IntrospectionException"> if an exception occurs during
 		'''              introspection. </exception>
-		Public Sub New(ByVal propertyName As String, ByVal beanClass As Class, ByVal readMethodName As String, ByVal writeMethodName As String)
+		Public Sub New(ByVal propertyName As String, ByVal beanClass As [Class], ByVal readMethodName As String, ByVal writeMethodName As String)
 			If beanClass Is Nothing Then Throw New IntrospectionException("Target Bean class is null")
 			If propertyName Is Nothing OrElse propertyName.length() = 0 Then Throw New IntrospectionException("bad property name")
 			If "".Equals(readMethodName) OrElse "".Equals(writeMethodName) Then Throw New IntrospectionException("read or write method name should not be the empty string")
@@ -98,7 +98,7 @@ Namespace java.beans
 			' If this class or one of its base classes allow PropertyChangeListener,
 			' then we assume that any properties we discover are "bound".
 			' See Introspector.getTargetPropertyInfo() method.
-			Dim args As Class() = { GetType(PropertyChangeListener) }
+			Dim args As  [Class]() = { GetType(PropertyChangeListener) }
 			Me.bound = Nothing IsNot Introspector.findMethod(beanClass, "addPropertyChangeListener", args.Length, args)
 		End Sub
 
@@ -131,7 +131,7 @@ Namespace java.beans
 		''' <exception cref="IntrospectionException"> if an exception occurs during introspection
 		''' 
 		''' @since 1.7 </exception>
-		Friend Sub New(ByVal bean As Class, ByVal base As String, ByVal read As Method, ByVal write As Method)
+		Friend Sub New(ByVal bean As [Class], ByVal base As String, ByVal read As Method, ByVal write As Method)
 			If bean Is Nothing Then Throw New IntrospectionException("Target Bean class is null")
 			class0 = bean
 			name = Introspector.decapitalize(base)
@@ -152,9 +152,9 @@ Namespace java.beans
 		''' <returns> the {@code Class} object that represents the Java type info,
 		'''         or {@code null} if the type cannot be determined </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Property propertyType As Class
+		Public Overridable Property propertyType As  [Class]
 			Get
-				Dim type As Class = propertyType0
+				Dim type As  [Class] = propertyType0
 				If type Is Nothing Then
 					Try
 						type = findPropertyType(readMethod, writeMethod)
@@ -165,13 +165,13 @@ Namespace java.beans
 				End If
 				Return type
 			End Get
-			Set(ByVal type As Class)
+			Set(ByVal type As [Class])
 				Me.propertyTypeRef = getWeakReference(type)
 			End Set
 		End Property
 
 
-		Private Property propertyType0 As Class
+		Private Property propertyType0 As  [Class]
 			Get
 				Return If(Me.propertyTypeRef IsNot Nothing, Me.propertyTypeRef.get(), Nothing)
 			End Get
@@ -187,11 +187,11 @@ Namespace java.beans
 			Get
 				Dim readMethod_Renamed As Method = Me.readMethodRef.get()
 				If readMethod_Renamed Is Nothing Then
-					Dim cls As Class = class0
+					Dim cls As  [Class] = class0
 					If cls Is Nothing OrElse (readMethodName Is Nothing AndAlso (Not Me.readMethodRef.set)) Then Return Nothing
 					Dim nextMethodName As String = Introspector.GET_PREFIX + baseName
 					If readMethodName Is Nothing Then
-						Dim type As Class = propertyType0
+						Dim type As  [Class] = propertyType0
 						If type Is GetType(Boolean) OrElse type Is Nothing Then
 							readMethodName = Introspector.IS_PREFIX + baseName
 						Else
@@ -243,11 +243,11 @@ Namespace java.beans
 			Get
 				Dim writeMethod_Renamed As Method = Me.writeMethodRef.get()
 				If writeMethod_Renamed Is Nothing Then
-					Dim cls As Class = class0
+					Dim cls As  [Class] = class0
 					If cls Is Nothing OrElse (writeMethodName Is Nothing AndAlso (Not Me.writeMethodRef.set)) Then Return Nothing
     
 					' We need the type to fetch the correct method.
-					Dim type As Class = propertyType0
+					Dim type As  [Class] = propertyType0
 					If type Is Nothing Then
 						Try
 							' Can't use getPropertyType since it will lead to recursive loop.
@@ -262,7 +262,7 @@ Namespace java.beans
     
 					If writeMethodName Is Nothing Then writeMethodName = Introspector.SET_PREFIX + baseName
     
-					Dim args As Class() = If(type Is Nothing, Nothing, New [Class]()){ type }
+					Dim args As  [Class]() = If(type Is Nothing, Nothing, New [Class]()){ type }
 					writeMethod_Renamed = Introspector.findMethod(cls, writeMethodName, 1, args)
 					If writeMethod_Renamed IsNot Nothing Then
 						If Not writeMethod_Renamed.returnType.Equals(GetType(void)) Then writeMethod_Renamed = Nothing
@@ -294,8 +294,8 @@ Namespace java.beans
 		''' <summary>
 		''' Overridden to ensure that a super class doesn't take precedent
 		''' </summary>
-		Friend Overrides Property class0 As Class
-			Set(ByVal clz As Class)
+		Friend Overrides Property class0 As  [Class]
+			Set(ByVal clz As [Class])
 				If class0 IsNot Nothing AndAlso class0.IsSubclassOf(clz) Then Return
 				MyBase.class0 = clz
 			End Set
@@ -339,8 +339,8 @@ Namespace java.beans
 		''' this method.
 		''' </summary>
 		''' <param name="propertyEditorClass">  The Class for the desired PropertyEditor. </param>
-		Public Overridable Property propertyEditorClass As Class
-			Set(ByVal propertyEditorClass As Class)
+		Public Overridable Property propertyEditorClass As  [Class]
+			Set(ByVal propertyEditorClass As [Class])
 				Me.propertyEditorClassRef = getWeakReference(propertyEditorClass)
 			End Set
 			Get
@@ -364,7 +364,7 @@ Namespace java.beans
 		Public Overridable Function createPropertyEditor(ByVal bean As Object) As PropertyEditor
 			Dim editor As Object = Nothing
 
-			Dim cls As Class = propertyEditorClass
+			Dim cls As  [Class] = propertyEditorClass
 			If cls IsNot Nothing AndAlso cls.IsSubclassOf(GetType(PropertyEditor)) AndAlso sun.reflect.misc.ReflectUtil.isPackageAccessible(cls) Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim ctor As Constructor(Of ?) = Nothing
@@ -478,7 +478,7 @@ Namespace java.beans
 				' fall through
 			End Try
 
-			' However, if both x and y reference read methods in the same class,
+			' However, if both x and y reference read methods in the same [Class],
 			' give priority to a boolean "is" method over a boolean "get" method.
 			If xr IsNot Nothing AndAlso yr IsNot Nothing AndAlso xr.declaringClass = yr.declaringClass AndAlso getReturnType(class0, xr) Is GetType(Boolean) AndAlso getReturnType(class0, yr) Is GetType(Boolean) AndAlso xr.name.IndexOf(Introspector.IS_PREFIX) = 0 AndAlso yr.name.IndexOf(Introspector.GET_PREFIX) = 0 Then
 				Try
@@ -531,7 +531,7 @@ Namespace java.beans
 			constrained = old.constrained
 		End Sub
 
-		Friend Overridable Sub updateGenericsFor(ByVal type As Class)
+		Friend Overridable Sub updateGenericsFor(ByVal type As [Class])
 			class0 = type
 			Try
 				propertyType = findPropertyType(Me.readMethodRef.get(), Me.writeMethodRef.get())
@@ -547,17 +547,17 @@ Namespace java.beans
 		''' <returns> the type of the property descriptor or null if both
 		'''         read and write methods are null. </returns>
 		''' <exception cref="IntrospectionException"> if the read or write method is invalid </exception>
-		Private Function findPropertyType(ByVal readMethod As Method, ByVal writeMethod As Method) As Class
-			Dim propertyType_Renamed As Class = Nothing
+		Private Function findPropertyType(ByVal readMethod As Method, ByVal writeMethod As Method) As  [Class]
+			Dim propertyType_Renamed As  [Class] = Nothing
 			Try
 				If readMethod IsNot Nothing Then
-					Dim params As Class() = getParameterTypes(class0, readMethod)
+					Dim params As  [Class]() = getParameterTypes(class0, readMethod)
 					If params.Length <> 0 Then Throw New IntrospectionException("bad read method arg count: " & readMethod)
 					propertyType_Renamed = getReturnType(class0, readMethod)
 					If propertyType_Renamed Is Void.TYPE Then Throw New IntrospectionException("read method " & readMethod.name & " returns void")
 				End If
 				If writeMethod IsNot Nothing Then
-					Dim params As Class() = getParameterTypes(class0, writeMethod)
+					Dim params As  [Class]() = getParameterTypes(class0, writeMethod)
 					If params.Length <> 1 Then Throw New IntrospectionException("bad write method arg count: " & writeMethod)
 					If propertyType_Renamed IsNot Nothing AndAlso (Not propertyType_Renamed.IsSubclassOf(params(0))) Then Throw New IntrospectionException("type mismatch between read and write methods")
 					propertyType_Renamed = params(0)
@@ -612,14 +612,14 @@ Namespace java.beans
 			If m1 Is Nothing Then Return True ' choose second method
 			If m2 Is Nothing Then Return False ' choose first method
 			If Not m1.name.Equals(m2.name) Then Return True ' choose second method by default
-			Dim type1 As Class = m1.declaringClass
-			Dim type2 As Class = m2.declaringClass
+			Dim type1 As  [Class] = m1.declaringClass
+			Dim type2 As  [Class] = m2.declaringClass
 			If Not type2.IsSubclassOf(type1) Then Return False ' choose first method: it declared later
 			type1 = getReturnType(class0, m1)
 			type2 = getReturnType(class0, m2)
 			If Not type2.IsSubclassOf(type1) Then Return False ' choose first method: it overrides return type
-			Dim args1 As Class() = getParameterTypes(class0, m1)
-			Dim args2 As Class() = getParameterTypes(class0, m2)
+			Dim args1 As  [Class]() = getParameterTypes(class0, m1)
+			Dim args2 As  [Class]() = getParameterTypes(class0, m2)
 			If args1.Length <> args2.Length Then Return True ' choose second method by default
 			For i As Integer = 0 To args1.Length - 1
 				If Not args2(i).IsSubclassOf(args1(i)) Then Return False ' choose first method: it overrides parameter

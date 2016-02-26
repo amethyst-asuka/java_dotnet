@@ -31,7 +31,7 @@ Namespace java.security.cert
 	''' <summary>
 	''' The <i>Service Provider Interface</i> (<b>SPI</b>)
 	''' for the <seealso cref="CertStore CertStore"/> class. All {@code CertStore}
-	''' implementations must include a class (the SPI class) that extends
+	''' implementations must include a class (the SPI [Class]) that extends
 	''' this class ({@code CertStoreSpi}), provides a constructor with
 	''' a single argument of type {@code CertStoreParameters}, and implements
 	''' all of its methods. In general, instances of this class should only be

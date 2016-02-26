@@ -643,10 +643,10 @@ Namespace java.util.concurrent
 			Dim s As Integer
 			Try
 				U = sun.misc.Unsafe.unsafe
-				Dim ek As Class = GetType(Exchanger)
-				Dim nk As Class = GetType(Node)
-				Dim ak As Class = GetType(Node())
-				Dim tk As Class = GetType(Thread)
+				Dim ek As  [Class] = GetType(Exchanger)
+				Dim nk As  [Class] = GetType(Node)
+				Dim ak As  [Class] = GetType(Node())
+				Dim tk As  [Class] = GetType(Thread)
 				BOUND = U.objectFieldOffset(ek.getDeclaredField("bound"))
 				SLOT = U.objectFieldOffset(ek.getDeclaredField("slot"))
 				MATCH = U.objectFieldOffset(nk.getDeclaredField("match"))

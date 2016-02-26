@@ -116,7 +116,7 @@ Namespace java.util.logging
 	''' <p>
 	''' Note that all classes loaded during LogManager configuration are
 	''' first searched on the system class path before any user class path.
-	''' That includes the LogManager class, any config classes, and any
+	''' That includes the LogManager [Class], any config classes, and any
 	''' handler classes.
 	''' <p>
 	''' Loggers are organized into a naming hierarchy based on their
@@ -189,10 +189,10 @@ Namespace java.util.logging
 					cname = System.getProperty("java.util.logging.manager")
 					If cname IsNot Nothing Then
 						Try
-							Dim clz As Class = ClassLoader.systemClassLoader.loadClass(cname)
+							Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(cname)
 							mgr = CType(clz.newInstance(), LogManager)
-						Catch ex As ClassNotFoundException
-							Dim clz As Class = Thread.CurrentThread.contextClassLoader.loadClass(cname)
+						Catch ex As  [Class]NotFoundException
+							Dim clz As  [Class] = Thread.CurrentThread.contextClassLoader.loadClass(cname)
 							mgr = CType(clz.newInstance(), LogManager)
 						End Try
 					End If
@@ -535,7 +535,7 @@ Namespace java.util.logging
 		' add a new Logger or return the one that has been added previously
 		' as a LogManager subclass may override the addLogger, getLogger,
 		' readConfiguration, and other methods.
-		Friend Overridable Function demandLogger(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As Class) As Logger
+		Friend Overridable Function demandLogger(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As [Class]) As Logger
 			Dim result As Logger = getLogger(name)
 			If result Is Nothing Then
 				' only allocate the new logger once
@@ -934,7 +934,7 @@ Namespace java.util.logging
 				For i As Integer = 0 To names.Length - 1
 					Dim word As String = names(i)
 					Try
-						Dim clz As Class = ClassLoader.systemClassLoader.loadClass(word)
+						Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(word)
 						Dim hdl As Handler = CType(clz.newInstance(), Handler)
 						' Check if there is a property defining the
 						' this handler's level.
@@ -1245,11 +1245,11 @@ Namespace java.util.logging
 					' responsibility to initialize the logging configuration, by
 					' calling readConfiguration(InputStream) with a suitable stream.
 					Try
-						Dim clz As Class = ClassLoader.systemClassLoader.loadClass(cname)
+						Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(cname)
 						clz.newInstance()
 						Return
-					Catch ex As ClassNotFoundException
-						Dim clz As Class = Thread.CurrentThread.contextClassLoader.loadClass(cname)
+					Catch ex As  [Class]NotFoundException
+						Dim clz As  [Class] = Thread.CurrentThread.contextClassLoader.loadClass(cname)
 						clz.newInstance()
 						Return
 					End Try
@@ -1371,7 +1371,7 @@ Namespace java.util.logging
 			For i As Integer = 0 To names.Length - 1
 				Dim word As String = names(i)
 				Try
-					Dim clz As Class = ClassLoader.systemClassLoader.loadClass(word)
+					Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(word)
 					clz.newInstance()
 				Catch ex As Exception
 					Console.Error.WriteLine("Can't load config class """ & word & """")
@@ -1474,7 +1474,7 @@ Namespace java.util.logging
 			Dim val As String = getProperty(name)
 			Try
 				If val IsNot Nothing Then
-					Dim clz As Class = ClassLoader.systemClassLoader.loadClass(val)
+					Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(val)
 					Return CType(clz.newInstance(), Filter)
 				End If
 			Catch ex As Exception
@@ -1495,7 +1495,7 @@ Namespace java.util.logging
 			Dim val As String = getProperty(name)
 			Try
 				If val IsNot Nothing Then
-					Dim clz As Class = ClassLoader.systemClassLoader.loadClass(val)
+					Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(val)
 					Return CType(clz.newInstance(), Formatter)
 				End If
 			Catch ex As Exception
@@ -1675,24 +1675,24 @@ Namespace java.util.logging
 		''' and removePropertyChangeListener methods are removed.
 		''' </summary>
 		Private Class Beans
-			Private Shared ReadOnly propertyChangeListenerClass As Class = getClass("java.beans.PropertyChangeListener")
+			Private Shared ReadOnly propertyChangeListenerClass As  [Class] = getClass("java.beans.PropertyChangeListener")
 
-			Private Shared ReadOnly propertyChangeEventClass As Class = getClass("java.beans.PropertyChangeEvent")
+			Private Shared ReadOnly propertyChangeEventClass As  [Class] = getClass("java.beans.PropertyChangeEvent")
 
 			Private Shared ReadOnly propertyChangeMethod As Method = getMethod(propertyChangeListenerClass, "propertyChange", propertyChangeEventClass)
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Private Shared ReadOnly propertyEventCtor As Constructor(Of ?) = getConstructor(propertyChangeEventClass, GetType(Object), GetType(String), GetType(Object), GetType(Object))
 
-			Private Shared Function getClass(ByVal name As String) As Class
+			Private Shared Function getClass(ByVal name As String) As  [Class]
 				Try
 					Return Type.GetType(name, True, GetType(Beans).classLoader)
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					Return Nothing
 				End Try
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Private Shared Function getConstructor(ByVal c As Class, ParamArray ByVal types As Class()) As Constructor(Of ?)
+			Private Shared Function getConstructor(ByVal c As [Class], ParamArray ByVal types As  [Class]()) As Constructor(Of ?)
 				Try
 					Return If(c Is Nothing, Nothing, c.getDeclaredConstructor(types))
 				Catch x As NoSuchMethodException
@@ -1700,7 +1700,7 @@ Namespace java.util.logging
 				End Try
 			End Function
 
-			Private Shared Function getMethod(ByVal c As Class, ByVal name As String, ParamArray ByVal types As Class()) As Method
+			Private Shared Function getMethod(ByVal c As [Class], ByVal name As String, ParamArray ByVal types As  [Class]()) As Method
 				Try
 					Return If(c Is Nothing, Nothing, c.getMethod(name, types))
 				Catch e As NoSuchMethodException

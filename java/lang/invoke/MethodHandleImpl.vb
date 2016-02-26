@@ -75,13 +75,13 @@ Namespace java.lang.invoke
 				Catch ex As ReflectiveOperationException
 					Throw newInternalError(ex)
 				End Try
-				Dim THIS_CLASS As Class = GetType(CountingWrapper)
+				Dim THIS_CLASS As  [Class] = GetType(CountingWrapper)
 				Try
 					NF_maybeStopCounting = New NamedFunction(THIS_CLASS.getDeclaredMethod("maybeStopCounting", GetType(Object)))
 				Catch ex As ReflectiveOperationException
 					Throw newInternalError(ex)
 				End Try
-				Dim THIS_CLASS As Class = GetType(BindCaller)
+				Dim THIS_CLASS As  [Class] = GetType(BindCaller)
 				assert(checkCallerClass(THIS_CLASS, THIS_CLASS))
 				Try
 					MH_checkCallerClass = IMPL_LOOKUP.findStatic(THIS_CLASS, "checkCallerClass", MethodType.methodType(GetType(Boolean), GetType(Class), GetType(Class)))
@@ -108,7 +108,7 @@ Namespace java.lang.invoke
 
 			Public Overridable Function run() As Void
 				Try
-					Dim tClass As Class = GetType(T)
+					Dim tClass As  [Class] = GetType(T)
 					Dim tName As String = tClass.name
 					Dim tResource As String = tName.Substring(tName.LastIndexOf("."c)+1) & ".class"
 					Dim uconn As java.net.URLConnection = tClass.getResource(tResource).openConnection()
@@ -133,7 +133,7 @@ Namespace java.lang.invoke
 			MemberName.Factory.INSTANCE.GetType()
 		End Sub
 
-		Friend Shared Function makeArrayElementAccessor(ByVal arrayClass As Class, ByVal isSetter As Boolean) As MethodHandle
+		Friend Shared Function makeArrayElementAccessor(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodHandle
 			If arrayClass Is GetType(Object()) Then Return (If(isSetter, ArrayAccessor.OBJECT_ARRAY_SETTER, ArrayAccessor.OBJECT_ARRAY_GETTER))
 			If Not arrayClass.array Then Throw newIllegalArgumentException("not an array: " & arrayClass)
 			Dim cache As MethodHandle() = ArrayAccessor.TYPED_ACCESSORS.get(arrayClass)
@@ -165,12 +165,12 @@ Namespace java.lang.invoke
 		Friend NotInheritable Class ArrayAccessor
 			'/ Support for array element access
 			Friend Const GETTER_INDEX As Integer = 0, SETTER_INDEX As Integer = 1, INDEX_LIMIT As Integer = 2
-			Friend Shared ReadOnly TYPED_ACCESSORS As ClassValue(Of MethodHandle()) = New ClassValueAnonymousInnerClassHelper(Of T)
+			Friend Shared ReadOnly TYPED_ACCESSORS As  [Class]Value(Of MethodHandle()) = New ClassValueAnonymousInnerClassHelper(Of T)
 
 			Private Class ClassValueAnonymousInnerClassHelper(Of T)
 				Inherits ClassValue(Of T)
 
-				Protected Friend Overrides Function computeValue(ByVal type As Class) As MethodHandle()
+				Protected Friend Overrides Function computeValue(ByVal type As [Class]) As MethodHandle()
 					Return New MethodHandle(INDEX_LIMIT - 1){}
 				End Function
 			End Class
@@ -232,25 +232,25 @@ Namespace java.lang.invoke
 				a(i) = x
 			End Sub
 
-			Friend Shared Function name(ByVal arrayClass As Class, ByVal isSetter As Boolean) As String
-				Dim elemClass As Class = arrayClass.componentType
+			Friend Shared Function name(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As String
+				Dim elemClass As  [Class] = arrayClass.componentType
 				If elemClass Is Nothing Then Throw newIllegalArgumentException("not an array", arrayClass)
 				Return (If((Not isSetter), "getElement", "setElement")) + sun.invoke.util.Wrapper.basicTypeChar(elemClass)
 			End Function
-			Friend Shared Function type(ByVal arrayClass As Class, ByVal isSetter As Boolean) As MethodType
-				Dim elemClass As Class = arrayClass.componentType
-				Dim arrayArgClass As Class = arrayClass
+			Friend Shared Function type(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodType
+				Dim elemClass As  [Class] = arrayClass.componentType
+				Dim arrayArgClass As  [Class] = arrayClass
 				If Not elemClass.primitive Then
 					arrayArgClass = GetType(Object())
 					elemClass = GetType(Object)
 				End If
 				Return If((Not isSetter), MethodType.methodType(elemClass, arrayArgClass, GetType(Integer)), MethodType.methodType(GetType(void), arrayArgClass, GetType(Integer), elemClass))
 			End Function
-			Friend Shared Function correctType(ByVal arrayClass As Class, ByVal isSetter As Boolean) As MethodType
-				Dim elemClass As Class = arrayClass.componentType
+			Friend Shared Function correctType(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodType
+				Dim elemClass As  [Class] = arrayClass.componentType
 				Return If((Not isSetter), MethodType.methodType(elemClass, arrayClass, GetType(Integer)), MethodType.methodType(GetType(void), arrayClass, GetType(Integer), elemClass))
 			End Function
-			Friend Shared Function getAccessor(ByVal arrayClass As Class, ByVal isSetter As Boolean) As MethodHandle
+			Friend Shared Function getAccessor(ByVal arrayClass As [Class], ByVal isSetter As Boolean) As MethodHandle
 				Dim name As String = name(arrayClass, isSetter)
 				Dim type As MethodType = type(arrayClass, isSetter)
 				Try
@@ -306,7 +306,7 @@ Namespace java.lang.invoke
 				Else
 					fn = CType(convSpec, MethodHandle)
 				End If
-				Dim newType As Class = basicSrcType.parameterType(i)
+				Dim newType As  [Class] = basicSrcType.parameterType(i)
 				convCount -= 1
 				If convCount = 0 Then
 					midType = srcType
@@ -329,7 +329,7 @@ Namespace java.lang.invoke
 				Else
 					fn = CType(convSpec, MethodHandle)
 				End If
-				Dim newType As Class = basicSrcType.returnType()
+				Dim newType As  [Class] = basicSrcType.returnType()
 				convCount -= 1
 				assert(convCount = 0)
 				midType = srcType
@@ -387,7 +387,7 @@ Namespace java.lang.invoke
 
 				Dim conv As Name
 				If TypeOf convSpec Is Class Then
-					Dim convClass As Class = CType(convSpec, [Class])
+					Dim convClass As  [Class] = CType(convSpec, [Class])
 					conv = New Name(Lazy.MH_castReference, convClass, names(INARG_BASE + i))
 				Else
 					Dim fn As MethodHandle = CType(convSpec, MethodHandle)
@@ -412,7 +412,7 @@ Namespace java.lang.invoke
 				If convSpec Is GetType(void) Then
 					conv = New Name(LambdaForm.constantZero(BasicType.basicType(srcType.returnType())))
 				ElseIf TypeOf convSpec Is Class Then
-					Dim convClass As Class = CType(convSpec, [Class])
+					Dim convClass As  [Class] = CType(convSpec, [Class])
 					conv = New Name(Lazy.MH_castReference, convClass, names(OUT_CALL))
 				Else
 					Dim fn As MethodHandle = CType(convSpec, MethodHandle)
@@ -437,13 +437,13 @@ Namespace java.lang.invoke
 		''' <param name="x"> an arbitrary reference value </param>
 		''' <returns> the same value x </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function castReference(Of T, U)(ByVal t As Class, ByVal x As U) As T
+		Friend Shared Function castReference(Of T, U)(ByVal t As [Class], ByVal x As U) As T
 			' inlined Class.cast because we can't ForceInline it
 			If x IsNot Nothing AndAlso (Not t.isInstance(x)) Then Throw newClassCastException(t, x)
 			Return CType(x, T)
 		End Function
 
-		Private Shared Function newClassCastException(ByVal t As Class, ByVal obj As Object) As ClassCastException
+		Private Shared Function newClassCastException(ByVal t As [Class], ByVal obj As Object) As  [Class]CastException
 			Return New ClassCastException("Cannot cast " & obj.GetType().name & " to " & t.name)
 		End Function
 
@@ -452,8 +452,8 @@ Namespace java.lang.invoke
 			Dim convSpecs As Object() = New Object(INARG_COUNT){}
 			For i As Integer = 0 To INARG_COUNT
 				Dim isRet As Boolean = (i = INARG_COUNT)
-				Dim src As Class = If(isRet, dstType.returnType(), srcType.parameterType(i))
-				Dim dst As Class = If(isRet, srcType.returnType(), dstType.parameterType(i))
+				Dim src As  [Class] = If(isRet, dstType.returnType(), srcType.parameterType(i))
+				Dim dst As  [Class] = If(isRet, srcType.returnType(), dstType.parameterType(i))
 				If Not sun.invoke.util.VerifyType.isNullConversion(src, dst, [strict]) Then 'keepInterfaces= convSpecs(i) = valueConversion(src, dst, [strict], monobox)
 			Next i
 			Return convSpecs
@@ -468,7 +468,7 @@ Namespace java.lang.invoke
 		''' Return a Class object if a simple cast is needed.
 		''' Return void.class if void is involved.
 		''' </summary>
-		Friend Shared Function valueConversion(ByVal src As Class, ByVal dst As Class, ByVal [strict] As Boolean, ByVal monobox As Boolean) As Object
+		Friend Shared Function valueConversion(ByVal src As [Class], ByVal dst As [Class], ByVal [strict] As Boolean, ByVal monobox As Boolean) As Object
 			assert((Not sun.invoke.util.VerifyType.isNullConversion(src, dst, [strict]))) ' caller responsibility - keepInterfaces=
 			If dst Is GetType(void) Then Return dst
 			Dim fn As MethodHandle
@@ -516,7 +516,7 @@ Namespace java.lang.invoke
 			Return fn
 		End Function
 
-		Friend Shared Function makeVarargsCollector(ByVal target As MethodHandle, ByVal arrayType As Class) As MethodHandle
+		Friend Shared Function makeVarargsCollector(ByVal target As MethodHandle, ByVal arrayType As [Class]) As MethodHandle
 			Dim type As MethodType = target.type()
 			Dim last As Integer = type.parameterCount() - 1
 			If type.parameterType(last) IsNot arrayType Then target = target.asType(type.changeParameterType(last, arrayType))
@@ -528,13 +528,13 @@ Namespace java.lang.invoke
 			Inherits DelegatingMethodHandle
 
 			Private ReadOnly target As MethodHandle
-			Private ReadOnly arrayType As Class
+			Private ReadOnly arrayType As  [Class]
 			Private MethodHandle As Stable
 
-			Friend Sub New(ByVal target As MethodHandle, ByVal arrayType As Class)
+			Friend Sub New(ByVal target As MethodHandle, ByVal arrayType As [Class])
 				Me.New(target.type(), target, arrayType)
 			End Sub
-			Friend Sub New(ByVal type As MethodType, ByVal target As MethodHandle, ByVal arrayType As Class)
+			Friend Sub New(ByVal type As MethodType, ByVal target As MethodHandle, ByVal arrayType As [Class])
 				MyBase.New(type, target)
 				Me.target = target
 				Me.arrayType = arrayType
@@ -602,11 +602,11 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Factory method:  Spread selected argument. </summary>
-		Friend Shared Function makeSpreadArguments(ByVal target As MethodHandle, ByVal spreadArgType As Class, ByVal spreadArgPos As Integer, ByVal spreadArgCount As Integer) As MethodHandle
+		Friend Shared Function makeSpreadArguments(ByVal target As MethodHandle, ByVal spreadArgType As [Class], ByVal spreadArgPos As Integer, ByVal spreadArgCount As Integer) As MethodHandle
 			Dim targetType As MethodType = target.type()
 
 			For i As Integer = 0 To spreadArgCount - 1
-				Dim arg As Class = sun.invoke.util.VerifyType.spreadArgElementType(spreadArgType, i)
+				Dim arg As  [Class] = sun.invoke.util.VerifyType.spreadArgElementType(spreadArgType, i)
 				If arg Is Nothing Then arg = GetType(Object)
 				targetType = targetType.changeParameterType(spreadArgPos + i, arg)
 			Next i
@@ -622,7 +622,7 @@ Namespace java.lang.invoke
 			Dim i As Integer = 0
 			Dim argIndex As Integer = 1
 			Do While i < targetType.parameterCount() + 1
-				Dim src As Class = lambdaType.parameterType(i)
+				Dim src As  [Class] = lambdaType.parameterType(i)
 				If i = spreadArgPos Then
 					' Spread the array.
 					Dim aload As MethodHandle = MethodHandles.arrayElementGetter(spreadArgType)
@@ -676,7 +676,7 @@ Namespace java.lang.invoke
 		''' Factored in an inner class to delay initialization until first usage.
 		''' </summary>
 		Friend Class Lazy
-			Private Shared ReadOnly MHI As Class = GetType(MethodHandleImpl)
+			Private Shared ReadOnly MHI As  [Class] = GetType(MethodHandleImpl)
 
 			Private Shared ReadOnly ARRAYS As MethodHandle()
 			Private Shared ReadOnly FILL_ARRAYS As MethodHandle()
@@ -701,7 +701,7 @@ Namespace java.lang.invoke
 			Dim targetType As MethodType = target.type() ' (a..., c, [b...])=>r
 			Dim collectorType As MethodType = collector.type() ' (b...)=>c
 			Dim collectArgCount As Integer = collectorType.parameterCount()
-			Dim collectValType As Class = collectorType.returnType()
+			Dim collectValType As  [Class] = collectorType.returnType()
 			Dim collectValCount As Integer = (If(collectValType Is GetType(void), 0, 1))
 			Dim srcType As MethodType = targetType.dropParameterTypes(collectArgPos, collectArgPos+collectValCount) ' (a..., [b...])=>r
 			If Not retainOriginalArgs Then ' (a..., b...)=>r srcType = srcType.insertParameterTypes(collectArgPos, collectorType.parameterList())
@@ -1045,7 +1045,7 @@ Namespace java.lang.invoke
 			Return basicType.form().cachedLambdaFormorm(MethodTypeForm.LF_GWC, lform)
 		End Function
 
-		Friend Shared Function makeGuardWithCatch(ByVal target As MethodHandle, ByVal exType As Class, ByVal catcher As MethodHandle) As MethodHandle
+		Friend Shared Function makeGuardWithCatch(ByVal target As MethodHandle, ByVal exType As [Class], ByVal catcher As MethodHandle) As MethodHandle
 			Dim type As MethodType = target.type()
 			Dim form As LambdaForm = makeGuardWithCatchForm(type.basicType())
 
@@ -1055,7 +1055,7 @@ Namespace java.lang.invoke
 			Dim collectArgs As MethodHandle = varargsArray(type.parameterCount()).asType(varargsType)
 			' Result unboxing: ValueConversions.unbox() OR ValueConversions.identity() OR ValueConversions.ignore().
 			Dim unboxResult As MethodHandle
-			Dim rtype As Class = type.returnType()
+			Dim rtype As  [Class] = type.returnType()
 			If rtype.primitive Then
 				If rtype Is GetType(void) Then
 					unboxResult = sun.invoke.util.ValueConversions.ignore()
@@ -1083,7 +1083,7 @@ Namespace java.lang.invoke
 		''' (see <seealso cref="InvokerBytecodeGenerator#emitGuardWithCatch emitGuardWithCatch"/>).
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function guardWithCatch(ByVal target As MethodHandle, ByVal exType As Class, ByVal catcher As MethodHandle, ParamArray ByVal av As Object()) As Object
+		Friend Shared Function guardWithCatch(ByVal target As MethodHandle, ByVal exType As [Class], ByVal catcher As MethodHandle, ParamArray ByVal av As Object()) As Object
 			' Use asFixedArity() to avoid unnecessary boxing of last argument for VarargsCollector case.
 			Try
 				Return target.asFixedArity().invokeWithArguments(av)
@@ -1151,14 +1151,14 @@ Namespace java.lang.invoke
 		''' is sensitive to its caller.  A small number of system methods
 		''' are in this category, including Class.forName and Method.invoke.
 		''' </summary>
-		Friend Shared Function bindCaller(ByVal mh As MethodHandle, ByVal hostClass As Class) As MethodHandle
+		Friend Shared Function bindCaller(ByVal mh As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
 			Return BindCaller.bindCaller(mh, hostClass)
 		End Function
 
 		' Put the whole mess into its own nested class.
 		' That way we can lazily load the code and set up the constants.
 		Private Class BindCaller
-			Shared Function bindCaller(ByVal mh As MethodHandle, ByVal hostClass As Class) As MethodHandle
+			Shared Function bindCaller(ByVal mh As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
 				' Do not use this function to inject calls into system classes.
 				If hostClass Is Nothing OrElse (hostClass.array OrElse hostClass.primitive OrElse hostClass.name.StartsWith("java.") OrElse hostClass.name.StartsWith("sun.")) Then Throw New InternalError ' does not happen, and should not anyway
 				' For simplicity, convert mh to a varargs-like method.
@@ -1168,8 +1168,8 @@ Namespace java.lang.invoke
 				Return restoreToType(bccInvoker.bindTo(vamh), mh, hostClass)
 			End Function
 
-			Private Shared Function makeInjectedInvoker(ByVal hostClass As Class) As MethodHandle
-				Dim bcc As Class = UNSAFE.defineAnonymousClass(hostClass, T_BYTES, Nothing)
+			Private Shared Function makeInjectedInvoker(ByVal hostClass As [Class]) As MethodHandle
+				Dim bcc As  [Class] = UNSAFE.defineAnonymousClass(hostClass, T_BYTES, Nothing)
 				If hostClass.classLoader IsNot bcc.classLoader Then Throw New InternalError(hostClass.name & " (CL)")
 				Try
 					If hostClass.protectionDomain IsNot bcc.protectionDomain Then Throw New InternalError(hostClass.name & " (PD)")
@@ -1199,12 +1199,12 @@ Namespace java.lang.invoke
 				End Try
 				Return bccInvoker
 			End Function
-			Private Shared CV_makeInjectedInvoker As ClassValue(Of MethodHandle) = New ClassValueAnonymousInnerClassHelper(Of T)
+			Private Shared CV_makeInjectedInvoker As  [Class]Value(Of MethodHandle) = New ClassValueAnonymousInnerClassHelper(Of T)
 
 			Private Class ClassValueAnonymousInnerClassHelper(Of T)
 				Inherits ClassValue(Of T)
 
-				Protected Friend Overrides Function computeValue(ByVal hostClass As Class) As MethodHandle
+				Protected Friend Overrides Function computeValue(ByVal hostClass As [Class]) As MethodHandle
 					Return makeInjectedInvoker(hostClass)
 				End Function
 			End Class
@@ -1222,7 +1222,7 @@ Namespace java.lang.invoke
 			End Function
 
 			' Undo the adapter effect of prepareForInvoker:
-			Private Shared Function restoreToType(ByVal vamh As MethodHandle, ByVal original As MethodHandle, ByVal hostClass As Class) As MethodHandle
+			Private Shared Function restoreToType(ByVal vamh As MethodHandle, ByVal original As MethodHandle, ByVal hostClass As [Class]) As MethodHandle
 				Dim type As MethodType = original.type()
 				Dim mh As MethodHandle = vamh.asCollector(GetType(Object()), type.parameterCount())
 				Dim member As MemberName = original.internalMemberName()
@@ -1234,10 +1234,10 @@ Namespace java.lang.invoke
 			Private Shared ReadOnly MH_checkCallerClass As MethodHandle
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Private Shared Function checkCallerClass(ByVal expected As Class, ByVal expected2 As Class) As Boolean
+			Private Shared Function checkCallerClass(ByVal expected As [Class], ByVal expected2 As [Class]) As Boolean
 				' This method is called via MH_checkCallerClass and so it's
 				' correct to ask for the immediate caller here.
-				Dim actual As Class = sun.reflect.Reflection.callerClass
+				Dim actual As  [Class] = sun.reflect.Reflection.callerClass
 				If actual IsNot expected AndAlso actual IsNot expected2 Then Throw New InternalError("found " & actual.name & ", expected " & expected.name +(If(expected Is expected2, "", ", or else " & expected2.name)))
 				Return True
 			End Function
@@ -1262,10 +1262,10 @@ Namespace java.lang.invoke
 
 			Private ReadOnly target As MethodHandle
 			Private ReadOnly member As MemberName
-			Private ReadOnly callerClass As Class
+			Private ReadOnly callerClass As  [Class]
 			Private ReadOnly isInvokeSpecial_Renamed As Boolean
 
-			Private Sub New(ByVal target As MethodHandle, ByVal type As MethodType, ByVal member As MemberName, ByVal isInvokeSpecial As Boolean, ByVal callerClass As Class)
+			Private Sub New(ByVal target As MethodHandle, ByVal type As MethodType, ByVal member As MemberName, ByVal isInvokeSpecial As Boolean, ByVal callerClass As [Class])
 				MyBase.New(type, target)
 				Me.target = target
 				Me.member = member
@@ -1276,7 +1276,7 @@ Namespace java.lang.invoke
 			Friend Overrides Function internalMemberName() As MemberName
 				Return member
 			End Function
-			Friend Overrides Function internalCallerClass() As Class
+			Friend Overrides Function internalCallerClass() As  [Class]
 				Return callerClass
 			End Function
 			Friend Property Overrides invokeSpecial As Boolean
@@ -1353,7 +1353,7 @@ Namespace java.lang.invoke
 				Return MyBase.internalProperties() & vbLf & "& Intrinsic=" & intrinsicName_Renamed
 			End Function
 
-			Public Overrides Function asCollector(ByVal arrayType As Class, ByVal arrayLength As Integer) As MethodHandle
+			Public Overrides Function asCollector(ByVal arrayType As [Class], ByVal arrayLength As Integer) As MethodHandle
 				If intrinsicName_Renamed = Intrinsic.IDENTITY Then
 					Dim resultType As MethodType = type().asCollectorType(arrayType, arrayLength)
 					Dim newArray As MethodHandle = MethodHandleImpl.varargsArray(arrayType, arrayLength)
@@ -1374,7 +1374,7 @@ Namespace java.lang.invoke
 
 		'/ Collection of multiple arguments.
 
-		Private Shared Function findCollector(ByVal name As String, ByVal nargs As Integer, ByVal rtype As Class, ParamArray ByVal ptypes As Class()) As MethodHandle
+		Private Shared Function findCollector(ByVal name As String, ByVal nargs As Integer, ByVal rtype As [Class], ParamArray ByVal ptypes As  [Class]()) As MethodHandle
 			Dim type As MethodType = MethodType.genericMethodType(nargs).changeReturnType(rtype).insertParameterTypes(0, ptypes)
 			Try
 				Return IMPL_LOOKUP.findStatic(GetType(MethodHandleImpl), name, type)
@@ -1615,12 +1615,12 @@ Namespace java.lang.invoke
 		End Function
 
 		' Type-polymorphic version of varargs maker.
-		Private Shared ReadOnly TYPED_COLLECTORS As ClassValue(Of MethodHandle()) = New ClassValueAnonymousInnerClassHelper(Of T)
+		Private Shared ReadOnly TYPED_COLLECTORS As  [Class]Value(Of MethodHandle()) = New ClassValueAnonymousInnerClassHelper(Of T)
 
 		Private Class ClassValueAnonymousInnerClassHelper(Of T)
 			Inherits ClassValue(Of T)
 
-			Protected Friend Overrides Function computeValue(ByVal type As Class) As MethodHandle()
+			Protected Friend Overrides Function computeValue(ByVal type As [Class]) As MethodHandle()
 				Return New MethodHandle(255){}
 			End Function
 		End Class
@@ -1632,8 +1632,8 @@ Namespace java.lang.invoke
 		'''  typed arguments and returns an array of them.
 		'''  The type argument is the array type.
 		''' </summary>
-		Friend Shared Function varargsArray(ByVal arrayType As Class, ByVal nargs As Integer) As MethodHandle
-			Dim elemType As Class = arrayType.componentType
+		Friend Shared Function varargsArray(ByVal arrayType As [Class], ByVal nargs As Integer) As MethodHandle
+			Dim elemType As  [Class] = arrayType.componentType
 			If elemType Is Nothing Then Throw New IllegalArgumentException("not an array: " & arrayType)
 			' FIXME: Need more special casing and caching here.
 			If nargs >= MAX_JVM_ARITY\2 - 1 Then
@@ -1655,7 +1655,7 @@ Namespace java.lang.invoke
 				Dim producer As MethodHandle = buildArrayProducer(arrayType)
 				mh = buildVarargsArray(builder, producer, nargs)
 			Else
-				Dim objArrayType As Class = arrayType.asSubclass(GetType(Object()))
+				Dim objArrayType As  [Class] = arrayType.asSubclass(GetType(Object()))
 				Dim example As Object() = java.util.Arrays.copyOf(NO_ARGS_ARRAY, 0, objArrayType)
 				Dim builder As MethodHandle = Lazy.MH_fillNewTypedArray.bindTo(example)
 				Dim producer As MethodHandle = Lazy.MH_arrayIdentity ' must be weakly typed
@@ -1668,8 +1668,8 @@ Namespace java.lang.invoke
 			Return mh
 		End Function
 
-		Private Shared Function buildArrayProducer(ByVal arrayType As Class) As MethodHandle
-			Dim elemType As Class = arrayType.componentType
+		Private Shared Function buildArrayProducer(ByVal arrayType As [Class]) As MethodHandle
+			Dim elemType As  [Class] = arrayType.componentType
 			assert(elemType.primitive)
 			Return Lazy.MH_copyAsPrimitiveArray.bindTo(sun.invoke.util.Wrapper.forPrimitiveType(elemType))
 		End Function

@@ -97,17 +97,17 @@ Namespace java.beans
 
 
 
-		Friend Function getBeanInfo(ByVal type As Class) As BeanInfo
+		Friend Function getBeanInfo(ByVal type As [Class]) As BeanInfo
 			Return If(Me.beanInfoCache IsNot Nothing, Me.beanInfoCache(type), Nothing)
 		End Function
 
-		Friend Function putBeanInfo(ByVal type As Class, ByVal info As BeanInfo) As BeanInfo
+		Friend Function putBeanInfo(ByVal type As [Class], ByVal info As BeanInfo) As BeanInfo
 			If Me.beanInfoCache Is Nothing Then Me.beanInfoCache = New java.util.WeakHashMap(Of )
 				Me.beanInfoCache(type) = info
 				Return Me.beanInfoCache(type)
 		End Function
 
-		Friend Sub removeBeanInfo(ByVal type As Class)
+		Friend Sub removeBeanInfo(ByVal type As [Class])
 			If Me.beanInfoCache IsNot Nothing Then Me.beanInfoCache.Remove(type)
 		End Sub
 

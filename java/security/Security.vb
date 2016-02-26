@@ -621,21 +621,21 @@ Namespace java.security
 		End Function
 
 		' Map containing cached Spi Class objects of the specified type
-		Private Shared ReadOnly spiMap As Map(Of String, Class) = New ConcurrentDictionary(Of String, Class)
+		Private Shared ReadOnly spiMap As Map(Of String, [Class]) = New ConcurrentDictionary(Of String, [Class])
 
 		''' <summary>
 		''' Return the Class object for the given engine type
 		''' (e.g. "MessageDigest"). Works for Spis in the java.security package
 		''' only.
 		''' </summary>
-		Private Shared Function getSpiClass(ByVal type As String) As Class
-			Dim clazz As Class = spiMap.get(type)
+		Private Shared Function getSpiClass(ByVal type As String) As  [Class]
+			Dim clazz As  [Class] = spiMap.get(type)
 			If clazz IsNot Nothing Then Return clazz
 			Try
 				clazz = Type.GetType("java.security." & type & "Spi")
 				spiMap.put(type, clazz)
 				Return clazz
-			Catch e As ClassNotFoundException
+			Catch e As  [Class]NotFoundException
 				Throw New AssertionError("Spi class not found", e)
 			End Try
 		End Function
@@ -762,7 +762,7 @@ Namespace java.security
 			Public Overridable Function run() As Void
 				Try
 					' Get the class via the bootstrap class loader. 
-					Dim cl As Class = Type.GetType("java.lang.SecurityManager", False, Nothing)
+					Dim cl As  [Class] = Type.GetType("java.lang.SecurityManager", False, Nothing)
 					Dim f As Field = Nothing
 					Dim accessible As Boolean = False
 
@@ -778,7 +778,7 @@ Namespace java.security
 					f.booleanean(f, False)
 					f.accessible = accessible
 				Catch e1 As Exception
-		'                         If we couldn't get the class, it hasn't
+		'                         If we couldn't get the [Class], it hasn't
 		'                         * been loaded yet.  If there is no such
 		'                         * field, we shouldn't try to set it.  There
 		'                         * shouldn't be a security execption, as we

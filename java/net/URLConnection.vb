@@ -730,7 +730,7 @@ Namespace java.net
 		''' <seealso cref=        java.net.URLConnection#getContent(java.lang.Class[]) </seealso>
 		''' <seealso cref=        java.net.URLConnection#setContentHandlerFactory(java.net.ContentHandlerFactory)
 		''' @since 1.3 </seealso>
-		Public Overridable Function getContent(ByVal classes As Class()) As Object
+		Public Overridable Function getContent(ByVal classes As  [Class]()) As Object
 			' Must call getInputStream before GetHeaderField gets called
 			' so that FileNotFoundException has a chance to be thrown up
 			' from here without being caught.
@@ -1199,11 +1199,11 @@ Namespace java.net
 
 				Try
 					Dim clsName As String = packagePrefix & "." & contentHandlerClassName
-					Dim cls As Class = Nothing
+					Dim cls As  [Class] = Nothing
 					Try
 						cls = Type.GetType(clsName)
-					Catch e As ClassNotFoundException
-						Dim cl As ClassLoader = ClassLoader.systemClassLoader
+					Catch e As  [Class]NotFoundException
+						Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 						If cl IsNot Nothing Then cls = cl.loadClass(clsName)
 					End Try
 					If cls IsNot Nothing Then

@@ -82,7 +82,7 @@ Namespace java.time
 	''' <p>
 	''' The ISO-8601 calendar system is the modern civil calendar system used today
 	''' in most of the world. This API assumes that all calendar systems use the same
-	''' representation, this class, for time-of-day.
+	''' representation, this [Class], for time-of-day.
 	''' 
 	''' <p>
 	''' This is a <a href="{@docRoot}/java/lang/doc-files/ValueBased.html">value-based</a>

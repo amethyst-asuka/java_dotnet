@@ -85,7 +85,7 @@ Namespace java.util
 		''' <summary>
 		''' The class of all the elements of this set.
 		''' </summary>
-		Friend ReadOnly elementType As Class
+		Friend ReadOnly elementType As  [Class]
 
 		''' <summary>
 		''' All of the values comprising T.  (Cached for performance.)
@@ -370,7 +370,7 @@ Namespace java.util
 		''' Throws an exception if e is not of the correct type for this enum set.
 		''' </summary>
 		final void typeCheck(E e)
-			Dim eClass As Class = e.GetType()
+			Dim eClass As  [Class] = e.GetType()
 			If eClass IsNot elementType AndAlso eClass.BaseType IsNot elementType Then Throw New ClassCastException(eClass & " != " & elementType)
 
 		''' <summary>

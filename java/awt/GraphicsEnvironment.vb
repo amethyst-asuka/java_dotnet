@@ -89,22 +89,22 @@ Namespace java.awt
 			Dim nm As String = java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction("java.awt.graphicsenv", Nothing))
 			Try
 	'          long t0 = System.currentTimeMillis();
-				Dim geCls As Class
+				Dim geCls As  [Class]
 				Try
 					' First we try if the bootclassloader finds the requested
 					' class. This way we can avoid to run in a privileged block.
 					geCls = CType(Type.GetType(nm), [Class])
-				Catch ex As ClassNotFoundException
+				Catch ex As  [Class]NotFoundException
 					' If the bootclassloader fails, we try again with the
 					' application classloader.
-					Dim cl As ClassLoader = ClassLoader.systemClassLoader
+					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
 					geCls = CType(Type.GetType(nm, True, cl), [Class])
 				End Try
 				ge = geCls.newInstance()
 	'          long t1 = System.currentTimeMillis();
 	'          System.out.println("GE creation took " + (t1-t0)+ "ms.");
 				If headless Then ge = New sun.java2d.HeadlessGraphicsEnvironment(ge)
-			Catch e As ClassNotFoundException
+			Catch e As  [Class]NotFoundException
 				Throw New [Error]("Could not find class: " & nm)
 			Catch e As InstantiationException
 				Throw New [Error]("Could not instantiate Graphics Environment: " & nm)

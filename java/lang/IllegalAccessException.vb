@@ -30,7 +30,7 @@ Namespace java.lang
 	''' to reflectively create an instance (other than an array),
 	''' set or get a field, or invoke a method, but the currently
 	''' executing method does not have access to the definition of
-	''' the specified class, field, method or constructor.
+	''' the specified [Class], field, method or constructor.
 	''' 
 	''' @author  unascribed </summary>
 	''' <seealso cref=     Class#newInstance() </seealso>

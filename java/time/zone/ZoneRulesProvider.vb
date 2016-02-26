@@ -161,7 +161,7 @@ Namespace java.time.zone
 				Dim prop As String = System.getProperty("java.time.zone.DefaultZoneRulesProvider")
 				If prop IsNot Nothing Then
 					Try
-						Dim c As Class = Type.GetType(prop, True, ClassLoader.systemClassLoader)
+						Dim c As  [Class] = Type.GetType(prop, True, ClassLoader.systemClassLoader)
 						Dim provider As ZoneRulesProvider = GetType(ZoneRulesProvider).cast(c.newInstance())
 						registerProvider(provider)
 						loaded.add(provider)

@@ -53,12 +53,12 @@ Namespace java.lang.reflect
 		Inherits AccessibleObject
 		Implements Member
 
-		Private clazz As Class
+		Private clazz As  [Class]
 		Private slot As Integer
 		' This is guaranteed to be interned by the VM in the 1.4
 		' reflection implementation
 		Private name As String
-		Private type As Class
+		Private type As  [Class]
 		Private modifiers As Integer
 		' Generics and annotations support
 		<NonSerialized> _
@@ -90,7 +90,7 @@ Namespace java.lang.reflect
 		' Accessor for factory
 		Private Property factory As sun.reflect.generics.factory.GenericsFactory
 			Get
-				Dim c As Class = declaringClass
+				Dim c As  [Class] = declaringClass
 				' create scope and factory
 				Return sun.reflect.generics.factory.CoreReflectionFactory.make(c, sun.reflect.generics.scope.ClassScope.make(c))
 			End Get
@@ -111,7 +111,7 @@ Namespace java.lang.reflect
 		''' instantiation of these objects in Java code from the java.lang
 		''' package via sun.reflect.LangReflectAccess.
 		''' </summary>
-		Friend Sub New(ByVal declaringClass As Class, ByVal name As String, ByVal type As Class, ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte())
+		Friend Sub New(ByVal declaringClass As [Class], ByVal name As String, ByVal type As [Class], ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte())
 			Me.clazz = declaringClass
 			Me.name = name
 			Me.type = type
@@ -149,7 +149,7 @@ Namespace java.lang.reflect
 		''' Returns the {@code Class} object representing the class or interface
 		''' that declares the field represented by this {@code Field} object.
 		''' </summary>
-		Public Property declaringClass As Class Implements Member.getDeclaringClass
+		Public Property declaringClass As  [Class] Implements Member.getDeclaringClass
 			Get
 				Return clazz
 			End Get
@@ -209,7 +209,7 @@ Namespace java.lang.reflect
 		''' </summary>
 		''' <returns> a {@code Class} object identifying the declared
 		''' type of the field represented by this object </returns>
-		Public Property type As Class
+		Public Property type As  [Class]
 			Get
 				Return type
 			End Get
@@ -372,7 +372,7 @@ Namespace java.lang.reflect
 		Public Function [get](ByVal obj As Object) As Object
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -404,7 +404,7 @@ Namespace java.lang.reflect
 		Public Function getBoolean(ByVal obj As Object) As Boolean
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -436,7 +436,7 @@ Namespace java.lang.reflect
 		Public Function getByte(ByVal obj As Object) As SByte
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -470,7 +470,7 @@ Namespace java.lang.reflect
 		Public Function getChar(ByVal obj As Object) As Char
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -504,7 +504,7 @@ Namespace java.lang.reflect
 		Public Function getShort(ByVal obj As Object) As Short
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -538,7 +538,7 @@ Namespace java.lang.reflect
 		Public Function getInt(ByVal obj As Object) As Integer
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -572,7 +572,7 @@ Namespace java.lang.reflect
 		Public Function getLong(ByVal obj As Object) As Long
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -606,7 +606,7 @@ Namespace java.lang.reflect
 		Public Function getFloat(ByVal obj As Object) As Single
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -640,7 +640,7 @@ Namespace java.lang.reflect
 		Public Function getDouble(ByVal obj As Object) As Double
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -716,7 +716,7 @@ Namespace java.lang.reflect
 		Public Sub [set](ByVal obj As Object, ByVal value As Object)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -750,7 +750,7 @@ Namespace java.lang.reflect
 		Public Sub setBoolean(ByVal obj As Object, ByVal z As Boolean)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -784,7 +784,7 @@ Namespace java.lang.reflect
 		Public Sub setByte(ByVal obj As Object, ByVal b As SByte)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -818,7 +818,7 @@ Namespace java.lang.reflect
 		Public Sub setChar(ByVal obj As Object, ByVal c As Char)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -852,7 +852,7 @@ Namespace java.lang.reflect
 		Public Sub setShort(ByVal obj As Object, ByVal s As Short)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -886,7 +886,7 @@ Namespace java.lang.reflect
 		Public Sub setInt(ByVal obj As Object, ByVal i As Integer)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -920,7 +920,7 @@ Namespace java.lang.reflect
 		Public Sub setLong(ByVal obj As Object, ByVal l As Long)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -954,7 +954,7 @@ Namespace java.lang.reflect
 		Public Sub setFloat(ByVal obj As Object, ByVal f As Single)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -988,7 +988,7 @@ Namespace java.lang.reflect
 		Public Sub setDouble(ByVal obj As Object, ByVal d As Double)
 			If Not override Then
 				If Not sun.reflect.Reflection.quickCheckMemberAccess(clazz, modifiers) Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					checkAccess(caller, clazz, obj, modifiers)
 				End If
 			End If
@@ -1046,7 +1046,7 @@ Namespace java.lang.reflect
 
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As Class) As T
+		Public Overrides Function getAnnotation(Of T As Annotation)(ByVal annotationClass As [Class]) As T
 			java.util.Objects.requireNonNull(annotationClass)
 			Return annotationClass.cast(declaredAnnotations().get(annotationClass))
 		End Function
@@ -1055,7 +1055,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc} </summary>
 		''' <exception cref="NullPointerException"> {@inheritDoc}
 		''' @since 1.8 </exception>
-		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As Class) As T()
+		Public Overrides Function getAnnotationsByType(Of T As Annotation)(ByVal annotationClass As [Class]) As T()
 			java.util.Objects.requireNonNull(annotationClass)
 
 			Return sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent(declaredAnnotations(), annotationClass)

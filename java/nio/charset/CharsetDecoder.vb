@@ -109,7 +109,7 @@ Namespace java.nio.charset
 	''' 
 	''' <p> This class is designed to handle many of the details of the decoding
 	''' process, including the implementation of error actions.  A decoder for a
-	''' specific charset, which is a concrete subclass of this class, need only
+	''' specific charset, which is a concrete subclass of this [Class], need only
 	''' implement the abstract <seealso cref="#decodeLoop decodeLoop"/> method, which
 	''' encapsulates the basic decoding loop.  A subclass that maintains internal
 	''' state should, additionally, override the <seealso cref="#implFlush implFlush"/> and

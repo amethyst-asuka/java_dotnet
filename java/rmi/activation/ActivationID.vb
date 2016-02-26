@@ -107,7 +107,7 @@ Namespace java.rmi.activation
 				Throw e
 			Catch e As java.io.IOException
 				Throw New java.rmi.UnmarshalException("activation failed", e)
-			Catch e As ClassNotFoundException
+			Catch e As  [Class]NotFoundException
 				Throw New java.rmi.UnmarshalException("activation failed", e)
 			End Try
 
@@ -247,7 +247,7 @@ Namespace java.rmi.activation
 			uid = CType([in].readObject(), java.rmi.server.UID)
 
 			Try
-				Dim refClass As Class = Type.GetType(java.rmi.server.RemoteRef.packagePrefix & "." & [in].readUTF()).asSubclass(GetType(java.rmi.server.RemoteRef))
+				Dim refClass As  [Class] = Type.GetType(java.rmi.server.RemoteRef.packagePrefix & "." & [in].readUTF()).asSubclass(GetType(java.rmi.server.RemoteRef))
 				Dim ref As java.rmi.server.RemoteRef = refClass.newInstance()
 				ref.readExternal([in])
 				activator = CType(Proxy.newProxyInstance(Nothing, New [Class]() { GetType(Activator) }, New java.rmi.server.RemoteObjectInvocationHandler(ref)), Activator)

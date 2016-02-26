@@ -199,7 +199,7 @@ Namespace java.util.logging
 	''' <b>Subclassing Information:</b> Note that a LogManager class may
 	''' provide its own implementation of named Loggers for any point in
 	''' the namespace.  Therefore, any subclasses of Logger (unless they
-	''' are implemented in conjunction with a new LogManager class) should
+	''' are implemented in conjunction with a new LogManager [Class]) should
 	''' take care to obtain a Logger instance from the LogManager class and
 	''' should delegate operations such as "isLoggable" and "log(LogRecord)"
 	''' to that instance.  Note that in order to intercept all logging
@@ -373,7 +373,7 @@ Namespace java.util.logging
 			Me.New(name, resourceBundleName, Nothing, LogManager.logManager, False)
 		End Sub
 
-		Friend Sub New(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As Class, ByVal manager As LogManager, ByVal isSystemLogger As Boolean)
+		Friend Sub New(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As [Class], ByVal manager As LogManager, ByVal isSystemLogger As Boolean)
 			Me.manager = manager
 			Me.isSystemLogger = isSystemLogger
 			setupResourceInfo(resourceBundleName, caller)
@@ -381,14 +381,14 @@ Namespace java.util.logging
 			levelValue = Level.INFO
 		End Sub
 
-		Private Property callersClassLoaderRef As Class
-			Set(ByVal caller As Class)
-				Dim callersClassLoader_Renamed As ClassLoader = (If(caller IsNot Nothing, caller.classLoader, Nothing))
+		Private Property callersClassLoaderRef As  [Class]
+			Set(ByVal caller As [Class])
+				Dim callersClassLoader_Renamed As  [Class]Loader = (If(caller IsNot Nothing, caller.classLoader, Nothing))
 				If callersClassLoader_Renamed IsNot Nothing Then Me.callersClassLoaderRef = New WeakReference(Of )(callersClassLoader_Renamed)
 			End Set
 		End Property
 
-		Private Property callersClassLoader As ClassLoader
+		Private Property callersClassLoader As  [Class]Loader
 			Get
 				Return If(callersClassLoaderRef IsNot Nothing, callersClassLoaderRef.get(), Nothing)
 			End Get
@@ -443,7 +443,7 @@ Namespace java.util.logging
 			End Class
 		End Class
 
-		Private Shared Function demandLogger(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As Class) As Logger
+		Private Shared Function demandLogger(ByVal name As String, ByVal resourceBundleName As String, ByVal caller As [Class]) As Logger
 			Dim manager As LogManager = LogManager.logManager
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing AndAlso (Not SystemLoggerHelper.disableCallerCheck) Then
@@ -544,7 +544,7 @@ Namespace java.util.logging
 		' adding a new Logger object is handled by LogManager.addLogger().
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Shared Function getLogger(ByVal name As String, ByVal resourceBundleName As String) As Logger
-			Dim callerClass As Class = sun.reflect.Reflection.callerClass
+			Dim callerClass As  [Class] = sun.reflect.Reflection.callerClass
 			Dim result As Logger = demandLogger(name, resourceBundleName, callerClass)
 
 			' MissingResourceException or IllegalArgumentException can be
@@ -1043,7 +1043,7 @@ Namespace java.util.logging
 		End Sub
 
 		''' <summary>
-		''' Log a message, specifying source class, method, and resource bundle name
+		''' Log a message, specifying source [Class], method, and resource bundle name
 		''' with no arguments.
 		''' <p>
 		''' If the logger is currently enabled for the given message
@@ -1073,7 +1073,7 @@ Namespace java.util.logging
 		End Sub
 
 		''' <summary>
-		''' Log a message, specifying source class, method, and resource bundle name,
+		''' Log a message, specifying source [Class], method, and resource bundle name,
 		''' with a single object parameter to the log message.
 		''' <p>
 		''' If the logger is currently enabled for the given message
@@ -1106,7 +1106,7 @@ Namespace java.util.logging
 		End Sub
 
 		''' <summary>
-		''' Log a message, specifying source class, method, and resource bundle name,
+		''' Log a message, specifying source [Class], method, and resource bundle name,
 		''' with an array of object arguments.
 		''' <p>
 		''' If the logger is currently enabled for the given message
@@ -1138,7 +1138,7 @@ Namespace java.util.logging
 		End Sub
 
 		''' <summary>
-		''' Log a message, specifying source class, method, and resource bundle,
+		''' Log a message, specifying source [Class], method, and resource bundle,
 		''' with an optional list of message parameters.
 		''' <p>
 		''' If the logger is currently enabled for the given message
@@ -1167,7 +1167,7 @@ Namespace java.util.logging
 		End Sub
 
 		''' <summary>
-		''' Log a message, specifying source class, method, and resource bundle name,
+		''' Log a message, specifying source [Class], method, and resource bundle name,
 		''' with associated Throwable information.
 		''' <p>
 		''' If the logger is currently enabled for the given message
@@ -1204,7 +1204,7 @@ Namespace java.util.logging
 		End Sub
 
 		''' <summary>
-		''' Log a message, specifying source class, method, and resource bundle,
+		''' Log a message, specifying source [Class], method, and resource bundle,
 		''' with associated Throwable information.
 		''' <p>
 		''' If the logger is currently enabled for the given message
@@ -1747,7 +1747,7 @@ Namespace java.util.logging
 
 			' Use the thread's context ClassLoader.  If there isn't one, use the
 			' {@linkplain java.lang.ClassLoader#getSystemClassLoader() system ClassLoader}.
-			Dim cl As ClassLoader = Thread.CurrentThread.contextClassLoader
+			Dim cl As  [Class]Loader = Thread.CurrentThread.contextClassLoader
 			If cl Is Nothing Then cl = ClassLoader.systemClassLoader
 			Try
 				catalog = java.util.ResourceBundle.getBundle(name, currentLocale, cl)
@@ -1761,7 +1761,7 @@ Namespace java.util.logging
 
 			If useCallersClassLoader Then
 				' Try with the caller's ClassLoader
-				Dim callersClassLoader_Renamed As ClassLoader = callersClassLoader
+				Dim callersClassLoader_Renamed As  [Class]Loader = callersClassLoader
 
 				If callersClassLoader_Renamed Is Nothing OrElse callersClassLoader_Renamed Is cl Then Return Nothing
 
@@ -1785,7 +1785,7 @@ Namespace java.util.logging
 		' resourceBundleName field.
 		' Synchronized to prevent races in setting the fields.
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Sub setupResourceInfo(ByVal name As String, ByVal callersClass As Class)
+		Private Sub setupResourceInfo(ByVal name As String, ByVal callersClass As [Class])
 			Dim lb As LoggerBundle = loggerBundle_Renamed
 			If lb.resourceBundleName IsNot Nothing Then
 				' this Logger already has a ResourceBundle

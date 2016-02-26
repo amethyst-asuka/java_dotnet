@@ -795,7 +795,7 @@ Namespace java.lang
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Sub load0(ByVal fromClass As Class, ByVal filename As String)
+		Friend Overridable Sub load0(ByVal fromClass As [Class], ByVal filename As String)
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkLink(filename)
 			If Not((New File(filename)).absolute) Then Throw New UnsatisfiedLinkError("Expecting an absolute path of the library: " & filename)
@@ -820,7 +820,7 @@ Namespace java.lang
 		''' <p>
 		''' The method <seealso cref="System#loadLibrary(String)"/> is the conventional
 		''' and convenient means of invoking this method. If native
-		''' methods are to be used in the implementation of a class, a standard
+		''' methods are to be used in the implementation of a [Class], a standard
 		''' strategy is to put the native code in a library file (call it
 		''' <code>LibFile</code>) and then to put a static initializer:
 		''' <blockquote><pre>
@@ -851,7 +851,7 @@ Namespace java.lang
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Friend Overridable Sub loadLibrary0(ByVal fromClass As Class, ByVal libname As String)
+		Friend Overridable Sub loadLibrary0(ByVal fromClass As [Class], ByVal libname As String)
 			Dim security As SecurityManager = System.securityManager
 			If security IsNot Nothing Then security.checkLink(libname)
 			If libname.IndexOf(CInt(Fix(System.IO.Path.DirectorySeparatorChar))) <> -1 Then Throw New UnsatisfiedLinkError("Directory separator should not appear in library name: " & libname)

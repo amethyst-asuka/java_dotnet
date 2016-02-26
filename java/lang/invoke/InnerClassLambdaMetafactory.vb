@@ -80,9 +80,9 @@ Namespace java.lang.invoke
 		Private ReadOnly implMethodClassName As String ' Name of type containing implementation "CC"
 		Private ReadOnly implMethodName As String ' Name of implementation method "impl"
 		Private ReadOnly implMethodDesc As String ' Type descriptor for implementation methods "(I)Ljava/lang/String;"
-		Private ReadOnly implMethodReturnClass As Class ' class for implementaion method return type "Ljava/lang/String;"
+		Private ReadOnly implMethodReturnClass As  [Class] ' class for implementaion method return type "Ljava/lang/String;"
 		Private ReadOnly constructorType As MethodType ' Generated class constructor type "(CC)void"
-		Private ReadOnly cw As ClassWriter ' ASM class writer
+		Private ReadOnly cw As  [Class]Writer ' ASM class writer
 		Private ReadOnly argNames As String() ' Generated names for the constructor arguments
 		Private ReadOnly argDescs As String() ' Type descriptors for the constructor arguments
 		Private ReadOnly lambdaClassName As String ' Generated name for the generated class "X$$Lambda$1"
@@ -123,7 +123,7 @@ Namespace java.lang.invoke
 		'''                          bridged to the implementation method </param>
 		''' <exception cref="LambdaConversionException"> If any of the meta-factory protocol
 		''' invariants are violated </exception>
-		Public Sub New(ByVal caller As MethodHandles.Lookup, ByVal invokedType As MethodType, ByVal samMethodName As String, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType, ByVal isSerializable As Boolean, ByVal markerInterfaces As Class(), ByVal additionalBridges As MethodType())
+		Public Sub New(ByVal caller As MethodHandles.Lookup, ByVal invokedType As MethodType, ByVal samMethodName As String, ByVal samMethodType As MethodType, ByVal implMethod As MethodHandle, ByVal instantiatedMethodType As MethodType, ByVal isSerializable As Boolean, ByVal markerInterfaces As  [Class](), ByVal additionalBridges As MethodType())
 			MyBase.New(caller, invokedType, samMethodName, samMethodType, implMethod, instantiatedMethodType, isSerializable, markerInterfaces, additionalBridges)
 			implMethodClassName = implDefiningClass.name.replace("."c, "/"c)
 			implMethodName = implInfo.name
@@ -148,7 +148,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Build the CallSite. Generate a class file which implements the functional
-		''' interface, define the class, if there are no parameters create an instance
+		''' interface, define the [Class], if there are no parameters create an instance
 		''' of the class which the CallSite will return, otherwise, generate handles
 		''' which will call the class' constructor.
 		''' </summary>
@@ -158,7 +158,7 @@ Namespace java.lang.invoke
 		''' <exception cref="LambdaConversionException"> If properly formed functional interface
 		''' is not found </exception>
 		Friend Overrides Function buildCallSite() As CallSite
-			Dim innerClass As Class = spinInnerClass()
+			Dim innerClass As  [Class] = spinInnerClass()
 			If invokedType.parameterCount() = 0 Then
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				Dim ctrs As Constructor(Of ?)() = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
@@ -206,7 +206,7 @@ Namespace java.lang.invoke
 		''' <returns> a Class which implements the functional interface </returns>
 		''' <exception cref="LambdaConversionException"> If properly formed functional interface
 		''' is not found </exception>
-		Private Function spinInnerClass() As Class
+		Private Function spinInnerClass() As  [Class]
 			Dim interfaces As String()
 			Dim samIntf As String = samBase.name.replace("."c, "/"c)
 			Dim accidentallySerializable As Boolean = (Not isSerializable) AndAlso samBase.IsSubclassOf(GetType(java.io.Serializable))
@@ -216,7 +216,7 @@ Namespace java.lang.invoke
 				' Assure no duplicate interfaces (ClassFormatError)
 				Dim itfs As java.util.Set(Of String) = New java.util.LinkedHashSet(Of String)(markerInterfaces.Length + 1)
 				itfs.add(samIntf)
-				For Each markerInterface As Class In markerInterfaces
+				For Each markerInterface As  [Class] In markerInterfaces
 					itfs.add(markerInterface.name.replace("."c, "/"c))
 					accidentallySerializable = accidentallySerializable Or (Not isSerializable) AndAlso markerInterface.IsSubclassOf(GetType(java.io.Serializable))
 				Next markerInterface
@@ -292,7 +292,7 @@ Namespace java.lang.invoke
 			Dim typeIndex As Integer = 0
 			Dim varIndex As Integer = 0
 			Do While typeIndex < parameterCount
-				Dim argType As Class = invokedType.parameterType(typeIndex)
+				Dim argType As  [Class] = invokedType.parameterType(typeIndex)
 				m.visitVarInsn(getLoadOpcode(argType), varIndex)
 				varIndex += getParameterSize(argType)
 				typeIndex += 1
@@ -317,7 +317,7 @@ Namespace java.lang.invoke
 			Dim lvIndex As Integer = 0
 			Do While i < parameterCount
 				ctor.visitVarInsn(ALOAD, 0)
-				Dim argType As Class = invokedType.parameterType(i)
+				Dim argType As  [Class] = invokedType.parameterType(i)
 				ctor.visitVarInsn(getLoadOpcode(argType), lvIndex + 1)
 				lvIndex += getParameterSize(argType)
 				ctor.visitFieldInsn(PUTFIELD, lambdaClassName, argNames(i), argDescs(i))
@@ -424,7 +424,7 @@ Namespace java.lang.invoke
 				' Convert the return value (if any) and return it
 				' Note: if adapting from non-void to void, the 'return'
 				' instruction will pop the unneeded result
-				Dim samReturnClass As Class = methodType_Renamed.returnType()
+				Dim samReturnClass As  [Class] = methodType_Renamed.returnType()
 				convertType(outerInstance.implMethodReturnClass, samReturnClass, samReturnClass)
 				visitInsn(getReturnOpcode(samReturnClass))
 				' Maxs computed by ClassWriter.COMPUTE_MAXS,these arguments ignored
@@ -438,7 +438,7 @@ Namespace java.lang.invoke
 				Dim samReceiverLength As Integer = If(samIncludesReceiver, 1, 0)
 				If samIncludesReceiver Then
 					' push receiver
-					Dim rcvrType As Class = samType.parameterType(0)
+					Dim rcvrType As  [Class] = samType.parameterType(0)
 					visitVarInsn(getLoadOpcode(rcvrType), lvIndex + 1)
 					lvIndex += getParameterSize(rcvrType)
 					convertType(rcvrType, outerInstance.implDefiningClass, outerInstance.instantiatedMethodType.parameterType(0))
@@ -446,7 +446,7 @@ Namespace java.lang.invoke
 				Dim samParametersLength As Integer = samType.parameterCount()
 				Dim argOffset As Integer = outerInstance.implMethodType.parameterCount() - samParametersLength
 				For i As Integer = samReceiverLength To samParametersLength - 1
-					Dim argType As Class = samType.parameterType(i)
+					Dim argType As  [Class] = samType.parameterType(i)
 					visitVarInsn(getLoadOpcode(argType), lvIndex + 1)
 					lvIndex += getParameterSize(argType)
 					convertType(argType, outerInstance.implMethodType.parameterType(argOffset + i), outerInstance.instantiatedMethodType.parameterType(i))
@@ -471,7 +471,7 @@ Namespace java.lang.invoke
 			End Function
 		End Class
 
-		Friend Shared Function getParameterSize(ByVal c As Class) As Integer
+		Friend Shared Function getParameterSize(ByVal c As [Class]) As Integer
 			If c Is Void.TYPE Then
 				Return 0
 			ElseIf c Is Long.TYPE OrElse c Is Double.TYPE Then
@@ -480,17 +480,17 @@ Namespace java.lang.invoke
 			Return 1
 		End Function
 
-		Friend Shared Function getLoadOpcode(ByVal c As Class) As Integer
+		Friend Shared Function getLoadOpcode(ByVal c As [Class]) As Integer
 			If c Is Void.TYPE Then Throw New InternalError("Unexpected void type of load opcode")
 			Return ILOAD + getOpcodeOffset(c)
 		End Function
 
-		Friend Shared Function getReturnOpcode(ByVal c As Class) As Integer
+		Friend Shared Function getReturnOpcode(ByVal c As [Class]) As Integer
 			If c Is Void.TYPE Then Return RETURN
 			Return IRETURN + getOpcodeOffset(c)
 		End Function
 
-		Private Shared Function getOpcodeOffset(ByVal c As Class) As Integer
+		Private Shared Function getOpcodeOffset(ByVal c As [Class]) As Integer
 			If c.primitive Then
 				If c Is Long.TYPE Then
 					Return 1

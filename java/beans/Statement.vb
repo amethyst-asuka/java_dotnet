@@ -65,7 +65,7 @@ Namespace java.beans
 		Private ReadOnly target As Object
 		Private ReadOnly methodName As String
 		Private ReadOnly arguments As Object()
-		Friend loader As ClassLoader
+		Friend loader As  [Class]Loader
 
 		''' <summary>
 		''' Creates a new <seealso cref="Statement"/> object
@@ -199,7 +199,7 @@ Namespace java.beans
 			' of core from a class inside core. Special
 			' case this method.
 			If target_Renamed Is GetType(Class) AndAlso methodName_Renamed.Equals("forName") Then Return com.sun.beans.finder.ClassFinder.resolveClass(CStr(arguments_Renamed(0)), Me.loader)
-			Dim argClasses As Class() = New [Class](arguments_Renamed.Length - 1){}
+			Dim argClasses As  [Class]() = New [Class](arguments_Renamed.Length - 1){}
 			For i As Integer = 0 To arguments_Renamed.Length - 1
 				argClasses(i) = If(arguments_Renamed(i) Is Nothing, Nothing, arguments_Renamed(i).GetType())
 			Next i
@@ -209,7 +209,7 @@ Namespace java.beans
 	'            
 	'            For class methods, simluate the effect of a meta class
 	'            by taking the union of the static methods of the
-	'            actual class, with the instance methods of "Class.class"
+	'            actual [Class], with the instance methods of "Class.class"
 	'            and the overloaded "newInstance" methods defined by the
 	'            constructors.
 	'            This way "System.class", for example, will perform both
@@ -226,7 +226,7 @@ Namespace java.beans
 					Return result
 				End If
 				If methodName_Renamed.Equals("newInstance") AndAlso arguments_Renamed.Length <> 0 Then
-					' The Character class, as of 1.4, does not have a constructor
+					' The Character [Class], as of 1.4, does not have a constructor
 					' which takes a String. All of the other "wrapper" classes
 					' for Java's primitive types have a String constructor so we
 					' fake such a constructor here so that this special case can be
@@ -316,7 +316,7 @@ Namespace java.beans
 			Return result.ToString()
 		End Function
 
-		Friend Shared Function getMethod(ByVal type As Class, ByVal name As String, ParamArray ByVal args As Class()) As Method
+		Friend Shared Function getMethod(ByVal type As [Class], ByVal name As String, ParamArray ByVal args As  [Class]()) As Method
 			Try
 				Return com.sun.beans.finder.MethodFinder.findMethod(type, name, args)
 			Catch exception_Renamed As NoSuchMethodException

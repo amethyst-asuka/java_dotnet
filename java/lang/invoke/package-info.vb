@@ -143,7 +143,7 @@
 ''' <p>
 ''' If a given {@code invokedynamic} instruction specifies no static arguments,
 ''' the instruction's bootstrap method will be invoked on three arguments,
-''' conveying the instruction's caller class, name, and method type.
+''' conveying the instruction's caller [Class], name, and method type.
 ''' If the {@code invokedynamic} instruction specifies one or more static arguments,
 ''' those values will be passed as additional arguments to the method handle.
 ''' (Note that because there is a limit of 255 arguments to any method,

@@ -41,7 +41,7 @@ Namespace java.io
 	''' 
 	''' <p>Only objects that support the java.io.Serializable interface can be
 	''' written to streams.  The class of each serializable object is encoded
-	''' including the class name and signature of the class, the values of the
+	''' including the class name and signature of the [Class], the values of the
 	''' object's fields and arrays, and the closure of any other objects referenced
 	''' from the initial objects.
 	''' 
@@ -309,7 +309,7 @@ Namespace java.io
 
 		''' <summary>
 		''' Write the specified object to the ObjectOutputStream.  The class of the
-		''' object, the signature of the class, and the values of the non-transient
+		''' object, the signature of the [Class], and the values of the non-transient
 		''' and non-static fields of the class and all of its supertypes are
 		''' written.  Default serialization for a class can be overridden using the
 		''' writeObject and the readObject methods.  Objects referenced by this
@@ -488,7 +488,7 @@ Namespace java.io
 		''' <param name="cl"> the class to annotate custom data for </param>
 		''' <exception cref="IOException"> Any exception thrown by the underlying
 		'''          OutputStream. </exception>
-		Protected Friend Overridable Sub annotateClass(ByVal cl As Class)
+		Protected Friend Overridable Sub annotateClass(ByVal cl As [Class])
 		End Sub
 
 		''' <summary>
@@ -511,7 +511,7 @@ Namespace java.io
 		'''          <code>OutputStream</code> </exception>
 		''' <seealso cref= ObjectInputStream#resolveProxyClass(String[])
 		''' @since   1.3 </seealso>
-		Protected Friend Overridable Sub annotateProxyClass(ByVal cl As Class)
+		Protected Friend Overridable Sub annotateProxyClass(ByVal cl As [Class])
 		End Sub
 
 		''' <summary>
@@ -968,7 +968,7 @@ Namespace java.io
 		''' "enableSubclassImplementation" SerializablePermission is checked.
 		''' </summary>
 		Private Sub verifySubclass()
-			Dim cl As Class = Me.GetType()
+			Dim cl As  [Class] = Me.GetType()
 			If cl Is GetType(ObjectOutputStream) Then Return
 			Dim sm As SecurityManager = System.securityManager
 			If sm Is Nothing Then Return
@@ -988,7 +988,7 @@ Namespace java.io
 		''' override security-sensitive non-final methods.  Returns true if subclass
 		''' is "safe", false otherwise.
 		''' </summary>
-		Private Shared Function auditSubclass(ByVal subcl As Class) As Boolean
+		Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
 			Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 		   )
 			Return result
@@ -998,7 +998,7 @@ Namespace java.io
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Boolean?
-				Dim cl As Class = subcl
+				Dim cl As  [Class] = subcl
 				Do While cl IsNot GetType(ObjectOutputStream)
 					Try
 						cl.getDeclaredMethod("writeUnshared", New [Class]() { GetType(Object) })
@@ -1053,11 +1053,11 @@ Namespace java.io
 
 				' check for replacement object
 				Dim orig As Object = obj
-				Dim cl As Class = obj.GetType()
+				Dim cl As  [Class] = obj.GetType()
 				Dim desc As ObjectStreamClass
 				Do
 					' REMIND: skip this check for strings/arrays?
-					Dim repCl As Class
+					Dim repCl As  [Class]
 					desc = ObjectStreamClass.lookup(cl, True)
 					obj = desc.invokeWriteReplace(obj)
 					repCl = obj.GetType()
@@ -1135,7 +1135,7 @@ Namespace java.io
 		''' <summary>
 		''' Writes representation of given class to stream.
 		''' </summary>
-		Private Sub writeClass(ByVal cl As Class, ByVal unshared As Boolean)
+		Private Sub writeClass(ByVal cl As [Class], ByVal unshared As Boolean)
 			bout.writeByte(TC_CLASS)
 			writeClassDesc(ObjectStreamClass.lookup(cl, True), False)
 			[handles].assign(If(unshared, Nothing, cl))
@@ -1174,8 +1174,8 @@ Namespace java.io
 			bout.writeByte(TC_PROXYCLASSDESC)
 			[handles].assign(If(unshared, Nothing, desc))
 
-			Dim cl As Class = desc.forClass()
-			Dim ifaces As Class() = cl.interfaces
+			Dim cl As  [Class] = desc.forClass()
+			Dim ifaces As  [Class]() = cl.interfaces
 			bout.writeInt(ifaces.Length)
 			For i As Integer = 0 To ifaces.Length - 1
 				bout.writeUTF(ifaces(i).name)
@@ -1205,7 +1205,7 @@ Namespace java.io
 				writeClassDescriptor(desc)
 			End If
 
-			Dim cl As Class = desc.forClass()
+			Dim cl As  [Class] = desc.forClass()
 			bout.blockDataMode = True
 			If cl IsNot Nothing AndAlso customSubclass Then sun.reflect.misc.ReflectUtil.checkPackageAccess(cl)
 			annotateClass(cl)
@@ -1239,7 +1239,7 @@ Namespace java.io
 			writeClassDesc(desc, False)
 			[handles].assign(If(unshared, Nothing, array))
 
-			Dim ccl As Class = desc.forClass().componentType
+			Dim ccl As  [Class] = desc.forClass().componentType
 			If ccl.primitive Then
 				If ccl Is Integer.TYPE Then
 					Dim ia As Integer() = CType(array, Integer())
@@ -1308,7 +1308,7 @@ Namespace java.io
 		End Sub
 
 		''' <summary>
-		''' Writes representation of a "ordinary" (i.e., not a String, Class,
+		''' Writes representation of a "ordinary" (i.e., not a String, [Class],
 		''' ObjectStreamClass, array, or enum constant) serializable object to the
 		''' stream.
 		''' </summary>
@@ -1397,7 +1397,7 @@ Namespace java.io
 		''' write, and in which order they should be written.
 		''' </summary>
 		Private Sub defaultWriteFields(ByVal obj As Object, ByVal desc As ObjectStreamClass)
-			Dim cl As Class = desc.forClass()
+			Dim cl As  [Class] = desc.forClass()
 			If cl IsNot Nothing AndAlso obj IsNot Nothing AndAlso (Not cl.isInstance(obj)) Then Throw New ClassCastException
 
 			desc.checkDefaultSerialize()
@@ -1584,7 +1584,7 @@ Namespace java.io
 			''' types, and any other non-null type matches assignable types only.
 			''' Throws IllegalArgumentException if no matching field found.
 			''' </summary>
-			Private Function getFieldOffset(ByVal name As String, ByVal type As Class) As Integer
+			Private Function getFieldOffset(ByVal name As String, ByVal type As [Class]) As Integer
 				Dim field As ObjectStreamField = desc.getField(name, type)
 				If field Is Nothing Then Throw New IllegalArgumentException("no such field " & name & " with type " & type)
 				Return field.offset

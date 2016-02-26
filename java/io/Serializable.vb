@@ -129,7 +129,7 @@ Namespace java.io
 	''' verify that the sender and receiver of a serialized object have loaded
 	''' classes for that object that are compatible with respect to serialization.
 	''' If the receiver has loaded a class for the object that has a different
-	''' serialVersionUID than that of the corresponding sender's class, then
+	''' serialVersionUID than that of the corresponding sender's [Class], then
 	''' deserialization will result in an <seealso cref="InvalidClassException"/>.  A
 	''' serializable class can declare its own serialVersionUID explicitly by
 	''' declaring a field named <code>"serialVersionUID"</code> that must be static,
@@ -141,7 +141,7 @@ Namespace java.io
 	''' 
 	''' If a serializable class does not explicitly declare a serialVersionUID, then
 	''' the serialization runtime will calculate a default serialVersionUID value
-	''' for that class based on various aspects of the class, as described in the
+	''' for that class based on various aspects of the [Class], as described in the
 	''' Java(TM) Object Serialization Specification.  However, it is <em>strongly
 	''' recommended</em> that all serializable classes explicitly declare
 	''' serialVersionUID values, since the default serialVersionUID computation is

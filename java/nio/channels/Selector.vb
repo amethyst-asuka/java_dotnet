@@ -31,7 +31,7 @@ Namespace java.nio.channels
 	''' A multiplexor of <seealso cref="SelectableChannel"/> objects.
 	''' 
 	''' <p> A selector may be created by invoking the <seealso cref="#open open"/> method of
-	''' this class, which will use the system's default {@link
+	''' this [Class], which will use the system's default {@link
 	''' java.nio.channels.spi.SelectorProvider selector provider} to
 	''' create a new selector.  A selector may also be created by invoking the
 	''' <seealso cref="java.nio.channels.spi.SelectorProvider#openSelector openSelector"/>

@@ -29,7 +29,7 @@ Namespace java.nio.file.spi
 	''' <summary>
 	''' A file type detector for probing a file to guess its file type.
 	''' 
-	''' <p> A file type detector is a concrete implementation of this class, has a
+	''' <p> A file type detector is a concrete implementation of this [Class], has a
 	''' zero-argument constructor, and implements the abstract methods specified
 	''' below.
 	''' 

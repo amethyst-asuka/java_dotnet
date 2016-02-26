@@ -130,7 +130,7 @@ Namespace java.util.concurrent
 	'     * usage with arbitrary executors.
 	'     *
 	'     * Support for each kind of CompletionStage relies on a separate
-	'     * class, along with two CompletableFuture methods:
+	'     * [Class], along with two CompletableFuture methods:
 	'     *
 	'     * * A Completion class with name X corresponding to function,
 	'     *   prefaced with "Uni", "Bi", or "Or". Each class contains
@@ -2557,7 +2557,7 @@ Namespace java.util.concurrent
 				Dim u As sun.misc.Unsafe
 					u = sun.misc.Unsafe.unsafe
 					UNSAFE = u
-				Dim k As Class = GetType(CompletableFuture)
+				Dim k As  [Class] = GetType(CompletableFuture)
 				RESULT = u.objectFieldOffset(k.getDeclaredField("result"))
 				STACK = u.objectFieldOffset(k.getDeclaredField("stack"))
 				[NEXT] = u.objectFieldOffset(GetType(Completion).getDeclaredField("next"))

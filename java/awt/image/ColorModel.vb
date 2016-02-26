@@ -37,7 +37,7 @@ Namespace java.awt.image
 	''' (for example, red, green, and blue) and an alpha component.
 	''' In order to render an image to the screen, a printer, or another
 	''' image, pixel values must be converted to color and alpha components.
-	''' As arguments to or return values from methods of this class,
+	''' As arguments to or return values from methods of this [Class],
 	''' pixels are represented as 32-bit ints or as arrays of primitive types.
 	''' The number, order, and interpretation of color components for a
 	''' <code>ColorModel</code> is specified by its <code>ColorSpace</code>.
@@ -50,7 +50,7 @@ Namespace java.awt.image
 	''' array of primitive types.  The Java(tm) Platform 1.0 and 1.1 APIs
 	''' represented pixels as single <code>byte</code> or single
 	''' <code>int</code> values.  For purposes of the <code>ColorModel</code>
-	''' class, pixel value arguments were passed as ints.  The Java(tm) 2
+	''' [Class], pixel value arguments were passed as ints.  The Java(tm) 2
 	''' Platform API introduced additional classes for representing images.
 	''' With <seealso cref="BufferedImage"/> or <seealso cref="RenderedImage"/>
 	''' objects, based on <seealso cref="Raster"/> and <seealso cref="SampleModel"/> classes, pixel
@@ -571,7 +571,7 @@ Namespace java.awt.image
 		''' If this <code>transferType</code> is not supported, a
 		''' <code>UnsupportedOperationException</code> will be
 		''' thrown.  Since
-		''' <code>ColorModel</code> is an abstract class, any instance
+		''' <code>ColorModel</code> is an abstract [Class], any instance
 		''' must be an instance of a subclass.  Subclasses inherit the
 		''' implementation of this method and if they don't override it, this
 		''' method throws an exception if the subclass uses a
@@ -631,7 +631,7 @@ Namespace java.awt.image
 		''' If this <code>transferType</code> is not supported, a
 		''' <code>UnsupportedOperationException</code> will be
 		''' thrown.  Since
-		''' <code>ColorModel</code> is an abstract class, any instance
+		''' <code>ColorModel</code> is an abstract [Class], any instance
 		''' must be an instance of a subclass.  Subclasses inherit the
 		''' implementation of this method and if they don't override it, this
 		''' method throws an exception if the subclass uses a
@@ -691,7 +691,7 @@ Namespace java.awt.image
 		''' If this <code>transferType</code> is not supported, a
 		''' <code>UnsupportedOperationException</code> will be
 		''' thrown.  Since
-		''' <code>ColorModel</code> is an abstract class, any instance
+		''' <code>ColorModel</code> is an abstract [Class], any instance
 		''' must be an instance of a subclass.  Subclasses inherit the
 		''' implementation of this method and if they don't override it, this
 		''' method throws an exception if the subclass uses a
@@ -746,7 +746,7 @@ Namespace java.awt.image
 		''' If this <code>transferType</code> is not supported, a
 		''' <code>UnsupportedOperationException</code> will be
 		''' thrown.  Since
-		''' <code>ColorModel</code> is an abstract class, any instance
+		''' <code>ColorModel</code> is an abstract [Class], any instance
 		''' must be an instance of a subclass.  Subclasses inherit the
 		''' implementation of this method and if they don't override it, this
 		''' method throws an exception if the subclass uses a
@@ -828,7 +828,7 @@ Namespace java.awt.image
 		''' <code>ColorModel</code>. The pixel array is returned.
 		''' If this <code>transferType</code> is not supported, a
 		''' <code>UnsupportedOperationException</code> will be
-		''' thrown.  Since <code>ColorModel</code> is an abstract class,
+		''' thrown.  Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -868,7 +868,7 @@ Namespace java.awt.image
 		''' <code>ArrayIndexOutOfBoundsException</code> is thrown if  the
 		''' components array is not <code>null</code> and is not large
 		''' enough to hold all the color and alpha components (starting at offset).
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -907,7 +907,7 @@ Namespace java.awt.image
 		''' is thrown if  the components array is not <code>null</code> and is
 		''' not large enough to hold all the color and alpha components
 		''' (starting at <code>offset</code>).
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1019,7 +1019,7 @@ Namespace java.awt.image
 		''' <code>components</code> array is not large enough to hold all the
 		''' color and alpha components starting at <code>offset</code>.
 		''' <p>
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  The default implementation
 		''' of this method in this abstract class assumes that component values
 		''' for this class are conveniently representable in the unnormalized
@@ -1089,7 +1089,7 @@ Namespace java.awt.image
 		''' <code>ArrayIndexOutOfBoundsException</code> is thrown if  the
 		''' <code>components</code> array is not large enough to hold all the
 		''' color and alpha components (starting at <code>offset</code>).
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1134,7 +1134,7 @@ Namespace java.awt.image
 		''' <code>ArrayIndexOutOfBoundsException</code> is thrown if
 		''' <code>obj</code> is not large enough to hold a pixel value for this
 		''' <code>ColorModel</code>.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1174,7 +1174,7 @@ Namespace java.awt.image
 		''' <code>ArrayIndexOutOfBoundsException</code> is thrown if  the
 		''' <code>normComponents</code> array is not large enough to hold all the
 		''' color and alpha components (starting at <code>normOffset</code>).
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  The default implementation
 		''' of this method in this abstract class first converts from the
 		''' normalized form to the unnormalized form and then calls
@@ -1216,7 +1216,7 @@ Namespace java.awt.image
 		''' <code>ArrayIndexOutOfBoundsException</code> is thrown if
 		''' <code>obj</code> is not large enough to hold a pixel value for this
 		''' <code>ColorModel</code>.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  The default implementation
 		''' of this method in this abstract class first converts from the
 		''' normalized form to the unnormalized form and then calls
@@ -1266,7 +1266,7 @@ Namespace java.awt.image
 		''' if the <code>normComponents</code> array is not <code>null</code>
 		''' and is not large enough to hold all the color and alpha components
 		''' (starting at <code>normOffset</code>).
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  The default implementation
 		''' of this method in this abstract class first retrieves color and alpha
 		''' components in the unnormalized form using
@@ -1371,7 +1371,7 @@ Namespace java.awt.image
 		''' flag set appropriately.  This method will throw a
 		''' <code>UnsupportedOperationException</code> if it is not supported
 		''' by this <code>ColorModel</code>.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1388,7 +1388,7 @@ Namespace java.awt.image
 		''' Returns <code>true</code> if <code>raster</code> is compatible
 		''' with this <code>ColorModel</code> and <code>false</code> if it is
 		''' not.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1406,7 +1406,7 @@ Namespace java.awt.image
 		''' Creates a <code>WritableRaster</code> with the specified width and
 		''' height that has a data layout (<code>SampleModel</code>) compatible
 		''' with this <code>ColorModel</code>.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1426,7 +1426,7 @@ Namespace java.awt.image
 		''' Creates a <code>SampleModel</code> with the specified width and
 		''' height that has a data layout compatible with this
 		''' <code>ColorModel</code>.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1444,7 +1444,7 @@ Namespace java.awt.image
 		''' <summary>
 		''' Checks if the <code>SampleModel</code> is compatible with this
 		''' <code>ColorModel</code>.
-		''' Since <code>ColorModel</code> is an abstract class,
+		''' Since <code>ColorModel</code> is an abstract [Class],
 		''' any instance is an instance of a subclass.  Subclasses must
 		''' override this method since the implementation in this abstract
 		''' class throws an <code>UnsupportedOperationException</code>. </summary>
@@ -1484,7 +1484,7 @@ Namespace java.awt.image
 		''' there is no spatially discrete alpha channel.
 		''' This method will create a new <code>Raster</code> (but will share
 		''' the data array).
-		''' Since <code>ColorModel</code> is an abstract class, any instance
+		''' Since <code>ColorModel</code> is an abstract [Class], any instance
 		''' is an instance of a subclass.  Subclasses must override this
 		''' method to get any behavior other than returning <code>null</code>
 		''' because the implementation in this abstract class returns

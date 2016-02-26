@@ -1108,7 +1108,7 @@ Namespace java.util
 		''' and <code>endTimeMode</code>.
 		''' </dd>
 		''' </dl>
-		''' When streaming out this class, the most recent format
+		''' When streaming out this [Class], the most recent format
 		''' and the highest allowable <code>serialVersionOnStream</code>
 		''' is written.
 		''' @serial

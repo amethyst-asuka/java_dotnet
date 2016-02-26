@@ -37,7 +37,7 @@ Namespace java.security
 	''' <p>More specifically, it encapsulates a context and
 	''' has a single method, {@code checkPermission},
 	''' that is equivalent to the {@code checkPermission} method
-	''' in the AccessController class, with one difference: The AccessControlContext
+	''' in the AccessController [Class], with one difference: The AccessControlContext
 	''' {@code checkPermission} method makes access decisions based on the
 	''' context it encapsulates,
 	''' rather than that of the current execution thread.
@@ -449,7 +449,7 @@ Namespace java.security
 	'         * Try to match any limited privilege scope.
 	'         
 			If permissions IsNot Nothing Then
-				Dim permClass As Class = perm.GetType()
+				Dim permClass As  [Class] = perm.GetType()
 				For i As Integer = 0 To permissions.Length - 1
 					Dim limit As Permission = permissions(i)
 					If limit.GetType().Equals(permClass) AndAlso limit.implies(perm) Then Return
@@ -785,7 +785,7 @@ Namespace java.security
 						j += 1
 					Loop
 				Else
-					Dim thisPdClass As Class = thisPd.GetType()
+					Dim thisPdClass As  [Class] = thisPd.GetType()
 					Dim thatPd As ProtectionDomain
 					Dim j As Integer = 0
 					Do While (j < thatContext.length) AndAlso Not match

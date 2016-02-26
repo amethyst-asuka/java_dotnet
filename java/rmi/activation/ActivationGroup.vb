@@ -274,12 +274,12 @@ Namespace java.rmi.activation
 			Try
 				' load group's class
 				Dim groupClassName As String = desc.className
-				Dim cl As Class
-				Dim defaultGroupClass As Class = GetType(sun.rmi.server.ActivationGroupImpl)
+				Dim cl As  [Class]
+				Dim defaultGroupClass As  [Class] = GetType(sun.rmi.server.ActivationGroupImpl)
 				If groupClassName Is Nothing OrElse groupClassName.Equals(defaultGroupClass.name) Then ' see 4252236
 					cl = defaultGroupClass
 				Else
-					Dim cl0 As Class
+					Dim cl0 As  [Class]
 					Try
 						cl0 = java.rmi.server.RMIClassLoader.loadClass(desc.location, groupClassName)
 					Catch ex As Exception

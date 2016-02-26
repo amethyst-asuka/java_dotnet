@@ -20,7 +20,7 @@ Namespace My.Resources
     'To add or remove a member, edit your .ResX file then rerun ResGen
     'with the /str option, or rebuild your VS project.
     '''<summary>
-    '''  A strongly-typed resource class, for looking up localized strings, etc.
+    '''  A strongly-typed resource [Class], for looking up localized strings, etc.
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

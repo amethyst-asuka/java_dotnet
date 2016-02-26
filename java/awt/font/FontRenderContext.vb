@@ -294,7 +294,7 @@ Namespace java.awt.font
 		Public Overrides Function Equals(ByVal obj As Object) As Boolean
 			Try
 				Return Equals(CType(obj, FontRenderContext))
-			Catch e As ClassCastException
+			Catch e As  [Class]CastException
 				Return False
 			End Try
 		End Function

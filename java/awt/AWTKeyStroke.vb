@@ -71,23 +71,23 @@ Namespace java.awt
 		'A key withing the cache
 		Private Shared APP_CONTEXT_KEYSTROKE_KEY As New AWTKeyStroke
 
-	'    
-	'     * Reads keystroke class from AppContext and if null, puts there the
-	'     * AWTKeyStroke class.
-	'     * Must be called under locked AWTKeyStro
-	'     
-		Private Property Shared aWTKeyStrokeClass As Class
-			Get
-				Dim clazz As Class = CType(sun.awt.AppContext.appContext.get(GetType(AWTKeyStroke)), [Class])
-				If clazz Is Nothing Then
-					clazz = GetType(AWTKeyStroke)
-					sun.awt.AppContext.appContext.put(GetType(AWTKeyStroke), GetType(AWTKeyStroke))
-				End If
-				Return clazz
-			End Get
-		End Property
+        '    
+        '     * Reads keystroke class from AppContext and if null, puts there the
+        '     * AWTKeyStroke class.
+        '     * Must be called under locked AWTKeyStro
+        '     
+        Private Property Shared aWTKeyStrokeClass As [Class]
+            Get
+                Dim clazz As [Class] = CType(sun.awt.AppContext.appContext.get(GetType(AWTKeyStroke)), [Class])
+                If clazz Is Nothing Then
+                    clazz = GetType(AWTKeyStroke)
+                    sun.awt.AppContext.appContext.put(GetType(AWTKeyStroke), GetType(AWTKeyStroke))
+                End If
+                Return clazz
+            End Get
+        End Property
 
-		Private keyChar As Char = java.awt.event.KeyEvent.CHAR_UNDEFINED
+        Private keyChar As Char = java.awt.event.KeyEvent.CHAR_UNDEFINED
 		Private keyCode As Integer = java.awt.event.KeyEvent.VK_UNDEFINED
 		Private modifiers As Integer
 		Private onKeyRelease As Boolean
@@ -166,10 +166,10 @@ Namespace java.awt
 		''' <exception cref="ClassCastException"> if subclass is not
 		'''         <code>AWTKeyStroke</code>, or a class derived from
 		'''         <code>AWTKeyStroke</code> </exception>
-		Protected Friend Shared Sub registerSubclass(ByVal subclass As Class)
+		Protected Friend Shared Sub registerSubclass(ByVal subclass As [Class])
 			If subclass Is Nothing Then Throw New IllegalArgumentException("subclass cannot be null")
 			SyncLock GetType(AWTKeyStroke)
-				Dim keyStrokeClass As Class = CType(sun.awt.AppContext.appContext.get(GetType(AWTKeyStroke)), [Class])
+				Dim keyStrokeClass As  [Class] = CType(sun.awt.AppContext.appContext.get(GetType(AWTKeyStroke)), [Class])
 				If keyStrokeClass IsNot Nothing AndAlso keyStrokeClass.Equals(subclass) Then Return
 			End SyncLock
 			If Not subclass.IsSubclassOf(GetType(AWTKeyStroke)) Then Throw New ClassCastException("subclass is not derived from AWTKeyStroke")
@@ -205,7 +205,7 @@ Namespace java.awt
 	'       threat as accessible flag is set only for this Constructor object,
 	'       not for Class constructor.
 	'     
-		Private Shared Function getCtor(ByVal clazz As Class) As Constructor
+		Private Shared Function getCtor(ByVal clazz As [Class]) As Constructor
 			Dim ctor_Renamed As Constructor = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Return CType(ctor_Renamed, Constructor)
 		End Function
@@ -237,7 +237,7 @@ Namespace java.awt
 
 			If cacheKey Is Nothing Then
 				Try
-					Dim clazz As Class = aWTKeyStrokeClass
+					Dim clazz As  [Class] = aWTKeyStrokeClass
 					cacheKey = CType(getCtor(clazz).newInstance(CType(Nothing, Object())), AWTKeyStroke)
 					sun.awt.AppContext.appContext.put(APP_CONTEXT_KEYSTROKE_KEY, cacheKey)
 				Catch e As InstantiationException

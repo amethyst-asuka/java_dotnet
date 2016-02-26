@@ -68,7 +68,7 @@ Namespace java.time
 	''' The most common region classification is the Time Zone Database (TZDB),
 	''' which defines regions such as 'Europe/Paris' and 'Asia/Tokyo'.
 	''' <p>
-	''' The region identifier, modeled by this class, is distinct from the
+	''' The region identifier, modeled by this [Class], is distinct from the
 	''' underlying rules, modeled by <seealso cref="ZoneRules"/>.
 	''' The rules are defined by governments and change frequently.
 	''' By contrast, the region identifier is well-defined and long-lived.

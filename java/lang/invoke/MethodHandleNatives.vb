@@ -52,11 +52,11 @@ Namespace java.lang.invoke
 		End Sub
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function resolve(ByVal self As MemberName, ByVal caller As Class) As MemberName
+		Friend Shared Function resolve(ByVal self As MemberName, ByVal caller As [Class]) As MemberName
 		End Function
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Friend Shared Function getMembers(ByVal defc As Class, ByVal matchName As String, ByVal matchSig As String, ByVal matchFlags As Integer, ByVal caller As Class, ByVal skip As Integer, ByVal results As MemberName()) As Integer
+		Friend Shared Function getMembers(ByVal defc As [Class], ByVal matchName As String, ByVal matchSig As String, ByVal matchFlags As Integer, ByVal caller As [Class], ByVal skip As Integer, ByVal results As MemberName()) As Integer
 		End Function
 
 		'/ Field layout queries parallel to sun.misc.Unsafe:
@@ -268,13 +268,13 @@ Namespace java.lang.invoke
 		''' </summary>
 		Friend Shared Function linkCallSite(ByVal callerObj As Object, ByVal bootstrapMethodObj As Object, ByVal nameObj As Object, ByVal typeObj As Object, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
 			Dim bootstrapMethod As MethodHandle = CType(bootstrapMethodObj, MethodHandle)
-			Dim caller As Class = CType(callerObj, [Class])
+			Dim caller As  [Class] = CType(callerObj, [Class])
 			Dim name As String = nameObj.ToString().intern()
 			Dim type As MethodType = CType(typeObj, MethodType)
 			If Not TRACE_METHOD_LINKAGE Then Return linkCallSiteImpl(caller, bootstrapMethod, name, type, staticArguments, appendixResult)
 			Return linkCallSiteTracing(caller, bootstrapMethod, name, type, staticArguments, appendixResult)
 		End Function
-		Friend Shared Function linkCallSiteImpl(ByVal caller As Class, ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkCallSiteImpl(ByVal caller As [Class], ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
 			Dim callSite_Renamed As CallSite = CallSite.makeSite(bootstrapMethod, name, type, staticArguments, caller)
 			If TypeOf callSite_Renamed Is ConstantCallSite Then
 				appendixResult(0) = callSite_Renamed.dynamicInvoker()
@@ -285,7 +285,7 @@ Namespace java.lang.invoke
 			End If
 		End Function
 		' Tracing logic:
-		Friend Shared Function linkCallSiteTracing(ByVal caller As Class, ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkCallSiteTracing(ByVal caller As [Class], ByVal bootstrapMethod As MethodHandle, ByVal name As String, ByVal type As MethodType, ByVal staticArguments As Object, ByVal appendixResult As Object()) As MemberName
 			Dim bsmReference As Object = bootstrapMethod.internalMemberName()
 			If bsmReference Is Nothing Then bsmReference = bootstrapMethod
 			Dim staticArglist As Object = (If(TypeOf staticArguments Is Object(), CType(staticArguments, Object()), staticArguments))
@@ -303,7 +303,7 @@ Namespace java.lang.invoke
 		''' <summary>
 		''' The JVM wants a pointer to a MethodType.  Oblige it by finding or creating one.
 		''' </summary>
-		Friend Shared Function findMethodHandleType(ByVal rtype As Class, ByVal ptypes As Class()) As MethodType
+		Friend Shared Function findMethodHandleType(ByVal rtype As [Class], ByVal ptypes As  [Class]()) As MethodType
 			Return MethodType.makeImpl(rtype, ptypes, True)
 		End Function
 
@@ -374,11 +374,11 @@ Namespace java.lang.invoke
 		''' special cases in reflective code such as {@code findVirtual}
 		''' or {@code revealDirect}.
 		''' </summary>
-		Friend Shared Function linkMethod(ByVal callerClass As Class, ByVal refKind As Integer, ByVal defc As Class, ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkMethod(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
 			If Not TRACE_METHOD_LINKAGE Then Return linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult)
 			Return linkMethodTracing(callerClass, refKind, defc, name, type, appendixResult)
 		End Function
-		Friend Shared Function linkMethodImpl(ByVal callerClass As Class, ByVal refKind As Integer, ByVal defc As Class, ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkMethodImpl(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
 			Try
 				If defc Is GetType(MethodHandle) AndAlso refKind = REF_invokeVirtual Then Return Invokers.methodHandleInvokeLinkerMethod(name, fixMethodType(callerClass, type), appendixResult)
 			Catch ex As Throwable
@@ -390,7 +390,7 @@ Namespace java.lang.invoke
 			End Try
 			Throw New LinkageError("no such method " & defc.name & "." & name+type)
 		End Function
-		Private Shared Function fixMethodType(ByVal callerClass As Class, ByVal type As Object) As MethodType
+		Private Shared Function fixMethodType(ByVal callerClass As [Class], ByVal type As Object) As MethodType
 			If TypeOf type Is MethodType Then
 				Return CType(type, MethodType)
 			Else
@@ -398,7 +398,7 @@ Namespace java.lang.invoke
 			End If
 		End Function
 		' Tracing logic:
-		Friend Shared Function linkMethodTracing(ByVal callerClass As Class, ByVal refKind As Integer, ByVal defc As Class, ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
+		Friend Shared Function linkMethodTracing(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
 			Console.WriteLine("linkMethod " & defc.name & "." & name+type & "/" & Integer.toHexString(refKind))
 			Try
 				Dim res As MemberName = linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult)
@@ -419,7 +419,7 @@ Namespace java.lang.invoke
 		''' Recent versions of the JVM may also pass a resolved MemberName for the type.
 		''' In that case, the name is ignored and may be null.
 		''' </summary>
-		Friend Shared Function linkMethodHandleConstant(ByVal callerClass As Class, ByVal refKind As Integer, ByVal defc As Class, ByVal name As String, ByVal type As Object) As MethodHandle
+		Friend Shared Function linkMethodHandleConstant(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object) As MethodHandle
 			Try
 				Dim lookup As Lookup = IMPL_LOOKUP.in(callerClass)
 				assert(refKindIsValid(refKind))
@@ -468,7 +468,7 @@ Namespace java.lang.invoke
 
 		Friend Shared Function canBeCalledVirtual(ByVal mem As MemberName) As Boolean
 			assert(mem.invocable)
-			Dim defc As Class = mem.declaringClass
+			Dim defc As  [Class] = mem.declaringClass
 			Select Case mem.name
 			Case "checkMemberAccess"
 				Return canBeCalledVirtual(mem, GetType(java.lang.SecurityManager))
@@ -478,8 +478,8 @@ Namespace java.lang.invoke
 			Return False
 		End Function
 
-		Friend Shared Function canBeCalledVirtual(ByVal symbolicRef As MemberName, ByVal definingClass As Class) As Boolean
-			Dim symbolicRefClass As Class = symbolicRef.declaringClass
+		Friend Shared Function canBeCalledVirtual(ByVal symbolicRef As MemberName, ByVal definingClass As [Class]) As Boolean
+			Dim symbolicRefClass As  [Class] = symbolicRef.declaringClass
 			If symbolicRefClass Is definingClass Then Return True
 			If symbolicRef.static OrElse symbolicRef.private Then Return False
 			Return (symbolicRefClass.IsSubclassOf(definingClass) OrElse symbolicRefClass.interface) ' Mdef implements Msym -  Msym overrides Mdef

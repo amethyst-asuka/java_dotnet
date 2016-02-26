@@ -147,7 +147,7 @@ Namespace java.rmi.server
 		''' @deprecated replaced by <code>loadClass(String,String)</code> method 
 		''' <seealso cref= #loadClass(String,String) </seealso>
 		<Obsolete("replaced by <code>loadClass(String,String)</code> method")> _
-		Public Shared Function loadClass(ByVal name As String) As Class
+		Public Shared Function loadClass(ByVal name As String) As  [Class]
 			Return loadClass(CStr(Nothing), name)
 		End Function
 
@@ -178,7 +178,7 @@ Namespace java.rmi.server
 		''' </exception>
 		''' <exception cref="ClassNotFoundException"> if a definition for the class
 		''' could not be found at the specified URL </exception>
-		Public Shared Function loadClass(ByVal codebase As java.net.URL, ByVal name As String) As Class
+		Public Shared Function loadClass(ByVal codebase As java.net.URL, ByVal name As String) As  [Class]
 			Return provider.loadClass(If(codebase IsNot Nothing, codebase.ToString(), Nothing), name, Nothing)
 		End Function
 
@@ -207,7 +207,7 @@ Namespace java.rmi.server
 		''' could not be found at the specified location
 		''' 
 		''' @since   1.2 </exception>
-		Public Shared Function loadClass(ByVal codebase As String, ByVal name As String) As Class
+		Public Shared Function loadClass(ByVal codebase As String, ByVal name As String) As  [Class]
 			Return provider.loadClass(codebase, name, Nothing)
 		End Function
 
@@ -248,7 +248,7 @@ Namespace java.rmi.server
 		''' could not be found at the specified location
 		''' 
 		''' @since   1.4 </exception>
-		Public Shared Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As ClassLoader) As Class
+		Public Shared Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  [Class]Loader) As  [Class]
 			Return provider.loadClass(codebase, name, defaultLoader)
 		End Function
 
@@ -291,7 +291,7 @@ Namespace java.rmi.server
 		''' interface list)
 		''' 
 		''' @since   1.4 </exception>
-		Public Shared Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As ClassLoader) As Class
+		Public Shared Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  [Class]Loader) As  [Class]
 			Return provider.loadProxyClass(codebase, interfaces, defaultLoader)
 		End Function
 
@@ -332,7 +332,7 @@ Namespace java.rmi.server
 		''' URLs in the codebase URL path
 		''' 
 		''' @since   1.3 </exception>
-		Public Shared Function getClassLoader(ByVal codebase As String) As ClassLoader
+		Public Shared Function getClassLoader(ByVal codebase As String) As  [Class]Loader
 			Return provider.getClassLoader(codebase)
 		End Function
 
@@ -357,7 +357,7 @@ Namespace java.rmi.server
 	'     * REMIND: Should we say that the returned class annotation will or
 	'     * should be a (space-separated) list of URLs?
 	'     
-		Public Shared Function getClassAnnotation(ByVal cl As Class) As String
+		Public Shared Function getClassAnnotation(ByVal cl As [Class]) As String
 			Return provider.getClassAnnotation(cl)
 		End Function
 
@@ -598,7 +598,7 @@ Namespace java.rmi.server
 		''' longer uses this method to obtain a class loader's security context. 
 		''' <seealso cref= java.lang.SecurityManager#getSecurityContext() </seealso>
 		<Obsolete("no replacement.  As of the Java 2 platform v1.2, RMI no")> _
-		Public Shared Function getSecurityContext(ByVal loader As ClassLoader) As Object
+		Public Shared Function getSecurityContext(ByVal loader As  [Class]Loader) As Object
 			Return sun.rmi.server.LoaderHandler.getSecurityContext(loader)
 		End Function
 
@@ -612,19 +612,19 @@ Namespace java.rmi.server
 		Private Class RMIClassLoaderSpiAnonymousInnerClassHelper
 			Inherits RMIClassLoaderSpi
 
-			Public Overrides Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As ClassLoader) As Class
+			Public Overrides Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  [Class]Loader) As  [Class]
 				Return sun.rmi.server.LoaderHandler.loadClass(codebase, name, defaultLoader)
 			End Function
 
-			Public Overrides Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As ClassLoader) As Class
+			Public Overrides Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  [Class]Loader) As  [Class]
 				Return sun.rmi.server.LoaderHandler.loadProxyClass(codebase, interfaces, defaultLoader)
 			End Function
 
-			Public Overrides Function getClassLoader(ByVal codebase As String) As ClassLoader
+			Public Overrides Function getClassLoader(ByVal codebase As String) As  [Class]Loader
 				Return sun.rmi.server.LoaderHandler.getClassLoader(codebase)
 			End Function
 
-			Public Overrides Function getClassAnnotation(ByVal cl As Class) As String
+			Public Overrides Function getClassAnnotation(ByVal cl As [Class]) As String
 				Return sun.rmi.server.LoaderHandler.getClassAnnotation(cl)
 			End Function
 		End Class
@@ -644,16 +644,16 @@ Namespace java.rmi.server
 				If providerClassName.Equals("default") Then Return defaultProvider
 
 				Try
-					Dim providerClass As Class = Type.GetType(providerClassName, False, ClassLoader.systemClassLoader).asSubclass(GetType(RMIClassLoaderSpi))
+					Dim providerClass As  [Class] = Type.GetType(providerClassName, False, ClassLoader.systemClassLoader).asSubclass(GetType(RMIClassLoaderSpi))
 					Return providerClass.newInstance()
 
-				Catch e As ClassNotFoundException
+				Catch e As  [Class]NotFoundException
 					Throw New NoClassDefFoundError(e.Message)
 				Catch e As IllegalAccessException
 					Throw New IllegalAccessError(e.Message)
 				Catch e As InstantiationException
 					Throw New InstantiationError(e.Message)
-				Catch e As ClassCastException
+				Catch e As  [Class]CastException
 					Dim error_Renamed As [Error] = New LinkageError("provider class not assignable to RMIClassLoaderSpi")
 					error_Renamed.initCause(e)
 					Throw error_Renamed
@@ -669,7 +669,7 @@ Namespace java.rmi.server
 				Try
 'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
 					Return iter.next()
-				Catch e As ClassCastException
+				Catch e As  [Class]CastException
 					Dim error_Renamed As [Error] = New LinkageError("provider class not assignable to RMIClassLoaderSpi")
 					error_Renamed.initCause(e)
 					Throw error_Renamed

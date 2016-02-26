@@ -101,13 +101,13 @@ Namespace java.lang
 	Public NotInheritable Class [String]
 		Implements Comparable(Of String), CharSequence
 
-		''' <summary>
-		''' The value is used for character storage. </summary>
-		Private ReadOnly value As Char()
+        ''' <summary>
+        ''' The value is used for character storage. </summary>
+        Private ReadOnly value As Char()
 
-		''' <summary>
-		''' Cache the hash code for the string </summary>
-		Private hash As Integer ' Default to 0
+        ''' <summary>
+        ''' Cache the hash code for the string </summary>
+        Private hash As Integer ' Default to 0
 
 		''' <summary>
 		''' use serialVersionUID from JDK 1.0.2 for interoperability </summary>
@@ -302,535 +302,539 @@ Namespace java.lang
         ''' <seealso cref=  #String(byte[], java.lang.String) </seealso>
         ''' <seealso cref=  #String(byte[], java.nio.charset.Charset) </seealso>
         ''' <seealso cref=  #String(byte[]) </seealso>
-        <Obsolete("This method does not properly convert bytes into characters.")> _
-		public String(SByte ascii() , Integer hibyte, Integer offset, Integer count)
-			checkBounds(ascii, offset, count)
-			Dim value As Char() = New Char(count - 1){}
+        <Obsolete("This method does not properly convert bytes into characters.")>
+        Sub New(ascii() As SByte, hibyte As Integer, offset As Integer, count As Integer)
+            checkBounds(ascii, offset, count)
+            Dim value As Char() = New Char(count - 1) {}
 
-			If hibyte = 0 Then
-				Dim i As Integer = count
-'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				Do While i -= 1 > 0
-					value(i) = CChar(ascii(i + offset) And &Hff)
-				Loop
-			Else
-				hibyte <<= 8
-				Dim i As Integer = count
-'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				Do While i -= 1 > 0
-					value(i) = CChar(hibyte Or (ascii(i + offset) And &Hff))
-				Loop
-			End If
-			Me.value = value
-
-		''' <summary>
-		''' Allocates a new {@code String} containing characters constructed from
-		''' an array of 8-bit integer values. Each character <i>c</i>in the
-		''' resulting string is constructed from the corresponding component
-		''' <i>b</i> in the byte array such that:
-		''' 
-		''' <blockquote><pre>
-		'''     <b><i>c</i></b> == (char)(((hibyte &amp; 0xff) &lt;&lt; 8)
-		'''                         | (<b><i>b</i></b> &amp; 0xff))
-		''' </pre></blockquote>
-		''' </summary>
-		''' @deprecated  This method does not properly convert bytes into
-		''' characters.  As of JDK&nbsp;1.1, the preferred way to do this is via the
-		''' {@code String} constructors that take a {@link
-		''' java.nio.charset.Charset}, charset name, or that use the platform's
-		''' default charset.
-		''' 
-		''' <param name="ascii">
-		'''         The bytes to be converted to characters
-		''' </param>
-		''' <param name="hibyte">
-		'''         The top 8 bits of each 16-bit Unicode code unit
-		''' </param>
-		''' <seealso cref=  #String(byte[], int, int, java.lang.String) </seealso>
-		''' <seealso cref=  #String(byte[], int, int, java.nio.charset.Charset) </seealso>
-		''' <seealso cref=  #String(byte[], int, int) </seealso>
-		''' <seealso cref=  #String(byte[], java.lang.String) </seealso>
-		''' <seealso cref=  #String(byte[], java.nio.charset.Charset) </seealso>
-		''' <seealso cref=  #String(byte[]) </seealso>
-		<Obsolete(" This method does not properly convert bytes into")> _
-		public String(SByte ascii() , Integer hibyte)
-			Me(ascii, hibyte, 0, ascii.length)
-
-	'     Common private utility method used to bounds check the byte array
-	'     * and requested offset & length values used by the String(byte[],..)
-	'     * constructors.
-	'     
-		private static void checkBounds(SByte() bytes, Integer offset, Integer length)
-			If length < 0 Then Throw New StringIndexOutOfBoundsException(length)
-			If offset < 0 Then Throw New StringIndexOutOfBoundsException(offset)
-			If offset > bytes.length - length Then Throw New StringIndexOutOfBoundsException(offset + length)
-
-		''' <summary>
-		''' Constructs a new {@code String} by decoding the specified subarray of
-		''' bytes using the specified charset.  The length of the new {@code String}
-		''' is a function of the charset, and hence may not be equal to the length
-		''' of the subarray.
-		''' 
-		''' <p> The behavior of this constructor when the given bytes are not valid
-		''' in the given charset is unspecified.  The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="bytes">
-		'''         The bytes to be decoded into characters
-		''' </param>
-		''' <param name="offset">
-		'''         The index of the first byte to decode
-		''' </param>
-		''' <param name="length">
-		'''         The number of bytes to decode
-		''' </param>
-		''' <param name="charsetName">
-		'''         The name of a supported {@link java.nio.charset.Charset
-		'''         charset}
-		''' </param>
-		''' <exception cref="UnsupportedEncodingException">
-		'''          If the named charset is not supported
-		''' </exception>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If the {@code offset} and {@code length} arguments index
-		'''          characters outside the bounds of the {@code bytes} array
-		''' 
-		''' @since  JDK1.1 </exception>
-		public String(SByte bytes() , Integer offset, Integer length, String charsetName) throws java.io.UnsupportedEncodingException
-			If charsetName Is Nothing Then Throw New NullPointerException("charsetName")
-			checkBounds(bytes, offset, length)
-			Me.value = StringCoding.decode(charsetName, bytes, offset, length)
-
-		''' <summary>
-		''' Constructs a new {@code String} by decoding the specified subarray of
-		''' bytes using the specified <seealso cref="java.nio.charset.Charset charset"/>.
-		''' The length of the new {@code String} is a function of the charset, and
-		''' hence may not be equal to the length of the subarray.
-		''' 
-		''' <p> This method always replaces malformed-input and unmappable-character
-		''' sequences with this charset's default replacement string.  The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="bytes">
-		'''         The bytes to be decoded into characters
-		''' </param>
-		''' <param name="offset">
-		'''         The index of the first byte to decode
-		''' </param>
-		''' <param name="length">
-		'''         The number of bytes to decode
-		''' </param>
-		''' <param name="charset">
-		'''         The <seealso cref="java.nio.charset.Charset charset"/> to be used to
-		'''         decode the {@code bytes}
-		''' </param>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If the {@code offset} and {@code length} arguments index
-		'''          characters outside the bounds of the {@code bytes} array
-		''' 
-		''' @since  1.6 </exception>
-		public String(SByte bytes() , Integer offset, Integer length, java.nio.charset.Charset charset)
-			If charset Is Nothing Then Throw New NullPointerException("charset")
-			checkBounds(bytes, offset, length)
-			Me.value = StringCoding.decode(charset, bytes, offset, length)
-
-		''' <summary>
-		''' Constructs a new {@code String} by decoding the specified array of bytes
-		''' using the specified <seealso cref="java.nio.charset.Charset charset"/>.  The
-		''' length of the new {@code String} is a function of the charset, and hence
-		''' may not be equal to the length of the byte array.
-		''' 
-		''' <p> The behavior of this constructor when the given bytes are not valid
-		''' in the given charset is unspecified.  The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="bytes">
-		'''         The bytes to be decoded into characters
-		''' </param>
-		''' <param name="charsetName">
-		'''         The name of a supported {@link java.nio.charset.Charset
-		'''         charset}
-		''' </param>
-		''' <exception cref="UnsupportedEncodingException">
-		'''          If the named charset is not supported
-		''' 
-		''' @since  JDK1.1 </exception>
-		public String(SByte bytes() , String charsetName) throws java.io.UnsupportedEncodingException
-			Me(bytes, 0, bytes.length, charsetName)
-
-		''' <summary>
-		''' Constructs a new {@code String} by decoding the specified array of
-		''' bytes using the specified <seealso cref="java.nio.charset.Charset charset"/>.
-		''' The length of the new {@code String} is a function of the charset, and
-		''' hence may not be equal to the length of the byte array.
-		''' 
-		''' <p> This method always replaces malformed-input and unmappable-character
-		''' sequences with this charset's default replacement string.  The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="bytes">
-		'''         The bytes to be decoded into characters
-		''' </param>
-		''' <param name="charset">
-		'''         The <seealso cref="java.nio.charset.Charset charset"/> to be used to
-		'''         decode the {@code bytes}
-		''' 
-		''' @since  1.6 </param>
-		public String(SByte bytes() , java.nio.charset.Charset charset)
-			Me(bytes, 0, bytes.length, charset)
-
-		''' <summary>
-		''' Constructs a new {@code String} by decoding the specified subarray of
-		''' bytes using the platform's default charset.  The length of the new
-		''' {@code String} is a function of the charset, and hence may not be equal
-		''' to the length of the subarray.
-		''' 
-		''' <p> The behavior of this constructor when the given bytes are not valid
-		''' in the default charset is unspecified.  The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="bytes">
-		'''         The bytes to be decoded into characters
-		''' </param>
-		''' <param name="offset">
-		'''         The index of the first byte to decode
-		''' </param>
-		''' <param name="length">
-		'''         The number of bytes to decode
-		''' </param>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If the {@code offset} and the {@code length} arguments index
-		'''          characters outside the bounds of the {@code bytes} array
-		''' 
-		''' @since  JDK1.1 </exception>
-		public String(SByte bytes() , Integer offset, Integer length)
-			checkBounds(bytes, offset, length)
-			Me.value = StringCoding.decode(bytes, offset, length)
-
-		''' <summary>
-		''' Constructs a new {@code String} by decoding the specified array of bytes
-		''' using the platform's default charset.  The length of the new {@code
-		''' String} is a function of the charset, and hence may not be equal to the
-		''' length of the byte array.
-		''' 
-		''' <p> The behavior of this constructor when the given bytes are not valid
-		''' in the default charset is unspecified.  The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="bytes">
-		'''         The bytes to be decoded into characters
-		''' 
-		''' @since  JDK1.1 </param>
-		public String(SByte bytes())
-			Me(bytes, 0, bytes.length)
-
-		''' <summary>
-		''' Allocates a new string that contains the sequence of characters
-		''' currently contained in the string buffer argument. The contents of the
-		''' string buffer are copied; subsequent modification of the string buffer
-		''' does not affect the newly created string.
-		''' </summary>
-		''' <param name="buffer">
-		'''         A {@code StringBuffer} </param>
-		public String(StringBuffer buffer)
-			SyncLock buffer
-				Me.value = java.util.Arrays.copyOf(buffer.value, buffer.length())
-			End SyncLock
-
-		''' <summary>
-		''' Allocates a new string that contains the sequence of characters
-		''' currently contained in the string builder argument. The contents of the
-		''' string builder are copied; subsequent modification of the string builder
-		''' does not affect the newly created string.
-		''' 
-		''' <p> This constructor is provided to ease migration to {@code
-		''' StringBuilder}. Obtaining a string from a string builder via the {@code
-		''' toString} method is likely to run faster and is generally preferred.
-		''' </summary>
-		''' <param name="builder">
-		'''          A {@code StringBuilder}
-		''' 
-		''' @since  1.5 </param>
-		public String(StringBuilder builder)
-			Me.value = java.util.Arrays.copyOf(builder.value, builder.length())
-
-	'    
-	'    * Package private constructor which shares value array for speed.
-	'    * this constructor is always expected to be called with share==true.
-	'    * a separate constructor is needed because we already have a public
-	'    * String(char[]) constructor that makes a copy of the given char[].
-	'    
-		String(Char() value, Boolean share)
-			' assert share : "unshared not supported";
-			Me.value = value
-
-		''' <summary>
-		''' Returns the length of this string.
-		''' The length is equal to the number of <a href="Character.html#unicode">Unicode
-		''' code units</a> in the string.
-		''' </summary>
-		''' <returns>  the length of the sequence of characters represented by this
-		'''          object. </returns>
-		public Integer length()
-			Return value.Length
-
-		''' <summary>
-		''' Returns {@code true} if, and only if, <seealso cref="#length()"/> is {@code 0}.
-		''' </summary>
-		''' <returns> {@code true} if <seealso cref="#length()"/> is {@code 0}, otherwise
-		''' {@code false}
-		''' 
-		''' @since 1.6 </returns>
-		public Boolean empty
-			Return value.Length = 0
-
-		''' <summary>
-		''' Returns the {@code char} value at the
-		''' specified index. An index ranges from {@code 0} to
-		''' {@code length() - 1}. The first {@code char} value of the sequence
-		''' is at index {@code 0}, the next at index {@code 1},
-		''' and so on, as for array indexing.
-		''' 
-		''' <p>If the {@code char} value specified by the index is a
-		''' <a href="Character.html#unicode">surrogate</a>, the surrogate
-		''' value is returned.
-		''' </summary>
-		''' <param name="index">   the index of the {@code char} value. </param>
-		''' <returns>     the {@code char} value at the specified index of this string.
-		'''             The first {@code char} value is at index {@code 0}. </returns>
-		''' <exception cref="IndexOutOfBoundsException">  if the {@code index}
-		'''             argument is negative or not less than the length of this
-		'''             string. </exception>
-		public Char charAt(Integer index)
-			If (index < 0) OrElse (index >= value.Length) Then Throw New StringIndexOutOfBoundsException(index)
-			Return value(index)
-
-		''' <summary>
-		''' Returns the character (Unicode code point) at the specified
-		''' index. The index refers to {@code char} values
-		''' (Unicode code units) and ranges from {@code 0} to
-		''' <seealso cref="#length()"/>{@code  - 1}.
-		''' 
-		''' <p> If the {@code char} value specified at the given index
-		''' is in the high-surrogate range, the following index is less
-		''' than the length of this {@code String}, and the
-		''' {@code char} value at the following index is in the
-		''' low-surrogate range, then the supplementary code point
-		''' corresponding to this surrogate pair is returned. Otherwise,
-		''' the {@code char} value at the given index is returned.
-		''' </summary>
-		''' <param name="index"> the index to the {@code char} values </param>
-		''' <returns>     the code point value of the character at the
-		'''             {@code index} </returns>
-		''' <exception cref="IndexOutOfBoundsException">  if the {@code index}
-		'''             argument is negative or not less than the length of this
-		'''             string.
-		''' @since      1.5 </exception>
-		public Integer codePointAt(Integer index)
-			If (index < 0) OrElse (index >= value.Length) Then Throw New StringIndexOutOfBoundsException(index)
-			Return Character.codePointAtImpl(value, index, value.Length)
-
-		''' <summary>
-		''' Returns the character (Unicode code point) before the specified
-		''' index. The index refers to {@code char} values
-		''' (Unicode code units) and ranges from {@code 1} to {@link
-		''' CharSequence#length() length}.
-		''' 
-		''' <p> If the {@code char} value at {@code (index - 1)}
-		''' is in the low-surrogate range, {@code (index - 2)} is not
-		''' negative, and the {@code char} value at {@code (index -
-		''' 2)} is in the high-surrogate range, then the
-		''' supplementary code point value of the surrogate pair is
-		''' returned. If the {@code char} value at {@code index -
-		''' 1} is an unpaired low-surrogate or a high-surrogate, the
-		''' surrogate value is returned.
-		''' </summary>
-		''' <param name="index"> the index following the code point that should be returned </param>
-		''' <returns>    the Unicode code point value before the given index. </returns>
-		''' <exception cref="IndexOutOfBoundsException"> if the {@code index}
-		'''            argument is less than 1 or greater than the length
-		'''            of this string.
-		''' @since     1.5 </exception>
-		public Integer codePointBefore(Integer index)
-			Dim i As Integer = index - 1
-			If (i < 0) OrElse (i >= value.Length) Then Throw New StringIndexOutOfBoundsException(index)
-			Return Character.codePointBeforeImpl(value, index, 0)
-
-		''' <summary>
-		''' Returns the number of Unicode code points in the specified text
-		''' range of this {@code String}. The text range begins at the
-		''' specified {@code beginIndex} and extends to the
-		''' {@code char} at index {@code endIndex - 1}. Thus the
-		''' length (in {@code char}s) of the text range is
-		''' {@code endIndex-beginIndex}. Unpaired surrogates within
-		''' the text range count as one code point each.
-		''' </summary>
-		''' <param name="beginIndex"> the index to the first {@code char} of
-		''' the text range. </param>
-		''' <param name="endIndex"> the index after the last {@code char} of
-		''' the text range. </param>
-		''' <returns> the number of Unicode code points in the specified text
-		''' range </returns>
-		''' <exception cref="IndexOutOfBoundsException"> if the
-		''' {@code beginIndex} is negative, or {@code endIndex}
-		''' is larger than the length of this {@code String}, or
-		''' {@code beginIndex} is larger than {@code endIndex}.
-		''' @since  1.5 </exception>
-		public Integer codePointCount(Integer beginIndex, Integer endIndex)
-			If beginIndex < 0 OrElse endIndex > value.Length OrElse beginIndex > endIndex Then Throw New IndexOutOfBoundsException
-			Return Character.codePointCountImpl(value, beginIndex, endIndex - beginIndex)
-
-		''' <summary>
-		''' Returns the index within this {@code String} that is
-		''' offset from the given {@code index} by
-		''' {@code codePointOffset} code points. Unpaired surrogates
-		''' within the text range given by {@code index} and
-		''' {@code codePointOffset} count as one code point each.
-		''' </summary>
-		''' <param name="index"> the index to be offset </param>
-		''' <param name="codePointOffset"> the offset in code points </param>
-		''' <returns> the index within this {@code String} </returns>
-		''' <exception cref="IndexOutOfBoundsException"> if {@code index}
-		'''   is negative or larger then the length of this
-		'''   {@code String}, or if {@code codePointOffset} is positive
-		'''   and the substring starting with {@code index} has fewer
-		'''   than {@code codePointOffset} code points,
-		'''   or if {@code codePointOffset} is negative and the substring
-		'''   before {@code index} has fewer than the absolute value
-		'''   of {@code codePointOffset} code points.
-		''' @since 1.5 </exception>
-		public Integer offsetByCodePoints(Integer index, Integer codePointOffset)
-			If index < 0 OrElse index > value.Length Then Throw New IndexOutOfBoundsException
-			Return Character.offsetByCodePointsImpl(value, 0, value.Length, index, codePointOffset)
-
-		''' <summary>
-		''' Copy characters from this string into dst starting at dstBegin.
-		''' This method doesn't perform any range checking.
-		''' </summary>
-		void getChars(Char dst() , Integer dstBegin)
-			Array.Copy(value, 0, dst, dstBegin, value.Length)
-
-		''' <summary>
-		''' Copies characters from this string into the destination character
-		''' array.
-		''' <p>
-		''' The first character to be copied is at index {@code srcBegin};
-		''' the last character to be copied is at index {@code srcEnd-1}
-		''' (thus the total number of characters to be copied is
-		''' {@code srcEnd-srcBegin}). The characters are copied into the
-		''' subarray of {@code dst} starting at index {@code dstBegin}
-		''' and ending at index:
-		''' <blockquote><pre>
-		'''     dstBegin + (srcEnd-srcBegin) - 1
-		''' </pre></blockquote>
-		''' </summary>
-		''' <param name="srcBegin">   index of the first character in the string
-		'''                        to copy. </param>
-		''' <param name="srcEnd">     index after the last character in the string
-		'''                        to copy. </param>
-		''' <param name="dst">        the destination array. </param>
-		''' <param name="dstBegin">   the start offset in the destination array. </param>
-		''' <exception cref="IndexOutOfBoundsException"> If any of the following
-		'''            is true:
-		'''            <ul><li>{@code srcBegin} is negative.
-		'''            <li>{@code srcBegin} is greater than {@code srcEnd}
-		'''            <li>{@code srcEnd} is greater than the length of this
-		'''                string
-		'''            <li>{@code dstBegin} is negative
-		'''            <li>{@code dstBegin+(srcEnd-srcBegin)} is larger than
-		'''                {@code dst.length}</ul> </exception>
-		public void getChars(Integer srcBegin, Integer srcEnd, Char dst() , Integer dstBegin)
+            If hibyte = 0 Then
+                Dim i As Integer = count
+                'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
+                Do While i -= 1 > 0
+					value(i) = CChar(ascii(i + offset) And &HFF)
+                Loop
+            Else
+                hibyte <<= 8
+                Dim i As Integer = count
+                'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
+                Do While i -= 1 > 0
+					value(i) = CChar(hibyte Or (ascii(i + offset) And &HFF))
+                Loop
+            End If
+            Me.value = value
+        End Sub
+        ''' <summary>
+        ''' Allocates a new {@code String} containing characters constructed from
+        ''' an array of 8-bit integer values. Each character <i>c</i>in the
+        ''' resulting string is constructed from the corresponding component
+        ''' <i>b</i> in the byte array such that:
+        ''' 
+        ''' <blockquote><pre>
+        '''     <b><i>c</i></b> == (char)(((hibyte &amp; 0xff) &lt;&lt; 8)
+        '''                         | (<b><i>b</i></b> &amp; 0xff))
+        ''' </pre></blockquote>
+        ''' </summary>
+        ''' @deprecated  This method does not properly convert bytes into
+        ''' characters.  As of JDK&nbsp;1.1, the preferred way to do this is via the
+        ''' {@code String} constructors that take a {@link
+        ''' java.nio.charset.Charset}, charset name, or that use the platform's
+        ''' default charset.
+        ''' 
+        ''' <param name="ascii">
+        '''         The bytes to be converted to characters
+        ''' </param>
+        ''' <param name="hibyte">
+        '''         The top 8 bits of each 16-bit Unicode code unit
+        ''' </param>
+        ''' <seealso cref=  #String(byte[], int, int, java.lang.String) </seealso>
+        ''' <seealso cref=  #String(byte[], int, int, java.nio.charset.Charset) </seealso>
+        ''' <seealso cref=  #String(byte[], int, int) </seealso>
+        ''' <seealso cref=  #String(byte[], java.lang.String) </seealso>
+        ''' <seealso cref=  #String(byte[], java.nio.charset.Charset) </seealso>
+        ''' <seealso cref=  #String(byte[]) </seealso>
+        <Obsolete(" This method does not properly convert bytes into")>
+        Sub New(ascii() As SByte, hibyte As Integer)
+            Me.New(ascii, hibyte, 0, ascii.Length)
+        End Sub
+        '     Common private utility method used to bounds check the byte array
+        '     * and requested offset & length values used by the String(byte[],..)
+        '     * constructors.
+        '     
+        Private Shared Sub checkBounds(bytes As SByte(), offset As Integer, length As Integer)
+            If length < 0 Then Throw New StringIndexOutOfBoundsException(length)
+            If offset < 0 Then Throw New StringIndexOutOfBoundsException(offset)
+            If offset > bytes.Length - length Then Throw New StringIndexOutOfBoundsException(offset + length)
+        End Sub
+        ''' <summary>
+        ''' Constructs a new {@code String} by decoding the specified subarray of
+        ''' bytes using the specified charset.  The length of the new {@code String}
+        ''' is a function of the charset, and hence may not be equal to the length
+        ''' of the subarray.
+        ''' 
+        ''' <p> The behavior of this constructor when the given bytes are not valid
+        ''' in the given charset is unspecified.  The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="bytes">
+        '''         The bytes to be decoded into characters
+        ''' </param>
+        ''' <param name="offset">
+        '''         The index of the first byte to decode
+        ''' </param>
+        ''' <param name="length">
+        '''         The number of bytes to decode
+        ''' </param>
+        ''' <param name="charsetName">
+        '''         The name of a supported {@link java.nio.charset.Charset
+        '''         charset}
+        ''' </param>
+        ''' <exception cref="UnsupportedEncodingException">
+        '''          If the named charset is not supported
+        ''' </exception>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If the {@code offset} and {@code length} arguments index
+        '''          characters outside the bounds of the {@code bytes} array
+        ''' 
+        ''' @since  JDK1.1 </exception>
+        Sub New(bytes() As SByte(), offset As Integer, length As Integer, charsetName As String)
+            Try
+                If charsetName Is Nothing Then Throw New NullPointerException("charsetName")
+                checkBounds(bytes, offset, length)
+                Me.value = StringCoding.decode(charsetName, bytes, offset, length)
+            Catch ex As Exception
+                Throw New java.io.UnsupportedEncodingException(ex)
+            End Try
+        End Sub
+        ''' <summary>
+        ''' Constructs a new {@code String} by decoding the specified subarray of
+        ''' bytes using the specified <seealso cref="java.nio.charset.Charset charset"/>.
+        ''' The length of the new {@code String} is a function of the charset, and
+        ''' hence may not be equal to the length of the subarray.
+        ''' 
+        ''' <p> This method always replaces malformed-input and unmappable-character
+        ''' sequences with this charset's default replacement string.  The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="bytes">
+        '''         The bytes to be decoded into characters
+        ''' </param>
+        ''' <param name="offset">
+        '''         The index of the first byte to decode
+        ''' </param>
+        ''' <param name="length">
+        '''         The number of bytes to decode
+        ''' </param>
+        ''' <param name="charset">
+        '''         The <seealso cref="java.nio.charset.Charset charset"/> to be used to
+        '''         decode the {@code bytes}
+        ''' </param>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If the {@code offset} and {@code length} arguments index
+        '''          characters outside the bounds of the {@code bytes} array
+        ''' 
+        ''' @since  1.6 </exception>
+        Sub New(bytes() As SByte, offset As Integer, length As Integer, charset As java.nio.charset.Charset)
+            If charset Is Nothing Then Throw New NullPointerException("charset")
+            checkBounds(bytes, offset, length)
+            Me.value = StringCoding.decode(charset, bytes, offset, length)
+        End Sub
+        ''' <summary>
+        ''' Constructs a new {@code String} by decoding the specified array of bytes
+        ''' using the specified <seealso cref="java.nio.charset.Charset charset"/>.  The
+        ''' length of the new {@code String} is a function of the charset, and hence
+        ''' may not be equal to the length of the byte array.
+        ''' 
+        ''' <p> The behavior of this constructor when the given bytes are not valid
+        ''' in the given charset is unspecified.  The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="bytes">
+        '''         The bytes to be decoded into characters
+        ''' </param>
+        ''' <param name="charsetName">
+        '''         The name of a supported {@link java.nio.charset.Charset
+        '''         charset}
+        ''' </param>
+        ''' <exception cref="UnsupportedEncodingException">
+        '''          If the named charset is not supported
+        ''' 
+        ''' @since  JDK1.1 </exception>
+        Sub New(bytes() As SByte, charsetName As String) 'throws java.io.UnsupportedEncodingException
+            Me.New(bytes, 0, bytes.Length, charsetName)
+        End Sub
+        ''' <summary>
+        ''' Constructs a new {@code String} by decoding the specified array of
+        ''' bytes using the specified <seealso cref="java.nio.charset.Charset charset"/>.
+        ''' The length of the new {@code String} is a function of the charset, and
+        ''' hence may not be equal to the length of the byte array.
+        ''' 
+        ''' <p> This method always replaces malformed-input and unmappable-character
+        ''' sequences with this charset's default replacement string.  The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="bytes">
+        '''         The bytes to be decoded into characters
+        ''' </param>
+        ''' <param name="charset">
+        '''         The <seealso cref="java.nio.charset.Charset charset"/> to be used to
+        '''         decode the {@code bytes}
+        ''' 
+        ''' @since  1.6 </param>
+        Sub New(bytes() As SByte, charset As java.nio.charset.Charset)
+            Me.New(bytes, 0, bytes.Length, charset)
+        End Sub
+        ''' <summary>
+        ''' Constructs a new {@code String} by decoding the specified subarray of
+        ''' bytes using the platform's default charset.  The length of the new
+        ''' {@code String} is a function of the charset, and hence may not be equal
+        ''' to the length of the subarray.
+        ''' 
+        ''' <p> The behavior of this constructor when the given bytes are not valid
+        ''' in the default charset is unspecified.  The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="bytes">
+        '''         The bytes to be decoded into characters
+        ''' </param>
+        ''' <param name="offset">
+        '''         The index of the first byte to decode
+        ''' </param>
+        ''' <param name="length">
+        '''         The number of bytes to decode
+        ''' </param>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If the {@code offset} and the {@code length} arguments index
+        '''          characters outside the bounds of the {@code bytes} array
+        ''' 
+        ''' @since  JDK1.1 </exception>
+        Sub New(bytes() As SByte, offset As Integer, length As Integer)
+            checkBounds(bytes, offset, length)
+            Me.value = StringCoding.decode(bytes, offset, length)
+        End Sub
+        ''' <summary>
+        ''' Constructs a new {@code String} by decoding the specified array of bytes
+        ''' using the platform's default charset.  The length of the new {@code
+        ''' String} is a function of the charset, and hence may not be equal to the
+        ''' length of the byte array.
+        ''' 
+        ''' <p> The behavior of this constructor when the given bytes are not valid
+        ''' in the default charset is unspecified.  The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="bytes">
+        '''         The bytes to be decoded into characters
+        ''' 
+        ''' @since  JDK1.1 </param>
+        Sub New(bytes() As SByte)
+            Me.New(bytes, 0, bytes.Length)
+        End Sub
+        ''' <summary>
+        ''' Allocates a new string that contains the sequence of characters
+        ''' currently contained in the string buffer argument. The contents of the
+        ''' string buffer are copied; subsequent modification of the string buffer
+        ''' does not affect the newly created string.
+        ''' </summary>
+        ''' <param name="buffer">
+        '''         A {@code StringBuffer} </param>
+        Sub New(buffer As StringBuffer)
+            SyncLock buffer
+                Me.value = java.util.Arrays.copyOf(buffer.value, buffer.length())
+            End SyncLock
+        End Sub
+        ''' <summary>
+        ''' Allocates a new string that contains the sequence of characters
+        ''' currently contained in the string builder argument. The contents of the
+        ''' string builder are copied; subsequent modification of the string builder
+        ''' does not affect the newly created string.
+        ''' 
+        ''' <p> This constructor is provided to ease migration to {@code
+        ''' StringBuilder}. Obtaining a string from a string builder via the {@code
+        ''' toString} method is likely to run faster and is generally preferred.
+        ''' </summary>
+        ''' <param name="builder">
+        '''          A {@code StringBuilder}
+        ''' 
+        ''' @since  1.5 </param>
+        Sub New(buffer As StringBuilder)
+            Me.value = java.util.Arrays.copyOf(builder.value, builder.length())
+        End Sub
+        '    
+        '    * Package private constructor which shares value array for speed.
+        '    * this constructor is always expected to be called with share==true.
+        '    * a separate constructor is needed because we already have a public
+        '    * String(char[]) constructor that makes a copy of the given char[].
+        '    
+        Sub New(value As Char(), share As Boolean)
+            ' assert share : "unshared not supported";
+            Me.value = value
+        End Sub
+        ''' <summary>
+        ''' Returns the length of this string.
+        ''' The length is equal to the number of <a href="Character.html#unicode">Unicode
+        ''' code units</a> in the string.
+        ''' </summary>
+        ''' <returns>  the length of the sequence of characters represented by this
+        '''          object. </returns>
+        Public Function length() As Integer
+            Return value.Length
+        End Function
+        ''' <summary>
+        ''' Returns {@code true} if, and only if, <seealso cref="#length()"/> is {@code 0}.
+        ''' </summary>
+        ''' <returns> {@code true} if <seealso cref="#length()"/> is {@code 0}, otherwise
+        ''' {@code false}
+        ''' 
+        ''' @since 1.6 </returns>
+        Public Function empty() As Boolean
+            Return value.Length = 0
+        End Function
+        ''' <summary>
+        ''' Returns the {@code char} value at the
+        ''' specified index. An index ranges from {@code 0} to
+        ''' {@code length() - 1}. The first {@code char} value of the sequence
+        ''' is at index {@code 0}, the next at index {@code 1},
+        ''' and so on, as for array indexing.
+        ''' 
+        ''' <p>If the {@code char} value specified by the index is a
+        ''' <a href="Character.html#unicode">surrogate</a>, the surrogate
+        ''' value is returned.
+        ''' </summary>
+        ''' <param name="index">   the index of the {@code char} value. </param>
+        ''' <returns>     the {@code char} value at the specified index of this string.
+        '''             The first {@code char} value is at index {@code 0}. </returns>
+        ''' <exception cref="IndexOutOfBoundsException">  if the {@code index}
+        '''             argument is negative or not less than the length of this
+        '''             string. </exception>
+        Public Function charAt(index As Integer) As Char
+            If (index < 0) OrElse (index >= value.Length) Then Throw New StringIndexOutOfBoundsException(index)
+            Return value(index)
+        End Function
+        ''' <summary>
+        ''' Returns the character (Unicode code point) at the specified
+        ''' index. The index refers to {@code char} values
+        ''' (Unicode code units) and ranges from {@code 0} to
+        ''' <seealso cref="#length()"/>{@code  - 1}.
+        ''' 
+        ''' <p> If the {@code char} value specified at the given index
+        ''' is in the high-surrogate range, the following index is less
+        ''' than the length of this {@code String}, and the
+        ''' {@code char} value at the following index is in the
+        ''' low-surrogate range, then the supplementary code point
+        ''' corresponding to this surrogate pair is returned. Otherwise,
+        ''' the {@code char} value at the given index is returned.
+        ''' </summary>
+        ''' <param name="index"> the index to the {@code char} values </param>
+        ''' <returns>     the code point value of the character at the
+        '''             {@code index} </returns>
+        ''' <exception cref="IndexOutOfBoundsException">  if the {@code index}
+        '''             argument is negative or not less than the length of this
+        '''             string.
+        ''' @since      1.5 </exception>
+        Public Function codePointAt(index As Integer) As Integer
+            If (index < 0) OrElse (index >= value.Length) Then Throw New StringIndexOutOfBoundsException(index)
+            Return Character.codePointAtImpl(value, index, value.Length)
+        End Function
+        ''' <summary>
+        ''' Returns the character (Unicode code point) before the specified
+        ''' index. The index refers to {@code char} values
+        ''' (Unicode code units) and ranges from {@code 1} to {@link
+        ''' CharSequence#length() length}.
+        ''' 
+        ''' <p> If the {@code char} value at {@code (index - 1)}
+        ''' is in the low-surrogate range, {@code (index - 2)} is not
+        ''' negative, and the {@code char} value at {@code (index -
+        ''' 2)} is in the high-surrogate range, then the
+        ''' supplementary code point value of the surrogate pair is
+        ''' returned. If the {@code char} value at {@code index -
+        ''' 1} is an unpaired low-surrogate or a high-surrogate, the
+        ''' surrogate value is returned.
+        ''' </summary>
+        ''' <param name="index"> the index following the code point that should be returned </param>
+        ''' <returns>    the Unicode code point value before the given index. </returns>
+        ''' <exception cref="IndexOutOfBoundsException"> if the {@code index}
+        '''            argument is less than 1 or greater than the length
+        '''            of this string.
+        ''' @since     1.5 </exception>
+        Public Function codePointBefore(index As Integer) As Integer
+            Dim i As Integer = index - 1
+            If (i < 0) OrElse (i >= value.Length) Then Throw New StringIndexOutOfBoundsException(index)
+            Return Character.codePointBeforeImpl(value, index, 0)
+        End Function
+        ''' <summary>
+        ''' Returns the number of Unicode code points in the specified text
+        ''' range of this {@code String}. The text range begins at the
+        ''' specified {@code beginIndex} and extends to the
+        ''' {@code char} at index {@code endIndex - 1}. Thus the
+        ''' length (in {@code char}s) of the text range is
+        ''' {@code endIndex-beginIndex}. Unpaired surrogates within
+        ''' the text range count as one code point each.
+        ''' </summary>
+        ''' <param name="beginIndex"> the index to the first {@code char} of
+        ''' the text range. </param>
+        ''' <param name="endIndex"> the index after the last {@code char} of
+        ''' the text range. </param>
+        ''' <returns> the number of Unicode code points in the specified text
+        ''' range </returns>
+        ''' <exception cref="IndexOutOfBoundsException"> if the
+        ''' {@code beginIndex} is negative, or {@code endIndex}
+        ''' is larger than the length of this {@code String}, or
+        ''' {@code beginIndex} is larger than {@code endIndex}.
+        ''' @since  1.5 </exception>
+        Public Function codePointCount(beginIndex As Integer, endIndex As Integer) As Integer
+            If beginIndex < 0 OrElse endIndex > value.Length OrElse beginIndex > endIndex Then Throw New IndexOutOfBoundsException
+            Return Character.codePointCountImpl(value, beginIndex, endIndex - beginIndex)
+        End Function
+        ''' <summary>
+        ''' Returns the index within this {@code String} that is
+        ''' offset from the given {@code index} by
+        ''' {@code codePointOffset} code points. Unpaired surrogates
+        ''' within the text range given by {@code index} and
+        ''' {@code codePointOffset} count as one code point each.
+        ''' </summary>
+        ''' <param name="index"> the index to be offset </param>
+        ''' <param name="codePointOffset"> the offset in code points </param>
+        ''' <returns> the index within this {@code String} </returns>
+        ''' <exception cref="IndexOutOfBoundsException"> if {@code index}
+        '''   is negative or larger then the length of this
+        '''   {@code String}, or if {@code codePointOffset} is positive
+        '''   and the substring starting with {@code index} has fewer
+        '''   than {@code codePointOffset} code points,
+        '''   or if {@code codePointOffset} is negative and the substring
+        '''   before {@code index} has fewer than the absolute value
+        '''   of {@code codePointOffset} code points.
+        ''' @since 1.5 </exception>
+        Public Function offsetByCodePoints(index As Integer, codePointOffset As Integer) As Integer
+            If index < 0 OrElse index > value.Length Then Throw New IndexOutOfBoundsException
+            Return Character.offsetByCodePointsImpl(value, 0, value.Length, index, codePointOffset)
+        End Function
+        ''' <summary>
+        ''' Copy characters from this string into dst starting at dstBegin.
+        ''' This method doesn't perform any range checking.
+        ''' </summary>
+        Sub getChars(dst() As Char, dstBegin As Integer)
+            Array.Copy(value, 0, dst, dstBegin, value.Length)
+        End Sub
+        ''' <summary>
+        ''' Copies characters from this string into the destination character
+        ''' array.
+        ''' <p>
+        ''' The first character to be copied is at index {@code srcBegin};
+        ''' the last character to be copied is at index {@code srcEnd-1}
+        ''' (thus the total number of characters to be copied is
+        ''' {@code srcEnd-srcBegin}). The characters are copied into the
+        ''' subarray of {@code dst} starting at index {@code dstBegin}
+        ''' and ending at index:
+        ''' <blockquote><pre>
+        '''     dstBegin + (srcEnd-srcBegin) - 1
+        ''' </pre></blockquote>
+        ''' </summary>
+        ''' <param name="srcBegin">   index of the first character in the string
+        '''                        to copy. </param>
+        ''' <param name="srcEnd">     index after the last character in the string
+        '''                        to copy. </param>
+        ''' <param name="dst">        the destination array. </param>
+        ''' <param name="dstBegin">   the start offset in the destination array. </param>
+        ''' <exception cref="IndexOutOfBoundsException"> If any of the following
+        '''            is true:
+        '''            <ul><li>{@code srcBegin} is negative.
+        '''            <li>{@code srcBegin} is greater than {@code srcEnd}
+        '''            <li>{@code srcEnd} is greater than the length of this
+        '''                string
+        '''            <li>{@code dstBegin} is negative
+        '''            <li>{@code dstBegin+(srcEnd-srcBegin)} is larger than
+        '''                {@code dst.length}</ul> </exception>
+        Public Sub getChars(Integer srcBegin, Integer srcEnd, Char dst() , Integer dstBegin)
 			If srcBegin < 0 Then Throw New StringIndexOutOfBoundsException(srcBegin)
-			If srcEnd > value.Length Then Throw New StringIndexOutOfBoundsException(srcEnd)
-			If srcBegin > srcEnd Then Throw New StringIndexOutOfBoundsException(srcEnd - srcBegin)
-			Array.Copy(value, srcBegin, dst, dstBegin, srcEnd - srcBegin)
-
-		''' <summary>
-		''' Copies characters from this string into the destination byte array. Each
-		''' byte receives the 8 low-order bits of the corresponding character. The
-		''' eight high-order bits of each character are not copied and do not
-		''' participate in the transfer in any way.
-		''' 
-		''' <p> The first character to be copied is at index {@code srcBegin}; the
-		''' last character to be copied is at index {@code srcEnd-1}.  The total
-		''' number of characters to be copied is {@code srcEnd-srcBegin}. The
-		''' characters, converted to bytes, are copied into the subarray of {@code
-		''' dst} starting at index {@code dstBegin} and ending at index:
-		''' 
-		''' <blockquote><pre>
-		'''     dstBegin + (srcEnd-srcBegin) - 1
-		''' </pre></blockquote>
-		''' </summary>
-		''' @deprecated  This method does not properly convert characters into
-		''' bytes.  As of JDK&nbsp;1.1, the preferred way to do this is via the
-		''' <seealso cref="#getBytes()"/> method, which uses the platform's default charset.
-		''' 
-		''' <param name="srcBegin">
-		'''         Index of the first character in the string to copy
-		''' </param>
-		''' <param name="srcEnd">
-		'''         Index after the last character in the string to copy
-		''' </param>
-		''' <param name="dst">
-		'''         The destination array
-		''' </param>
-		''' <param name="dstBegin">
-		'''         The start offset in the destination array
-		''' </param>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If any of the following is true:
-		'''          <ul>
-		'''            <li> {@code srcBegin} is negative
-		'''            <li> {@code srcBegin} is greater than {@code srcEnd}
-		'''            <li> {@code srcEnd} is greater than the length of this String
-		'''            <li> {@code dstBegin} is negative
-		'''            <li> {@code dstBegin+(srcEnd-srcBegin)} is larger than {@code
-		'''                 dst.length}
-		'''          </ul> </exception>
-		<Obsolete(" This method does not properly convert characters into")> _
-		public void getBytes(Integer srcBegin, Integer srcEnd, SByte dst() , Integer dstBegin)
+            If srcEnd > value.Length Then Throw New StringIndexOutOfBoundsException(srcEnd)
+            If srcBegin > srcEnd Then Throw New StringIndexOutOfBoundsException(srcEnd - srcBegin)
+            Array.Copy(value, srcBegin, dst, dstBegin, srcEnd - srcBegin)
+        End Sub
+        ''' <summary>
+        ''' Copies characters from this string into the destination byte array. Each
+        ''' byte receives the 8 low-order bits of the corresponding character. The
+        ''' eight high-order bits of each character are not copied and do not
+        ''' participate in the transfer in any way.
+        ''' 
+        ''' <p> The first character to be copied is at index {@code srcBegin}; the
+        ''' last character to be copied is at index {@code srcEnd-1}.  The total
+        ''' number of characters to be copied is {@code srcEnd-srcBegin}. The
+        ''' characters, converted to bytes, are copied into the subarray of {@code
+        ''' dst} starting at index {@code dstBegin} and ending at index:
+        ''' 
+        ''' <blockquote><pre>
+        '''     dstBegin + (srcEnd-srcBegin) - 1
+        ''' </pre></blockquote>
+        ''' </summary>
+        ''' @deprecated  This method does not properly convert characters into
+        ''' bytes.  As of JDK&nbsp;1.1, the preferred way to do this is via the
+        ''' <seealso cref="#getBytes()"/> method, which uses the platform's default charset.
+        ''' 
+        ''' <param name="srcBegin">
+        '''         Index of the first character in the string to copy
+        ''' </param>
+        ''' <param name="srcEnd">
+        '''         Index after the last character in the string to copy
+        ''' </param>
+        ''' <param name="dst">
+        '''         The destination array
+        ''' </param>
+        ''' <param name="dstBegin">
+        '''         The start offset in the destination array
+        ''' </param>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If any of the following is true:
+        '''          <ul>
+        '''            <li> {@code srcBegin} is negative
+        '''            <li> {@code srcBegin} is greater than {@code srcEnd}
+        '''            <li> {@code srcEnd} is greater than the length of this String
+        '''            <li> {@code dstBegin} is negative
+        '''            <li> {@code dstBegin+(srcEnd-srcBegin)} is larger than {@code
+        '''                 dst.length}
+        '''          </ul> </exception>
+        <Obsolete(" This method does not properly convert characters into")>
+        Public Sub getBytes(Integer srcBegin, Integer srcEnd, SByte dst() , Integer dstBegin)
 			If srcBegin < 0 Then Throw New StringIndexOutOfBoundsException(srcBegin)
-			If srcEnd > value.Length Then Throw New StringIndexOutOfBoundsException(srcEnd)
-			If srcBegin > srcEnd Then Throw New StringIndexOutOfBoundsException(srcEnd - srcBegin)
-			java.util.Objects.requireNonNull(dst)
+            If srcEnd > value.Length Then Throw New StringIndexOutOfBoundsException(srcEnd)
+            If srcBegin > srcEnd Then Throw New StringIndexOutOfBoundsException(srcEnd - srcBegin)
+            java.util.Objects.requireNonNull(dst)
 
-			Dim j As Integer = dstBegin
-			Dim n As Integer = srcEnd
-			Dim i As Integer = srcBegin
-			Dim val As Char() = value ' avoid getfield opcode
+            Dim j As Integer = dstBegin
+            Dim n As Integer = srcEnd
+            Dim i As Integer = srcBegin
+            Dim val As Char() = value ' avoid getfield opcode
 
-			Do While i < n
-				dst(j) = AscW(val(i))
-				i += 1
-				j += 1
-			Loop
-
-		''' <summary>
-		''' Encodes this {@code String} into a sequence of bytes using the named
-		''' charset, storing the result into a new byte array.
-		''' 
-		''' <p> The behavior of this method when this string cannot be encoded in
-		''' the given charset is unspecified.  The {@link
-		''' java.nio.charset.CharsetEncoder} class should be used when more control
-		''' over the encoding process is required.
-		''' </summary>
-		''' <param name="charsetName">
-		'''         The name of a supported {@link java.nio.charset.Charset
-		'''         charset}
-		''' </param>
-		''' <returns>  The resultant byte array
-		''' </returns>
-		''' <exception cref="UnsupportedEncodingException">
-		'''          If the named charset is not supported
-		''' 
-		''' @since  JDK1.1 </exception>
-		public SByte() getBytes(String charsetName) throws java.io.UnsupportedEncodingException
+            Do While i < n
+                dst(j) = AscW(val(i))
+                i += 1
+                j += 1
+            Loop
+        End Sub
+        ''' <summary>
+        ''' Encodes this {@code String} into a sequence of bytes using the named
+        ''' charset, storing the result into a new byte array.
+        ''' 
+        ''' <p> The behavior of this method when this string cannot be encoded in
+        ''' the given charset is unspecified.  The {@link
+        ''' java.nio.charset.CharsetEncoder} class should be used when more control
+        ''' over the encoding process is required.
+        ''' </summary>
+        ''' <param name="charsetName">
+        '''         The name of a supported {@link java.nio.charset.Charset
+        '''         charset}
+        ''' </param>
+        ''' <returns>  The resultant byte array
+        ''' </returns>
+        ''' <exception cref="UnsupportedEncodingException">
+        '''          If the named charset is not supported
+        ''' 
+        ''' @since  JDK1.1 </exception>
+        Public SByte() getBytes(String charsetName) throws java.io.UnsupportedEncodingException
 			If charsetName Is Nothing Then Throw New NullPointerException
 			Return StringCoding.encode(charsetName, value, 0, value.Length)
 
@@ -855,36 +859,36 @@ Namespace java.lang
 			If charset Is Nothing Then Throw New NullPointerException
 			Return StringCoding.encode(charset, value, 0, value.Length)
 
-		''' <summary>
-		''' Encodes this {@code String} into a sequence of bytes using the
-		''' platform's default charset, storing the result into a new byte array.
-		''' 
-		''' <p> The behavior of this method when this string cannot be encoded in
-		''' the default charset is unspecified.  The {@link
-		''' java.nio.charset.CharsetEncoder} class should be used when more control
-		''' over the encoding process is required.
-		''' </summary>
-		''' <returns>  The resultant byte array
-		''' 
-		''' @since      JDK1.1 </returns>
-		public SByte() bytes
-			Return StringCoding.encode(value, 0, value.Length)
-
-		''' <summary>
-		''' Compares this string to the specified object.  The result is {@code
-		''' true} if and only if the argument is not {@code null} and is a {@code
-		''' String} object that represents the same sequence of characters as this
-		''' object.
-		''' </summary>
-		''' <param name="anObject">
-		'''         The object to compare this {@code String} against
-		''' </param>
-		''' <returns>  {@code true} if the given object represents a {@code String}
-		'''          equivalent to this string, {@code false} otherwise
-		''' </returns>
-		''' <seealso cref=  #compareTo(String) </seealso>
-		''' <seealso cref=  #equalsIgnoreCase(String) </seealso>
-		public Boolean Equals(Object anObject)
+        ''' <summary>
+        ''' Encodes this {@code String} into a sequence of bytes using the
+        ''' platform's default charset, storing the result into a new byte array.
+        ''' 
+        ''' <p> The behavior of this method when this string cannot be encoded in
+        ''' the default charset is unspecified.  The {@link
+        ''' java.nio.charset.CharsetEncoder} class should be used when more control
+        ''' over the encoding process is required.
+        ''' </summary>
+        ''' <returns>  The resultant byte array
+        ''' 
+        ''' @since      JDK1.1 </returns>
+        Public Function bytes() As SByte()
+            Return StringCoding.encode(value, 0, value.Length)
+        End Function
+        ''' <summary>
+        ''' Compares this string to the specified object.  The result is {@code
+        ''' true} if and only if the argument is not {@code null} and is a {@code
+        ''' String} object that represents the same sequence of characters as this
+        ''' object.
+        ''' </summary>
+        ''' <param name="anObject">
+        '''         The object to compare this {@code String} against
+        ''' </param>
+        ''' <returns>  {@code true} if the given object represents a {@code String}
+        '''          equivalent to this string, {@code false} otherwise
+        ''' </returns>
+        ''' <seealso cref=  #compareTo(String) </seealso>
+        ''' <seealso cref=  #equalsIgnoreCase(String) </seealso>
+        Public Boolean Equals(Object anObject)
 			If Me Is anObject Then Return True
 			If TypeOf anObject Is String Then
 				Dim anotherString As String = CStr(anObject)

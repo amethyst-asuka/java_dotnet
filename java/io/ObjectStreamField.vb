@@ -45,7 +45,7 @@ Namespace java.io
 		Private ReadOnly signature As String
 		''' <summary>
 		''' field type (Object.class if unknown non-primitive type) </summary>
-		Private ReadOnly type As Class
+		Private ReadOnly type As  [Class]
 		''' <summary>
 		''' whether or not to (de)serialize field values as unshared </summary>
 		Private ReadOnly unshared As Boolean
@@ -62,7 +62,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="name"> the name of the serializable field </param>
 		''' <param name="type"> the <code>Class</code> object of the serializable field </param>
-		Public Sub New(ByVal name As String, ByVal type As Class)
+		Public Sub New(ByVal name As String, ByVal type As [Class])
 			Me.New(name, type, False)
 		End Sub
 
@@ -82,7 +82,7 @@ Namespace java.io
 		'''          as writeObject/readObject; if true, write/read in the same
 		'''          manner as writeUnshared/readUnshared
 		''' @since   1.4 </param>
-		Public Sub New(ByVal name As String, ByVal type As Class, ByVal unshared As Boolean)
+		Public Sub New(ByVal name As String, ByVal type As [Class], ByVal unshared As Boolean)
 			If name Is Nothing Then Throw New NullPointerException
 			Me.name = name
 			Me.type = type
@@ -138,7 +138,7 @@ Namespace java.io
 			Me.field = field
 			Me.unshared = unshared
 			name = field.name
-			Dim ftype As Class = field.type
+			Dim ftype As  [Class] = field.type
 			type = If(showType OrElse ftype.primitive, ftype, GetType(Object))
 			signature = getClassSignature(ftype).intern()
 		End Sub
@@ -164,10 +164,10 @@ Namespace java.io
 		''' <returns>  a <code>Class</code> object representing the type of the
 		'''          serializable field </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Property type As Class
+		Public Overridable Property type As  [Class]
 			Get
 				If System.securityManager IsNot Nothing Then
-					Dim caller As Class = sun.reflect.Reflection.callerClass
+					Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 					If sun.reflect.misc.ReflectUtil.needsPackageAccessCheck(caller.classLoader, type.classLoader) Then sun.reflect.misc.ReflectUtil.checkPackageAccess(type)
 				End If
 				Return type
@@ -299,7 +299,7 @@ Namespace java.io
 		''' <summary>
 		''' Returns JVM type signature for given class.
 		''' </summary>
-		Private Shared Function getClassSignature(ByVal cl As Class) As String
+		Private Shared Function getClassSignature(ByVal cl As [Class]) As String
 			Dim sbuf As New StringBuilder
 			Do While cl.array
 				sbuf.append("["c)

@@ -64,7 +64,7 @@ Namespace java.util
 	''' <p>As a general rule, the default load factor (.75) offers a good
 	''' tradeoff between time and space costs.  Higher values decrease the
 	''' space overhead but increase the lookup cost (reflected in most of
-	''' the operations of the <tt>HashMap</tt> class, including
+	''' the operations of the <tt>HashMap</tt> [Class], including
 	''' <tt>get</tt> and <tt>put</tt>).  The expected number of entries in
 	''' the map and its load factor should be taken into account when
 	''' setting its initial capacity, so as to minimize the number of
@@ -355,9 +355,9 @@ Namespace java.util
 		''' Returns x's Class if it is of the form "class C implements
 		''' Comparable<C>", else null.
 		''' </summary>
-		Friend Shared Function comparableClassFor(ByVal x As Object) As Class
+		Friend Shared Function comparableClassFor(ByVal x As Object) As  [Class]
 			If TypeOf x Is Comparable Then
-				Dim c As Class
+				Dim c As  [Class]
 				Dim ts, [as] As Type()
 				Dim t As Type
 				Dim p As ParameterizedType
@@ -378,10 +378,10 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns k.compareTo(x) if x matches kc (k's screened comparable
-		''' class), else 0.
+		''' [Class]), else 0.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function compareComparables(ByVal kc As Class, ByVal k As Object, ByVal x As Object) As Integer ' for cast to Comparable
+		Friend Shared Function compareComparables(ByVal kc As [Class], ByVal k As Object, ByVal x As Object) As Integer ' for cast to Comparable
 			Return (If(x Is Nothing OrElse x.GetType() IsNot kc, 0, CType(k, Comparable).CompareTo(x)))
 		End Function
 
@@ -2007,7 +2007,7 @@ Namespace java.util
 			''' The kc argument caches comparableClassFor(key) upon first use
 			''' comparing keys.
 			''' </summary>
-			Friend Function find(ByVal h As Integer, ByVal k As Object, ByVal kc As Class) As TreeNode(Of K, V)
+			Friend Function find(ByVal h As Integer, ByVal k As Object, ByVal kc As [Class]) As TreeNode(Of K, V)
 				Dim p As TreeNode(Of K, V) = Me
 				Do
 					Dim ph, dir As Integer
@@ -2083,7 +2083,7 @@ Namespace java.util
 					Else
 						Dim k As K = x.key
 						Dim h As Integer = x.hash
-						Dim kc As Class = Nothing
+						Dim kc As  [Class] = Nothing
 						Dim p As TreeNode(Of K, V) = root
 						Do
 							Dim dir, ph As Integer
@@ -2140,7 +2140,7 @@ Namespace java.util
 			''' Tree version of putVal.
 			''' </summary>
 			Friend Function putTreeVal(ByVal map As HashMap(Of K, V), ByVal tab As Node(Of K, V)(), ByVal h As Integer, ByVal k As K, ByVal v As V) As TreeNode(Of K, V)
-				Dim kc As Class = Nothing
+				Dim kc As  [Class] = Nothing
 				Dim searched As Boolean = False
 				Dim root As TreeNode(Of K, V) = If(parent IsNot Nothing, root(), Me)
 				Dim p As TreeNode(Of K, V) = root

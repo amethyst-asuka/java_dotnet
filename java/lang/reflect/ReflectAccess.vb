@@ -35,15 +35,15 @@ Namespace java.lang.reflect
 	Friend Class ReflectAccess
 		Implements sun.reflect.LangReflectAccess
 
-		Public Overridable Function newField(ByVal declaringClass As Class, ByVal name As String, ByVal type As Class, ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte()) As Field
+		Public Overridable Function newField(ByVal declaringClass As [Class], ByVal name As String, ByVal type As [Class], ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte()) As Field
 			Return New Field(declaringClass, name, type, modifiers, slot, signature, annotations)
 		End Function
 
-		Public Overridable Function newMethod(ByVal declaringClass As Class, ByVal name As String, ByVal parameterTypes As Class(), ByVal returnType As Class, ByVal checkedExceptions As Class(), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte(), ByVal annotationDefault As SByte()) As Method
+		Public Overridable Function newMethod(ByVal declaringClass As [Class], ByVal name As String, ByVal parameterTypes As  [Class](), ByVal returnType As [Class], ByVal checkedExceptions As  [Class](), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte(), ByVal annotationDefault As SByte()) As Method
 			Return New Method(declaringClass, name, parameterTypes, returnType, checkedExceptions, modifiers, slot, signature, annotations, parameterAnnotations, annotationDefault)
 		End Function
 
-		Public Overridable Function newConstructor(Of T)(ByVal declaringClass As Class, ByVal parameterTypes As Class(), ByVal checkedExceptions As Class(), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte()) As Constructor(Of T)
+		Public Overridable Function newConstructor(Of T)(ByVal declaringClass As [Class], ByVal parameterTypes As  [Class](), ByVal checkedExceptions As  [Class](), ByVal modifiers As Integer, ByVal slot As Integer, ByVal signature As String, ByVal annotations As SByte(), ByVal parameterAnnotations As SByte()) As Constructor(Of T)
 			Return New Constructor(Of )(declaringClass, parameterTypes, checkedExceptions, modifiers, slot, signature, annotations, parameterAnnotations)
 		End Function
 

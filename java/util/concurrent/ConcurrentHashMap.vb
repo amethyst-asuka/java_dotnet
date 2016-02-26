@@ -91,7 +91,7 @@ Namespace java.util.concurrent
 	''' customizing initial table capacity by specifying the table density
 	''' to be used in calculating the amount of space to allocate for the
 	''' given number of elements.  Also, for compatibility with previous
-	''' versions of this class, constructors may optionally specify an
+	''' versions of this [Class], constructors may optionally specify an
 	''' expected {@code concurrencyLevel} as an additional hint for
 	''' internal sizing.  Note that using many keys with exactly the same
 	''' {@code hashCode()} is a sure way to slow down performance of any
@@ -461,7 +461,7 @@ Namespace java.util.concurrent
 	'     * only when serializing.
 	'     *
 	'     * Also, solely for compatibility with previous versions of this
-	'     * class, it extends AbstractMap, even though all of its methods
+	'     * [Class], it extends AbstractMap, even though all of its methods
 	'     * are overridden, so it is just useless baggage.
 	'     *
 	'     * This file is organized to make things a little easier to follow
@@ -690,9 +690,9 @@ Namespace java.util.concurrent
 		''' Returns x's Class if it is of the form "class C implements
 		''' Comparable<C>", else null.
 		''' </summary>
-		Friend Shared Function comparableClassFor(ByVal x As Object) As Class
+		Friend Shared Function comparableClassFor(ByVal x As Object) As  [Class]
 			If TypeOf x Is Comparable Then
-				Dim c As Class
+				Dim c As  [Class]
 				Dim ts, [as] As Type()
 				Dim t As Type
 				Dim p As ParameterizedType
@@ -713,10 +713,10 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns k.compareTo(x) if x matches kc (k's screened comparable
-		''' class), else 0.
+		''' [Class]), else 0.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Shared Function compareComparables(ByVal kc As Class, ByVal k As Object, ByVal x As Object) As Integer ' for cast to Comparable
+		Friend Shared Function compareComparables(ByVal kc As [Class], ByVal k As Object, ByVal x As Object) As Integer ' for cast to Comparable
 			Return (If(x Is Nothing OrElse x.GetType() IsNot kc, 0, CType(k, Comparable).CompareTo(x)))
 		End Function
 
@@ -2798,7 +2798,7 @@ Namespace java.util.concurrent
 			''' Returns the TreeNode (or null if not found) for the given key
 			''' starting at given root.
 			''' </summary>
-			Friend Function findTreeNode(ByVal h As Integer, ByVal k As Object, ByVal kc As Class) As TreeNode(Of K, V)
+			Friend Function findTreeNode(ByVal h As Integer, ByVal k As Object, ByVal kc As [Class]) As TreeNode(Of K, V)
 				If k IsNot Nothing Then
 					Dim p As TreeNode(Of K, V) = Me
 					Do
@@ -2897,7 +2897,7 @@ Namespace java.util.concurrent
 					Else
 						Dim k As K = x.key
 						Dim h As Integer = x.hash
-						Dim kc As Class = Nothing
+						Dim kc As  [Class] = Nothing
 						Dim p As TreeNode(Of K, V) = r
 						Do
 							Dim dir, ph As Integer
@@ -3005,7 +3005,7 @@ Namespace java.util.concurrent
 			''' Finds or adds a node. </summary>
 			''' <returns> null if added </returns>
 			Friend Function putTreeVal(ByVal h As Integer, ByVal k As K, ByVal v As V) As TreeNode(Of K, V)
-				Dim kc As Class = Nothing
+				Dim kc As  [Class] = Nothing
 				Dim searched As Boolean = False
 				Dim p As TreeNode(Of K, V) = root
 				Do
@@ -3420,7 +3420,7 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					U = sun.misc.Unsafe.unsafe
-					Dim k As Class = GetType(TreeBin)
+					Dim k As  [Class] = GetType(TreeBin)
 					LOCKSTATE = U.objectFieldOffset(k.getDeclaredField("lockState"))
 				Catch e As Exception
 					Throw New [Error](e)
@@ -6747,14 +6747,14 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				U = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ConcurrentHashMap)
+				Dim k As  [Class] = GetType(ConcurrentHashMap)
 				SIZECTL = U.objectFieldOffset(k.getDeclaredField("sizeCtl"))
 				TRANSFERINDEX = U.objectFieldOffset(k.getDeclaredField("transferIndex"))
 				BASECOUNT = U.objectFieldOffset(k.getDeclaredField("baseCount"))
 				CELLSBUSY = U.objectFieldOffset(k.getDeclaredField("cellsBusy"))
-				Dim ck As Class = GetType(CounterCell)
+				Dim ck As  [Class] = GetType(CounterCell)
 				CELLVALUE = U.objectFieldOffset(ck.getDeclaredField("value"))
-				Dim ak As Class = GetType(Node())
+				Dim ak As  [Class] = GetType(Node())
 				ABASE = U.arrayBaseOffset(ak)
 				Dim scale As Integer = U.arrayIndexScale(ak)
 				If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")

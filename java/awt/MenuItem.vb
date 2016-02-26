@@ -545,7 +545,7 @@ Namespace java.awt
 		''' </exception>
 		''' <seealso cref= #getActionListeners
 		''' @since 1.3 </seealso>
-		Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As Class) As T()
+		Public Overridable Function getListeners(Of T As java.util.EventListener)(ByVal listenerType As [Class]) As T()
 			Dim l As java.util.EventListener = Nothing
 			If listenerType Is GetType(ActionListener) Then l = actionListener
 			Return AWTEventMulticaster.getListeners(l, listenerType)
@@ -771,7 +771,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleAction associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleAction interface on behalf of itself.
 			''' </summary>
@@ -784,7 +784,7 @@ Namespace java.awt
 
 			''' <summary>
 			''' Get the AccessibleValue associated with this object.  In the
-			''' implementation of the Java Accessibility API for this class,
+			''' implementation of the Java Accessibility API for this [Class],
 			''' return this object, which is responsible for implementing the
 			''' AccessibleValue interface on behalf of itself.
 			''' </summary>

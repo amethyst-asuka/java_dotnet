@@ -425,7 +425,7 @@ Namespace java.rmi.server
 	'             * its external form.
 	'             
 				Dim internalRefClassName As String = RemoteRef.packagePrefix & "." & refClassName
-				Dim refClass As Class = Type.GetType(internalRefClassName)
+				Dim refClass As  [Class] = Type.GetType(internalRefClassName)
 				Try
 					ref = CType(refClass.newInstance(), RemoteRef)
 
@@ -438,7 +438,7 @@ Namespace java.rmi.server
 					Throw New ClassNotFoundException(internalRefClassName, e)
 				Catch e As IllegalAccessException
 					Throw New ClassNotFoundException(internalRefClassName, e)
-				Catch e As ClassCastException
+				Catch e As  [Class]CastException
 					Throw New ClassNotFoundException(internalRefClassName, e)
 				End Try
 				ref.readExternal([in])

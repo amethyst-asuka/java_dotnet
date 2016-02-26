@@ -54,7 +54,7 @@ Namespace java.util.concurrent
 	''' {@code Runnable}, a {@code FutureTask} can be submitted to an
 	''' <seealso cref="Executor"/> for execution.
 	''' 
-	''' <p>In addition to serving as a standalone class, this class provides
+	''' <p>In addition to serving as a standalone [Class], this class provides
 	''' {@code protected} functionality that may be useful when creating
 	''' customized task classes.
 	''' 
@@ -461,7 +461,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(FutureTask)
+				Dim k As  [Class] = GetType(FutureTask)
 				stateOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("state"))
 				runnerOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("runner"))
 				waitersOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("waiters"))

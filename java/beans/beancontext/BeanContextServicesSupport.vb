@@ -164,7 +164,7 @@ Namespace java.beans.beancontext
 
 				' create an instance of a service ref
 
-				Friend Sub New(ByVal outerInstance As BeanContextServicesSupport.BCSSChild, ByVal sc As Class, ByVal bcsp As BeanContextServiceProvider, ByVal delegated As Boolean)
+				Friend Sub New(ByVal outerInstance As BeanContextServicesSupport.BCSSChild, ByVal sc As [Class], ByVal bcsp As BeanContextServiceProvider, ByVal delegated As Boolean)
 						Me.outerInstance = outerInstance
 					MyBase.New()
 
@@ -238,7 +238,7 @@ Namespace java.beans.beancontext
 					End Get
 				End Property
 
-				Friend Overridable Property serviceClass As Class
+				Friend Overridable Property serviceClass As  [Class]
 					Get
 						Return serviceClass
 					End Get
@@ -303,7 +303,7 @@ Namespace java.beans.beancontext
 	'             * fields
 	'             
 
-				Friend serviceClass As Class
+				Friend serviceClass As  [Class]
 
 				Friend serviceProvider As BeanContextServiceProvider
 				Friend serviceRefs As Integer
@@ -777,7 +777,7 @@ Namespace java.beans.beancontext
 
 				Try
 					bcs = CType(beanContext, BeanContextServices)
-				Catch cce As ClassCastException
+				Catch cce As  [Class]CastException
 					Return False
 				End Try
 
@@ -1002,7 +1002,7 @@ Namespace java.beans.beancontext
 		protected static final BeanContextServicesListener getChildBeanContextServicesListener(Object child)
 			Try
 				Return CType(child, BeanContextServicesListener)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Return Nothing
 			End Try
 
@@ -1067,7 +1067,7 @@ Namespace java.beans.beancontext
 				Dim bcs As BeanContextServices = CType(nbc, BeanContextServices)
 
 				proxy = New BCSSProxyServiceProvider(Me, bcs)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				' do nothing ...
 			End Try
 
@@ -1155,7 +1155,7 @@ Namespace java.beans.beancontext
 
 				 Try
 					bcsp = CType(entry.Value, BCSSServiceProvider)
-				 Catch cce As ClassCastException
+				 Catch cce As  [Class]CastException
 					Continue Do
 				 End Try
 

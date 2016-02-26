@@ -141,7 +141,7 @@ Namespace java.awt
 		Private dispatchThread As EventDispatchThread
 
 		Private ReadOnly threadGroup As ThreadGroup = Thread.currentThread().threadGroup
-		Private ReadOnly classLoader As ClassLoader = Thread.currentThread().contextClassLoader
+		Private ReadOnly classLoader As  [Class]Loader = Thread.currentThread().contextClassLoader
 
 	'    
 	'     * The time stamp of the last dispatched InputEvent or ActionEvent.

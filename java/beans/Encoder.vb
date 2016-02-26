@@ -180,7 +180,7 @@ Namespace java.beans
 		''' <seealso cref= #setPersistenceDelegate </seealso>
 		''' <seealso cref= java.beans.Introspector#getBeanInfo </seealso>
 		''' <seealso cref= java.beans.BeanInfo#getBeanDescriptor </seealso>
-		Public Overridable Function getPersistenceDelegate(ByVal type As Class) As PersistenceDelegate
+		Public Overridable Function getPersistenceDelegate(ByVal type As [Class]) As PersistenceDelegate
 			Dim pd As PersistenceDelegate = Me.finder.find(type)
 			If pd Is Nothing Then
 				pd = MetaData.getPersistenceDelegate(type)
@@ -198,7 +198,7 @@ Namespace java.beans
 		''' <seealso cref= #getPersistenceDelegate </seealso>
 		''' <seealso cref= java.beans.Introspector#getBeanInfo </seealso>
 		''' <seealso cref= java.beans.BeanInfo#getBeanDescriptor </seealso>
-		Public Overridable Sub setPersistenceDelegate(ByVal type As Class, ByVal [delegate] As PersistenceDelegate)
+		Public Overridable Sub setPersistenceDelegate(ByVal type As [Class], ByVal [delegate] As PersistenceDelegate)
 			Me.finder.register(type, [delegate])
 		End Sub
 

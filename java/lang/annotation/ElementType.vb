@@ -72,7 +72,7 @@ Namespace java.lang.annotation
 	''' </summary>
 	Public Enum ElementType
 		''' <summary>
-		''' Class, interface (including annotation type), or enum declaration </summary>
+		''' [Class], interface (including annotation type), or enum declaration </summary>
 		TYPE
 
 		''' <summary>

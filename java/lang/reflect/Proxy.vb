@@ -163,7 +163,7 @@ Namespace java.lang.reflect
 	''' {@code Method} object passed to {@code invoke} will be
 	''' {@code java.lang.Object}.  Other public methods of a proxy
 	''' instance inherited from {@code java.lang.Object} are not
-	''' overridden by a proxy class, so invocations of those methods behave
+	''' overridden by a proxy [Class], so invocations of those methods behave
 	''' like they do for instances of {@code java.lang.Object}.
 	''' </ul>
 	''' 
@@ -220,12 +220,12 @@ Namespace java.lang.reflect
 
 		''' <summary>
 		''' parameter types of a proxy class constructor </summary>
-		Private Shared ReadOnly constructorParams As Class() = { GetType(InvocationHandler) }
+		Private Shared ReadOnly constructorParams As  [Class]() = { GetType(InvocationHandler) }
 
 		''' <summary>
 		''' a cache of proxy classes
 		''' </summary>
-		Private Shared ReadOnly proxyClassCache As New WeakCache(Of ClassLoader, Class(), Class)(New KeyFactory, New ProxyClassFactory)
+		Private Shared ReadOnly proxyClassCache As New WeakCache(Of ClassLoader, Class(), [Class])(New KeyFactory, New ProxyClassFactory)
 
 		''' <summary>
 		''' the invocation handler for this proxy instance.
@@ -241,7 +241,7 @@ Namespace java.lang.reflect
 
 		''' <summary>
 		''' Constructs a new {@code Proxy} instance from a subclass
-		''' (typically, a dynamic proxy class) with the specified value
+		''' (typically, a dynamic proxy [Class]) with the specified value
 		''' for its invocation handler.
 		''' </summary>
 		''' <param name="h"> the invocation handler for this proxy instance
@@ -344,8 +344,8 @@ Namespace java.lang.reflect
 		''' <exception cref="NullPointerException"> if the {@code interfaces} array
 		'''          argument or any of its elements are {@code null} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getProxyClass(ByVal loader As ClassLoader, ParamArray ByVal interfaces As Class()) As Class
-			Dim intfs As Class() = interfaces.clone()
+		Public Shared Function getProxyClass(ByVal loader As  [Class]Loader, ParamArray ByVal interfaces As  [Class]()) As  [Class]
+			Dim intfs As  [Class]() = interfaces.clone()
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then checkProxyAccess(sun.reflect.Reflection.callerClass, loader, intfs)
 
@@ -355,12 +355,12 @@ Namespace java.lang.reflect
 	'    
 	'     * Check permissions required to create a Proxy class.
 	'     *
-	'     * To define a proxy class, it performs the access checks as in
+	'     * To define a proxy [Class], it performs the access checks as in
 	'     * Class.forName (VM will invoke ClassLoader.checkPackageAccess):
 	'     * 1. "getClassLoader" permission check if loader == null
 	'     * 2. checkPackageAccess on the interfaces it implements
 	'     *
-	'     * To get a constructor and new instance of a proxy class, it performs
+	'     * To get a constructor and new instance of a proxy [Class], it performs
 	'     * the package access check on the interfaces it implements
 	'     * as in Class.getConstructor.
 	'     *
@@ -370,10 +370,10 @@ Namespace java.lang.reflect
 	'     * will throw IllegalAccessError when the generated proxy class is
 	'     * being defined via the defineClass0 method.
 	'     
-		Private Shared Sub checkProxyAccess(ByVal caller As Class, ByVal loader As ClassLoader, ParamArray ByVal interfaces As Class())
+		Private Shared Sub checkProxyAccess(ByVal caller As [Class], ByVal loader As  [Class]Loader, ParamArray ByVal interfaces As  [Class]())
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
-				Dim ccl As ClassLoader = caller.classLoader
+				Dim ccl As  [Class]Loader = caller.classLoader
 				If sun.misc.VM.isSystemDomainLoader(loader) AndAlso (Not sun.misc.VM.isSystemDomainLoader(ccl)) Then sm.checkPermission(sun.security.util.SecurityConstants.GET_CLASSLOADER_PERMISSION)
 				sun.reflect.misc.ReflectUtil.checkProxyPackageAccess(ccl, interfaces)
 			End If
@@ -383,7 +383,7 @@ Namespace java.lang.reflect
 		''' Generate a proxy class.  Must call the checkProxyAccess method
 		''' to perform permission checks before calling this.
 		''' </summary>
-		Private Shared Function getProxyClass0(ByVal loader As ClassLoader, ParamArray ByVal interfaces As Class()) As Class
+		Private Shared Function getProxyClass0(ByVal loader As  [Class]Loader, ParamArray ByVal interfaces As  [Class]()) As  [Class]
 			If interfaces.Length > 65535 Then Throw New IllegalArgumentException("interface limit exceeded")
 
 			' If the proxy class defined by the given loader implementing
@@ -410,7 +410,7 @@ Namespace java.lang.reflect
 
 			Private ReadOnly hash As Integer
 
-			Friend Sub New(ByVal intf As Class)
+			Friend Sub New(ByVal intf As [Class])
 				MyBase.New(intf)
 				Me.hash = intf.GetHashCode()
 			End Sub
@@ -420,7 +420,7 @@ Namespace java.lang.reflect
 			End Function
 
 			Public Overrides Function Equals(ByVal obj As Object) As Boolean
-				Dim intf As Class
+				Dim intf As  [Class]
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return Me Is obj OrElse obj IsNot Nothing AndAlso obj.GetType() Is GetType(Key1) AndAlso (intf = get()) IsNot Nothing AndAlso intf Is CType(obj, Key1).get()
 			End Function
@@ -435,7 +435,7 @@ Namespace java.lang.reflect
 			Private ReadOnly hash As Integer
 			Private ReadOnly ref2 As WeakReference(Of [Class])
 
-			Friend Sub New(ByVal intf1 As Class, ByVal intf2 As Class)
+			Friend Sub New(ByVal intf1 As [Class], ByVal intf2 As [Class])
 				MyBase.New(intf1)
 				hash = 31 * intf1.GetHashCode() + intf2.GetHashCode()
 				ref2 = New WeakReference(Of [Class])(intf2)
@@ -446,7 +446,7 @@ Namespace java.lang.reflect
 			End Function
 
 			Public Overrides Function Equals(ByVal obj As Object) As Boolean
-				Dim intf1, intf2 As Class
+				Dim intf1, intf2 As  [Class]
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Return Me Is obj OrElse obj IsNot Nothing AndAlso obj.GetType() Is GetType(Key2) AndAlso (intf1 = get()) IsNot Nothing AndAlso intf1 Is CType(obj, Key2).get() AndAlso (intf2 = ref2.get()) IsNot Nothing AndAlso intf2 Is CType(obj, Key2).ref2.get()
 			End Function
@@ -461,7 +461,7 @@ Namespace java.lang.reflect
 			Private ReadOnly refs As WeakReference(Of [Class])()
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Friend Sub New(ByVal interfaces As Class())
+			Friend Sub New(ByVal interfaces As  [Class]())
 				hash = java.util.Arrays.hashCode(interfaces)
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 				refs = CType(New WeakReference(Of ?)(interfaces.Length - 1){}, WeakReference(Of [Class])())
@@ -481,7 +481,7 @@ Namespace java.lang.reflect
 			Private Shared Function Equals(ByVal refs1 As WeakReference(Of [Class])(), ByVal refs2 As WeakReference(Of [Class])()) As Boolean
 				If refs1.Length <> refs2.Length Then Return False
 				For i As Integer = 0 To refs1.Length - 1
-					Dim intf As Class = refs1(i).get()
+					Dim intf As  [Class] = refs1(i).get()
 					If intf Is Nothing OrElse intf IsNot refs2(i).get() Then Return False
 				Next i
 				Return True
@@ -495,7 +495,7 @@ Namespace java.lang.reflect
 		Private NotInheritable Class KeyFactory
 			Implements java.util.function.BiFunction(Of ClassLoader, Class(), Object)
 
-			Public Overrides Function apply(ByVal classLoader_Renamed As ClassLoader, ByVal interfaces As Class()) As Object
+			Public Overrides Function apply(ByVal classLoader_Renamed As  [Class]Loader, ByVal interfaces As  [Class]()) As Object
 				Select Case interfaces.Length
 					Case 1 ' the most frequent
 						Return New Key1(interfaces(0))
@@ -514,7 +514,7 @@ Namespace java.lang.reflect
 		''' the ClassLoader and array of interfaces.
 		''' </summary>
 		Private NotInheritable Class ProxyClassFactory
-			Implements java.util.function.BiFunction(Of ClassLoader, Class(), Class)
+			Implements java.util.function.BiFunction(Of ClassLoader, Class(), [Class])
 
 			' prefix for all proxy class names
 			Private Const proxyClassNamePrefix As String = "$Proxy"
@@ -522,18 +522,18 @@ Namespace java.lang.reflect
 			' next number to use for generation of unique proxy class names
 			Private Shared ReadOnly nextUniqueNumber As New java.util.concurrent.atomic.AtomicLong
 
-			Public Overrides Function apply(ByVal loader As ClassLoader, ByVal interfaces As Class()) As Class
+			Public Overrides Function apply(ByVal loader As  [Class]Loader, ByVal interfaces As  [Class]()) As  [Class]
 
 				Dim interfaceSet As IDictionary(Of [Class], Boolean?) = New java.util.IdentityHashMap(Of [Class], Boolean?)(interfaces.Length)
-				For Each intf As Class In interfaces
+				For Each intf As  [Class] In interfaces
 	'                
 	'                 * Verify that the class loader resolves the name of this
 	'                 * interface to the same Class object.
 	'                 
-					Dim interfaceClass As Class = Nothing
+					Dim interfaceClass As  [Class] = Nothing
 					Try
 						interfaceClass = Type.GetType(intf.name, False, loader)
-					Catch e As ClassNotFoundException
+					Catch e As  [Class]NotFoundException
 					End Try
 					If interfaceClass IsNot intf Then Throw New IllegalArgumentException(intf & " is not visible from class loader")
 	'                
@@ -555,7 +555,7 @@ Namespace java.lang.reflect
 	'             * proxy class will be defined in the same package.  Verify that
 	'             * all non-public proxy interfaces are in the same package.
 	'             
-				For Each intf As Class In interfaces
+				For Each intf As  [Class] In interfaces
 					Dim flags As Integer = intf.modifiers
 					If Not Modifier.isPublic(flags) Then
 						accessFlags = Modifier.FINAL
@@ -584,7 +584,7 @@ Namespace java.lang.reflect
 				Dim proxyClassFile As SByte() = sun.misc.ProxyGenerator.generateProxyClass(proxyName, interfaces, accessFlags)
 				Try
 					Return defineClass0(loader, proxyName, proxyClassFile, 0, proxyClassFile.Length)
-				Catch e As ClassFormatError
+				Catch e As  [Class]FormatError
 	'                
 	'                 * A ClassFormatError here means that (barring bugs in the
 	'                 * proxy class generation code) there was some other
@@ -642,17 +642,17 @@ Namespace java.lang.reflect
 		'''          if the invocation handler, {@code h}, is
 		'''          {@code null} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function newProxyInstance(ByVal loader As ClassLoader, ByVal interfaces As Class(), ByVal h As InvocationHandler) As Object
+		Public Shared Function newProxyInstance(ByVal loader As  [Class]Loader, ByVal interfaces As  [Class](), ByVal h As InvocationHandler) As Object
 			java.util.Objects.requireNonNull(h)
 
-			Dim intfs As Class() = interfaces.clone()
+			Dim intfs As  [Class]() = interfaces.clone()
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then checkProxyAccess(sun.reflect.Reflection.callerClass, loader, intfs)
 
 	'        
 	'         * Look up or generate the designated proxy class.
 	'         
-			Dim cl As Class = getProxyClass0(loader, intfs)
+			Dim cl As  [Class] = getProxyClass0(loader, intfs)
 
 	'        
 	'         * Invoke its constructor with the designated invocation handler.
@@ -689,12 +689,12 @@ Namespace java.lang.reflect
 			End Function
 		End Class
 
-		Private Shared Sub checkNewProxyPermission(ByVal caller As Class, ByVal proxyClass As Class)
+		Private Shared Sub checkNewProxyPermission(ByVal caller As [Class], ByVal proxyClass As [Class])
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
 				If sun.reflect.misc.ReflectUtil.isNonPublicProxyClass(proxyClass) Then
-					Dim ccl As ClassLoader = caller.classLoader
-					Dim pcl As ClassLoader = proxyClass.classLoader
+					Dim ccl As  [Class]Loader = caller.classLoader
+					Dim pcl As  [Class]Loader = proxyClass.classLoader
 
 					' do permission check if the caller is in a different runtime package
 					' of the proxy class
@@ -722,7 +722,7 @@ Namespace java.lang.reflect
 		''' <returns>  {@code true} if the class is a proxy class and
 		'''          {@code false} otherwise </returns>
 		''' <exception cref="NullPointerException"> if {@code cl} is {@code null} </exception>
-		Public Shared Function isProxyClass(ByVal cl As Class) As Boolean
+		Public Shared Function isProxyClass(ByVal cl As [Class]) As Boolean
 			Return cl.IsSubclassOf(GetType(Proxy)) AndAlso proxyClassCache.containsValue(cl)
 		End Function
 
@@ -749,8 +749,8 @@ Namespace java.lang.reflect
 			Dim p As Proxy = CType(proxy_Renamed, Proxy)
 			Dim ih As InvocationHandler = p.h
 			If System.securityManager IsNot Nothing Then
-				Dim ihClass As Class = ih.GetType()
-				Dim caller As Class = sun.reflect.Reflection.callerClass
+				Dim ihClass As  [Class] = ih.GetType()
+				Dim caller As  [Class] = sun.reflect.Reflection.callerClass
 				If sun.reflect.misc.ReflectUtil.needsPackageAccessCheck(caller.classLoader, ihClass.classLoader) Then sun.reflect.misc.ReflectUtil.checkPackageAccess(ihClass)
 			End If
 
@@ -759,7 +759,7 @@ Namespace java.lang.reflect
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Shared Function defineClass0(ByVal loader As ClassLoader, ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Class
+		Private Shared Function defineClass0(ByVal loader As  [Class]Loader, ByVal name As String, ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As  [Class]
 		End Function
 	End Class
 

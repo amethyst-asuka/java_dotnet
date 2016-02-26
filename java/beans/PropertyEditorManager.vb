@@ -70,7 +70,7 @@ Namespace java.beans
 		'''                            doesn't allow setting of system properties
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkPropertiesAccess </seealso>
-		Public Shared Sub registerEditor(ByVal targetType As Class, ByVal editorClass As Class)
+		Public Shared Sub registerEditor(ByVal targetType As [Class], ByVal editorClass As [Class])
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then sm.checkPropertiesAccess()
 			ThreadGroupContext.context.propertyEditorFinder.register(targetType, editorClass)
@@ -82,7 +82,7 @@ Namespace java.beans
 		''' <param name="targetType">  The Class object for the type to be edited </param>
 		''' <returns> An editor object for the given target class.
 		''' The result is null if no suitable editor can be found. </returns>
-		Public Shared Function findEditor(ByVal targetType As Class) As PropertyEditor
+		Public Shared Function findEditor(ByVal targetType As [Class]) As PropertyEditor
 			Return ThreadGroupContext.context.propertyEditorFinder.find(targetType)
 		End Function
 

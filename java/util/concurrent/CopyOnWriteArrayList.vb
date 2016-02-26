@@ -1621,7 +1621,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(CopyOnWriteArrayList)
+				Dim k As  [Class] = GetType(CopyOnWriteArrayList)
 				lockOffset = UNSAFE.objectFieldOffset(k.getDeclaredField("lock"))
 			Catch e As Exception
 				Throw New [Error](e)

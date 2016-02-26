@@ -440,7 +440,7 @@ Namespace java.net
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Boolean?
-				Dim clazz As Class = outerInstance.impl.GetType()
+				Dim clazz As  [Class] = outerInstance.impl.GetType()
 				Do
 					Try
 						clazz.getDeclaredMethod("connect", GetType(SocketAddress), GetType(Integer))

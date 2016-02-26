@@ -482,7 +482,7 @@ Namespace java.util
 						If Not value.Equals(m.get(key)) Then Return False
 					End If
 				Loop
-			Catch unused As ClassCastException
+			Catch unused As  [Class]CastException
 				Return False
 			Catch unused As NullPointerException
 				Return False

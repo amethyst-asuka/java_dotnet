@@ -31,7 +31,7 @@ Namespace java.security
 
 	''' <summary>
 	''' This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
-	''' for the {@code MessageDigest} class, which provides the functionality
+	''' for the {@code MessageDigest} [Class], which provides the functionality
 	''' of a message digest algorithm, such as MD5 or SHA. Message digests are
 	''' secure one-way hash functions that take arbitrary-sized data and output a
 	''' fixed-length hash value.

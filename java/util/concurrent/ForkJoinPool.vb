@@ -1319,8 +1319,8 @@ Namespace java.util.concurrent
 			Shared Sub New()
 				Try
 					U = sun.misc.Unsafe.unsafe
-					Dim wk As Class = GetType(WorkQueue)
-					Dim ak As Class = GetType(ForkJoinTask())
+					Dim wk As  [Class] = GetType(WorkQueue)
+					Dim ak As  [Class] = GetType(ForkJoinTask())
 					QTOP = U.objectFieldOffset(wk.getDeclaredField("top"))
 					QLOCK = U.objectFieldOffset(wk.getDeclaredField("qlock"))
 					QCURRENTSTEAL = U.objectFieldOffset(wk.getDeclaredField("currentSteal"))
@@ -2904,7 +2904,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException">       {@inheritDoc} </exception>
 		''' <exception cref="RejectedExecutionException"> {@inheritDoc} </exception>
 		Public Overrides Function invokeAll(Of T, T1 As java.util.concurrent.Callable(Of T)(ByVal tasks As ICollection(Of T1)) As IList(Of java.util.concurrent.Future(Of T))
-			' In previous versions of this class, this method constructed
+			' In previous versions of this [Class], this method constructed
 			' a task to run ForkJoinTask.invokeAll, but now external
 			' invocation of multiple tasks is at least as efficient.
 			Dim futures As New List(Of java.util.concurrent.Future(Of T))(tasks.Count)
@@ -3579,20 +3579,20 @@ Namespace java.util.concurrent
 			' initialize field offsets for CAS etc
 			Try
 				U = sun.misc.Unsafe.unsafe
-				Dim k As Class = GetType(ForkJoinPool)
+				Dim k As  [Class] = GetType(ForkJoinPool)
 				CTL = U.objectFieldOffset(k.getDeclaredField("ctl"))
 				RUNSTATE = U.objectFieldOffset(k.getDeclaredField("runState"))
 				STEALCOUNTER = U.objectFieldOffset(k.getDeclaredField("stealCounter"))
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				PARKBLOCKER = U.objectFieldOffset(tk.getDeclaredField("parkBlocker"))
-				Dim wk As Class = GetType(WorkQueue)
+				Dim wk As  [Class] = GetType(WorkQueue)
 				QTOP = U.objectFieldOffset(wk.getDeclaredField("top"))
 				QLOCK = U.objectFieldOffset(wk.getDeclaredField("qlock"))
 				QSCANSTATE = U.objectFieldOffset(wk.getDeclaredField("scanState"))
 				QPARKER = U.objectFieldOffset(wk.getDeclaredField("parker"))
 				QCURRENTSTEAL = U.objectFieldOffset(wk.getDeclaredField("currentSteal"))
 				QCURRENTJOIN = U.objectFieldOffset(wk.getDeclaredField("currentJoin"))
-				Dim ak As Class = GetType(ForkJoinTask())
+				Dim ak As  [Class] = GetType(ForkJoinTask())
 				ABASE = U.arrayBaseOffset(ak)
 				Dim scale As Integer = U.arrayIndexScale(ak)
 				If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")

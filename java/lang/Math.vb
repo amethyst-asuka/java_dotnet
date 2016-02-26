@@ -66,7 +66,7 @@ Namespace java.lang
 	''' rounded</i>.  A correctly rounded method is generally the best a
 	''' floating-point approximation can be; however, it is impractical for
 	''' many floating-point methods to be correctly rounded.  Instead, for
-	''' the {@code Math} class, a larger error bound of 1 or 2 ulps is
+	''' the {@code Math} [Class], a larger error bound of 1 or 2 ulps is
 	''' allowed for certain methods.  Informally, with a 1 ulp error bound,
 	''' when the exact result is a representable number, the exact result
 	''' should be returned as the computed result; otherwise, either of the

@@ -42,7 +42,7 @@ Namespace java.lang.annotation
 
 		Private Shadows Const serialVersionUID As Long = 8445097402741811912L
 
-		Private annotationType_Renamed As Class
+		Private annotationType_Renamed As  [Class]
 		Private elementName_Renamed As String
 
 		''' <summary>
@@ -52,7 +52,7 @@ Namespace java.lang.annotation
 		''' <param name="annotationType"> the Class object for the annotation type </param>
 		''' <param name="elementName"> the name of the missing element </param>
 		''' <exception cref="NullPointerException"> if either parameter is {@code null} </exception>
-		Public Sub New(ByVal annotationType As Class, ByVal elementName As String)
+		Public Sub New(ByVal annotationType As [Class], ByVal elementName As String)
 			MyBase.New(annotationType.name & " missing element " & elementName.ToString())
 
 			Me.annotationType_Renamed = annotationType
@@ -65,7 +65,7 @@ Namespace java.lang.annotation
 		''' </summary>
 		''' <returns> the Class object for the annotation type with the
 		'''     missing element </returns>
-		Public Overridable Function annotationType() As Class
+		Public Overridable Function annotationType() As  [Class]
 			Return annotationType_Renamed
 		End Function
 

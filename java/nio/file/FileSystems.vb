@@ -42,7 +42,7 @@ Namespace java.nio.file
 	''' 
 	''' <p> The first invocation of the {@link FileSystemProvider#installedProviders
 	''' installedProviders} method, by way of invoking any of the {@code
-	''' newFileSystem} methods defined by this class, locates and loads all
+	''' newFileSystem} methods defined by this [Class], locates and loads all
 	''' installed file system providers. Installed providers are loaded using the
 	''' service-provider loading facility defined by the <seealso cref="ServiceLoader"/> class.
 	''' Installed providers are loaded using the system class loader. If the
@@ -112,7 +112,7 @@ Namespace java.nio.file
 					If propValue IsNot Nothing Then
 						For Each cn As String In propValue.Split(",")
 							Try
-								Dim c As Class = Type.GetType(cn, True, ClassLoader.systemClassLoader)
+								Dim c As  [Class] = Type.GetType(cn, True, ClassLoader.systemClassLoader)
 	'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 								Dim ctor As Constructor(Of ?) = c.getDeclaredConstructor(GetType(java.nio.file.spi.FileSystemProvider))
 								provider = CType(ctor.newInstance(provider), java.nio.file.spi.FileSystemProvider)
@@ -306,7 +306,7 @@ Namespace java.nio.file
 		''' <exception cref="SecurityException">
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission required by the file system provider implementation </exception>
-		Public Shared Function newFileSystem(Of T1)(ByVal uri As java.net.URI, ByVal env As Map(Of T1), ByVal loader As ClassLoader) As FileSystem
+		Public Shared Function newFileSystem(Of T1)(ByVal uri As java.net.URI, ByVal env As Map(Of T1), ByVal loader As  [Class]Loader) As FileSystem
 			Dim scheme As String = uri.scheme
 
 			' check installed providers
@@ -359,7 +359,7 @@ Namespace java.nio.file
 		''' <exception cref="SecurityException">
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission </exception>
-		Public Shared Function newFileSystem(ByVal path As Path, ByVal loader As ClassLoader) As FileSystem
+		Public Shared Function newFileSystem(ByVal path As Path, ByVal loader As  [Class]Loader) As FileSystem
 			If path Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim env As Map(Of String, ?) = Collections.emptyMap()

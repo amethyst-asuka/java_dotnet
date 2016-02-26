@@ -669,7 +669,7 @@ Namespace java.beans.beancontext
 			If bcc Is Nothing Then Throw New NullPointerException("bcc")
 
 			If containsKey(bcc) Then
-				Dim cl As ClassLoader = bcc.GetType().classLoader
+				Dim cl As  [Class]Loader = bcc.GetType().classLoader
 
 				Return If(cl IsNot Nothing, cl.getResourceAsStream(name), ClassLoader.getSystemResourceAsStream(name))
 			Else
@@ -687,7 +687,7 @@ Namespace java.beans.beancontext
 			If bcc Is Nothing Then Throw New NullPointerException("bcc")
 
 			If containsKey(bcc) Then
-				Dim cl As ClassLoader = bcc.GetType().classLoader
+				Dim cl As  [Class]Loader = bcc.GetType().classLoader
 
 				Return If(cl IsNot Nothing, cl.getResource(name), ClassLoader.getSystemResource(name))
 			Else
@@ -767,7 +767,7 @@ Namespace java.beans.beancontext
 
 					Try
 							Return CType(c, java.beans.Visibility).needsGui()
-						Catch cce As ClassCastException
+						Catch cce As  [Class]CastException
 							' do nothing ...
 						End Try
 
@@ -1041,7 +1041,7 @@ Namespace java.beans.beancontext
 					tempVar = count > 0
 				count -= 1
 					Continue Do
-				Catch cnfe As ClassNotFoundException
+				Catch cnfe As  [Class]NotFoundException
 					tempVar = count > 0
 				count -= 1
 					Continue Do
@@ -1053,7 +1053,7 @@ Namespace java.beans.beancontext
 
 					Try
 						bcc = CType(child, BeanContextChild)
-					Catch cce As ClassCastException
+					Catch cce As  [Class]CastException
 						' do nothing;
 					End Try
 
@@ -1196,7 +1196,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildVisibility(ByVal child As Object) As java.beans.Visibility
 			Try
 				Return CType(child, java.beans.Visibility)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Return Nothing
 			End Try
 		End Function
@@ -1208,7 +1208,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildSerializable(ByVal child As Object) As java.io.Serializable
 			Try
 				Return CType(child, java.io.Serializable)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Return Nothing
 			End Try
 		End Function
@@ -1221,7 +1221,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildPropertyChangeListener(ByVal child As Object) As java.beans.PropertyChangeListener
 			Try
 				Return CType(child, java.beans.PropertyChangeListener)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Return Nothing
 			End Try
 		End Function
@@ -1234,7 +1234,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildVetoableChangeListener(ByVal child As Object) As java.beans.VetoableChangeListener
 			Try
 				Return CType(child, java.beans.VetoableChangeListener)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Return Nothing
 			End Try
 		End Function
@@ -1247,7 +1247,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildBeanContextMembershipListener(ByVal child As Object) As BeanContextMembershipListener
 			Try
 				Return CType(child, BeanContextMembershipListener)
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Return Nothing
 			End Try
 		End Function
@@ -1266,10 +1266,10 @@ Namespace java.beans.beancontext
 				Else
 					Return bcc
 				End If
-			Catch cce As ClassCastException
+			Catch cce As  [Class]CastException
 				Try
 					Return CType(child, BeanContextProxy).beanContextProxy
-				Catch cce1 As ClassCastException
+				Catch cce1 As  [Class]CastException
 					Return Nothing
 				End Try
 			End Try
@@ -1373,7 +1373,7 @@ Namespace java.beans.beancontext
 		''' <param name="first"> the first object </param>
 		''' <param name="second"> the second object </param>
 		''' <returns> true if equal, false if not </returns>
-		Protected Friend Shared Function classEquals(ByVal first As Class, ByVal second As Class) As Boolean
+		Protected Friend Shared Function classEquals(ByVal first As [Class], ByVal second As [Class]) As Boolean
 			Return first.Equals(second) OrElse first.name.Equals(second.name)
 		End Function
 

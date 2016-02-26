@@ -853,30 +853,30 @@ Namespace java.awt
 		  End If
 		End Sub
 
-	'    
-	'     * Recursive method which returns a count of the number of listeners in
-	'     * EventListener, handling the (common) case of l actually being an
-	'     * AWTEventMulticaster.  Additionally, only listeners of type listenerType
-	'     * are counted.  Method modified to fix bug 4513402.  -bchristi
-	'     
-		Private Shared Function getListenerCount(ByVal l As java.util.EventListener, ByVal listenerType As Class) As Integer
-			If TypeOf l Is AWTEventMulticaster Then
-				Dim mc As AWTEventMulticaster = CType(l, AWTEventMulticaster)
-				Return getListenerCount(mc.a, listenerType) + getListenerCount(mc.b, listenerType)
-			Else
-				' Only count listeners of correct type
-				Return If(listenerType.isInstance(l), 1, 0)
-			End If
-		End Function
+        '    
+        '     * Recursive method which returns a count of the number of listeners in
+        '     * EventListener, handling the (common) case of l actually being an
+        '     * AWTEventMulticaster.  Additionally, only listeners of type listenerType
+        '     * are counted.  Method modified to fix bug 4513402.  -bchristi
+        '     
+        Private Shared Function getListenerCount(ByVal l As java.util.EventListener, ByVal listenerType As [Class]) As Integer
+            If TypeOf l Is AWTEventMulticaster Then
+                Dim mc As AWTEventMulticaster = CType(l, AWTEventMulticaster)
+                Return getListenerCount(mc.a, listenerType) + getListenerCount(mc.b, listenerType)
+            Else
+                ' Only count listeners of correct type
+                Return If(listenerType.isInstance(l), 1, 0)
+            End If
+        End Function
 
-	'    
-	'     * Recusive method which populates EventListener array a with EventListeners
-	'     * from l.  l is usually an AWTEventMulticaster.  Bug 4513402 revealed that
-	'     * if l differed in type from the element type of a, an ArrayStoreException
-	'     * would occur.  Now l is only inserted into a if it's of the appropriate
-	'     * type.  -bchristi
-	'     
-		Private Shared Function populateListenerArray(ByVal a As java.util.EventListener(), ByVal l As java.util.EventListener, ByVal index As Integer) As Integer
+        '    
+        '     * Recusive method which populates EventListener array a with EventListeners
+        '     * from l.  l is usually an AWTEventMulticaster.  Bug 4513402 revealed that
+        '     * if l differed in type from the element type of a, an ArrayStoreException
+        '     * would occur.  Now l is only inserted into a if it's of the appropriate
+        '     * type.  -bchristi
+        '     
+        Private Shared Function populateListenerArray(ByVal a As java.util.EventListener(), ByVal l As java.util.EventListener, ByVal index As Integer) As Integer
 			If TypeOf l Is AWTEventMulticaster Then
 				Dim mc As AWTEventMulticaster = CType(l, AWTEventMulticaster)
 				Dim lhs As Integer = populateListenerArray(a, mc.a, index)
@@ -919,7 +919,7 @@ Namespace java.awt
 		''' 
 		''' @since 1.4 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function getListeners(Of T As java.util.EventListener)(ByVal l As java.util.EventListener, ByVal listenerType As Class) As T()
+		Public Shared Function getListeners(Of T As java.util.EventListener)(ByVal l As java.util.EventListener, ByVal listenerType As [Class]) As T()
 			If listenerType Is Nothing Then Throw New NullPointerException("Listener type should not be null")
 
 			Dim n As Integer = getListenerCount(l, listenerType)

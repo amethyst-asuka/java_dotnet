@@ -646,7 +646,7 @@ Namespace java.time.zone
 		''' <param name="year">  the year, not null </param>
 		''' <returns> the transition array, not null </returns>
 		Private Function findTransitionArray(ByVal year_Renamed As Integer) As ZoneOffsetTransition()
-			Dim yearObj As Integer? = year_Renamed ' should use Year class, but this saves a class load
+			Dim yearObj As Integer? = year_Renamed ' should use Year [Class], but this saves a class load
 			Dim transArray As ZoneOffsetTransition() = lastRulesCache.get(yearObj)
 			If transArray IsNot Nothing Then Return transArray
 			Dim ruleArray As ZoneOffsetTransitionRule() = lastRules

@@ -240,7 +240,7 @@ Namespace java.lang.invoke
 	'			Return basicType(type).btChar;
 	'		}
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'			static BasicType[] basicTypes(java.util.List(Of Class) types)
+'			static BasicType[] basicTypes(java.util.List(Of [Class]) types)
 	'		{
 	'			BasicType[] btypes = New BasicType[types.size()];
 	'			for (int i = 0; i < btypes.length; i += 1)
@@ -608,11 +608,11 @@ Namespace java.lang.invoke
 			Return True ' [LIJFD]*_[LIJFDV]
 		End Function
 		Friend Shared Function signatureType(ByVal sig As String) As MethodType
-			Dim ptypes As Class() = New [Class](signatureArity(sig) - 1){}
+			Dim ptypes As  [Class]() = New [Class](signatureArity(sig) - 1){}
 			For i As Integer = 0 To ptypes.Length - 1
 				ptypes(i) = basicType(sig.Chars(i)).btClass
 			Next i
-			Dim rtype As Class = signatureReturn(sig).btClass
+			Dim rtype As  [Class] = signatureReturn(sig).btClass
 			Return MethodType.methodType(rtype, ptypes)
 		End Function
 
@@ -775,12 +775,12 @@ Namespace java.lang.invoke
 			Dim mt As MethodType = mh.type()
 			assert(mt.parameterCount() = arity-1)
 			For i As Integer = 0 To av.Length - 1
-				Dim pt As Class = (If(i = 0, GetType(MethodHandle), mt.parameterType(i-1)))
+				Dim pt As  [Class] = (If(i = 0, GetType(MethodHandle), mt.parameterType(i-1)))
 				assert(valueMatches(basicType(sig.Chars(i)), pt, av(i)))
 			Next i
 			Return True
 		End Function
-		Private Shared Function valueMatches(ByVal tc As BasicType, ByVal type As Class, ByVal x As Object) As Boolean
+		Private Shared Function valueMatches(ByVal tc As BasicType, ByVal type As [Class], ByVal x As Object) As Boolean
 			' The following line is needed because (...)void method handles can use non-void invokers
 			If type Is GetType(void) Then ' can drop any kind of value tc = V_TYPE
 			Debug.Assert(tc = basicType(type), tc & " == basicType(" & type & ")=" & basicType(type))
@@ -805,7 +805,7 @@ Namespace java.lang.invoke
 			Dim mh As MethodHandle = CType(av(0), MethodHandle)
 			Return valueMatches(signatureReturn(sig), mh.type().returnType(), res)
 		End Function
-		Private Shared Function checkInt(ByVal type As Class, ByVal x As Object) As Boolean
+		Private Shared Function checkInt(ByVal type As [Class], ByVal x As Object) As Boolean
 			assert(TypeOf x Is Integer?)
 			If type Is GetType(Integer) Then Return True
 			Dim w As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forBasicType(type)
@@ -813,7 +813,7 @@ Namespace java.lang.invoke
 			Dim x1 As Object = sun.invoke.util.Wrapper.INT.wrap(w.wrap(x))
 			Return x.Equals(x1)
 		End Function
-		Private Shared Function checkRef(ByVal type As Class, ByVal x As Object) As Boolean
+		Private Shared Function checkRef(ByVal type As [Class], ByVal x As Object) As Boolean
 			assert((Not type.primitive))
 			If x Is Nothing Then Return True
 			If type.interface Then Return True
@@ -1245,7 +1245,7 @@ Namespace java.lang.invoke
 			Private Shared Function arityCheck(ByVal arity As Integer, ByVal mh As MethodHandle, ByVal a As Object()) As Boolean
 				Return arityCheck(arity, GetType(Object), mh, a)
 			End Function
-			Private Shared Function arityCheck(ByVal arity As Integer, ByVal rtype As Class, ByVal mh As MethodHandle, ByVal a As Object()) As Boolean
+			Private Shared Function arityCheck(ByVal arity As Integer, ByVal rtype As [Class], ByVal mh As MethodHandle, ByVal a As Object()) As Boolean
 				assert(a.Length = arity) : java.util.Arrays.asList(a.Length, arity)
 				assert(mh.type().basicType() Is MethodType.genericMethodType(arity).changeReturnType(rtype)) : java.util.Arrays.asList(mh, rtype, arity)
 				Dim member As MemberName = mh.internalMemberName()
@@ -1315,10 +1315,10 @@ Namespace java.lang.invoke
 				If True Then ' FIXME Return True
 				Dim dstType As MethodType = methodType_Renamed.form().erasedType()
 				Dim srcType As MethodType = dstType.basicType().wrap()
-				Dim ptypes As Class() = New [Class](arguments.Length - 1){}
+				Dim ptypes As  [Class]() = New [Class](arguments.Length - 1){}
 				For i As Integer = 0 To arguments.Length - 1
 					Dim arg As Object = arguments(i)
-					Dim ptype As Class = If(arg Is Nothing, GetType(Object), arg.GetType())
+					Dim ptype As  [Class] = If(arg Is Nothing, GetType(Object), arg.GetType())
 					' If the dest. type is a primitive we keep the
 					' argument type.
 					ptypes(i) = If(dstType.parameterType(i).primitive, ptype, GetType(Object))
@@ -1351,7 +1351,7 @@ Namespace java.lang.invoke
 				Return True
 			End Function
 
-			Friend Overridable Function memberDeclaringClassOrNull() As Class
+			Friend Overridable Function memberDeclaringClassOrNull() As  [Class]
 				Return If(member_Renamed Is Nothing, Nothing, member_Renamed.declaringClass)
 			End Function
 
@@ -1392,7 +1392,7 @@ Namespace java.lang.invoke
 		Public Shared Function basicTypeSignature(ByVal type As MethodType) As String
 			Dim sig As Char() = New Char(type.parameterCount() + 2 - 1){}
 			Dim sigp As Integer = 0
-			For Each pt As Class In type.parameterList()
+			For Each pt As  [Class] In type.parameterList()
 				sig(sigp) = basicTypeChar(pt)
 				sigp += 1
 			Next pt
@@ -1462,7 +1462,7 @@ Namespace java.lang.invoke
 				Me.arguments = that.arguments
 				Me.constraint = constraint
 				assert(constraint Is Nothing OrElse param) ' only params have constraints
-				assert(constraint Is Nothing OrElse TypeOf constraint Is BoundMethodHandle.SpeciesData OrElse TypeOf constraint Is Class)
+				assert(constraint Is Nothing OrElse TypeOf constraint Is BoundMethodHandle.SpeciesData OrElse TypeOf constraint Is [Class])
 			End Sub
 			Friend Sub New(ByVal [function] As MethodHandle, ParamArray ByVal arguments As Object())
 				Me.New(New NamedFunction([function]), arguments)
@@ -1766,7 +1766,7 @@ Namespace java.lang.invoke
 			Next i
 			Return names
 		End Function
-		Friend Shared Function arguments(ByVal extra As Integer, ParamArray ByVal types As Class()) As Name()
+		Friend Shared Function arguments(ByVal extra As Integer, ParamArray ByVal types As  [Class]()) As Name()
 			Dim length As Integer = types.Length
 			Dim names As Name() = New Name(length + extra - 1){}
 			For i As Integer = 0 To length - 1
@@ -1808,7 +1808,7 @@ Namespace java.lang.invoke
 				Dim ord As Integer = type.ordinal()
 				Dim btChar As Char = type.basicTypeChar()
 				Dim isVoid As Boolean = (type = V_TYPE)
-				Dim btClass As Class = type.btClass
+				Dim btClass As  [Class] = type.btClass
 				Dim zeType As MethodType = MethodType.methodType(btClass)
 				Dim idType As MethodType = If(isVoid, zeType, zeType.appendParameterTypes(btClass))
 

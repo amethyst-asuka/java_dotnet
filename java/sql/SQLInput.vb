@@ -427,7 +427,7 @@ Namespace java.sql
 		''' <exception cref="SQLFeatureNotSupportedException"> if the JDBC driver does not support
 		''' this method
 		''' @since 1.8 </exception>
-		default Function readObject(ByVal type As Class) As T(Of T)
+		default Function readObject(ByVal type As [Class]) As T(Of T)
 		   throw Function SQLFeatureNotSupportedException() As New
 	End Interface
 

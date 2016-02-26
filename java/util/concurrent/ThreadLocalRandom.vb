@@ -43,7 +43,7 @@ Namespace java.util.concurrent
 	''' <summary>
 	''' A random number generator isolated to the current thread.  Like the
 	''' global <seealso cref="java.util.Random"/> generator used by the {@link
-	''' java.lang.Math} class, a {@code ThreadLocalRandom} is initialized
+	''' java.lang.Math} [Class], a {@code ThreadLocalRandom} is initialized
 	''' with an internally generated seed that may not otherwise be
 	''' modified. When applicable, use of {@code ThreadLocalRandom} rather
 	''' than shared {@code Random} objects in concurrent programs will
@@ -979,7 +979,7 @@ Namespace java.util.concurrent
 		Shared Sub New()
 			Try
 				UNSAFE = sun.misc.Unsafe.unsafe
-				Dim tk As Class = GetType(Thread)
+				Dim tk As  [Class] = GetType(Thread)
 				SEED = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomSeed"))
 				PROBE = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomProbe"))
 				SECONDARY = UNSAFE.objectFieldOffset(tk.getDeclaredField("threadLocalRandomSecondarySeed"))

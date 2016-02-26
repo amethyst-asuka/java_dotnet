@@ -147,7 +147,7 @@ Namespace java.lang.invoke
 	 Friend Overridable Function spreadInvoker(ByVal leadingArgCount As Integer) As MethodHandle
 			Dim spreadArgCount As Integer = targetType.parameterCount() - leadingArgCount
 			Dim postSpreadType As MethodType = targetType
-			Dim argArrayType As Class = impliedRestargType(postSpreadType, leadingArgCount)
+			Dim argArrayType As  [Class] = impliedRestargType(postSpreadType, leadingArgCount)
 			If postSpreadType.parameterSlotCount() <= MethodType.MAX_MH_INVOKER_ARITY Then Return genericInvoker().asSpreader(argArrayType, spreadArgCount)
 			' Cannot build a generic invoker here of type ginvoker.invoke(mh, a*[254]).
 			' Instead, factor sinvoker.invoke(mh, a) into ainvoker.invoke(filter(mh), a)
@@ -158,11 +158,11 @@ Namespace java.lang.invoke
 			Return MethodHandles.filterArgument(arrayInvoker, 0, makeSpreader)
 	 End Function
 
-		Private Shared Function impliedRestargType(ByVal restargType As MethodType, ByVal fromPos As Integer) As Class
+		Private Shared Function impliedRestargType(ByVal restargType As MethodType, ByVal fromPos As Integer) As  [Class]
 			If restargType.generic Then ' can be nothing else Return GetType(Object())
 			Dim maxPos As Integer = restargType.parameterCount()
 			If fromPos >= maxPos Then ' reasonable default Return GetType(Object())
-			Dim argType As Class = restargType.parameterType(fromPos)
+			Dim argType As  [Class] = restargType.parameterType(fromPos)
 			For i As Integer = fromPos+1 To maxPos - 1
 				If argType IsNot restargType.parameterType(i) Then Throw newIllegalArgumentException("need homogeneous rest arguments", restargType)
 			Next i

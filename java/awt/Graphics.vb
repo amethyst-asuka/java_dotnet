@@ -104,7 +104,7 @@ Namespace java.awt
 		''' This constructor is the default constructor for a graphics
 		''' context.
 		''' <p>
-		''' Since <code>Graphics</code> is an abstract class, applications
+		''' Since <code>Graphics</code> is an abstract [Class], applications
 		''' cannot call this constructor directly. Graphics contexts are
 		''' obtained from other graphics contexts or are created by calling
 		''' <code>getGraphics</code> on a component. </summary>

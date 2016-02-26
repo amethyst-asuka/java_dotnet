@@ -31,7 +31,7 @@ Namespace java.lang.reflect
 	''' TypeVariable is the common superinterface for type variables of kinds.
 	''' A type variable is created the first time it is needed by a reflective
 	''' method, as specified in this package.  If a type variable t is referenced
-	''' by a type (i.e, class, interface or annotation type) T, and T is declared
+	''' by a type (i.e, [Class], interface or annotation type) T, and T is declared
 	''' by the nth enclosing class of T (see JLS 8.1.2), then the creation of t
 	''' requires the resolution (see JVMS 5) of the ith enclosing class of T,
 	''' for i = 0 to n, inclusive. Creating a type variable must not cause the

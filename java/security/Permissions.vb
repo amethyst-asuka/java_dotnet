@@ -36,7 +36,7 @@ Namespace java.security
 	''' it contains different types of Permission objects, organized into
 	''' PermissionCollections. For example, if any
 	''' {@code java.io.FilePermission} objects are added to an instance of
-	''' this class, they are all stored in a single
+	''' this [Class], they are all stored in a single
 	''' PermissionCollection. It is the PermissionCollection returned by a call to
 	''' the {@code newPermissionCollection} method in the FilePermission class.
 	''' Similarly, any {@code java.lang.RuntimePermission} objects are
@@ -73,7 +73,7 @@ Namespace java.security
 		Inherits PermissionCollection
 
 		''' <summary>
-		''' Key is permissions Class, value is PermissionCollection for that class.
+		''' Key is permissions [Class], value is PermissionCollection for that class.
 		''' Not serialized; see serialization section at end of class.
 		''' </summary>
 		<NonSerialized> _
@@ -219,7 +219,7 @@ Namespace java.security
 		''' It should be set to true when invoked from add().
 		''' </summary>
 		Private Function getPermissionCollection(ByVal p As Permission, ByVal createEmpty As Boolean) As PermissionCollection
-			Dim c As Class = p.GetType()
+			Dim c As  [Class] = p.GetType()
 
 			Dim pc As PermissionCollection = permsMap(c)
 
