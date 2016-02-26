@@ -71,7 +71,7 @@ Namespace javax.lang.model.type
 		''' serialized and then read back in.
 		''' </summary>
 		''' <returns> the unknown type, or {@code null} if unavailable </returns>
-		Public Overridable Property unknownType As TypeMirror
+		 ReadOnly Public Overridable Property unknownType As TypeMirror
 			Get
 				Return type
 			End Get
@@ -81,7 +81,7 @@ Namespace javax.lang.model.type
 		''' Returns the additional argument.
 		''' </summary>
 		''' <returns> the additional argument </returns>
-		Public Overridable Property argument As Object
+	 ReadOnly 	Public Overridable Property argument As Object
 			Get
 				Return parameter
 			End Get

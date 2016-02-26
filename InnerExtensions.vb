@@ -2,6 +2,7 @@
 Imports System.Runtime.CompilerServices
 Imports java.lang
 Imports java.math
+Imports javax.lang.model.type
 
 Module InnerExtensions
 
@@ -11,5 +12,19 @@ Module InnerExtensions
         Else
             Return s.ToArray
         End If
+    End Function
+
+    ''' <summary>
+    ''' Returns {@code true} if this kind corresponds to a primitive
+    ''' type and {@code false} otherwise. </summary>
+    ''' <returns> {@code true} if this kind corresponds to a primitive type </returns>
+    <Extension> Public Function isPrimitive([me] As TypeKind) As Boolean
+        Select Case [me]
+
+            Case TypeKind.BOOLEAN, TypeKind.BYTE, TypeKind.SHORT, TypeKind.INT, TypeKind.LONG, TypeKind.CHAR, TypeKind.FLOAT, TypeKind.DOUBLE
+                Return True
+            Case Else
+                Return False
+        End Select
     End Function
 End Module

@@ -49,59 +49,56 @@ Namespace javax.lang.model.type
 	Public Interface ExecutableType
 		Inherits TypeMirror
 
-		''' <summary>
-		''' Returns the type variables declared by the formal type parameters
-		''' of this executable.
-		''' </summary>
-		''' <returns> the type variables declared by the formal type parameters,
-		'''          or an empty list if there are none </returns>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property typeVariables As IList(Of ? As TypeVariable)
+        ''' <summary>
+        ''' Returns the type variables declared by the formal type parameters
+        ''' of this executable.
+        ''' </summary>
+        ''' <returns> the type variables declared by the formal type parameters,
+        '''          or an empty list if there are none </returns>
+        ReadOnly Property typeVariables As IList(Of TypeVariable)
 
-		''' <summary>
-		''' Returns the return type of this executable.
-		''' Returns a <seealso cref="NoType"/> with kind <seealso cref="TypeKind#VOID VOID"/>
-		''' if this executable is not a method, or is a method that does not
-		''' return a value.
-		''' </summary>
-		''' <returns> the return type of this executable </returns>
-		ReadOnly Property returnType As TypeMirror
+        ''' <summary>
+        ''' Returns the return type of this executable.
+        ''' Returns a <seealso cref="NoType"/> with kind <seealso cref="TypeKind#VOID VOID"/>
+        ''' if this executable is not a method, or is a method that does not
+        ''' return a value.
+        ''' </summary>
+        ''' <returns> the return type of this executable </returns>
+        ReadOnly Property returnType As TypeMirror
 
-		''' <summary>
-		''' Returns the types of this executable's formal parameters.
-		''' </summary>
-		''' <returns> the types of this executable's formal parameters,
-		'''          or an empty list if there are none </returns>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property parameterTypes As IList(Of ? As TypeMirror)
+        ''' <summary>
+        ''' Returns the types of this executable's formal parameters.
+        ''' </summary>
+        ''' <returns> the types of this executable's formal parameters,
+        '''          or an empty list if there are none </returns>
+        ReadOnly Property parameterTypes As IList(Of TypeMirror)
 
-		''' <summary>
-		''' Returns the receiver type of this executable,
-		''' or <seealso cref="javax.lang.model.type.NoType NoType"/> with
-		''' kind <seealso cref="javax.lang.model.type.TypeKind#NONE NONE"/>
-		''' if the executable has no receiver type.
-		''' 
-		''' An executable which is an instance method, or a constructor of an
-		''' inner class, has a receiver type derived from the {@linkplain
-		''' ExecutableElement#getEnclosingElement declaring type}.
-		''' 
-		''' An executable which is a static method, or a constructor of a
-		''' non-inner class, or an initializer (static or instance), has no
-		''' receiver type.
-		''' </summary>
-		''' <returns> the receiver type of this executable
-		''' @since 1.8 </returns>
-		ReadOnly Property receiverType As TypeMirror
+        ''' <summary>
+        ''' Returns the receiver type of this executable,
+        ''' or <seealso cref="javax.lang.model.type.NoType NoType"/> with
+        ''' kind <seealso cref="javax.lang.model.type.TypeKind#NONE NONE"/>
+        ''' if the executable has no receiver type.
+        ''' 
+        ''' An executable which is an instance method, or a constructor of an
+        ''' inner class, has a receiver type derived from the {@linkplain
+        ''' ExecutableElement#getEnclosingElement declaring type}.
+        ''' 
+        ''' An executable which is a static method, or a constructor of a
+        ''' non-inner class, or an initializer (static or instance), has no
+        ''' receiver type.
+        ''' </summary>
+        ''' <returns> the receiver type of this executable
+        ''' @since 1.8 </returns>
+        ReadOnly Property receiverType As TypeMirror
 
-		''' <summary>
-		''' Returns the exceptions and other throwables listed in this
-		''' executable's {@code throws} clause.
-		''' </summary>
-		''' <returns> the exceptions and other throwables listed in this
-		'''          executable's {@code throws} clause,
-		'''          or an empty list if there are none. </returns>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property thrownTypes As IList(Of ? As TypeMirror)
-	End Interface
+        ''' <summary>
+        ''' Returns the exceptions and other throwables listed in this
+        ''' executable's {@code throws} clause.
+        ''' </summary>
+        ''' <returns> the exceptions and other throwables listed in this
+        '''          executable's {@code throws} clause,
+        '''          or an empty list if there are none. </returns>
+        ReadOnly Property thrownTypes As IList(Of TypeMirror)
+    End Interface
 
 End Namespace

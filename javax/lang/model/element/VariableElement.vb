@@ -72,16 +72,16 @@ Namespace javax.lang.model.element
 		''' subject to the distinctness requirement above.
 		''' </summary>
 		''' <returns> the simple name of this variable element </returns>
-		ReadOnly Property Overrides simpleName As Name
+		ReadOnly Property simpleName As Name
 
-		''' <summary>
-		''' Returns the enclosing element of this variable.
-		''' 
-		''' The enclosing element of a method or constructor parameter is
-		''' the executable declaring the parameter.
-		''' </summary>
-		''' <returns> the enclosing element of this variable </returns>
-		ReadOnly Property Overrides enclosingElement As Element
-	End Interface
+        ''' <summary>
+        ''' Returns the enclosing element of this variable.
+        ''' 
+        ''' The enclosing element of a method or constructor parameter is
+        ''' the executable declaring the parameter.
+        ''' </summary>
+        ''' <returns> the enclosing element of this variable </returns>
+        ReadOnly Property enclosingElement As Element
+    End Interface
 
 End Namespace

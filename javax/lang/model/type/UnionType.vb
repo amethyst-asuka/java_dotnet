@@ -44,8 +44,7 @@ Namespace javax.lang.model.type
 		''' Return the alternatives comprising this union type.
 		''' </summary>
 		''' <returns> the alternatives comprising this union type. </returns>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property alternatives As IList(Of ? As TypeMirror)
+		ReadOnly Property alternatives As IList(Of TypeMirror)
 	End Interface
 
 End Namespace

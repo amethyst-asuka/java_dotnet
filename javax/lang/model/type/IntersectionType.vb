@@ -48,12 +48,11 @@ Namespace javax.lang.model.type
 	Public Interface IntersectionType
 		Inherits TypeMirror
 
-		''' <summary>
-		''' Return the bounds comprising this intersection type.
-		''' </summary>
-		''' <returns> the bounds of this intersection types. </returns>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property bounds As IList(Of ? As TypeMirror)
-	End Interface
+        ''' <summary>
+        ''' Return the bounds comprising this intersection type.
+        ''' </summary>
+        ''' <returns> the bounds of this intersection types. </returns>
+        ReadOnly Property bounds As IList(Of TypeMirror)
+    End Interface
 
 End Namespace

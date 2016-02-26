@@ -65,27 +65,27 @@ Namespace javax.lang.model.element
 			Me.parameter = p
 		End Sub
 
-		''' <summary>
-		''' Returns the unknown element.
-		''' The value may be unavailable if this exception has been
-		''' serialized and then read back in.
-		''' </summary>
-		''' <returns> the unknown element, or {@code null} if unavailable </returns>
-		Public Overridable Property unknownElement As Element
-			Get
-				Return element
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the unknown element.
+        ''' The value may be unavailable if this exception has been
+        ''' serialized and then read back in.
+        ''' </summary>
+        ''' <returns> the unknown element, or {@code null} if unavailable </returns>
+        Public Overridable ReadOnly Property unknownElement As Element
+            Get
+                Return element
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the additional argument.
-		''' </summary>
-		''' <returns> the additional argument </returns>
-		Public Overridable Property argument As Object
-			Get
-				Return parameter
-			End Get
-		End Property
-	End Class
+        ''' <summary>
+        ''' Returns the additional argument.
+        ''' </summary>
+        ''' <returns> the additional argument </returns>
+        Public Overridable ReadOnly Property argument As Object
+            Get
+                Return parameter
+            End Get
+        End Property
+    End Class
 
 End Namespace

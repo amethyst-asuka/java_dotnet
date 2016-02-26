@@ -148,30 +148,5 @@ Namespace javax.lang.model.type
 		''' @since 1.8
 		''' </summary>
 		INTERSECTION
-
-		''' <summary>
-		''' Returns {@code true} if this kind corresponds to a primitive
-		''' type and {@code false} otherwise. </summary>
-		''' <returns> {@code true} if this kind corresponds to a primitive type </returns>
-'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public boolean isPrimitive()
-	'	{
-	'		switch(Me)
-	'		{
-	'		case BOOLEAN:
-	'		case BYTE:
-	'		case SHORT:
-	'		case INT:
-	'		case LONG:
-	'		case CHAR:
-	'		case FLOAT:
-	'		case DOUBLE:
-	'			Return True;
-	'
-	'		default:
-	'			Return False;
-	'		}
-	'	}
 	End Enum
-
 End Namespace

@@ -56,22 +56,22 @@ Namespace javax.lang.model.type
 			Me.type = type
 		End Sub
 
-		''' <summary>
-		''' Returns the type mirror corresponding to the type being accessed.
-		''' The type mirror may be unavailable if this exception has been
-		''' serialized and then read back in.
-		''' </summary>
-		''' <returns> the type mirror, or {@code null} if unavailable </returns>
-		Public Overridable Property typeMirror As TypeMirror
-			Get
-				Return type
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the type mirror corresponding to the type being accessed.
+        ''' The type mirror may be unavailable if this exception has been
+        ''' serialized and then read back in.
+        ''' </summary>
+        ''' <returns> the type mirror, or {@code null} if unavailable </returns>
+        Public Overridable ReadOnly Property typeMirror As TypeMirror
+            Get
+                Return type
+            End Get
+        End Property
 
-		''' <summary>
-		''' Explicitly set all transient fields.
-		''' </summary>
-		Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+        ''' <summary>
+        ''' Explicitly set all transient fields.
+        ''' </summary>
+        Private Sub readObject(ByVal s As java.io.ObjectInputStream)
 			s.defaultReadObject()
 			type = Nothing
 			types = Nothing
