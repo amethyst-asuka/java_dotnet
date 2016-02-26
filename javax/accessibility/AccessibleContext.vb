@@ -388,7 +388,7 @@ Namespace javax.accessibility
 		''' object does not have a name
 		''' </returns>
 		''' <seealso cref= #setAccessibleName </seealso>
-		Public Overridable Property accessibleName As String
+	Public Overridable Property accessibleName As String
 			Get
 				Return accessibleName
 			End Get
@@ -546,7 +546,7 @@ Namespace javax.accessibility
 		''' </summary>
 		''' <returns> AccessibleAction if supported by object; else return null </returns>
 		''' <seealso cref= AccessibleAction </seealso>
-		Public Overridable Property accessibleAction As AccessibleAction
+		 readonly	Public Overridable Property accessibleAction As AccessibleAction
 			Get
 				Return Nothing
 			End Get
@@ -558,7 +558,7 @@ Namespace javax.accessibility
 		''' </summary>
 		''' <returns> AccessibleComponent if supported by object; else return null </returns>
 		''' <seealso cref= AccessibleComponent </seealso>
-		Public Overridable Property accessibleComponent As AccessibleComponent
+		 readonly	Public Overridable Property accessibleComponent As AccessibleComponent
 			Get
 				Return Nothing
 			End Get
@@ -570,7 +570,7 @@ Namespace javax.accessibility
 		''' </summary>
 		''' <returns> AccessibleSelection if supported by object; else return null </returns>
 		''' <seealso cref= AccessibleSelection </seealso>
-		Public Overridable Property accessibleSelection As AccessibleSelection
+		 readonly	Public Overridable Property accessibleSelection As AccessibleSelection
 			Get
 				Return Nothing
 			End Get
@@ -582,7 +582,7 @@ Namespace javax.accessibility
 		''' </summary>
 		''' <returns> AccessibleText if supported by object; else return null </returns>
 		''' <seealso cref= AccessibleText </seealso>
-		Public Overridable Property accessibleText As AccessibleText
+		 readonly	Public Overridable Property accessibleText As AccessibleText
 			Get
 				Return Nothing
 			End Get
@@ -595,7 +595,7 @@ Namespace javax.accessibility
 		''' <returns> AccessibleEditableText if supported by object; else return null </returns>
 		''' <seealso cref= AccessibleEditableText
 		''' @since 1.4 </seealso>
-		Public Overridable Property accessibleEditableText As AccessibleEditableText
+		 readonly	Public Overridable Property accessibleEditableText As AccessibleEditableText
 			Get
 				Return Nothing
 			End Get
@@ -608,7 +608,7 @@ Namespace javax.accessibility
 		''' </summary>
 		''' <returns> AccessibleValue if supported by object; else return null </returns>
 		''' <seealso cref= AccessibleValue </seealso>
-		Public Overridable Property accessibleValue As AccessibleValue
+		 readonly	Public Overridable Property accessibleValue As AccessibleValue
 			Get
 				Return Nothing
 			End Get
@@ -622,7 +622,7 @@ Namespace javax.accessibility
 		''' otherwise return null </returns>
 		''' <seealso cref= AccessibleIcon
 		''' @since 1.3 </seealso>
-		Public Overridable Property accessibleIcon As AccessibleIcon()
+	 readonly		Public Overridable Property accessibleIcon As AccessibleIcon()
 			Get
 				Return Nothing
 			End Get
@@ -635,7 +635,7 @@ Namespace javax.accessibility
 		''' otherwise return null </returns>
 		''' <seealso cref= AccessibleRelationSet
 		''' @since 1.3 </seealso>
-		Public Overridable Property accessibleRelationSet As AccessibleRelationSet
+		 readonly	Public Overridable Property accessibleRelationSet As AccessibleRelationSet
 			Get
 				Return relationSet
 			End Get
@@ -648,7 +648,7 @@ Namespace javax.accessibility
 		''' otherwise return null </returns>
 		''' <seealso cref= AccessibleTable
 		''' @since 1.3 </seealso>
-		Public Overridable Property accessibleTable As AccessibleTable
+		 readonly	Public Overridable Property accessibleTable As AccessibleTable
 			Get
 				Return Nothing
 			End Get

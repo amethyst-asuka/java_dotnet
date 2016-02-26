@@ -48,7 +48,7 @@ Namespace javax.annotation.processing
 		''' <summary>
 		''' Returns the supported options. </summary>
 		''' <returns> the supported options </returns>
-		String () value()
+		public property  value() as String ()
 	End Class
 
 End Namespace

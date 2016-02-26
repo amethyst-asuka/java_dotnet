@@ -64,7 +64,7 @@ Namespace javax.annotation
 		''' to the method.  For class annotations, there is no default
 		''' and this must be specified.
 		''' </summary>
-		String name() default ""
+		public property name()  as String= ""
 
 		''' <summary>
 		''' The name of the resource that the reference points to. It can
@@ -73,7 +73,7 @@ Namespace javax.annotation
 		''' @since Common Annotations 1.1
 		''' </summary>
 
-		String lookup() default ""
+		public property lookup() as String= ""
 
 		''' <summary>
 		''' The Java type of the resource.  For field annotations,
@@ -82,7 +82,7 @@ Namespace javax.annotation
 		''' For class annotations, there is no default and this must be
 		''' specified.
 		''' </summary>
-		Type type() default GetType(Object)
+		 public property type()  as Type = GetType(Object)
 
 		''' <summary>
 		''' The two possible authentication types for a resource.
@@ -97,7 +97,7 @@ Namespace javax.annotation
 		''' connection factory of any supported type, and must
 		''' not be specified for resources of other types.
 		''' </summary>
-		AuthenticationType authenticationType() default AuthenticationType.CONTAINER
+		public property  authenticationType()  as AuthenticationType = AuthenticationType.CONTAINER
 
 		''' <summary>
 		''' Indicates whether this resource can be shared between
@@ -106,7 +106,7 @@ Namespace javax.annotation
 		''' connection factory of any supported type, and must
 		''' not be specified for resources of other types.
 		''' </summary>
-		Boolean shareable() default True
+		public property  shareable()  as boolean = True
 
 		''' <summary>
 		''' A product specific name that this resource should be mapped to.
@@ -123,7 +123,7 @@ Namespace javax.annotation
 		''' The mapped name is product-dependent and often installation-dependent.
 		''' No use of a mapped name is portable.
 		''' </summary>
-		String mappedName() default ""
+		public property  mappedName()  as  string = ""
 
 		''' <summary>
 		''' Description of this resource.  The description is expected
@@ -131,7 +131,7 @@ Namespace javax.annotation
 		''' application is deployed.  The description can be presented
 		''' to the Deployer to help in choosing the correct resource.
 		''' </summary>
-		String description() default ""
+		public property description() as String = ""
 	End Class
 
 End Namespace

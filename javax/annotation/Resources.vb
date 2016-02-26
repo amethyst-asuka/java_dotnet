@@ -40,7 +40,7 @@ Namespace javax.annotation
 	   ''' <summary>
 	   ''' Array used for multiple resource declarations.
 	   ''' </summary>
-	   Resource() value()
+	   public property  value() as Resource()
 	End Class
 
 End Namespace

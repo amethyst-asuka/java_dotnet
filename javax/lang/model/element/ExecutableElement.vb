@@ -122,16 +122,16 @@ Namespace javax.lang.model.element
 		''' <returns> the default value, or {@code null} if none </returns>
 		ReadOnly Property defaultValue As AnnotationValue
 
-		''' <summary>
-		''' Returns the simple name of a constructor, method, or
-		''' initializer.  For a constructor, the name {@code "<init>"} is
-		''' returned, for a static initializer, the name {@code "<clinit>"}
-		''' is returned, and for an anonymous class or instance
-		''' initializer, an empty name is returned.
-		''' </summary>
-		''' <returns> the simple name of a constructor, method, or
-		''' initializer </returns>
-		ReadOnly Property Overrides simpleName As Name
-	End Interface
+        ''' <summary>
+        ''' Returns the simple name of a constructor, method, or
+        ''' initializer.  For a constructor, the name {@code "<init>"} is
+        ''' returned, for a static initializer, the name {@code "<clinit>"}
+        ''' is returned, and for an anonymous class or instance
+        ''' initializer, an empty name is returned.
+        ''' </summary>
+        ''' <returns> the simple name of a constructor, method, or
+        ''' initializer </returns>
+        ReadOnly Property simpleName As Name
+    End Interface
 
 End Namespace

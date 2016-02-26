@@ -61,18 +61,18 @@ Namespace javax.annotation
 	   ''' The recommended convention is to use the fully qualified name of the
 	   ''' code generator. For example: com.acme.generator.CodeGen.
 	   ''' </summary>
-	   String() value()
+	   public property value() as String()
 
 	   ''' <summary>
 	   ''' Date when the source was generated.
 	   ''' </summary>
-	   String date() default ""
+	   public property date()  as String= ""
 
 	   ''' <summary>
 	   ''' A place holder for any comments that the code generator may want to
 	   ''' include in the generated code.
 	   ''' </summary>
-	   String comments() default ""
+	   public property comments()  as string = ""
 	End Class
 
 End Namespace

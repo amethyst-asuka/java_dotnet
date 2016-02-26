@@ -44,7 +44,7 @@ Namespace javax.accessibility
 		''' Returns the mapping between the programmatic keys and the
 		''' localized display strings.
 		''' </summary>
-		Public Overridable Property contents As Object()()
+		 readonly	Public Overridable Property contents As Object()()
 			Get
 				' The table holding the mapping between the programmatic keys
 				' and the display strings for the en_US locale.

@@ -48,7 +48,7 @@ Namespace javax.annotation.processing
 		''' <summary>
 		''' Returns the latest supported source version. </summary>
 		''' <returns> the latest supported source version </returns>
-		javax.lang.model.SourceVersion value()
+		public property value() as javax.lang.model.SourceVersion
 	End Class
 
 End Namespace

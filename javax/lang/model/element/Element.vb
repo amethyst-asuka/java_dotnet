@@ -178,58 +178,58 @@ Namespace javax.lang.model.element
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		ReadOnly Property enclosedElements As IList(Of ? As Element)
 
-		''' <summary>
-		''' Returns {@code true} if the argument represents the same
-		''' element as {@code this}, or {@code false} otherwise.
-		''' 
-		''' <p>Note that the identity of an element involves implicit state
-		''' not directly accessible from the element's methods, including
-		''' state about the presence of unrelated types.  Element objects
-		''' created by different implementations of these interfaces should
-		''' <i>not</i> be expected to be equal even if &quot;the same&quot;
-		''' element is being modeled; this is analogous to the inequality
-		''' of {@code Class} objects for the same class file loaded through
-		''' different class loaders.
-		''' </summary>
-		''' <param name="obj">  the object to be compared with this element </param>
-		''' <returns> {@code true} if the specified object represents the same
-		'''          element as this </returns>
-		Overrides Function Equals(ByVal obj As Object) As Boolean
+        ''' <summary>
+        ''' Returns {@code true} if the argument represents the same
+        ''' element as {@code this}, or {@code false} otherwise.
+        ''' 
+        ''' <p>Note that the identity of an element involves implicit state
+        ''' not directly accessible from the element's methods, including
+        ''' state about the presence of unrelated types.  Element objects
+        ''' created by different implementations of these interfaces should
+        ''' <i>not</i> be expected to be equal even if &quot;the same&quot;
+        ''' element is being modeled; this is analogous to the inequality
+        ''' of {@code Class} objects for the same class file loaded through
+        ''' different class loaders.
+        ''' </summary>
+        ''' <param name="obj">  the object to be compared with this element </param>
+        ''' <returns> {@code true} if the specified object represents the same
+        '''          element as this </returns>
+        Function Equals(ByVal obj As Object) As Boolean
 
-		''' <summary>
-		''' Obeys the general contract of <seealso cref="Object#hashCode Object.hashCode"/>.
-		''' </summary>
-		''' <seealso cref= #equals </seealso>
-		Overrides Function GetHashCode() As Integer
+        ''' <summary>
+        ''' Obeys the general contract of <seealso cref="Object#hashCode Object.hashCode"/>.
+        ''' </summary>
+        ''' <seealso cref= #equals </seealso>
+        Function GetHashCode() As Integer
 
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' 
-		''' <p> To get inherited annotations as well, use {@link
-		''' Elements#getAllAnnotationMirrors(Element)
-		''' getAllAnnotationMirrors}.
-		''' 
-		''' @since 1.6
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property Overrides annotationMirrors As IList(Of ? As AnnotationMirror)
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' 
+        ''' <p> To get inherited annotations as well, use {@link
+        ''' Elements#getAllAnnotationMirrors(Element)
+        ''' getAllAnnotationMirrors}.
+        ''' 
+        ''' @since 1.6
+        ''' </summary>
+        'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+        ReadOnly Property annotationMirrors As IList(Of ? As AnnotationMirror)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.6
-		''' </summary>
-		 Overrides Function getAnnotation(Of A As Annotation)(ByVal annotationType As Type) As A
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.6
+        ''' </summary>
+        Function getAnnotation(Of A As annotation)(ByVal annotationType As type) As A
 
-		''' <summary>
-		''' Applies a visitor to this element.
-		''' </summary>
-		''' @param <R> the return type of the visitor's methods </param>
-		''' @param <P> the type of the additional parameter to the visitor's methods </param>
-		''' <param name="v">   the visitor operating on this element </param>
-		''' <param name="p">   additional parameter to the visitor </param>
-		''' <returns> a visitor-specified result </returns>
-		 Function accept(Of R, P)(ByVal v As ElementVisitor(Of R, P), ByVal p As P) As R
+        ''' <summary>
+        ''' Applies a visitor to this element.
+        ''' </summary>
+        ''' @param <R> the return type of the visitor's methods </param>
+        ''' @param <P> the type of the additional parameter to the visitor's methods </param>
+        ''' <param name="v">   the visitor operating on this element </param>
+        ''' <param name="p">   additional parameter to the visitor </param>
+        ''' <returns> a visitor-specified result </returns>
+        Function accept(Of R, P)(ByVal v As ElementVisitor(Of R, P), ByVal params As P) As R
 	End Interface
 
 End Namespace

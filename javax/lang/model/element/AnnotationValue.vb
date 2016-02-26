@@ -58,15 +58,15 @@ Namespace javax.lang.model.element
 		''' <returns> a string representation of this value </returns>
 		Function ToString() As String
 
-		''' <summary>
-		''' Applies a visitor to this value.
-		''' </summary>
-		''' @param <R> the return type of the visitor's methods </param>
-		''' @param <P> the type of the additional parameter to the visitor's methods </param>
-		''' <param name="v">   the visitor operating on this value </param>
-		''' <param name="p">   additional parameter to the visitor </param>
-		''' <returns> a visitor-specified result </returns>
-		 Function accept(Of R, P)(ByVal v As AnnotationValueVisitor(Of R, P), ByVal p As P) As R
-	End Interface
+        ''' <summary>
+        ''' Applies a visitor to this value.
+        ''' </summary>
+        ''' @param <R> the return type of the visitor's methods </param>
+        ''' @param <P> the type of the additional parameter to the visitor's methods </param>
+        ''' <param name="v">   the visitor operating on this value </param>
+        ''' <param name="p">   additional parameter to the visitor </param>
+        ''' <returns> a visitor-specified result </returns>
+        Function accept(Of R, P)(ByVal v As AnnotationValueVisitor(Of R, P), ByVal params As P) As R
+    End Interface
 
 End Namespace

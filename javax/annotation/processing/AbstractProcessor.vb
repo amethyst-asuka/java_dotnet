@@ -78,7 +78,7 @@ Namespace javax.annotation.processing
 		''' </summary>
 		''' <returns> the options recognized by this processor, or an empty
 		''' set if none </returns>
-		Public Overridable Property supportedOptions As java.util.Set(Of String) Implements Processor.getSupportedOptions
+		readonly Public Overridable Property supportedOptions As java.util.Set(Of String) Implements Processor.getSupportedOptions
 			Get
 				Dim so As SupportedOptions = Me.GetType().getAnnotation(GetType(SupportedOptions))
 				If so Is Nothing Then
@@ -97,7 +97,7 @@ Namespace javax.annotation.processing
 		''' </summary>
 		''' <returns> the names of the annotation types supported by this
 		''' processor, or an empty set if none </returns>
-		Public Overridable Property supportedAnnotationTypes As java.util.Set(Of String) Implements Processor.getSupportedAnnotationTypes
+		 readonly Public Overridable Property supportedAnnotationTypes As java.util.Set(Of String) Implements Processor.getSupportedAnnotationTypes
 			Get
 					Dim sat As SupportedAnnotationTypes = Me.GetType().getAnnotation(GetType(SupportedAnnotationTypes))
 					If sat Is Nothing Then
@@ -116,7 +116,7 @@ Namespace javax.annotation.processing
 		''' SourceVersion#RELEASE_6} is returned.
 		''' </summary>
 		''' <returns> the latest source version supported by this processor </returns>
-		Public Overridable Property supportedSourceVersion As javax.lang.model.SourceVersion Implements Processor.getSupportedSourceVersion
+		Public Overridable  readonly Property supportedSourceVersion As javax.lang.model.SourceVersion Implements Processor.getSupportedSourceVersion
 			Get
 				Dim ssv As SupportedSourceVersion = Me.GetType().getAnnotation(GetType(SupportedSourceVersion))
 				Dim sv As javax.lang.model.SourceVersion = Nothing
@@ -174,7 +174,7 @@ Namespace javax.annotation.processing
 		''' <returns> {@code true} if this object has been initialized,
 		''' {@code false} otherwise. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Protected Friend Overridable Property initialized As Boolean
+		Protected Friend  readonly Overridable Property initialized As Boolean
 			Get
 				Return initialized
 			End Get

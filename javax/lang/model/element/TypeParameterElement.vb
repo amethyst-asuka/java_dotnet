@@ -61,11 +61,11 @@ Namespace javax.lang.model.element
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		ReadOnly Property bounds As IList(Of ? As javax.lang.model.type.TypeMirror)
 
-		''' <summary>
-		''' Returns the <seealso cref="TypeParameterElement#getGenericElement generic element"/> of this type parameter.
-		''' </summary>
-		''' <returns> the generic element of this type parameter </returns>
-		ReadOnly Property Overrides enclosingElement As Element
-	End Interface
+        ''' <summary>
+        ''' Returns the <seealso cref="TypeParameterElement#getGenericElement generic element"/> of this type parameter.
+        ''' </summary>
+        ''' <returns> the generic element of this type parameter </returns>
+        ReadOnly Property enclosingElement As Element
+    End Interface
 
 End Namespace

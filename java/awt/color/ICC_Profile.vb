@@ -1229,7 +1229,7 @@ Namespace java.awt.color
 		''' Returns a byte array corresponding to the data of this ICC_Profile. </summary>
 		''' <returns> A byte array that contains the profile data. </returns>
 		''' <seealso cref= #setData(int, byte[]) </seealso>
-		Public Overridable Property data As SByte()
+	 readonly		Public Overridable Property data As SByte()
 			Get
 			Dim profileSize As Integer
 			Dim profileData As SByte()
@@ -1361,7 +1361,7 @@ Namespace java.awt.color
 		''' </returns>
 		''' <exception cref="ProfileDataException"> if color space is in the profile
 		'''         is invalid </exception>
-		Public Overridable Property numComponents As Integer
+	 readonly		Public Overridable Property numComponents As Integer
 			Get
 			Dim theHeader As SByte()
 			Dim theColorSpaceSig, theNumComponents As Integer
@@ -1430,7 +1430,7 @@ Namespace java.awt.color
 		''' Returns a float array of length 3 containing the X, Y, and Z
 		''' components of the mediaWhitePointTag in the ICC profile.
 		''' </summary>
-		Friend Overridable Property mediaWhitePoint As Single()
+		 readonly	Friend Overridable Property mediaWhitePoint As Single()
 			Get
 				Return getXYZTag(icSigMediaWhitePointTag)
 												   ' get the media white point tag 

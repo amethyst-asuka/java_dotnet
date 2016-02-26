@@ -49,40 +49,40 @@ Namespace javax.lang.model.element
 		''' @jls 6.7 Fully Qualified Names and Canonical Names </returns>
 		ReadOnly Property qualifiedName As Name
 
-		''' <summary>
-		''' Returns the simple name of this package.  For an unnamed
-		''' package, an empty name is returned.
-		''' </summary>
-		''' <returns> the simple name of this package or an empty name if
-		''' this is an unnamed package </returns>
-		ReadOnly Property Overrides simpleName As Name
+        ''' <summary>
+        ''' Returns the simple name of this package.  For an unnamed
+        ''' package, an empty name is returned.
+        ''' </summary>
+        ''' <returns> the simple name of this package or an empty name if
+        ''' this is an unnamed package </returns>
+        ReadOnly Property simpleName As Name
 
-		''' <summary>
-		''' Returns the <seealso cref="NestingKind#TOP_LEVEL top-level"/>
-		''' classes and interfaces within this package.  Note that
-		''' subpackages are <em>not</em> considered to be enclosed by a
-		''' package.
-		''' </summary>
-		''' <returns> the top-level classes and interfaces within this
-		''' package </returns>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		ReadOnly Property Overrides enclosedElements As IList(Of ? As Element)
+        ''' <summary>
+        ''' Returns the <seealso cref="NestingKind#TOP_LEVEL top-level"/>
+        ''' classes and interfaces within this package.  Note that
+        ''' subpackages are <em>not</em> considered to be enclosed by a
+        ''' package.
+        ''' </summary>
+        ''' <returns> the top-level classes and interfaces within this
+        ''' package </returns>
+        'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+        ReadOnly Property enclosedElements As IList(Of ? As Element)
 
-		''' <summary>
-		''' Returns {@code true} is this is an unnamed package and {@code
-		''' false} otherwise.
-		''' </summary>
-		''' <returns> {@code true} is this is an unnamed package and {@code
-		''' false} otherwise
-		''' @jls 7.4.2 Unnamed Packages </returns>
-		ReadOnly Property unnamed As Boolean
+        ''' <summary>
+        ''' Returns {@code true} is this is an unnamed package and {@code
+        ''' false} otherwise.
+        ''' </summary>
+        ''' <returns> {@code true} is this is an unnamed package and {@code
+        ''' false} otherwise
+        ''' @jls 7.4.2 Unnamed Packages </returns>
+        ReadOnly Property unnamed As Boolean
 
-		''' <summary>
-		''' Returns {@code null} since a package is not enclosed by another
-		''' element.
-		''' </summary>
-		''' <returns> {@code null} </returns>
-		ReadOnly Property Overrides enclosingElement As Element
-	End Interface
+        ''' <summary>
+        ''' Returns {@code null} since a package is not enclosed by another
+        ''' element.
+        ''' </summary>
+        ''' <returns> {@code null} </returns>
+        ReadOnly Property enclosingElement As Element
+    End Interface
 
 End Namespace
