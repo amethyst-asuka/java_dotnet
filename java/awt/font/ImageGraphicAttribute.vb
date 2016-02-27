@@ -111,7 +111,7 @@ Namespace java.awt.font
 		Public Property Overrides ascent As Single
 			Get
     
-				Return Math.Max(0, fOriginY)
+				Return System.Math.Max(0, fOriginY)
 			End Get
 		End Property
 
@@ -123,7 +123,7 @@ Namespace java.awt.font
 		Public Property Overrides descent As Single
 			Get
     
-				Return Math.Max(0, fImageHeight-fOriginY)
+				Return System.Math.Max(0, fImageHeight-fOriginY)
 			End Get
 		End Property
 
@@ -135,7 +135,7 @@ Namespace java.awt.font
 		Public Property Overrides advance As Single
 			Get
     
-				Return Math.Max(0, fImageWidth-fOriginX)
+				Return System.Math.Max(0, fImageWidth-fOriginX)
 			End Get
 		End Property
 

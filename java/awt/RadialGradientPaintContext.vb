@@ -136,7 +136,7 @@ Namespace java.awt
 			' test if distance from focus to center is greater than the radius
 			If distSq > radiusSq * SCALEBACK Then
 				' clamp focus to radius
-				Dim scalefactor As Single = CSng(Math.Sqrt(radiusSq * SCALEBACK / distSq))
+				Dim scalefactor As Single = CSng (System.Math.Sqrt(radiusSq * SCALEBACK / distSq))
 				dX = dX * scalefactor
 				dY = dY * scalefactor
 				focusX = centerX + dX
@@ -145,7 +145,7 @@ Namespace java.awt
 
 			' calculate the solution to be used in the case where X == focusX
 			' in cyclicCircularGradientFillRaster()
-			trivial = CSng(Math.Sqrt(radiusSq - (dX * dX)))
+			trivial = CSng (System.Math.Sqrt(radiusSq - (dX * dX)))
 
 			' constant parts of X, Y user space coordinates
 			constA = a02 - centerX
@@ -289,7 +289,7 @@ Namespace java.awt
 		private static Single sqrtLut() = New Single(SQRT_LUT_SIZE){}
 		static RadialGradientPaintContext()
 			For i As Integer = 0 To sqrtLut.Length - 1
-				sqrtLut(i) = CSng(Math.Sqrt(i / (CSng(SQRT_LUT_SIZE))))
+				sqrtLut(i) = CSng (System.Math.Sqrt(i / (CSng(SQRT_LUT_SIZE))))
 			Next i
 
 		''' <summary>
@@ -379,7 +379,7 @@ Namespace java.awt
 						B = precalc3 + (-2 * slope * (centerY - yintcpt))
 						C = constC + (yintcpt* (yintcpt - precalc2))
 
-						det = CSng(Math.Sqrt((B * B) - (4 * A * C)))
+						det = CSng (System.Math.Sqrt((B * B) - (4 * A * C)))
 						solutionX = -B
 
 						' choose the positive or negative root depending
@@ -412,7 +412,7 @@ Namespace java.awt
 
 					' get the percentage (0-1) of the current point along the
 					' focus-circumference line
-					g = CSng(Math.Sqrt(currentToFocusSq / intersectToFocusSq))
+					g = CSng (System.Math.Sqrt(currentToFocusSq / intersectToFocusSq))
 
 					' store the color at this point
 					pixels(indexer + i) = indexIntoGradientsArrays(g)

@@ -323,7 +323,7 @@ Namespace java.math
         ''' legacy integer rounding mode constant in <seealso cref="BigDecimal"/>.
         ''' </summary>
         ''' <param name="rm"> legacy integer rounding mode to convert </param>
-        ''' <returns> {@code RoundingMode} corresponding to the given integer. </returns>
+        ''' <returns> {@code RoundingMode} corresponding to the given  java.lang.[Integer]. </returns>
         ''' <exception cref="IllegalArgumentException"> integer is out of range </exception>
         Public Function valueOf(rm As Integer) As RoundingMode
 

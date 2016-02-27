@@ -648,13 +648,13 @@ Namespace java.time
 					Case YEARS
 						Return plusYears(amountToAdd)
 					Case DECADES
-						Return plusYears(Math.multiplyExact(amountToAdd, 10))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 10))
 					Case CENTURIES
-						Return plusYears(Math.multiplyExact(amountToAdd, 100))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 100))
 					Case MILLENNIA
-						Return plusYears(Math.multiplyExact(amountToAdd, 1000))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 1000))
 					Case ERAS
-						Return [with](ERA, Math.addExact(getLong(ERA), amountToAdd))
+						Return [with](ERA, System.Math.addExact(getLong(ERA), amountToAdd))
 				End Select
 				Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & unit)
 			End If
@@ -717,7 +717,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As Year
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		''' <summary>
@@ -729,7 +729,7 @@ Namespace java.time
 		''' <returns> a {@code Year} based on this year with the year subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
 		Public Function minusYears(ByVal yearsToSubtract As Long) As Year
-			Return (If(yearsToSubtract = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-yearsToSubtract)))
+			Return (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------

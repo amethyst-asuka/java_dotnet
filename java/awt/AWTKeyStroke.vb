@@ -688,7 +688,7 @@ Namespace java.awt
 			Dim fields As Field() = GetType(java.awt.event.KeyEvent).declaredFields
 			For i As Integer = 0 To fields.Length - 1
 				Try
-					If fields(i).modifiers = expected_modifiers AndAlso fields(i).type = Integer.TYPE AndAlso fields(i).name.StartsWith("VK_") AndAlso fields(i).getInt(GetType(java.awt.event.KeyEvent)) = keyCode Then
+					If fields(i).modifiers = expected_modifiers AndAlso fields(i).type =  java.lang.[Integer].TYPE AndAlso fields(i).name.StartsWith("VK_") AndAlso fields(i).getInt(GetType(java.awt.event.KeyEvent)) = keyCode Then
 						name = fields(i).name
 						vkCollect.put(name, key)
 						Return name.Substring(3)

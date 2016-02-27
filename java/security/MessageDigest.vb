@@ -267,7 +267,7 @@ Namespace java.security
 		End Property
 
 		''' <summary>
-		''' Updates the digest using the specified byte.
+		''' Updates the digest using the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="input"> the byte with which to update the digest. </param>
 		Public Overridable Sub update(ByVal input As SByte)

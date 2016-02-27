@@ -47,10 +47,10 @@ Namespace java.util.stream
 		''' <param name="size"> the current size </param>
 		''' <param name="skip"> the number of elements to skip, assumed to be >= 0 </param>
 		''' <param name="limit"> the number of elements to limit, assumed to be >= 0, with
-		'''        a value of {@code Long.MAX_VALUE} if there is no limit </param>
+		'''        a value of {@code java.lang.[Long].MAX_VALUE} if there is no limit </param>
 		''' <returns> the sliced size </returns>
 		Private Shared Function calcSize(ByVal size As Long, ByVal skip As Long, ByVal limit As Long) As Long
-			Return If(size >= 0, Math.Max(-1, Math.Min(size - skip, limit)), -1)
+			Return If(size >= 0, System.Math.Max(-1, System.Math.Min(size - skip, limit)), -1)
 		End Function
 
 		''' <summary>
@@ -58,12 +58,12 @@ Namespace java.util.stream
 		''' range </summary>
 		''' <param name="skip"> the number of elements to skip, assumed to be >= 0 </param>
 		''' <param name="limit"> the number of elements to limit, assumed to be >= 0, with
-		'''        a value of {@code Long.MAX_VALUE} if there is no limit </param>
+		'''        a value of {@code java.lang.[Long].MAX_VALUE} if there is no limit </param>
 		''' <returns> the slice fence. </returns>
 		Private Shared Function calcSliceFence(ByVal skip As Long, ByVal limit As Long) As Long
-			Dim sliceFence As Long = If(limit >= 0, skip + limit, Long.MaxValue)
+			Dim sliceFence As Long = If(limit >= 0, skip + limit, java.lang.[Long].Max_Value)
 			' Check for overflow
-			Return If(sliceFence >= 0, sliceFence, Long.MaxValue)
+			Return If(sliceFence >= 0, sliceFence, java.lang.[Long].Max_Value)
 		End Function
 
 		''' <summary>
@@ -116,7 +116,7 @@ Namespace java.util.stream
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
-					limit = If(limit >= 0, Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
+					limit = If(limit >= 0, System.Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
 					skip = 0
 				End If
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfRef(Of )(s, skip, limit)
@@ -168,7 +168,7 @@ Namespace java.util.stream
 '				Return New Sink.ChainedReference<T, T>(sink)
 	'			{
 	'				long n = skip;
-	'				long m = limit >= 0 ? limit : Long.MAX_VALUE;
+	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
 	'				@Override public void begin(long size)
 	'				{
@@ -220,7 +220,7 @@ Namespace java.util.stream
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
-					limit = If(limit >= 0, Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
+					limit = If(limit >= 0, System.Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
 					skip = 0
 				End If
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfInt(s, skip, limit)
@@ -264,7 +264,7 @@ Namespace java.util.stream
 '				Return New Sink.ChainedInt<java.lang.Integer>(sink)
 	'			{
 	'				long n = skip;
-	'				long m = limit >= 0 ? limit : Long.MAX_VALUE;
+	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
 	'				@Override public void begin(long size)
 	'				{
@@ -316,7 +316,7 @@ Namespace java.util.stream
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
-					limit = If(limit >= 0, Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
+					limit = If(limit >= 0, System.Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
 					skip = 0
 				End If
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfLong(s, skip, limit)
@@ -360,7 +360,7 @@ Namespace java.util.stream
 '				Return New Sink.ChainedLong<java.lang.Long>(sink)
 	'			{
 	'				long n = skip;
-	'				long m = limit >= 0 ? limit : Long.MAX_VALUE;
+	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
 	'				@Override public void begin(long size)
 	'				{
@@ -412,7 +412,7 @@ Namespace java.util.stream
 				If skip <= sizeIfKnown Then
 					' Use just the limit if the number of elements
 					' to skip is <= the known pipeline size
-					limit = If(limit >= 0, Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
+					limit = If(limit >= 0, System.Math.Min(limit, sizeIfKnown - skip), sizeIfKnown - skip)
 					skip = 0
 				End If
 				Return New StreamSpliterators.UnorderedSliceSpliterator.OfDouble(s, skip, limit)
@@ -456,7 +456,7 @@ Namespace java.util.stream
 '				Return New Sink.ChainedDouble<java.lang.Double>(sink)
 	'			{
 	'				long n = skip;
-	'				long m = limit >= 0 ? limit : Long.MAX_VALUE;
+	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
 	'				@Override public void begin(long size)
 	'				{
@@ -581,7 +581,7 @@ Namespace java.util.stream
 			End Sub
 
 			Private Function doTruncate(ByVal input As Node(Of P_OUT)) As Node(Of P_OUT)
-				Dim [to] As Long = If(targetSize >= 0, Math.Min(input.count(), targetOffset + targetSize), thisNodeSize)
+				Dim [to] As Long = If(targetSize >= 0, System.Math.Min(input.count(), targetOffset + targetSize), thisNodeSize)
 				Return input.truncate(targetOffset, [to], generator)
 			End Function
 

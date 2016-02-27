@@ -73,7 +73,7 @@ Namespace java.util.stream
 			Implements java.util.Spliterator.OfInt
 
 			' Can never be greater that upTo, this avoids overflow if upper bound
-			' is  [Integer].MAX_VALUE
+			' is  java.lang.[Integer].MAX_VALUE
 			' All elements are traversed if from == upTo & last == 0
 			Private [from] As Integer
 			Private ReadOnly upTo As Integer
@@ -124,7 +124,7 @@ Namespace java.util.stream
 			End Sub
 
 			Public Overrides Function estimateSize() As Long
-				' Ensure ranges of size >  [Integer].MAX_VALUE report the correct size
+				' Ensure ranges of size >  java.lang.[Integer].MAX_VALUE report the correct size
 				Return (CLng(upTo)) - [from] + last
 			End Function
 
@@ -160,7 +160,7 @@ Namespace java.util.stream
 			''' side of the range.
 			''' 
 			''' <p>This is optimized for cases such as IntStream.ints() that is
-			''' implemented as range of 0 to  [Integer].MAX_VALUE but is likely to be
+			''' implemented as range of 0 to  java.lang.[Integer].MAX_VALUE but is likely to be
 			''' augmented with a limit operation that limits the number of elements
 			''' to a count lower than this threshold.
 			''' </summary>
@@ -185,13 +185,13 @@ Namespace java.util.stream
 		''' A {@code long} range spliterator.
 		''' 
 		''' This implementation cannot be used for ranges whose size is greater
-		''' than Long.MAX_VALUE
+		''' than java.lang.[Long].MAX_VALUE
 		''' </summary>
 		Friend NotInheritable Class RangeLongSpliterator
 			Implements java.util.Spliterator.OfLong
 
 			' Can never be greater that upTo, this avoids overflow if upper bound
-			' is Long.MAX_VALUE
+			' is java.lang.[Long].MAX_VALUE
 			' All elements are traversed if from == upTo & last == 0
 			Private [from] As Long
 			Private ReadOnly upTo As Long
@@ -278,7 +278,7 @@ Namespace java.util.stream
 			''' side of the range.
 			''' 
 			''' <p>This is optimized for cases such as LongStream.longs() that is
-			''' implemented as range of 0 to Long.MAX_VALUE but is likely to be
+			''' implemented as range of 0 to java.lang.[Long].MAX_VALUE but is likely to be
 			''' augmented with a limit operation that limits the number of elements
 			''' to a count lower than this threshold.
 			''' </summary>
@@ -292,7 +292,7 @@ Namespace java.util.stream
 
 			Private Function splitPoint(ByVal size As Long) As Long
 				Dim d As Long = If(size < BALANCED_SPLIT_THRESHOLD, 2, RIGHT_BALANCED_SPLIT_RATIO)
-				' 2 <= size <= Long.MAX_VALUE
+				' 2 <= size <= java.lang.[Long].MAX_VALUE
 				Return size \ d
 			End Function
 		End Class
@@ -719,10 +719,10 @@ Namespace java.util.stream
 
 			Public Overrides Function estimateSize() As Long
 				If beforeSplit Then
-					' If one or both estimates are Long.MAX_VALUE then the sum
-					' will either be Long.MAX_VALUE or overflow to a negative value
+					' If one or both estimates are java.lang.[Long].MAX_VALUE then the sum
+					' will either be java.lang.[Long].MAX_VALUE or overflow to a negative value
 					Dim size As Long = aSpliterator.estimateSize() + bSpliterator.estimateSize()
-					Return If(size >= 0, size, Long.MaxValue)
+					Return If(size >= 0, size, java.lang.[Long].Max_Value)
 				Else
 					Return bSpliterator.estimateSize()
 				End If

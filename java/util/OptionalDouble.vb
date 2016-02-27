@@ -63,7 +63,7 @@ Namespace java.util
 		''' </summary>
 		Private Sub New()
 			Me.isPresent_Renamed = False
-			Me.value = Double.NaN
+			Me.value = java.lang.[Double].NaN
 		End Sub
 
 		''' <summary>
@@ -185,7 +185,7 @@ Namespace java.util
 		''' <ul>
 		''' <li>it is also an {@code OptionalDouble} and;
 		''' <li>both instances have no value present or;
-		''' <li>the present values are "equal to" each other via {@code Double.compare() == 0}.
+		''' <li>the present values are "equal to" each other via {@code java.lang.[Double].compare() == 0}.
 		''' </ul>
 		''' </summary>
 		''' <param name="obj"> an object to be tested for equality </param>
@@ -197,7 +197,7 @@ Namespace java.util
 			If Not(TypeOf obj Is OptionalDouble) Then Return False
 
 			Dim other As OptionalDouble = CType(obj, OptionalDouble)
-			Return If(isPresent_Renamed AndAlso other.isPresent_Renamed, Double.Compare(value, other.value) = 0, isPresent_Renamed = other.isPresent_Renamed)
+			Return If(isPresent_Renamed AndAlso other.isPresent_Renamed, java.lang.[Double].Compare(value, other.value) = 0, isPresent_Renamed = other.isPresent_Renamed)
 		End Function
 
 		''' <summary>
@@ -206,7 +206,7 @@ Namespace java.util
 		''' </summary>
 		''' <returns> hash code value of the present value or 0 if no value is present </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return If(isPresent_Renamed, Double.hashCode(value), 0)
+			Return If(isPresent_Renamed, java.lang.[Double].hashCode(value), 0)
 		End Function
 
 		''' <summary>

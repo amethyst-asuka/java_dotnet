@@ -217,7 +217,7 @@ Namespace java.io
 					If nextChar >= nChars Then Return -1
 				End If
 			End If
-			Dim n As Integer = Math.Min(len, nChars - nextChar)
+			Dim n As Integer = System.Math.Min(len, nChars - nextChar)
 			Array.Copy(cb, nextChar, cbuf, [off], n)
 			nextChar += n
 			Return n

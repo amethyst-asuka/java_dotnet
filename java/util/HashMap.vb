@@ -695,7 +695,7 @@ Namespace java.util
             Dim newCap As Integer, newThr As Integer = 0
             If oldCap > 0 Then
                 If oldCap >= MAXIMUM_CAPACITY Then
-                    threshold = Integer.MaxValue
+                    threshold =  java.lang.[Integer].Max_Value
                     Return oldTab
                 Else
                     newCap = oldCap << 1
@@ -709,7 +709,7 @@ Namespace java.util
             End If
             If newThr = 0 Then
                 Dim ft As Single = CSng(newCap) * loadFactor_Renamed
-                newThr = (If(newCap < MAXIMUM_CAPACITY AndAlso ft < CSng(MAXIMUM_CAPACITY), CInt(Fix(ft)), Integer.MaxValue))
+                newThr = (If(newCap < MAXIMUM_CAPACITY AndAlso ft < CSng(MAXIMUM_CAPACITY), CInt(Fix(ft)),  java.lang.[Integer].Max_Value))
             End If
             threshold = newThr
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -1485,11 +1485,11 @@ Namespace java.util
             ElseIf mappings > 0 Then ' (if zero, use defaults)
                 ' Size the table using given load factor only if within
                 ' range of 0.25...4.0
-                Dim lf As Single = math.Min(math.Max(0.25F, loadFactor_Renamed), 4.0F)
+                Dim lf As Single = System.Math.Min (System.Math.Max(0.25F, loadFactor_Renamed), 4.0F)
                 Dim fc As Single = CSng(mappings) / lf + 1.0F
                 Dim cap As Integer = (If(fc < DEFAULT_INITIAL_CAPACITY, DEFAULT_INITIAL_CAPACITY, If(fc >= MAXIMUM_CAPACITY, MAXIMUM_CAPACITY, tableSizeFor(CInt(Fix(fc))))))
                 Dim ft As Single = CSng(cap) * lf
-                threshold = (If(cap < MAXIMUM_CAPACITY AndAlso ft < MAXIMUM_CAPACITY, CInt(Fix(ft)), Integer.MaxValue))
+                threshold = (If(cap < MAXIMUM_CAPACITY AndAlso ft < MAXIMUM_CAPACITY, CInt(Fix(ft)),  java.lang.[Integer].Max_Value))
                 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
                 Dim tab As Node(Of K, V)() = CType(New Node(cap - 1) {}, Node(Of K, V)())
                 table = tab

@@ -90,7 +90,7 @@ Namespace java.util.stream
 		Protected Friend Sub New(ByVal initialCapacity As Integer)
 			If initialCapacity < 0 Then Throw New IllegalArgumentException("Illegal Capacity: " & initialCapacity)
 
-			Me.initialChunkPower = Math.Max(MIN_CHUNK_POWER, Integer.SIZE - Integer.numberOfLeadingZeros(initialCapacity - 1))
+			Me.initialChunkPower = System.Math.Max(MIN_CHUNK_POWER,  java.lang.[Integer].SIZE -  java.lang.[Integer].numberOfLeadingZeros(initialCapacity - 1))
 		End Sub
 
 		''' <summary>
@@ -113,7 +113,7 @@ Namespace java.util.stream
 		''' How big should the nth chunk be?
 		''' </summary>
 		Protected Friend Overridable Function chunkSize(ByVal n As Integer) As Integer
-			Dim power As Integer = If(n = 0 OrElse n = 1, initialChunkPower, Math.Min(initialChunkPower + n - 1, AbstractSpinedBuffer.MAX_CHUNK_POWER))
+			Dim power As Integer = If(n = 0 OrElse n = 1, initialChunkPower, System.Math.Min(initialChunkPower + n - 1, AbstractSpinedBuffer.MAX_CHUNK_POWER))
 			Return 1 << power
 		End Function
 

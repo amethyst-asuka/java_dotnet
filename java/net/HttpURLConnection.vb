@@ -380,7 +380,7 @@ Namespace java.net
 				' This restriction will prevent people from using this class to
 				' experiment w/ new HTTP methods using java.  But it should
 				' be placed for security - the request String could be
-				' arbitrarily long.
+				' arbitrarily java.lang.[Long].
     
 				For i As Integer = 0 To methods.Length - 1
 					If methods(i).Equals(method) Then

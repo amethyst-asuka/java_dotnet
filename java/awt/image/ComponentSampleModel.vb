@@ -143,7 +143,7 @@ Namespace java.awt.image
 		'''         is less than 1 </exception>
 		''' <exception cref="IllegalArgumentException"> if the product of <code>w</code>
 		'''         and <code>h</code> is greater than
-		'''         <code> [Integer].MAX_VALUE</code> </exception>
+		'''         <code> java.lang.[Integer].MAX_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
 		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal pixelStride As Integer, ByVal scanlineStride As Integer, ByVal bandOffsets As Integer())
@@ -231,26 +231,26 @@ Namespace java.awt.image
 		 private Integer bufferSize
 			 Dim maxBandOff As Integer=bandOffsets(0)
 			 For i As Integer = 1 To bandOffsets.Length - 1
-				 maxBandOff = Math.Max(maxBandOff,bandOffsets(i))
+				 maxBandOff = System.Math.Max(maxBandOff,bandOffsets(i))
 			 Next i
 
-			 If maxBandOff < 0 OrElse maxBandOff > (Integer.MaxValue - 1) Then Throw New IllegalArgumentException("Invalid band offset")
+			 If maxBandOff < 0 OrElse maxBandOff > ( java.lang.[Integer].Max_Value - 1) Then Throw New IllegalArgumentException("Invalid band offset")
 
-			 If pixelStride < 0 OrElse pixelStride > (Integer.MaxValue / width) Then Throw New IllegalArgumentException("Invalid pixel stride")
+			 If pixelStride < 0 OrElse pixelStride > ( java.lang.[Integer].Max_Value / width) Then Throw New IllegalArgumentException("Invalid pixel stride")
 
-			 If scanlineStride < 0 OrElse scanlineStride > (Integer.MaxValue / height) Then Throw New IllegalArgumentException("Invalid scanline stride")
+			 If scanlineStride < 0 OrElse scanlineStride > ( java.lang.[Integer].Max_Value / height) Then Throw New IllegalArgumentException("Invalid scanline stride")
 
 			 Dim size As Integer = maxBandOff + 1
 
 			 Dim val As Integer = pixelStride * (width - 1)
 
-			 If val > (Integer.MaxValue - size) Then Throw New IllegalArgumentException("Invalid pixel stride")
+			 If val > ( java.lang.[Integer].Max_Value - size) Then Throw New IllegalArgumentException("Invalid pixel stride")
 
 			 size += val
 
 			 val = scanlineStride * (height - 1)
 
-			 If val > (Integer.MaxValue - size) Then Throw New IllegalArgumentException("Invalid scan stride")
+			 If val > ( java.lang.[Integer].Max_Value - size) Then Throw New IllegalArgumentException("Invalid scan stride")
 
 			 size += val
 
@@ -293,16 +293,16 @@ Namespace java.awt.image
 			Dim minBandOff As Integer=bandOffsets(0)
 			Dim maxBandOff As Integer=bandOffsets(0)
 			For i As Integer = 1 To bandOffsets.Length - 1
-				minBandOff = Math.Min(minBandOff,bandOffsets(i))
-				maxBandOff = Math.Max(maxBandOff,bandOffsets(i))
+				minBandOff = System.Math.Min(minBandOff,bandOffsets(i))
+				maxBandOff = System.Math.Max(maxBandOff,bandOffsets(i))
 			Next i
 			maxBandOff -= minBandOff
 
 			Dim bands As Integer = bandOffsets.Length
 			Dim bandOff As Integer()
-			Dim pStride As Integer = Math.Abs(pixelStride)
-			Dim lStride As Integer = Math.Abs(scanlineStride)
-			Dim bStride As Integer = Math.Abs(maxBandOff)
+			Dim pStride As Integer = System.Math.Abs(pixelStride)
+			Dim lStride As Integer = System.Math.Abs(scanlineStride)
+			Dim bStride As Integer = System.Math.Abs(maxBandOff)
 
 			If pStride > lStride Then
 				If pStride > bStride Then
@@ -748,7 +748,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the sample in a specified band
-		''' for a pixel located at (x,y) as a double.
+		''' for a pixel located at (x,y) as a java.lang.[Double].
 		''' An <code>ArrayIndexOutOfBoundsException</code> might be
 		''' thrown if the coordinates are not in bounds. </summary>
 		''' <param name="x">         The X coordinate of the pixel location </param>

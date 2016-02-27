@@ -1006,7 +1006,7 @@ Namespace java.awt.image
 		''' <returns> a <code>String</code> representing this
 		'''          <code>BufferedImage</code>. </returns>
 		Public Overrides Function ToString() As String
-			Return "BufferedImage@" & Integer.toHexString(GetHashCode()) & ": type = " & imageType & " " & colorModel & " " & raster
+			Return "BufferedImage@" &  java.lang.[Integer].toHexString(GetHashCode()) & ": type = " & imageType & " " & colorModel & " " & raster
 		End Function
 
 		''' <summary>

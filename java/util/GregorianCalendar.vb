@@ -702,9 +702,9 @@ Namespace java.util
 				' To provide the "pure" Julian calendar as advertised.
 				' Strictly speaking, the last millisecond should be a
 				' Gregorian date. However, the API doc specifies that setting
-				' the cutover date to Long.MAX_VALUE will make this calendar
+				' the cutover date to java.lang.[Long].MAX_VALUE will make this calendar
 				' a pure Julian calendar. (See 4167995)
-				If cutoverTime = Long.MaxValue Then gregorianCutoverDate += 1
+				If cutoverTime = java.lang.[Long].Max_Value Then gregorianCutoverDate += 1
     
 				Dim d As sun.util.calendar.BaseCalendar.Date = gregorianCutoverDate
     
@@ -1372,7 +1372,7 @@ Namespace java.util
 					Dim v1 As Integer = gc.getActualMaximum(field)
 					gc.timeInMillis = gregorianCutover-1
 					Dim v2 As Integer = gc.getActualMaximum(field)
-					Return Math.Max(MAX_VALUES(field), Math.Max(v1, v2))
+					Return System.Math.Max(MAX_VALUES(field), System.Math.Max(v1, v2))
 			End Select
 			Return MAX_VALUES(field)
 		End Function
@@ -1400,7 +1400,7 @@ Namespace java.util
 				Dim d As sun.util.calendar.BaseCalendar.Date = gregorianCutoverDate
 				Dim mon1 As Long = getFixedDateMonth1(d, gregorianCutoverDate)
 				d = getCalendarDate(mon1)
-				Return Math.Max(MIN_VALUES(field), d.dayOfMonth)
+				Return System.Math.Max(MIN_VALUES(field), d.dayOfMonth)
 			End If
 			Return MIN_VALUES(field)
 		End Function
@@ -1432,7 +1432,7 @@ Namespace java.util
 					Dim v1 As Integer = gc.getActualMaximum(field)
 					gc.timeInMillis = gregorianCutover-1
 					Dim v2 As Integer = gc.getActualMaximum(field)
-					Return Math.Min(LEAST_MAX_VALUES(field), Math.Min(v1, v2))
+					Return System.Math.Min(LEAST_MAX_VALUES(field), System.Math.Min(v1, v2))
 			End Select
 			Return LEAST_MAX_VALUES(field)
 		End Function
@@ -1672,13 +1672,13 @@ Namespace java.util
 					Dim current As Long = gc.yearOffsetInMillis
 
 					If gc.internalGetEra() = CE Then
-						gc.timeInMillis = Long.MaxValue
+						gc.timeInMillis = java.lang.[Long].Max_Value
 						value = gc.get(YEAR)
 						Dim maxEnd As Long = gc.yearOffsetInMillis
 						If current > maxEnd Then value -= 1
 					Else
 						Dim mincal As sun.util.calendar.CalendarSystem = If(gc.timeInMillis >= gregorianCutover, gcal, julianCalendarSystem)
-						Dim d As sun.util.calendar.CalendarDate = mincal.getCalendarDate(Long.MinValue, zone)
+						Dim d As sun.util.calendar.CalendarDate = mincal.getCalendarDate(Long.MIN_VALUE, zone)
 						Dim maxEnd As Long = (cal.getDayOfYear(d) - 1) * 24 + d.hours
 						maxEnd *= 60
 						maxEnd += d.minutes
@@ -1960,11 +1960,11 @@ Namespace java.util
 
 		''' <summary>
 		''' The fixed date corresponding to gdate. If the value is
-		''' Long.MIN_VALUE, the fixed date value is unknown. Currently,
+		''' java.lang.[Long].MIN_VALUE, the fixed date value is unknown. Currently,
 		''' Julian calendar dates are not cached.
 		''' </summary>
 		<NonSerialized> _
-		Private cachedFixedDate As Long = Long.MIN_VALUE
+		Private cachedFixedDate As Long = java.lang.[Long].MIN_VALUE
 
 		''' <summary>
 		''' Converts the time value (millisecond offset from the <a
@@ -2048,8 +2048,8 @@ Namespace java.util
 			Dim year_Renamed As Integer
 			If fixedDate_Renamed >= gregorianCutoverDate Then
 				' Handle Gregorian dates.
-				Debug.Assert(cachedFixedDate = Long.MinValue OrElse gdate.normalized, "cache control: not normalized")
-				Debug.Assert(cachedFixedDate = Long.MinValue OrElse gcal.getFixedDate(gdate.normalizedYear, gdate.month, gdate.dayOfMonth, gdate) = cachedFixedDate, "cache control: inconsictency" & ", cachedFixedDate=" & cachedFixedDate & ", computed=" & gcal.getFixedDate(gdate.normalizedYear, gdate.month, gdate.dayOfMonth, gdate) & ", date=" & gdate)
+				Debug.Assert(cachedFixedDate = java.lang.[Long].MIN_VALUE OrElse gdate.normalized, "cache control: not normalized")
+				Debug.Assert(cachedFixedDate = java.lang.[Long].MIN_VALUE OrElse gcal.getFixedDate(gdate.normalizedYear, gdate.month, gdate.dayOfMonth, gdate) = cachedFixedDate, "cache control: inconsictency" & ", cachedFixedDate=" & cachedFixedDate & ", computed=" & gcal.getFixedDate(gdate.normalizedYear, gdate.month, gdate.dayOfMonth, gdate) & ", date=" & gdate)
 
 				' See if we can use gdate to avoid date calculation.
 				If fixedDate_Renamed <> cachedFixedDate Then
@@ -2785,7 +2785,7 @@ Namespace java.util
 			stream.defaultReadObject()
 			If gdate Is Nothing Then
 				gdate = CType(gcal.newCalendarDate(zone), sun.util.calendar.BaseCalendar.Date)
-				cachedFixedDate = Long.MinValue
+				cachedFixedDate = java.lang.[Long].MIN_VALUE
 			End If
 			gregorianChange = gregorianCutover
 		End Sub
@@ -2832,11 +2832,11 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Shared Function [from](ByVal zdt As java.time.ZonedDateTime) As GregorianCalendar
 			Dim cal As New GregorianCalendar(TimeZone.getTimeZone(zdt.zone))
-			cal.gregorianChange = New Date(Long.MinValue)
+			cal.gregorianChange = New Date(Long.MIN_VALUE)
 			cal.firstDayOfWeek = MONDAY
 			cal.minimalDaysInFirstWeek = 4
 			Try
-				cal.timeInMillis = Math.addExact(Math.multiplyExact(zdt.toEpochSecond(), 1000), zdt.get(java.time.temporal.ChronoField.MILLI_OF_SECOND))
+				cal.timeInMillis = System.Math.addExact (System.Math.multiplyExact(zdt.toEpochSecond(), 1000), zdt.get(java.time.temporal.ChronoField.MILLI_OF_SECOND))
 			Catch ex As ArithmeticException
 				Throw New IllegalArgumentException(ex)
 			End Try

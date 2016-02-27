@@ -47,7 +47,7 @@ Namespace java.math
 		Inherits MutableBigInteger
 
 	   ''' <summary>
-	   ''' The sign of this MutableBigInteger.
+	   ''' The sign of this MutableBig java.lang.[Integer].
 	   ''' </summary>
 		Friend sign As Integer = 1
 
@@ -71,7 +71,7 @@ Namespace java.math
 
 		''' <summary>
 		''' Construct a new MutableBigInteger with a magnitude equal to the
-		''' specified MutableBigInteger.
+		''' specified MutableBig java.lang.[Integer].
 		''' </summary>
 		Friend Sub New(ByVal val As MutableBigInteger)
 			MyBase.New(val)

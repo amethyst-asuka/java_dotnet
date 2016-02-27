@@ -89,66 +89,66 @@ Namespace java.security
 
 	Public Class AlgorithmParameterGenerator
 
-		' The provider
-		Private provider As Provider
+        ' The provider
+        Private _provider As Provider
 
-		' The provider implementation (delegate)
-		Private paramGenSpi As AlgorithmParameterGeneratorSpi
+        ' The provider implementation (delegate)
+        Private paramGenSpi As AlgorithmParameterGeneratorSpi
 
-		' The algorithm
-		Private algorithm As String
+        ' The algorithm
+        Private _algorithm As String
 
-		''' <summary>
-		''' Creates an AlgorithmParameterGenerator object.
-		''' </summary>
-		''' <param name="paramGenSpi"> the delegate </param>
-		''' <param name="provider"> the provider </param>
-		''' <param name="algorithm"> the algorithm </param>
-		Protected Friend Sub New(ByVal paramGenSpi As AlgorithmParameterGeneratorSpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
+        ''' <summary>
+        ''' Creates an AlgorithmParameterGenerator object.
+        ''' </summary>
+        ''' <param name="paramGenSpi"> the delegate </param>
+        ''' <param name="provider"> the provider </param>
+        ''' <param name="algorithm"> the algorithm </param>
+        Protected Friend Sub New(ByVal paramGenSpi As AlgorithmParameterGeneratorSpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
 			Me.paramGenSpi = paramGenSpi
-			Me.provider = provider_Renamed
-			Me.algorithm = algorithm
-		End Sub
+            Me._provider = provider_Renamed
+            Me._algorithm = algorithm
+        End Sub
 
-		''' <summary>
-		''' Returns the standard name of the algorithm this parameter
-		''' generator is associated with.
-		''' </summary>
-		''' <returns> the string name of the algorithm. </returns>
-		Public Property algorithm As String
-			Get
-				Return Me.algorithm
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the standard name of the algorithm this parameter
+        ''' generator is associated with.
+        ''' </summary>
+        ''' <returns> the string name of the algorithm. </returns>
+        Public ReadOnly Property algorithm As String
+            Get
+                Return Me._algorithm
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns an AlgorithmParameterGenerator object for generating
-		''' a set of parameters to be used with the specified algorithm.
-		''' 
-		''' <p> This method traverses the list of registered security Providers,
-		''' starting with the most preferred Provider.
-		''' A new AlgorithmParameterGenerator object encapsulating the
-		''' AlgorithmParameterGeneratorSpi implementation from the first
-		''' Provider that supports the specified algorithm is returned.
-		''' 
-		''' <p> Note that the list of registered providers may be retrieved via
-		''' the <seealso cref="Security#getProviders() Security.getProviders()"/> method.
-		''' </summary>
-		''' <param name="algorithm"> the name of the algorithm this
-		''' parameter generator is associated with.
-		''' See the AlgorithmParameterGenerator section in the <a href=
-		''' "{@docRoot}/../technotes/guides/security/StandardNames.html#AlgorithmParameterGenerator">
-		''' Java Cryptography Architecture Standard Algorithm Name Documentation</a>
-		''' for information about standard algorithm names.
-		''' </param>
-		''' <returns> the new AlgorithmParameterGenerator object.
-		''' </returns>
-		''' <exception cref="NoSuchAlgorithmException"> if no Provider supports an
-		'''          AlgorithmParameterGeneratorSpi implementation for the
-		'''          specified algorithm.
-		''' </exception>
-		''' <seealso cref= Provider </seealso>
-		Public Shared Function getInstance(ByVal algorithm As String) As AlgorithmParameterGenerator
+        ''' <summary>
+        ''' Returns an AlgorithmParameterGenerator object for generating
+        ''' a set of parameters to be used with the specified algorithm.
+        ''' 
+        ''' <p> This method traverses the list of registered security Providers,
+        ''' starting with the most preferred Provider.
+        ''' A new AlgorithmParameterGenerator object encapsulating the
+        ''' AlgorithmParameterGeneratorSpi implementation from the first
+        ''' Provider that supports the specified algorithm is returned.
+        ''' 
+        ''' <p> Note that the list of registered providers may be retrieved via
+        ''' the <seealso cref="Security#getProviders() Security.getProviders()"/> method.
+        ''' </summary>
+        ''' <param name="algorithm"> the name of the algorithm this
+        ''' parameter generator is associated with.
+        ''' See the AlgorithmParameterGenerator section in the <a href=
+        ''' "{@docRoot}/../technotes/guides/security/StandardNames.html#AlgorithmParameterGenerator">
+        ''' Java Cryptography Architecture Standard Algorithm Name Documentation</a>
+        ''' for information about standard algorithm names.
+        ''' </param>
+        ''' <returns> the new AlgorithmParameterGenerator object.
+        ''' </returns>
+        ''' <exception cref="NoSuchAlgorithmException"> if no Provider supports an
+        '''          AlgorithmParameterGeneratorSpi implementation for the
+        '''          specified algorithm.
+        ''' </exception>
+        ''' <seealso cref= Provider </seealso>
+        Public Shared Function getInstance(ByVal algorithm As String) As AlgorithmParameterGenerator
 				Try
 					Dim objs As Object() = Security.getImpl(algorithm, "AlgorithmParameterGenerator", CStr(Nothing))
 					Return New AlgorithmParameterGenerator(CType(objs(0), AlgorithmParameterGeneratorSpi), CType(objs(1), Provider), algorithm)
@@ -232,27 +232,27 @@ Namespace java.security
 			Return New AlgorithmParameterGenerator(CType(objs(0), AlgorithmParameterGeneratorSpi), CType(objs(1), Provider), algorithm)
 		End Function
 
-		''' <summary>
-		''' Returns the provider of this algorithm parameter generator object.
-		''' </summary>
-		''' <returns> the provider of this algorithm parameter generator object </returns>
-		Public Property provider As Provider
-			Get
-				Return Me.provider
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the provider of this algorithm parameter generator object.
+        ''' </summary>
+        ''' <returns> the provider of this algorithm parameter generator object </returns>
+        Public ReadOnly Property provider As Provider
+            Get
+                Return Me._provider
+            End Get
+        End Property
 
-		''' <summary>
-		''' Initializes this parameter generator for a certain size.
-		''' To create the parameters, the {@code SecureRandom}
-		''' implementation of the highest-priority installed provider is used as
-		''' the source of randomness.
-		''' (If none of the installed providers supply an implementation of
-		''' {@code SecureRandom}, a system-provided source of randomness is
-		''' used.)
-		''' </summary>
-		''' <param name="size"> the size (number of bits). </param>
-		Public Sub init(ByVal size As Integer)
+        ''' <summary>
+        ''' Initializes this parameter generator for a certain size.
+        ''' To create the parameters, the {@code SecureRandom}
+        ''' implementation of the highest-priority installed provider is used as
+        ''' the source of randomness.
+        ''' (If none of the installed providers supply an implementation of
+        ''' {@code SecureRandom}, a system-provided source of randomness is
+        ''' used.)
+        ''' </summary>
+        ''' <param name="size"> the size (number of bits). </param>
+        Public Sub init(ByVal size As Integer)
 			paramGenSpi.engineInit(size, New SecureRandom)
 		End Sub
 

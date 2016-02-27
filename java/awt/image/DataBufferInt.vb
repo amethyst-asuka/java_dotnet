@@ -222,7 +222,7 @@ Namespace java.awt.image
 		''' Returns the requested data array element from the first (default) bank.
 		''' </summary>
 		''' <param name="i"> The data array element you want to get. </param>
-		''' <returns> The requested data array element as an integer. </returns>
+		''' <returns> The requested data array element as an  java.lang.[Integer]. </returns>
 		''' <seealso cref= #setElem(int, int) </seealso>
 		''' <seealso cref= #setElem(int, int, int) </seealso>
 		public Integer getElem(Integer i)
@@ -233,7 +233,7 @@ Namespace java.awt.image
 		''' </summary>
 		''' <param name="bank"> The bank from which you want to get a data array element. </param>
 		''' <param name="i"> The data array element you want to get. </param>
-		''' <returns> The requested data array element as an integer. </returns>
+		''' <returns> The requested data array element as an  java.lang.[Integer]. </returns>
 		''' <seealso cref= #setElem(int, int) </seealso>
 		''' <seealso cref= #setElem(int, int, int) </seealso>
 		public Integer getElem(Integer bank, Integer i)

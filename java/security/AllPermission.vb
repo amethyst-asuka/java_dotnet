@@ -106,24 +106,24 @@ Namespace java.security
 			Return 1
 		End Function
 
-		''' <summary>
-		''' Returns the canonical string representation of the actions.
-		''' </summary>
-		''' <returns> the actions. </returns>
-		Public Property Overrides actions As String
-			Get
-				Return "<all actions>"
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the canonical string representation of the actions.
+        ''' </summary>
+        ''' <returns> the actions. </returns>
+        Public Overrides ReadOnly Property actions As String
+            Get
+                Return "<all actions>"
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns a new PermissionCollection object for storing AllPermission
-		''' objects.
-		''' <p>
-		''' </summary>
-		''' <returns> a new PermissionCollection object suitable for
-		''' storing AllPermissions. </returns>
-		Public Overrides Function newPermissionCollection() As PermissionCollection
+        ''' <summary>
+        ''' Returns a new PermissionCollection object for storing AllPermission
+        ''' objects.
+        ''' <p>
+        ''' </summary>
+        ''' <returns> a new PermissionCollection object suitable for
+        ''' storing AllPermissions. </returns>
+        Public Overrides Function newPermissionCollection() As PermissionCollection
 			Return New AllPermissionCollection
 		End Function
 

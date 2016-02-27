@@ -620,7 +620,7 @@ Namespace java.io
 		''' <summary>
 		''' Reads an unsigned eight-bit number from this file. This method reads
 		''' a byte from this file, starting at the current file pointer,
-		''' and returns that byte.
+		''' and returns that java.lang.[Byte].
 		''' <p>
 		''' This method blocks until the byte is read, the end of the stream
 		''' is detected, or an exception is thrown.
@@ -674,7 +674,7 @@ Namespace java.io
 		''' stream is detected, or an exception is thrown.
 		''' </summary>
 		''' <returns>     the next two bytes of this file, interpreted as an unsigned
-		'''             16-bit integer. </returns>
+		'''             16-bit  java.lang.[Integer]. </returns>
 		''' <exception cref="EOFException">  if this file reaches the end before reading
 		'''               two bytes. </exception>
 		''' <exception cref="IOException">   if an I/O error occurs. </exception>
@@ -806,7 +806,7 @@ Namespace java.io
 		''' <seealso cref=        java.io.RandomAccessFile#readLong() </seealso>
 		''' <seealso cref=        java.lang.Double#longBitsToDouble(long) </seealso>
 		public final Double readDouble() throws IOException
-			Return Double.longBitsToDouble(readLong())
+			Return java.lang.[Double].longBitsToDouble(readLong())
 
 		''' <summary>
 		''' Reads the next line of text from this file.  This method successively

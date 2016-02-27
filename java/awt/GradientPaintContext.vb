@@ -99,7 +99,7 @@ Namespace java.awt
 			Dim udy As Double = p2.y - p1.y
 			Dim ulenSq As Double = udx * udx + udy * udy
 
-			If ulenSq <= Double.MinValue Then
+			If ulenSq <= java.lang.[Double].MIN_VALUE Then
 				dx = 0
 				dy = 0
 			Else

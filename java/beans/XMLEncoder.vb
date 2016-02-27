@@ -739,14 +739,14 @@ Namespace java.beans
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Friend Shared Function primitiveTypeFor(ByVal wrapper As [Class]) As  [Class]
-			If wrapper Is GetType(Boolean) Then Return Boolean.TYPE
-			If wrapper Is GetType(Byte) Then Return Byte.TYPE
+			If wrapper Is GetType(Boolean) Then Return  java.lang.[Boolean].TYPE
+			If wrapper Is GetType(Byte) Then Return java.lang.[Byte].TYPE
 			If wrapper Is GetType(Character) Then Return Character.TYPE
-			If wrapper Is GetType(Short) Then Return Short.TYPE
-			If wrapper Is GetType(Integer) Then Return Integer.TYPE
-			If wrapper Is GetType(Long) Then Return Long.TYPE
+			If wrapper Is GetType(Short) Then Return  java.lang.[Short].TYPE
+			If wrapper Is GetType(Integer) Then Return  java.lang.[Integer].TYPE
+			If wrapper Is GetType(Long) Then Return java.lang.[Long].TYPE
 			If wrapper Is GetType(Float) Then Return Float.TYPE
-			If wrapper Is GetType(Double) Then Return Double.TYPE
+			If wrapper Is GetType(Double) Then Return java.lang.[Double].TYPE
 			If wrapper Is GetType(Void) Then Return Void.TYPE
 			Return Nothing
 		End Function

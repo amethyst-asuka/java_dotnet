@@ -55,7 +55,7 @@ Namespace java.awt.datatransfer
 		End Sub
 
 		Public Overrides Function GetHashCode() As Integer
-			Dim code As Integer = Integer.MaxValue/45 ' "random" value for empty lists
+			Dim code As Integer =  java.lang.[Integer].Max_Value/45 ' "random" value for empty lists
 			Dim paramName As String = Nothing
 			Dim enum_ As System.Collections.IEnumerator(Of String) = Me.names
 

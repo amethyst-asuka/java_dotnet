@@ -248,7 +248,7 @@ Namespace java.util.jar
 				'XXX: Fix for when the average is 0. When it is 0,
 				' you get an Attributes object with an initial
 				' capacity of 0, which tickles a bug in HashMap.
-				asize = Math.Max(2, acount \ ecount)
+				asize = System.Math.Max(2, acount \ ecount)
 
 				name = Nothing
 				skipEmptyLines = True
@@ -330,7 +330,7 @@ Namespace java.util.jar
 				End If
 					Dim tempVar As Integer = pos
 					pos += 1
-					Return Byte.toUnsignedInt(buf(tempVar))
+					Return java.lang.[Byte].toUnsignedInt(buf(tempVar))
 			End Function
 
 			Public Overrides Function read(ByVal b As SByte(), ByVal [off] As Integer, ByVal len As Integer) As Integer

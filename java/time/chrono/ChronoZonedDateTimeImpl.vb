@@ -333,7 +333,7 @@ Namespace java.time.chrono
 		End Function
 
 		Public Overrides Function GetHashCode() As Integer
-			Return toLocalDateTime().GetHashCode() Xor offset.GetHashCode() Xor Integer.rotateLeft(zone.GetHashCode(), 3)
+			Return toLocalDateTime().GetHashCode() Xor offset.GetHashCode() Xor  java.lang.[Integer].rotateLeft(zone.GetHashCode(), 3)
 		End Function
 
 		Public Overrides Function ToString() As String

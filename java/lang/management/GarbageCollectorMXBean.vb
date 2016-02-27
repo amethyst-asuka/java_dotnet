@@ -83,7 +83,7 @@ Namespace java.lang.management
 		''' The Java virtual machine implementation may use a high resolution
 		''' timer to measure the elapsed time.  This method may return the
 		''' same value even if the collection count has been incremented
-		''' if the collection elapsed time is very short.
+		''' if the collection elapsed time is very  java.lang.[Short].
 		''' </summary>
 		''' <returns> the approximate accumulated collection elapsed time
 		''' in milliseconds. </returns>

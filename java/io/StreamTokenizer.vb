@@ -80,8 +80,8 @@ Namespace java.io
 		''' </summary>
 		Private peekc As Integer = NEED_CHAR
 
-		Private Shared ReadOnly NEED_CHAR As Integer =  [Integer].MAX_VALUE
-		Private Shared ReadOnly SKIP_LF As Integer =  [Integer].MAX_VALUE - 1
+		Private Shared ReadOnly NEED_CHAR As Integer =  java.lang.[Integer].MAX_VALUE
+		Private Shared ReadOnly SKIP_LF As Integer =  java.lang.[Integer].MAX_VALUE - 1
 
 		Private pushedBack As Boolean
 		Private forceLower As Boolean
@@ -103,7 +103,7 @@ Namespace java.io
 		''' <summary>
 		''' After a call to the {@code nextToken} method, this field
 		''' contains the type of the token just read. For a single character
-		''' token, its value is the single character, converted to an integer.
+		''' token, its value is the single character, converted to an  java.lang.[Integer].
 		''' For a quoted string token, its value is the quote character.
 		''' Otherwise, its value is one of the following:
 		''' <ul>

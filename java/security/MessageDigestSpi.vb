@@ -71,7 +71,7 @@ Namespace java.security
 		End Function
 
 		''' <summary>
-		''' Updates the digest using the specified byte.
+		''' Updates the digest using the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="input"> the byte to use for the update. </param>
 		Protected Friend MustOverride Sub engineUpdate(ByVal input As SByte)
@@ -111,7 +111,7 @@ Namespace java.security
 				Dim n As Integer = sun.security.jca.JCAUtil.getTempArraySize(len)
 				If (tempArray Is Nothing) OrElse (n > tempArray.Length) Then tempArray = New SByte(n - 1){}
 				Do While len > 0
-					Dim chunk As Integer = Math.Min(len, tempArray.Length)
+					Dim chunk As Integer = System.Math.Min(len, tempArray.Length)
 					input.get(tempArray, 0, chunk)
 					engineUpdate(tempArray, 0, chunk)
 					len -= chunk

@@ -99,206 +99,182 @@ Namespace java.awt.image.renderable
 	Public Class ParameterBlock
 		Implements Cloneable
 
-		''' <summary>
-		''' A Vector of sources, stored as arbitrary Objects. </summary>
-		Protected Friend sources As New List(Of Object)
-
-		''' <summary>
-		''' A Vector of non-source parameters, stored as arbitrary Objects. </summary>
-		Protected Friend parameters As New List(Of Object)
-
-		''' <summary>
-		''' A dummy constructor. </summary>
-		Public Sub New()
+        ''' <summary>
+        ''' A dummy constructor. </summary>
+        Public Sub New()
 		End Sub
 
-		''' <summary>
-		''' Constructs a <code>ParameterBlock</code> with a given Vector
-		''' of sources. </summary>
-		''' <param name="sources"> a <code>Vector</code> of source images </param>
-		Public Sub New(ByVal sources As List(Of Object))
-			sources = sources
-		End Sub
+        ''' <summary>
+        ''' Constructs a <code>ParameterBlock</code> with a given Vector
+        ''' of sources. </summary>
+        ''' <param name="sources"> a <code>Vector</code> of source images </param>
+        Public Sub New(ByVal sources As ArrayList)
+            sources = sources
+        End Sub
 
-		''' <summary>
-		''' Constructs a <code>ParameterBlock</code> with a given Vector of sources and
-		''' Vector of parameters. </summary>
-		''' <param name="sources"> a <code>Vector</code> of source images </param>
-		''' <param name="parameters"> a <code>Vector</code> of parameters to be used in the
-		'''        rendering operation </param>
-		Public Sub New(ByVal sources As List(Of Object), ByVal parameters As List(Of Object))
-			sources = sources
-			parameters = parameters
-		End Sub
+        ''' <summary>
+        ''' Constructs a <code>ParameterBlock</code> with a given Vector of sources and
+        ''' Vector of parameters. </summary>
+        ''' <param name="sources"> a <code>Vector</code> of source images </param>
+        ''' <param name="parameters"> a <code>Vector</code> of parameters to be used in the
+        '''        rendering operation </param>
+        Public Sub New(ByVal sources As ArrayList, ByVal parameters As ArrayList)
+            sources = sources
+            parameters = parameters
+        End Sub
 
-		''' <summary>
-		''' Creates a shallow copy of a <code>ParameterBlock</code>.  The source and
-		''' parameter Vectors are copied by reference -- additions or
-		''' changes will be visible to both versions.
-		''' </summary>
-		''' <returns> an Object clone of the <code>ParameterBlock</code>. </returns>
-		Public Overridable Function shallowClone() As Object
-			Try
-				Return MyBase.clone()
-			Catch e As Exception
-				' We can't be here since we implement Cloneable.
-				Return Nothing
-			End Try
-		End Function
+        ''' <summary>
+        ''' Creates a shallow copy of a <code>ParameterBlock</code>.  The source and
+        ''' parameter Vectors are copied by reference -- additions or
+        ''' changes will be visible to both versions.
+        ''' </summary>
+        ''' <returns> an Object clone of the <code>ParameterBlock</code>. </returns>
+        Public Overridable Function shallowClone() As Object
+            Try
+                Return MyBase.clone()
+            Catch e As Exception
+                ' We can't be here since we implement Cloneable.
+                Return Nothing
+            End Try
+        End Function
 
-		''' <summary>
-		''' Creates a copy of a <code>ParameterBlock</code>.  The source and parameter
-		''' Vectors are cloned, but the actual sources and parameters are
-		''' copied by reference.  This allows modifications to the order
-		''' and number of sources and parameters in the clone to be invisible
-		''' to the original <code>ParameterBlock</code>.  Changes to the shared sources or
-		''' parameters themselves will still be visible.
-		''' </summary>
-		''' <returns> an Object clone of the <code>ParameterBlock</code>. </returns>
-		Public Overridable Function clone() As Object
-			Dim theClone As ParameterBlock
+        ''' <summary>
+        ''' Creates a copy of a <code>ParameterBlock</code>.  The source and parameter
+        ''' Vectors are cloned, but the actual sources and parameters are
+        ''' copied by reference.  This allows modifications to the order
+        ''' and number of sources and parameters in the clone to be invisible
+        ''' to the original <code>ParameterBlock</code>.  Changes to the shared sources or
+        ''' parameters themselves will still be visible.
+        ''' </summary>
+        ''' <returns> an Object clone of the <code>ParameterBlock</code>. </returns>
+        Public Overridable Function clone() As Object
+            Dim theClone As ParameterBlock
 
-			Try
-				theClone = CType(MyBase.clone(), ParameterBlock)
-			Catch e As Exception
-				' We can't be here since we implement Cloneable.
-				Return Nothing
-			End Try
+            Try
+                theClone = CType(MyBase.clone(), ParameterBlock)
+            Catch e As Exception
+                ' We can't be here since we implement Cloneable.
+                Return Nothing
+            End Try
 
-			If sources IsNot Nothing Then theClone.sources = CType(sources.clone(), ArrayList)
-			If parameters IsNot Nothing Then theClone.parameters = CType(parameters.clone(), ArrayList)
-			Return CObj(theClone)
-		End Function
+            If sources IsNot Nothing Then theClone.sources = CType(sources.Clone(), ArrayList)
+            If parameters IsNot Nothing Then theClone.parameters = CType(parameters.Clone(), ArrayList)
+            Return CObj(theClone)
+        End Function
 
-		''' <summary>
-		''' Adds an image to end of the list of sources.  The image is
-		''' stored as an object in order to allow new node types in the
-		''' future.
-		''' </summary>
-		''' <param name="source"> an image object to be stored in the source list. </param>
-		''' <returns> a new <code>ParameterBlock</code> containing the specified
-		'''         <code>source</code>. </returns>
-		Public Overridable Function addSource(ByVal source As Object) As ParameterBlock
-			sources.Add(source)
-			Return Me
-		End Function
+        ''' <summary>
+        ''' Adds an image to end of the list of sources.  The image is
+        ''' stored as an object in order to allow new node types in the
+        ''' future.
+        ''' </summary>
+        ''' <param name="source"> an image object to be stored in the source list. </param>
+        ''' <returns> a new <code>ParameterBlock</code> containing the specified
+        '''         <code>source</code>. </returns>
+        Public Overridable Function addSource(ByVal source As Object) As ParameterBlock
+            sources.Add(source)
+            Return Me
+        End Function
 
-		''' <summary>
-		''' Returns a source as a general Object.  The caller must cast it into
-		''' an appropriate type.
-		''' </summary>
-		''' <param name="index"> the index of the source to be returned. </param>
-		''' <returns> an <code>Object</code> that represents the source located
-		'''         at the specified index in the <code>sources</code>
-		'''         <code>Vector</code>. </returns>
-		''' <seealso cref= #setSource(Object, int) </seealso>
-		Public Overridable Function getSource(ByVal index As Integer) As Object
-			Return sources(index)
-		End Function
+        ''' <summary>
+        ''' Returns a source as a general Object.  The caller must cast it into
+        ''' an appropriate type.
+        ''' </summary>
+        ''' <param name="index"> the index of the source to be returned. </param>
+        ''' <returns> an <code>Object</code> that represents the source located
+        '''         at the specified index in the <code>sources</code>
+        '''         <code>Vector</code>. </returns>
+        ''' <seealso cref= #setSource(Object, int) </seealso>
+        Public Overridable Function getSource(ByVal index As Integer) As Object
+            Return sources(index)
+        End Function
 
-		''' <summary>
-		''' Replaces an entry in the list of source with a new source.
-		''' If the index lies beyond the current source list,
-		''' the list is extended with nulls as needed. </summary>
-		''' <param name="source"> the specified source image </param>
-		''' <param name="index"> the index into the <code>sources</code>
-		'''              <code>Vector</code> at which to
-		'''              insert the specified <code>source</code> </param>
-		''' <returns> a new <code>ParameterBlock</code> that contains the
-		'''         specified <code>source</code> at the specified
-		'''         <code>index</code>. </returns>
-		''' <seealso cref= #getSource(int) </seealso>
-		Public Overridable Function setSource(ByVal source As Object, ByVal index As Integer) As ParameterBlock
-			Dim oldSize As Integer = sources.Count
-			Dim newSize As Integer = index + 1
-			If oldSize < newSize Then sources.Capacity = newSize
-			sources(index) = source
-			Return Me
-		End Function
+        ''' <summary>
+        ''' Replaces an entry in the list of source with a new source.
+        ''' If the index lies beyond the current source list,
+        ''' the list is extended with nulls as needed. </summary>
+        ''' <param name="source"> the specified source image </param>
+        ''' <param name="index"> the index into the <code>sources</code>
+        '''              <code>Vector</code> at which to
+        '''              insert the specified <code>source</code> </param>
+        ''' <returns> a new <code>ParameterBlock</code> that contains the
+        '''         specified <code>source</code> at the specified
+        '''         <code>index</code>. </returns>
+        ''' <seealso cref= #getSource(int) </seealso>
+        Public Overridable Function setSource(ByVal source As Object, ByVal index As Integer) As ParameterBlock
+            Dim oldSize As Integer = sources.Count
+            Dim newSize As Integer = index + 1
+            If oldSize < newSize Then sources.Capacity = newSize
+            sources(index) = source
+            Return Me
+        End Function
 
-		''' <summary>
-		''' Returns a source as a <code>RenderedImage</code>.  This method is
-		''' a convenience method.
-		''' An exception will be thrown if the source is not a RenderedImage.
-		''' </summary>
-		''' <param name="index"> the index of the source to be returned </param>
-		''' <returns> a <code>RenderedImage</code> that represents the source
-		'''         image that is at the specified index in the
-		'''         <code>sources</code> <code>Vector</code>. </returns>
-		Public Overridable Function getRenderedSource(ByVal index As Integer) As java.awt.image.RenderedImage
-			Return CType(sources(index), java.awt.image.RenderedImage)
-		End Function
+        ''' <summary>
+        ''' Returns a source as a <code>RenderedImage</code>.  This method is
+        ''' a convenience method.
+        ''' An exception will be thrown if the source is not a RenderedImage.
+        ''' </summary>
+        ''' <param name="index"> the index of the source to be returned </param>
+        ''' <returns> a <code>RenderedImage</code> that represents the source
+        '''         image that is at the specified index in the
+        '''         <code>sources</code> <code>Vector</code>. </returns>
+        Public Overridable Function getRenderedSource(ByVal index As Integer) As java.awt.image.RenderedImage
+            Return CType(sources(index), java.awt.image.RenderedImage)
+        End Function
 
-		''' <summary>
-		''' Returns a source as a RenderableImage.  This method is a
-		''' convenience method.
-		''' An exception will be thrown if the sources is not a RenderableImage.
-		''' </summary>
-		''' <param name="index"> the index of the source to be returned </param>
-		''' <returns> a <code>RenderableImage</code> that represents the source
-		'''         image that is at the specified index in the
-		'''         <code>sources</code> <code>Vector</code>. </returns>
-		Public Overridable Function getRenderableSource(ByVal index As Integer) As RenderableImage
-			Return CType(sources(index), RenderableImage)
-		End Function
+        ''' <summary>
+        ''' Returns a source as a RenderableImage.  This method is a
+        ''' convenience method.
+        ''' An exception will be thrown if the sources is not a RenderableImage.
+        ''' </summary>
+        ''' <param name="index"> the index of the source to be returned </param>
+        ''' <returns> a <code>RenderableImage</code> that represents the source
+        '''         image that is at the specified index in the
+        '''         <code>sources</code> <code>Vector</code>. </returns>
+        Public Overridable Function getRenderableSource(ByVal index As Integer) As RenderableImage
+            Return CType(sources(index), RenderableImage)
+        End Function
 
-		''' <summary>
-		''' Returns the number of source images. </summary>
-		''' <returns> the number of source images in the <code>sources</code>
-		'''         <code>Vector</code>. </returns>
-		Public Overridable Property numSources As Integer
-			Get
-				Return sources.Count
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the number of source images. </summary>
+        ''' <returns> the number of source images in the <code>sources</code>
+        '''         <code>Vector</code>. </returns>
+        Public Overridable Property numSources As Integer
+            Get
+                Return sources.Count
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the entire Vector of sources. </summary>
-		''' <returns> the <code>sources</code> <code>Vector</code>. </returns>
-		''' <seealso cref= #setSources(Vector) </seealso>
-		Public Overridable Property sources As List(Of Object)
-			Get
-				Return sources
-			End Get
-			Set(ByVal sources As List(Of Object))
-				Me.sources = sources
-			End Set
-		End Property
+        ''' <summary>
+        ''' Returns the entire Vector of sources. </summary>
+        ''' <returns> the <code>sources</code> <code>Vector</code>. </returns>
+        ''' <seealso cref= #setSources(Vector) </seealso>
+        Public Overridable Property sources As ArrayList
 
+        ''' <summary>
+        ''' Clears the list of source images. </summary>
+        Public Overridable Sub removeSources()
+            sources = New ArrayList
+        End Sub
 
-		''' <summary>
-		''' Clears the list of source images. </summary>
-		Public Overridable Sub removeSources()
-			sources = New ArrayList
-		End Sub
+        ''' <summary>
+        ''' Returns the number of parameters (not including source images). </summary>
+        ''' <returns> the number of parameters in the <code>parameters</code>
+        '''         <code>Vector</code>. </returns>
+        Public Overridable Property numParameters As Integer
+            Get
+                Return parameters.Count
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the number of parameters (not including source images). </summary>
-		''' <returns> the number of parameters in the <code>parameters</code>
-		'''         <code>Vector</code>. </returns>
-		Public Overridable Property numParameters As Integer
-			Get
-				Return parameters.Count
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the entire Vector of parameters. </summary>
+        ''' <returns> the <code>parameters</code> <code>Vector</code>. </returns>
+        ''' <seealso cref= #setParameters(Vector) </seealso>
+        Public Overridable Property parameters As ArrayList
 
-		''' <summary>
-		''' Returns the entire Vector of parameters. </summary>
-		''' <returns> the <code>parameters</code> <code>Vector</code>. </returns>
-		''' <seealso cref= #setParameters(Vector) </seealso>
-		Public Overridable Property parameters As List(Of Object)
-			Get
-				Return parameters
-			End Get
-			Set(ByVal parameters As List(Of Object))
-				Me.parameters = parameters
-			End Set
-		End Property
-
-
-		''' <summary>
-		''' Clears the list of parameters. </summary>
-		Public Overridable Sub removeParameters()
+        ''' <summary>
+        ''' Clears the list of parameters. </summary>
+        Public Overridable Sub removeParameters()
 			parameters = New ArrayList
 		End Sub
 
@@ -403,7 +379,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' Replaces an Object in the list of parameters with a Byte.
+		''' Replaces an Object in the list of parameters with a java.lang.[Byte].
 		''' If the index lies beyond the current source list,
 		''' the list is extended with nulls as needed. </summary>
 		''' <param name="b"> the parameter that replaces the
@@ -433,7 +409,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' Replaces an Object in the list of parameters with a Short.
+		''' Replaces an Object in the list of parameters with a  java.lang.[Short].
 		''' If the index lies beyond the current source list,
 		''' the list is extended with nulls as needed. </summary>
 		''' <param name="s"> the parameter that replaces the
@@ -448,7 +424,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' Replaces an Object in the list of parameters with an Integer.
+		''' Replaces an Object in the list of parameters with an  java.lang.[Integer].
 		''' If the index lies beyond the current source list,
 		''' the list is extended with nulls as needed. </summary>
 		''' <param name="i"> the parameter that replaces the
@@ -463,7 +439,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' Replaces an Object in the list of parameters with a Long.
+		''' Replaces an Object in the list of parameters with a java.lang.[Long].
 		''' If the index lies beyond the current source list,
 		''' the list is extended with nulls as needed. </summary>
 		''' <param name="l"> the parameter that replaces the
@@ -493,7 +469,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' Replaces an Object in the list of parameters with a Double.
+		''' Replaces an Object in the list of parameters with a java.lang.[Double].
 		''' If the index lies beyond the current source list,
 		''' the list is extended with nulls as needed. </summary>
 		''' <param name="d"> the parameter that replaces the
@@ -519,7 +495,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' A convenience method to return a parameter as a byte.  An
+		''' A convenience method to return a parameter as a java.lang.[Byte].  An
 		''' exception is thrown if the parameter is
 		''' <code>null</code> or not a <code>Byte</code>.
 		''' </summary>
@@ -557,7 +533,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' A convenience method to return a parameter as a short.  An
+		''' A convenience method to return a parameter as a  java.lang.[Short].  An
 		''' exception is thrown if the parameter is
 		''' <code>null</code> or not a <code>Short</code>.
 		''' </summary>
@@ -595,7 +571,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' A convenience method to return a parameter as a long.  An
+		''' A convenience method to return a parameter as a java.lang.[Long].  An
 		''' exception is thrown if the parameter is
 		''' <code>null</code> or not a <code>Long</code>.
 		''' </summary>
@@ -633,7 +609,7 @@ Namespace java.awt.image.renderable
 		End Function
 
 		''' <summary>
-		''' A convenience method to return a parameter as a double.  An
+		''' A convenience method to return a parameter as a java.lang.[Double].  An
 		''' exception is thrown if the parameter is
 		''' <code>null</code> or not a <code>Double</code>.
 		''' </summary>
@@ -651,40 +627,40 @@ Namespace java.awt.image.renderable
 			Return CDbl(parameters(index))
 		End Function
 
-		''' <summary>
-		''' Returns an array of Class objects describing the types
-		''' of the parameters. </summary>
-		''' <returns> an array of <code>Class</code> objects. </returns>
-		Public Overridable Property paramClasses As  [Class]()
-			Get
-				Dim numParams As Integer = numParameters
-				Dim classes As  [Class]() = New [Class](numParams - 1){}
-				Dim i As Integer
-    
-				For i = 0 To numParams - 1
-					Dim obj As Object = getObjectParameter(i)
-					If TypeOf obj Is Byte Then
-					  classes(i) = GetType(SByte)
-					ElseIf TypeOf obj Is Character Then
-					  classes(i) = GetType(Char)
-					ElseIf TypeOf obj Is Short? Then
-					  classes(i) = GetType(Short)
-					ElseIf TypeOf obj Is Integer? Then
-					  classes(i) = GetType(Integer)
-					ElseIf TypeOf obj Is Long? Then
-					  classes(i) = GetType(Long)
-					ElseIf TypeOf obj Is Float Then
-					  classes(i) = GetType(Single)
-					ElseIf TypeOf obj Is Double? Then
-					  classes(i) = GetType(Double)
-					Else
-					  classes(i) = obj.GetType()
-					End If
-				Next i
-    
-				Return classes
-			End Get
-		End Property
-	End Class
+        ''' <summary>
+        ''' Returns an array of Class objects describing the types
+        ''' of the parameters. </summary>
+        ''' <returns> an array of <code>Class</code> objects. </returns>
+        Public Overridable ReadOnly Property paramClasses As [Class]()
+            Get
+                Dim numParams As Integer = numParameters
+                Dim classes As [Class]() = New [Class](numParams - 1) {}
+                Dim i As Integer
+
+                For i = 0 To numParams - 1
+                    Dim obj As Object = getObjectParameter(i)
+                    If TypeOf obj Is Byte Then
+                        classes(i) = GetType(SByte)
+                    ElseIf TypeOf obj Is Character Then
+                        classes(i) = GetType(Char)
+                    ElseIf TypeOf obj Is Short? Then
+                        classes(i) = GetType(Short)
+                    ElseIf TypeOf obj Is Integer? Then
+                        classes(i) = GetType(Integer)
+                    ElseIf TypeOf obj Is Long? Then
+                        classes(i) = GetType(Long)
+                    ElseIf TypeOf obj Is Float Then
+                        classes(i) = GetType(Single)
+                    ElseIf TypeOf obj Is Double? Then
+                        classes(i) = GetType(Double)
+                    Else
+                        classes(i) = obj.GetType()
+                    End If
+                Next i
+
+                Return classes
+            End Get
+        End Property
+    End Class
 
 End Namespace

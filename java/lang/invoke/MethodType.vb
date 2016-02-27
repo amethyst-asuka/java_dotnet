@@ -886,7 +886,7 @@ Namespace java.lang.invoke
 				Dim dw As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forPrimitiveType(dst)
 				' R->P must be able to unbox (from a dynamically chosen type) and widen
 				' For example:
-				'   Byte/Number/Comparable/Object -> dw:Byte -> byte.
+				'   Byte/Number/Comparable/Object -> dw:Byte -> java.lang.[Byte].
 				'   Character/Comparable/Object -> dw:Character -> char
 				'   Boolean/Comparable/Object -> dw:Boolean -> boolean
 				' This means that dw must be cast-compatible with src.
@@ -902,7 +902,7 @@ Namespace java.lang.invoke
 				'   Serializable -> cast:Byte -> unbox:byte -> byte/short/int/long/float/double
 				' An marginal case is Number -> dw:Character -> char, which would be OK if there were a
 				' subclass of Number which wraps a value that can convert to char.
-				' Since there is none, we don't need an extra check here to cover char or boolean.
+				' Since there is none, we don't need an extra check here to cover char or  java.lang.[Boolean].
 				Return False
 			Else
 				' R->R always works, since null is always valid dynamically

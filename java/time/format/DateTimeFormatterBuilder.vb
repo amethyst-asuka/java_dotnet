@@ -2216,7 +2216,7 @@ Namespace java.time.format
 				If valueLong Is Nothing Then Return False
 				Dim value As Long = getValue(context, valueLong)
 				Dim decimalStyle_Renamed As DecimalStyle = context.decimalStyle
-				Dim str As String = (If(value = Long.MinValue, "9223372036854775808", Convert.ToString(Math.Abs(value))))
+				Dim str As String = (If(value = java.lang.[Long].MIN_VALUE, "9223372036854775808", Convert.ToString (System.Math.Abs(value))))
 				If str.length() > maxWidth Then Throw New java.time.DateTimeException("Field " & field & " cannot be printed as the value " & value & " exceeds the maximum print width of " & maxWidth)
 				str = decimalStyle_Renamed.convertNumberToI18N(str)
 
@@ -2279,12 +2279,12 @@ Namespace java.time.format
 				Dim effMinWidth As Integer = (If(context.strict OrElse isFixedWidth(context), minWidth, 1))
 				Dim minEndPos As Integer = position + effMinWidth
 				If minEndPos > length Then Return Not position
-				Dim effMaxWidth As Integer = (If(context.strict OrElse isFixedWidth(context), maxWidth, 9)) + Math.Max(subsequentWidth, 0)
+				Dim effMaxWidth As Integer = (If(context.strict OrElse isFixedWidth(context), maxWidth, 9)) + System.Math.Max(subsequentWidth, 0)
 				Dim total As Long = 0
 				Dim totalBig As System.Numerics.BigInteger = Nothing
 				Dim pos As Integer = position
 				For pass As Integer = 0 To 1
-					Dim maxEndPos As Integer = Math.Min(pos + effMaxWidth, length)
+					Dim maxEndPos As Integer = System.Math.Min(pos + effMaxWidth, length)
 					Do While pos < maxEndPos
 						Dim ch As Char = text.Chars(pos)
 						pos += 1
@@ -2295,8 +2295,8 @@ Namespace java.time.format
 							Exit Do
 						End If
 						If (pos - position) > 18 Then
-							If totalBig Is Nothing Then totalBig = System.Numerics.BigInteger.valueOf(total)
-							totalBig = totalBig * System.Numerics.BigInteger.TEN.add(System.Numerics.BigInteger.valueOf(digit))
+							If totalBig Is Nothing Then totalBig = System.Numerics.Big java.lang.[Integer].valueOf(total)
+							totalBig = totalBig * System.Numerics.Big java.lang.[Integer].TEN.add(System.Numerics.Big java.lang.[Integer].valueOf(digit))
 						Else
 							total = total * 10 + digit
 						End If
@@ -2304,7 +2304,7 @@ Namespace java.time.format
 					If subsequentWidth > 0 AndAlso pass = 0 Then
 						' re-parse now we know the correct width
 						Dim parseLen As Integer = pos - position
-						effMaxWidth = Math.Max(effMinWidth, parseLen - subsequentWidth)
+						effMaxWidth = System.Math.Max(effMinWidth, parseLen - subsequentWidth)
 						pos = position
 						total = 0
 						totalBig = Nothing
@@ -2314,7 +2314,7 @@ Namespace java.time.format
 				Next pass
 				If negative Then
 					If totalBig IsNot Nothing Then
-						If totalBig.Equals(System.Numerics.BigInteger.ZERO) AndAlso context.strict Then Return Not(position - 1) ' minus zero not allowed
+						If totalBig.Equals(System.Numerics.Big java.lang.[Integer].ZERO) AndAlso context.strict Then Return Not(position - 1) ' minus zero not allowed
 						totalBig = -totalBig
 					Else
 						If total = 0 AndAlso context.strict Then Return Not(position - 1) ' minus zero not allowed
@@ -2331,7 +2331,7 @@ Namespace java.time.format
 				If totalBig IsNot Nothing Then
 					If totalBig.bitLength() > 63 Then
 						' overflow, parse 1 less digit
-						totalBig = totalBig / System.Numerics.BigInteger.TEN
+						totalBig = totalBig / System.Numerics.Big java.lang.[Integer].TEN
 						pos -= 1
 					End If
 					Return valuelue(context, totalBig, position, pos)
@@ -2382,7 +2382,7 @@ Namespace java.time.format
 				If maxWidth < minWidth Then Throw New IllegalArgumentException("Maximum width must exceed or equal the minimum width but " & maxWidth & " < " & minWidth)
 				If baseDate Is Nothing Then
 					If field.range().isValidValue(baseValue) = False Then Throw New IllegalArgumentException("The base value must be within the range of the field")
-					If ((CLng(Fix(baseValue))) + EXCEED_POINTS(maxWidth)) > Integer.MaxValue Then Throw New java.time.DateTimeException("Unable to add printer-parser as the range exceeds the capacity of an int")
+					If ((CLng(Fix(baseValue))) + EXCEED_POINTS(maxWidth)) >  java.lang.[Integer].Max_Value Then Throw New java.time.DateTimeException("Unable to add printer-parser as the range exceeds the capacity of an int")
 				End If
 
 			''' <summary>
@@ -2401,7 +2401,7 @@ Namespace java.time.format
 				Me.baseDate = baseDate
 
 			Long getValue(DateTimePrintContext context, Long value)
-				Dim absValue As Long = Math.Abs(value)
+				Dim absValue As Long = System.Math.Abs(value)
 				Dim baseValue As Integer = Me.baseValue
 				If baseDate IsNot Nothing Then
 					Dim chrono As java.time.chrono.Chronology = java.time.chrono.Chronology.from(context.temporal)
@@ -2509,7 +2509,7 @@ Namespace java.time.format
 						Next i
 					End If
 				Else
-					Dim outputScale As Integer = Math.Min(Math.Max(fraction.scale(), minWidth), maxWidth)
+					Dim outputScale As Integer = System.Math.Min (System.Math.Max(fraction.scale(), minWidth), maxWidth)
 					fraction = fraction.scaleale(outputScale, java.math.RoundingMode.FLOOR)
 					Dim str As String = fraction.toPlainString().Substring(2)
 					str = decimalStyle_Renamed.convertNumberToI18N(str)
@@ -2529,7 +2529,7 @@ Namespace java.time.format
 				End If
 				Dim minEndPos As Integer = position + effectiveMin
 				If minEndPos > length Then Return Not position ' need at least min width digits
-				Dim maxEndPos As Integer = Math.Min(position + effectiveMax, length)
+				Dim maxEndPos As Integer = System.Math.Min(position + effectiveMax, length)
 				Dim total As Integer = 0 ' can use int because we are only parsing up to 9 digits
 				Dim pos As Integer = position
 				Do While pos < maxEndPos
@@ -2697,8 +2697,8 @@ Namespace java.time.format
 				If inSec >= -SECONDS_0000_TO_1970 Then
 					' current era
 					Dim zeroSecs As Long = inSec - SECONDS_PER_10000_YEARS + SECONDS_0000_TO_1970
-					Dim hi As Long = Math.floorDiv(zeroSecs, SECONDS_PER_10000_YEARS) + 1
-					Dim lo As Long = Math.floorMod(zeroSecs, SECONDS_PER_10000_YEARS)
+					Dim hi As Long = System.Math.floorDiv(zeroSecs, SECONDS_PER_10000_YEARS) + 1
+					Dim lo As Long = System.Math.floorMod(zeroSecs, SECONDS_PER_10000_YEARS)
 					Dim ldt As java.time.LocalDateTime = java.time.LocalDateTime.ofEpochSecond(lo - SECONDS_0000_TO_1970, 0, java.time.ZoneOffset.UTC)
 					If hi > 0 Then buf.append("+"c).append(hi)
 					buf.append(ldt)
@@ -2718,7 +2718,7 @@ Namespace java.time.format
 						ElseIf lo = 0 Then
 							buf.insert(pos, hi)
 						Else
-							buf.insert(pos + 1, Math.Abs(hi))
+							buf.insert(pos + 1, System.Math.Abs(hi))
 						End If
 					End If
 				End If
@@ -2770,7 +2770,7 @@ Namespace java.time.format
 				Try
 					Dim ldt As java.time.LocalDateTime = java.time.LocalDateTime.of(year_Renamed, month, day, hour, min, sec, 0).plusDays(days)
 					instantSecs = ldt.toEpochSecond(java.time.ZoneOffset.UTC)
-					instantSecs += Math.multiplyExact(yearParsed \ 10_000L, SECONDS_PER_10000_YEARS)
+					instantSecs += System.Math.multiplyExact(yearParsed \ 10_000L, SECONDS_PER_10000_YEARS)
 				Catch ex As RuntimeException
 					Return Not position
 				End Try
@@ -2813,13 +2813,13 @@ Namespace java.time.format
 			public Boolean format(DateTimePrintContext context, StringBuilder buf)
 				Dim offsetSecs As Long? = context.getValue(OFFSET_SECONDS)
 				If offsetSecs Is Nothing Then Return False
-				Dim totalSecs As Integer = Math.toIntExact(offsetSecs)
+				Dim totalSecs As Integer = System.Math.toIntExact(offsetSecs)
 				If totalSecs = 0 Then
 					buf.append(noOffsetText)
 				Else
-					Dim absHours As Integer = Math.Abs((totalSecs \ 3600) Mod 100) ' anything larger than 99 silently dropped
-					Dim absMinutes As Integer = Math.Abs((totalSecs \ 60) Mod 60)
-					Dim absSeconds As Integer = Math.Abs(totalSecs Mod 60)
+					Dim absHours As Integer = System.Math.Abs((totalSecs \ 3600) Mod 100) ' anything larger than 99 silently dropped
+					Dim absMinutes As Integer = System.Math.Abs((totalSecs \ 60) Mod 60)
+					Dim absSeconds As Integer = System.Math.Abs(totalSecs Mod 60)
 					Dim bufPos As Integer = buf.length()
 					Dim output As Integer = absHours
 					buf.append(If(totalSecs < 0, "-", "+")).append(ChrW(absHours \ 10 + AscW("0"c))).append(ChrW(absHours Mod 10 + AscW("0"c)))
@@ -2918,11 +2918,11 @@ Namespace java.time.format
 				If offsetSecs Is Nothing Then Return False
 				Dim gmtText As String = "GMT" ' TODO: get localized version of 'GMT'
 				If gmtText IsNot Nothing Then buf.append(gmtText)
-				Dim totalSecs As Integer = Math.toIntExact(offsetSecs)
+				Dim totalSecs As Integer = System.Math.toIntExact(offsetSecs)
 				If totalSecs <> 0 Then
-					Dim absHours As Integer = Math.Abs((totalSecs \ 3600) Mod 100) ' anything larger than 99 silently dropped
-					Dim absMinutes As Integer = Math.Abs((totalSecs \ 60) Mod 60)
-					Dim absSeconds As Integer = Math.Abs(totalSecs Mod 60)
+					Dim absHours As Integer = System.Math.Abs((totalSecs \ 3600) Mod 100) ' anything larger than 99 silently dropped
+					Dim absMinutes As Integer = System.Math.Abs((totalSecs \ 60) Mod 60)
+					Dim absSeconds As Integer = System.Math.Abs(totalSecs Mod 60)
 					buf.append(If(totalSecs < 0, "-", "+"))
 					If style = TextStyle.FULL Then
 						appendHMS(buf, absHours)

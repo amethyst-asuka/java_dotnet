@@ -143,7 +143,7 @@ Namespace java.time
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		Private Shared Function compareInstant(ByVal datetime1 As OffsetDateTime, ByVal datetime2 As OffsetDateTime) As Integer
 			If datetime1.offset.Equals(datetime2.offset) Then Return datetime1.toLocalDateTime().CompareTo(datetime2.toLocalDateTime())
-			Dim cmp As Integer = Long.Compare(datetime1.toEpochSecond(), datetime2.toEpochSecond())
+			Dim cmp As Integer = java.lang.[Long].Compare(datetime1.toEpochSecond(), datetime2.toEpochSecond())
 			If cmp = 0 Then cmp = datetime1.toLocalTime().nano - datetime2.toLocalTime().nano
 			Return cmp
 		End Function
@@ -1287,7 +1287,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As OffsetDateTime
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1311,7 +1311,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusYears(ByVal years As Long) As OffsetDateTime
-			Return (If(years = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-years)))
+			Return (If(years = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-years)))
 		End Function
 
 		''' <summary>
@@ -1334,7 +1334,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusMonths(ByVal months As Long) As OffsetDateTime
-			Return (If(months = Long.MinValue, plusMonths(Long.MaxValue).plusMonths(1), plusMonths(-months)))
+			Return (If(months = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-months)))
 		End Function
 
 		''' <summary>
@@ -1352,7 +1352,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusWeeks(ByVal weeks As Long) As OffsetDateTime
-			Return (If(weeks = Long.MinValue, plusWeeks(Long.MaxValue).plusWeeks(1), plusWeeks(-weeks)))
+			Return (If(weeks = java.lang.[Long].MIN_VALUE, plusWeeks(Long.Max_Value).plusWeeks(1), plusWeeks(-weeks)))
 		End Function
 
 		''' <summary>
@@ -1370,7 +1370,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusDays(ByVal days As Long) As OffsetDateTime
-			Return (If(days = Long.MinValue, plusDays(Long.MaxValue).plusDays(1), plusDays(-days)))
+			Return (If(days = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-days)))
 		End Function
 
 		''' <summary>
@@ -1382,7 +1382,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the hours subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusHours(ByVal hours As Long) As OffsetDateTime
-			Return (If(hours = Long.MinValue, plusHours(Long.MaxValue).plusHours(1), plusHours(-hours)))
+			Return (If(hours = java.lang.[Long].MIN_VALUE, plusHours(Long.Max_Value).plusHours(1), plusHours(-hours)))
 		End Function
 
 		''' <summary>
@@ -1394,7 +1394,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the minutes subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusMinutes(ByVal minutes As Long) As OffsetDateTime
-			Return (If(minutes = Long.MinValue, plusMinutes(Long.MaxValue).plusMinutes(1), plusMinutes(-minutes)))
+			Return (If(minutes = java.lang.[Long].MIN_VALUE, plusMinutes(Long.Max_Value).plusMinutes(1), plusMinutes(-minutes)))
 		End Function
 
 		''' <summary>
@@ -1406,7 +1406,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the seconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusSeconds(ByVal seconds As Long) As OffsetDateTime
-			Return (If(seconds = Long.MinValue, plusSeconds(Long.MaxValue).plusSeconds(1), plusSeconds(-seconds)))
+			Return (If(seconds = java.lang.[Long].MIN_VALUE, plusSeconds(Long.Max_Value).plusSeconds(1), plusSeconds(-seconds)))
 		End Function
 
 		''' <summary>
@@ -1418,7 +1418,7 @@ Namespace java.time
 		''' <returns> an {@code OffsetDateTime} based on this date-time with the nanoseconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusNanos(ByVal nanos As Long) As OffsetDateTime
-			Return (If(nanos = Long.MinValue, plusNanos(Long.MaxValue).plusNanos(1), plusNanos(-nanos)))
+			Return (If(nanos = java.lang.[Long].MIN_VALUE, plusNanos(Long.Max_Value).plusNanos(1), plusNanos(-nanos)))
 		End Function
 
 		'-----------------------------------------------------------------------

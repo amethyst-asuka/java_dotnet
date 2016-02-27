@@ -553,10 +553,10 @@ Namespace java.awt
 			If input <= 0.04045f Then
 				output = input / 12.92f
 			Else
-				output = CSng(Math.Pow((input + 0.055) / 1.055, 2.4))
+				output = CSng (System.Math.Pow((input + 0.055) / 1.055, 2.4))
 			End If
 
-			Return Math.Round(output * 255.0f)
+			Return System.Math.Round(output * 255.0f)
 		End Function
 
 		''' <summary>
@@ -570,10 +570,10 @@ Namespace java.awt
 			If input <= 0.0031308 Then
 				output = input * 12.92f
 			Else
-				output = (1.055f * (CSng(Math.Pow(input, (1.0 / 2.4))))) - 0.055f
+				output = (1.055f * (CSng (System.Math.Pow(input, (1.0 / 2.4))))) - 0.055f
 			End If
 
-			Return Math.Round(output * 255.0f)
+			Return System.Math.Round(output * 255.0f)
 		End Function
 
 		''' <summary>

@@ -821,8 +821,8 @@ Namespace java.time.chrono
 				Dim props As java.util.Properties = readConfigProperties(resourceName)
 
 				Dim years As IDictionary(Of Integer?, Integer()) = New Dictionary(Of Integer?, Integer())
-				Dim minYear As Integer = Integer.MaxValue
-				Dim maxYear As Integer = Integer.MinValue
+				Dim minYear As Integer =  java.lang.[Integer].Max_Value
+				Dim maxYear As Integer =  java.lang.[Integer].MIN_VALUE
 				Dim id_Renamed As String = Nothing
 				Dim type As String = Nothing
 				Dim version As String = Nothing
@@ -846,8 +846,8 @@ Namespace java.time.chrono
 								Dim year_Renamed As Integer = Convert.ToInt32(key)
 								Dim months As Integer() = parseMonths(CStr(entry.Value))
 								years(year_Renamed) = months
-								maxYear = Math.Max(maxYear, year_Renamed)
-								minYear = Math.Min(minYear, year_Renamed)
+								maxYear = System.Math.Max(maxYear, year_Renamed)
+								minYear = System.Math.Min(minYear, year_Renamed)
 							Catch nfe As NumberFormatException
 								Throw New IllegalArgumentException("bad key: " & key)
 							End Try
@@ -868,8 +868,8 @@ Namespace java.time.chrono
 				' Compute the min and max year length in days.
 				For year_Renamed As Integer = minYear To maxYear - 1
 					Dim length As Integer = getYearLength(year_Renamed)
-					minYearLength = Math.Min(minYearLength, length)
-					maxYearLength = Math.Max(maxYearLength, length)
+					minYearLength = System.Math.Min(minYearLength, length)
+					maxYearLength = System.Math.Max(maxYearLength, length)
 				Next year_Renamed
 			Catch ex As Exception
 				' Log error and throw a DateTimeException
@@ -896,8 +896,8 @@ Namespace java.time.chrono
 			' Initialize the running epochDay as the corresponding ISO Epoch day
 			Dim epochMonth As Integer = 0 ' index into array of epochMonths
 			Dim epochMonths As Integer() = New Integer(numMonths - 1){}
-			minMonthLength = Integer.MaxValue
-			maxMonthLength = Integer.MinValue
+			minMonthLength =  java.lang.[Integer].Max_Value
+			maxMonthLength =  java.lang.[Integer].MIN_VALUE
 
 			' Only whole years are valid, any zero's in the array are illegal
 			For year_Renamed As Integer = minYear To maxYear
@@ -909,8 +909,8 @@ Namespace java.time.chrono
 
 					If length < 29 OrElse length > 32 Then Throw New IllegalArgumentException("Invalid month length in year: " & minYear)
 					epochDay += length
-					minMonthLength = Math.Min(minMonthLength, length)
-					maxMonthLength = Math.Max(maxMonthLength, length)
+					minMonthLength = System.Math.Min(minMonthLength, length)
+					maxMonthLength = System.Math.Max(maxMonthLength, length)
 				Next month
 			Next year_Renamed
 

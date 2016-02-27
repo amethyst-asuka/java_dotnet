@@ -115,7 +115,7 @@ Namespace java.lang
         ''' be called on the result:
         ''' 
         ''' <blockquote>
-        '''  {@code Long.toString(n, 16).toUpperCase()}
+        '''  {@code java.lang.[Long].toString(n, 16).toUpperCase()}
         ''' </blockquote>
         ''' </summary>
         ''' <param name="i">       a {@code long} to be converted to a string. </param>
@@ -133,11 +133,11 @@ Namespace java.lang
             If Not negative Then i = -i
 
             Do While i <= -radix
-                buf(charPos) = [Integer].digits(CInt(Fix(-(i Mod radix))))
+                buf(charPos) = java.lang.[Integer].digits(CInt(Fix(-(i Mod radix))))
                 charPos -= 1
                 i = i \ radix
             Loop
-            buf(charPos) = [Integer].digits(CInt(Fix(-i)))
+            buf(charPos) = java.lang.[Integer].digits(CInt(Fix(-i)))
 
             If negative Then
                 charPos -= 1
@@ -193,7 +193,7 @@ Namespace java.lang
                         '                 * positive value, and then dividing by 5.  This
                         '                 * allows the last digit and preceding digits to be
                         '                 * isolated more quickly than by an initial conversion
-                        '                 * to BigInteger.
+                        '                 * to Big java.lang.[Integer].
                         '                 
                         Dim quot As Long = (CLng(CULng(i) >> 1)) \ 5
                         Dim [rem] As Long = i - quot * 10
@@ -217,13 +217,13 @@ Namespace java.lang
         ''' </summary>
         Private Shared Function toUnsignedBigInteger(ByVal i As Long) As BigInteger
             If i >= 0L Then
-                Return BigInteger.valueOf(i)
+                Return Big java.lang.[Integer].valueOf(i)
             Else
                 Dim upper As Integer = CInt(CLng(CULng(i) >> 32))
                 Dim lower As Integer = CInt(i)
 
                 ' return (upper << 32) + lower
-                Return (BigInteger.valueOf(Integer.toUnsignedLong(upper))).shiftLeft(32).add(BigInteger.valueOf(Integer.toUnsignedLong(lower)))
+                Return (Big java.lang.[Integer].valueOf( java.lang.[Integer].toUnsignedLong(upper))).shiftLeft(32).add(Big java.lang.[Integer].valueOf( java.lang.[Integer].toUnsignedLong(lower)))
             End If
         End Function
 
@@ -239,7 +239,7 @@ Namespace java.lang
         ''' 
         ''' <p>The value of the argument can be recovered from the returned
         ''' string {@code s} by calling {@link
-        ''' Long#parseUnsignedLong(String, int) Long.parseUnsignedLong(s,
+        ''' Long#parseUnsignedLong(String, int) java.lang.[Long].parseUnsignedLong(s,
         ''' 16)}.
         ''' 
         ''' <p>If the unsigned magnitude is zero, it is represented by a
@@ -259,7 +259,7 @@ Namespace java.lang
         ''' on the result:
         ''' 
         ''' <blockquote>
-        '''  {@code Long.toHexString(n).toUpperCase()}
+        '''  {@code java.lang.[Long].toHexString(n).toUpperCase()}
         ''' </blockquote>
         ''' </summary>
         ''' <param name="i">   a {@code long} to be converted to a string. </param>
@@ -285,7 +285,7 @@ Namespace java.lang
         ''' 
         ''' <p>The value of the argument can be recovered from the returned
         ''' string {@code s} by calling {@link
-        ''' Long#parseUnsignedLong(String, int) Long.parseUnsignedLong(s,
+        ''' Long#parseUnsignedLong(String, int) java.lang.[Long].parseUnsignedLong(s,
         ''' 8)}.
         ''' 
         ''' <p>If the unsigned magnitude is zero, it is represented by a
@@ -323,7 +323,7 @@ Namespace java.lang
         ''' 
         ''' <p>The value of the argument can be recovered from the returned
         ''' string {@code s} by calling {@link
-        ''' Long#parseUnsignedLong(String, int) Long.parseUnsignedLong(s,
+        ''' Long#parseUnsignedLong(String, int) java.lang.[Long].parseUnsignedLong(s,
         ''' 2)}.
         ''' 
         ''' <p>If the unsigned magnitude is zero, it is represented by a
@@ -349,8 +349,8 @@ Namespace java.lang
         ''' <param name="shift"> the log2 of the base to format in (4 for hex, 3 for octal, 1 for binary) </param>
         Friend Shared Function toUnsignedString0(ByVal val As Long, ByVal shift As Integer) As String
             ' assert shift > 0 && shift <=5 : "Illegal shift value";
-            Dim mag As Integer = Long.SIZE - Long.numberOfLeadingZeros(val)
-            Dim chars_Renamed As Integer = Math.max(((mag + (shift - 1)) \ shift), 1)
+            Dim mag As Integer = java.lang.[Long].SIZE - java.lang.[Long].numberOfLeadingZeros(val)
+            Dim chars_Renamed As Integer = System.Math.max(((mag + (shift - 1)) \ shift), 1)
             Dim buf As Char() = New Char(chars_Renamed - 1) {}
 
             formatUnsignedLong(val, shift, buf, 0, chars_Renamed)
@@ -371,7 +371,7 @@ Namespace java.lang
             Dim mask As Integer = radix - 1
             Do
                 charPos -= 1
-                buf(offset + charPos) = Integer.digits((CInt(val)) And mask)
+                buf(offset + charPos) =  java.lang.[Integer].digits((CInt(val)) And mask)
                 val >>>= shift
             Loop While val <> 0 AndAlso charPos > 0
 
@@ -388,7 +388,7 @@ Namespace java.lang
         ''' <param name="i">   a {@code long} to be converted. </param>
         ''' <returns>  a string representation of the argument in base&nbsp;10. </returns>
         Public Shared Function ToString(ByVal i As Long) As String
-            If i = Long.MinValue Then Return "-9223372036854775808"
+            If i = java.lang.[Long].MIN_VALUE Then Return "-9223372036854775808"
             Dim size_Renamed As Integer = If(i < 0, stringSize(-i) + 1, stringSize(i))
             Dim buf As Char() = New Char(size_Renamed - 1) {}
             getChars(i, size_Renamed, buf)
@@ -419,7 +419,7 @@ Namespace java.lang
         ''' digit at the specified index (exclusive), and working
         ''' backwards from there.
         ''' 
-        ''' Will fail if i == Long.MIN_VALUE
+        ''' Will fail if i == java.lang.[Long].MIN_VALUE
         ''' </summary>
         Friend Shared Sub getChars(ByVal i As Long, ByVal index As Integer, ByVal buf As Char())
             Dim q As Long
@@ -433,15 +433,15 @@ Namespace java.lang
             End If
 
             ' Get 2 digits/iteration using longs until quotient fits into an int
-            Do While i > Integer.MaxValue
+            Do While i >  java.lang.[Integer].Max_Value
                 q = i \ 100
                 ' really: r = i - (q * 100);
                 r = CInt(Fix(i - ((q << 6) + (q << 5) + (q << 2))))
                 i = q
                 charPos -= 1
-                buf(charPos) = Integer.DigitOnes(r)
+                buf(charPos) =  java.lang.[Integer].DigitOnes(r)
                 charPos -= 1
-                buf(charPos) = Integer.DigitTens(r)
+                buf(charPos) =  java.lang.[Integer].DigitTens(r)
             Loop
 
             ' Get 2 digits/iteration using ints
@@ -453,9 +453,9 @@ Namespace java.lang
                 r = i2 - ((q2 << 6) + (q2 << 5) + (q2 << 2))
                 i2 = q2
                 charPos -= 1
-                buf(charPos) = Integer.DigitOnes(r)
+                buf(charPos) =  java.lang.[Integer].DigitOnes(r)
                 charPos -= 1
-                buf(charPos) = Integer.DigitTens(r)
+                buf(charPos) =  java.lang.[Integer].DigitTens(r)
             Loop
 
             ' Fall thru to fast mode for smaller numbers
@@ -464,7 +464,7 @@ Namespace java.lang
                 q2 = CInt(CUInt((i2 * 52429)) >> (16 + 3))
                 r = i2 - ((q2 << 3) + (q2 << 1)) ' r = i2-(q2*10) ...
                 charPos -= 1
-                buf(charPos) = Integer.digits(r)
+                buf(charPos) =  java.lang.[Integer].digits(r)
                 i2 = q2
                 If i2 = 0 Then Exit Do
             Loop
@@ -553,7 +553,7 @@ Namespace java.lang
             Dim result As Long = 0
             Dim negative As Boolean = False
             Dim i As Integer = 0, len As Integer = s.Length()
-            Dim limit As Long = -Long.MaxValue
+            Dim limit As Long = -Long.Max_Value
             Dim multmin As Long
             Dim digit As Integer
 
@@ -562,7 +562,7 @@ Namespace java.lang
                 If firstChar < "0"c Then ' Possible leading "+" or "-"
                     If firstChar = "-"c Then
                         negative = True
-                        limit = Long.MinValue
+                        limit = java.lang.[Long].MIN_VALUE
                     ElseIf firstChar <> "+"c Then
                         Throw NumberFormatException.forInputString(s)
                     End If
@@ -665,14 +665,14 @@ Namespace java.lang
                 If firstChar = "-"c Then
                     Throw New NumberFormatException(String.Format("Illegal leading minus sign " & "on unsigned string {0}.", s))
                 Else
-                    If len <= 12 OrElse (radix = 10 AndAlso len <= 18) Then ' Long.MAX_VALUE in base 10 is 19 digits -  Long.MAX_VALUE in Character.MAX_RADIX is 13 digits Return parseLong(s, radix)
+                    If len <= 12 OrElse (radix = 10 AndAlso len <= 18) Then ' java.lang.[Long].MAX_VALUE in base 10 is 19 digits -  java.lang.[Long].MAX_VALUE in Character.MAX_RADIX is 13 digits Return parseLong(s, radix)
 
                         ' No need for range checks on len due to testing above.
                         Dim first As Long = parseLong(s.Substring(0, len - 1), radix)
                         Dim second As Integer = Character.digit(s.Chars(len - 1), radix)
                         If second < 0 Then Throw New NumberFormatException("Bad digit at end of " & s)
                         Dim result As Long = first * radix + second
-                        If compareUnsigned(result, first) < 0 Then Throw New NumberFormatException(String.Format("String value {0} exceeds " & "range of unsigned long.", s))
+                        If compareUnsigned(result, first) < 0 Then Throw New NumberFormatException(String.Format("String value {0} exceeds " & "range of unsigned java.lang.[Long].", s))
                         Return result
                     End If
                     Else
@@ -693,7 +693,7 @@ Namespace java.lang
         '''            representation to be parsed </param>
         ''' <returns>    the unsigned {@code long} value represented by the decimal string argument </returns>
         ''' <exception cref="NumberFormatException">  if the string does not contain a
-        '''            parsable unsigned integer.
+        '''            parsable unsigned  java.lang.[Integer].
         ''' @since 1.8 </exception>
         Public Shared Function parseUnsignedLong(ByVal s As String) As Long
             Return parseUnsignedLong(s, 10)
@@ -817,7 +817,7 @@ Namespace java.lang
         ''' <p>The sequence of characters following an optional
         ''' sign and/or radix specifier ("{@code 0x}", "{@code 0X}",
         ''' "{@code #}", or leading zero) is parsed as by the {@code
-        ''' Long.parseLong} method with the indicated radix (10, 16, or 8).
+        ''' java.lang.[Long].parseLong} method with the indicated radix (10, 16, or 8).
         ''' This sequence of characters must represent a positive value or
         ''' a <seealso cref="NumberFormatException"/> will be thrown.  The result is
         ''' negated if first character of the specified {@code String} is
@@ -865,7 +865,7 @@ Namespace java.lang
                 result = Convert.ToInt64(nm.Substring(index), radix)
                 result = If(negative, Convert.ToInt64(-result), result)
             Catch e As NumberFormatException
-                ' If number is Long.MIN_VALUE, we'll end up here. The next line
+                ' If number is java.lang.[Long].MIN_VALUE, we'll end up here. The next line
                 ' handles this case, and causes any genuine format error to be
                 ' rethrown.
                 Dim constant As String = If(negative, ("-" & nm.Substring(index)), nm.Substring(index))
@@ -985,12 +985,12 @@ Namespace java.lang
         ''' </summary>
         ''' <returns>  a hash code value for this object. </returns>
         Public Overrides Function GetHashCode() As Integer
-            Return Long.hashCode(value)
+            Return java.lang.[Long].hashCode(value)
         End Function
 
         ''' <summary>
         ''' Returns a hash code for a {@code long} value; compatible with
-        ''' {@code Long.hashCode()}.
+        ''' {@code java.lang.[Long].hashCode()}.
         ''' </summary>
         ''' <param name="value"> the value to hash </param>
         ''' <returns> a hash code value for a {@code long} value.
@@ -1087,7 +1087,7 @@ Namespace java.lang
         ''' <seealso cref=     java.lang.System#getProperty(java.lang.String) </seealso>
         ''' <seealso cref=     java.lang.System#getProperty(java.lang.String, java.lang.String) </seealso>
         Public Shared Function getLong(ByVal nm As String, ByVal val As Long) As Long?
-            Dim result As Long? = Long.getLong(nm, Nothing)
+            Dim result As Long? = java.lang.[Long].getLong(nm, Nothing)
             Return If(result Is Nothing, Convert.ToInt64(val), result)
         End Function
 
@@ -1143,7 +1143,7 @@ Namespace java.lang
 			End Try
             If v IsNot Nothing Then
                 Try
-                    Return Long.decode(v)
+                    Return java.lang.[Long].decode(v)
                 Catch e As NumberFormatException
                 End Try
             End If
@@ -1170,7 +1170,7 @@ Namespace java.lang
         ''' Compares two {@code long} values numerically.
         ''' The value returned is identical to what would be returned by:
         ''' <pre>
-        '''    Long.valueOf(x).compareTo(Long.valueOf(y))
+        '''    java.lang.[Long].valueOf(x).compareTo(Long.valueOf(y))
         ''' </pre>
         ''' </summary>
         ''' <param name="x"> the first {@code long} to compare </param>
@@ -1223,7 +1223,7 @@ Namespace java.lang
                     Return dividend \ divisor
                 Else
                     '            
-                    '             * For simple code, leveraging BigInteger.  Longer and faster
+                    '             * For simple code, leveraging Big java.lang.[Integer].  Longer and faster
                     '             * code written directly in terms of operations on longs is
                     '             * possible; see "Hacker's Delight" for divide and remainder
                     '             * algorithms.
@@ -1272,7 +1272,7 @@ Namespace java.lang
         ''' 
         ''' @since 1.8
         ''' </summary>
-        Public Shared ReadOnly BYTES As Integer = SIZE \ Byte.SIZE
+        Public Shared ReadOnly BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
         ''' <summary>
         ''' Returns a {@code long} value with at most a single one-bit, in the
@@ -1536,7 +1536,7 @@ Namespace java.lang
 
         ''' <summary>
         ''' Returns the greater of two {@code long} values
-        ''' as if by calling <seealso cref="Math#max(long, long) Math.max"/>.
+        ''' as if by calling <seealso cref="Math#max(long, long) System.Math.max"/>.
         ''' </summary>
         ''' <param name="a"> the first operand </param>
         ''' <param name="b"> the second operand </param>
@@ -1544,12 +1544,12 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function max(ByVal a As Long, ByVal b As Long) As Long
-            Return Math.max(a, b)
+            Return System.Math.max(a, b)
         End Function
 
         ''' <summary>
         ''' Returns the smaller of two {@code long} values
-        ''' as if by calling <seealso cref="Math#min(long, long) Math.min"/>.
+        ''' as if by calling <seealso cref="Math#min(long, long) System.Math.min"/>.
         ''' </summary>
         ''' <param name="a"> the first operand </param>
         ''' <param name="b"> the second operand </param>
@@ -1557,7 +1557,7 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function min(ByVal a As Long, ByVal b As Long) As Long
-            Return Math.min(a, b)
+            Return System.Math.min(a, b)
         End Function
 
         ''' <summary>

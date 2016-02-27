@@ -147,15 +147,15 @@ Namespace java.awt
 		''' Sets the size of this <code>Dimension</code> object to
 		''' the specified width and height in double precision.
 		''' Note that if <code>width</code> or <code>height</code>
-		''' are larger than <code> [Integer].MAX_VALUE</code>, they will
-		''' be reset to <code> [Integer].MAX_VALUE</code>.
+		''' are larger than <code> java.lang.[Integer].MAX_VALUE</code>, they will
+		''' be reset to <code> java.lang.[Integer].MAX_VALUE</code>.
 		''' </summary>
 		''' <param name="width">  the new width for the <code>Dimension</code> object </param>
 		''' <param name="height"> the new height for the <code>Dimension</code> object
 		''' @since 1.2 </param>
 		Public Overrides Sub setSize(ByVal width As Double, ByVal height As Double)
-			Me.width = CInt(Fix(Math.Ceiling(width)))
-			Me.height = CInt(Fix(Math.Ceiling(height)))
+			Me.width = CInt(Fix (System.Math.Ceiling(width)))
+			Me.height = CInt(Fix (System.Math.Ceiling(height)))
 		End Sub
 
 		''' <summary>

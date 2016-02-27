@@ -131,18 +131,18 @@ Namespace java.awt.font
 				If baseline >= 0 Then
 					Dim baselineOffset As Single = fBaselineOffsets(baseline)
 
-					ascent = Math.Max(ascent, -baselineOffset + cm.ascent)
+					ascent = System.Math.Max(ascent, -baselineOffset + cm.ascent)
 
 					Dim gd As Single = baselineOffset + cm.descent
-					descent = Math.Max(descent, gd)
+					descent = System.Math.Max(descent, gd)
 
-					leading = Math.Max(leading, gd + cm.leading)
+					leading = System.Math.Max(leading, gd + cm.leading)
 				Else
 					fitTopAndBottomGraphics = True
 					Dim graphicHeight As Single = cm.ascent + cm.descent
 					Dim graphicHeightWithLeading As Single = graphicHeight + cm.leading
-					maxGraphicHeight = Math.Max(maxGraphicHeight, graphicHeight)
-					maxGraphicHeightWithLeading = Math.Max(maxGraphicHeightWithLeading, graphicHeightWithLeading)
+					maxGraphicHeight = System.Math.Max(maxGraphicHeight, graphicHeight)
+					maxGraphicHeightWithLeading = System.Math.Max(maxGraphicHeightWithLeading, graphicHeightWithLeading)
 				End If
 			Next i
 
@@ -191,8 +191,8 @@ Namespace java.awt.font
 					Dim cd As Single = cb + cm.descent
 					' cb += cm.ssOffset;
 
-					Dim a As Single = Math.Max(pa, ca)
-					Dim d As Single = Math.Min(pd, cd)
+					Dim a As Single = System.Math.Max(pa, ca)
+					Dim d As Single = System.Math.Min(pd, cd)
 
 					' 2)
 					Dim pax As Single = pcm.italicAngle * (pb - a)
@@ -204,7 +204,7 @@ Namespace java.awt.font
 					' 3)
 					Dim dax As Single = pax - cax
 					Dim ddx As Single = pdx - cdx
-					Dim dx As Single = Math.Max(dax, ddx)
+					Dim dx As Single = System.Math.Max(dax, ddx)
 
 					x += dx
 					y = cb
@@ -293,8 +293,8 @@ Namespace java.awt.font
 			If frc IsNot Nothing AndAlso frc.Equals(Me.frc) Then frc = Nothing
 
 			' only cache integral locations with the default frc, this is a bit strict
-			Dim ix As Integer = CInt(Fix(Math.Floor(x)))
-			Dim iy As Integer = CInt(Fix(Math.Floor(y)))
+			Dim ix As Integer = CInt(Fix (System.Math.Floor(x)))
+			Dim iy As Integer = CInt(Fix (System.Math.Floor(y)))
 			Dim rx As Single = x - ix
 			Dim ry As Single = y - iy
 			Dim canCache As Boolean = frc Is Nothing AndAlso rx = 0 AndAlso ry = 0
@@ -756,7 +756,7 @@ Namespace java.awt.font
 					n += 2
 				Loop
     
-				If result Is Nothing Then result = New java.awt.geom.Rectangle2D.Float(Float.MaxValue, Float.MaxValue, Float.MinValue, Float.MinValue)
+				If result Is Nothing Then result = New java.awt.geom.Rectangle2D.Float(Float.Max_Value, Float.Max_Value, Float.MIN_VALUE, Float.MIN_VALUE)
     
 				Return result
 			End Get
@@ -765,8 +765,8 @@ Namespace java.awt.font
 		Public Property italicBounds As java.awt.geom.Rectangle2D
 			Get
     
-				Dim left As Single = Float.MaxValue, right As Single = -Float.MaxValue
-				Dim top As Single = Float.MaxValue, bottom As Single = -Float.MaxValue
+				Dim left As Single = Float.Max_Value, right As Single = -Float.Max_Value
+				Dim top As Single = Float.Max_Value, bottom As Single = -Float.Max_Value
     
 				Dim i As Integer=0
 				Dim n As Integer = 0
@@ -777,11 +777,11 @@ Namespace java.awt.font
 					Dim x As Single = locs(n)
 					Dim y As Single = locs(n+1)
     
-					left = Math.Min(left, x + CSng(tlcBounds.x))
-					right = Math.Max(right, x + CSng(tlcBounds.maxX))
+					left = System.Math.Min(left, x + CSng(tlcBounds.x))
+					right = System.Math.Max(right, x + CSng(tlcBounds.maxX))
     
-					top = Math.Min(top, y + CSng(tlcBounds.y))
-					bottom = Math.Max(bottom, y + CSng(tlcBounds.maxY))
+					top = System.Math.Min(top, y + CSng(tlcBounds.y))
+					bottom = System.Math.Max(bottom, y + CSng(tlcBounds.maxY))
 					i += 1
 					n += 2
 				Loop
@@ -954,7 +954,7 @@ Namespace java.awt.font
 
 			Dim pos As Integer = textStart
 			Do
-				Dim runLimit As Integer = Math.Min(styledParagraph_Renamed.getRunLimit(pos), textLimit)
+				Dim runLimit As Integer = System.Math.Min(styledParagraph_Renamed.getRunLimit(pos), textLimit)
 
 				Dim decorator As sun.font.Decoration = styledParagraph_Renamed.getDecorationAt(pos)
 
@@ -1090,8 +1090,8 @@ Namespace java.awt.font
 	'            int max = order[start];
 	'            int count = limit - start;
 	'            for (int i = start + 1; i < limit; i++) {
-	'                min = Math.min(min, order[i]);
-	'                max = Math.max(max, order[i]);
+	'                min = System.Math.min(min, order[i]);
+	'                max = System.Math.max(max, order[i]);
 	'                if (max - min >= count) {
 	'                    if (direction != null) {
 	'                        byte baseLevel = direction[start];
@@ -1212,8 +1212,8 @@ Namespace java.awt.font
 					Dim compLength As Integer = comp.numCharacters
 					Dim compLimit As Integer = compStart + compLength
 					If compLimit > justStart Then
-						Dim rangeMin As Integer = Math.Max(0, justStart - compStart)
-						Dim rangeMax As Integer = Math.Min(compLength, justLimit - compStart)
+						Dim rangeMin As Integer = System.Math.Max(0, justStart - compStart)
+						Dim rangeMax As Integer = System.Math.Min(compLength, justLimit - compStart)
 						comp.getJustificationInfos(infos, infoPositions(i), rangeMin, rangeMax)
 
 						If compLimit >= justLimit Then Exit For
@@ -1248,8 +1248,8 @@ Namespace java.awt.font
 					Dim compLength As Integer = comp.numCharacters
 					Dim compLimit As Integer = compStart + compLength
 					If compLimit > justStart Then
-						Dim rangeMin As Integer = Math.Max(0, justStart - compStart)
-						Dim rangeMax As Integer = Math.Min(compLength, justLimit - compStart)
+						Dim rangeMin As Integer = System.Math.Max(0, justStart - compStart)
+						Dim rangeMax As Integer = System.Math.Min(compLength, justLimit - compStart)
 						newComponents(i) = comp.applyJustificationDeltas(deltas, infoPositions(i) * 2, flags)
 
 						wantRejustify = wantRejustify Or flags(0)
@@ -1274,8 +1274,8 @@ Namespace java.awt.font
 				Dim tlcLength As Integer = comp.numCharacters
 				Dim tlcLimit As Integer = tlcStart + tlcLength
 				If tlcLimit > start Then
-					Dim measureStart As Integer = Math.Max(0, start - tlcStart)
-					Dim measureLimit As Integer = Math.Min(tlcLength, limit - tlcStart)
+					Dim measureStart As Integer = System.Math.Max(0, start - tlcStart)
+					Dim measureLimit As Integer = System.Math.Min(tlcLength, limit - tlcStart)
 					advance += comp.getAdvanceBetween(measureStart, measureLimit)
 					If tlcLimit >= limit Then Exit For
 				End If

@@ -888,43 +888,43 @@ Namespace java.lang
         ''' </returns>
         ''' <seealso cref=  #compareTo(String) </seealso>
         ''' <seealso cref=  #equalsIgnoreCase(String) </seealso>
-        Public Boolean Equals(Object anObject)
-			If Me Is anObject Then Return True
-			If TypeOf anObject Is String Then
-				Dim anotherString As String = CStr(anObject)
-				Dim n As Integer = value.Length
-				If n = anotherString.value.Length Then
-					Dim v1 As Char() = value
-					Dim v2 As Char() = anotherString.value
-					Dim i As Integer = 0
-					Dim tempVar As Boolean = n <> 0
-					n -= 1
-					Do While tempVar
-						If v1(i) <> v2(i) Then Return False
-						i += 1
-						tempVar = n <> 0
-						n -= 1
-					Loop
-					Return True
-				End If
-			End If
-			Return False
-
-		''' <summary>
-		''' Compares this string to the specified {@code StringBuffer}.  The result
-		''' is {@code true} if and only if this {@code String} represents the same
-		''' sequence of characters as the specified {@code StringBuffer}. This method
-		''' synchronizes on the {@code StringBuffer}.
-		''' </summary>
-		''' <param name="sb">
-		'''         The {@code StringBuffer} to compare this {@code String} against
-		''' </param>
-		''' <returns>  {@code true} if this {@code String} represents the same
-		'''          sequence of characters as the specified {@code StringBuffer},
-		'''          {@code false} otherwise
-		''' 
-		''' @since  1.4 </returns>
-		public Boolean contentEquals(StringBuffer sb)
+        Public Function Equals(Object anObject) As Boolean
+            If Me Is anObject Then Return True
+            If TypeOf anObject Is String Then
+                Dim anotherString As String = CStr(anObject)
+                Dim n As Integer = value.Length
+                If n = anotherString.value.Length Then
+                    Dim v1 As Char() = value
+                    Dim v2 As Char() = anotherString.value
+                    Dim i As Integer = 0
+                    Dim tempVar As Boolean = n <> 0
+                    n -= 1
+                    Do While tempVar
+                        If v1(i) <> v2(i) Then Return False
+                        i += 1
+                        tempVar = n <> 0
+                        n -= 1
+                    Loop
+                    Return True
+                End If
+            End If
+            Return False
+        End Function
+        ''' <summary>
+        ''' Compares this string to the specified {@code StringBuffer}.  The result
+        ''' is {@code true} if and only if this {@code String} represents the same
+        ''' sequence of characters as the specified {@code StringBuffer}. This method
+        ''' synchronizes on the {@code StringBuffer}.
+        ''' </summary>
+        ''' <param name="sb">
+        '''         The {@code StringBuffer} to compare this {@code String} against
+        ''' </param>
+        ''' <returns>  {@code true} if this {@code String} represents the same
+        '''          sequence of characters as the specified {@code StringBuffer},
+        '''          {@code false} otherwise
+        ''' 
+        ''' @since  1.4 </returns>
+        Public Boolean contentEquals(StringBuffer sb)
 			Return contentEquals(CType(sb, CharSequence))
 
 		private Boolean nonSyncContentEquals(AbstractStringBuilder sb)
@@ -1047,7 +1047,7 @@ Namespace java.lang
 		public Integer compareTo(String anotherString)
 			Dim len1 As Integer = value.Length
 			Dim len2 As Integer = anotherString.value.length
-			Dim lim As Integer = Math.Min(len1, len2)
+			Dim lim As Integer = System.Math.Min(len1, len2)
 			Dim v1 As Char() = value
 			Dim v2 As Char() = anotherString.value
 
@@ -1079,7 +1079,7 @@ Namespace java.lang
 			public Integer compare(String s1, String s2)
 				Dim n1 As Integer = s1.length()
 				Dim n2 As Integer = s2.length()
-				Dim min As Integer = Math.Min(n1, n2)
+				Dim min As Integer = System.Math.Min(n1, n2)
 				For i As Integer = 0 To min - 1
 					Dim c1 As Char = s1.Chars(i)
 					Dim c2 As Char = s2.Chars(i)
@@ -1515,7 +1515,7 @@ Namespace java.lang
 				' handle most cases here (ch is a BMP code point or a
 				' negative value (invalid code point))
 				Dim value As Char() = Me.value
-				Dim i As Integer = Math.Min(fromIndex, value.Length - 1)
+				Dim i As Integer = System.Math.Min(fromIndex, value.Length - 1)
 				Do While i >= 0
 					If value(i) = ch Then Return i
 					i -= 1
@@ -1533,7 +1533,7 @@ Namespace java.lang
 				Dim value As Char() = Me.value
 				Dim hi As Char = Character.highSurrogate(ch)
 				Dim lo As Char = Character.lowSurrogate(ch)
-				Dim i As Integer = Math.Min(fromIndex, value.Length - 2)
+				Dim i As Integer = System.Math.Min(fromIndex, value.Length - 2)
 				Do While i >= 0
 					If value(i) = hi AndAlso value(i + 1) = lo Then Return i
 					i -= 1
@@ -2811,7 +2811,7 @@ Namespace java.lang
 		''' Returns the string representation of the {@code int} argument.
 		''' <p>
 		''' The representation is exactly the one returned by the
-		''' {@code Integer.toString} method of one argument.
+		''' {@code  java.lang.[Integer].toString} method of one argument.
 		''' </summary>
 		''' <param name="i">   an {@code int}. </param>
 		''' <returns>  a string representation of the {@code int} argument. </returns>
@@ -2823,7 +2823,7 @@ Namespace java.lang
 		''' Returns the string representation of the {@code long} argument.
 		''' <p>
 		''' The representation is exactly the one returned by the
-		''' {@code Long.toString} method of one argument.
+		''' {@code java.lang.[Long].toString} method of one argument.
 		''' </summary>
 		''' <param name="l">   a {@code long}. </param>
 		''' <returns>  a string representation of the {@code long} argument. </returns>
@@ -2847,7 +2847,7 @@ Namespace java.lang
 		''' Returns the string representation of the {@code double} argument.
 		''' <p>
 		''' The representation is exactly the one returned by the
-		''' {@code Double.toString} method of one argument.
+		''' {@code java.lang.[Double].toString} method of one argument.
 		''' </summary>
 		''' <param name="d">   a {@code double}. </param>
 		''' <returns>  a  string representation of the {@code double} argument. </returns>

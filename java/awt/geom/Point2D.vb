@@ -312,7 +312,7 @@ Namespace java.awt.geom
 		Public Shared Function distance(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
 			x1 -= x2
 			y1 -= y2
-			Return Math.Sqrt(x1 * x1 + y1 * y1)
+			Return System.Math.Sqrt(x1 * x1 + y1 * y1)
 		End Function
 
 		''' <summary>
@@ -361,7 +361,7 @@ Namespace java.awt.geom
 		Public Overridable Function distance(ByVal px As Double, ByVal py As Double) As Double
 			px -= x
 			py -= y
-			Return Math.Sqrt(px * px + py * py)
+			Return System.Math.Sqrt(px * px + py * py)
 		End Function
 
 		''' <summary>
@@ -376,7 +376,7 @@ Namespace java.awt.geom
 		Public Overridable Function distance(ByVal pt As Point2D) As Double
 			Dim px As Double = pt.x - Me.x
 			Dim py As Double = pt.y - Me.y
-			Return Math.Sqrt(px * px + py * py)
+			Return System.Math.Sqrt(px * px + py * py)
 		End Function
 
 		''' <summary>
@@ -399,8 +399,8 @@ Namespace java.awt.geom
 		''' Returns the hashcode for this <code>Point2D</code>. </summary>
 		''' <returns>      a hash code for this <code>Point2D</code>. </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Dim bits As Long = Double.doubleToLongBits(x)
-			bits = bits Xor Double.doubleToLongBits(y) * 31
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(x)
+			bits = bits Xor java.lang.[Double].doubleToLongBits(y) * 31
 			Return ((CInt(bits)) Xor (CInt(Fix(bits >> 32))))
 		End Function
 

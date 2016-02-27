@@ -248,7 +248,7 @@ Namespace java.time
 			Dim now_Renamed As Instant = clock_Renamed.instant() ' called once
 			Dim offset As ZoneOffset = clock_Renamed.zone.rules.getOffset(now_Renamed)
 			Dim localSecond As Long = now_Renamed.epochSecond + offset.totalSeconds ' overflow caught later
-			Dim secsOfDay As Integer = CInt(Math.floorMod(localSecond, SECONDS_PER_DAY))
+			Dim secsOfDay As Integer = CInt (System.Math.floorMod(localSecond, SECONDS_PER_DAY))
 			Return ofNanoOfDay(secsOfDay * NANOS_PER_SECOND + now_Renamed.nano)
 		End Function
 
@@ -1126,7 +1126,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As LocalTime
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1393,12 +1393,12 @@ Namespace java.time
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
 		Public Overrides Function compareTo(ByVal other As LocalTime) As Integer Implements Comparable(Of LocalTime).compareTo
-			Dim cmp As Integer = Integer.Compare(hour, other.hour)
+			Dim cmp As Integer =  java.lang.[Integer].Compare(hour, other.hour)
 			If cmp = 0 Then
-				cmp = Integer.Compare(minute, other.minute)
+				cmp =  java.lang.[Integer].Compare(minute, other.minute)
 				If cmp = 0 Then
-					cmp = Integer.Compare(second, other.second)
-					If cmp = 0 Then cmp = Integer.Compare(nano, other.nano)
+					cmp =  java.lang.[Integer].Compare(second, other.second)
+					If cmp = 0 Then cmp =  java.lang.[Integer].Compare(nano, other.nano)
 				End If
 			End If
 			Return cmp

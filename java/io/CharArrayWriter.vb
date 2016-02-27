@@ -76,7 +76,7 @@ Namespace java.io
 		Public Overrides Sub write(ByVal c As Integer)
 			SyncLock lock
 				Dim newcount As Integer = count + 1
-				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, Math.Max(buf.Length << 1, newcount))
+				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, System.Math.Max(buf.Length << 1, newcount))
 				buf(count) = ChrW(c)
 				count = newcount
 			End SyncLock
@@ -96,7 +96,7 @@ Namespace java.io
 			End If
 			SyncLock lock
 				Dim newcount As Integer = count + len
-				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, Math.Max(buf.Length << 1, newcount))
+				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, System.Math.Max(buf.Length << 1, newcount))
 				Array.Copy(c, off, buf, count, len)
 				count = newcount
 			End SyncLock
@@ -109,7 +109,7 @@ Namespace java.io
 		public void write(String str, Integer off, Integer len)
 			SyncLock lock
 				Dim newcount As Integer = count + len
-				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, Math.Max(buf.Length << 1, newcount))
+				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, System.Math.Max(buf.Length << 1, newcount))
 				str.getChars(off, off + len, buf, count)
 				count = newcount
 			End SyncLock

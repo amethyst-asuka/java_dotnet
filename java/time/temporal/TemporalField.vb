@@ -130,7 +130,7 @@ Namespace java.time.temporal
 		''' <summary>
 		''' Gets the range of valid values for the field.
 		''' <p>
-		''' All fields can be expressed as a {@code long} integer.
+		''' All fields can be expressed as a {@code long}  java.lang.[Integer].
 		''' This method returns an object that describes the valid range for that value.
 		''' This method is generally only applicable to the ISO-8601 calendar system.
 		''' <p>

@@ -978,7 +978,7 @@ Namespace java.nio.channels
 		''' in exactly the same way as the invocation
 		''' 
 		''' <pre>
-		'''     fc.<seealso cref="#lock(long,long,boolean) lock"/>(0L, Long.MAX_VALUE, false) </pre>
+		'''     fc.<seealso cref="#lock(long,long,boolean) lock"/>(0L, java.lang.[Long].MAX_VALUE, false) </pre>
 		''' </summary>
 		''' <returns>  A lock object representing the newly-acquired lock
 		''' </returns>
@@ -1009,7 +1009,7 @@ Namespace java.nio.channels
 		''' <seealso cref=     #tryLock() </seealso>
 		''' <seealso cref=     #tryLock(long,long,boolean) </seealso>
 		Public Function lock() As FileLock
-			Return lock(0L, Long.MaxValue, False)
+			Return lock(0L, java.lang.[Long].Max_Value, False)
 		End Function
 
 		''' <summary>
@@ -1086,7 +1086,7 @@ Namespace java.nio.channels
 		''' behaves in exactly the same way as the invocation
 		''' 
 		''' <pre>
-		'''     fc.<seealso cref="#tryLock(long,long,boolean) tryLock"/>(0L, Long.MAX_VALUE, false) </pre>
+		'''     fc.<seealso cref="#tryLock(long,long,boolean) tryLock"/>(0L, java.lang.[Long].MAX_VALUE, false) </pre>
 		''' </summary>
 		''' <returns>  A lock object representing the newly-acquired lock,
 		'''          or <tt>null</tt> if the lock could not be acquired
@@ -1108,7 +1108,7 @@ Namespace java.nio.channels
 		''' <seealso cref=     #lock(long,long,boolean) </seealso>
 		''' <seealso cref=     #tryLock(long,long,boolean) </seealso>
 		Public Function tryLock() As FileLock
-			Return tryLock(0L, Long.MaxValue, False)
+			Return tryLock(0L, java.lang.[Long].Max_Value, False)
 		End Function
 
 	End Class

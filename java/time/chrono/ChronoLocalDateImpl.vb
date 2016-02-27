@@ -132,7 +132,7 @@ Namespace java.time.chrono
 
 			Public MustOverride Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal Implements ChronoLocalDate.adjustInto
 			Public MustOverride Function [until](ByVal endExclusive As java.time.temporal.Temporal, ByVal unit As java.time.temporal.TemporalUnit) As Long Implements ChronoLocalDate.until
-			Public Function [Return](amountToSubtract = Long.MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit) ByVal As ) As [MustOverride]
+			Public Function [Return](amountToSubtract = java.lang.[Long].MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit) ByVal As ) As [MustOverride]
 			Public MustOverride Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As default
 			Public MustOverride Function minus(ByVal amount As java.time.temporal.TemporalAmount) As default
 			Public MustOverride Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As java.time.temporal.Temporal
@@ -259,19 +259,19 @@ Namespace java.time.chrono
 					Case DAYS
 						Return plusDays(amountToAdd)
 					Case WEEKS
-						Return plusDays(Math.multiplyExact(amountToAdd, 7))
+						Return plusDays (System.Math.multiplyExact(amountToAdd, 7))
 					Case MONTHS
 						Return plusMonths(amountToAdd)
 					Case YEARS
 						Return plusYears(amountToAdd)
 					Case DECADES
-						Return plusYears(Math.multiplyExact(amountToAdd, 10))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 10))
 					Case CENTURIES
-						Return plusYears(Math.multiplyExact(amountToAdd, 100))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 100))
 					Case MILLENNIA
-						Return plusYears(Math.multiplyExact(amountToAdd, 1000))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 1000))
 					Case ERAS
-						Return [with](ERA, Math.addExact(getLong(ERA), amountToAdd))
+						Return [with](ERA, System.Math.addExact(getLong(ERA), amountToAdd))
 				End Select
 				Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & unit)
 			End If
@@ -334,7 +334,7 @@ Namespace java.time.chrono
 		''' <returns> a date based on this one with the weeks added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Friend Overridable Function plusWeeks(ByVal weeksToAdd As Long) As D
-			Return plusDays(Math.multiplyExact(weeksToAdd, 7))
+			Return plusDays (System.Math.multiplyExact(weeksToAdd, 7))
 		End Function
 
 		''' <summary>
@@ -367,7 +367,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Friend Overridable Function minusYears(ByVal yearsToSubtract As Long) As D
-			[Return] (If(yearsToSubtract = Long.MinValue, CType(plusYears(Long.MaxValue), ChronoLocalDateImpl(Of D)).plusYears(1), plusYears(-yearsToSubtract)))
+			[Return] (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, CType(plusYears(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -387,7 +387,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Friend Overridable Function minusMonths(ByVal monthsToSubtract As Long) As D
-			[Return] (If(monthsToSubtract = Long.MinValue, CType(plusMonths(Long.MaxValue), ChronoLocalDateImpl(Of D)).plusMonths(1), plusMonths(-monthsToSubtract)))
+			[Return] (If(monthsToSubtract = java.lang.[Long].MIN_VALUE, CType(plusMonths(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusMonths(1), plusMonths(-monthsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -406,7 +406,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Friend Overridable Function minusWeeks(ByVal weeksToSubtract As Long) As D
-			[Return] (If(weeksToSubtract = Long.MinValue, CType(plusWeeks(Long.MaxValue), ChronoLocalDateImpl(Of D)).plusWeeks(1), plusWeeks(-weeksToSubtract)))
+			[Return] (If(weeksToSubtract = java.lang.[Long].MIN_VALUE, CType(plusWeeks(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusWeeks(1), plusWeeks(-weeksToSubtract)))
 		End Function
 
 		''' <summary>
@@ -423,7 +423,7 @@ Namespace java.time.chrono
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Friend Overridable Function minusDays(ByVal daysToSubtract As Long) As D
-			[Return] (If(daysToSubtract = Long.MinValue, CType(plusDays(Long.MaxValue), ChronoLocalDateImpl(Of D)).plusDays(1), plusDays(-daysToSubtract)))
+			[Return] (If(daysToSubtract = java.lang.[Long].MIN_VALUE, CType(plusDays(Long.Max_Value), ChronoLocalDateImpl(Of D)).plusDays(1), plusDays(-daysToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------

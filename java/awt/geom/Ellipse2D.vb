@@ -442,10 +442,10 @@ Namespace java.awt.geom
 		''' <returns> the hashcode for this <code>Ellipse2D</code>.
 		''' @since 1.6 </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Dim bits As Long = Double.doubleToLongBits(x)
-			bits += Double.doubleToLongBits(y) * 37
-			bits += Double.doubleToLongBits(width) * 43
-			bits += Double.doubleToLongBits(height) * 47
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(x)
+			bits += java.lang.[Double].doubleToLongBits(y) * 37
+			bits += java.lang.[Double].doubleToLongBits(width) * 43
+			bits += java.lang.[Double].doubleToLongBits(height) * 47
 			Return ((CInt(bits)) Xor (CInt(Fix(bits >> 32))))
 		End Function
 

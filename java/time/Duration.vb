@@ -119,7 +119,7 @@ Namespace java.time
 		''' <summary>
 		''' Constant for nanos per second.
 		''' </summary>
-		Private Shared ReadOnly BI_NANOS_PER_SECOND As System.Numerics.BigInteger = System.Numerics.BigInteger.valueOf(NANOS_PER_SECOND)
+		Private Shared ReadOnly BI_NANOS_PER_SECOND As System.Numerics.BigInteger = System.Numerics.Big java.lang.[Integer].valueOf(NANOS_PER_SECOND)
 		''' <summary>
 		''' The pattern for parsing.
 		''' </summary>
@@ -147,7 +147,7 @@ Namespace java.time
 		''' <returns> a {@code Duration}, not null </returns>
 		''' <exception cref="ArithmeticException"> if the input days exceeds the capacity of {@code Duration} </exception>
 		Public Shared Function ofDays(ByVal days As Long) As Duration
-			Return create(Math.multiplyExact(days, SECONDS_PER_DAY), 0)
+			Return create (System.Math.multiplyExact(days, SECONDS_PER_DAY), 0)
 		End Function
 
 		''' <summary>
@@ -161,7 +161,7 @@ Namespace java.time
 		''' <returns> a {@code Duration}, not null </returns>
 		''' <exception cref="ArithmeticException"> if the input hours exceeds the capacity of {@code Duration} </exception>
 		Public Shared Function ofHours(ByVal hours As Long) As Duration
-			Return create(Math.multiplyExact(hours, SECONDS_PER_HOUR), 0)
+			Return create (System.Math.multiplyExact(hours, SECONDS_PER_HOUR), 0)
 		End Function
 
 		''' <summary>
@@ -175,7 +175,7 @@ Namespace java.time
 		''' <returns> a {@code Duration}, not null </returns>
 		''' <exception cref="ArithmeticException"> if the input minutes exceeds the capacity of {@code Duration} </exception>
 		Public Shared Function ofMinutes(ByVal minutes As Long) As Duration
-			Return create(Math.multiplyExact(minutes, SECONDS_PER_MINUTE), 0)
+			Return create (System.Math.multiplyExact(minutes, SECONDS_PER_MINUTE), 0)
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -209,8 +209,8 @@ Namespace java.time
 		''' <returns> a {@code Duration}, not null </returns>
 		''' <exception cref="ArithmeticException"> if the adjustment causes the seconds to exceed the capacity of {@code Duration} </exception>
 		Public Shared Function ofSeconds(ByVal seconds As Long, ByVal nanoAdjustment As Long) As Duration
-			Dim secs As Long = Math.addExact(seconds, Math.floorDiv(nanoAdjustment, NANOS_PER_SECOND))
-			Dim nos As Integer = CInt(Math.floorMod(nanoAdjustment, NANOS_PER_SECOND))
+			Dim secs As Long = System.Math.addExact(seconds, System.Math.floorDiv(nanoAdjustment, NANOS_PER_SECOND))
+			Dim nos As Integer = CInt (System.Math.floorMod(nanoAdjustment, NANOS_PER_SECOND))
 			Return create(secs, nos)
 		End Function
 
@@ -379,7 +379,7 @@ Namespace java.time
 			If parsed Is Nothing Then Return 0
 			Try
 				Dim val As Long = Convert.ToInt64(parsed)
-				Return Math.multiplyExact(val, multiplier)
+				Return System.Math.multiplyExact(val, multiplier)
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
 			Catch NumberFormatException Or ArithmeticException ex
 				Throw CType((New java.time.format.DateTimeParseException("Text cannot be parsed to a Duration: " & errorText, text, 0)).initCause(ex), java.time.format.DateTimeParseException)
@@ -399,7 +399,7 @@ Namespace java.time
 		End Function
 
 		Private Shared Function create(ByVal negate As Boolean, ByVal daysAsSecs As Long, ByVal hoursAsSecs As Long, ByVal minsAsSecs As Long, ByVal secs As Long, ByVal nanos As Integer) As Duration
-			Dim seconds_Renamed As Long = Math.addExact(daysAsSecs, Math.addExact(hoursAsSecs, Math.addExact(minsAsSecs, secs)))
+			Dim seconds_Renamed As Long = System.Math.addExact(daysAsSecs, System.Math.addExact(hoursAsSecs, System.Math.addExact(minsAsSecs, secs)))
 			If negate Then Return ofSeconds(seconds_Renamed, nanos).negated()
 			Return ofSeconds(seconds_Renamed, nanos)
 		End Function
@@ -645,7 +645,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plus(ByVal amountToAdd As Long, ByVal unit As java.time.temporal.TemporalUnit) As Duration
 			java.util.Objects.requireNonNull(unit, "unit")
-			If unit = DAYS Then Return plus(Math.multiplyExact(amountToAdd, SECONDS_PER_DAY), 0)
+			If unit = DAYS Then Return plus (System.Math.multiplyExact(amountToAdd, SECONDS_PER_DAY), 0)
 			If unit.durationEstimated Then Throw New java.time.temporal.UnsupportedTemporalTypeException("Unit must not have an estimated duration")
 			If amountToAdd = 0 Then Return Me
 			If TypeOf unit Is java.time.temporal.ChronoUnit Then
@@ -659,7 +659,7 @@ Namespace java.time
 					Case SECONDS
 						Return plusSeconds(amountToAdd)
 				End Select
-				Return plusSeconds(Math.multiplyExact(unit.duration.seconds, amountToAdd))
+				Return plusSeconds (System.Math.multiplyExact(unit.duration.seconds, amountToAdd))
 			End If
 			Dim duration_Renamed As Duration = unit.duration.multipliedBy(amountToAdd)
 			Return plusSeconds(duration_Renamed.seconds).plusNanos(duration_Renamed.nano)
@@ -678,7 +678,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified days added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plusDays(ByVal daysToAdd As Long) As Duration
-			Return plus(Math.multiplyExact(daysToAdd, SECONDS_PER_DAY), 0)
+			Return plus (System.Math.multiplyExact(daysToAdd, SECONDS_PER_DAY), 0)
 		End Function
 
 		''' <summary>
@@ -690,7 +690,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified hours added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plusHours(ByVal hoursToAdd As Long) As Duration
-			Return plus(Math.multiplyExact(hoursToAdd, SECONDS_PER_HOUR), 0)
+			Return plus (System.Math.multiplyExact(hoursToAdd, SECONDS_PER_HOUR), 0)
 		End Function
 
 		''' <summary>
@@ -702,7 +702,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified minutes added, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plusMinutes(ByVal minutesToAdd As Long) As Duration
-			Return plus(Math.multiplyExact(minutesToAdd, SECONDS_PER_MINUTE), 0)
+			Return plus (System.Math.multiplyExact(minutesToAdd, SECONDS_PER_MINUTE), 0)
 		End Function
 
 		''' <summary>
@@ -752,8 +752,8 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Private Function plus(ByVal secondsToAdd As Long, ByVal nanosToAdd As Long) As Duration
 			If (secondsToAdd Or nanosToAdd) = 0 Then Return Me
-			Dim epochSec As Long = Math.addExact(seconds, secondsToAdd)
-			epochSec = Math.addExact(epochSec, nanosToAdd / NANOS_PER_SECOND)
+			Dim epochSec As Long = System.Math.addExact(seconds, secondsToAdd)
+			epochSec = System.Math.addExact(epochSec, nanosToAdd / NANOS_PER_SECOND)
 			nanosToAdd = nanosToAdd Mod NANOS_PER_SECOND
 			Dim nanoAdjustment As Long = nanos + nanosToAdd ' safe int+NANOS_PER_SECOND
 			Return ofSeconds(epochSec, nanoAdjustment)
@@ -771,7 +771,7 @@ Namespace java.time
 		Public Function minus(ByVal duration_Renamed As Duration) As Duration
 			Dim secsToSubtract As Long = duration_Renamed.seconds
 			Dim nanosToSubtract As Integer = duration_Renamed.nano
-			If secsToSubtract = Long.MinValue Then Return plus(Long.MaxValue, -nanosToSubtract).plus(1, 0)
+			If secsToSubtract = java.lang.[Long].MIN_VALUE Then Return plus(Long.Max_Value, -nanosToSubtract).plus(1, 0)
 			Return plus(-secsToSubtract, -nanosToSubtract)
 		End Function
 
@@ -790,7 +790,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified duration subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As Duration
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -806,7 +806,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified days subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusDays(ByVal daysToSubtract As Long) As Duration
-			Return (If(daysToSubtract = Long.MinValue, plusDays(Long.MaxValue).plusDays(1), plusDays(-daysToSubtract)))
+			Return (If(daysToSubtract = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-daysToSubtract)))
 		End Function
 
 		''' <summary>
@@ -820,7 +820,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified hours subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusHours(ByVal hoursToSubtract As Long) As Duration
-			Return (If(hoursToSubtract = Long.MinValue, plusHours(Long.MaxValue).plusHours(1), plusHours(-hoursToSubtract)))
+			Return (If(hoursToSubtract = java.lang.[Long].MIN_VALUE, plusHours(Long.Max_Value).plusHours(1), plusHours(-hoursToSubtract)))
 		End Function
 
 		''' <summary>
@@ -834,7 +834,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified minutes subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusMinutes(ByVal minutesToSubtract As Long) As Duration
-			Return (If(minutesToSubtract = Long.MinValue, plusMinutes(Long.MaxValue).plusMinutes(1), plusMinutes(-minutesToSubtract)))
+			Return (If(minutesToSubtract = java.lang.[Long].MIN_VALUE, plusMinutes(Long.Max_Value).plusMinutes(1), plusMinutes(-minutesToSubtract)))
 		End Function
 
 		''' <summary>
@@ -846,7 +846,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified seconds subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusSeconds(ByVal secondsToSubtract As Long) As Duration
-			Return (If(secondsToSubtract = Long.MinValue, plusSeconds(Long.MaxValue).plusSeconds(1), plusSeconds(-secondsToSubtract)))
+			Return (If(secondsToSubtract = java.lang.[Long].MIN_VALUE, plusSeconds(Long.Max_Value).plusSeconds(1), plusSeconds(-secondsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -858,7 +858,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified milliseconds subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusMillis(ByVal millisToSubtract As Long) As Duration
-			Return (If(millisToSubtract = Long.MinValue, plusMillis(Long.MaxValue).plusMillis(1), plusMillis(-millisToSubtract)))
+			Return (If(millisToSubtract = java.lang.[Long].MIN_VALUE, plusMillis(Long.Max_Value).plusMillis(1), plusMillis(-millisToSubtract)))
 		End Function
 
 		''' <summary>
@@ -870,7 +870,7 @@ Namespace java.time
 		''' <returns> a {@code Duration} based on this duration with the specified nanoseconds subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusNanos(ByVal nanosToSubtract As Long) As Duration
-			Return (If(nanosToSubtract = Long.MinValue, plusNanos(Long.MaxValue).plusNanos(1), plusNanos(-nanosToSubtract)))
+			Return (If(nanosToSubtract = java.lang.[Long].MIN_VALUE, plusNanos(Long.Max_Value).plusNanos(1), plusNanos(-nanosToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1066,8 +1066,8 @@ Namespace java.time
 		''' <returns> the total length of the duration in milliseconds </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function toMillis() As Long
-			Dim millis As Long = Math.multiplyExact(seconds, 1000)
-			millis = Math.addExact(millis, nanos \ 1000000)
+			Dim millis As Long = System.Math.multiplyExact(seconds, 1000)
+			millis = System.Math.addExact(millis, nanos \ 1000000)
 			Return millis
 		End Function
 
@@ -1080,8 +1080,8 @@ Namespace java.time
 		''' <returns> the total length of the duration in nanoseconds </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function toNanos() As Long
-			Dim totalNanos As Long = Math.multiplyExact(seconds, NANOS_PER_SECOND)
-			totalNanos = Math.addExact(totalNanos, nanos)
+			Dim totalNanos As Long = System.Math.multiplyExact(seconds, NANOS_PER_SECOND)
+			totalNanos = System.Math.addExact(totalNanos, nanos)
 			Return totalNanos
 		End Function
 
@@ -1095,7 +1095,7 @@ Namespace java.time
 		''' <param name="otherDuration">  the other duration to compare to, not null </param>
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		Public Overrides Function compareTo(ByVal otherDuration As Duration) As Integer Implements Comparable(Of Duration).compareTo
-			Dim cmp As Integer = Long.Compare(seconds, otherDuration.seconds)
+			Dim cmp As Integer = java.lang.[Long].Compare(seconds, otherDuration.seconds)
 			If cmp <> 0 Then Return cmp
 			Return nanos - otherDuration.nanos
 		End Function

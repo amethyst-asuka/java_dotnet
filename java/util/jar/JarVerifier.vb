@@ -91,7 +91,7 @@ Namespace java.util.jar
 
 		''' <summary>
 		''' collect -DIGEST-MANIFEST values for blacklist </summary>
-		Private manifestDigests As List(Of Object)
+		Private manifestDigests As  ArrayList
 
 		Public Sub New(ByVal rawBytes As SByte())
 			manifestRawBytes = rawBytes
@@ -179,7 +179,7 @@ Namespace java.util.jar
 		End Sub
 
 		''' <summary>
-		''' update a single byte.
+		''' update a single java.lang.[Byte].
 		''' </summary>
 
 		Public Overridable Sub update(ByVal b As Integer, ByVal mev As sun.security.util.ManifestEntryVerifier)
@@ -672,7 +672,7 @@ Namespace java.util.jar
 		public void eagerValidationion(Boolean eager)
 			eagerValidation = eager
 
-		public synchronized List(Of Object) manifestDigests
+		public synchronized  ArrayList manifestDigests
 			Return Collections.unmodifiableList(manifestDigests)
 
 		static CodeSource getUnsignedCS(java.net.URL url)

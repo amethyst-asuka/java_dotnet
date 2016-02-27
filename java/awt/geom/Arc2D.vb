@@ -750,9 +750,9 @@ Namespace java.awt.geom
 		''' @since 1.2 </returns>
 		Public Overridable Property startPoint As Point2D
 			Get
-				Dim angle As Double = Math.toRadians(-angleStart)
-				Dim x_Renamed As Double = x + (Math.Cos(angle) * 0.5 + 0.5) * width
-				Dim y_Renamed As Double = y + (Math.Sin(angle) * 0.5 + 0.5) * height
+				Dim angle As Double = System.Math.toRadians(-angleStart)
+				Dim x_Renamed As Double = x +  (System.Math.Cos(angle) * 0.5 + 0.5) * width
+				Dim y_Renamed As Double = y +  (System.Math.Sin(angle) * 0.5 + 0.5) * height
 				Return New Point2D.Double(x_Renamed, y_Renamed)
 			End Get
 		End Property
@@ -768,9 +768,9 @@ Namespace java.awt.geom
 		''' @since 1.2 </returns>
 		Public Overridable Property endPoint As Point2D
 			Get
-				Dim angle As Double = Math.toRadians(-angleStart - angleExtent)
-				Dim x_Renamed As Double = x + (Math.Cos(angle) * 0.5 + 0.5) * width
-				Dim y_Renamed As Double = y + (Math.Sin(angle) * 0.5 + 0.5) * height
+				Dim angle As Double = System.Math.toRadians(-angleStart - angleExtent)
+				Dim x_Renamed As Double = x +  (System.Math.Cos(angle) * 0.5 + 0.5) * width
+				Dim y_Renamed As Double = y +  (System.Math.Sin(angle) * 0.5 + 0.5) * height
 				Return New Point2D.Double(x_Renamed, y_Renamed)
 			End Get
 		End Property
@@ -872,29 +872,29 @@ Namespace java.awt.geom
 		''' <param name="radius"> The radius of the arc.
 		''' @since 1.2 </param>
 		Public Overridable Sub setArcByTangent(ByVal p1 As Point2D, ByVal p2 As Point2D, ByVal p3 As Point2D, ByVal radius As Double)
-			Dim ang1 As Double = Math.Atan2(p1.y - p2.y, p1.x - p2.x)
-			Dim ang2 As Double = Math.Atan2(p3.y - p2.y, p3.x - p2.x)
+			Dim ang1 As Double = System.Math.Atan2(p1.y - p2.y, p1.x - p2.x)
+			Dim ang2 As Double = System.Math.Atan2(p3.y - p2.y, p3.x - p2.x)
 			Dim diff As Double = ang2 - ang1
-			If diff > Math.PI Then
-				ang2 -= Math.PI * 2.0
+			If diff > System.Math.PI Then
+				ang2 -= System.Math.PI * 2.0
 			ElseIf diff < -Math.PI Then
-				ang2 += Math.PI * 2.0
+				ang2 += System.Math.PI * 2.0
 			End If
 			Dim bisect As Double = (ang1 + ang2) / 2.0
-			Dim theta As Double = Math.Abs(ang2 - bisect)
-			Dim dist As Double = radius / Math.Sin(theta)
-			Dim x_Renamed As Double = p2.x + dist * Math.Cos(bisect)
-			Dim y_Renamed As Double = p2.y + dist * Math.Sin(bisect)
+			Dim theta As Double = System.Math.Abs(ang2 - bisect)
+			Dim dist As Double = radius / System.Math.Sin(theta)
+			Dim x_Renamed As Double = p2.x + dist * System.Math.Cos(bisect)
+			Dim y_Renamed As Double = p2.y + dist * System.Math.Sin(bisect)
 			' REMIND: This needs some work...
 			If ang1 < ang2 Then
-				ang1 -= Math.PI / 2.0
-				ang2 += Math.PI / 2.0
+				ang1 -= System.Math.PI / 2.0
+				ang2 += System.Math.PI / 2.0
 			Else
-				ang1 += Math.PI / 2.0
-				ang2 -= Math.PI / 2.0
+				ang1 += System.Math.PI / 2.0
+				ang2 -= System.Math.PI / 2.0
 			End If
-			ang1 = Math.toDegrees(-ang1)
-			ang2 = Math.toDegrees(-ang2)
+			ang1 = System.Math.toDegrees(-ang1)
+			ang2 = System.Math.toDegrees(-ang2)
 			diff = ang2 - ang1
 			If diff < 0 Then
 				diff += 360
@@ -919,7 +919,7 @@ Namespace java.awt.geom
 				' Bias the dx and dy by the height and width of the oval.
 				Dim dx As Double = height * (p.x - centerX)
 				Dim dy As Double = width * (p.y - centerY)
-				angleStart = -Math.toDegrees(Math.Atan2(dy, dx))
+				angleStart = -Math.toDegrees (System.Math.Atan2(dy, dx))
 			End Set
 		End Property
 
@@ -945,12 +945,12 @@ Namespace java.awt.geom
 			' Note: reversing the Y equations negates the angle to adjust
 			' for the upside down coordinate system.
 			' Also we should bias atans by the height and width of the oval.
-			Dim ang1 As Double = Math.Atan2(w * (y_Renamed - y1), h * (x1 - x_Renamed))
-			Dim ang2 As Double = Math.Atan2(w * (y_Renamed - y2), h * (x2 - x_Renamed))
+			Dim ang1 As Double = System.Math.Atan2(w * (y_Renamed - y1), h * (x1 - x_Renamed))
+			Dim ang2 As Double = System.Math.Atan2(w * (y_Renamed - y2), h * (x2 - x_Renamed))
 			ang2 -= ang1
-			If ang2 <= 0.0 Then ang2 += Math.PI * 2.0
-			angleStart = Math.toDegrees(ang1)
-			angleExtent = Math.toDegrees(ang2)
+			If ang2 <= 0.0 Then ang2 += System.Math.PI * 2.0
+			angleStart = System.Math.toDegrees(ang1)
+			angleExtent = System.Math.toDegrees(ang2)
 		End Sub
 
 		''' <summary>
@@ -1030,13 +1030,13 @@ Namespace java.awt.geom
 						' 5 is end angle
 						angle += angleExtent
 					End If
-					Dim rads As Double = Math.toRadians(-angle)
-					Dim xe As Double = Math.Cos(rads)
-					Dim ye As Double = Math.Sin(rads)
-					x1 = Math.Min(x1, xe)
-					y1 = Math.Min(y1, ye)
-					x2 = Math.Max(x2, xe)
-					y2 = Math.Max(y2, ye)
+					Dim rads As Double = System.Math.toRadians(-angle)
+					Dim xe As Double = System.Math.Cos(rads)
+					Dim ye As Double = System.Math.Sin(rads)
+					x1 = System.Math.Min(x1, xe)
+					y1 = System.Math.Min(y1, ye)
+					x2 = System.Math.Max(x2, xe)
+					y2 = System.Math.Max(y2, ye)
 				Next i
 				Dim w As Double = width
 				Dim h As Double = height
@@ -1072,7 +1072,7 @@ Namespace java.awt.geom
 				If angle <= (180.0 + 360.0) Then
 					angle = angle - 360.0
 				Else
-					angle = Math.IEEERemainder(angle, 360.0)
+					angle = System.Math.IEEERemainder(angle, 360.0)
 					' IEEEremainder can return -180 here for some input values...
 					If angle = -180.0 Then angle = 180.0
 				End If
@@ -1080,7 +1080,7 @@ Namespace java.awt.geom
 				If angle > (-180.0 - 360.0) Then
 					angle = angle + 360.0
 				Else
-					angle = Math.IEEERemainder(angle, 360.0)
+					angle = System.Math.IEEERemainder(angle, 360.0)
 					' IEEEremainder can return -180 here for some input values...
 					If angle = -180.0 Then angle = 180.0
 				End If
@@ -1132,9 +1132,9 @@ Namespace java.awt.geom
 			Dim normy As Double = (y - y) / ellh - 0.5
 			Dim distSq As Double = (normx * normx + normy * normy)
 			If distSq >= 0.25 Then Return False
-			Dim angExt As Double = Math.Abs(angleExtent)
+			Dim angExt As Double = System.Math.Abs(angleExtent)
 			If angExt >= 360.0 Then Return True
-			Dim inarc As Boolean = containsAngle(-Math.toDegrees(Math.Atan2(normy, normx)))
+			Dim inarc As Boolean = containsAngle(-Math.toDegrees (System.Math.Atan2(normy, normx)))
 			If type = PIE Then Return inarc
 			' CHORD and OPEN behave the same way
 			If inarc Then
@@ -1146,12 +1146,12 @@ Namespace java.awt.geom
 			End If
 			' The point is inside the pie triangle iff it is on the same
 			' side of the line connecting the ends of the arc as the center.
-			Dim angle As Double = Math.toRadians(-angleStart)
-			Dim x1 As Double = Math.Cos(angle)
-			Dim y1 As Double = Math.Sin(angle)
-			angle += Math.toRadians(-angleExtent)
-			Dim x2 As Double = Math.Cos(angle)
-			Dim y2 As Double = Math.Sin(angle)
+			Dim angle As Double = System.Math.toRadians(-angleStart)
+			Dim x1 As Double = System.Math.Cos(angle)
+			Dim y1 As Double = System.Math.Sin(angle)
+			angle += System.Math.toRadians(-angleExtent)
+			Dim x2 As Double = System.Math.Cos(angle)
+			Dim y2 As Double = System.Math.Sin(angle)
 			Dim inside As Boolean = (Line2D.relativeCCW(x1, y1, x2, y2, 2*normx, 2*normy) * Line2D.relativeCCW(x1, y1, x2, y2, 0, 0) >= 0)
 			Return If(inarc, (Not inside), inside)
 		End Function
@@ -1222,7 +1222,7 @@ Namespace java.awt.geom
 	'         * intersect the chord.
 	'         
 			Dim rect As Rectangle2D = New Rectangle2D.Double(x, y, w, h)
-			If type = PIE OrElse Math.Abs(ext) > 180 Then
+			If type = PIE OrElse System.Math.Abs(ext) > 180 Then
 				' for PIE: try to find intersections with pie slices
 				If rect.intersectsLine(axc, ayc, sx, sy) OrElse rect.intersectsLine(axc, ayc, ex, ey) Then Return True
 			Else
@@ -1270,7 +1270,7 @@ Namespace java.awt.geom
 			' If the shape is convex then we have done all the testing
 			' we need.  Only PIE arcs can be concave and then only if
 			' the angular extents are greater than 180 degrees.
-			If type <> PIE OrElse Math.Abs(angleExtent) <= 180.0 Then Return True
+			If type <> PIE OrElse System.Math.Abs(angleExtent) <= 180.0 Then Return True
 			' For a PIE shape we have an additional test for the case where
 			' the angular extents are greater than 180 degrees and all four
 			' rectangular corners are inside the shape but one of the
@@ -1282,13 +1282,13 @@ Namespace java.awt.geom
 			Dim halfH As Double = height / 2.0
 			Dim xc As Double = x + halfW
 			Dim yc As Double = y + halfH
-			Dim angle As Double = Math.toRadians(-angleStart)
-			Dim xe As Double = xc + halfW * Math.Cos(angle)
-			Dim ye As Double = yc + halfH * Math.Sin(angle)
+			Dim angle As Double = System.Math.toRadians(-angleStart)
+			Dim xe As Double = xc + halfW * System.Math.Cos(angle)
+			Dim ye As Double = yc + halfH * System.Math.Sin(angle)
 			If origrect.intersectsLine(xc, yc, xe, ye) Then Return False
-			angle += Math.toRadians(-angleExtent)
-			xe = xc + halfW * Math.Cos(angle)
-			ye = yc + halfH * Math.Sin(angle)
+			angle += System.Math.toRadians(-angleExtent)
+			xe = xc + halfW * System.Math.Cos(angle)
+			ye = yc + halfH * System.Math.Sin(angle)
 			Return Not origrect.intersectsLine(xc, yc, xe, ye)
 		End Function
 
@@ -1316,12 +1316,12 @@ Namespace java.awt.geom
 		''' <returns> the hashcode for this <code>Arc2D</code>.
 		''' @since 1.6 </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Dim bits As Long = Double.doubleToLongBits(x)
-			bits += Double.doubleToLongBits(y) * 37
-			bits += Double.doubleToLongBits(width) * 43
-			bits += Double.doubleToLongBits(height) * 47
-			bits += Double.doubleToLongBits(angleStart) * 53
-			bits += Double.doubleToLongBits(angleExtent) * 59
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(x)
+			bits += java.lang.[Double].doubleToLongBits(y) * 37
+			bits += java.lang.[Double].doubleToLongBits(width) * 43
+			bits += java.lang.[Double].doubleToLongBits(height) * 47
+			bits += java.lang.[Double].doubleToLongBits(angleStart) * 53
+			bits += java.lang.[Double].doubleToLongBits(angleExtent) * 59
 			bits += arcType * 61
 			Return ((CInt(bits)) Xor (CInt(Fix(bits >> 32))))
 		End Function

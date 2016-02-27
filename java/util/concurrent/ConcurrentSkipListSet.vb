@@ -90,7 +90,7 @@ Namespace java.util.concurrent
 		Private Const serialVersionUID As Long = -2479143111061671589L
 
 		''' <summary>
-		''' The underlying map. Uses Boolean.TRUE as value for each
+		''' The underlying map. Uses  java.lang.[Boolean].TRUE as value for each
 		''' element.  This field is declared final for the sake of thread
 		''' safety, which entails some ugliness in clone().
 		''' </summary>
@@ -170,8 +170,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of elements in this set.  If this set
-		''' contains more than {@code  [Integer].MAX_VALUE} elements, it
-		''' returns {@code  [Integer].MAX_VALUE}.
+		''' contains more than {@code  java.lang.[Integer].MAX_VALUE} elements, it
+		''' returns {@code  java.lang.[Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the
@@ -224,7 +224,7 @@ Namespace java.util.concurrent
 		'''         with the elements currently in this set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		Public Overridable Function add(ByVal e As E) As Boolean
-			Return m.putIfAbsent(e, Boolean.TRUE) Is Nothing
+			Return m.putIfAbsent(e,  java.lang.[Boolean].TRUE) Is Nothing
 		End Function
 
 		''' <summary>
@@ -241,7 +241,7 @@ Namespace java.util.concurrent
 		'''         with the elements currently in this set </exception>
 		''' <exception cref="NullPointerException"> if the specified element is null </exception>
 		Public Overridable Function remove(ByVal o As Object) As Boolean
-			Return m.remove(o, Boolean.TRUE)
+			Return m.remove(o,  java.lang.[Boolean].TRUE)
 		End Function
 
 		''' <summary>

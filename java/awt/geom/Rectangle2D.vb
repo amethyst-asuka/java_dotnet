@@ -731,10 +731,10 @@ Namespace java.awt.geom
 		''' <code>src2</code>
 		''' @since 1.2 </param>
 		Public Shared Sub intersect(ByVal src1 As Rectangle2D, ByVal src2 As Rectangle2D, ByVal dest As Rectangle2D)
-			Dim x1 As Double = Math.Max(src1.minX, src2.minX)
-			Dim y1 As Double = Math.Max(src1.minY, src2.minY)
-			Dim x2 As Double = Math.Min(src1.maxX, src2.maxX)
-			Dim y2 As Double = Math.Min(src1.maxY, src2.maxY)
+			Dim x1 As Double = System.Math.Max(src1.minX, src2.minX)
+			Dim y1 As Double = System.Math.Max(src1.minY, src2.minY)
+			Dim x2 As Double = System.Math.Min(src1.maxX, src2.maxX)
+			Dim y2 As Double = System.Math.Min(src1.maxY, src2.maxY)
 			dest.frameame(x1, y1, x2-x1, y2-y1)
 		End Sub
 
@@ -766,10 +766,10 @@ Namespace java.awt.geom
 		''' <code>src2</code>
 		''' @since 1.2 </param>
 		Public Shared Sub union(ByVal src1 As Rectangle2D, ByVal src2 As Rectangle2D, ByVal dest As Rectangle2D)
-			Dim x1 As Double = Math.Min(src1.minX, src2.minX)
-			Dim y1 As Double = Math.Min(src1.minY, src2.minY)
-			Dim x2 As Double = Math.Max(src1.maxX, src2.maxX)
-			Dim y2 As Double = Math.Max(src1.maxY, src2.maxY)
+			Dim x1 As Double = System.Math.Min(src1.minX, src2.minX)
+			Dim y1 As Double = System.Math.Min(src1.minY, src2.minY)
+			Dim x2 As Double = System.Math.Max(src1.maxX, src2.maxX)
+			Dim y2 As Double = System.Math.Max(src1.maxY, src2.maxY)
 			dest.frameFromDiagonalnal(x1, y1, x2, y2)
 		End Sub
 
@@ -792,10 +792,10 @@ Namespace java.awt.geom
 		''' <param name="newy"> the Y coordinate of the new point
 		''' @since 1.2 </param>
 		Public Overridable Sub add(ByVal newx As Double, ByVal newy As Double)
-			Dim x1 As Double = Math.Min(minX, newx)
-			Dim x2 As Double = Math.Max(maxX, newx)
-			Dim y1 As Double = Math.Min(minY, newy)
-			Dim y2 As Double = Math.Max(maxY, newy)
+			Dim x1 As Double = System.Math.Min(minX, newx)
+			Dim x2 As Double = System.Math.Max(maxX, newx)
+			Dim y1 As Double = System.Math.Min(minY, newy)
+			Dim y2 As Double = System.Math.Max(maxY, newy)
 			rectect(x1, y1, x2 - x1, y2 - y1)
 		End Sub
 
@@ -828,10 +828,10 @@ Namespace java.awt.geom
 		''' <code>Rectangle2D</code>.
 		''' @since 1.2 </param>
 		Public Overridable Sub add(ByVal r As Rectangle2D)
-			Dim x1 As Double = Math.Min(minX, r.minX)
-			Dim x2 As Double = Math.Max(maxX, r.maxX)
-			Dim y1 As Double = Math.Min(minY, r.minY)
-			Dim y2 As Double = Math.Max(maxY, r.maxY)
+			Dim x1 As Double = System.Math.Min(minX, r.minX)
+			Dim x2 As Double = System.Math.Max(maxX, r.maxX)
+			Dim y1 As Double = System.Math.Min(minY, r.minY)
+			Dim y2 As Double = System.Math.Max(maxY, r.maxY)
 			rectect(x1, y1, x2 - x1, y2 - y1)
 		End Sub
 
@@ -883,10 +883,10 @@ Namespace java.awt.geom
 		''' <returns> the hashcode for this <code>Rectangle2D</code>.
 		''' @since 1.2 </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Dim bits As Long = Double.doubleToLongBits(x)
-			bits += Double.doubleToLongBits(y) * 37
-			bits += Double.doubleToLongBits(width) * 43
-			bits += Double.doubleToLongBits(height) * 47
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(x)
+			bits += java.lang.[Double].doubleToLongBits(y) * 37
+			bits += java.lang.[Double].doubleToLongBits(width) * 43
+			bits += java.lang.[Double].doubleToLongBits(height) * 47
 			Return ((CInt(bits)) Xor (CInt(Fix(bits >> 32))))
 		End Function
 

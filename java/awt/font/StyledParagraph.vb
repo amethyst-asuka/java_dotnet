@@ -69,7 +69,7 @@ Namespace java.awt.font
 		' they are
 		' stored in this Vector, in order.  Otherwise this vector and
 		' the fontStarts array are null.
-		Private fonts As List(Of Object)
+		Private fonts As  ArrayList
 		' If there are multiple Fonts/GraphicAttributes in the paragraph,
 		' fontStarts[i] contains the index where decoration i
 		' starts.  For convenience, there is an extra entry at the
@@ -151,7 +151,7 @@ Namespace java.awt.font
 			' paragraph.
 
 			Dim ch As Char = aci.indexdex(insertPos)
-			Dim relativePos As Integer = Math.Max(insertPos - aci.beginIndex - 1, 0)
+			Dim relativePos As Integer = System.Math.Max(insertPos - aci.beginIndex - 1, 0)
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim attributes As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?) = addInputMethodAttrs(aci.attributes)
@@ -239,7 +239,7 @@ Namespace java.awt.font
 				Dim run As Integer = findRunContaining(index, fontStarts)
 				limit2 = fontStarts(run+1)
 			End If
-			Return Math.Min(limit1, limit2)
+			Return System.Math.Min(limit1, limit2)
 		End Function
 
 		''' <summary>
@@ -338,7 +338,7 @@ Namespace java.awt.font
 				font_Renamed = f
 			Else
 				If Not font_Renamed.Equals(f) Then
-					fonts = New List(Of Object)(INITIAL_SIZE)
+					fonts = New  ArrayList(INITIAL_SIZE)
 					fonts.Add(font_Renamed)
 					fonts.Add(f)
 					fontStarts = New Integer(INITIAL_SIZE - 1){}

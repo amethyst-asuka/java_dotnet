@@ -603,7 +603,7 @@ Namespace java.awt
 			If g > 0 AndAlso g < i Then g = i
 			If b > 0 AndAlso b < i Then b = i
 
-			Return New Color(Math.Min(CInt(Fix(r/FACTOR)), 255), Math.Min(CInt(Fix(g/FACTOR)), 255), Math.Min(CInt(Fix(b/FACTOR)), 255), alpha_Renamed)
+			Return New Color (System.Math.Min(CInt(Fix(r/FACTOR)), 255), System.Math.Min(CInt(Fix(g/FACTOR)), 255), System.Math.Min(CInt(Fix(b/FACTOR)), 255), alpha_Renamed)
 
 		''' <summary>
 		''' Creates a new <code>Color</code> that is a darker version of this
@@ -623,7 +623,7 @@ Namespace java.awt
 		''' <seealso cref=        java.awt.Color#brighter
 		''' @since      JDK1.0 </seealso>
 		public Color darker()
-			Return New Color(Math.Max(CInt(Fix(red *FACTOR)), 0), Math.Max(CInt(Fix(green*FACTOR)), 0), Math.Max(CInt(Fix(blue *FACTOR)), 0), alpha)
+			Return New Color (System.Math.Max(CInt(Fix(red *FACTOR)), 0), System.Math.Max(CInt(Fix(green*FACTOR)), 0), System.Math.Max(CInt(Fix(blue *FACTOR)), 0), alpha)
 
 		''' <summary>
 		''' Computes the hash code for this <code>Color</code>. </summary>
@@ -668,10 +668,10 @@ Namespace java.awt
 		''' <seealso cref=        java.lang.Integer#decode </seealso>
 		''' <exception cref="NumberFormatException">  if the specified string cannot
 		'''                      be interpreted as a decimal,
-		'''                      octal, or hexadecimal integer.
+		'''                      octal, or hexadecimal  java.lang.[Integer].
 		''' @since      JDK1.1 </exception>
 		public static Color decode(String nm) throws NumberFormatException
-			Dim intval As Integer? = Integer.decode(nm)
+			Dim intval As Integer? =  java.lang.[Integer].decode(nm)
 			Dim i As Integer = intval
 			Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, i And &HFF)
 
@@ -715,7 +715,7 @@ Namespace java.awt
 		''' <seealso cref=      java.awt.Color#Color(int)
 		''' @since    JDK1.0 </seealso>
 		public static Color getColor(String nm, Color v)
-			Dim intval As Integer? = Integer.getInteger(nm)
+			Dim intval As Integer? =  java.lang.[Integer].getInteger(nm)
 			If intval Is Nothing Then Return v
 			Dim i As Integer = intval
 			Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, i And &HFF)
@@ -735,13 +735,13 @@ Namespace java.awt
 		''' <param name="v">   the default color value, as an integer </param>
 		''' <returns>   the <code>Color</code> converted from the system
 		'''          property or the <code>Color</code> converted from
-		'''          the specified integer. </returns>
+		'''          the specified  java.lang.[Integer]. </returns>
 		''' <seealso cref=      java.lang.System#getProperty(java.lang.String) </seealso>
 		''' <seealso cref=      java.lang.Integer#getInteger(java.lang.String) </seealso>
 		''' <seealso cref=      java.awt.Color#Color(int)
 		''' @since    JDK1.0 </seealso>
 		public static Color getColor(String nm, Integer v)
-			Dim intval As Integer? = Integer.getInteger(nm)
+			Dim intval As Integer? =  java.lang.[Integer].getInteger(nm)
 			Dim i As Integer = If(intval IsNot Nothing, intval, v)
 			Return New Color((i >> 16) And &HFF, (i >> 8) And &HFF, (i >> 0) And &HFF)
 
@@ -778,8 +778,8 @@ Namespace java.awt
                 g = b
                 r = g
             Else
-                Dim h As Single = (hue - CSng(Math.Floor(hue))) * 6.0F
-                Dim f As Single = h - CSng(Math.Floor(h))
+                Dim h As Single = (hue - CSng (System.Math.Floor(hue))) * 6.0F
+                Dim f As Single = h - CSng (System.Math.Floor(h))
                 Dim p As Single = brightness * (1.0F - saturation)
                 Dim q As Single = brightness * (1.0F - saturation * f)
                 Dim t As Single = brightness * (1.0F - (saturation * (1.0F - f)))

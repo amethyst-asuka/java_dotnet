@@ -54,16 +54,16 @@ Namespace java.awt.geom
 			Dim ext As Double = -a.angleExtent
 			If ext >= 360.0 OrElse ext <= -360 Then
 				arcSegs = 4
-				Me.increment = Math.PI / 2
-				' btan(Math.PI / 2);
+				Me.increment = System.Math.PI / 2
+				' btan (System.Math.PI / 2);
 				Me.cv = 0.5522847498307933
 				If ext < 0 Then
 					increment = -increment
 					cv = -cv
 				End If
 			Else
-				arcSegs = CInt(Fix(Math.Ceiling(Math.Abs(ext) / 90.0)))
-				Me.increment = Math.toRadians(ext / arcSegs)
+				arcSegs = CInt(Fix (System.Math.Ceiling (System.Math.Abs(ext) / 90.0)))
+				Me.increment = System.Math.toRadians(ext / arcSegs)
 				Me.cv = btan(increment)
 				If cv = 0 Then arcSegs = 0
 			End If
@@ -189,7 +189,7 @@ Namespace java.awt.geom
 	'     
 		Private Shared Function btan(ByVal increment As Double) As Double
 			increment /= 2.0
-			Return 4.0 / 3.0 * Math.Sin(increment) / (1.0 + Math.Cos(increment))
+			Return 4.0 / 3.0 * System.Math.Sin(increment) / (1.0 + System.Math.Cos(increment))
 		End Function
 
 		''' <summary>
@@ -213,8 +213,8 @@ Namespace java.awt.geom
 			If done Then Throw New NoSuchElementException("arc iterator out of bounds")
 			Dim angle As Double = angStRad
 			If index = 0 Then
-				coords(0) = CSng(x + Math.Cos(angle) * w)
-				coords(1) = CSng(y + Math.Sin(angle) * h)
+				coords(0) = CSng(x + System.Math.Cos(angle) * w)
+				coords(1) = CSng(y + System.Math.Sin(angle) * h)
 				If affine IsNot Nothing Then affine.transform(coords, 0, coords, 0, 1)
 				Return SEG_MOVETO
 			End If
@@ -226,13 +226,13 @@ Namespace java.awt.geom
 				Return SEG_LINETO
 			End If
 			angle += increment * (index - 1)
-			Dim relx As Double = Math.Cos(angle)
-			Dim rely As Double = Math.Sin(angle)
+			Dim relx As Double = System.Math.Cos(angle)
+			Dim rely As Double = System.Math.Sin(angle)
 			coords(0) = CSng(x + (relx - cv * rely) * w)
 			coords(1) = CSng(y + (rely + cv * relx) * h)
 			angle += increment
-			relx = Math.Cos(angle)
-			rely = Math.Sin(angle)
+			relx = System.Math.Cos(angle)
+			rely = System.Math.Sin(angle)
 			coords(2) = CSng(x + (relx + cv * rely) * w)
 			coords(3) = CSng(y + (rely - cv * relx) * h)
 			coords(4) = CSng(x + relx * w)
@@ -262,8 +262,8 @@ Namespace java.awt.geom
 			If done Then Throw New NoSuchElementException("arc iterator out of bounds")
 			Dim angle As Double = angStRad
 			If index = 0 Then
-				coords(0) = x + Math.Cos(angle) * w
-				coords(1) = y + Math.Sin(angle) * h
+				coords(0) = x + System.Math.Cos(angle) * w
+				coords(1) = y + System.Math.Sin(angle) * h
 				If affine IsNot Nothing Then affine.transform(coords, 0, coords, 0, 1)
 				Return SEG_MOVETO
 			End If
@@ -275,13 +275,13 @@ Namespace java.awt.geom
 				Return SEG_LINETO
 			End If
 			angle += increment * (index - 1)
-			Dim relx As Double = Math.Cos(angle)
-			Dim rely As Double = Math.Sin(angle)
+			Dim relx As Double = System.Math.Cos(angle)
+			Dim rely As Double = System.Math.Sin(angle)
 			coords(0) = x + (relx - cv * rely) * w
 			coords(1) = y + (rely + cv * relx) * h
 			angle += increment
-			relx = Math.Cos(angle)
-			rely = Math.Sin(angle)
+			relx = System.Math.Cos(angle)
+			rely = System.Math.Sin(angle)
 			coords(2) = x + (relx + cv * rely) * w
 			coords(3) = y + (rely - cv * relx) * h
 			coords(4) = x + relx * w

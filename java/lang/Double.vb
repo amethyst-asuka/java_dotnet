@@ -54,21 +54,21 @@ Namespace java.lang
         ''' <summary>
         ''' A constant holding the positive infinity of type
         ''' {@code double}. It is equal to the value returned by
-        ''' {@code Double.longBitsToDouble(0x7ff0000000000000L)}.
+        ''' {@code java.lang.[Double].longBitsToDouble(0x7ff0000000000000L)}.
         ''' </summary>
         Public Const POSITIVE_INFINITY As Double = 1.0 / 0.0
 
         ''' <summary>
         ''' A constant holding the negative infinity of type
         ''' {@code double}. It is equal to the value returned by
-        ''' {@code Double.longBitsToDouble(0xfff0000000000000L)}.
+        ''' {@code java.lang.[Double].longBitsToDouble(0xfff0000000000000L)}.
         ''' </summary>
         Public Const NEGATIVE_INFINITY As Double = -1.0 / 0.0
 
         ''' <summary>
         ''' A constant holding a Not-a-Number (NaN) value of type
         ''' {@code double}. It is equivalent to the value returned by
-        ''' {@code Double.longBitsToDouble(0x7ff8000000000000L)}.
+        ''' {@code java.lang.[Double].longBitsToDouble(0x7ff8000000000000L)}.
         ''' </summary>
         Public Shared ReadOnly NaN As Double = 0.0R / 0.0
 
@@ -78,7 +78,7 @@ Namespace java.lang
         ''' (2-2<sup>-52</sup>)&middot;2<sup>1023</sup>.  It is equal to
         ''' the hexadecimal floating-point literal
         ''' {@code 0x1.fffffffffffffP+1023} and also equal to
-        ''' {@code Double.longBitsToDouble(0x7fefffffffffffffL)}.
+        ''' {@code java.lang.[Double].longBitsToDouble(0x7fefffffffffffffL)}.
         ''' </summary>
         Public Shared ReadOnly MAX_VALUE As Double = &H1.fffffffffffffP + 1023 ' 1.7976931348623157e+308
 
@@ -86,7 +86,7 @@ Namespace java.lang
         ''' A constant holding the smallest positive normal value of type
         ''' {@code double}, 2<sup>-1022</sup>.  It is equal to the
         ''' hexadecimal floating-point literal {@code 0x1.0p-1022} and also
-        ''' equal to {@code Double.longBitsToDouble(0x0010000000000000L)}.
+        ''' equal to {@code java.lang.[Double].longBitsToDouble(0x0010000000000000L)}.
         ''' 
         ''' @since 1.6
         ''' </summary>
@@ -97,14 +97,14 @@ Namespace java.lang
 		''' {@code double}, 2<sup>-1074</sup>. It is equal to the
 		''' hexadecimal floating-point literal
 		''' {@code 0x0.0000000000001P-1022} and also equal to
-		''' {@code Double.longBitsToDouble(0x1L)}.
+		''' {@code java.lang.[Double].longBitsToDouble(0x1L)}.
 		''' </summary>
 		Public Shared ReadOnly MIN_VALUE As Double = &H0.0000000000001P-1022 ' 4.9e-324
 
 		''' <summary>
 		''' Maximum exponent a finite {@code double} variable may have.
 		''' It is equal to the value returned by
-		''' {@code Math.getExponent(Double.MAX_VALUE)}.
+		''' {@code System.Math.getExponent(Double.MAX_VALUE)}.
 		''' 
 		''' @since 1.6
 		''' </summary>
@@ -113,7 +113,7 @@ Namespace java.lang
         ''' <summary>
         ''' Minimum exponent a normalized {@code double} variable may
         ''' have.  It is equal to the value returned by
-        ''' {@code Math.getExponent(Double.MIN_NORMAL)}.
+        ''' {@code System.Math.getExponent(Double.MIN_NORMAL)}.
         ''' 
         ''' @since 1.6
         ''' </summary>
@@ -131,7 +131,7 @@ Namespace java.lang
         ''' 
         ''' @since 1.8
         ''' </summary>
-        Public Shared ReadOnly BYTES As Integer = SIZE \ [Byte].SIZE
+        Public Shared ReadOnly BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
         ''' <summary>
         ''' The {@code Class} instance representing the primitive type
@@ -242,7 +242,7 @@ Namespace java.lang
         ''' are zero, in which case a single zero is used. Next, the
         ''' exponent is represented by {@code "p"} followed
         ''' by a decimal string of the unbiased exponent as if produced by
-        ''' a call to <seealso cref="Integer#toString(int) Integer.toString"/> on the
+        ''' a call to <seealso cref="Integer#toString(int)  java.lang.[Integer].toString"/> on the
         ''' exponent value.
         ''' 
         ''' <li>If <i>m</i> is a {@code double} value with a subnormal
@@ -267,13 +267,13 @@ Namespace java.lang
         ''' <tr><td>{@code 3.0}</td> <td>{@code 0x1.8p1}</td>
         ''' <tr><td>{@code 0.5}</td> <td>{@code 0x1.0p-1}</td>
         ''' <tr><td>{@code 0.25}</td>        <td>{@code 0x1.0p-2}</td>
-        ''' <tr><td>{@code Double.MAX_VALUE}</td>
+        ''' <tr><td>{@code java.lang.[Double].MAX_VALUE}</td>
         '''     <td>{@code 0x1.fffffffffffffp1023}</td>
         ''' <tr><td>{@code Minimum Normal Value}</td>
         '''     <td>{@code 0x1.0p-1022}</td>
         ''' <tr><td>{@code Maximum Subnormal Value}</td>
         '''     <td>{@code 0x0.fffffffffffffp-1022}</td>
-        ''' <tr><td>{@code Double.MIN_VALUE}</td>
+        ''' <tr><td>{@code java.lang.[Double].MIN_VALUE}</td>
         '''     <td>{@code 0x0.0000000000001p-1022}</td>
         ''' </table> </summary>
         ''' <param name="d">   the {@code double} to be converted. </param>
@@ -293,11 +293,11 @@ Namespace java.lang
                 ' Initialized to maximum size of output.
                 Dim answer As New StringBuilder(24)
 
-                If Math.copySign(1.0, d) = -1.0 Then ' value is negative, answer.append("-") ' so append sign info
+                If System.Math.copySign(1.0, d) = -1.0 Then ' value is negative, answer.append("-") ' so append sign info
 
                     answer.append("0x")
 
-                    d = Math.abs(d)
+                    d = System.Math.abs(d)
 
                     If d = 0.0 Then
                         answer.append("0.0p0")
@@ -317,7 +317,7 @@ Namespace java.lang
                         ' representation.  If all the digits are zero,
                         ' replace with a single 0; otherwise, remove all
                         ' trailing zeros.
-                        Dim signif As String = Long.toHexString(signifBits).Substring(3, 13)
+                        Dim signif As String = java.lang.[Long].toHexString(signifBits).Substring(3, 13)
                         answer.append(If(signif.Equals("0000000000000"), "0", signif.replaceFirst("0{1,12}$", ""))) ' 13 zeros
 
                         answer.append("p"c)
@@ -325,7 +325,7 @@ Namespace java.lang
                         ' value for double; otherwise, extract and report d's
                         ' exponent (the representation of a subnormal uses
                         ' E_min -1).
-                        answer.append(If(subnormal, sun.misc.DoubleConsts.MIN_EXPONENT, Math.getExponent(d)))
+                        answer.append(If(subnormal, sun.misc.DoubleConsts.MIN_EXPONENT, System.Math.getExponent(d)))
                     End If
                     Return answer.ToString()
                 End If
@@ -444,7 +444,7 @@ Namespace java.lang
         '''  final String Digits     = "(\\p{Digit}+)";
         '''  final String HexDigits  = "(\\p{XDigit}+)";
         '''  // an exponent is 'e' or 'E' followed by an optionally
-        '''  // signed decimal integer.
+        '''  // signed decimal  java.lang.[Integer].
         '''  final String Exp        = "[eE][+-]?"+Digits;
         '''  final String fpRegex    =
         '''      ("[\\x00-\\x20]*"+  // Optional leading "whitespace"
@@ -481,7 +481,7 @@ Namespace java.lang
         '''       "[\\x00-\\x20]*");// Optional trailing "whitespace"
         ''' 
         '''  if (Pattern.matches(fpRegex, myString))
-        '''      Double.valueOf(myString); // Will not throw NumberFormatException
+        '''      java.lang.[Double].valueOf(myString); // Will not throw NumberFormatException
         '''  else {
         '''      // Perform suitable alternative action
         '''  }
@@ -562,11 +562,11 @@ Namespace java.lang
         ''' floating-point value, {@code false} otherwise.
         ''' @since 1.8 </returns>
         Public Shared Function isFinite(ByVal d As Double) As Boolean
-            Return Math.abs(d) <= sun.misc.DoubleConsts.MAX_VALUE
+            Return System.Math.abs(d) <= sun.misc.DoubleConsts.MAX_VALUE
         End Function
 
         ''' <summary>
-        ''' The value of the Double.
+        ''' The value of the java.lang.[Double].
         ''' 
         ''' @serial
         ''' </summary>
@@ -714,17 +714,17 @@ Namespace java.lang
         ''' where {@code v} is defined by:
         ''' 
         ''' <blockquote>
-        '''  {@code long v = Double.doubleToLongBits(this.doubleValue());}
+        '''  {@code long v = java.lang.[Double].doubleToLongBits(this.doubleValue());}
         ''' </blockquote>
         ''' </summary>
         ''' <returns>  a {@code hash code} value for this object. </returns>
         Public Overrides Function GetHashCode() As Integer
-            Return [Double].hashCode(value)
+            Return java.lang.[Double].hashCode(value)
         End Function
 
         ''' <summary>
         ''' Returns a hash code for a {@code double} value; compatible with
-        ''' {@code Double.hashCode()}.
+        ''' {@code java.lang.[Double].hashCode()}.
         ''' </summary>
         ''' <param name="value"> the value to hash </param>
         ''' <returns> a hash code value for a {@code double} value.
@@ -758,9 +758,9 @@ Namespace java.lang
         ''' exceptions:
         ''' <ul>
         ''' <li>If {@code d1} and {@code d2} both represent
-        '''     {@code Double.NaN}, then the {@code equals} method
+        '''     {@code java.lang.[Double].NaN}, then the {@code equals} method
         '''     returns {@code true}, even though
-        '''     {@code Double.NaN==Double.NaN} has the value
+        '''     {@code java.lang.[Double].NaN==Double.NaN} has the value
         '''     {@code false}.
         ''' <li>If {@code d1} represents {@code +0.0} while
         '''     {@code d2} represents {@code -0.0}, or vice versa,
@@ -876,7 +876,7 @@ Namespace java.lang
         ''' 754 floating-point operation provided by Java can distinguish
         ''' between two NaN values of the same type with different bit
         ''' patterns.  Distinct values of NaN are only distinguishable by
-        ''' use of the {@code Double.doubleToRawLongBits} method.
+        ''' use of the {@code java.lang.[Double].doubleToRawLongBits} method.
         ''' 
         ''' <p>In all other cases, let <i>s</i>, <i>e</i>, and <i>m</i> be three
         ''' values that can be computed from the argument:
@@ -912,7 +912,7 @@ Namespace java.lang
         ''' dependent; although all NaN bit patterns, quiet or signaling,
         ''' must be in the NaN range identified above.
         ''' </summary>
-        ''' <param name="bits">   any {@code long} integer. </param>
+        ''' <param name="bits">   any {@code long}  java.lang.[Integer]. </param>
         ''' <returns>  the {@code double} floating-point value with the same
         '''          bit pattern. </returns>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -927,10 +927,10 @@ Namespace java.lang
         ''' comparison operators ({@code <, <=, ==, >=, >})
         ''' when applied to primitive {@code double} values:
         ''' <ul><li>
-        '''          {@code Double.NaN} is considered by this method
+        '''          {@code java.lang.[Double].NaN} is considered by this method
         '''          to be equal to itself and greater than all other
         '''          {@code double} values (including
-        '''          {@code Double.POSITIVE_INFINITY}).
+        '''          {@code java.lang.[Double].POSITIVE_INFINITY}).
         ''' <li>
         '''          {@code 0.0d} is considered by this method to be greater
         '''          than {@code -0.0d}.
@@ -950,7 +950,7 @@ Namespace java.lang
         ''' 
         ''' @since   1.2 </returns>
         Public Function compareTo(ByVal anotherDouble As Double?) As Integer
-            Return [Double].compare(value, anotherDouble.Value)
+            Return java.lang.[Double].compare(value, anotherDouble.Value)
         End Function
 
         ''' <summary>
@@ -975,8 +975,8 @@ Namespace java.lang
             If d1 > d2 Then Return 1 ' Neither val is NaN, thisVal is larger
 
             ' Cannot use doubleToRawLongBits because of possibility of NaNs.
-            Dim thisBits As Long = [Double].doubleToLongBits(d1)
-            Dim anotherBits As Long = [Double].doubleToLongBits(d2)
+            Dim thisBits As Long = java.lang.[Double].doubleToLongBits(d1)
+            Dim anotherBits As Long = java.lang.[Double].doubleToLongBits(d2)
 
             Return (If(thisBits = anotherBits, 0, (If(thisBits < anotherBits, -1, 1)))) ' (0.0, -0.0) or (NaN, !NaN) -  (-0.0, 0.0) or (!NaN, NaN) -  Values are equal
         End Function
@@ -996,7 +996,7 @@ Namespace java.lang
 
         ''' <summary>
         ''' Returns the greater of two {@code double} values
-        ''' as if by calling <seealso cref="Math#max(double, double) Math.max"/>.
+        ''' as if by calling <seealso cref="Math#max(double, double) System.Math.max"/>.
         ''' </summary>
         ''' <param name="a"> the first operand </param>
         ''' <param name="b"> the second operand </param>
@@ -1004,12 +1004,12 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function max(ByVal a As Double, ByVal b As Double) As Double
-            Return Math.max(a, b)
+            Return System.Math.max(a, b)
         End Function
 
         ''' <summary>
         ''' Returns the smaller of two {@code double} values
-        ''' as if by calling <seealso cref="Math#min(double, double) Math.min"/>.
+        ''' as if by calling <seealso cref="Math#min(double, double) System.Math.min"/>.
         ''' </summary>
         ''' <param name="a"> the first operand </param>
         ''' <param name="b"> the second operand </param>
@@ -1017,7 +1017,7 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function min(ByVal a As Double, ByVal b As Double) As Double
-            Return Math.min(a, b)
+            Return System.Math.min(a, b)
         End Function
 
         ''' <summary>

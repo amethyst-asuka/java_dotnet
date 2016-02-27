@@ -29,46 +29,46 @@ Imports System.Collections.Generic
 
 Namespace java.util
 
-	''' <summary>
-	''' This class provides a skeletal implementation of the <tt>Map</tt>
-	''' interface, to minimize the effort required to implement this interface.
-	''' 
-	''' <p>To implement an unmodifiable map, the programmer needs only to extend this
-	''' class and provide an implementation for the <tt>entrySet</tt> method, which
-	''' returns a set-view of the map's mappings.  Typically, the returned set
-	''' will, in turn, be implemented atop <tt>AbstractSet</tt>.  This set should
-	''' not support the <tt>add</tt> or <tt>remove</tt> methods, and its iterator
-	''' should not support the <tt>remove</tt> method.
-	''' 
-	''' <p>To implement a modifiable map, the programmer must additionally override
-	''' this class's <tt>put</tt> method (which otherwise throws an
-	''' <tt>UnsupportedOperationException</tt>), and the iterator returned by
-	''' <tt>entrySet().iterator()</tt> must additionally implement its
-	''' <tt>remove</tt> method.
-	''' 
-	''' <p>The programmer should generally provide a void (no argument) and map
-	''' constructor, as per the recommendation in the <tt>Map</tt> interface
-	''' specification.
-	''' 
-	''' <p>The documentation for each non-abstract method in this class describes its
-	''' implementation in detail.  Each of these methods may be overridden if the
-	''' map being implemented admits a more efficient implementation.
-	''' 
-	''' <p>This class is a member of the
-	''' <a href="{@docRoot}/../technotes/guides/collections/index.html">
-	''' Java Collections Framework</a>.
-	''' </summary>
-	''' @param <K> the type of keys maintained by this map </param>
-	''' @param <V> the type of mapped values
-	''' 
-	''' @author  Josh Bloch
-	''' @author  Neal Gafter </param>
-	''' <seealso cref= Map </seealso>
-	''' <seealso cref= Collection
-	''' @since 1.2 </seealso>
+    ''' <summary>
+    ''' This class provides a skeletal implementation of the <tt>Map</tt>
+    ''' interface, to minimize the effort required to implement this interface.
+    ''' 
+    ''' <p>To implement an unmodifiable map, the programmer needs only to extend this
+    ''' class and provide an implementation for the <tt>entrySet</tt> method, which
+    ''' returns a set-view of the map's mappings.  Typically, the returned set
+    ''' will, in turn, be implemented atop <tt>AbstractSet</tt>.  This set should
+    ''' not support the <tt>add</tt> or <tt>remove</tt> methods, and its iterator
+    ''' should not support the <tt>remove</tt> method.
+    ''' 
+    ''' <p>To implement a modifiable map, the programmer must additionally override
+    ''' this class's <tt>put</tt> method (which otherwise throws an
+    ''' <tt>UnsupportedOperationException</tt>), and the iterator returned by
+    ''' <tt>entrySet().iterator()</tt> must additionally implement its
+    ''' <tt>remove</tt> method.
+    ''' 
+    ''' <p>The programmer should generally provide a void (no argument) and map
+    ''' constructor, as per the recommendation in the <tt>Map</tt> interface
+    ''' specification.
+    ''' 
+    ''' <p>The documentation for each non-abstract method in this class describes its
+    ''' implementation in detail.  Each of these methods may be overridden if the
+    ''' map being implemented admits a more efficient implementation.
+    ''' 
+    ''' <p>This class is a member of the
+    ''' <a href="{@docRoot}/../technotes/guides/collections/index.html">
+    ''' Java Collections Framework</a>.
+    ''' </summary>
+    ''' @param <K> the type of keys maintained by this map </param>
+    ''' @param <V> the type of mapped values
+    ''' 
+    ''' @author  Josh Bloch
+    ''' @author  Neal Gafter </param>
+    ''' <seealso cref= Map </seealso>
+    ''' <seealso cref= Collection
+    ''' @since 1.2 </seealso>
 
-	Public MustInherit Class AbstractMap(Of K, V)
-		Implements Map(Of K, V)
+    Public MustInherit Class AbstractMap(Of K, V) : Inherits java.lang.Object
+        Implements Map(Of K, V)
 
 		''' <summary>
 		''' Sole constructor.  (For invocation by subclass constructors, typically

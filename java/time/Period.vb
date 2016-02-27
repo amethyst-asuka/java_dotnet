@@ -179,7 +179,7 @@ Namespace java.time
 		''' <param name="weeks">  the number of weeks, positive or negative </param>
 		''' <returns> the period, with the input weeks converted to days, not null </returns>
 		Public Shared Function ofWeeks(ByVal weeks As Integer) As Period
-			Return create(0, 0, Math.multiplyExact(weeks, 7))
+			Return create(0, 0, System.Math.multiplyExact(weeks, 7))
 		End Function
 
 		''' <summary>
@@ -239,11 +239,11 @@ Namespace java.time
 			For Each unit As java.time.temporal.TemporalUnit In amount.units
 				Dim unitAmount As Long = amount.get(unit)
 				If unit = java.time.temporal.ChronoUnit.YEARS Then
-					years_Renamed = Math.toIntExact(unitAmount)
+					years_Renamed = System.Math.toIntExact(unitAmount)
 				ElseIf unit = java.time.temporal.ChronoUnit.MONTHS Then
-					months_Renamed = Math.toIntExact(unitAmount)
+					months_Renamed = System.Math.toIntExact(unitAmount)
 				ElseIf unit = java.time.temporal.ChronoUnit.DAYS Then
-					days_Renamed = Math.toIntExact(unitAmount)
+					days_Renamed = System.Math.toIntExact(unitAmount)
 				Else
 					Throw New DateTimeException("Unit must be Years, Months or Days, but was " & unit)
 				End If
@@ -305,7 +305,7 @@ Namespace java.time
 						Dim months_Renamed As Integer = parseNumber(text, monthMatch, negate)
 						Dim weeks As Integer = parseNumber(text, weekMatch, negate)
 						Dim days_Renamed As Integer = parseNumber(text, dayMatch, negate)
-						days_Renamed = Math.addExact(days_Renamed, Math.multiplyExact(weeks, 7))
+						days_Renamed = System.Math.addExact(days_Renamed, System.Math.multiplyExact(weeks, 7))
 						Return create(years_Renamed, months_Renamed, days_Renamed)
 					Catch ex As NumberFormatException
 						Throw New java.time.format.DateTimeParseException("Text cannot be parsed to a Period", text, 0, ex)
@@ -319,7 +319,7 @@ Namespace java.time
 			If str Is Nothing Then Return 0
 			Dim val As Integer = Convert.ToInt32(str)
 			Try
-				Return Math.multiplyExact(val, negate)
+				Return System.Math.multiplyExact(val, negate)
 			Catch ex As ArithmeticException
 				Throw New java.time.format.DateTimeParseException("Text cannot be parsed to a Period", text, 0, ex)
 			End Try
@@ -575,7 +575,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As Period
 			Dim isoAmount As Period = Period.from(amountToAdd)
-			Return create(Math.addExact(years, isoAmount.years), Math.addExact(months, isoAmount.months), Math.addExact(days, isoAmount.days))
+			Return create (System.Math.addExact(years, isoAmount.years), System.Math.addExact(months, isoAmount.months), System.Math.addExact(days, isoAmount.days))
 		End Function
 
 		''' <summary>
@@ -592,7 +592,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plusYears(ByVal yearsToAdd As Long) As Period
 			If yearsToAdd = 0 Then Return Me
-			Return create(Math.toIntExact(Math.addExact(years, yearsToAdd)), months, days)
+			Return create (System.Math.toIntExact (System.Math.addExact(years, yearsToAdd)), months, days)
 		End Function
 
 		''' <summary>
@@ -609,7 +609,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plusMonths(ByVal monthsToAdd As Long) As Period
 			If monthsToAdd = 0 Then Return Me
-			Return create(years, Math.toIntExact(Math.addExact(months, monthsToAdd)), days)
+			Return create(years, System.Math.toIntExact (System.Math.addExact(months, monthsToAdd)), days)
 		End Function
 
 		''' <summary>
@@ -626,7 +626,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function plusDays(ByVal daysToAdd As Long) As Period
 			If daysToAdd = 0 Then Return Me
-			Return create(years, months, Math.toIntExact(Math.addExact(days, daysToAdd)))
+			Return create(years, months, System.Math.toIntExact (System.Math.addExact(days, daysToAdd)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -651,7 +651,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As Period
 			Dim isoAmount As Period = Period.from(amountToSubtract)
-			Return create(Math.subtractExact(years, isoAmount.years), Math.subtractExact(months, isoAmount.months), Math.subtractExact(days, isoAmount.days))
+			Return create (System.Math.subtractExact(years, isoAmount.years), System.Math.subtractExact(months, isoAmount.months), System.Math.subtractExact(days, isoAmount.days))
 		End Function
 
 		''' <summary>
@@ -667,7 +667,7 @@ Namespace java.time
 		''' <returns> a {@code Period} based on this period with the specified years subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusYears(ByVal yearsToSubtract As Long) As Period
-			Return (If(yearsToSubtract = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-yearsToSubtract)))
+			Return (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -683,7 +683,7 @@ Namespace java.time
 		''' <returns> a {@code Period} based on this period with the specified months subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusMonths(ByVal monthsToSubtract As Long) As Period
-			Return (If(monthsToSubtract = Long.MinValue, plusMonths(Long.MaxValue).plusMonths(1), plusMonths(-monthsToSubtract)))
+			Return (If(monthsToSubtract = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-monthsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -699,7 +699,7 @@ Namespace java.time
 		''' <returns> a {@code Period} based on this period with the specified days subtracted, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusDays(ByVal daysToSubtract As Long) As Period
-			Return (If(daysToSubtract = Long.MinValue, plusDays(Long.MaxValue).plusDays(1), plusDays(-daysToSubtract)))
+			Return (If(daysToSubtract = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-daysToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -718,7 +718,7 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function multipliedBy(ByVal scalar As Integer) As Period
 			If Me Is ZERO OrElse scalar = 1 Then Return Me
-			Return create(Math.multiplyExact(years, scalar), Math.multiplyExact(months, scalar), Math.multiplyExact(days, scalar))
+			Return create (System.Math.multiplyExact(years, scalar), System.Math.multiplyExact(months, scalar), System.Math.multiplyExact(days, scalar))
 		End Function
 
 		''' <summary>
@@ -732,7 +732,7 @@ Namespace java.time
 		''' </summary>
 		''' <returns> a {@code Period} based on this period with the amounts negated, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs, which only happens if
-		'''  one of the units has the value {@code Long.MIN_VALUE} </exception>
+		'''  one of the units has the value {@code java.lang.[Long].MIN_VALUE} </exception>
 		Public Function negated() As Period
 			Return multipliedBy(-1)
 		End Function
@@ -759,7 +759,7 @@ Namespace java.time
 			Dim splitYears As Long = totalMonths \ 12
 			Dim splitMonths As Integer = CInt(Fix(totalMonths Mod 12)) ' no overflow
 			If splitYears = years AndAlso splitMonths = months Then Return Me
-			Return create(Math.toIntExact(splitYears), splitMonths, days)
+			Return create (System.Math.toIntExact(splitYears), splitMonths, days)
 		End Function
 
 		''' <summary>
@@ -900,7 +900,7 @@ Namespace java.time
 		''' </summary>
 		''' <returns> a suitable hash code </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return years + Integer.rotateLeft(months, 8) + Integer.rotateLeft(days, 16)
+			Return years +  java.lang.[Integer].rotateLeft(months, 8) +  java.lang.[Integer].rotateLeft(days, 16)
 		End Function
 
 		'-----------------------------------------------------------------------

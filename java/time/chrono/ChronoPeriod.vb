@@ -233,7 +233,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> a {@code ChronoPeriod} based on this period with the amounts negated, not null </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs, which only happens if
-		'''  one of the units has the value {@code Long.MIN_VALUE} </exception>
+		'''  one of the units has the value {@code java.lang.[Long].MIN_VALUE} </exception>
 		default Function negated() As ChronoPeriod
 			Function multipliedBy(- ByVal 1 As ) As [Return]
 

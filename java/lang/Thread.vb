@@ -425,7 +425,7 @@ Namespace java.lang
 		''' effect as <seealso cref="#Thread(ThreadGroup,Runnable,String) Thread"/>
 		''' {@code (null, null, gname)}, where {@code gname} is a newly generated
 		''' name. Automatically generated names are of the form
-		''' {@code "Thread-"+}<i>n</i>, where <i>n</i> is an integer.
+		''' {@code "Thread-"+}<i>n</i>, where <i>n</i> is an  java.lang.[Integer].
 		''' </summary>
 		Public Sub New()
 			init(Nothing, Nothing, "Thread-" & nextThreadNum(), 0)
@@ -436,7 +436,7 @@ Namespace java.lang
 		''' effect as <seealso cref="#Thread(ThreadGroup,Runnable,String) Thread"/>
 		''' {@code (null, target, gname)}, where {@code gname} is a newly generated
 		''' name. Automatically generated names are of the form
-		''' {@code "Thread-"+}<i>n</i>, where <i>n</i> is an integer.
+		''' {@code "Thread-"+}<i>n</i>, where <i>n</i> is an  java.lang.[Integer].
 		''' </summary>
 		''' <param name="target">
 		'''         the object whose {@code run} method is invoked when this thread
@@ -459,7 +459,7 @@ Namespace java.lang
 		''' effect as <seealso cref="#Thread(ThreadGroup,Runnable,String) Thread"/>
 		''' {@code (group, target, gname)} ,where {@code gname} is a newly generated
 		''' name. Automatically generated names are of the form
-		''' {@code "Thread-"+}<i>n</i>, where <i>n</i> is an integer.
+		''' {@code "Thread-"+}<i>n</i>, where <i>n</i> is an  java.lang.[Integer].
 		''' </summary>
 		''' <param name="group">
 		'''         the thread group. If {@code null} and there is a security
@@ -1559,18 +1559,18 @@ Namespace java.lang
 				Do While cl IsNot GetType(Thread)
 					Try
 						cl.getDeclaredMethod("getContextClassLoader", New [Class](){})
-						Return Boolean.TRUE
+						Return  java.lang.[Boolean].TRUE
 					Catch ex As NoSuchMethodException
 					End Try
 					Try
 						Dim params As  [Class]() = {GetType(ClassLoader)}
 						cl.getDeclaredMethod("setContextClassLoader", params)
-						Return Boolean.TRUE
+						Return  java.lang.[Boolean].TRUE
 					Catch ex As NoSuchMethodException
 					End Try
 					cl = cl.BaseType
 				Loop
-				Return Boolean.FALSE
+				Return  java.lang.[Boolean].FALSE
 			End Function
 		End Class
 

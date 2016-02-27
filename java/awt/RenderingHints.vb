@@ -102,7 +102,7 @@ Namespace java.awt
 					' we account for that possibility below in the recordIdentity
 					' method by slightly relaxing our uniqueness guarantees if we
 					' end up in that situation.
-					Return Me.GetType().name & "@" & Integer.toHexString(System.identityHashCode(Me.GetType())) & ":" & Integer.toHexString(privatekey)
+					Return Me.GetType().name & "@" &  java.lang.[Integer].toHexString(System.identityHashCode(Me.GetType())) & ":" &  java.lang.[Integer].toHexString(privatekey)
 				End Get
 			End Property
 
@@ -1188,7 +1188,7 @@ Namespace java.awt
 		''' <code>RenderingHints</code> object. </summary>
 		''' <returns>  a string representation of this object. </returns>
 		Public Overrides Function ToString() As String
-			If hintmap Is Nothing Then Return Me.GetType().name & "@" & Integer.toHexString(GetHashCode()) & " (0 hints)"
+			If hintmap Is Nothing Then Return Me.GetType().name & "@" &  java.lang.[Integer].toHexString(GetHashCode()) & " (0 hints)"
 
 			Return hintmap.ToString()
 		End Function

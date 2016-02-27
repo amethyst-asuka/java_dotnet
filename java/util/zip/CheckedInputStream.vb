@@ -47,7 +47,7 @@ Namespace java.util.zip
 		End Sub
 
 		''' <summary>
-		''' Reads a byte. Will block if no input is available. </summary>
+		''' Reads a java.lang.[Byte]. Will block if no input is available. </summary>
 		''' <returns> the byte read, or -1 if the end of the stream is reached. </returns>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		Public Overrides Function read() As Integer

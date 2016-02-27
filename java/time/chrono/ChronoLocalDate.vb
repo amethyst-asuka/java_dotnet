@@ -639,7 +639,7 @@ Namespace java.time.chrono
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		default Overrides Function compareTo(ByVal other As ChronoLocalDate) As Integer
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'			int cmp = Long.compare(toEpochDay(), other.toEpochDay());
+'			int cmp = java.lang.[Long].compare(toEpochDay(), other.toEpochDay());
 			Sub [New](cmp == ByVal 0 As )
 				ReadOnly Property cmp = chronology As
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:

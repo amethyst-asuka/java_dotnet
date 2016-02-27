@@ -1,7 +1,7 @@
 Imports System
-import static Math.abs
-import static Math.max
-import static Math.ulp
+import static System.Math.abs
+import static System.Math.max
+import static System.Math.ulp
 
 '
 ' * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
@@ -325,10 +325,10 @@ Namespace java.awt.geom
 			''' </summary>
 			Public Overridable Property bounds2D As Rectangle2D
 				Get
-					Dim left As Single = Math.Min(Math.Min(x1, x2), Math.Min(ctrlx1, ctrlx2))
-					Dim top As Single = Math.Min(Math.Min(y1, y2), Math.Min(ctrly1, ctrly2))
-					Dim right As Single = Math.Max(Math.Max(x1, x2), Math.Max(ctrlx1, ctrlx2))
-					Dim bottom As Single = Math.Max(Math.Max(y1, y2), Math.Max(ctrly1, ctrly2))
+					Dim left As Single = System.Math.Min (System.Math.Min(x1, x2), System.Math.Min(ctrlx1, ctrlx2))
+					Dim top As Single = System.Math.Min (System.Math.Min(y1, y2), System.Math.Min(ctrly1, ctrly2))
+					Dim right As Single = System.Math.Max (System.Math.Max(x1, x2), System.Math.Max(ctrlx1, ctrlx2))
+					Dim bottom As Single = System.Math.Max (System.Math.Max(y1, y2), System.Math.Max(ctrly1, ctrly2))
 					Return New Rectangle2D.Float(left, top, right - left, bottom - top)
 				End Get
 			End Property
@@ -586,10 +586,10 @@ Namespace java.awt.geom
 			''' </summary>
 			Public Overridable Property bounds2D As Rectangle2D
 				Get
-					Dim left As Double = Math.Min(Math.Min(x1, x2), Math.Min(ctrlx1, ctrlx2))
-					Dim top As Double = Math.Min(Math.Min(y1, y2), Math.Min(ctrly1, ctrly2))
-					Dim right As Double = Math.Max(Math.Max(x1, x2), Math.Max(ctrlx1, ctrlx2))
-					Dim bottom As Double = Math.Max(Math.Max(y1, y2), Math.Max(ctrly1, ctrly2))
+					Dim left As Double = System.Math.Min (System.Math.Min(x1, x2), System.Math.Min(ctrlx1, ctrlx2))
+					Dim top As Double = System.Math.Min (System.Math.Min(y1, y2), System.Math.Min(ctrly1, ctrly2))
+					Dim right As Double = System.Math.Max (System.Math.Max(x1, x2), System.Math.Max(ctrlx1, ctrlx2))
+					Dim bottom As Double = System.Math.Max (System.Math.Max(y1, y2), System.Math.Max(ctrly1, ctrly2))
 					Return New Rectangle2D.Double(left, top, right - left, bottom - top)
 				End Get
 			End Property
@@ -800,7 +800,7 @@ Namespace java.awt.geom
 		'''          represented by the specified coordinates.
 		''' @since 1.2 </returns>
 		Public Shared Function getFlatnessSq(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
-			Return Math.Max(Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx1, ctrly1), Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx2, ctrly2))
+			Return System.Math.Max(Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx1, ctrly1), Line2D.ptSegDistSq(x1, y1, x2, y2, ctrlx2, ctrly2))
 
 		End Function
 
@@ -829,7 +829,7 @@ Namespace java.awt.geom
 		'''          represented by the specified coordinates.
 		''' @since 1.2 </returns>
 		Public Shared Function getFlatness(ByVal x1 As Double, ByVal y1 As Double, ByVal ctrlx1 As Double, ByVal ctrly1 As Double, ByVal ctrlx2 As Double, ByVal ctrly2 As Double, ByVal x2 As Double, ByVal y2 As Double) As Double
-			Return Math.Sqrt(getFlatnessSq(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2))
+			Return System.Math.Sqrt(getFlatnessSq(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2))
 		End Function
 
 		''' <summary>
@@ -1071,14 +1071,14 @@ Namespace java.awt.geom
 			Dim num As Integer
 			If D_Renamed < 0 Then ' Casus irreducibilis: three real solutions
 				' see: http://en.wikipedia.org/wiki/Cubic_function#Trigonometric_.28and_hyperbolic.29_method
-				Dim phi As Double = 1.0/3 * Math.Acos(-q / Math.Sqrt(-cb_p))
-				Dim t As Double = 2 * Math.Sqrt(-p)
+				Dim phi As Double = 1.0/3 * System.Math.Acos(-q / System.Math.Sqrt(-cb_p))
+				Dim t As Double = 2 * System.Math.Sqrt(-p)
 
 				If res = eqn Then eqn = java.util.Arrays.copyOf(eqn, 4)
 
-				res(0) = (t * Math.Cos(phi))
-				res(1) = (-t * Math.Cos(phi + Math.PI / 3))
-				res(2) = (-t * Math.Cos(phi - Math.PI / 3))
+				res(0) = (t * System.Math.Cos(phi))
+				res(1) = (-t * System.Math.Cos(phi + System.Math.PI / 3))
+				res(2) = (-t * System.Math.Cos(phi - System.Math.PI / 3))
 				num = 3
 
 				For i As Integer = 0 To num - 1
@@ -1088,9 +1088,9 @@ Namespace java.awt.geom
 			Else
 				' Please see the comment in fixRoots marked 'XXX' before changing
 				' any of the code in this case.
-				Dim sqrt_D As Double = Math.Sqrt(D_Renamed)
-				Dim u As Double = Math.cbrt(sqrt_D - q)
-				Dim v As Double = - Math.cbrt(sqrt_D + q)
+				Dim sqrt_D As Double = System.Math.Sqrt(D_Renamed)
+				Dim u As Double = System.Math.cbrt(sqrt_D - q)
+				Dim v As Double = - System.Math.cbrt(sqrt_D + q)
 				Dim uv As Double = u+v
 
 				num = 1
@@ -1235,8 +1235,8 @@ Namespace java.awt.geom
 			Return origt
 
 		private static Double bisectRootWithHint(Double() eqn, Double x0, Double xe, Double hint)
-			Dim delta1 As Double = Math.Min(abs(hint - x0) / 64, 0.0625)
-			Dim delta2 As Double = Math.Min(abs(hint - xe) / 64, 0.0625)
+			Dim delta1 As Double = System.Math.Min(abs(hint - x0) / 64, 0.0625)
+			Dim delta2 As Double = System.Math.Min(abs(hint - xe) / 64, 0.0625)
 			Dim x02 As Double = hint - delta1
 			Dim xe2 As Double = hint + delta2
 			Dim fx02 As Double = solveEqn(eqn, 3, x02)

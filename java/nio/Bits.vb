@@ -45,7 +45,7 @@ Namespace java.nio
 		' -- Swapping --
 
 		Friend Shared Function swap(ByVal x As Short) As Short
-			Return Short.reverseBytes(x)
+			Return  java.lang.[Short].reverseBytes(x)
 		End Function
 
 		Friend Shared Function swap(ByVal x As Char) As Char
@@ -53,11 +53,11 @@ Namespace java.nio
 		End Function
 
 		Friend Shared Function swap(ByVal x As Integer) As Integer
-			Return Integer.reverseBytes(x)
+			Return  java.lang.[Integer].reverseBytes(x)
 		End Function
 
 		Friend Shared Function swap(ByVal x As Long) As Long
-			Return Long.reverseBytes(x)
+			Return java.lang.[Long].reverseBytes(x)
 		End Function
 
 
@@ -475,19 +475,19 @@ Namespace java.nio
 		' -- get/put double --
 
 		Friend Shared Function getDoubleL(ByVal bb As ByteBuffer, ByVal bi As Integer) As Double
-			Return Double.longBitsToDouble(getLongL(bb, bi))
+			Return java.lang.[Double].longBitsToDouble(getLongL(bb, bi))
 		End Function
 
 		Friend Shared Function getDoubleL(ByVal a As Long) As Double
-			Return Double.longBitsToDouble(getLongL(a))
+			Return java.lang.[Double].longBitsToDouble(getLongL(a))
 		End Function
 
 		Friend Shared Function getDoubleB(ByVal bb As ByteBuffer, ByVal bi As Integer) As Double
-			Return Double.longBitsToDouble(getLongB(bb, bi))
+			Return java.lang.[Double].longBitsToDouble(getLongB(bb, bi))
 		End Function
 
 		Friend Shared Function getDoubleB(ByVal a As Long) As Double
-			Return Double.longBitsToDouble(getLongB(a))
+			Return java.lang.[Double].longBitsToDouble(getLongB(a))
 		End Function
 
 		Friend Shared Function getDouble(ByVal bb As ByteBuffer, ByVal bi As Integer, ByVal bigEndian As Boolean) As Double
@@ -499,19 +499,19 @@ Namespace java.nio
 		End Function
 
 		Friend Shared Sub putDoubleL(ByVal bb As ByteBuffer, ByVal bi As Integer, ByVal x As Double)
-			putLongL(bb, bi, Double.doubleToRawLongBits(x))
+			putLongL(bb, bi, java.lang.[Double].doubleToRawLongBits(x))
 		End Sub
 
 		Friend Shared Sub putDoubleL(ByVal a As Long, ByVal x As Double)
-			putLongL(a, Double.doubleToRawLongBits(x))
+			putLongL(a, java.lang.[Double].doubleToRawLongBits(x))
 		End Sub
 
 		Friend Shared Sub putDoubleB(ByVal bb As ByteBuffer, ByVal bi As Integer, ByVal x As Double)
-			putLongB(bb, bi, Double.doubleToRawLongBits(x))
+			putLongB(bb, bi, java.lang.[Double].doubleToRawLongBits(x))
 		End Sub
 
 		Friend Shared Sub putDoubleB(ByVal a As Long, ByVal x As Double)
-			putLongB(a, Double.doubleToRawLongBits(x))
+			putLongB(a, java.lang.[Double].doubleToRawLongBits(x))
 		End Sub
 
 		Friend Shared Sub putDouble(ByVal bb As ByteBuffer, ByVal bi As Integer, ByVal x As Double, ByVal bigEndian As Boolean)

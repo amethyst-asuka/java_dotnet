@@ -238,7 +238,7 @@ Namespace java.util.zip
 		End Function
 
 	'    
-	'     * Reads unsigned byte.
+	'     * Reads unsigned java.lang.[Byte].
 	'     
 		Private Function readUByte(ByVal [in] As java.io.InputStream) As Integer
 			Dim b As Integer = [in].read()

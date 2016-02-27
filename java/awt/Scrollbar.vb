@@ -510,7 +510,7 @@ Namespace java.awt
 			Set(ByVal newMaximum As Integer)
 				' minimum is checked first in setValues, so we need to
 				' enforce minimum and maximum checks here.
-				If newMaximum = Integer.MinValue Then newMaximum = Integer.MinValue + 1
+				If newMaximum =  java.lang.[Integer].MIN_VALUE Then newMaximum =  java.lang.[Integer].MIN_VALUE + 1
     
 				If minimum >= newMaximum Then minimum = newMaximum - 1
     
@@ -667,7 +667,7 @@ Namespace java.awt
 		''' following constraints:
 		''' <code>maximum</code> must be greater than <code>minimum</code>,
 		''' <code>maximum - minimum</code> must not be greater
-		'''     than <code> [Integer].MAX_VALUE</code>,
+		'''     than <code> java.lang.[Integer].MAX_VALUE</code>,
 		''' <code>visibleAmount</code> must be greater than zero.
 		''' <code>visibleAmount</code> must not be greater than
 		'''     <code>maximum - minimum</code>,
@@ -689,12 +689,12 @@ Namespace java.awt
 		Public Overridable Sub setValues(ByVal value As Integer, ByVal visible As Integer, ByVal minimum As Integer, ByVal maximum As Integer)
 			Dim oldValue As Integer
 			SyncLock Me
-				If minimum = Integer.MaxValue Then minimum = Integer.MaxValue - 1
+				If minimum =  java.lang.[Integer].Max_Value Then minimum =  java.lang.[Integer].Max_Value - 1
 				If maximum <= minimum Then maximum = minimum + 1
 
 				Dim maxMinusMin As Long = CLng(maximum) - CLng(minimum)
-				If maxMinusMin > Integer.MaxValue Then
-					maxMinusMin = Integer.MaxValue
+				If maxMinusMin >  java.lang.[Integer].Max_Value Then
+					maxMinusMin =  java.lang.[Integer].Max_Value
 					maximum = minimum + CInt(maxMinusMin)
 				End If
 				If visible > (Integer) maxMinusMin Then visible = CInt(maxMinusMin)

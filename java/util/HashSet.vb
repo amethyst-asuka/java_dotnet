@@ -118,7 +118,7 @@ Namespace java.util
 		''' <param name="c"> the collection whose elements are to be placed into this set </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
-			map = New HashMap(Of )(Math.Max(CInt(Fix(c.size()/.75f)) + 1, 16))
+			map = New HashMap(Of ) (System.Math.Max(CInt(Fix(c.size()/.75f)) + 1, 16))
 			addAll(c)
 		End Sub
 
@@ -304,7 +304,7 @@ Namespace java.util
 
 			' Set the capacity according to the size and load factor ensuring that
 			' the HashMap is at least 25% full but clamping to maximum capacity.
-			capacity = CInt(Fix(Math.Min(size * Math.Min(1 / loadFactor, 4.0f), HashMap.MAXIMUM_CAPACITY)))
+			capacity = CInt(Fix (System.Math.Min(size * System.Math.Min(1 / loadFactor, 4.0f), HashMap.MAXIMUM_CAPACITY)))
 
 			' Create backing HashMap
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:

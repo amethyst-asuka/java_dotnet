@@ -1677,7 +1677,7 @@ Namespace java.awt.event
 		''' </summary>
 		''' <returns> for a unicode character with a corresponding {@code VK_} constant -- this
 		'''   {@code VK_} constant; for a character appearing on the primary
-		'''   level of a known keyboard layout -- a unique integer.
+		'''   level of a known keyboard layout -- a unique  java.lang.[Integer].
 		'''   If a character does not appear on the primary level of a known keyboard,
 		'''   {@code VK_UNDEFINED} is returned.
 		''' 

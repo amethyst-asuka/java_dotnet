@@ -69,16 +69,16 @@ Namespace java.security
 			perm = p
 		End Sub
 
-		''' <summary>
-		''' Gets the Permission object associated with this exception, or
-		''' null if there was no corresponding Permission object.
-		''' </summary>
-		''' <returns> the Permission object. </returns>
-		Public Overridable Property permission As Permission
-			Get
-				Return perm
-			End Get
-		End Property
-	End Class
+        ''' <summary>
+        ''' Gets the Permission object associated with this exception, or
+        ''' null if there was no corresponding Permission object.
+        ''' </summary>
+        ''' <returns> the Permission object. </returns>
+        Public Overridable ReadOnly Property permission As Permission
+            Get
+                Return perm
+            End Get
+        End Property
+    End Class
 
 End Namespace

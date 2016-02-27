@@ -720,12 +720,12 @@ Namespace java.util.stream
 			Sub [New](startInclusive >= ByVal endExclusive As )
 				Function empty() As [Return]
 			Function [if](endExclusive - startInclusive < ByVal 0 As ) As else
-				' Size of range > Long.MAX_VALUE
+				' Size of range > java.lang.[Long].MAX_VALUE
 				' Split the range in two and concatenate
-				' Note: if the range is [Long.MIN_VALUE, Long.MAX_VALUE) then
+				' Note: if the range is [Long.MIN_VALUE, java.lang.[Long].MAX_VALUE) then
 				' the lower range, [Long.MIN_VALUE, 0) will be further split in two
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'				long m = startInclusive + Long.divideUnsigned(endExclusive - startInclusive, 2) + 1;
+'				long m = startInclusive + java.lang.[Long].divideUnsigned(endExclusive - startInclusive, 2) + 1;
 				Function concat(range(startInclusive, m) ByVal  As , range(m, endExclusive) ByVal  As ) As [Return]
 			Else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
@@ -753,13 +753,13 @@ Namespace java.util.stream
 			if (startInclusive > endInclusive)
 				Function empty() As [Return]
 			Function [if](endInclusive - startInclusive + 1 <= ByVal 0 As ) As else
-				' Size of range > Long.MAX_VALUE
+				' Size of range > java.lang.[Long].MAX_VALUE
 				' Split the range in two and concatenate
-				' Note: if the range is [Long.MIN_VALUE, Long.MAX_VALUE] then
+				' Note: if the range is [Long.MIN_VALUE, java.lang.[Long].MAX_VALUE] then
 				' the lower range, [Long.MIN_VALUE, 0), and upper range,
-				' [0, Long.MAX_VALUE], will both be further split in two
+				' [0, java.lang.[Long].MAX_VALUE], will both be further split in two
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'				long m = startInclusive + Long.divideUnsigned(endInclusive - startInclusive, 2) + 1;
+'				long m = startInclusive + java.lang.[Long].divideUnsigned(endInclusive - startInclusive, 2) + 1;
 				Function concat(range(startInclusive, m) ByVal  As , rangeClosed(m, endInclusive) ByVal  As ) As [Return]
 			Else
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:

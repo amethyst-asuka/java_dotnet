@@ -325,7 +325,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the requested data array element from the first (default) bank
-		''' as an integer. </summary>
+		''' as an  java.lang.[Integer]. </summary>
 		''' <param name="i"> the index of the requested data array element </param>
 		''' <returns> the data array element at the specified index. </returns>
 		''' <seealso cref= #setElem(int, int) </seealso>
@@ -336,7 +336,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the requested data array element from the specified bank
-		''' as an integer. </summary>
+		''' as an  java.lang.[Integer]. </summary>
 		''' <param name="bank"> the specified bank </param>
 		''' <param name="i"> the index of the requested data array element </param>
 		''' <returns> the data array element at the specified index from the
@@ -347,7 +347,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Sets the requested data array element in the first (default) bank
-		''' from the given integer. </summary>
+		''' from the given  java.lang.[Integer]. </summary>
 		''' <param name="i"> the specified index into the data array </param>
 		''' <param name="val"> the data to set the element at the specified index in
 		''' the data array </param>
@@ -359,7 +359,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Sets the requested data array element in the specified bank
-		''' from the given integer. </summary>
+		''' from the given  java.lang.[Integer]. </summary>
 		''' <param name="bank"> the specified bank </param>
 		''' <param name="i"> the specified index into the data array </param>
 		''' <param name="val">  the data to set the element in the specified bank
@@ -429,9 +429,9 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the requested data array element from the first (default) bank
-		''' as a double.  The implementation in this class is to cast
+		''' as a java.lang.[Double].  The implementation in this class is to cast
 		''' <seealso cref="#getElem(int)"/>
-		''' to a double.  Subclasses can override this method if another
+		''' to a java.lang.[Double].  Subclasses can override this method if another
 		''' implementation is needed. </summary>
 		''' <param name="i"> the specified index </param>
 		''' <returns> a double value representing the element at the specified
@@ -444,8 +444,8 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the requested data array element from the specified bank as
-		''' a double.  The implementation in this class is to cast getElem(bank, i)
-		''' to a double.  Subclasses may override this method if another
+		''' a java.lang.[Double].  The implementation in this class is to cast getElem(bank, i)
+		''' to a java.lang.[Double].  Subclasses may override this method if another
 		''' implementation is needed. </summary>
 		''' <param name="bank"> the specified bank </param>
 		''' <param name="i"> the specified index </param>
@@ -459,7 +459,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Sets the requested data array element in the first (default) bank
-		''' from the given double.  The implementation in this class is to cast
+		''' from the given java.lang.[Double].  The implementation in this class is to cast
 		''' val to an int and call <seealso cref="#setElem(int, int)"/>.  Subclasses can
 		''' override this method if another implementation is needed. </summary>
 		''' <param name="i"> the specified index </param>
@@ -473,7 +473,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Sets the requested data array element in the specified bank
-		''' from the given double.  The implementation in this class is to cast
+		''' from the given java.lang.[Double].  The implementation in this class is to cast
 		''' val to an int and call <seealso cref="#setElem(int, int)"/>.  Subclasses can
 		''' override this method if another implementation is needed. </summary>
 		''' <param name="bank"> the specified bank </param>

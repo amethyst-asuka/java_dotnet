@@ -5257,7 +5257,7 @@ Namespace java.lang
 		''' 
 		''' @since 1.8
 		''' </summary>
-		Public Static final Integer BYTES = SIZE \ Byte.SIZE
+		Public Static final Integer BYTES = SIZE \ java.lang.[Byte].SIZE
 
 		''' <summary>
 		''' Returns the value obtained by reversing the order of the bytes in the
@@ -5283,7 +5283,7 @@ Namespace java.lang
         ''' <blockquote>{@code
         '''     Character.UnicodeBlock.of(codePoint).toString().replace('_', ' ')
         '''     + " "
-        '''     + Integer.toHexString(codePoint).toUpperCase(Locale.ENGLISH);
+        '''     +  java.lang.[Integer].toHexString(codePoint).toUpperCase(Locale.ENGLISH);
         ''' 
         ''' }</blockquote>
         ''' </summary>
@@ -5303,9 +5303,9 @@ Namespace java.lang
             If name_Renamed IsNot Nothing Then Return name_Renamed
             If [getType](codePoint) = UNASSIGNED Then Return Nothing
             Dim block As UnicodeBlock = UnicodeBlock.of(codePoint)
-            If block IsNot Nothing Then Return block.ToString().Replace("_"c, " "c) & " " & Integer.toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
+            If block IsNot Nothing Then Return block.ToString().Replace("_"c, " "c) & " " &  java.lang.[Integer].toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
             ' should never come here
-            Return Integer.toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
+            Return  java.lang.[Integer].toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
         End Function
     End Class
     End Class

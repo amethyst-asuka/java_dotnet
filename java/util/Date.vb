@@ -228,7 +228,7 @@ Namespace java.util
 		<Obsolete("As of JDK version 1.1,")> _
 		Public Sub New(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hrs As Integer, ByVal min As Integer, ByVal sec As Integer)
 			Dim y As Integer = year + 1900
-			' month is 0-based. So we have to normalize month to support Long.MAX_VALUE.
+			' month is 0-based. So we have to normalize month to support java.lang.[Long].MAX_VALUE.
 			If month >= 12 Then
 				y += month \ 12
 				month = month Mod 12
@@ -301,7 +301,7 @@ Namespace java.util
 		<Obsolete("As of JDK version 1.1,")> _
 		Public Shared Function UTC(ByVal year As Integer, ByVal month As Integer, ByVal [date] As Integer, ByVal hrs As Integer, ByVal min As Integer, ByVal sec As Integer) As Long
 			Dim y As Integer = year + 1900
-			' month is 0-based. So we have to normalize month to support Long.MAX_VALUE.
+			' month is 0-based. So we have to normalize month to support java.lang.[Long].MAX_VALUE.
 			If month >= 12 Then
 				y += month \ 12
 				month = month Mod 12
@@ -435,7 +435,7 @@ Namespace java.util
 		''' replaced by <code>DateFormat.parse(String s)</code>. 
 		<Obsolete("As of JDK version 1.1,")> _
 		Public Shared Function parse(ByVal s As String) As Long
-			Dim year_Renamed As Integer = Integer.MinValue
+			Dim year_Renamed As Integer =  java.lang.[Integer].MIN_VALUE
 			Dim mon As Integer = -1
 			Dim mday As Integer = -1
 			Dim hour As Integer = -1
@@ -477,7 +477,7 @@ Namespace java.util
 							i += 1
 							c = AscW(s.Chars(i))
 						Loop
-						If prevc = AscW("+"c) OrElse prevc = AscW("-"c) AndAlso year_Renamed <> Integer.MinValue Then
+						If prevc = AscW("+"c) OrElse prevc = AscW("-"c) AndAlso year_Renamed <>  java.lang.[Integer].MIN_VALUE Then
 							' timezone offset
 							If n < 24 Then
 								n = n * 60 ' EG. "GMT-3"
@@ -488,7 +488,7 @@ Namespace java.util
 							If tzoffset <> 0 AndAlso tzoffset <> -1 Then GoTo syntax
 							tzoffset = n
 						ElseIf n >= 70 Then
-							If year_Renamed <> Integer.MinValue Then
+							If year_Renamed <>  java.lang.[Integer].MIN_VALUE Then
 								GoTo syntax
 							ElseIf c <= " "c OrElse c = AscW(","c) OrElse c = AscW("/"c) OrElse i >= limit Then
 								' year = n < 1900 ? n : n - 1900;
@@ -521,7 +521,7 @@ Namespace java.util
 						ElseIf mday < 0 Then
 							mday = CByte(n)
 						' Handle two-digit years < 70 (70-99 handled above).
-						ElseIf year_Renamed = Integer.MinValue AndAlso mon >= 0 AndAlso mday >= 0 Then
+						ElseIf year_Renamed =  java.lang.[Integer].MIN_VALUE AndAlso mon >= 0 AndAlso mday >= 0 Then
 							year_Renamed = n
 						Else
 							GoTo syntax
@@ -573,7 +573,7 @@ Namespace java.util
 						prevc = 0
 					End If
 				Loop
-				If year_Renamed = Integer.MinValue OrElse mon < 0 OrElse mday < 0 Then GoTo syntax
+				If year_Renamed =  java.lang.[Integer].MIN_VALUE OrElse mon < 0 OrElse mday < 0 Then GoTo syntax
 				' Parse 2-digit years within the correct default century.
 				If year_Renamed < 100 Then
 					SyncLock GetType(Date)

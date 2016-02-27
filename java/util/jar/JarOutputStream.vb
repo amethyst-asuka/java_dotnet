@@ -128,7 +128,7 @@ Namespace java.util.jar
 	'     * The bytes are assumed to be in Intel (little-endian) byte order.
 	'     
 		Private Shared Function get16(ByVal b As SByte(), ByVal [off] As Integer) As Integer
-			Return Byte.toUnsignedInt(b([off])) Or (Byte.toUnsignedInt(b([off]+1)) << 8)
+			Return java.lang.[Byte].toUnsignedInt(b([off])) Or (Byte.toUnsignedInt(b([off]+1)) << 8)
 		End Function
 
 	'    

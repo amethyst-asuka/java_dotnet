@@ -125,7 +125,7 @@ Namespace java.time.temporal
 		''' <summary>
 		''' Gets the range of valid values for the specified field.
 		''' <p>
-		''' All fields can be expressed as a {@code long} integer.
+		''' All fields can be expressed as a {@code long}  java.lang.[Integer].
 		''' This method returns an object that describes the valid range for that value.
 		''' The value of this temporal object is used to enhance the accuracy of the returned range.
 		''' If the date-time cannot return the range, because the field is unsupported or for

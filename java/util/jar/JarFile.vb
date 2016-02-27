@@ -505,7 +505,7 @@ Namespace java.util.jar
 					Dim c As Char = ChrW(b(i+j))
 					c = If(((AscW(c)-AscW("A"c)) Or (AscW("Z"c)-AscW(c))) >= 0, CChar(AscW(c) + 32), c)
 					If c <> src(j) Then
-						i += Math.Max(j + 1 - lastOcc(AscW(c) And &H7F), optoSft(j))
+						i += System.Math.Max(j + 1 - lastOcc(AscW(c) And &H7F), optoSft(j))
 						GoTo next
 					End If
 				Next j
@@ -758,11 +758,11 @@ Namespace java.util.jar
 			End Set
 		End Property
 
-		Friend Overridable Property manifestDigests As List(Of Object)
+		Friend Overridable Property manifestDigests As  ArrayList
 			Get
 				ensureInitialization()
 				If jv IsNot Nothing Then Return jv.manifestDigests
-				Return New List(Of Object)
+				Return New  ArrayList
 			End Get
 		End Property
 	End Class

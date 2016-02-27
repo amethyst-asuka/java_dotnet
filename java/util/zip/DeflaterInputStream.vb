@@ -205,7 +205,7 @@ Namespace java.util.zip
 		''' This method may block until the specified number of bytes are read and
 		''' skipped. <em>Note:</em> While {@code n} is given as a {@code long},
 		''' the maximum number of bytes which can be skipped is
-		''' {@code  [Integer].MAX_VALUE}.
+		''' {@code  java.lang.[Integer].MAX_VALUE}.
 		''' </summary>
 		''' <param name="n"> number of bytes to be skipped </param>
 		''' <returns> the actual number of bytes skipped </returns>
@@ -218,7 +218,7 @@ Namespace java.util.zip
 			' Skip bytes by repeatedly decompressing small blocks
 			If rbuf.Length < 512 Then rbuf = New SByte(511){}
 
-			Dim total As Integer = CInt(Fix(Math.Min(n, Integer.MaxValue)))
+			Dim total As Integer = CInt(Fix (System.Math.Min(n,  java.lang.[Integer].Max_Value)))
 			Dim cnt As Long = 0
 			Do While total > 0
 				' Read a small block of uncompressed bytes

@@ -3,6 +3,7 @@ Imports System
 Imports System.Collections.Generic
 Imports System.Collections.Concurrent
 Imports System.Runtime.InteropServices
+Imports java.lang
 
 '
 ' * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -624,912 +625,912 @@ Namespace java.io
 			desc.writeNonProxy(Me)
 		End Sub
 
-		''' <summary>
-		''' Writes a byte. This method will block until the byte is actually
-		''' written.
-		''' </summary>
-		''' <param name="val"> the byte to be written to the stream </param>
-		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Overrides Sub write(ByVal val As Integer) Implements ObjectOutput.write
-			bout.write(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a java.lang.[Byte]. This method will block until the byte is actually
+        ''' written.
+        ''' </summary>
+        ''' <param name="val"> the byte to be written to the stream </param>
+        ''' <exception cref="IOException"> If an I/O error has occurred. </exception>
+        Public Overrides Sub write(ByVal val As Integer) Implements ObjectOutput.write
+            bout.write(val)
+        End Sub
 
-		''' <summary>
-		''' Writes an array of bytes. This method will block until the bytes are
-		''' actually written.
-		''' </summary>
-		''' <param name="buf"> the data to be written </param>
-		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Overrides Sub write(ByVal buf As SByte()) Implements ObjectOutput.write
-			bout.write(buf, 0, buf.Length, False)
-		End Sub
+        ''' <summary>
+        ''' Writes an array of bytes. This method will block until the bytes are
+        ''' actually written.
+        ''' </summary>
+        ''' <param name="buf"> the data to be written </param>
+        ''' <exception cref="IOException"> If an I/O error has occurred. </exception>
+        Public Overrides Sub write(ByVal buf As SByte()) Implements ObjectOutput.write
+            bout.write(buf, 0, buf.Length, False)
+        End Sub
 
-		''' <summary>
-		''' Writes a sub array of bytes.
-		''' </summary>
-		''' <param name="buf"> the data to be written </param>
-		''' <param name="off"> the start offset in the data </param>
-		''' <param name="len"> the number of bytes that are written </param>
-		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Overrides Sub write(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer)
-			If buf Is Nothing Then Throw New NullPointerException
-			Dim endoff As Integer = [off] + len
-			If [off] < 0 OrElse len < 0 OrElse endoff > buf.Length OrElse endoff < 0 Then Throw New IndexOutOfBoundsException
-			bout.write(buf, [off], len, False)
-		End Sub
+        ''' <summary>
+        ''' Writes a sub array of bytes.
+        ''' </summary>
+        ''' <param name="buf"> the data to be written </param>
+        ''' <param name="off"> the start offset in the data </param>
+        ''' <param name="len"> the number of bytes that are written </param>
+        ''' <exception cref="IOException"> If an I/O error has occurred. </exception>
+        Public Overrides Sub write(ByVal buf As SByte(), ByVal [off] As Integer, ByVal len As Integer)
+            If buf Is Nothing Then Throw New NullPointerException
+            Dim endoff As Integer = [off] + len
+            If [off] < 0 OrElse len < 0 OrElse endoff > buf.Length OrElse endoff < 0 Then Throw New IndexOutOfBoundsException
+            bout.write(buf, [off], len, False)
+        End Sub
 
-		''' <summary>
-		''' Flushes the stream. This will write any buffered output bytes and flush
-		''' through to the underlying stream.
-		''' </summary>
-		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Overrides Sub flush() Implements ObjectOutput.flush
-			bout.flush()
-		End Sub
+        ''' <summary>
+        ''' Flushes the stream. This will write any buffered output bytes and flush
+        ''' through to the underlying stream.
+        ''' </summary>
+        ''' <exception cref="IOException"> If an I/O error has occurred. </exception>
+        Public Overrides Sub flush() Implements ObjectOutput.flush
+            bout.flush()
+        End Sub
 
-		''' <summary>
-		''' Drain any buffered data in ObjectOutputStream.  Similar to flush but
-		''' does not propagate the flush to the underlying stream.
-		''' </summary>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Protected Friend Overridable Sub drain()
-			bout.drain()
-		End Sub
+        ''' <summary>
+        ''' Drain any buffered data in ObjectOutputStream.  Similar to flush but
+        ''' does not propagate the flush to the underlying stream.
+        ''' </summary>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Protected Friend Overridable Sub drain()
+            bout.drain()
+        End Sub
 
-		''' <summary>
-		''' Closes the stream. This method must be called to release any resources
-		''' associated with the stream.
-		''' </summary>
-		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		Public Overrides Sub close() Implements ObjectOutput.close
-			flush()
-			clear()
-			bout.close()
-		End Sub
+        ''' <summary>
+        ''' Closes the stream. This method must be called to release any resources
+        ''' associated with the stream.
+        ''' </summary>
+        ''' <exception cref="IOException"> If an I/O error has occurred. </exception>
+        Public Overrides Sub close() Implements ObjectOutput.close
+            flush()
+            clear()
+            bout.close()
+        End Sub
 
-		''' <summary>
-		''' Writes a boolean.
-		''' </summary>
-		''' <param name="val"> the boolean to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeBoolean(ByVal val As Boolean) Implements DataOutput.writeBoolean
-			bout.writeBoolean(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a  java.lang.[Boolean].
+        ''' </summary>
+        ''' <param name="val"> the boolean to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeBoolean(ByVal val As Boolean) Implements DataOutput.writeBoolean
+            bout.writeBoolean(val)
+        End Sub
 
-		''' <summary>
-		''' Writes an 8 bit byte.
-		''' </summary>
-		''' <param name="val"> the byte value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeByte(ByVal val As Integer) Implements DataOutput.writeByte
-			bout.writeByte(val)
-		End Sub
+        ''' <summary>
+        ''' Writes an 8 bit java.lang.[Byte].
+        ''' </summary>
+        ''' <param name="val"> the byte value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeByte(ByVal val As Integer) Implements DataOutput.writeByte
+            bout.writeByte(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a 16 bit short.
-		''' </summary>
-		''' <param name="val"> the short value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeShort(ByVal val As Integer) Implements DataOutput.writeShort
-			bout.writeShort(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a 16 bit  java.lang.[Short].
+        ''' </summary>
+        ''' <param name="val"> the short value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeShort(ByVal val As Integer) Implements DataOutput.writeShort
+            bout.writeShort(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a 16 bit char.
-		''' </summary>
-		''' <param name="val"> the char value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeChar(ByVal val As Integer) Implements DataOutput.writeChar
-			bout.writeChar(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a 16 bit char.
+        ''' </summary>
+        ''' <param name="val"> the char value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeChar(ByVal val As Integer) Implements DataOutput.writeChar
+            bout.writeChar(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a 32 bit int.
-		''' </summary>
-		''' <param name="val"> the integer value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeInt(ByVal val As Integer) Implements DataOutput.writeInt
-			bout.writeInt(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a 32 bit int.
+        ''' </summary>
+        ''' <param name="val"> the integer value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeInt(ByVal val As Integer) Implements DataOutput.writeInt
+            bout.writeInt(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a 64 bit long.
-		''' </summary>
-		''' <param name="val"> the long value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeLong(ByVal val As Long) Implements DataOutput.writeLong
-			bout.writeLong(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a 64 bit java.lang.[Long].
+        ''' </summary>
+        ''' <param name="val"> the long value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeLong(ByVal val As Long) Implements DataOutput.writeLong
+            bout.writeLong(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a 32 bit float.
-		''' </summary>
-		''' <param name="val"> the float value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeFloat(ByVal val As Single) Implements DataOutput.writeFloat
-			bout.writeFloat(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a 32 bit float.
+        ''' </summary>
+        ''' <param name="val"> the float value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeFloat(ByVal val As Single) Implements DataOutput.writeFloat
+            bout.writeFloat(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a 64 bit double.
-		''' </summary>
-		''' <param name="val"> the double value to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeDouble(ByVal val As Double) Implements DataOutput.writeDouble
-			bout.writeDouble(val)
-		End Sub
+        ''' <summary>
+        ''' Writes a 64 bit java.lang.[Double].
+        ''' </summary>
+        ''' <param name="val"> the double value to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeDouble(ByVal val As Double) Implements DataOutput.writeDouble
+            bout.writeDouble(val)
+        End Sub
 
-		''' <summary>
-		''' Writes a String as a sequence of bytes.
-		''' </summary>
-		''' <param name="str"> the String of bytes to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeBytes(ByVal str As String) Implements DataOutput.writeBytes
-			bout.writeBytes(str)
-		End Sub
+        ''' <summary>
+        ''' Writes a String as a sequence of bytes.
+        ''' </summary>
+        ''' <param name="str"> the String of bytes to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeBytes(ByVal str As String) Implements DataOutput.writeBytes
+            bout.writeBytes(str)
+        End Sub
 
-		''' <summary>
-		''' Writes a String as a sequence of chars.
-		''' </summary>
-		''' <param name="str"> the String of chars to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeChars(ByVal str As String) Implements DataOutput.writeChars
-			bout.writeChars(str)
-		End Sub
+        ''' <summary>
+        ''' Writes a String as a sequence of chars.
+        ''' </summary>
+        ''' <param name="str"> the String of chars to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeChars(ByVal str As String) Implements DataOutput.writeChars
+            bout.writeChars(str)
+        End Sub
 
-		''' <summary>
-		''' Primitive data write of this String in
-		''' <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
-		''' format.  Note that there is a
-		''' significant difference between writing a String into the stream as
-		''' primitive data or as an Object. A String instance written by writeObject
-		''' is written into the stream as a String initially. Future writeObject()
-		''' calls write references to the string into the stream.
-		''' </summary>
-		''' <param name="str"> the String to be written </param>
-		''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
-		'''          stream </exception>
-		Public Overridable Sub writeUTF(ByVal str As String) Implements DataOutput.writeUTF
-			bout.writeUTF(str)
-		End Sub
+        ''' <summary>
+        ''' Primitive data write of this String in
+        ''' <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
+        ''' format.  Note that there is a
+        ''' significant difference between writing a String into the stream as
+        ''' primitive data or as an Object. A String instance written by writeObject
+        ''' is written into the stream as a String initially. Future writeObject()
+        ''' calls write references to the string into the stream.
+        ''' </summary>
+        ''' <param name="str"> the String to be written </param>
+        ''' <exception cref="IOException"> if I/O errors occur while writing to the underlying
+        '''          stream </exception>
+        Public Overridable Sub writeUTF(ByVal str As String) Implements DataOutput.writeUTF
+            bout.writeUTF(str)
+        End Sub
 
-		''' <summary>
-		''' Provide programmatic access to the persistent fields to be written
-		''' to ObjectOutput.
-		''' 
-		''' @since 1.2
-		''' </summary>
-		Public MustInherit Class PutField
+        ''' <summary>
+        ''' Provide programmatic access to the persistent fields to be written
+        ''' to ObjectOutput.
+        ''' 
+        ''' @since 1.2
+        ''' </summary>
+        Public MustInherit Class PutField
 
-			''' <summary>
-			''' Put the value of the named boolean field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>boolean</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Boolean)
+            ''' <summary>
+            ''' Put the value of the named boolean field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>boolean</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Boolean)
 
-			''' <summary>
-			''' Put the value of the named byte field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>byte</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As SByte)
+            ''' <summary>
+            ''' Put the value of the named byte field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>byte</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As SByte)
 
-			''' <summary>
-			''' Put the value of the named char field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>char</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Char)
+            ''' <summary>
+            ''' Put the value of the named char field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>char</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Char)
 
-			''' <summary>
-			''' Put the value of the named short field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>short</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Short)
+            ''' <summary>
+            ''' Put the value of the named short field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>short</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Short)
 
-			''' <summary>
-			''' Put the value of the named int field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>int</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Integer)
+            ''' <summary>
+            ''' Put the value of the named int field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>int</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Integer)
 
-			''' <summary>
-			''' Put the value of the named long field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>long</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Long)
+            ''' <summary>
+            ''' Put the value of the named long field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>long</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Long)
 
-			''' <summary>
-			''' Put the value of the named float field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>float</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Single)
+            ''' <summary>
+            ''' Put the value of the named float field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>float</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Single)
 
-			''' <summary>
-			''' Put the value of the named double field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not
-			''' <code>double</code> </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Double)
+            ''' <summary>
+            ''' Put the value of the named double field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not
+            ''' <code>double</code> </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Double)
 
-			''' <summary>
-			''' Put the value of the named Object field into the persistent field.
-			''' </summary>
-			''' <param name="name"> the name of the serializable field </param>
-			''' <param name="val"> the value to assign to the field
-			'''         (which may be <code>null</code>) </param>
-			''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
-			''' match the name of a serializable field for the class whose fields
-			''' are being written, or if the type of the named field is not a
-			''' reference type </exception>
-			Public MustOverride Sub put(ByVal name As String, ByVal val As Object)
+            ''' <summary>
+            ''' Put the value of the named Object field into the persistent field.
+            ''' </summary>
+            ''' <param name="name"> the name of the serializable field </param>
+            ''' <param name="val"> the value to assign to the field
+            '''         (which may be <code>null</code>) </param>
+            ''' <exception cref="IllegalArgumentException"> if <code>name</code> does not
+            ''' match the name of a serializable field for the class whose fields
+            ''' are being written, or if the type of the named field is not a
+            ''' reference type </exception>
+            Public MustOverride Sub put(ByVal name As String, ByVal val As Object)
 
-			''' <summary>
-			''' Write the data and fields to the specified ObjectOutput stream,
-			''' which must be the same stream that produced this
-			''' <code>PutField</code> object.
-			''' </summary>
-			''' <param name="out"> the stream to write the data and fields to </param>
-			''' <exception cref="IOException"> if I/O errors occur while writing to the
-			'''         underlying stream </exception>
-			''' <exception cref="IllegalArgumentException"> if the specified stream is not
-			'''         the same stream that produced this <code>PutField</code>
-			'''         object </exception>
-			''' @deprecated This method does not write the values contained by this
-			'''         <code>PutField</code> object in a proper format, and may
-			'''         result in corruption of the serialization stream.  The
-			'''         correct way to write <code>PutField</code> data is by
-			'''         calling the <seealso cref="java.io.ObjectOutputStream#writeFields()"/>
-			'''         method. 
-			<Obsolete("This method does not write the values contained by this")> _
-			Public MustOverride Sub write(ByVal out As ObjectOutput)
-		End Class
+            ''' <summary>
+            ''' Write the data and fields to the specified ObjectOutput stream,
+            ''' which must be the same stream that produced this
+            ''' <code>PutField</code> object.
+            ''' </summary>
+            ''' <param name="out"> the stream to write the data and fields to </param>
+            ''' <exception cref="IOException"> if I/O errors occur while writing to the
+            '''         underlying stream </exception>
+            ''' <exception cref="IllegalArgumentException"> if the specified stream is not
+            '''         the same stream that produced this <code>PutField</code>
+            '''         object </exception>
+            ''' @deprecated This method does not write the values contained by this
+            '''         <code>PutField</code> object in a proper format, and may
+            '''         result in corruption of the serialization stream.  The
+            '''         correct way to write <code>PutField</code> data is by
+            '''         calling the <seealso cref="java.io.ObjectOutputStream#writeFields()"/>
+            '''         method. 
+            <Obsolete("This method does not write the values contained by this")>
+            Public MustOverride Sub write(ByVal out As ObjectOutput)
+        End Class
 
 
-		''' <summary>
-		''' Returns protocol version in use.
-		''' </summary>
-		Friend Overridable Property protocolVersion As Integer
-			Get
-				Return protocol
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns protocol version in use.
+        ''' </summary>
+        Friend Overridable Property protocolVersion As Integer
+            Get
+                Return protocol
+            End Get
+        End Property
 
-		''' <summary>
-		''' Writes string without allowing it to be replaced in stream.  Used by
-		''' ObjectStreamClass to write class descriptor type strings.
-		''' </summary>
-		Friend Overridable Sub writeTypeString(ByVal str As String)
-			Dim handle As Integer
-			If str Is Nothing Then
-				writeNull()
-			Else
-				handle = [handles].lookup(str)
-				If handle <> -1 Then
-					writeHandle(handle)
-				Else
-					writeString(str, False)
-				End If
-				End If
-		End Sub
+        ''' <summary>
+        ''' Writes string without allowing it to be replaced in stream.  Used by
+        ''' ObjectStreamClass to write class descriptor type strings.
+        ''' </summary>
+        Friend Overridable Sub writeTypeString(ByVal str As String)
+            Dim handle As Integer
+            If str Is Nothing Then
+                writeNull()
+            Else
+                handle = [handles].lookup(str)
+                If handle <> -1 Then
+                    writeHandle(handle)
+                Else
+                    writeString(str, False)
+                End If
+            End If
+        End Sub
 
-		''' <summary>
-		''' Verifies that this (possibly subclass) instance can be constructed
-		''' without violating security constraints: the subclass must not override
-		''' security-sensitive non-final methods, or else the
-		''' "enableSubclassImplementation" SerializablePermission is checked.
-		''' </summary>
-		Private Sub verifySubclass()
-			Dim cl As  [Class] = Me.GetType()
-			If cl Is GetType(ObjectOutputStream) Then Return
-			Dim sm As SecurityManager = System.securityManager
-			If sm Is Nothing Then Return
-			processQueue(Caches.subclassAuditsQueue, Caches.subclassAudits)
-			Dim key As New java.io.ObjectStreamClass.WeakClassKey(cl, Caches.subclassAuditsQueue)
-			Dim result As Boolean? = Caches.subclassAudits.get(key)
-			If result Is Nothing Then
-				result = Convert.ToBoolean(auditSubclass(cl))
-				Caches.subclassAudits.putIfAbsent(key, result)
-			End If
-			If result Then Return
-			sm.checkPermission(SUBCLASS_IMPLEMENTATION_PERMISSION)
-		End Sub
+        ''' <summary>
+        ''' Verifies that this (possibly subclass) instance can be constructed
+        ''' without violating security constraints: the subclass must not override
+        ''' security-sensitive non-final methods, or else the
+        ''' "enableSubclassImplementation" SerializablePermission is checked.
+        ''' </summary>
+        Private Sub verifySubclass()
+            Dim cl As [Class] = Me.GetType()
+            If cl Is GetType(ObjectOutputStream) Then Return
+            Dim sm As SecurityManager = System.securityManager
+            If sm Is Nothing Then Return
+            processQueue(Caches.subclassAuditsQueue, Caches.subclassAudits)
+            Dim key As New java.io.ObjectStreamClass.WeakClassKey(cl, Caches.subclassAuditsQueue)
+            Dim result As Boolean? = Caches.subclassAudits.Get(key)
+            If result Is Nothing Then
+                result = Convert.ToBoolean(auditSubclass(cl))
+                Caches.subclassAudits.putIfAbsent(key, result)
+            End If
+            If result Then Return
+            sm.checkPermission(SUBCLASS_IMPLEMENTATION_PERMISSION)
+        End Sub
 
-		''' <summary>
-		''' Performs reflective checks on given subclass to verify that it doesn't
-		''' override security-sensitive non-final methods.  Returns true if subclass
-		''' is "safe", false otherwise.
-		''' </summary>
-		Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
-			Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
-		   )
-			Return result
-		End Function
+        ''' <summary>
+        ''' Performs reflective checks on given subclass to verify that it doesn't
+        ''' override security-sensitive non-final methods.  Returns true if subclass
+        ''' is "safe", false otherwise.
+        ''' </summary>
+        Private Shared Function auditSubclass(ByVal subcl As [Class]) As Boolean
+            Dim result As Boolean? = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+           )
+            Return result
+        End Function
 
-		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
-			Implements java.security.PrivilegedAction(Of T)
+        Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
+            Implements java.security.PrivilegedAction(Of T)
 
-			Public Overridable Function run() As Boolean?
-				Dim cl As  [Class] = subcl
-				Do While cl IsNot GetType(ObjectOutputStream)
-					Try
-						cl.getDeclaredMethod("writeUnshared", New [Class]() { GetType(Object) })
-						Return Boolean.FALSE
-					Catch ex As NoSuchMethodException
-					End Try
-					Try
-						cl.getDeclaredMethod("putFields", CType(Nothing, Class()))
-						Return Boolean.FALSE
-					Catch ex As NoSuchMethodException
-					End Try
-					cl = cl.BaseType
-				Loop
-				Return Boolean.TRUE
-			End Function
-		End Class
+            Public Overridable Function run() As Boolean?
+                Dim cl As [Class] = subcl
+                Do While cl IsNot GetType(ObjectOutputStream)
+                    Try
+                        cl.getDeclaredMethod("writeUnshared", New [Class]() {GetType(Object)})
+                        Return java.lang.[Boolean].FALSE
+                    Catch ex As NoSuchMethodException
+                    End Try
+                    Try
+                        cl.getDeclaredMethod("putFields", CType(Nothing, Class()))
+						Return java.lang.[Boolean].FALSE
+                    Catch ex As NoSuchMethodException
+                    End Try
+                    cl = cl.BaseType
+                Loop
+                Return java.lang.[Boolean].TRUE
+            End Function
+        End Class
 
-		''' <summary>
-		''' Clears internal data structures.
-		''' </summary>
-		Private Sub clear()
-			subs.clear()
-			[handles].clear()
-		End Sub
+        ''' <summary>
+        ''' Clears internal data structures.
+        ''' </summary>
+        Private Sub clear()
+            subs.clear()
+            [handles].clear()
+        End Sub
 
-		''' <summary>
-		''' Underlying writeObject/writeUnshared implementation.
-		''' </summary>
-		Private Sub writeObject0(ByVal obj As Object, ByVal unshared As Boolean)
-			Dim oldMode As Boolean = bout.blockDataModeode(False)
-			depth += 1
-			Try
-				' handle previously written and non-replaceable objects
-				Dim h As Integer
-				obj = subs.lookup(obj)
-				If obj Is Nothing Then
-					writeNull()
-					Return
-				Else
-					h = [handles].lookup(obj)
-					If (Not unshared) AndAlso h <> -1 Then
-						writeHandle(h)
-						Return
-					ElseIf TypeOf obj Is Class Then
-						writeClass(CType(obj, [Class]), unshared)
-						Return
-					ElseIf TypeOf obj Is ObjectStreamClass Then
-						writeClassDesc(CType(obj, ObjectStreamClass), unshared)
-						Return
-					End If
-					End If
+        ''' <summary>
+        ''' Underlying writeObject/writeUnshared implementation.
+        ''' </summary>
+        Private Sub writeObject0(ByVal obj As Object, ByVal unshared As Boolean)
+            Dim oldMode As Boolean = bout.blockDataModeode(False)
+            depth += 1
+            Try
+                ' handle previously written and non-replaceable objects
+                Dim h As Integer
+                obj = subs.lookup(obj)
+                If obj Is Nothing Then
+                    writeNull()
+                    Return
+                Else
+                    h = [handles].lookup(obj)
+                    If (Not unshared) AndAlso h <> -1 Then
+                        writeHandle(h)
+                        Return
+                    ElseIf TypeOf obj Is Class Then
+                        writeClass(CType(obj, [Class]), unshared)
+                        Return
+                    ElseIf TypeOf obj Is ObjectStreamClass Then
+                        writeClassDesc(CType(obj, ObjectStreamClass), unshared)
+                        Return
+                    End If
+                End If
 
-				' check for replacement object
-				Dim orig As Object = obj
-				Dim cl As  [Class] = obj.GetType()
-				Dim desc As ObjectStreamClass
-				Do
-					' REMIND: skip this check for strings/arrays?
-					Dim repCl As  [Class]
-					desc = ObjectStreamClass.lookup(cl, True)
-					obj = desc.invokeWriteReplace(obj)
-					repCl = obj.GetType()
-					If (Not desc.hasWriteReplaceMethod()) OrElse obj Is Nothing OrElse repCl Is cl Then Exit Do
-					cl = repCl
-				Loop
-				If enableReplace Then
-					Dim rep As Object = replaceObject(obj)
-					If rep IsNot obj AndAlso rep IsNot Nothing Then
-						cl = rep.GetType()
-						desc = ObjectStreamClass.lookup(cl, True)
-					End If
-					obj = rep
-				End If
+                ' check for replacement object
+                Dim orig As Object = obj
+                Dim cl As [Class] = obj.GetType()
+                Dim desc As ObjectStreamClass
+                Do
+                    ' REMIND: skip this check for strings/arrays?
+                    Dim repCl As [Class]
+                    desc = ObjectStreamClass.lookup(cl, True)
+                    obj = desc.invokeWriteReplace(obj)
+                    repCl = obj.GetType()
+                    If (Not desc.hasWriteReplaceMethod()) OrElse obj Is Nothing OrElse repCl Is cl Then Exit Do
+                    cl = repCl
+                Loop
+                If enableReplace Then
+                    Dim rep As Object = replaceObject(obj)
+                    If rep IsNot obj AndAlso rep IsNot Nothing Then
+                        cl = rep.GetType()
+                        desc = ObjectStreamClass.lookup(cl, True)
+                    End If
+                    obj = rep
+                End If
 
-				' if object replaced, run through original checks a second time
-				If obj IsNot orig Then
-					subs.assign(orig, obj)
-					If obj Is Nothing Then
-						writeNull()
-						Return
-					Else
-						h = [handles].lookup(obj)
-						If (Not unshared) AndAlso h <> -1 Then
-							writeHandle(h)
-							Return
-						ElseIf TypeOf obj Is Class Then
-							writeClass(CType(obj, [Class]), unshared)
-							Return
-						ElseIf TypeOf obj Is ObjectStreamClass Then
-							writeClassDesc(CType(obj, ObjectStreamClass), unshared)
-							Return
-						End If
-						End If
-				End If
+                ' if object replaced, run through original checks a second time
+                If obj IsNot orig Then
+                    subs.assign(orig, obj)
+                    If obj Is Nothing Then
+                        writeNull()
+                        Return
+                    Else
+                        h = [handles].lookup(obj)
+                        If (Not unshared) AndAlso h <> -1 Then
+                            writeHandle(h)
+                            Return
+                        ElseIf TypeOf obj Is Class Then
+                            writeClass(CType(obj, [Class]), unshared)
+                            Return
+                        ElseIf TypeOf obj Is ObjectStreamClass Then
+                            writeClassDesc(CType(obj, ObjectStreamClass), unshared)
+                            Return
+                        End If
+                    End If
+                End If
 
-				' remaining cases
-				If TypeOf obj Is String Then
-					writeString(CStr(obj), unshared)
-				ElseIf cl.array Then
-					writeArray(obj, desc, unshared)
-				ElseIf TypeOf obj Is System.Enum Then
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-					writeEnum(CType(obj, Enum(Of ?)), desc, unshared)
+                ' remaining cases
+                If TypeOf obj Is String Then
+                    writeString(CStr(obj), unshared)
+                ElseIf cl.array Then
+                    writeArray(obj, desc, unshared)
+                ElseIf TypeOf obj Is System.Enum Then
+                    'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+                    writeEnum(CType(obj, Enum(Of ?)), desc, unshared)
 				ElseIf TypeOf obj Is Serializable Then
-					writeOrdinaryObject(obj, desc, unshared)
-				Else
-					If extendedDebugInfo Then
-						Throw New NotSerializableException(cl.name & vbLf & debugInfoStack.ToString())
-					Else
-						Throw New NotSerializableException(cl.name)
-					End If
-				End If
-			Finally
-				depth -= 1
-				bout.blockDataMode = oldMode
-			End Try
-		End Sub
+                    writeOrdinaryObject(obj, desc, unshared)
+                Else
+                    If extendedDebugInfo Then
+                        Throw New NotSerializableException(cl.name & vbLf & debugInfoStack.ToString())
+                    Else
+                        Throw New NotSerializableException(cl.name)
+                    End If
+                End If
+            Finally
+                depth -= 1
+                bout.blockDataMode = oldMode
+            End Try
+        End Sub
 
-		''' <summary>
-		''' Writes null code to stream.
-		''' </summary>
-		Private Sub writeNull()
-			bout.writeByte(TC_NULL)
-		End Sub
+        ''' <summary>
+        ''' Writes null code to stream.
+        ''' </summary>
+        Private Sub writeNull()
+            bout.writeByte(TC_NULL)
+        End Sub
 
-		''' <summary>
-		''' Writes given object handle to stream.
-		''' </summary>
-		Private Sub writeHandle(ByVal handle As Integer)
-			bout.writeByte(TC_REFERENCE)
-			bout.writeInt(baseWireHandle + handle)
-		End Sub
+        ''' <summary>
+        ''' Writes given object handle to stream.
+        ''' </summary>
+        Private Sub writeHandle(ByVal handle As Integer)
+            bout.writeByte(TC_REFERENCE)
+            bout.writeInt(baseWireHandle + handle)
+        End Sub
 
-		''' <summary>
-		''' Writes representation of given class to stream.
-		''' </summary>
-		Private Sub writeClass(ByVal cl As [Class], ByVal unshared As Boolean)
-			bout.writeByte(TC_CLASS)
-			writeClassDesc(ObjectStreamClass.lookup(cl, True), False)
-			[handles].assign(If(unshared, Nothing, cl))
-		End Sub
+        ''' <summary>
+        ''' Writes representation of given class to stream.
+        ''' </summary>
+        Private Sub writeClass(ByVal cl As [Class], ByVal unshared As Boolean)
+            bout.writeByte(TC_CLASS)
+            writeClassDesc(ObjectStreamClass.lookup(cl, True), False)
+            [handles].assign(If(unshared, Nothing, cl))
+        End Sub
 
-		''' <summary>
-		''' Writes representation of given class descriptor to stream.
-		''' </summary>
-		Private Sub writeClassDesc(ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
-			Dim handle As Integer
-			If desc Is Nothing Then
-				writeNull()
-			Else
-				handle = [handles].lookup(desc)
-				If (Not unshared) AndAlso handle <> -1 Then
-					writeHandle(handle)
-				ElseIf desc.proxy Then
-					writeProxyDesc(desc, unshared)
-				Else
-					writeNonProxyDesc(desc, unshared)
-				End If
-				End If
-		End Sub
+        ''' <summary>
+        ''' Writes representation of given class descriptor to stream.
+        ''' </summary>
+        Private Sub writeClassDesc(ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
+            Dim handle As Integer
+            If desc Is Nothing Then
+                writeNull()
+            Else
+                handle = [handles].lookup(desc)
+                If (Not unshared) AndAlso handle <> -1 Then
+                    writeHandle(handle)
+                ElseIf desc.proxy Then
+                    writeProxyDesc(desc, unshared)
+                Else
+                    writeNonProxyDesc(desc, unshared)
+                End If
+            End If
+        End Sub
 
-		Private Property customSubclass As Boolean
-			Get
-				' Return true if this class is a custom subclass of ObjectOutputStream
-				Return Me.GetType().classLoader <> GetType(ObjectOutputStream).classLoader
-			End Get
-		End Property
+        Private Property customSubclass As Boolean
+            Get
+                ' Return true if this class is a custom subclass of ObjectOutputStream
+                Return Me.GetType().classLoader <> GetType(ObjectOutputStream).classLoader
+            End Get
+        End Property
 
-		''' <summary>
-		''' Writes class descriptor representing a dynamic proxy class to stream.
-		''' </summary>
-		Private Sub writeProxyDesc(ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
-			bout.writeByte(TC_PROXYCLASSDESC)
-			[handles].assign(If(unshared, Nothing, desc))
+        ''' <summary>
+        ''' Writes class descriptor representing a dynamic proxy class to stream.
+        ''' </summary>
+        Private Sub writeProxyDesc(ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
+            bout.writeByte(TC_PROXYCLASSDESC)
+            [handles].assign(If(unshared, Nothing, desc))
 
-			Dim cl As  [Class] = desc.forClass()
-			Dim ifaces As  [Class]() = cl.interfaces
-			bout.writeInt(ifaces.Length)
-			For i As Integer = 0 To ifaces.Length - 1
-				bout.writeUTF(ifaces(i).name)
-			Next i
+            Dim cl As [Class] = desc.forClass()
+            Dim ifaces As [Class]() = cl.interfaces
+            bout.writeInt(ifaces.Length)
+            For i As Integer = 0 To ifaces.Length - 1
+                bout.writeUTF(ifaces(i).name)
+            Next i
 
-			bout.blockDataMode = True
-			If cl IsNot Nothing AndAlso customSubclass Then sun.reflect.misc.ReflectUtil.checkPackageAccess(cl)
-			annotateProxyClass(cl)
-			bout.blockDataMode = False
-			bout.writeByte(TC_ENDBLOCKDATA)
+            bout.blockDataMode = True
+            If cl IsNot Nothing AndAlso customSubclass Then sun.reflect.misc.ReflectUtil.checkPackageAccess(cl)
+            annotateProxyClass(cl)
+            bout.blockDataMode = False
+            bout.writeByte(TC_ENDBLOCKDATA)
 
-			writeClassDesc(desc.superDesc, False)
-		End Sub
+            writeClassDesc(desc.superDesc, False)
+        End Sub
 
-		''' <summary>
-		''' Writes class descriptor representing a standard (i.e., not a dynamic
-		''' proxy) class to stream.
-		''' </summary>
-		Private Sub writeNonProxyDesc(ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
-			bout.writeByte(TC_CLASSDESC)
-			[handles].assign(If(unshared, Nothing, desc))
+        ''' <summary>
+        ''' Writes class descriptor representing a standard (i.e., not a dynamic
+        ''' proxy) class to stream.
+        ''' </summary>
+        Private Sub writeNonProxyDesc(ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
+            bout.writeByte(TC_CLASSDESC)
+            [handles].assign(If(unshared, Nothing, desc))
 
-			If protocol = PROTOCOL_VERSION_1 Then
-				' do not invoke class descriptor write hook with old protocol
-				desc.writeNonProxy(Me)
-			Else
-				writeClassDescriptor(desc)
-			End If
+            If protocol = PROTOCOL_VERSION_1 Then
+                ' do not invoke class descriptor write hook with old protocol
+                desc.writeNonProxy(Me)
+            Else
+                writeClassDescriptor(desc)
+            End If
 
-			Dim cl As  [Class] = desc.forClass()
-			bout.blockDataMode = True
-			If cl IsNot Nothing AndAlso customSubclass Then sun.reflect.misc.ReflectUtil.checkPackageAccess(cl)
-			annotateClass(cl)
-			bout.blockDataMode = False
-			bout.writeByte(TC_ENDBLOCKDATA)
+            Dim cl As [Class] = desc.forClass()
+            bout.blockDataMode = True
+            If cl IsNot Nothing AndAlso customSubclass Then sun.reflect.misc.ReflectUtil.checkPackageAccess(cl)
+            annotateClass(cl)
+            bout.blockDataMode = False
+            bout.writeByte(TC_ENDBLOCKDATA)
 
-			writeClassDesc(desc.superDesc, False)
-		End Sub
+            writeClassDesc(desc.superDesc, False)
+        End Sub
 
-		''' <summary>
-		''' Writes given string to stream, using standard or long UTF format
-		''' depending on string length.
-		''' </summary>
-		Private Sub writeString(ByVal str As String, ByVal unshared As Boolean)
-			[handles].assign(If(unshared, Nothing, str))
-			Dim utflen As Long = bout.getUTFLength(str)
-			If utflen <= &HFFFF Then
-				bout.writeByte(TC_STRING)
-				bout.writeUTF(str, utflen)
-			Else
-				bout.writeByte(TC_LONGSTRING)
-				bout.writeLongUTF(str, utflen)
-			End If
-		End Sub
+        ''' <summary>
+        ''' Writes given string to stream, using standard or long UTF format
+        ''' depending on string length.
+        ''' </summary>
+        Private Sub writeString(ByVal str As String, ByVal unshared As Boolean)
+            [handles].assign(If(unshared, Nothing, str))
+            Dim utflen As Long = bout.getUTFLength(str)
+            If utflen <= &HFFFF Then
+                bout.writeByte(TC_STRING)
+                bout.writeUTF(str, utflen)
+            Else
+                bout.writeByte(TC_LONGSTRING)
+                bout.writeLongUTF(str, utflen)
+            End If
+        End Sub
 
-		''' <summary>
-		''' Writes given array object to stream.
-		''' </summary>
-		Private Sub writeArray(ByVal array As Object, ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
-			bout.writeByte(TC_ARRAY)
-			writeClassDesc(desc, False)
-			[handles].assign(If(unshared, Nothing, array))
+        ''' <summary>
+        ''' Writes given array object to stream.
+        ''' </summary>
+        Private Sub writeArray(ByVal array As Object, ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
+            bout.writeByte(TC_ARRAY)
+            writeClassDesc(desc, False)
+            [handles].assign(If(unshared, Nothing, array))
 
-			Dim ccl As  [Class] = desc.forClass().componentType
-			If ccl.primitive Then
-				If ccl Is Integer.TYPE Then
-					Dim ia As Integer() = CType(array, Integer())
-					bout.writeInt(ia.Length)
-					bout.writeInts(ia, 0, ia.Length)
-				ElseIf ccl Is Byte.TYPE Then
-					Dim ba As SByte() = CType(array, SByte())
-					bout.writeInt(ba.Length)
-					bout.write(ba, 0, ba.Length, True)
-				ElseIf ccl Is Long.TYPE Then
-					Dim ja As Long() = CType(array, Long())
-					bout.writeInt(ja.Length)
-					bout.writeLongs(ja, 0, ja.Length)
-				ElseIf ccl Is Float.TYPE Then
-					Dim fa As Single() = CType(array, Single())
-					bout.writeInt(fa.Length)
-					bout.writeFloats(fa, 0, fa.Length)
-				ElseIf ccl Is Double.TYPE Then
-					Dim da As Double() = CType(array, Double())
-					bout.writeInt(da.Length)
-					bout.writeDoubles(da, 0, da.Length)
-				ElseIf ccl Is Short.TYPE Then
-					Dim sa As Short() = CType(array, Short())
-					bout.writeInt(sa.Length)
-					bout.writeShorts(sa, 0, sa.Length)
-				ElseIf ccl Is Character.TYPE Then
-					Dim ca As Char() = CType(array, Char())
-					bout.writeInt(ca.Length)
-					bout.writeChars(ca, 0, ca.Length)
-				ElseIf ccl Is Boolean.TYPE Then
-					Dim za As Boolean() = CType(array, Boolean())
-					bout.writeInt(za.Length)
-					bout.writeBooleans(za, 0, za.Length)
-				Else
-					Throw New InternalError
-				End If
-			Else
-				Dim objs As Object() = CType(array, Object())
-				Dim len As Integer = objs.Length
-				bout.writeInt(len)
-				If extendedDebugInfo Then debugInfoStack.push("array (class """ & array.GetType().name & """, size: " & len & ")")
-				Try
-					For i As Integer = 0 To len - 1
-						If extendedDebugInfo Then debugInfoStack.push("element of array (index: " & i & ")")
-						Try
-							writeObject0(objs(i), False)
-						Finally
-							If extendedDebugInfo Then debugInfoStack.pop()
-						End Try
-					Next i
-				Finally
-					If extendedDebugInfo Then debugInfoStack.pop()
-				End Try
-			End If
-		End Sub
+            Dim ccl As [Class] = desc.forClass().componentType
+            If ccl.primitive Then
+                If ccl Is java.lang.[Integer].TYPE Then
+                    Dim ia As Integer() = CType(array, Integer())
+                    bout.writeInt(ia.Length)
+                    bout.writeInts(ia, 0, ia.Length)
+                ElseIf ccl Is java.lang.[Byte].TYPE Then
+                    Dim ba As SByte() = CType(array, SByte())
+                    bout.writeInt(ba.Length)
+                    bout.write(ba, 0, ba.Length, True)
+                ElseIf ccl Is java.lang.[Long].TYPE Then
+                    Dim ja As Long() = CType(array, Long())
+                    bout.writeInt(ja.Length)
+                    bout.writeLongs(ja, 0, ja.Length)
+                ElseIf ccl Is Float.TYPE Then
+                    Dim fa As Single() = CType(array, Single())
+                    bout.writeInt(fa.Length)
+                    bout.writeFloats(fa, 0, fa.Length)
+                ElseIf ccl Is java.lang.[Double].TYPE Then
+                    Dim da As Double() = CType(array, Double())
+                    bout.writeInt(da.Length)
+                    bout.writeDoubles(da, 0, da.Length)
+                ElseIf ccl Is java.lang.[Short].TYPE Then
+                    Dim sa As Short() = CType(array, Short())
+                    bout.writeInt(sa.Length)
+                    bout.writeShorts(sa, 0, sa.Length)
+                ElseIf ccl Is Character.TYPE Then
+                    Dim ca As Char() = CType(array, Char())
+                    bout.writeInt(ca.Length)
+                    bout.writeChars(ca, 0, ca.Length)
+                ElseIf ccl Is java.lang.[Boolean].TYPE Then
+                    Dim za As Boolean() = CType(array, Boolean())
+                    bout.writeInt(za.Length)
+                    bout.writeBooleans(za, 0, za.Length)
+                Else
+                    Throw New InternalError
+                End If
+            Else
+                Dim objs As Object() = CType(array, Object())
+                Dim len As Integer = objs.Length
+                bout.writeInt(len)
+                If extendedDebugInfo Then debugInfoStack.push("array (class """ & array.GetType().Name & """, size: " & len & ")")
+                Try
+                    For i As Integer = 0 To len - 1
+                        If extendedDebugInfo Then debugInfoStack.push("element of array (index: " & i & ")")
+                        Try
+                            writeObject0(objs(i), False)
+                        Finally
+                            If extendedDebugInfo Then debugInfoStack.pop()
+                        End Try
+                    Next i
+                Finally
+                    If extendedDebugInfo Then debugInfoStack.pop()
+                End Try
+            End If
+        End Sub
 
-		''' <summary>
-		''' Writes given enum constant to stream.
-		''' </summary>
-		Private Sub writeEnum(Of T1)(ByVal en As System.Enum(Of T1), ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
-			bout.writeByte(TC_ENUM)
-			Dim sdesc As ObjectStreamClass = desc.superDesc
-			writeClassDesc(If(sdesc.forClass() Is GetType(System.Enum), desc, sdesc), False)
-			[handles].assign(If(unshared, Nothing, en))
-			writeString(en.name(), False)
-		End Sub
+        ''' <summary>
+        ''' Writes given enum constant to stream.
+        ''' </summary>
+        Private Sub writeEnum(Of T1)(ByVal en As System.Enum(Of T1), ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
+            bout.writeByte(TC_ENUM)
+            Dim sdesc As ObjectStreamClass = desc.superDesc
+            writeClassDesc(If(sdesc.forClass() Is GetType(System.Enum), desc, sdesc), False)
+            [handles].assign(If(unshared, Nothing, en))
+            writeString(en.name(), False)
+        End Sub
 
-		''' <summary>
-		''' Writes representation of a "ordinary" (i.e., not a String, [Class],
-		''' ObjectStreamClass, array, or enum constant) serializable object to the
-		''' stream.
-		''' </summary>
-		Private Sub writeOrdinaryObject(ByVal obj As Object, ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
-			If extendedDebugInfo Then debugInfoStack.push((If(depth = 1, "root ", "")) & "object (class """ & obj.GetType().name & """, " & obj.ToString() & ")")
-			Try
-				desc.checkSerialize()
+        ''' <summary>
+        ''' Writes representation of a "ordinary" (i.e., not a String, [Class],
+        ''' ObjectStreamClass, array, or enum constant) serializable object to the
+        ''' stream.
+        ''' </summary>
+        Private Sub writeOrdinaryObject(ByVal obj As Object, ByVal desc As ObjectStreamClass, ByVal unshared As Boolean)
+            If extendedDebugInfo Then debugInfoStack.push((If(depth = 1, "root ", "")) & "object (class """ & obj.GetType().Name & """, " & obj.ToString() & ")")
+            Try
+                desc.checkSerialize()
 
-				bout.writeByte(TC_OBJECT)
-				writeClassDesc(desc, False)
-				[handles].assign(If(unshared, Nothing, obj))
-				If desc.externalizable AndAlso (Not desc.proxy) Then
-					writeExternalData(CType(obj, Externalizable))
-				Else
-					writeSerialData(obj, desc)
-				End If
-			Finally
-				If extendedDebugInfo Then debugInfoStack.pop()
-			End Try
-		End Sub
+                bout.writeByte(TC_OBJECT)
+                writeClassDesc(desc, False)
+                [handles].assign(If(unshared, Nothing, obj))
+                If desc.externalizable AndAlso (Not desc.proxy) Then
+                    writeExternalData(CType(obj, Externalizable))
+                Else
+                    writeSerialData(obj, desc)
+                End If
+            Finally
+                If extendedDebugInfo Then debugInfoStack.pop()
+            End Try
+        End Sub
 
-		''' <summary>
-		''' Writes externalizable data of given object by invoking its
-		''' writeExternal() method.
-		''' </summary>
-		Private Sub writeExternalData(ByVal obj As Externalizable)
-			Dim oldPut As PutFieldImpl = curPut
-			curPut = Nothing
+        ''' <summary>
+        ''' Writes externalizable data of given object by invoking its
+        ''' writeExternal() method.
+        ''' </summary>
+        Private Sub writeExternalData(ByVal obj As Externalizable)
+            Dim oldPut As PutFieldImpl = curPut
+            curPut = Nothing
 
-			If extendedDebugInfo Then debugInfoStack.push("writeExternal data")
-			Dim oldContext As java.io.SerialCallbackContext = curContext
-			Try
-				curContext = Nothing
-				If protocol = PROTOCOL_VERSION_1 Then
-					obj.writeExternal(Me)
-				Else
-					bout.blockDataMode = True
-					obj.writeExternal(Me)
-					bout.blockDataMode = False
-					bout.writeByte(TC_ENDBLOCKDATA)
-				End If
-			Finally
-				curContext = oldContext
-				If extendedDebugInfo Then debugInfoStack.pop()
-			End Try
+            If extendedDebugInfo Then debugInfoStack.push("writeExternal data")
+            Dim oldContext As java.io.SerialCallbackContext = curContext
+            Try
+                curContext = Nothing
+                If protocol = PROTOCOL_VERSION_1 Then
+                    obj.writeExternal(Me)
+                Else
+                    bout.blockDataMode = True
+                    obj.writeExternal(Me)
+                    bout.blockDataMode = False
+                    bout.writeByte(TC_ENDBLOCKDATA)
+                End If
+            Finally
+                curContext = oldContext
+                If extendedDebugInfo Then debugInfoStack.pop()
+            End Try
 
-			curPut = oldPut
-		End Sub
+            curPut = oldPut
+        End Sub
 
-		''' <summary>
-		''' Writes instance data for each serializable class of given object, from
-		''' superclass to subclass.
-		''' </summary>
-		Private Sub writeSerialData(ByVal obj As Object, ByVal desc As ObjectStreamClass)
-			Dim slots As ObjectStreamClass.ClassDataSlot() = desc.classDataLayout
-			For i As Integer = 0 To slots.Length - 1
-				Dim slotDesc As ObjectStreamClass = slots(i).desc
-				If slotDesc.hasWriteObjectMethod() Then
-					Dim oldPut As PutFieldImpl = curPut
-					curPut = Nothing
-					Dim oldContext As java.io.SerialCallbackContext = curContext
+        ''' <summary>
+        ''' Writes instance data for each serializable class of given object, from
+        ''' superclass to subclass.
+        ''' </summary>
+        Private Sub writeSerialData(ByVal obj As Object, ByVal desc As ObjectStreamClass)
+            Dim slots As ObjectStreamClass.ClassDataSlot() = desc.classDataLayout
+            For i As Integer = 0 To slots.Length - 1
+                Dim slotDesc As ObjectStreamClass = slots(i).desc
+                If slotDesc.hasWriteObjectMethod() Then
+                    Dim oldPut As PutFieldImpl = curPut
+                    curPut = Nothing
+                    Dim oldContext As java.io.SerialCallbackContext = curContext
 
-					If extendedDebugInfo Then debugInfoStack.push("custom writeObject data (class """ & slotDesc.name & """)")
-					Try
-						curContext = New java.io.SerialCallbackContext(obj, slotDesc)
-						bout.blockDataMode = True
-						slotDesc.invokeWriteObject(obj, Me)
-						bout.blockDataMode = False
-						bout.writeByte(TC_ENDBLOCKDATA)
-					Finally
-						curContext.usedsed()
-						curContext = oldContext
-						If extendedDebugInfo Then debugInfoStack.pop()
-					End Try
+                    If extendedDebugInfo Then debugInfoStack.push("custom writeObject data (class """ & slotDesc.name & """)")
+                    Try
+                        curContext = New java.io.SerialCallbackContext(obj, slotDesc)
+                        bout.blockDataMode = True
+                        slotDesc.invokeWriteObject(obj, Me)
+                        bout.blockDataMode = False
+                        bout.writeByte(TC_ENDBLOCKDATA)
+                    Finally
+                        curContext.usedsed()
+                        curContext = oldContext
+                        If extendedDebugInfo Then debugInfoStack.pop()
+                    End Try
 
-					curPut = oldPut
-				Else
-					defaultWriteFields(obj, slotDesc)
-				End If
-			Next i
-		End Sub
+                    curPut = oldPut
+                Else
+                    defaultWriteFields(obj, slotDesc)
+                End If
+            Next i
+        End Sub
 
-		''' <summary>
-		''' Fetches and writes values of serializable fields of given object to
-		''' stream.  The given class descriptor specifies which field values to
-		''' write, and in which order they should be written.
-		''' </summary>
-		Private Sub defaultWriteFields(ByVal obj As Object, ByVal desc As ObjectStreamClass)
-			Dim cl As  [Class] = desc.forClass()
-			If cl IsNot Nothing AndAlso obj IsNot Nothing AndAlso (Not cl.isInstance(obj)) Then Throw New ClassCastException
+        ''' <summary>
+        ''' Fetches and writes values of serializable fields of given object to
+        ''' stream.  The given class descriptor specifies which field values to
+        ''' write, and in which order they should be written.
+        ''' </summary>
+        Private Sub defaultWriteFields(ByVal obj As Object, ByVal desc As ObjectStreamClass)
+            Dim cl As [Class] = desc.forClass()
+            If cl IsNot Nothing AndAlso obj IsNot Nothing AndAlso (Not cl.isInstance(obj)) Then Throw New ClassCastException
 
-			desc.checkDefaultSerialize()
+            desc.checkDefaultSerialize()
 
-			Dim primDataSize As Integer = desc.primDataSize
-			If primVals Is Nothing OrElse primVals.Length < primDataSize Then primVals = New SByte(primDataSize - 1){}
-			desc.getPrimFieldValues(obj, primVals)
-			bout.write(primVals, 0, primDataSize, False)
+            Dim primDataSize As Integer = desc.primDataSize
+            If primVals Is Nothing OrElse primVals.Length < primDataSize Then primVals = New SByte(primDataSize - 1) {}
+            desc.getPrimFieldValues(obj, primVals)
+            bout.write(primVals, 0, primDataSize, False)
 
-			Dim fields As ObjectStreamField() = desc.getFields(False)
-			Dim objVals As Object() = New Object(desc.numObjFields - 1){}
-			Dim numPrimFields As Integer = fields.Length - objVals.Length
-			desc.getObjFieldValues(obj, objVals)
-			For i As Integer = 0 To objVals.Length - 1
-				If extendedDebugInfo Then debugInfoStack.push("field (class """ & desc.name & """, name: """ & fields(numPrimFields + i).name & """, type: """ & fields(numPrimFields + i).type & """)")
-				Try
-					writeObject0(objVals(i), fields(numPrimFields + i).unshared)
-				Finally
-					If extendedDebugInfo Then debugInfoStack.pop()
-				End Try
-			Next i
-		End Sub
+            Dim fields As ObjectStreamField() = desc.getFields(False)
+            Dim objVals As Object() = New Object(desc.numObjFields - 1) {}
+            Dim numPrimFields As Integer = fields.Length - objVals.Length
+            desc.getObjFieldValues(obj, objVals)
+            For i As Integer = 0 To objVals.Length - 1
+                If extendedDebugInfo Then debugInfoStack.push("field (class """ & desc.name & """, name: """ & fields(numPrimFields + i).name & """, type: """ & fields(numPrimFields + i).type & """)")
+                Try
+                    writeObject0(objVals(i), fields(numPrimFields + i).unshared)
+                Finally
+                    If extendedDebugInfo Then debugInfoStack.pop()
+                End Try
+            Next i
+        End Sub
 
-		''' <summary>
-		''' Attempts to write to stream fatal IOException that has caused
-		''' serialization to abort.
-		''' </summary>
-		Private Sub writeFatalException(ByVal ex As IOException)
-	'        
-	'         * Note: the serialization specification states that if a second
-	'         * IOException occurs while attempting to serialize the original fatal
-	'         * exception to the stream, then a StreamCorruptedException should be
-	'         * thrown (section 2.1).  However, due to a bug in previous
-	'         * implementations of serialization, StreamCorruptedExceptions were
-	'         * rarely (if ever) actually thrown--the "root" exceptions from
-	'         * underlying streams were thrown instead.  This historical behavior is
-	'         * followed here for consistency.
-	'         
-			clear()
-			Dim oldMode As Boolean = bout.blockDataModeode(False)
-			Try
-				bout.writeByte(TC_EXCEPTION)
-				writeObject0(ex, False)
-				clear()
-			Finally
-				bout.blockDataMode = oldMode
-			End Try
-		End Sub
+        ''' <summary>
+        ''' Attempts to write to stream fatal IOException that has caused
+        ''' serialization to abort.
+        ''' </summary>
+        Private Sub writeFatalException(ByVal ex As IOException)
+            '        
+            '         * Note: the serialization specification states that if a second
+            '         * IOException occurs while attempting to serialize the original fatal
+            '         * exception to the stream, then a StreamCorruptedException should be
+            '         * thrown (section 2.1).  However, due to a bug in previous
+            '         * implementations of serialization, StreamCorruptedExceptions were
+            '         * rarely (if ever) actually thrown--the "root" exceptions from
+            '         * underlying streams were thrown instead.  This historical behavior is
+            '         * followed here for consistency.
+            '         
+            clear()
+            Dim oldMode As Boolean = bout.blockDataModeode(False)
+            Try
+                bout.writeByte(TC_EXCEPTION)
+                writeObject0(ex, False)
+                clear()
+            Finally
+                bout.blockDataMode = oldMode
+            End Try
+        End Sub
 
-		''' <summary>
-		''' Converts specified span of float values into byte values.
-		''' </summary>
-		' REMIND: remove once hotspot inlines Float.floatToIntBits
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
-		Private Shared Sub floatsToBytes(ByVal src As Single(), ByVal srcpos As Integer, ByVal dst As SByte(), ByVal dstpos As Integer, ByVal nfloats As Integer)
-		End Sub
+        ''' <summary>
+        ''' Converts specified span of float values into byte values.
+        ''' </summary>
+        ' REMIND: remove once hotspot inlines Float.floatToIntBits
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")>
+        Private Shared Sub floatsToBytes(ByVal src As Single(), ByVal srcpos As Integer, ByVal dst As SByte(), ByVal dstpos As Integer, ByVal nfloats As Integer)
+        End Sub
 
-		''' <summary>
-		''' Converts specified span of double values into byte values.
-		''' </summary>
-		' REMIND: remove once hotspot inlines Double.doubleToLongBits
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
-		Private Shared Sub doublesToBytes(ByVal src As Double(), ByVal srcpos As Integer, ByVal dst As SByte(), ByVal dstpos As Integer, ByVal ndoubles As Integer)
-		End Sub
+        ''' <summary>
+        ''' Converts specified span of double values into byte values.
+        ''' </summary>
+        ' REMIND: remove once hotspot inlines java.lang.[Double].doubleToLongBits
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")>
+        Private Shared Sub doublesToBytes(ByVal src As Double(), ByVal srcpos As Integer, ByVal dst As SByte(), ByVal dstpos As Integer, ByVal ndoubles As Integer)
+        End Sub
 
-		''' <summary>
-		''' Default PutField implementation.
-		''' </summary>
-		Private Class PutFieldImpl
-			Inherits PutField
+        ''' <summary>
+        ''' Default PutField implementation.
+        ''' </summary>
+        Private Class PutFieldImpl
+            Inherits PutField
 
-			Private ReadOnly outerInstance As ObjectOutputStream
+            Private ReadOnly outerInstance As ObjectOutputStream
 
 
-			''' <summary>
-			''' class descriptor describing serializable fields </summary>
-			Private ReadOnly desc As ObjectStreamClass
-			''' <summary>
-			''' primitive field values </summary>
-			Private ReadOnly primVals As SByte()
-			''' <summary>
-			''' object field values </summary>
-			Private ReadOnly objVals As Object()
+            ''' <summary>
+            ''' class descriptor describing serializable fields </summary>
+            Private ReadOnly desc As ObjectStreamClass
+            ''' <summary>
+            ''' primitive field values </summary>
+            Private ReadOnly primVals As SByte()
+            ''' <summary>
+            ''' object field values </summary>
+            Private ReadOnly objVals As Object()
 
-			''' <summary>
-			''' Creates PutFieldImpl object for writing fields defined in given
-			''' class descriptor.
-			''' </summary>
-			Friend Sub New(ByVal outerInstance As ObjectOutputStream, ByVal desc As ObjectStreamClass)
-					Me.outerInstance = outerInstance
-				Me.desc = desc
-				primVals = New SByte(desc.primDataSize - 1){}
-				objVals = New Object(desc.numObjFields - 1){}
-			End Sub
+            ''' <summary>
+            ''' Creates PutFieldImpl object for writing fields defined in given
+            ''' class descriptor.
+            ''' </summary>
+            Friend Sub New(ByVal outerInstance As ObjectOutputStream, ByVal desc As ObjectStreamClass)
+                Me.outerInstance = outerInstance
+                Me.desc = desc
+                primVals = New SByte(desc.primDataSize - 1) {}
+                objVals = New Object(desc.numObjFields - 1) {}
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Boolean)
-				Bits.putBoolean(primVals, getFieldOffset(name, Boolean.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Boolean)
+                Bits.putBoolean(primVals, getFieldOffset(name, java.lang.[Boolean].TYPE), val)
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As SByte)
-				primVals(getFieldOffset(name, Byte.TYPE)) = val
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As SByte)
+                primVals(getFieldOffset(name, java.lang.[Byte].TYPE)) = val
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Char)
-				Bits.putChar(primVals, getFieldOffset(name, Character.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Char)
+                Bits.putChar(primVals, getFieldOffset(name, Character.TYPE), val)
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Short)
-				Bits.putShort(primVals, getFieldOffset(name, Short.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Short)
+                Bits.putShort(primVals, getFieldOffset(name, java.lang.[Short].TYPE), val)
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Integer)
-				Bits.putInt(primVals, getFieldOffset(name, Integer.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Integer)
+                Bits.putInt(primVals, getFieldOffset(name, java.lang.[Integer].TYPE), val)
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Single)
-				Bits.putFloat(primVals, getFieldOffset(name, Float.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Single)
+                Bits.putFloat(primVals, getFieldOffset(name, Float.TYPE), val)
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Long)
-				Bits.putLong(primVals, getFieldOffset(name, Long.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Long)
+                Bits.putLong(primVals, getFieldOffset(name, java.lang.[Long].TYPE), val)
+            End Sub
 
-			Public Overrides Sub put(ByVal name As String, ByVal val As Double)
-				Bits.putDouble(primVals, getFieldOffset(name, Double.TYPE), val)
-			End Sub
+            Public Overrides Sub put(ByVal name As String, ByVal val As Double)
+                Bits.putDouble(primVals, getFieldOffset(name, java.lang.[Double].TYPE), val)
+            End Sub
 
 			Public Overrides Sub put(ByVal name As String, ByVal val As Object)
-				objVals(getFieldOffset(name, GetType(Object))) = val
-			End Sub
+                objVals(getFieldOffset(name, GetType(java.lang.Object))) = val
+            End Sub
 
 			' deprecated in ObjectOutputStream.PutField
 			Public Overrides Sub write(ByVal out As ObjectOutput)
@@ -1721,7 +1722,7 @@ Namespace java.io
 						[off] += MAX_BLOCK_SIZE
 						len -= MAX_BLOCK_SIZE
 					Else
-						Dim wlen As Integer = Math.Min(len, MAX_BLOCK_SIZE - pos)
+						Dim wlen As Integer = System.Math.Min(len, MAX_BLOCK_SIZE - pos)
 						Array.Copy(b, [off], buf, pos, wlen)
 						pos += wlen
 						[off] += wlen
@@ -1840,11 +1841,11 @@ Namespace java.io
 				Do While [off] < endoff
 					If cpos >= csize Then
 						cpos = 0
-						csize = Math.Min(endoff - [off], CHAR_BUF_SIZE)
+						csize = System.Math.Min(endoff - [off], CHAR_BUF_SIZE)
 						s.getChars([off], [off] + csize, cbuf, 0)
 					End If
 					If pos >= MAX_BLOCK_SIZE Then drain()
-					Dim n As Integer = Math.Min(csize - cpos, MAX_BLOCK_SIZE - pos)
+					Dim n As Integer = System.Math.Min(csize - cpos, MAX_BLOCK_SIZE - pos)
 					Dim [stop] As Integer = pos + n
 					Do While pos < [stop]
 						buf(pos) = AscW(cbuf(cpos))
@@ -1859,7 +1860,7 @@ Namespace java.io
 				Dim endoff As Integer = s.length()
 				Dim [off] As Integer = 0
 				Do While [off] < endoff
-					Dim csize As Integer = Math.Min(endoff - [off], CHAR_BUF_SIZE)
+					Dim csize As Integer = System.Math.Min(endoff - [off], CHAR_BUF_SIZE)
 					s.getChars([off], [off] + csize, cbuf, 0)
 					writeChars(cbuf, 0, csize)
 					[off] += csize
@@ -1883,7 +1884,7 @@ Namespace java.io
 				Dim endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If pos >= MAX_BLOCK_SIZE Then drain()
-					Dim [stop] As Integer = Math.Min(endoff, [off] + (MAX_BLOCK_SIZE - pos))
+					Dim [stop] As Integer = System.Math.Min(endoff, [off] + (MAX_BLOCK_SIZE - pos))
 					Do While [off] < [stop]
 						Bits.putBoolean(buf, pos, v([off]))
 						[off] += 1
@@ -1898,7 +1899,7 @@ Namespace java.io
 				Do While [off] < endoff
 					If pos <= limit Then
 						Dim avail As Integer = (MAX_BLOCK_SIZE - pos) >> 1
-						Dim [stop] As Integer = Math.Min(endoff, [off] + avail)
+						Dim [stop] As Integer = System.Math.Min(endoff, [off] + avail)
 						Do While [off] < [stop]
 							Bits.putChar(buf, pos, v([off]))
 							[off] += 1
@@ -1917,7 +1918,7 @@ Namespace java.io
 				Do While [off] < endoff
 					If pos <= limit Then
 						Dim avail As Integer = (MAX_BLOCK_SIZE - pos) >> 1
-						Dim [stop] As Integer = Math.Min(endoff, [off] + avail)
+						Dim [stop] As Integer = System.Math.Min(endoff, [off] + avail)
 						Do While [off] < [stop]
 							Bits.putShort(buf, pos, v([off]))
 							[off] += 1
@@ -1936,7 +1937,7 @@ Namespace java.io
 				Do While [off] < endoff
 					If pos <= limit Then
 						Dim avail As Integer = (MAX_BLOCK_SIZE - pos) >> 2
-						Dim [stop] As Integer = Math.Min(endoff, [off] + avail)
+						Dim [stop] As Integer = System.Math.Min(endoff, [off] + avail)
 						Do While [off] < [stop]
 							Bits.putInt(buf, pos, v([off]))
 							[off] += 1
@@ -1955,7 +1956,7 @@ Namespace java.io
 				Do While [off] < endoff
 					If pos <= limit Then
 						Dim avail As Integer = (MAX_BLOCK_SIZE - pos) >> 2
-						Dim chunklen As Integer = Math.Min(endoff - [off], avail)
+						Dim chunklen As Integer = System.Math.Min(endoff - [off], avail)
 						floatsToBytes(v, [off], buf, pos, chunklen)
 						[off] += chunklen
 						pos += chunklen << 2
@@ -1972,7 +1973,7 @@ Namespace java.io
 				Do While [off] < endoff
 					If pos <= limit Then
 						Dim avail As Integer = (MAX_BLOCK_SIZE - pos) >> 3
-						Dim [stop] As Integer = Math.Min(endoff, [off] + avail)
+						Dim [stop] As Integer = System.Math.Min(endoff, [off] + avail)
 						Do While [off] < [stop]
 							Bits.putLong(buf, pos, v([off]))
 							[off] += 1
@@ -1991,7 +1992,7 @@ Namespace java.io
 				Do While [off] < endoff
 					If pos <= limit Then
 						Dim avail As Integer = (MAX_BLOCK_SIZE - pos) >> 3
-						Dim chunklen As Integer = Math.Min(endoff - [off], avail)
+						Dim chunklen As Integer = System.Math.Min(endoff - [off], avail)
 						doublesToBytes(v, [off], buf, pos, chunklen)
 						[off] += chunklen
 						pos += chunklen << 3
@@ -2010,7 +2011,7 @@ Namespace java.io
 				Dim utflen As Long = 0
 				Dim [off] As Integer = 0
 				Do While [off] < len
-					Dim csize As Integer = Math.Min(len - [off], CHAR_BUF_SIZE)
+					Dim csize As Integer = System.Math.Min(len - [off], CHAR_BUF_SIZE)
 					s.getChars([off], [off] + csize, cbuf, 0)
 					For cpos As Integer = 0 To csize - 1
 						Dim c As Char = cbuf(cpos)
@@ -2074,7 +2075,7 @@ Namespace java.io
 				Dim len As Integer = s.length()
 				Dim [off] As Integer = 0
 				Do While [off] < len
-					Dim csize As Integer = Math.Min(len - [off], CHAR_BUF_SIZE)
+					Dim csize As Integer = System.Math.Min(len - [off], CHAR_BUF_SIZE)
 					s.getChars([off], [off] + csize, cbuf, 0)
 					For cpos As Integer = 0 To csize - 1
 						Dim c As Char = cbuf(cpos)

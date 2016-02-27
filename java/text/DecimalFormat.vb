@@ -523,7 +523,7 @@ Namespace java.text
 		'''                  mode being set to RoundingMode.UNNECESSARY </exception>
 		''' <returns> The formatted number string </returns>
 		Private Function format(ByVal number As Double, ByVal result As StringBuffer, ByVal [delegate] As FieldDelegate) As StringBuffer
-			If Double.IsNaN(number) OrElse (Double.IsInfinity(number) AndAlso multiplier = 0) Then
+			If java.lang.[Double].IsNaN(number) OrElse (Double.IsInfinity(number) AndAlso multiplier = 0) Then
 				Dim iFieldStart As Integer = result.length()
 				result.append(symbols.naN)
 				[delegate].formatted(INTEGER_FIELD, Field.INTEGER, Field.INTEGER, iFieldStart, result.length(), result)
@@ -544,7 +544,7 @@ Namespace java.text
 
 			If multiplier <> 1 Then number *= multiplier
 
-			If Double.IsInfinity(number) Then
+			If java.lang.[Double].IsInfinity(number) Then
 				If isNegative Then
 					append(result, negativePrefix, [delegate], negativePrefixFieldPositions, Field.SIGN)
 				Else
@@ -567,7 +567,7 @@ Namespace java.text
 			If isNegative Then number = -number
 
 			' at this point we are guaranteed a nonnegative finite number.
-			assert(number >= 0 AndAlso (Not Double.IsInfinity(number)))
+			assert(number >= 0 AndAlso (Not java.lang.[Double].IsInfinity(number)))
 
 			SyncLock digitList
 				Dim maxIntDigits As Integer = MyBase.maximumIntegerDigits
@@ -617,17 +617,17 @@ Namespace java.text
 			' check for this before multiplying, and if it happens we use
 			' BigInteger instead.
 			Dim useBigInteger As Boolean = False
-			If number < 0 Then ' This can only happen if number == Long.MIN_VALUE.
+			If number < 0 Then ' This can only happen if number == java.lang.[Long].MIN_VALUE.
 				If multiplier <> 0 Then useBigInteger = True
 			ElseIf multiplier <> 1 AndAlso multiplier <> 0 Then
-				Dim cutoff As Long = Long.MaxValue / multiplier
+				Dim cutoff As Long = java.lang.[Long].Max_Value / multiplier
 				If cutoff < 0 Then cutoff = -cutoff
 				useBigInteger = (number > cutoff)
 			End If
 
 			If useBigInteger Then
 				If isNegative Then number = -number
-				Dim bigIntegerValue As System.Numerics.BigInteger = System.Numerics.BigInteger.valueOf(number)
+				Dim bigIntegerValue As System.Numerics.BigInteger = System.Numerics.Big java.lang.[Integer].valueOf(number)
 				Return format(bigIntegerValue, result, [delegate], True)
 			End If
 
@@ -689,7 +689,7 @@ Namespace java.text
 				Dim minFraDigits As Integer = minimumFractionDigits
 				Dim maximumDigits As Integer = maxIntDigits + maxFraDigits
 
-				digitList.set(isNegative, number,If(useExponentialNotation, (If(maximumDigits < 0, Integer.MaxValue, maximumDigits)), maxFraDigits), (Not useExponentialNotation))
+				digitList.set(isNegative, number,If(useExponentialNotation, (If(maximumDigits < 0,  java.lang.[Integer].Max_Value, maximumDigits)), maxFraDigits), (Not useExponentialNotation))
 
 				Return subformat(result, [delegate], isNegative, False, maxIntDigits, minIntDigits, maxFraDigits, minFraDigits)
 			End SyncLock
@@ -740,7 +740,7 @@ Namespace java.text
 					maxFraDigits = maximumFractionDigits
 					minFraDigits = minimumFractionDigits
 					maximumDigits = maxIntDigits + maxFraDigits
-					If maximumDigits < 0 Then maximumDigits = Integer.MaxValue
+					If maximumDigits < 0 Then maximumDigits =  java.lang.[Integer].Max_Value
 				End If
 
 				digitList.set(isNegative, number,If(useExponentialNotation, maximumDigits, 0))
@@ -792,11 +792,11 @@ Namespace java.text
 	'     Fast-path formatting will be used for format(double ...) methods iff a
 	'     * number of conditions are met (see checkAndSetFastPathStatus()):
 	'     * - Only if instance properties meet the right predefined conditions.
-	'     * - The abs value of the double to format is <=  [Integer].MAX_VALUE.
+	'     * - The abs value of the double to format is <=  java.lang.[Integer].MAX_VALUE.
 	'     *
 	'     * The basic approach is to split the binary to decimal conversion of a
 	'     * double value into two phases:
-	'     * * The conversion of the integer portion of the double.
+	'     * * The conversion of the integer portion of the java.lang.[Double].
 	'     * * The conversion of the fractional portion of the double
 	'     *   (limited to two or three digits).
 	'     *
@@ -804,7 +804,7 @@ Namespace java.text
 	'     * straightforward. The conversion of the fraction is more subtle and relies
 	'     * on some rounding properties of double to the decimal precisions in
 	'     * question.  Using the terminology of BigDecimal, this fast-path algorithm
-	'     * is applied when a double value has a magnitude less than  [Integer].MAX_VALUE
+	'     * is applied when a double value has a magnitude less than  java.lang.[Integer].MAX_VALUE
 	'     * and rounding is to nearest even and the destination format has two or
 	'     * three digits of *scale* (digits after the decimal point).
 	'     *
@@ -922,7 +922,7 @@ Namespace java.text
 				' Creates a cached char container for result, with max possible size.
 				Dim maxNbIntegralDigits As Integer = 10
 				Dim maxNbGroups As Integer = 3
-				Dim containerSize As Integer = Math.Max(positivePrefix.length(), negativePrefix.length()) + maxNbIntegralDigits + maxNbGroups + 1 + maximumFractionDigits + Math.Max(positiveSuffix.length(), negativeSuffix.length())
+				Dim containerSize As Integer = System.Math.Max(positivePrefix.length(), negativePrefix.length()) + maxNbIntegralDigits + maxNbGroups + 1 + maximumFractionDigits + System.Math.Max(positiveSuffix.length(), negativeSuffix.length())
 
 				fastPathData.fastPathContainer = New Char(containerSize - 1){}
 
@@ -934,7 +934,7 @@ Namespace java.text
 
 				' Sets up fixed index positions for integral and fractional digits.
 				' Sets up decimal point in cached result container.
-				Dim longestPrefixLength As Integer = Math.Max(positivePrefix.length(), negativePrefix.length())
+				Dim longestPrefixLength As Integer = System.Math.Max(positivePrefix.length(), negativePrefix.length())
 				Dim decimalPointIndex As Integer = maxNbIntegralDigits + maxNbGroups + longestPrefixLength
 
 				fastPathData.integralLastIndex = decimalPointIndex - 1
@@ -1051,7 +1051,7 @@ Namespace java.text
 			End If
 
 			' Shewchuk/Dekker's FastTwoSum(approxMedium, approxMin).
-			assert(-approxMedium >= Math.Abs(approxMin))
+			assert(-approxMedium >= System.Math.Abs(approxMin))
 			fastTwoSumApproximation = approxMedium + approxMin
 			bVirtual = fastTwoSumApproximation - approxMedium
 			fastTwoSumRoundOff = approxMin - bVirtual
@@ -1059,7 +1059,7 @@ Namespace java.text
 			Dim roundoffS1 As Double = fastTwoSumRoundOff
 
 			' Shewchuk/Dekker's FastTwoSum(approxMax, approxS1);
-			assert(approxMax >= Math.Abs(approxS1))
+			assert(approxMax >= System.Math.Abs(approxS1))
 			fastTwoSumApproximation = approxMax + approxS1
 			bVirtual = fastTwoSumApproximation - approxMax
 			fastTwoSumRoundOff = approxS1 - bVirtual
@@ -1068,7 +1068,7 @@ Namespace java.text
 			Dim roundoffTotal As Double = roundoffS1 + roundoff1000
 
 			' Shewchuk/Dekker's FastTwoSum(approx1000, roundoffTotal);
-			assert(approx1000 >= Math.Abs(roundoffTotal))
+			assert(approx1000 >= System.Math.Abs(roundoffTotal))
 			fastTwoSumApproximation = approx1000 + roundoffTotal
 			bVirtual = fastTwoSumApproximation - approx1000
 
@@ -1445,7 +1445,7 @@ Namespace java.text
 
 			If Not isFastPath Then Return Nothing
 
-			If Not Double.isFinite(d) Then Return Nothing
+			If Not java.lang.[Double].isFinite(d) Then Return Nothing
 
 			' Extracts and records sign of double value, possibly changing it
 			' to a positive one, before calling fastDoubleFormat().
@@ -1454,7 +1454,7 @@ Namespace java.text
 				negative = True
 				d = -d
 			ElseIf d = 0.0R Then
-				negative = (Math.copySign(1.0R, d) = -1.0R)
+				negative =  (System.Math.copySign(1.0R, d) = -1.0R)
 				d = +0.0R
 			End If
 
@@ -1552,7 +1552,7 @@ Namespace java.text
 				' place the decimal point after the "integer" digits, which
 				' are the first (decimalAt - exponent) digits.
 				Dim minimumDigits As Integer = minIntDigits + minFraDigits
-				If minimumDigits < 0 Then ' overflow? minimumDigits = Integer.MaxValue
+				If minimumDigits < 0 Then ' overflow? minimumDigits =  java.lang.[Integer].Max_Value
 
 				' The number of integer digits is handled specially if the number
 				' is zero, since then there may be no digits.
@@ -1864,13 +1864,13 @@ Namespace java.text
 				If digitList.fitsIntoLong(status(STATUS_POSITIVE), parseIntegerOnly) Then
 					gotDouble = False
 					longResult = digitList.long
-					If longResult < 0 Then ' got Long.MIN_VALUE gotLongMinimum = True
+					If longResult < 0 Then ' got java.lang.[Long].MIN_VALUE gotLongMinimum = True
 				Else
 					doubleResult = digitList.double
 				End If
 
 				' Divide by multiplier. We have to be careful here not to do
-				' unneeded conversions between double and long.
+				' unneeded conversions between double and java.lang.[Long].
 				If multiplier <> 1 Then
 					If gotDouble Then
 						doubleResult /= multiplier
@@ -1891,7 +1891,7 @@ Namespace java.text
 				End If
 
 				' At this point, if we divided the result by the multiplier, the
-				' result may fit into a long.  We check for this case and return
+				' result may fit into a java.lang.[Long].  We check for this case and return
 				' a long if possible.
 				' We must do this AFTER applying the negative (if appropriate)
 				' in order to handle the case of LONG_MIN; otherwise, if we do
@@ -1913,7 +1913,7 @@ Namespace java.text
 		''' </summary>
 		Private Property bigIntegerMultiplier As System.Numerics.BigInteger
 			Get
-				If bigIntegerMultiplier Is Nothing Then bigIntegerMultiplier = System.Numerics.BigInteger.valueOf(multiplier)
+				If bigIntegerMultiplier Is Nothing Then bigIntegerMultiplier = System.Numerics.Big java.lang.[Integer].valueOf(multiplier)
 				Return bigIntegerMultiplier
 			End Get
 		End Property
@@ -2688,7 +2688,7 @@ Namespace java.text
 					appendAffix(result, negPrefixPattern, negativePrefix, localized)
 				End If
 				Dim i As Integer
-				Dim digitCount As Integer = If(useExponentialNotation, maximumIntegerDigits, Math.Max(groupingSize, minimumIntegerDigits)+1)
+				Dim digitCount As Integer = If(useExponentialNotation, maximumIntegerDigits, System.Math.Max(groupingSize, minimumIntegerDigits)+1)
 				For i = digitCount To 1 Step -1
 					If i <> digitCount AndAlso groupingUsed AndAlso groupingSize <> 0 AndAlso i Mod groupingSize = 0 Then result.append(If(localized, symbols.groupingSeparator, PATTERN_GROUPING_SEPARATOR))
 					result.append(If(i <= minimumIntegerDigits, (If(localized, symbols.zeroDigit, PATTERN_ZERO_DIGIT)), (If(localized, symbols.digit, PATTERN_DIGIT))))
@@ -3061,7 +3061,7 @@ Namespace java.text
 		''' <seealso cref= NumberFormat#setMaximumIntegerDigits </seealso>
 		Public Overrides Property maximumIntegerDigits As Integer
 			Set(ByVal newValue As Integer)
-				maximumIntegerDigits = Math.Min(Math.Max(0, newValue), MAXIMUM_INTEGER_DIGITS)
+				maximumIntegerDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_INTEGER_DIGITS)
 				MyBase.maximumIntegerDigits = If(maximumIntegerDigits > DOUBLE_INTEGER_DIGITS, DOUBLE_INTEGER_DIGITS, maximumIntegerDigits)
 				If minimumIntegerDigits > maximumIntegerDigits Then
 					minimumIntegerDigits = maximumIntegerDigits
@@ -3083,7 +3083,7 @@ Namespace java.text
 		''' <seealso cref= NumberFormat#setMinimumIntegerDigits </seealso>
 		Public Overrides Property minimumIntegerDigits As Integer
 			Set(ByVal newValue As Integer)
-				minimumIntegerDigits = Math.Min(Math.Max(0, newValue), MAXIMUM_INTEGER_DIGITS)
+				minimumIntegerDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_INTEGER_DIGITS)
 				MyBase.minimumIntegerDigits = If(minimumIntegerDigits > DOUBLE_INTEGER_DIGITS, DOUBLE_INTEGER_DIGITS, minimumIntegerDigits)
 				If minimumIntegerDigits > maximumIntegerDigits Then
 					maximumIntegerDigits = minimumIntegerDigits
@@ -3105,7 +3105,7 @@ Namespace java.text
 		''' <seealso cref= NumberFormat#setMaximumFractionDigits </seealso>
 		Public Overrides Property maximumFractionDigits As Integer
 			Set(ByVal newValue As Integer)
-				maximumFractionDigits = Math.Min(Math.Max(0, newValue), MAXIMUM_FRACTION_DIGITS)
+				maximumFractionDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_FRACTION_DIGITS)
 				MyBase.maximumFractionDigits = If(maximumFractionDigits > DOUBLE_FRACTION_DIGITS, DOUBLE_FRACTION_DIGITS, maximumFractionDigits)
 				If minimumFractionDigits > maximumFractionDigits Then
 					minimumFractionDigits = maximumFractionDigits
@@ -3127,7 +3127,7 @@ Namespace java.text
 		''' <seealso cref= NumberFormat#setMinimumFractionDigits </seealso>
 		Public Overrides Property minimumFractionDigits As Integer
 			Set(ByVal newValue As Integer)
-				minimumFractionDigits = Math.Min(Math.Max(0, newValue), MAXIMUM_FRACTION_DIGITS)
+				minimumFractionDigits = System.Math.Min (System.Math.Max(0, newValue), MAXIMUM_FRACTION_DIGITS)
 				MyBase.minimumFractionDigits = If(minimumFractionDigits > DOUBLE_FRACTION_DIGITS, DOUBLE_FRACTION_DIGITS, minimumFractionDigits)
 				If minimumFractionDigits > maximumFractionDigits Then
 					maximumFractionDigits = minimumFractionDigits
@@ -3624,7 +3624,7 @@ Namespace java.text
 
 		''' <summary>
 		''' Maximum valid integer value for applying fast-path algorithm </summary>
-		Private Shared ReadOnly MAX_INT_AS_DOUBLE As Double = CDbl( [Integer].MAX_VALUE)
+		Private Shared ReadOnly MAX_INT_AS_DOUBLE As Double = CDbl( java.lang.[Integer].MAX_VALUE)
 
 		''' <summary>
 		''' The digit arrays used in the fast-path methods for collecting digits.
@@ -3702,8 +3702,8 @@ Namespace java.text
 		Friend Const DOUBLE_FRACTION_DIGITS As Integer = 340
 
 		' Upper limit on integer and fraction digits for BigDecimal and BigInteger
-		Friend Shared ReadOnly MAXIMUM_INTEGER_DIGITS As Integer =  [Integer].MAX_VALUE
-		Friend Shared ReadOnly MAXIMUM_FRACTION_DIGITS As Integer =  [Integer].MAX_VALUE
+		Friend Shared ReadOnly MAXIMUM_INTEGER_DIGITS As Integer =  java.lang.[Integer].MAX_VALUE
+		Friend Shared ReadOnly MAXIMUM_FRACTION_DIGITS As Integer =  java.lang.[Integer].MAX_VALUE
 
 		' Proclaim JDK 1.1 serial compatibility.
 		Friend Shadows Const serialVersionUID As Long = 864413376551465018L

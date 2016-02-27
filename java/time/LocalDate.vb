@@ -187,7 +187,7 @@ Namespace java.time
 			Dim now_Renamed As Instant = clock_Renamed.instant() ' called once
 			Dim offset As ZoneOffset = clock_Renamed.zone.rules.getOffset(now_Renamed)
 			Dim epochSec As Long = now_Renamed.epochSecond + offset.totalSeconds ' overflow caught later
-			Dim epochDay As Long = Math.floorDiv(epochSec, SECONDS_PER_DAY)
+			Dim epochDay As Long = System.Math.floorDiv(epochSec, SECONDS_PER_DAY)
 			Return LocalDate.ofEpochDay(epochDay)
 		End Function
 
@@ -388,9 +388,9 @@ Namespace java.time
 		Private Shared Function resolvePreviousValid(ByVal year_Renamed As Integer, ByVal month As Integer, ByVal day As Integer) As LocalDate
 			Select Case month
 				Case 2
-					day = Math.Min(day,If(java.time.chrono.IsoChronology.INSTANCE.isLeapYear(year_Renamed), 29, 28))
+					day = System.Math.Min(day,If(java.time.chrono.IsoChronology.INSTANCE.isLeapYear(year_Renamed), 29, 28))
 				Case 4, 6, 9, 11
-					day = Math.Min(day, 30)
+					day = System.Math.Min(day, 30)
 			End Select
 			Return New LocalDate(year_Renamed, month, day)
 		End Function
@@ -745,7 +745,7 @@ Namespace java.time
 		''' <returns> the day-of-week, not null </returns>
 		Public Property dayOfWeek As DayOfWeek
 			Get
-				Dim dow0 As Integer = CInt(Math.floorMod(toEpochDay() + 3, 7))
+				Dim dow0 As Integer = CInt (System.Math.floorMod(toEpochDay() + 3, 7))
 				Return DayOfWeek.of(dow0 + 1)
 			End Get
 		End Property
@@ -1172,13 +1172,13 @@ Namespace java.time
 					Case YEARS
 						Return plusYears(amountToAdd)
 					Case DECADES
-						Return plusYears(Math.multiplyExact(amountToAdd, 10))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 10))
 					Case CENTURIES
-						Return plusYears(Math.multiplyExact(amountToAdd, 100))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 100))
 					Case MILLENNIA
-						Return plusYears(Math.multiplyExact(amountToAdd, 1000))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 1000))
 					Case ERAS
-						Return [with](ERA, Math.addExact(getLong(ERA), amountToAdd))
+						Return [with](ERA, System.Math.addExact(getLong(ERA), amountToAdd))
 				End Select
 				Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & unit)
 			End If
@@ -1234,8 +1234,8 @@ Namespace java.time
 			If monthsToAdd = 0 Then Return Me
 			Dim monthCount As Long = year * 12L + (month - 1)
 			Dim calcMonths As Long = monthCount + monthsToAdd ' safe overflow
-			Dim newYear As Integer = YEAR.checkValidIntValue(Math.floorDiv(calcMonths, 12))
-			Dim newMonth As Integer = CInt(Math.floorMod(calcMonths, 12)) + 1
+			Dim newYear As Integer = YEAR.checkValidIntValue (System.Math.floorDiv(calcMonths, 12))
+			Dim newMonth As Integer = CInt (System.Math.floorMod(calcMonths, 12)) + 1
 			Return resolvePreviousValid(newYear, newMonth, day)
 		End Function
 
@@ -1254,7 +1254,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDate} based on this date with the weeks added, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function plusWeeks(ByVal weeksToAdd As Long) As LocalDate
-			Return plusDays(Math.multiplyExact(weeksToAdd, 7))
+			Return plusDays (System.Math.multiplyExact(weeksToAdd, 7))
 		End Function
 
 		''' <summary>
@@ -1273,7 +1273,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function plusDays(ByVal daysToAdd As Long) As LocalDate
 			If daysToAdd = 0 Then Return Me
-			Dim mjDay As Long = Math.addExact(toEpochDay(), daysToAdd)
+			Dim mjDay As Long = System.Math.addExact(toEpochDay(), daysToAdd)
 			Return LocalDate.ofEpochDay(mjDay)
 		End Function
 
@@ -1325,7 +1325,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As LocalDate
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1349,7 +1349,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDate} based on this date with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusYears(ByVal yearsToSubtract As Long) As LocalDate
-			Return (If(yearsToSubtract = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-yearsToSubtract)))
+			Return (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -1372,7 +1372,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDate} based on this date with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusMonths(ByVal monthsToSubtract As Long) As LocalDate
-			Return (If(monthsToSubtract = Long.MinValue, plusMonths(Long.MaxValue).plusMonths(1), plusMonths(-monthsToSubtract)))
+			Return (If(monthsToSubtract = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-monthsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -1390,7 +1390,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDate} based on this date with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusWeeks(ByVal weeksToSubtract As Long) As LocalDate
-			Return (If(weeksToSubtract = Long.MinValue, plusWeeks(Long.MaxValue).plusWeeks(1), plusWeeks(-weeksToSubtract)))
+			Return (If(weeksToSubtract = java.lang.[Long].MIN_VALUE, plusWeeks(Long.Max_Value).plusWeeks(1), plusWeeks(-weeksToSubtract)))
 		End Function
 
 		''' <summary>
@@ -1408,7 +1408,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDate} based on this date with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusDays(ByVal daysToSubtract As Long) As LocalDate
-			Return (If(daysToSubtract = Long.MinValue, plusDays(Long.MaxValue).plusDays(1), plusDays(-daysToSubtract)))
+			Return (If(daysToSubtract = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-daysToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1589,7 +1589,7 @@ Namespace java.time
 			End If
 			Dim years As Long = totalMonths \ 12 ' safe
 			Dim months As Integer = CInt(Fix(totalMonths Mod 12)) ' safe
-			Return Period.of(Math.toIntExact(years), months, days)
+			Return Period.of (System.Math.toIntExact(years), months, days)
 		End Function
 
 		''' <summary>
@@ -1890,7 +1890,7 @@ Namespace java.time
 			Dim yearValue As Integer = year
 			Dim monthValue_Renamed As Integer = month
 			Dim dayValue As Integer = day
-			Dim absYear As Integer = Math.Abs(yearValue)
+			Dim absYear As Integer = System.Math.Abs(yearValue)
 			Dim buf As New StringBuilder(10)
 			If absYear < 1000 Then
 				If yearValue < 0 Then

@@ -506,7 +506,7 @@ Namespace java.time.chrono
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		default Overrides Function compareTo(Of T1)(ByVal other As ChronoZonedDateTime(Of T1)) As Integer
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'			int cmp = Long.compare(toEpochSecond(), other.toEpochSecond());
+'			int cmp = java.lang.[Long].compare(toEpochSecond(), other.toEpochSecond());
 			Sub [New](cmp == ByVal 0 As )
 				cmp = Function toLocalTime() As 
 				Sub [New](cmp == ByVal 0 As )

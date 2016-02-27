@@ -228,7 +228,7 @@ Namespace java.lang
 				If di(i) < 0 Then Throw NumberFormatException.forInputString("" & di(i))
 			Next i
 
-			Dim len As Integer = Math.Max(di.Length, si.Length)
+			Dim len As Integer = System.Math.Max(di.Length, si.Length)
 			For i As Integer = 0 To len - 1
 				Dim d As Integer = (If(i < di.Length, di(i), 0))
 				Dim s As Integer = (If(i < si.Length, si(i), 0))

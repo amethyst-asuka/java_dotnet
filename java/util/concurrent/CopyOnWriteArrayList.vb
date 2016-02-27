@@ -508,7 +508,7 @@ Namespace java.util.concurrent
 				Dim len As Integer = current.Length
 				If snapshot <> current Then
 					findIndex:
-					Dim prefix As Integer = Math.Min(index, len)
+					Dim prefix As Integer = System.Math.Min(index, len)
 					For i As Integer = 0 To prefix - 1
 						If current(i) IsNot snapshot(i) AndAlso eq(o, current(i)) Then
 							index = i
@@ -586,7 +586,7 @@ Namespace java.util.concurrent
 				Dim len As Integer = current.Length
 				If snapshot <> current Then
 					' Optimize for lost race to another addXXX operation
-					Dim common As Integer = Math.Min(snapshot.Length, len)
+					Dim common As Integer = System.Math.Min(snapshot.Length, len)
 					For i As Integer = 0 To common - 1
 						If current(i) IsNot snapshot(i) AndAlso eq(e, current(i)) Then Return False
 					Next i

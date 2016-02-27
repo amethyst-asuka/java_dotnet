@@ -315,7 +315,7 @@ Namespace java.text
 
 	   ''' <summary>
 	   ''' Returns a Long if possible (e.g., within the range [Long.MIN_VALUE,
-	   ''' Long.MAX_VALUE] and with no decimals), otherwise a Double.
+	   ''' java.lang.[Long].MAX_VALUE] and with no decimals), otherwise a java.lang.[Double].
 	   ''' If IntegerOnly is set, will stop at a decimal
 	   ''' point (or equivalent; e.g., for rational numbers "1 2/3", will stop
 	   ''' after the 1).
@@ -606,7 +606,7 @@ Namespace java.text
 				Return maximumIntegerDigits
 			End Get
 			Set(ByVal newValue As Integer)
-				maximumIntegerDigits = Math.Max(0,newValue)
+				maximumIntegerDigits = System.Math.Max(0,newValue)
 				If minimumIntegerDigits > maximumIntegerDigits Then minimumIntegerDigits = maximumIntegerDigits
 			End Set
 		End Property
@@ -623,7 +623,7 @@ Namespace java.text
 				Return minimumIntegerDigits
 			End Get
 			Set(ByVal newValue As Integer)
-				minimumIntegerDigits = Math.Max(0,newValue)
+				minimumIntegerDigits = System.Math.Max(0,newValue)
 				If minimumIntegerDigits > maximumIntegerDigits Then maximumIntegerDigits = minimumIntegerDigits
 			End Set
 		End Property
@@ -640,7 +640,7 @@ Namespace java.text
 				Return maximumFractionDigits
 			End Get
 			Set(ByVal newValue As Integer)
-				maximumFractionDigits = Math.Max(0,newValue)
+				maximumFractionDigits = System.Math.Max(0,newValue)
 				If maximumFractionDigits < minimumFractionDigits Then minimumFractionDigits = maximumFractionDigits
 			End Set
 		End Property
@@ -657,7 +657,7 @@ Namespace java.text
 				Return minimumFractionDigits
 			End Get
 			Set(ByVal newValue As Integer)
-				minimumFractionDigits = Math.Max(0,newValue)
+				minimumFractionDigits = System.Math.Max(0,newValue)
 				If maximumFractionDigits < minimumFractionDigits Then maximumFractionDigits = minimumFractionDigits
 			End Set
 		End Property
@@ -778,10 +778,10 @@ Namespace java.text
 		''' @since 1.2
 		''' </summary>
 		Private Sub writeObject(ByVal stream As java.io.ObjectOutputStream)
-			maxIntegerDigits = If(maximumIntegerDigits > Byte.MaxValue, Byte.MaxValue, CByte(maximumIntegerDigits))
-			minIntegerDigits = If(minimumIntegerDigits > Byte.MaxValue, Byte.MaxValue, CByte(minimumIntegerDigits))
-			maxFractionDigits = If(maximumFractionDigits > Byte.MaxValue, Byte.MaxValue, CByte(maximumFractionDigits))
-			minFractionDigits = If(minimumFractionDigits > Byte.MaxValue, Byte.MaxValue, CByte(minimumFractionDigits))
+			maxIntegerDigits = If(maximumIntegerDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(maximumIntegerDigits))
+			minIntegerDigits = If(minimumIntegerDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(minimumIntegerDigits))
+			maxFractionDigits = If(maximumFractionDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(maximumFractionDigits))
+			minFractionDigits = If(minimumFractionDigits > java.lang.[Byte].Max_Value, java.lang.[Byte].Max_Value, CByte(minimumFractionDigits))
 			stream.defaultWriteObject()
 		End Sub
 

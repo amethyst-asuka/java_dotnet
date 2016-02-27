@@ -552,7 +552,7 @@ Namespace java.util
 		''' @serialField all_allowed boolean
 		'''     boolean saying if "*" is in the collection.
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("permissions", GetType(Hashtable)), New java.io.ObjectStreamField("all_allowed", Boolean.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("permissions", GetType(Hashtable)), New java.io.ObjectStreamField("all_allowed",  java.lang.[Boolean].TYPE) }
 
 		''' <summary>
 		''' @serialData Default fields.

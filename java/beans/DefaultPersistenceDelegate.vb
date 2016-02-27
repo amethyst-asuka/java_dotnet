@@ -103,10 +103,10 @@ Namespace java.beans
 
 		Private Function definesEquals(ByVal instance As Object) As Boolean
 			If definesEquals_Renamed IsNot Nothing Then
-				Return (definesEquals_Renamed Is Boolean.TRUE)
+				Return (definesEquals_Renamed Is  java.lang.[Boolean].TRUE)
 			Else
 				Dim result As Boolean = definesEquals(instance.GetType())
-				definesEquals_Renamed = If(result, Boolean.TRUE, Boolean.FALSE)
+				definesEquals_Renamed = If(result,  java.lang.[Boolean].TRUE,  java.lang.[Boolean].FALSE)
 				Return result
 			End If
 		End Function

@@ -311,7 +311,7 @@ Namespace java.net
 				deadlineMillis = 0L
 			Else
 				Dim finish As Long = System.currentTimeMillis() + timeout
-				deadlineMillis = If(finish < 0, Long.MaxValue, finish)
+				deadlineMillis = If(finish < 0, java.lang.[Long].Max_Value, finish)
 			End If
 
 			Dim security As SecurityManager = System.securityManager

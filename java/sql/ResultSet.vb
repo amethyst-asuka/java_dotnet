@@ -431,7 +431,7 @@ Namespace java.sql
 		''' Retrieves the value of the designated column in the current row
 		''' of this <code>ResultSet</code> object as
 		''' as a stream of two-byte 3 characters. The first byte is
-		''' the high byte; the second byte is the low byte.
+		''' the high byte; the second byte is the low java.lang.[Byte].
 		''' 
 		''' The value can then be read in chunks from the
 		''' stream. This method is particularly
@@ -702,7 +702,7 @@ Namespace java.sql
 		''' Retrieves the value of the designated column in the current row
 		''' of this <code>ResultSet</code> object as a stream of two-byte
 		''' Unicode characters. The first byte is the high byte; the second
-		''' byte is the low byte.
+		''' byte is the low java.lang.[Byte].
 		''' 
 		''' The value can then be read in chunks from the
 		''' stream. This method is particularly
@@ -3367,7 +3367,7 @@ Namespace java.sql
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
-		''' object, which is the given number of characters long.
+		''' object, which is the given number of characters java.lang.[Long].
 		''' When a very large UNICODE value is input to a <code>LONGVARCHAR</code>
 		''' parameter, it may be more practical to send it via a
 		''' <code>java.io.Reader</code> object. The JDBC driver will
@@ -3393,7 +3393,7 @@ Namespace java.sql
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
-		''' object, which is the given number of characters long.
+		''' object, which is the given number of characters java.lang.[Long].
 		''' When a very large UNICODE value is input to a <code>LONGVARCHAR</code>
 		''' parameter, it may be more practical to send it via a
 		''' <code>java.io.Reader</code> object.  The JDBC driver will
@@ -3418,7 +3418,7 @@ Namespace java.sql
 		Sub updateClob(ByVal columnLabel As String, ByVal reader As java.io.Reader, ByVal length As Long)
 	   ''' <summary>
 	   ''' Updates the designated column using the given <code>Reader</code>
-	   ''' object, which is the given number of characters long.
+	   ''' object, which is the given number of characters java.lang.[Long].
 	   ''' When a very large UNICODE value is input to a <code>LONGVARCHAR</code>
 	   ''' parameter, it may be more practical to send it via a
 	   ''' <code>java.io.Reader</code> object. The JDBC driver will
@@ -3446,7 +3446,7 @@ Namespace java.sql
 
 		''' <summary>
 		''' Updates the designated column using the given <code>Reader</code>
-		''' object, which is the given number of characters long.
+		''' object, which is the given number of characters java.lang.[Long].
 		''' When a very large UNICODE value is input to a <code>LONGVARCHAR</code>
 		''' parameter, it may be more practical to send it via a
 		''' <code>java.io.Reader</code> object. The JDBC driver will

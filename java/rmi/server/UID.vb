@@ -74,7 +74,7 @@ Namespace java.rmi.server
 
 		Private Shared ReadOnly lock As New Object
 		Private Shared lastTime As Long = System.currentTimeMillis()
-		Private Shared lastCount As Short = Short.MIN_VALUE
+		Private Shared lastCount As Short =  java.lang.[Short].MIN_VALUE
 
 		''' <summary>
 		''' indicate compatibility with JDK 1.1.x version of class </summary>
@@ -113,7 +113,7 @@ Namespace java.rmi.server
 					hostUniqueSet = True
 				End If
 				unique = hostUnique
-				If lastCount = Short.MaxValue Then
+				If lastCount =  java.lang.[Short].Max_Value Then
 					Dim interrupted As Boolean = Thread.interrupted()
 					Dim done As Boolean = False
 					Do While Not done
@@ -129,7 +129,7 @@ Namespace java.rmi.server
 							' If system time has gone backwards increase
 							' original by 1ms to maintain uniqueness
 							lastTime = If(now < lastTime, lastTime+1, now)
-							lastCount = Short.MinValue
+							lastCount =  java.lang.[Short].MIN_VALUE
 							done = True
 						End If
 					Loop

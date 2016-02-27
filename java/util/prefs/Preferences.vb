@@ -538,13 +538,13 @@ Namespace java.util.prefs
 		''' an integer as by <seealso cref="Integer#parseInt(String)"/>.  Returns the
 		''' specified default if there is no value associated with the key,
 		''' the backing store is inaccessible, or if
-		''' <tt>Integer.parseInt(String)</tt> would throw a {@link
+		''' <tt> java.lang.[Integer].parseInt(String)</tt> would throw a {@link
 		''' NumberFormatException} if the associated value were passed.  This
 		''' method is intended for use in conjunction with <seealso cref="#putInt"/>.
 		''' 
 		''' <p>If the implementation supports <i>stored defaults</i> and such a
 		''' default exists, is accessible, and could be converted to an int
-		''' with <tt>Integer.parseInt</tt>, this int is returned in preference to
+		''' with <tt> java.lang.[Integer].parseInt</tt>, this int is returned in preference to
 		''' the specified default.
 		''' </summary>
 		''' <param name="key"> key whose associated value is to be returned as an int. </param>
@@ -595,7 +595,7 @@ Namespace java.util.prefs
 		''' with <tt>Long.parseLong</tt>, this long is returned in preference to
 		''' the specified default.
 		''' </summary>
-		''' <param name="key"> key whose associated value is to be returned as a long. </param>
+		''' <param name="key"> key whose associated value is to be returned as a java.lang.[Long]. </param>
 		''' <param name="def"> the value to be returned in the event that this
 		'''        preference node has no value associated with <tt>key</tt>
 		'''        or the associated value cannot be interpreted as a long,
@@ -603,7 +603,7 @@ Namespace java.util.prefs
 		''' <returns> the long value represented by the string associated with
 		'''         <tt>key</tt> in this preference node, or <tt>def</tt> if the
 		'''         associated value does not exist or cannot be interpreted as
-		'''         a long. </returns>
+		'''         a java.lang.[Long]. </returns>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
@@ -648,7 +648,7 @@ Namespace java.util.prefs
 		''' <tt>"true"</tt> or <tt>"false"</tt>, ignoring case, in which case the
 		''' specified default is used.
 		''' </summary>
-		''' <param name="key"> key whose associated value is to be returned as a boolean. </param>
+		''' <param name="key"> key whose associated value is to be returned as a  java.lang.[Boolean]. </param>
 		''' <param name="def"> the value to be returned in the event that this
 		'''        preference node has no value associated with <tt>key</tt>
 		'''        or the associated value cannot be interpreted as a boolean,
@@ -656,7 +656,7 @@ Namespace java.util.prefs
 		''' <returns> the boolean value represented by the string associated with
 		'''         <tt>key</tt> in this preference node, or <tt>def</tt> if the
 		'''         associated value does not exist or cannot be interpreted as
-		'''         a boolean. </returns>
+		'''         a  java.lang.[Boolean]. </returns>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
@@ -742,7 +742,7 @@ Namespace java.util.prefs
 		''' with <tt>Double.parseDouble</tt>, this double is returned in preference
 		''' to the specified default.
 		''' </summary>
-		''' <param name="key"> key whose associated value is to be returned as a double. </param>
+		''' <param name="key"> key whose associated value is to be returned as a java.lang.[Double]. </param>
 		''' <param name="def"> the value to be returned in the event that this
 		'''        preference node has no value associated with <tt>key</tt>
 		'''        or the associated value cannot be interpreted as a double,
@@ -750,7 +750,7 @@ Namespace java.util.prefs
 		''' <returns> the double value represented by the string associated with
 		'''         <tt>key</tt> in this preference node, or <tt>def</tt> if the
 		'''         associated value does not exist or cannot be interpreted as
-		'''         a double. </returns>
+		'''         a java.lang.[Double]. </returns>
 		''' <exception cref="IllegalStateException"> if this node (or an ancestor) has been
 		'''         removed with the <seealso cref="#removeNode()"/> method. </exception>
 		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>

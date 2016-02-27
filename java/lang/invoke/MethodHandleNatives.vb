@@ -399,7 +399,7 @@ Namespace java.lang.invoke
 		End Function
 		' Tracing logic:
 		Friend Shared Function linkMethodTracing(ByVal callerClass As [Class], ByVal refKind As Integer, ByVal defc As [Class], ByVal name As String, ByVal type As Object, ByVal appendixResult As Object()) As MemberName
-			Console.WriteLine("linkMethod " & defc.name & "." & name+type & "/" & Integer.toHexString(refKind))
+			Console.WriteLine("linkMethod " & defc.name & "." & name+type & "/" &  java.lang.[Integer].toHexString(refKind))
 			Try
 				Dim res As MemberName = linkMethodImpl(callerClass, refKind, defc, name, type, appendixResult)
 				Console.WriteLine("linkMethod => " & res & " + " & appendixResult(0))

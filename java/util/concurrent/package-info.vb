@@ -147,7 +147,7 @@
 ''' again after that time-out.  All methods that accept timeout
 ''' parameters treat values less than or equal to zero to mean
 ''' not to wait at all.  To wait "forever", you can use a value
-''' of {@code Long.MAX_VALUE}.
+''' of {@code java.lang.[Long].MAX_VALUE}.
 ''' 
 ''' <h2>Synchronizers</h2>
 ''' 

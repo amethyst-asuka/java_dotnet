@@ -126,7 +126,7 @@ Namespace java.awt.font
 		Private bounds As java.awt.geom.Rectangle2D.Float
 
 		''' <summary>
-		''' Additional information about the glyph encoded as a byte.
+		''' Additional information about the glyph encoded as a java.lang.[Byte].
 		''' </summary>
 		Private glyphType As SByte
 

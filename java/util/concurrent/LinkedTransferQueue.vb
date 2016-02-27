@@ -843,7 +843,7 @@ Namespace java.util.concurrent
 				If Not p.matched Then
 					If p.isData <> data Then Return 0
 					count += 1
-					If count = Integer.MaxValue Then ' saturated Exit Do
+					If count =  java.lang.[Integer].Max_Value Then ' saturated Exit Do
 				End If
 				Dim n As Node = p.next
 				If n IsNot p Then
@@ -1050,7 +1050,7 @@ Namespace java.util.concurrent
 			End Function
 
 			Public Function estimateSize() As Long
-				Return Long.MaxValue
+				Return java.lang.[Long].Max_Value
 			End Function
 
 			Public Function characteristics() As Integer
@@ -1372,8 +1372,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of elements in this queue.  If this queue
-		''' contains more than {@code  [Integer].MAX_VALUE} elements, returns
-		''' {@code  [Integer].MAX_VALUE}.
+		''' contains more than {@code  java.lang.[Integer].MAX_VALUE} elements, returns
+		''' {@code  java.lang.[Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the
@@ -1428,14 +1428,14 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <summary>
-		''' Always returns {@code  [Integer].MAX_VALUE} because a
+		''' Always returns {@code  java.lang.[Integer].MAX_VALUE} because a
 		''' {@code LinkedTransferQueue} is not capacity constrained.
 		''' </summary>
-		''' <returns> {@code  [Integer].MAX_VALUE} (as specified by
+		''' <returns> {@code  java.lang.[Integer].MAX_VALUE} (as specified by
 		'''         {@link java.util.concurrent.BlockingQueue#remainingCapacity()
 		'''         BlockingQueue.remainingCapacity}) </returns>
 		Public Overridable Function remainingCapacity() As Integer
-			Return Integer.MaxValue
+			Return  java.lang.[Integer].Max_Value
 		End Function
 
 		''' <summary>

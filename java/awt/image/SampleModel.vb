@@ -122,13 +122,13 @@ Namespace java.awt.image
 		'''         is not greater than 0 </exception>
 		''' <exception cref="IllegalArgumentException"> if the product of <code>w</code>
 		'''         and <code>h</code> is greater than
-		'''         <code> [Integer].MAX_VALUE</code> </exception>
+		'''         <code> java.lang.[Integer].MAX_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
 		Public Sub New(ByVal dataType As Integer, ByVal w As Integer, ByVal h As Integer, ByVal numBands As Integer)
 			Dim size As Long = CLng(w) * h
 			If w <= 0 OrElse h <= 0 Then Throw New IllegalArgumentException("Width (" & w & ") and height (" & h & ") must be > 0")
-			If size >= Integer.MaxValue Then Throw New IllegalArgumentException("Dimensions (width=" & w & " height=" & h & ") are too large")
+			If size >=  java.lang.[Integer].Max_Value Then Throw New IllegalArgumentException("Dimensions (width=" & w & " height=" & h & ") are too large")
 
 			If dataType < DataBuffer.TYPE_BYTE OrElse (dataType > DataBuffer.TYPE_DOUBLE AndAlso dataType <> DataBuffer.TYPE_UNDEFINED) Then Throw New IllegalArgumentException("Unsupported dataType: " & dataType)
 
@@ -703,7 +703,7 @@ Namespace java.awt.image
 		End Function
 
 		''' <summary>
-		''' Returns the samples for the specified pixel in an array of double.
+		''' Returns the samples for the specified pixel in an array of java.lang.[Double].
 		''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
 		''' not in bounds. </summary>
 		''' <param name="x">         The X coordinate of the pixel location. </param>
@@ -907,7 +907,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the sample in a specified band
-		''' for a pixel located at (x,y) as a double.
+		''' for a pixel located at (x,y) as a java.lang.[Double].
 		''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
 		''' not in bounds. </summary>
 		''' <param name="x">         The X coordinate of the pixel location. </param>
@@ -1265,7 +1265,7 @@ Namespace java.awt.image
 		''' <param name="x">         The X coordinate of the pixel location. </param>
 		''' <param name="y">         The Y coordinate of the pixel location. </param>
 		''' <param name="b">         The band to set. </param>
-		''' <param name="s">         The input sample as a double. </param>
+		''' <param name="s">         The input sample as a java.lang.[Double]. </param>
 		''' <param name="data">      The DataBuffer containing the image data. </param>
 		''' <seealso cref= #getSample(int, int, int, DataBuffer)
 		''' </seealso>

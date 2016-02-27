@@ -474,7 +474,7 @@ Namespace java.lang.invoke
 		Friend Shared Function getParameterSize(ByVal c As [Class]) As Integer
 			If c Is Void.TYPE Then
 				Return 0
-			ElseIf c Is Long.TYPE OrElse c Is Double.TYPE Then
+			ElseIf c Is java.lang.[Long].TYPE OrElse c Is java.lang.[Double].TYPE Then
 				Return 2
 			End If
 			Return 1
@@ -492,11 +492,11 @@ Namespace java.lang.invoke
 
 		Private Shared Function getOpcodeOffset(ByVal c As [Class]) As Integer
 			If c.primitive Then
-				If c Is Long.TYPE Then
+				If c Is java.lang.[Long].TYPE Then
 					Return 1
 				ElseIf c Is Float.TYPE Then
 					Return 2
-				ElseIf c Is Double.TYPE Then
+				ElseIf c Is java.lang.[Double].TYPE Then
 					Return 3
 				End If
 				Return 0

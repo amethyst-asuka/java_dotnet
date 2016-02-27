@@ -59,7 +59,7 @@ Namespace java.lang
 		Public Shared ReadOnly [FALSE] As Boolean? = New Boolean?(False)
 
         ''' <summary>
-        ''' The Class object representing the primitive type boolean.
+        ''' The Class object representing the primitive type  java.lang.[Boolean].
         ''' 
         ''' @since   JDK1.1
         ''' </summary>
@@ -67,7 +67,7 @@ Namespace java.lang
         Public Shared ReadOnly TYPE As [Class] = CType([Class].getPrimitiveClass("boolean"), [Class])
 
         ''' <summary>
-        ''' The value of the Boolean.
+        ''' The value of the  java.lang.[Boolean].
         ''' 
         ''' @serial
         ''' </summary>
@@ -108,12 +108,12 @@ Namespace java.lang
         End Sub
 
         ''' <summary>
-        ''' Parses the string argument as a boolean.  The {@code boolean}
+        ''' Parses the string argument as a  java.lang.[Boolean].  The {@code boolean}
         ''' returned represents the value {@code true} if the string argument
         ''' is not {@code null} and is equal, ignoring case, to the string
         ''' {@code "true"}. <p>
-        ''' Example: {@code Boolean.parseBoolean("True")} returns {@code true}.<br>
-        ''' Example: {@code Boolean.parseBoolean("yes")} returns {@code false}.
+        ''' Example: {@code  java.lang.[Boolean].parseBoolean("True")} returns {@code true}.<br>
+        ''' Example: {@code  java.lang.[Boolean].parseBoolean("yes")} returns {@code false}.
         ''' </summary>
         ''' <param name="s">   the {@code String} containing the boolean
         '''                 representation to be parsed </param>
@@ -135,8 +135,8 @@ Namespace java.lang
 		''' <summary>
 		''' Returns a {@code Boolean} instance representing the specified
 		''' {@code boolean} value.  If the specified {@code boolean} value
-		''' is {@code true}, this method returns {@code Boolean.TRUE};
-		''' if it is {@code false}, this method returns {@code Boolean.FALSE}.
+		''' is {@code true}, this method returns {@code  java.lang.[Boolean].TRUE};
+		''' if it is {@code false}, this method returns {@code  java.lang.[Boolean].FALSE}.
 		''' If a new {@code Boolean} instance is not required, this method
 		''' should generally be used in preference to the constructor
 		''' <seealso cref="#Boolean(boolean)"/>, as this method is likely to yield
@@ -163,7 +163,7 @@ Namespace java.lang
 
 		''' <summary>
 		''' Returns a {@code String} object representing the specified
-		''' boolean.  If the specified boolean is {@code true}, then
+		'''  java.lang.[Boolean].  If the specified boolean is {@code true}, then
 		''' the string {@code "true"} will be returned, otherwise the
 		''' string {@code "false"} will be returned.
 		''' </summary>
@@ -192,12 +192,12 @@ Namespace java.lang
 		''' {@code true}; returns the integer {@code 1237} if this
 		''' object represents {@code false}. </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return Boolean.hashCode(value)
+			Return  java.lang.[Boolean].hashCode(value)
 		End Function
 
 		''' <summary>
 		''' Returns a hash code for a {@code boolean} value; compatible with
-		''' {@code Boolean.hashCode()}.
+		''' {@code  java.lang.[Boolean].hashCode()}.
 		''' </summary>
 		''' <param name="value"> the value to hash </param>
 		''' <returns> a hash code value for a {@code boolean} value.
@@ -266,7 +266,7 @@ Namespace java.lang
 		''' Compares two {@code boolean} values.
 		''' The value returned is identical to what would be returned by:
 		''' <pre>
-		'''    Boolean.valueOf(x).compareTo(Boolean.valueOf(y))
+		'''     java.lang.[Boolean].valueOf(x).compareTo(Boolean.valueOf(y))
 		''' </pre>
 		''' </summary>
 		''' <param name="x"> the first {@code boolean} to compare </param>

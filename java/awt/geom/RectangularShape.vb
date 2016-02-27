@@ -283,8 +283,8 @@ Namespace java.awt.geom
 		''' <param name="cornerY"> the Y coordinate of the specified corner point
 		''' @since 1.2 </param>
 		Public Overridable Sub setFrameFromCenter(ByVal centerX As Double, ByVal centerY As Double, ByVal cornerX As Double, ByVal cornerY As Double)
-			Dim halfW As Double = Math.Abs(cornerX - centerX)
-			Dim halfH As Double = Math.Abs(cornerY - centerY)
+			Dim halfW As Double = System.Math.Abs(cornerX - centerX)
+			Dim halfH As Double = System.Math.Abs(cornerY - centerY)
 			frameame(centerX - halfW, centerY - halfH, halfW * 2.0, halfH * 2.0)
 		End Sub
 
@@ -335,10 +335,10 @@ Namespace java.awt.geom
 				If width_Renamed < 0 OrElse height_Renamed < 0 Then Return New java.awt.Rectangle
 				Dim x_Renamed As Double = x
 				Dim y_Renamed As Double = y
-				Dim x1 As Double = Math.Floor(x_Renamed)
-				Dim y1 As Double = Math.Floor(y_Renamed)
-				Dim x2 As Double = Math.Ceiling(x_Renamed + width_Renamed)
-				Dim y2 As Double = Math.Ceiling(y_Renamed + height_Renamed)
+				Dim x1 As Double = System.Math.Floor(x_Renamed)
+				Dim y1 As Double = System.Math.Floor(y_Renamed)
+				Dim x2 As Double = System.Math.Ceiling(x_Renamed + width_Renamed)
+				Dim y2 As Double = System.Math.Ceiling(y_Renamed + height_Renamed)
 				Return New java.awt.Rectangle(CInt(Fix(x1)), CInt(Fix(y1)), CInt(Fix(x2 - x1)), CInt(Fix(y2 - y1)))
 			End Get
 		End Property

@@ -391,7 +391,7 @@ Namespace java.lang
 		''' <summary>
 		''' Returns the smallest (closest to negative infinity)
 		''' {@code double} value that is greater than or equal to the
-		''' argument and is equal to a mathematical integer. Special cases:
+		''' argument and is equal to a mathematical  java.lang.[Integer]. Special cases:
 		''' <ul><li>If the argument value is already equal to a
 		''' mathematical integer, then the result is the same as the
 		''' argument.  <li>If the argument is NaN or an infinity or
@@ -405,7 +405,7 @@ Namespace java.lang
 		''' <param name="a">   a value. </param>
 		''' <returns>  the smallest (closest to negative infinity)
 		'''          floating-point value that is greater than or equal to
-		'''          the argument and is equal to a mathematical integer. </returns>
+		'''          the argument and is equal to a mathematical  java.lang.[Integer]. </returns>
 		Public Shared Function ceil(ByVal a As Double) As Double
 			Return Math.Ceiling(a) ' default impl. delegates to StrictMath
 		End Function
@@ -413,7 +413,7 @@ Namespace java.lang
 		''' <summary>
 		''' Returns the largest (closest to positive infinity)
 		''' {@code double} value that is less than or equal to the
-		''' argument and is equal to a mathematical integer. Special cases:
+		''' argument and is equal to a mathematical  java.lang.[Integer]. Special cases:
 		''' <ul><li>If the argument value is already equal to a
 		''' mathematical integer, then the result is the same as the
 		''' argument.  <li>If the argument is NaN or an infinity or
@@ -423,14 +423,14 @@ Namespace java.lang
 		''' <param name="a">   a value. </param>
 		''' <returns>  the largest (closest to positive infinity)
 		'''          floating-point value that less than or equal to the argument
-		'''          and is equal to a mathematical integer. </returns>
+		'''          and is equal to a mathematical  java.lang.[Integer]. </returns>
 		Public Shared Function floor(ByVal a As Double) As Double
 			Return Math.Floor(a) ' default impl. delegates to StrictMath
 		End Function
 
 		''' <summary>
 		''' Returns the {@code double} value that is closest in value
-		''' to the argument and is equal to a mathematical integer. If two
+		''' to the argument and is equal to a mathematical  java.lang.[Integer]. If two
 		''' {@code double} values that are mathematical integers are
 		''' equally close, the result is the integer value that is
 		''' even. Special cases:
@@ -441,7 +441,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   a {@code double} value. </param>
 		''' <returns>  the closest floating-point value to {@code a} that is
-		'''          equal to a mathematical integer. </returns>
+		'''          equal to a mathematical  java.lang.[Integer]. </returns>
 		Public Shared Function rint(ByVal a As Double) As Double
 			Return Math.rint(a) ' default impl. delegates to StrictMath
 		End Function
@@ -635,13 +635,13 @@ Namespace java.lang
 		''' Special cases:
 		''' <ul><li>If the argument is NaN, the result is 0.
 		''' <li>If the argument is negative infinity or any value less than or
-		''' equal to the value of {@code Integer.MIN_VALUE}, the result is
-		''' equal to the value of {@code Integer.MIN_VALUE}.
+		''' equal to the value of {@code  java.lang.[Integer].MIN_VALUE}, the result is
+		''' equal to the value of {@code  java.lang.[Integer].MIN_VALUE}.
 		''' <li>If the argument is positive infinity or any value greater than or
-		''' equal to the value of {@code  [Integer].MAX_VALUE}, the result is
-		''' equal to the value of {@code  [Integer].MAX_VALUE}.</ul>
+		''' equal to the value of {@code  java.lang.[Integer].MAX_VALUE}, the result is
+		''' equal to the value of {@code  java.lang.[Integer].MAX_VALUE}.</ul>
 		''' </summary>
-		''' <param name="a">   a floating-point value to be rounded to an integer. </param>
+		''' <param name="a">   a floating-point value to be rounded to an  java.lang.[Integer]. </param>
 		''' <returns>  the value of the argument rounded to the nearest
 		'''          {@code int} value. </returns>
 		''' <seealso cref=     java.lang.Integer#MAX_VALUE </seealso>
@@ -677,11 +677,11 @@ Namespace java.lang
 		''' <p>Special cases:
 		''' <ul><li>If the argument is NaN, the result is 0.
 		''' <li>If the argument is negative infinity or any value less than or
-		''' equal to the value of {@code Long.MIN_VALUE}, the result is
-		''' equal to the value of {@code Long.MIN_VALUE}.
+		''' equal to the value of {@code java.lang.[Long].MIN_VALUE}, the result is
+		''' equal to the value of {@code java.lang.[Long].MIN_VALUE}.
 		''' <li>If the argument is positive infinity or any value greater than or
-		''' equal to the value of {@code Long.MAX_VALUE}, the result is
-		''' equal to the value of {@code Long.MAX_VALUE}.</ul>
+		''' equal to the value of {@code java.lang.[Long].MAX_VALUE}, the result is
+		''' equal to the value of {@code java.lang.[Long].MAX_VALUE}.</ul>
 		''' </summary>
 		''' <param name="a">   a floating-point value to be rounded to a
 		'''          {@code long}. </param>
@@ -690,7 +690,7 @@ Namespace java.lang
 		''' <seealso cref=     java.lang.Long#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Long#MIN_VALUE </seealso>
 		Public Shared Function round(ByVal a As Double) As Long
-			Dim longBits As Long = Double.doubleToRawLongBits(a)
+			Dim longBits As Long = java.lang.[Double].doubleToRawLongBits(a)
 			Dim biasedExp As Long = (longBits And sun.misc.DoubleConsts.EXP_BIT_MASK) >> (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH - 1)
 			Dim shift As Long = (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH - 2 + sun.misc.DoubleConsts.EXP_BIAS) - biasedExp
 			If (shift And -64) = 0 Then ' shift >= 0 && shift < 64
@@ -840,8 +840,8 @@ Namespace java.lang
 			If (CInt(CUInt((ax Or ay)) >> 31 <> 0)) Then
 				' Some bits greater than 2^31 that might cause overflow
 				' Check the result using the divide operator
-				' and check for the special case of Long.MIN_VALUE * -1
-			   If ((y <> 0) AndAlso (r \ y <> x)) OrElse (x = Long.MinValue AndAlso y = -1) Then Throw New ArithmeticException("long overflow")
+				' and check for the special case of java.lang.[Long].MIN_VALUE * -1
+			   If ((y <> 0) AndAlso (r \ y <> x)) OrElse (x = java.lang.[Long].MIN_VALUE AndAlso y = -1) Then Throw New ArithmeticException("long overflow")
 			End If
 			Return r
 		End Function
@@ -855,7 +855,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
 		Public Shared Function incrementExact(ByVal a As Integer) As Integer
-			If a = Integer.MaxValue Then Throw New ArithmeticException("integer overflow")
+			If a =  java.lang.[Integer].Max_Value Then Throw New ArithmeticException("integer overflow")
 
 			Return a + 1
 		End Function
@@ -869,7 +869,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
 		Public Shared Function incrementExact(ByVal a As Long) As Long
-			If a = Long.MaxValue Then Throw New ArithmeticException("long overflow")
+			If a = java.lang.[Long].Max_Value Then Throw New ArithmeticException("long overflow")
 
 			Return a + 1L
 		End Function
@@ -883,7 +883,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
 		Public Shared Function decrementExact(ByVal a As Integer) As Integer
-			If a = Integer.MinValue Then Throw New ArithmeticException("integer overflow")
+			If a =  java.lang.[Integer].MIN_VALUE Then Throw New ArithmeticException("integer overflow")
 
 			Return a - 1
 		End Function
@@ -897,7 +897,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
 		Public Shared Function decrementExact(ByVal a As Long) As Long
-			If a = Long.MinValue Then Throw New ArithmeticException("long overflow")
+			If a = java.lang.[Long].MIN_VALUE Then Throw New ArithmeticException("long overflow")
 
 			Return a - 1L
 		End Function
@@ -911,7 +911,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows an int
 		''' @since 1.8 </exception>
 		Public Shared Function negateExact(ByVal a As Integer) As Integer
-			If a = Integer.MinValue Then Throw New ArithmeticException("integer overflow")
+			If a =  java.lang.[Integer].MIN_VALUE Then Throw New ArithmeticException("integer overflow")
 
 			Return -a
 		End Function
@@ -925,7 +925,7 @@ Namespace java.lang
 		''' <exception cref="ArithmeticException"> if the result overflows a long
 		''' @since 1.8 </exception>
 		Public Shared Function negateExact(ByVal a As Long) As Long
-			If a = Long.MinValue Then Throw New ArithmeticException("long overflow")
+			If a = java.lang.[Long].MIN_VALUE Then Throw New ArithmeticException("long overflow")
 
 			Return -a
 		End Function
@@ -947,9 +947,9 @@ Namespace java.lang
 		''' Returns the largest (closest to positive infinity)
 		''' {@code int} value that is less than or equal to the algebraic quotient.
 		''' There is one special case, if the dividend is the
-		''' <seealso cref="Integer#MIN_VALUE Integer.MIN_VALUE"/> and the divisor is {@code -1},
+		''' <seealso cref="Integer#MIN_VALUE  java.lang.[Integer].MIN_VALUE"/> and the divisor is {@code -1},
 		''' then integer overflow occurs and
-		''' the result is equal to the {@code Integer.MIN_VALUE}.
+		''' the result is equal to the {@code  java.lang.[Integer].MIN_VALUE}.
 		''' <p>
 		''' Normal integer division operates under the round to zero rounding mode
 		''' (truncation).  This operation instead acts under the round toward
@@ -988,9 +988,9 @@ Namespace java.lang
 		''' Returns the largest (closest to positive infinity)
 		''' {@code long} value that is less than or equal to the algebraic quotient.
 		''' There is one special case, if the dividend is the
-		''' <seealso cref="Long#MIN_VALUE Long.MIN_VALUE"/> and the divisor is {@code -1},
+		''' <seealso cref="Long#MIN_VALUE java.lang.[Long].MIN_VALUE"/> and the divisor is {@code -1},
 		''' then integer overflow occurs and
-		''' the result is equal to the {@code Long.MIN_VALUE}.
+		''' the result is equal to the {@code java.lang.[Long].MIN_VALUE}.
 		''' <p>
 		''' Normal integer division operates under the round to zero rounding mode
 		''' (truncation).  This operation instead acts under the round toward
@@ -1148,7 +1148,7 @@ Namespace java.lang
 		''' <li>If the argument is infinite, the result is positive infinity.
 		''' <li>If the argument is NaN, the result is NaN.</ul>
 		''' In other words, the result is the same as the value of the expression:
-		''' <p>{@code Double.longBitsToDouble((Double.doubleToLongBits(a)<<1)>>>1)}
+		''' <p>{@code java.lang.[Double].longBitsToDouble((Double.doubleToLongBits(a)<<1)>>>1)}
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
@@ -1184,7 +1184,7 @@ Namespace java.lang
 
 		' Use raw bit-wise conversions on guaranteed non-NaN arguments.
 		Private Shared negativeZeroFloatBits As Long = Float.floatToRawIntBits(-0.0f)
-		Private Shared negativeZeroDoubleBits As Long = Double.doubleToRawLongBits(-0.0R)
+		Private Shared negativeZeroDoubleBits As Long = java.lang.[Double].doubleToRawLongBits(-0.0R)
 
 		''' <summary>
 		''' Returns the greater of two {@code float} values.  That is,
@@ -1301,8 +1301,8 @@ Namespace java.lang
 		''' <li> If the argument is positive or negative infinity, then the
 		''' result is positive infinity.
 		''' <li> If the argument is positive or negative zero, then the result is
-		''' {@code Double.MIN_VALUE}.
-		''' <li> If the argument is &plusmn;{@code Double.MAX_VALUE}, then
+		''' {@code java.lang.[Double].MIN_VALUE}.
+		''' <li> If the argument is &plusmn;{@code java.lang.[Double].MAX_VALUE}, then
 		''' the result is equal to 2<sup>971</sup>.
 		''' </ul>
 		''' </summary>
@@ -1318,7 +1318,7 @@ Namespace java.lang
 				Return Math.Abs(d)
 
 			Case sun.misc.DoubleConsts.MIN_EXPONENT-1 ' zero or subnormal
-				Return Double.MinValue
+				Return java.lang.[Double].MIN_VALUE
 
 			Case Else
 				Debug.Assert(exp <= sun.misc.DoubleConsts.MAX_EXPONENT AndAlso exp >= sun.misc.DoubleConsts.MIN_EXPONENT)
@@ -1329,9 +1329,9 @@ Namespace java.lang
 					Return powerOfTwoD(exp)
 				Else
 					' return a subnormal result; left shift integer
-					' representation of Double.MIN_VALUE appropriate
+					' representation of java.lang.[Double].MIN_VALUE appropriate
 					' number of positions
-					Return Double.longBitsToDouble(1L << (exp - (sun.misc.DoubleConsts.MIN_EXPONENT - (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH-1))))
+					Return java.lang.[Double].longBitsToDouble(1L << (exp - (sun.misc.DoubleConsts.MIN_EXPONENT - (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH-1))))
 				End If
 			End Select
 		End Function
@@ -1401,7 +1401,7 @@ Namespace java.lang
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
 		Public Shared Function signum(ByVal d As Double) As Double
-			Return If(d = 0.0 OrElse Double.IsNaN(d), d, copySign(1.0, d))
+			Return If(d = 0.0 OrElse java.lang.[Double].IsNaN(d), d, copySign(1.0, d))
 		End Function
 
 		''' <summary>
@@ -1634,7 +1634,7 @@ Namespace java.lang
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
 		Public Shared Function copySign(ByVal magnitude As Double, ByVal sign As Double) As Double
-			Return Double.longBitsToDouble((Double.doubleToRawLongBits(sign) And (sun.misc.DoubleConsts.SIGN_BIT_MASK)) Or (Double.doubleToRawLongBits(magnitude) And (sun.misc.DoubleConsts.EXP_BIT_MASK Or sun.misc.DoubleConsts.SIGNIF_BIT_MASK)))
+			Return java.lang.[Double].longBitsToDouble((Double.doubleToRawLongBits(sign) And (sun.misc.DoubleConsts.SIGN_BIT_MASK)) Or (Double.doubleToRawLongBits(magnitude) And (sun.misc.DoubleConsts.EXP_BIT_MASK Or sun.misc.DoubleConsts.SIGNIF_BIT_MASK)))
 		End Function
 
 		''' <summary>
@@ -1751,15 +1751,15 @@ Namespace java.lang
 	'         
 
 			' First check for NaN values
-			If Double.IsNaN(start) OrElse Double.IsNaN(direction) Then
+			If java.lang.[Double].IsNaN(start) OrElse java.lang.[Double].IsNaN(direction) Then
 				' return a NaN derived from the input NaN(s)
 				Return start + direction
 			ElseIf start = direction Then
 				Return direction ' start > direction or start < direction
 			Else
 				' Add +0.0 to get rid of a -0.0 (+0.0 + -0.0 => +0.0)
-				' then bitwise convert start to integer.
-				Dim transducer As Long = Double.doubleToRawLongBits(start + 0.0R)
+				' then bitwise convert start to  java.lang.[Integer].
+				Dim transducer As Long = java.lang.[Double].doubleToRawLongBits(start + 0.0R)
 
 	'            
 	'             * IEEE 754 floating-point numbers are lexicographically
@@ -1796,7 +1796,7 @@ Namespace java.lang
 					End If
 				End If
 
-				Return Double.longBitsToDouble(transducer)
+				Return java.lang.[Double].longBitsToDouble(transducer)
 			End If
 		End Function
 
@@ -1851,14 +1851,14 @@ Namespace java.lang
 	'         
 
 			' First check for NaN values
-			If Float.IsNaN(start) OrElse Double.IsNaN(direction) Then
+			If Float.IsNaN(start) OrElse java.lang.[Double].IsNaN(direction) Then
 				' return a NaN derived from the input NaN(s)
 				Return start + CSng(direction)
 			ElseIf start = direction Then
 				Return CSng(direction) ' start > direction or start < direction
 			Else
 				' Add +0.0 to get rid of a -0.0 (+0.0 + -0.0 => +0.0)
-				' then bitwise convert start to integer.
+				' then bitwise convert start to  java.lang.[Integer].
 				Dim transducer As Integer = Float.floatToRawIntBits(start + 0.0f)
 
 	'            
@@ -1904,7 +1904,7 @@ Namespace java.lang
 		''' Returns the floating-point value adjacent to {@code d} in
 		''' the direction of positive infinity.  This method is
 		''' semantically equivalent to {@code nextAfter(d,
-		''' Double.POSITIVE_INFINITY)}; however, a {@code nextUp}
+		''' java.lang.[Double].POSITIVE_INFINITY)}; however, a {@code nextUp}
 		''' implementation may run faster than its equivalent
 		''' {@code nextAfter} call.
 		''' 
@@ -1925,11 +1925,11 @@ Namespace java.lang
 		''' infinity.
 		''' @since 1.6 </returns>
 		Public Shared Function nextUp(ByVal d As Double) As Double
-			If Double.IsNaN(d) OrElse d = Double.PositiveInfinity Then
+			If java.lang.[Double].IsNaN(d) OrElse d = java.lang.[Double].PositiveInfinity Then
 				Return d
 			Else
 				d += 0.0R
-				Return Double.longBitsToDouble(Double.doubleToRawLongBits(d) + (If(d >= 0.0R, +1L, -1L)))
+				Return java.lang.[Double].longBitsToDouble(Double.doubleToRawLongBits(d) + (If(d >= 0.0R, +1L, -1L)))
 			End If
 		End Function
 
@@ -1970,7 +1970,7 @@ Namespace java.lang
 		''' Returns the floating-point value adjacent to {@code d} in
 		''' the direction of negative infinity.  This method is
 		''' semantically equivalent to {@code nextAfter(d,
-		''' Double.NEGATIVE_INFINITY)}; however, a
+		''' java.lang.[Double].NEGATIVE_INFINITY)}; however, a
 		''' {@code nextDown} implementation may run faster than its
 		''' equivalent {@code nextAfter} call.
 		''' 
@@ -1991,13 +1991,13 @@ Namespace java.lang
 		''' infinity.
 		''' @since 1.8 </returns>
 		Public Shared Function nextDown(ByVal d As Double) As Double
-			If Double.IsNaN(d) OrElse d = Double.NegativeInfinity Then
+			If java.lang.[Double].IsNaN(d) OrElse d = java.lang.[Double].NegativeInfinity Then
 				Return d
 			Else
 				If d = 0.0 Then
-					Return -Double.MinValue
+					Return -Double.MIN_VALUE
 				Else
-					Return Double.longBitsToDouble(Double.doubleToRawLongBits(d) + (If(d > 0.0R, -1L, +1L)))
+					Return java.lang.[Double].longBitsToDouble(Double.doubleToRawLongBits(d) + (If(d > 0.0R, -1L, +1L)))
 				End If
 			End If
 		End Function
@@ -2031,7 +2031,7 @@ Namespace java.lang
 				Return f
 			Else
 				If f = 0.0f Then
-					Return -Float.MinValue
+					Return -Float.MIN_VALUE
 				Else
 					Return Float.intBitsToFloat(Float.floatToRawIntBits(f) + (If(f > 0.0f, -1, +1)))
 				End If
@@ -2047,7 +2047,7 @@ Namespace java.lang
 		''' value sets.  If the exponent of the result is between {@link
 		''' Double#MIN_EXPONENT} and <seealso cref="Double#MAX_EXPONENT"/>, the
 		''' answer is calculated exactly.  If the exponent of the result
-		''' would be larger than {@code Double.MAX_EXPONENT}, an
+		''' would be larger than {@code java.lang.[Double].MAX_EXPONENT}, an
 		''' infinity is returned.  Note that if the result is subnormal,
 		''' precision may be lost; that is, when {@code scalb(x, n)}
 		''' is subnormal, {@code scalb(scalb(x, n), -n)} may not equal
@@ -2113,7 +2113,7 @@ Namespace java.lang
 			Dim MAX_SCALE As Integer = sun.misc.DoubleConsts.MAX_EXPONENT + -sun.misc.DoubleConsts.MIN_EXPONENT + sun.misc.DoubleConsts.SIGNIFICAND_WIDTH + 1
 			Dim exp_adjust As Integer = 0
 			Dim scale_increment As Integer = 0
-			Dim exp_delta As Double = Double.NaN
+			Dim exp_delta As Double = java.lang.[Double].NaN
 
 			' Make sure scaling factor is in a reasonable range
 
@@ -2179,7 +2179,7 @@ Namespace java.lang
 			Dim MAX_SCALE As Integer = sun.misc.FloatConsts.MAX_EXPONENT + -sun.misc.FloatConsts.MIN_EXPONENT + sun.misc.FloatConsts.SIGNIFICAND_WIDTH + 1
 
 			' Make sure scaling factor is in a reasonable range
-			scaleFactor = Math.Max(Math.Min(scaleFactor, MAX_SCALE), -MAX_SCALE)
+			scaleFactor = Math.Max (System.Math.Min(scaleFactor, MAX_SCALE), -MAX_SCALE)
 
 	'        
 	'         * Since + MAX_SCALE for float fits well within the double
@@ -2202,7 +2202,7 @@ Namespace java.lang
 		''' </summary>
 		Friend Shared Function powerOfTwoD(ByVal n As Integer) As Double
 			assert(n >= sun.misc.DoubleConsts.MIN_EXPONENT AndAlso n <= sun.misc.DoubleConsts.MAX_EXPONENT)
-			Return Double.longBitsToDouble(((CLng(n) + CLng(Fix(sun.misc.DoubleConsts.EXP_BIAS))) << (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH-1)) And sun.misc.DoubleConsts.EXP_BIT_MASK)
+			Return java.lang.[Double].longBitsToDouble(((CLng(n) + CLng(Fix(sun.misc.DoubleConsts.EXP_BIAS))) << (sun.misc.DoubleConsts.SIGNIFICAND_WIDTH-1)) And sun.misc.DoubleConsts.EXP_BIT_MASK)
 		End Function
 
 		''' <summary>

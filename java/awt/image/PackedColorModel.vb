@@ -253,7 +253,7 @@ Namespace java.awt.image
 				Loop
 			End If
 
-			If [off] + count > pixel_bits Then Throw New IllegalArgumentException(componentName & " mask " & Integer.toHexString(maskArray(idx)) & " overflows pixel (expecting " & pixel_bits & " bits")
+			If [off] + count > pixel_bits Then Throw New IllegalArgumentException(componentName & " mask " &  java.lang.[Integer].toHexString(maskArray(idx)) & " overflows pixel (expecting " & pixel_bits & " bits")
 
 			maskOffsets(idx) = [off]
 			If count = 0 Then
@@ -367,11 +367,11 @@ Namespace java.awt.image
 			Dim arr As Integer() = New Integer(numColors+numAlpha - 1){}
 			For i As Integer = 0 To numColors - 1
 				arr(i) = countBits(colorMaskArray(i))
-				If arr(i) < 0 Then Throw New IllegalArgumentException("Noncontiguous color mask (" & Integer.toHexString(colorMaskArray(i)) & "at index " & i)
+				If arr(i) < 0 Then Throw New IllegalArgumentException("Noncontiguous color mask (" &  java.lang.[Integer].toHexString(colorMaskArray(i)) & "at index " & i)
 			Next i
 			If alphaMask <> 0 Then
 				arr(numColors) = countBits(alphaMask)
-				If arr(numColors) < 0 Then Throw New IllegalArgumentException("Noncontiguous alpha mask (" & Integer.toHexString(alphaMask))
+				If arr(numColors) < 0 Then Throw New IllegalArgumentException("Noncontiguous alpha mask (" &  java.lang.[Integer].toHexString(alphaMask))
 			End If
 			Return arr
 		End Function
@@ -382,15 +382,15 @@ Namespace java.awt.image
 			arr(1) = countBits(gmask)
 			arr(2) = countBits(bmask)
 			If arr(0) < 0 Then
-				Throw New IllegalArgumentException("Noncontiguous red mask (" & Integer.toHexString(rmask))
+				Throw New IllegalArgumentException("Noncontiguous red mask (" &  java.lang.[Integer].toHexString(rmask))
 			ElseIf arr(1) < 0 Then
-				Throw New IllegalArgumentException("Noncontiguous green mask (" & Integer.toHexString(gmask))
+				Throw New IllegalArgumentException("Noncontiguous green mask (" &  java.lang.[Integer].toHexString(gmask))
 			ElseIf arr(2) < 0 Then
-				Throw New IllegalArgumentException("Noncontiguous blue mask (" & Integer.toHexString(bmask))
+				Throw New IllegalArgumentException("Noncontiguous blue mask (" &  java.lang.[Integer].toHexString(bmask))
 			End If
 			If amask <> 0 Then
 				arr(3) = countBits(amask)
-				If arr(3) < 0 Then Throw New IllegalArgumentException("Noncontiguous alpha mask (" & Integer.toHexString(amask))
+				If arr(3) < 0 Then Throw New IllegalArgumentException("Noncontiguous alpha mask (" &  java.lang.[Integer].toHexString(amask))
 			End If
 			Return arr
 		End Function

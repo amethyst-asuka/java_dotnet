@@ -69,12 +69,12 @@ Namespace java.io
 		''' <summary>
 		''' Reads some number of bytes from the input stream and stores them into
 		''' the buffer array <code>b</code>. The number of bytes actually read is
-		''' returned as an integer.  This method blocks until input data is
+		''' returned as an  java.lang.[Integer].  This method blocks until input data is
 		''' available, end of file is detected, or an exception is thrown.
 		''' 
 		''' <p> If the length of <code>b</code> is zero, then no bytes are read and
 		''' <code>0</code> is returned; otherwise, there is an attempt to read at
-		''' least one byte. If no byte is available because the stream is at the
+		''' least one java.lang.[Byte]. If no byte is available because the stream is at the
 		''' end of the file, the value <code>-1</code> is returned; otherwise, at
 		''' least one byte is read and stored into <code>b</code>.
 		''' 
@@ -106,14 +106,14 @@ Namespace java.io
 		''' Reads up to <code>len</code> bytes of data from the input stream into
 		''' an array of bytes.  An attempt is made to read as many as
 		''' <code>len</code> bytes, but a smaller number may be read.
-		''' The number of bytes actually read is returned as an integer.
+		''' The number of bytes actually read is returned as an  java.lang.[Integer].
 		''' 
 		''' <p> This method blocks until input data is available, end of file is
 		''' detected, or an exception is thrown.
 		''' 
 		''' <p> If <code>len</code> is zero, then no bytes are read and
 		''' <code>0</code> is returned; otherwise, there is an attempt to read at
-		''' least one byte. If no byte is available because the stream is at end of
+		''' least one java.lang.[Byte]. If no byte is available because the stream is at end of
 		''' file, the value <code>-1</code> is returned; otherwise, at least one
 		''' byte is read and stored into <code>b</code>.
 		''' 
@@ -212,10 +212,10 @@ Namespace java.io
 
 			If n <= 0 Then Return 0
 
-			Dim size As Integer = CInt(Fix(Math.Min(MAX_SKIP_BUFFER_SIZE, remaining)))
+			Dim size As Integer = CInt(Fix (System.Math.Min(MAX_SKIP_BUFFER_SIZE, remaining)))
 			Dim skipBuffer As SByte() = New SByte(size - 1){}
 			Do While remaining > 0
-				nr = read(skipBuffer, 0, CInt(Fix(Math.Min(size, remaining))))
+				nr = read(skipBuffer, 0, CInt(Fix (System.Math.Min(size, remaining))))
 				If nr < 0 Then Exit Do
 				remaining -= nr
 			Loop

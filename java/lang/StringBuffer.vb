@@ -616,7 +616,7 @@ Namespace java.lang
 		'''              A flag indicating whether the backing array is shared.
 		'''              The value is ignored upon deserialization.
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("value", GetType(Char())), New java.io.ObjectStreamField("count", Integer.TYPE), New java.io.ObjectStreamField("shared", Boolean.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("value", GetType(Char())), New java.io.ObjectStreamField("count",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("shared",  java.lang.[Boolean].TYPE) }
 
 		''' <summary>
 		''' readObject is called to restore the state of the StringBuffer from

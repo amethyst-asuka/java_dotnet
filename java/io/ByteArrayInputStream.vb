@@ -123,7 +123,7 @@ Namespace java.io
 		public ByteArrayInputStream(byte buf() , int offset, int length)
 			Me.buf = buf
 			Me.pos = offset
-			Me.count = Math.Min(offset + length, buf.Length)
+			Me.count = System.Math.Min(offset + length, buf.Length)
 			Me.mark_Renamed = offset
 
 		''' <summary>

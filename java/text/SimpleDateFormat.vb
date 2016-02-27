@@ -986,7 +986,7 @@ Namespace java.text
         ''' Private member function that does the real date/time formatting.
         ''' </summary>
         Private Sub subFormat(ByVal patternCharIndex As Integer, ByVal count As Integer, ByVal [delegate] As FieldDelegate, ByVal buffer As StringBuffer, ByVal useDateFormatSymbols As Boolean)
-            Dim maxIntCount As Integer = Integer.MaxValue
+            Dim maxIntCount As Integer =  java.lang.[Integer].Max_Value
             Dim current As String = Nothing
             Dim beginOffset As Integer = buffer.length()
 
@@ -1192,7 +1192,7 @@ Namespace java.text
             ' Optimization for 1, 2 and 4 digit numbers. This should
             ' cover most cases of formatting date/time related items.
             ' Note: This optimization code assumes that maxDigits is
-            ' either 2 or  [Integer].MAX_VALUE (maxIntCount in format()).
+            ' either 2 or  java.lang.[Integer].MAX_VALUE (maxIntCount in format()).
             Try
                 If AscW(zeroDigit) = 0 Then zeroDigit = CType(numberFormat, DecimalFormat).decimalFormatSymbols.zeroDigit
                 If value >= 0 Then

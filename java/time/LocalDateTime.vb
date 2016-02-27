@@ -375,8 +375,8 @@ Namespace java.time
 			java.util.Objects.requireNonNull(offset, "offset")
 			NANO_OF_SECOND.checkValidValue(nanoOfSecond)
 			Dim localSecond As Long = epochSecond + offset.totalSeconds ' overflow caught later
-			Dim localEpochDay As Long = Math.floorDiv(localSecond, SECONDS_PER_DAY)
-			Dim secsOfDay As Integer = CInt(Math.floorMod(localSecond, SECONDS_PER_DAY))
+			Dim localEpochDay As Long = System.Math.floorDiv(localSecond, SECONDS_PER_DAY)
+			Dim secsOfDay As Integer = CInt (System.Math.floorMod(localSecond, SECONDS_PER_DAY))
 			Dim date_Renamed As LocalDate = LocalDate.ofEpochDay(localEpochDay)
 			Dim time As LocalTime = LocalTime.ofNanoOfDay(secsOfDay * NANOS_PER_SECOND + nanoOfSecond)
 			Return New LocalDateTime(date_Renamed, time)
@@ -1316,7 +1316,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As LocalDateTime
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1340,7 +1340,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDateTime} based on this date-time with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusYears(ByVal years As Long) As LocalDateTime
-			Return (If(years = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-years)))
+			Return (If(years = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-years)))
 		End Function
 
 		''' <summary>
@@ -1363,7 +1363,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDateTime} based on this date-time with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusMonths(ByVal months As Long) As LocalDateTime
-			Return (If(months = Long.MinValue, plusMonths(Long.MaxValue).plusMonths(1), plusMonths(-months)))
+			Return (If(months = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-months)))
 		End Function
 
 		''' <summary>
@@ -1381,7 +1381,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDateTime} based on this date-time with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusWeeks(ByVal weeks As Long) As LocalDateTime
-			Return (If(weeks = Long.MinValue, plusWeeks(Long.MaxValue).plusWeeks(1), plusWeeks(-weeks)))
+			Return (If(weeks = java.lang.[Long].MIN_VALUE, plusWeeks(Long.Max_Value).plusWeeks(1), plusWeeks(-weeks)))
 		End Function
 
 		''' <summary>
@@ -1399,7 +1399,7 @@ Namespace java.time
 		''' <returns> a {@code LocalDateTime} based on this date-time with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusDays(ByVal days As Long) As LocalDateTime
-			Return (If(days = Long.MinValue, plusDays(Long.MaxValue).plusDays(1), plusDays(-days)))
+			Return (If(days = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-days)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1472,8 +1472,8 @@ Namespace java.time
 			Dim totNanos As Long = nanos Mod NANOS_PER_DAY + (seconds Mod SECONDS_PER_DAY) * NANOS_PER_SECOND + (minutes Mod MINUTES_PER_DAY) * NANOS_PER_MINUTE + (hours Mod HOURS_PER_DAY) * NANOS_PER_HOUR '   max  86400000000000 -    max  86400000000000 -    max  86400000000000 -    max  86400000000000
 			Dim curNoD As Long = time.toNanoOfDay() '   max  86400000000000
 			totNanos = totNanos * sign + curNoD ' total 432000000000000
-			totDays += Math.floorDiv(totNanos, NANOS_PER_DAY)
-			Dim newNoD As Long = Math.floorMod(totNanos, NANOS_PER_DAY)
+			totDays += System.Math.floorDiv(totNanos, NANOS_PER_DAY)
+			Dim newNoD As Long = System.Math.floorMod(totNanos, NANOS_PER_DAY)
 			Dim newTime As LocalTime = (If(newNoD = curNoD, time, LocalTime.ofNanoOfDay(newNoD)))
 			Return [with](newDate.plusDays(totDays), newTime)
 		End Function
@@ -1594,27 +1594,27 @@ Namespace java.time
 					End If
 					Select Case CType(unit, java.time.temporal.ChronoUnit)
 						Case NANOS
-							amount = Math.multiplyExact(amount, NANOS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, NANOS_PER_DAY)
 						Case MICROS
-							amount = Math.multiplyExact(amount, MICROS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, MICROS_PER_DAY)
 							timePart = timePart \ 1000
 						Case MILLIS
-							amount = Math.multiplyExact(amount, MILLIS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, MILLIS_PER_DAY)
 							timePart = timePart \ 1000000
 						Case SECONDS
-							amount = Math.multiplyExact(amount, SECONDS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, SECONDS_PER_DAY)
 							timePart = timePart / NANOS_PER_SECOND
 						Case MINUTES
-							amount = Math.multiplyExact(amount, MINUTES_PER_DAY)
+							amount = System.Math.multiplyExact(amount, MINUTES_PER_DAY)
 							timePart = timePart / NANOS_PER_MINUTE
 						Case HOURS
-							amount = Math.multiplyExact(amount, HOURS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, HOURS_PER_DAY)
 							timePart = timePart / NANOS_PER_HOUR
 						Case HALF_DAYS
-							amount = Math.multiplyExact(amount, 2)
+							amount = System.Math.multiplyExact(amount, 2)
 							timePart = timePart / (NANOS_PER_HOUR * 12)
 					End Select
-					Return Math.addExact(amount, timePart)
+					Return System.Math.addExact(amount, timePart)
 				End If
 				Dim endDate As LocalDate = [end].date
 				If endDate.isAfter([date]) AndAlso [end].time.isBefore(time) Then

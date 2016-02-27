@@ -46,7 +46,7 @@ Namespace java.util.stream
 		''' <summary>
 		''' The maximum size of an array that can be allocated.
 		''' </summary>
-		Friend Shared ReadOnly MAX_ARRAY_SIZE As Long =  [Integer].MAX_VALUE - 8
+		Friend Shared ReadOnly MAX_ARRAY_SIZE As Long =  java.lang.[Integer].MAX_VALUE - 8
 
 		' IllegalArgumentException messages
 		Friend Const BAD_SIZE As String = "Stream size exceeds max array size"

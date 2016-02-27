@@ -62,7 +62,7 @@ Namespace java.util.concurrent.atomic
 	''' the current value as its first argument, and the given update as
 	''' the second argument.  For example, to maintain a running maximum
 	''' value, you could supply {@code Long::max} along with {@code
-	''' Long.MIN_VALUE} as the identity.
+	''' java.lang.[Long].MIN_VALUE} as the identity.
 	''' 
 	''' <p>Class <seealso cref="LongAdder"/> provides analogs of the functionality of
 	''' this class for the common special case of maintaining counts and

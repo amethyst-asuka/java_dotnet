@@ -325,7 +325,7 @@ Namespace java.time.format
 				Dim ap As Long = fieldValues.Remove(AMPM_OF_DAY)
 				Dim hap As Long = fieldValues.Remove(HOUR_OF_AMPM)
 				If resolverStyle = ResolverStyle.LENIENT Then
-					updateCheckConflict(AMPM_OF_DAY, HOUR_OF_DAY, Math.addExact(Math.multiplyExact(ap, 12), hap)) ' STRICT or SMART
+					updateCheckConflict(AMPM_OF_DAY, HOUR_OF_DAY, System.Math.addExact (System.Math.multiplyExact(ap, 12), hap)) ' STRICT or SMART
 				Else
 					AMPM_OF_DAY.checkValidValue(ap)
 					HOUR_OF_AMPM.checkValidValue(ap)
@@ -451,12 +451,12 @@ Namespace java.time.format
 
 		Private Sub resolveTime(ByVal hod As Long, ByVal moh As Long, ByVal som As Long, ByVal nos As Long)
 			If resolverStyle = ResolverStyle.LENIENT Then
-				Dim totalNanos As Long = Math.multiplyExact(hod, 3600_000_000_000L)
-				totalNanos = Math.addExact(totalNanos, Math.multiplyExact(moh, 60_000_000_000L))
-				totalNanos = Math.addExact(totalNanos, Math.multiplyExact(som, 1_000_000_000L))
-				totalNanos = Math.addExact(totalNanos, nos)
-				Dim excessDays As Integer = CInt(Math.floorDiv(totalNanos, 86400_000_000_000L)) ' safe int cast
-				Dim nod As Long = Math.floorMod(totalNanos, 86400_000_000_000L)
+				Dim totalNanos As Long = System.Math.multiplyExact(hod, 3600_000_000_000L)
+				totalNanos = System.Math.addExact(totalNanos, System.Math.multiplyExact(moh, 60_000_000_000L))
+				totalNanos = System.Math.addExact(totalNanos, System.Math.multiplyExact(som, 1_000_000_000L))
+				totalNanos = System.Math.addExact(totalNanos, nos)
+				Dim excessDays As Integer = CInt (System.Math.floorDiv(totalNanos, 86400_000_000_000L)) ' safe int cast
+				Dim nod As Long = System.Math.floorMod(totalNanos, 86400_000_000_000L)
 				updateCheckConflict(java.time.LocalTime.ofNanoOfDay(nod), java.time.Period.ofDays(excessDays)) ' STRICT or SMART
 			Else
 				Dim mohVal As Integer = MINUTE_OF_HOUR.checkValidIntValue(moh)

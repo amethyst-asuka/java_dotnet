@@ -1173,7 +1173,7 @@ Namespace java.nio
         ''' <returns>  A negative integer, zero, or a positive integer as this buffer
         '''          is less than, equal to, or greater than the given buffer </returns>
         Public Overridable Function compareTo(ByVal that As FloatBuffer) As Integer Implements Comparable(Of FloatBuffer).compareTo
-            Dim n As Integer = Me.position() + math.Min(Me.remaining(), that.remaining())
+            Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
             Dim i As Integer = Me.position()
             Dim j As Integer = that.position()
             Do While i < n

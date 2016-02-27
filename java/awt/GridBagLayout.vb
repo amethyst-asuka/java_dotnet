@@ -745,7 +745,7 @@ Namespace java.awt
 		''' <seealso cref= #preferredLayoutSize(Container) </seealso>
 		''' <returns> the maximum dimensions for this layout </returns>
 		Public Overridable Function maximumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
-			Return New Dimension(Integer.MaxValue, Integer.MaxValue)
+			Return New Dimension( java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <summary>
@@ -940,8 +940,8 @@ Namespace java.awt
 				If curWidth <= 0 Then curWidth = 1
 				If curHeight <= 0 Then curHeight = 1
 
-				preMaximumArrayXIndex = Math.Max(curY + curHeight, preMaximumArrayXIndex)
-				preMaximumArrayYIndex = Math.Max(curX + curWidth, preMaximumArrayYIndex)
+				preMaximumArrayXIndex = System.Math.Max(curY + curHeight, preMaximumArrayXIndex)
+				preMaximumArrayYIndex = System.Math.Max(curX + curWidth, preMaximumArrayYIndex)
 			Next compId 'for (components) loop
 			' Must specify index++ to allocate well-working arrays.
 	'         fix for 4623196.
@@ -1004,15 +1004,15 @@ Namespace java.awt
 	'             fix for 4623196.
 	'             * If user try to create a very big grid we can
 	'             * get NegativeArraySizeException because of integer value
-	'             * overflow (EMPIRICMULTIPLIER*gridSize might be more then  [Integer].MAX_VALUE).
+	'             * overflow (EMPIRICMULTIPLIER*gridSize might be more then  java.lang.[Integer].MAX_VALUE).
 	'             * We need to detect this situation and try to create a
-	'             * grid with  [Integer].MAX_VALUE size instead.
+	'             * grid with  java.lang.[Integer].MAX_VALUE size instead.
 	'             
-				maximumArrayXIndex = If(EMPIRICMULTIPLIER * arraySizes(0) > Integer.MaxValue, Integer.MaxValue, EMPIRICMULTIPLIER*CInt(arraySizes(0)))
-				maximumArrayYIndex = If(EMPIRICMULTIPLIER * arraySizes(1) > Integer.MaxValue, Integer.MaxValue, EMPIRICMULTIPLIER*CInt(arraySizes(1)))
+				maximumArrayXIndex = If(EMPIRICMULTIPLIER * arraySizes(0) >  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, EMPIRICMULTIPLIER*CInt(arraySizes(0)))
+				maximumArrayYIndex = If(EMPIRICMULTIPLIER * arraySizes(1) >  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, EMPIRICMULTIPLIER*CInt(arraySizes(1)))
 
-				If rowHeights IsNot Nothing Then maximumArrayXIndex = Math.Max(maximumArrayXIndex, rowHeights.Length)
-				If columnWidths IsNot Nothing Then maximumArrayYIndex = Math.Max(maximumArrayYIndex, columnWidths.Length)
+				If rowHeights IsNot Nothing Then maximumArrayXIndex = System.Math.Max(maximumArrayXIndex, rowHeights.Length)
+				If columnWidths IsNot Nothing Then maximumArrayYIndex = System.Math.Max(maximumArrayYIndex, columnWidths.Length)
 
 				xMaxArray = New Integer(maximumArrayXIndex - 1){}
 				yMaxArray = New Integer(maximumArrayYIndex - 1){}
@@ -1043,7 +1043,7 @@ Namespace java.awt
 					If curX < 0 Then
 						px = 0
 						For i = curY To (curY + curHeight) - 1
-							px = Math.Max(px, xMaxArray(i))
+							px = System.Math.Max(px, xMaxArray(i))
 						Next i
 
 						curX = px - curX - 1
@@ -1051,7 +1051,7 @@ Namespace java.awt
 					ElseIf curY < 0 Then
 						py = 0
 						For i = curX To (curX + curWidth) - 1
-							py = Math.Max(py, yMaxArray(i))
+							py = System.Math.Max(py, yMaxArray(i))
 						Next i
 						curY = py - curY - 1
 						If curY < 0 Then curY = 0
@@ -1169,7 +1169,7 @@ Namespace java.awt
 
 						px = 0
 						For i = curY To (curY + curHeight) - 1
-							px = Math.Max(px, xMaxArray(i))
+							px = System.Math.Max(px, xMaxArray(i))
 						Next i
 
 						curX = px - curX - 1
@@ -1182,7 +1182,7 @@ Namespace java.awt
 
 						py = 0
 						For i = curX To (curX + curWidth) - 1
-							py = Math.Max(py, yMaxArray(i))
+							py = System.Math.Max(py, yMaxArray(i))
 						Next i
 
 						curY = py - curY - 1
@@ -1232,13 +1232,13 @@ Namespace java.awt
 						Case GridBagConstraints.BASELINE, GridBagConstraints.BASELINE_LEADING, GridBagConstraints.BASELINE_TRAILING
 							If constraints_Renamed.ascent >= 0 Then
 								If curHeight = 1 Then
-									maxAscent(curY) = Math.Max(maxAscent(curY), constraints_Renamed.ascent)
-									maxDescent(curY) = Math.Max(maxDescent(curY), constraints_Renamed.descent)
+									maxAscent(curY) = System.Math.Max(maxAscent(curY), constraints_Renamed.ascent)
+									maxDescent(curY) = System.Math.Max(maxDescent(curY), constraints_Renamed.descent)
 								Else
 									If constraints_Renamed.baselineResizeBehavior = Component.BaselineResizeBehavior.CONSTANT_DESCENT Then
-										maxDescent(curY + curHeight - 1) = Math.Max(maxDescent(curY + curHeight - 1), constraints_Renamed.descent)
+										maxDescent(curY + curHeight - 1) = System.Math.Max(maxDescent(curY + curHeight - 1), constraints_Renamed.descent)
 									Else
-										maxAscent(curY) = Math.Max(maxAscent(curY), constraints_Renamed.ascent)
+										maxAscent(curY) = System.Math.Max(maxAscent(curY), constraints_Renamed.ascent)
 									End If
 								End If
 								If constraints_Renamed.baselineResizeBehavior = Component.BaselineResizeBehavior.CONSTANT_DESCENT Then
@@ -1253,16 +1253,16 @@ Namespace java.awt
 							' with the baseline the bottom inset is
 							' added to the descent, the rest to the ascent.
 							pixels_diff = constraints_Renamed.minHeight + constraints_Renamed.insets.top + constraints_Renamed.ipady
-							maxAscent(curY) = Math.Max(maxAscent(curY), pixels_diff)
-							maxDescent(curY) = Math.Max(maxDescent(curY), constraints_Renamed.insets.bottom)
+							maxAscent(curY) = System.Math.Max(maxAscent(curY), pixels_diff)
+							maxDescent(curY) = System.Math.Max(maxDescent(curY), constraints_Renamed.insets.bottom)
 						Case GridBagConstraints.BELOW_BASELINE, GridBagConstraints.BELOW_BASELINE_LEADING, GridBagConstraints.BELOW_BASELINE_TRAILING
 							' Component positioned below the baseline.
 							' To make the top edge of the component aligned
 							' with the baseline the top inset is
 							' added to the ascent, the rest to the descent.
 							pixels_diff = constraints_Renamed.minHeight + constraints_Renamed.insets.bottom + constraints_Renamed.ipady
-							maxDescent(curY) = Math.Max(maxDescent(curY), pixels_diff)
-							maxAscent(curY) = Math.Max(maxAscent(curY), constraints_Renamed.insets.top)
+							maxDescent(curY) = System.Math.Max(maxDescent(curY), pixels_diff)
+							maxAscent(curY) = System.Math.Max(maxAscent(curY), constraints_Renamed.insets.top)
 						End Select
 					End If
 				Next compindex
@@ -1278,8 +1278,8 @@ Namespace java.awt
 	'             
 				If columnWidths IsNot Nothing Then Array.Copy(columnWidths, 0, r.minWidth, 0, columnWidths.Length)
 				If rowHeights IsNot Nothing Then Array.Copy(rowHeights, 0, r.minHeight, 0, rowHeights.Length)
-				If columnWeights IsNot Nothing Then Array.Copy(columnWeights, 0, r.weightX, 0, Math.Min(r.weightX.Length, columnWeights.Length))
-				If rowWeights IsNot Nothing Then Array.Copy(rowWeights, 0, r.weightY, 0, Math.Min(r.weightY.Length, rowWeights.Length))
+				If columnWeights IsNot Nothing Then Array.Copy(columnWeights, 0, r.weightX, 0, System.Math.Min(r.weightX.Length, columnWeights.Length))
+				If rowWeights IsNot Nothing Then Array.Copy(rowWeights, 0, r.weightY, 0, System.Math.Min(r.weightY.Length, rowWeights.Length))
 
 	'            
 	'             * Pass #3
@@ -1287,10 +1287,10 @@ Namespace java.awt
 	'             * Distribute the minimun widths and weights:
 	'             
 
-				nextSize = Integer.MaxValue
+				nextSize =  java.lang.[Integer].Max_Value
 
 				i = 1
-				Do While i <> Integer.MaxValue
+				Do While i <>  java.lang.[Integer].Max_Value
 					For compindex = 0 To components.Length - 1
 						comp = components(compindex)
 						If Not comp.visible Then Continue For
@@ -1448,7 +1448,7 @@ Namespace java.awt
 						End If
 					Next compindex
 					i = nextSize
-					nextSize = Integer.MaxValue
+					nextSize =  java.lang.[Integer].Max_Value
 				Loop
 				Return r
 			End SyncLock
@@ -1700,11 +1700,11 @@ Namespace java.awt
 					If cons.verticallyResizable Then
 						Select Case cons.baselineResizeBehavior
 						Case Component.BaselineResizeBehavior.CONSTANT_ASCENT
-							r.height = Math.Max(cons.minHeight,cellY + cellHeight - r.y - cons.insets.bottom)
+							r.height = System.Math.Max(cons.minHeight,cellY + cellHeight - r.y - cons.insets.bottom)
 						Case Component.BaselineResizeBehavior.CENTER_OFFSET
 								Dim upper As Integer = r.y - cellY - cons.insets.top
 								Dim lower As Integer = cellY + cellHeight - r.y - cons.minHeight - cons.insets.bottom
-								Dim delta As Integer = Math.Min(upper, lower)
+								Dim delta As Integer = System.Math.Min(upper, lower)
 								delta += delta
 								If delta > 0 AndAlso (cons.minHeight + cons.centerPadding + delta) \ 2 + cons.centerOffset <> baseline Then delta -= 1
 								r.height = cons.minHeight + delta
@@ -1769,7 +1769,7 @@ Namespace java.awt
 		End Sub
 
 		Private Sub centerVertically(ByVal cons As GridBagConstraints, ByVal r As Rectangle, ByVal cellHeight As Integer)
-			If Not cons.verticallyResizable Then r.y += Math.Max(0, (cellHeight - cons.insets.top - cons.insets.bottom - cons.minHeight - cons.ipady) \ 2)
+			If Not cons.verticallyResizable Then r.y += System.Math.Max(0, (cellHeight - cons.insets.top - cons.insets.bottom - cons.minHeight - cons.ipady) \ 2)
 		End Sub
 
 		''' <summary>

@@ -360,7 +360,7 @@ Namespace java.awt
 				Dim m As Component = target.getComponent(i)
 				If m.visible Then
 					Dim d As Dimension = m.preferredSize
-					[dim].height = Math.Max([dim].height, d.height)
+					[dim].height = System.Math.Max([dim].height, d.height)
 					If firstVisibleComponent Then
 						firstVisibleComponent = False
 					Else
@@ -370,13 +370,13 @@ Namespace java.awt
 					If useBaseline Then
 						Dim baseline As Integer = m.getBaseline(d.width, d.height)
 						If baseline >= 0 Then
-							maxAscent = Math.Max(maxAscent, baseline)
-							maxDescent = Math.Max(maxDescent, d.height - baseline)
+							maxAscent = System.Math.Max(maxAscent, baseline)
+							maxDescent = System.Math.Max(maxDescent, d.height - baseline)
 						End If
 					End If
 				End If
 			Next i
-			If useBaseline Then [dim].height = Math.Max(maxAscent + maxDescent, [dim].height)
+			If useBaseline Then [dim].height = System.Math.Max(maxAscent + maxDescent, [dim].height)
 			Dim insets_Renamed As Insets = target.insets
 			[dim].width += insets_Renamed.left + insets_Renamed.right + hgap*2
 			[dim].height += insets_Renamed.top + insets_Renamed.bottom + vgap*2
@@ -406,7 +406,7 @@ Namespace java.awt
 				Dim m As Component = target.getComponent(i)
 				If m.visible Then
 					Dim d As Dimension = m.minimumSize
-					[dim].height = Math.Max([dim].height, d.height)
+					[dim].height = System.Math.Max([dim].height, d.height)
 					If firstVisibleComponent Then
 						firstVisibleComponent = False
 					Else
@@ -416,14 +416,14 @@ Namespace java.awt
 					If useBaseline Then
 						Dim baseline As Integer = m.getBaseline(d.width, d.height)
 						If baseline >= 0 Then
-							maxAscent = Math.Max(maxAscent, baseline)
-							maxDescent = Math.Max(maxDescent, [dim].height - baseline)
+							maxAscent = System.Math.Max(maxAscent, baseline)
+							maxDescent = System.Math.Max(maxDescent, [dim].height - baseline)
 						End If
 					End If
 				End If
 			Next i
 
-			If useBaseline Then [dim].height = Math.Max(maxAscent + maxDescent, [dim].height)
+			If useBaseline Then [dim].height = System.Math.Max(maxAscent + maxDescent, [dim].height)
 
 			Dim insets_Renamed As Insets = target.insets
 			[dim].width += insets_Renamed.left + insets_Renamed.right + hgap*2
@@ -473,14 +473,14 @@ Namespace java.awt
 					Dim m As Component = target.getComponent(i)
 					If m.visible Then
 						If ascent(i) >= 0 Then
-							maxAscent = Math.Max(maxAscent, ascent(i))
-							maxDescent = Math.Max(maxDescent, descent(i))
+							maxAscent = System.Math.Max(maxAscent, ascent(i))
+							maxDescent = System.Math.Max(maxDescent, descent(i))
 						Else
-							nonbaselineHeight = Math.Max(m.height, nonbaselineHeight)
+							nonbaselineHeight = System.Math.Max(m.height, nonbaselineHeight)
 						End If
 					End If
 				Next i
-				height = Math.Max(maxAscent + maxDescent, nonbaselineHeight)
+				height = System.Math.Max(maxAscent + maxDescent, nonbaselineHeight)
 				baselineOffset = (height - maxAscent - maxDescent) \ 2
 			End If
 			For i As Integer = rowStart To rowEnd - 1
@@ -550,7 +550,7 @@ Namespace java.awt
 					If (x = 0) OrElse ((x + d.width) <= maxwidth) Then
 						If x > 0 Then x += hgap
 						x += d.width
-						rowh = Math.Max(rowh, d.height)
+						rowh = System.Math.Max(rowh, d.height)
 					Else
 						rowh = moveComponents(target, insets_Renamed.left + hgap, y, maxwidth - x, rowh, start, i, ltr, useBaseline, ascent, descent)
 						x = d.width

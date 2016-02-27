@@ -950,7 +950,7 @@ Namespace java.awt
 				Dim last As Integer = If(direction = [NEXT], words.following(index), words.preceding(index))
 				Dim current As Integer = If(direction = [NEXT], words.next(), words.previous())
 				Do While current <> java.text.BreakIterator.DONE
-					For p As Integer = Math.Min(last, current) To Math.Max(last, current) - 1
+					For p As Integer = System.Math.Min(last, current) To System.Math.Max(last, current) - 1
 						If Char.IsLetter(s.Chars(p)) Then Return last
 					Next p
 					last = current

@@ -150,14 +150,14 @@ Namespace java.awt.geom
 			' growth algorithm computation
 			Dim grow As Integer = oldSize
 			If grow > EXPAND_MAX Then
-				grow = Math.Max(EXPAND_MAX, oldSize >> 3) ' 1/8th min
+				grow = System.Math.Max(EXPAND_MAX, oldSize >> 3) ' 1/8th min
 			ElseIf grow < EXPAND_MIN Then
 				grow = EXPAND_MIN
 			End If
 			Debug.Assert(grow > 0)
 
 			Dim newSize As Integer = oldSize + grow
-			If newSize < newSizeMin Then newSize = Integer.MaxValue
+			If newSize < newSizeMin Then newSize =  java.lang.[Integer].Max_Value
 			Do
 				Try
 					' try allocating the larger array
@@ -321,14 +321,14 @@ Namespace java.awt.geom
 				' growth algorithm computation
 				Dim grow As Integer = oldSize
 				If grow > EXPAND_MAX_COORDS Then
-					grow = Math.Max(EXPAND_MAX_COORDS, oldSize >> 3) ' 1/8th min
+					grow = System.Math.Max(EXPAND_MAX_COORDS, oldSize >> 3) ' 1/8th min
 				ElseIf grow < EXPAND_MIN Then
 					grow = EXPAND_MIN
 				End If
 				Debug.Assert(grow > needed)
 
 				Dim newSize As Integer = oldSize + grow
-				If newSize < newSizeMin Then newSize = Integer.MaxValue
+				If newSize < newSizeMin Then newSize =  java.lang.[Integer].Max_Value
 				Do
 					Try
 						' try allocating the larger array
@@ -1108,14 +1108,14 @@ Namespace java.awt.geom
 				' growth algorithm computation
 				Dim grow As Integer = oldSize
 				If grow > EXPAND_MAX_COORDS Then
-					grow = Math.Max(EXPAND_MAX_COORDS, oldSize >> 3) ' 1/8th min
+					grow = System.Math.Max(EXPAND_MAX_COORDS, oldSize >> 3) ' 1/8th min
 				ElseIf grow < EXPAND_MIN Then
 					grow = EXPAND_MIN
 				End If
 				Debug.Assert(grow > needed)
 
 				Dim newSize As Integer = oldSize + grow
-				If newSize < newSizeMin Then newSize = Integer.MaxValue
+				If newSize < newSizeMin Then newSize =  java.lang.[Integer].Max_Value
 				Do
 					Try
 						' try allocating the larger array
@@ -1958,7 +1958,7 @@ Namespace java.awt.geom
 		'''         the specified rectangular area; {@code false} otherwise.
 		''' @since 1.6 </returns>
 		Public Shared Function contains(ByVal pi As PathIterator, ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
-			If Double.IsNaN(x+w) OrElse Double.IsNaN(y+h) Then Return False
+			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(pi.windingRule = WIND_NON_ZERO, -1, 2))
 			Dim crossings As Integer = sun.awt.geom.Curve.rectCrossingsForPath(pi, x, y, x+w, y+h)
@@ -2016,7 +2016,7 @@ Namespace java.awt.geom
 		''' @since 1.6
 		''' </summary>
 		Public Function contains(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
-			If Double.IsNaN(x+w) OrElse Double.IsNaN(y+h) Then Return False
+			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(windingRule = WIND_NON_ZERO, -1, 2))
 			Dim crossings As Integer = rectCrossings(x, y, x+w, y+h)
@@ -2078,7 +2078,7 @@ Namespace java.awt.geom
 		'''         coordinates intersect each other; {@code false} otherwise.
 		''' @since 1.6 </returns>
 		Public Shared Function intersects(ByVal pi As PathIterator, ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
-			If Double.IsNaN(x+w) OrElse Double.IsNaN(y+h) Then Return False
+			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(pi.windingRule = WIND_NON_ZERO, -1, 2))
 			Dim crossings As Integer = sun.awt.geom.Curve.rectCrossingsForPath(pi, x, y, x+w, y+h)
@@ -2135,7 +2135,7 @@ Namespace java.awt.geom
 		''' @since 1.6
 		''' </summary>
 		Public Function intersects(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Boolean
-			If Double.IsNaN(x+w) OrElse Double.IsNaN(y+h) Then Return False
+			If java.lang.[Double].IsNaN(x+w) OrElse java.lang.[Double].IsNaN(y+h) Then Return False
 			If w <= 0 OrElse h <= 0 Then Return False
 			Dim mask As Integer = (If(windingRule = WIND_NON_ZERO, -1, 2))
 			Dim crossings As Integer = rectCrossings(x, y, x+w, y+h)

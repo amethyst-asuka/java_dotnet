@@ -78,7 +78,7 @@ Namespace java.math
     ''' operations can produce a BigInteger with a different sign from the
     ''' BigInteger being operated on, as they affect only a single bit, and the
     ''' "infinite word size" abstraction provided by this class ensures that there
-    ''' are infinitely many "virtual sign bits" preceding each BigInteger.
+    ''' are infinitely many "virtual sign bits" preceding each Big java.lang.[Integer].
     ''' 
     ''' <p>For the sake of brevity and clarity, pseudo-code is used throughout the
     ''' descriptions of BigInteger methods.  The pseudo-code expression
@@ -94,8 +94,8 @@ Namespace java.math
     ''' a null object reference for any input parameter.
     ''' 
     ''' BigInteger must support values in the range
-    ''' -2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive) to
-    ''' +2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive)
+    ''' -2<sup>{@code  java.lang.[Integer].MAX_VALUE}</sup> (exclusive) to
+    ''' +2<sup>{@code  java.lang.[Integer].MAX_VALUE}</sup> (exclusive)
     ''' and may support values outside of that range.
     ''' 
     ''' The range of probable prime values is limited and may be less than
@@ -105,8 +105,8 @@ Namespace java.math
     ''' @implNote
     ''' BigInteger constructors and operations throw {@code ArithmeticException} when
     ''' the result is out of the supported range of
-    ''' -2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive) to
-    ''' +2<sup>{@code  [Integer].MAX_VALUE}</sup> (exclusive).
+    ''' -2<sup>{@code  java.lang.[Integer].MAX_VALUE}</sup> (exclusive) to
+    ''' +2<sup>{@code  java.lang.[Integer].MAX_VALUE}</sup> (exclusive).
     ''' </summary>
     ''' <seealso cref=     BigDecimal
     ''' @author  Josh Bloch
@@ -145,7 +145,7 @@ Namespace java.math
         ' aren't needed).
 
         ''' <summary>
-        ''' One plus the bitCount of this BigInteger. Zeros means unitialized.
+        ''' One plus the bitCount of this Big java.lang.[Integer]. Zeros means unitialized.
         ''' 
         ''' @serial </summary>
         ''' <seealso cref= #bitCount </seealso>
@@ -155,7 +155,7 @@ Namespace java.math
         Private bitCount_Renamed As Integer
 
         ''' <summary>
-        ''' One plus the bitLength of this BigInteger. Zeros means unitialized.
+        ''' One plus the bitLength of this Big java.lang.[Integer]. Zeros means unitialized.
         ''' (either value is acceptable).
         ''' 
         ''' @serial </summary>
@@ -195,7 +195,7 @@ Namespace java.math
         ''' This constant limits {@code mag.length} of BigIntegers to the supported
         ''' range.
         ''' </summary>
-        Private Shared ReadOnly MAX_MAG_LENGTH As Integer = CInt([Integer].MAX_VALUE / [Integer].SIZE) + 1 ' (1 << 26)
+        Private Shared ReadOnly MAX_MAG_LENGTH As Integer = CInt([Integer].MAX_VALUE / java.lang.[Integer].SIZE) + 1 ' (1 << 26)
 
         ''' <summary>
         ''' Bit lengths larger than this constant can cause overflow in searchLen
@@ -274,13 +274,13 @@ Namespace java.math
 
         ''' <summary>
         ''' Translates a byte array containing the two's-complement binary
-        ''' representation of a BigInteger into a BigInteger.  The input array is
+        ''' representation of a BigInteger into a Big java.lang.[Integer].  The input array is
         ''' assumed to be in <i>big-endian</i> byte-order: the most significant
         ''' byte is in the zeroth element.
         ''' </summary>
         ''' <param name="val"> big-endian two's-complement binary representation of
-        '''         BigInteger. </param>
-        ''' <exception cref="NumberFormatException"> {@code val} is zero bytes long. </exception>
+        '''         Big java.lang.[Integer]. </param>
+        ''' <exception cref="NumberFormatException"> {@code val} is zero bytes java.lang.[Long]. </exception>
         Public Sub New(ByVal val As SByte())
             If val.Length = 0 Then Throw New NumberFormatException("Zero length BigInteger")
 
@@ -297,7 +297,7 @@ Namespace java.math
         ''' <summary>
         ''' This private constructor translates an int array containing the
         ''' two's-complement binary representation of a BigInteger into a
-        ''' BigInteger. The input array is assumed to be in <i>big-endian</i>
+        ''' Big java.lang.[Integer]. The input array is assumed to be in <i>big-endian</i>
         ''' int-order: the most significant int is in the zeroth element.
         ''' </summary>
         Private Sub New(ByVal val As Integer())
@@ -315,7 +315,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Translates the sign-magnitude representation of a BigInteger into a
-        ''' BigInteger.  The sign is represented as an integer signum value: -1 for
+        ''' Big java.lang.[Integer].  The sign is represented as an integer signum value: -1 for
         ''' negative, 0 for zero, or 1 for positive.  The magnitude is a byte array
         ''' in <i>big-endian</i> byte-order: the most significant byte is in the
         ''' zeroth element.  A zero-length magnitude array is permissible, and will
@@ -344,7 +344,7 @@ Namespace java.math
 
         ''' <summary>
         ''' A constructor for internal use that translates the sign-magnitude
-        ''' representation of a BigInteger into a BigInteger. It checks the
+        ''' representation of a BigInteger into a Big java.lang.[Integer]. It checks the
         ''' arguments and copies the magnitude so this constructor would be
         ''' safe for external use.
         ''' </summary>
@@ -364,14 +364,14 @@ Namespace java.math
 
         ''' <summary>
         ''' Translates the String representation of a BigInteger in the
-        ''' specified radix into a BigInteger.  The String representation
+        ''' specified radix into a Big java.lang.[Integer].  The String representation
         ''' consists of an optional minus or plus sign followed by a
         ''' sequence of one or more digits in the specified radix.  The
         ''' character-to-digit mapping is provided by {@code
         ''' Character.digit}.  The String may not contain any extraneous
         ''' characters (whitespace, for example).
         ''' </summary>
-        ''' <param name="val"> String representation of BigInteger. </param>
+        ''' <param name="val"> String representation of Big java.lang.[Integer]. </param>
         ''' <param name="radix"> radix to be used in interpreting {@code val}. </param>
         ''' <exception cref="NumberFormatException"> {@code val} is not a valid representation
         '''         of a BigInteger in the specified radix, or {@code radix} is
@@ -538,15 +538,15 @@ Namespace java.math
 
         ''' <summary>
         ''' Translates the decimal String representation of a BigInteger into a
-        ''' BigInteger.  The String representation consists of an optional minus
+        ''' Big java.lang.[Integer].  The String representation consists of an optional minus
         ''' sign followed by a sequence of one or more decimal digits.  The
         ''' character-to-digit mapping is provided by {@code Character.digit}.
         ''' The String may not contain any extraneous characters (whitespace, for
         ''' example).
         ''' </summary>
-        ''' <param name="val"> decimal String representation of BigInteger. </param>
+        ''' <param name="val"> decimal String representation of Big java.lang.[Integer]. </param>
         ''' <exception cref="NumberFormatException"> {@code val} is not a valid representation
-        '''         of a BigInteger. </exception>
+        '''         of a Big java.lang.[Integer]. </exception>
         ''' <seealso cref=    Character#digit </seealso>
         Public Sub New(ByVal val As String)
             Me.New(val, 10)
@@ -557,11 +557,11 @@ Namespace java.math
         ''' the range 0 to (2<sup>{@code numBits}</sup> - 1), inclusive.
         ''' The uniformity of the distribution assumes that a fair source of random
         ''' bits is provided in {@code rnd}.  Note that this constructor always
-        ''' constructs a non-negative BigInteger.
+        ''' constructs a non-negative Big java.lang.[Integer].
         ''' </summary>
-        ''' <param name="numBits"> maximum bitLength of the new BigInteger. </param>
+        ''' <param name="numBits"> maximum bitLength of the new Big java.lang.[Integer]. </param>
         ''' <param name="rnd"> source of randomness to be used in computing the new
-        '''         BigInteger. </param>
+        '''         Big java.lang.[Integer]. </param>
         ''' <exception cref="IllegalArgumentException"> {@code numBits} is negative. </exception>
         ''' <seealso cref= #bitLength() </seealso>
         Public Sub New(ByVal numBits As Integer, ByVal rnd As Random)
@@ -590,7 +590,7 @@ Namespace java.math
         ''' method be used in preference to this constructor unless there
         ''' is a compelling need to specify a certainty.
         ''' </summary>
-        ''' <param name="bitLength"> bitLength of the returned BigInteger. </param>
+        ''' <param name="bitLength"> bitLength of the returned Big java.lang.[Integer]. </param>
         ''' <param name="certainty"> a measure of the uncertainty that the caller is
         '''         willing to tolerate.  The probability that the new BigInteger
         '''         represents a prime number will exceed
@@ -622,7 +622,7 @@ Namespace java.math
         ''' specified bitLength. The probability that a BigInteger returned
         ''' by this method is composite does not exceed 2<sup>-100</sup>.
         ''' </summary>
-        ''' <param name="bitLength"> bitLength of the returned BigInteger. </param>
+        ''' <param name="bitLength"> bitLength of the returned Big java.lang.[Integer]. </param>
         ''' <param name="rnd"> source of random bits used to select candidates to be
         '''         tested for primality. </param>
         ''' <returns> a BigInteger of {@code bitLength} bits that is probably prime </returns>
@@ -691,7 +691,7 @@ Namespace java.math
             Dim candidate As BigInteger = searchSieve.retrieve(p, certainty, rnd)
 
             Do While (candidate Is Nothing) OrElse (candidate.bitLength() <> bitLength)
-                p = p.add(BigInteger.valueOf(2 * searchLen))
+                p = p.add(Big java.lang.[Integer].valueOf(2 * searchLen))
                 If p.bitLength() <> bitLength Then p = (New BigInteger(bitLength, rnd)).bitBit(bitLength - 1)
                 p.mag(p.mag.Length - 1) = p.mag(p.mag.Length - 1) And &HFFFFFFFEL
                 searchSieve = New BitSieve(p, searchLen)
@@ -755,7 +755,7 @@ Namespace java.math
                 Dim searchSieve As New BitSieve(result, searchLen)
                 Dim candidate As BigInteger = searchSieve.retrieve(result, DEFAULT_PRIME_CERTAINTY, Nothing)
                 If candidate IsNot Nothing Then Return candidate
-                result = result.add(BigInteger.valueOf(2 * searchLen))
+                result = result.add(Big java.lang.[Integer].valueOf(2 * searchLen))
             Loop
         End Function
 
@@ -779,7 +779,7 @@ Namespace java.math
         '''         {@code false} if it's definitely composite. </returns>
         Friend Overridable Function primeToCertainty(ByVal certainty As Integer, ByVal random As Random) As Boolean
             Dim rounds As Integer = 0
-            Dim n As Integer = (math.Min(certainty, Integer.MaxValue - 1) + 1) / 2
+            Dim n As Integer =  (System.Math.Min(certainty,  java.lang.[Integer].Max_Value - 1) + 1) / 2
 
             ' The relationship between the certainty and the number of rounds
             ' we perform is given in the draft standard ANSI X9.80, "PRIME
@@ -820,7 +820,7 @@ Namespace java.math
             Dim d As Integer = 5
             Do While jacobiSymbol(d, Me) <> -1
                 ' 5, -7, 9, -11, ...
-                d = If(d < 0, math.Abs(d) + 2, -(d + 2))
+                d = If(d < 0, System.Math.Abs(d) + 2, -(d + 2))
             Loop
 
             ' Step 2
@@ -860,7 +860,7 @@ Namespace java.math
             ' Then, apply quadratic reciprocity
             If (p And u And 2) <> 0 Then ' p = u = 3 (mod 4)? j = -j
                 ' And reduce u mod p
-                u = n.mod(BigInteger.valueOf(p))
+                u = n.mod(Big java.lang.[Integer].valueOf(p))
 
                 ' Now compute Jacobi(u,p), u < p
                 Do While u <> 0
@@ -885,7 +885,7 @@ Namespace java.math
         End Function
 
         Private Shared Function lucasLehmerSequence(ByVal z As Integer, ByVal k As BigInteger, ByVal n As BigInteger) As BigInteger
-            Dim d As BigInteger = BigInteger.valueOf(z)
+            Dim d As BigInteger = Big java.lang.[Integer].valueOf(z)
             Dim u As BigInteger = ONE
             Dim u2 As BigInteger
             Dim v As BigInteger = ONE
@@ -1063,7 +1063,7 @@ Namespace java.math
 
         ''' <summary>
         ''' The natural log of 2.  This is used in computing cache indices. </summary>
-        Private Shared ReadOnly LOG_TWO As Double = math.log(2.0)
+        Private Shared ReadOnly LOG_TWO As Double = System.Math.log(2.0)
 
         Shared Sub New()
             For i As Integer = 1 To MAX_CONSTANT
@@ -1082,8 +1082,8 @@ Namespace java.math
             logCache = New Double(Character.MAX_RADIX) {}
 
             For i As Integer = Character.MIN_RADIX To Character.MAX_RADIX
-                powerCache(i) = New BigInteger() {BigInteger.valueOf(i)}
-                logCache(i) = math.Log(i)
+                powerCache(i) = New BigInteger() {Big java.lang.[Integer].valueOf(i)}
+                logCache(i) = System.Math.Log(i)
             Next i
             zeros(63) = "000000000000000000000000000000000000000000000000000000000000000"
             For i As Integer = 0 To 62
@@ -1134,7 +1134,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns a BigInteger whose value is {@code (this + val)}.
         ''' </summary>
-        ''' <param name="val"> value to be added to this BigInteger. </param>
+        ''' <param name="val"> value to be added to this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this + val} </returns>
         Public Overridable Function add(ByVal val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 Then Return Me
@@ -1151,15 +1151,15 @@ Namespace java.math
 
         ''' <summary>
         ''' Package private methods used by BigDecimal code to add a BigInteger
-        ''' with a long. Assumes val is not equal to INFLATED.
+        ''' with a java.lang.[Long]. Assumes val is not equal to INFLATED.
         ''' </summary>
         Friend Overridable Function add(ByVal val As Long) As BigInteger
             If val = 0 Then Return Me
             If signum_Renamed = 0 Then Return valueOf(val)
-            If Long.signum(val) = signum_Renamed Then Return New BigInteger(add(mag, math.Abs(val)), signum_Renamed)
+            If java.lang.[Long].signum(val) = signum_Renamed Then Return New BigInteger(add(mag, System.Math.Abs(val)), signum_Renamed)
             Dim cmp As Integer = compareMagnitude(val)
             If cmp = 0 Then Return ZERO
-            Dim resultMag As Integer() = (If(cmp > 0, subtract(mag, math.Abs(val)), subtract(math.Abs(val), mag)))
+            Dim resultMag As Integer() = (If(cmp > 0, subtract(mag, System.Math.Abs(val)), subtract (System.Math.Abs(val), mag)))
             resultMag = trustedStripLeadingZeroInts(resultMag)
             Return New BigInteger(resultMag, If(cmp = signum_Renamed, 1, -1))
         End Function
@@ -1349,7 +1349,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns a BigInteger whose value is {@code (this - val)}.
         ''' </summary>
-        ''' <param name="val"> value to be subtracted from this BigInteger. </param>
+        ''' <param name="val"> value to be subtracted from this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this - val} </returns>
         Public Overridable Function subtract(ByVal val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 Then Return Me
@@ -1406,7 +1406,7 @@ Namespace java.math
         ''' @implNote An implementation may offer better algorithmic
         ''' performance when {@code val == this}.
         ''' </summary>
-        ''' <param name="val"> value to be multiplied by this BigInteger. </param>
+        ''' <param name="val"> value to be multiplied by this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this * val} </returns>
         Public Overridable Function multiply(ByVal val As BigInteger) As BigInteger
             If val.signum_Renamed = 0 OrElse signum_Renamed = 0 Then Return ZERO
@@ -1434,7 +1434,7 @@ Namespace java.math
         End Function
 
         Private Shared Function multiplyByInt(ByVal x As Integer(), ByVal y As Integer, ByVal sign As Integer) As BigInteger
-            If Integer.bitCount(y) = 1 Then Return New BigInteger(shiftLeft(x, Integer.numberOfTrailingZeros(y)), sign)
+            If  java.lang.[Integer].bitCount(y) = 1 Then Return New BigInteger(shiftLeft(x,  java.lang.[Integer].numberOfTrailingZeros(y)), sign)
             Dim xlen As Integer = x.Length
             Dim rmag As Integer() = New Integer(xlen) {}
             Dim carry As Long = 0
@@ -1456,11 +1456,11 @@ Namespace java.math
 
         ''' <summary>
         ''' Package private methods used by BigDecimal code to multiply a BigInteger
-        ''' with a long. Assumes v is not equal to INFLATED.
+        ''' with a java.lang.[Long]. Assumes v is not equal to INFLATED.
         ''' </summary>
         Friend Overridable Function multiply(ByVal v As Long) As BigInteger
             If v = 0 OrElse signum_Renamed = 0 Then Return ZERO
-            If v = BigDecimal.INFLATED_Renamed Then Return multiply(BigInteger.valueOf(v))
+            If v = BigDecimal.INFLATED_Renamed Then Return multiply(Big java.lang.[Integer].valueOf(v))
             Dim rsign As Integer = (If(v > 0, signum_Renamed, -signum_Renamed))
             If v < 0 Then v = -v
             Dim dh As Long = CLng(CULng(v) >> 32) ' higher order bits
@@ -1551,7 +1551,7 @@ Namespace java.math
             Dim ylen As Integer = y.mag.Length
 
             ' The number of ints in each half of the number.
-            Dim half As Integer = (math.Max(xlen, ylen) + 1) / 2
+            Dim half As Integer =  (System.Math.Max(xlen, ylen) + 1) / 2
 
             ' xl and yl are the lower halves of x and y respectively,
             ' xh and yh are the upper halves.
@@ -1608,7 +1608,7 @@ Namespace java.math
             Dim alen As Integer = a.mag.Length
             Dim blen As Integer = b.mag.Length
 
-            Dim largest As Integer = math.Max(alen, blen)
+            Dim largest As Integer = System.Math.Max(alen, blen)
 
             ' k is the size (in ints) of the lower-order slices.
             Dim k As Integer = (largest + 2) \ 3 ' Equal to ceil(largest/3)
@@ -2061,7 +2061,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Returns a BigInteger whose value is <tt>(this<sup>exponent</sup>)</tt>.
-        ''' Note that {@code exponent} is an integer rather than a BigInteger.
+        ''' Note that {@code exponent} is an integer rather than a Big java.lang.[Integer].
         ''' </summary>
         ''' <param name="exponent"> exponent to which this BigInteger is to be raised. </param>
         ''' <returns> <tt>this<sup>exponent</sup></tt> </returns>
@@ -2079,7 +2079,7 @@ Namespace java.math
             ' powers of two will be multiplied back at the end.
             Dim powersOfTwo As Integer = partToSquare.lowestSetBit
             Dim bitsToShift As Long = CLng(powersOfTwo) * exponent
-            If bitsToShift > Integer.MaxValue Then reportOverflow()
+            If bitsToShift >  java.lang.[Integer].Max_Value Then reportOverflow()
 
             Dim remainingBits As Integer
 
@@ -2111,9 +2111,9 @@ Namespace java.math
             Dim scaleFactor As Long = CLng(remainingBits) * exponent
 
             ' Use slightly different algorithms for small and large operands.
-            ' See if the result will safely fit into a long. (Largest 2^63-1)
+            ' See if the result will safely fit into a java.lang.[Long]. (Largest 2^63-1)
             If partToSquare.mag.Length = 1 AndAlso scaleFactor <= 62 Then
-                ' Small number algorithm.  Everything fits into a long.
+                ' Small number algorithm.  Everything fits into a java.lang.[Long].
                 Dim newSign As Integer = (If(signum_Renamed < 0 AndAlso (exponent And 1) = 1, -1, 1))
                 Dim result As Long = 1
                 Dim baseToPow2 As Long = partToSquare.mag(0) And LONG_MASK
@@ -2185,10 +2185,10 @@ Namespace java.math
         End Function
 
         ''' <summary>
-        ''' Package private method to return bit length for an integer.
+        ''' Package private method to return bit length for an  java.lang.[Integer].
         ''' </summary>
         Friend Shared Function bitLengthForInt(ByVal n As Integer) As Integer
-            Return 32 - Integer.numberOfLeadingZeros(n)
+            Return 32 -  java.lang.[Integer].numberOfLeadingZeros(n)
         End Function
 
         ''' <summary>
@@ -2261,7 +2261,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Returns a BigInteger whose value is the absolute value of this
-        ''' BigInteger.
+        ''' Big java.lang.[Integer].
         ''' </summary>
         ''' <returns> {@code abs(this)} </returns>
         Public Overridable Function abs() As BigInteger
@@ -2277,7 +2277,7 @@ Namespace java.math
         End Function
 
         ''' <summary>
-        ''' Returns the signum function of this BigInteger.
+        ''' Returns the signum function of this Big java.lang.[Integer].
         ''' </summary>
         ''' <returns> -1, 0 or 1 as the value of this BigInteger is negative, zero or
         '''         positive. </returns>
@@ -2290,7 +2290,7 @@ Namespace java.math
         ''' <summary>
         ''' Returns a BigInteger whose value is {@code (this mod m}).  This method
         ''' differs from {@code remainder} in that it always returns a
-        ''' <i>non-negative</i> BigInteger.
+        ''' <i>non-negative</i> Big java.lang.[Integer].
         ''' </summary>
         ''' <param name="m"> the modulus. </param>
         ''' <returns> {@code this mod m} </returns>
@@ -2377,7 +2377,7 @@ Namespace java.math
             Return (If(invertResult, result.modInverse(m), result))
         End Function
 
-        Friend Shared bnExpModThreshTable As Integer() = {7, 25, 81, 241, 673, 1793,  [Integer].MAX_VALUE}
+        Friend Shared bnExpModThreshTable As Integer() = {7, 25, 81, 241, 673, 1793,  java.lang.[Integer].MAX_VALUE}
 
         ''' <summary>
         ''' Returns a BigInteger whose value is x to the power of y mod z.
@@ -2472,7 +2472,7 @@ Namespace java.math
             Next i
 
             ' Compute the modular inverse
-            Dim inv As Integer = -MutableBigInteger.inverseMod32([mod](modLen - 1))
+            Dim inv As Integer = -MutableBig java.lang.[Integer].inverseMod32([mod](modLen - 1))
 
             ' Convert base to Montgomery form
             Dim a As Integer() = leftShift(base, base.Length, modLen << 5)
@@ -2938,10 +2938,10 @@ Namespace java.math
         ''' method returns a negative BigInteger if and only if this and val are
         ''' both negative.)
         ''' </summary>
-        ''' <param name="val"> value to be AND'ed with this BigInteger. </param>
+        ''' <param name="val"> value to be AND'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this & val} </returns>
         Public Overridable Function [and](ByVal val As BigInteger) As BigInteger
-            Dim result As Integer() = New Integer(math.Max(intLength(), val.intLength()) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) And val.getInt(result.Length - i - 1))
             Next i
@@ -2954,10 +2954,10 @@ Namespace java.math
         ''' returns a negative BigInteger if and only if either this or val is
         ''' negative.)
         ''' </summary>
-        ''' <param name="val"> value to be OR'ed with this BigInteger. </param>
+        ''' <param name="val"> value to be OR'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this | val} </returns>
         Public Overridable Function [or](ByVal val As BigInteger) As BigInteger
-            Dim result As Integer() = New Integer(math.Max(intLength(), val.intLength()) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) Or val.getInt(result.Length - i - 1))
             Next i
@@ -2970,10 +2970,10 @@ Namespace java.math
         ''' returns a negative BigInteger if and only if exactly one of this and
         ''' val are negative.)
         ''' </summary>
-        ''' <param name="val"> value to be XOR'ed with this BigInteger. </param>
+        ''' <param name="val"> value to be XOR'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this ^ val} </returns>
         Public Overridable Function [xor](ByVal val As BigInteger) As BigInteger
-            Dim result As Integer() = New Integer(math.Max(intLength(), val.intLength()) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) Xor val.getInt(result.Length - i - 1))
             Next i
@@ -3003,10 +3003,10 @@ Namespace java.math
         ''' BigInteger if and only if {@code this} is negative and {@code val} is
         ''' positive.)
         ''' </summary>
-        ''' <param name="val"> value to be complemented and AND'ed with this BigInteger. </param>
+        ''' <param name="val"> value to be complemented and AND'ed with this Big java.lang.[Integer]. </param>
         ''' <returns> {@code this & ~val} </returns>
         Public Overridable Function andNot(ByVal val As BigInteger) As BigInteger
-            Dim result As Integer() = New Integer(math.Max(intLength(), val.intLength()) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), val.intLength()) - 1) {}
             For i As Integer = 0 To result.Length - 1
                 result(i) = (getInt(result.Length - i - 1) And (Not val.getInt(result.Length - i - 1)))
             Next i
@@ -3041,7 +3041,7 @@ Namespace java.math
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Dim intNum As Integer = CInt(CUInt(n) >> 5)
-            Dim result As Integer() = New Integer(math.Max(intLength(), intNum + 2) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), intNum + 2) - 1) {}
 
             For i As Integer = 0 To result.Length - 1
                 result(result.Length - i - 1) = getInt(i)
@@ -3064,7 +3064,7 @@ Namespace java.math
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Dim intNum As Integer = CInt(CUInt(n) >> 5)
-            Dim result As Integer() = New Integer(math.Max(intLength(), (CInt(CUInt((n + 1)) >> 5)) + 1) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), (CInt(CUInt((n + 1)) >> 5)) + 1) - 1) {}
 
             For i As Integer = 0 To result.Length - 1
                 result(result.Length - i - 1) = getInt(i)
@@ -3087,7 +3087,7 @@ Namespace java.math
             If n < 0 Then Throw New ArithmeticException("Negative bit address")
 
             Dim intNum As Integer = CInt(CUInt(n) >> 5)
-            Dim result As Integer() = New Integer(math.Max(intLength(), intNum + 2) - 1) {}
+            Dim result As Integer() = New Integer (System.Math.Max(intLength(), intNum + 2) - 1) {}
 
             For i As Integer = 0 To result.Length - 1
                 result(result.Length - i - 1) = getInt(i)
@@ -3104,7 +3104,7 @@ Namespace java.math
         ''' one bit).  Returns -1 if this BigInteger contains no one bits.
         ''' (Computes {@code (this == 0? -1 : log2(this & -this))}.)
         ''' </summary>
-        ''' <returns> index of the rightmost one bit in this BigInteger. </returns>
+        ''' <returns> index of the rightmost one bit in this Big java.lang.[Integer]. </returns>
         Public Overridable Property lowestSetBit As Integer
             Get
                 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -3122,7 +3122,7 @@ Namespace java.math
 
                             i += 1
                         Loop
-                        lsb += (i << 5) + Integer.numberOfTrailingZeros(b)
+                        lsb += (i << 5) +  java.lang.[Integer].numberOfTrailingZeros(b)
                     End If
                     lowestSetBit = lsb + 2
                 End If
@@ -3155,7 +3155,7 @@ Namespace java.math
                     Dim magBitLength As Integer = ((len - 1) << 5) + bitLengthForInt(mag(0))
                     If signum_Renamed < 0 Then
                         ' Check if magnitude is a power of two
-                        Dim pow2 As Boolean = (Integer.bitCount(mag(0)) = 1)
+                        Dim pow2 As Boolean = ( java.lang.[Integer].bitCount(mag(0)) = 1)
                         Dim i As Integer = 1
                         Do While i < len AndAlso pow2
                             pow2 = (mag(i) = 0)
@@ -3186,7 +3186,7 @@ Namespace java.math
                 bc = 0 ' offset by one to initialize
                 ' Count the bits in the magnitude
                 For i As Integer = 0 To mag.Length - 1
-                    bc += Integer.bitCount(mag(i))
+                    bc +=  java.lang.[Integer].bitCount(mag(i))
                 Next i
                 If signum_Renamed < 0 Then
                     ' Count the trailing zeros in the magnitude
@@ -3196,7 +3196,7 @@ Namespace java.math
                         magTrailingZeroCount += 32
                         j -= 1
                     Loop
-                    magTrailingZeroCount += Integer.numberOfTrailingZeros(mag(j))
+                    magTrailingZeroCount +=  java.lang.[Integer].numberOfTrailingZeros(mag(j))
                     bc += magTrailingZeroCount - 1
                 End If
                 bitCount_Renamed = bc + 1
@@ -3231,7 +3231,7 @@ Namespace java.math
         ' Comparison Operations
 
         ''' <summary>
-        ''' Compares this BigInteger with the specified BigInteger.  This
+        ''' Compares this BigInteger with the specified Big java.lang.[Integer].  This
         ''' method is provided in preference to individual methods for each
         ''' of the six boolean comparison operators ({@literal <}, ==,
         ''' {@literal >}, {@literal >=}, !=, {@literal <=}).  The suggested
@@ -3280,10 +3280,10 @@ Namespace java.math
 
         ''' <summary>
         ''' Version of compareMagnitude that compares magnitude with long value.
-        ''' val can't be Long.MIN_VALUE.
+        ''' val can't be java.lang.[Long].MIN_VALUE.
         ''' </summary>
         Friend Function compareMagnitude(ByVal val As Long) As Integer
-            Debug.Assert(val <> Long.MinValue)
+            Debug.Assert(val <> java.lang.[Long].MIN_VALUE)
             Dim m1 As Integer() = mag
             Dim len As Integer = m1.Length
             If len > 2 Then Return 1
@@ -3313,7 +3313,7 @@ Namespace java.math
         ''' </summary>
         ''' <param name="x"> Object to which this BigInteger is to be compared. </param>
         ''' <returns> {@code true} if and only if the specified Object is a
-        '''         BigInteger whose value is numerically equal to this BigInteger. </returns>
+        '''         BigInteger whose value is numerically equal to this Big java.lang.[Integer]. </returns>
         Public Overrides Function Equals(ByVal x As Object) As Boolean
             ' This test is just an optimization, which may or may not help
             If x Is Me Then Return True
@@ -3359,9 +3359,9 @@ Namespace java.math
         ' Hash Function
 
         ''' <summary>
-        ''' Returns the hash code for this BigInteger.
+        ''' Returns the hash code for this Big java.lang.[Integer].
         ''' </summary>
-        ''' <returns> hash code for this BigInteger. </returns>
+        ''' <returns> hash code for this Big java.lang.[Integer]. </returns>
         Public Overrides Function GetHashCode() As Integer
             Dim hashCode As Integer = 0
 
@@ -3377,7 +3377,7 @@ Namespace java.math
         ''' given radix.  If the radix is outside the range from {@link
         ''' Character#MIN_RADIX} to <seealso cref="Character#MAX_RADIX"/> inclusive,
         ''' it will default to 10 (as is the case for
-        ''' {@code Integer.toString}).  The digit-to-character mapping
+        ''' {@code  java.lang.[Integer].toString}).  The digit-to-character mapping
         ''' provided by {@code Character.forDigit} is used, and a minus
         ''' sign is prepended if appropriate.  (This representation is
         ''' compatible with the {@link #BigInteger(String, int) (String,
@@ -3484,7 +3484,7 @@ Namespace java.math
             ' Calculate a value for n in the equation radix^(2^n) = u
             ' and subtract 1 from that value.  This is used to find the
             ' cache index that contains the best value to divide u.
-            n = CInt(Fix(math.Round(math.Log(b * LOG_TWO / logCache(radix)) / LOG_TWO - 1.0)))
+            n = CInt(Fix (System.Math.Round (System.Math.Log(b * LOG_TWO / logCache(radix)) / LOG_TWO - 1.0)))
             Dim v As BigInteger = getRadixConversionCache(radix, n)
             Dim results As BigInteger()
             results = u.divideAndRemainder(v)
@@ -3526,14 +3526,14 @@ Namespace java.math
         Private Shared zeros As String() = New String(63) {}
 
         ''' <summary>
-        ''' Returns the decimal String representation of this BigInteger.
+        ''' Returns the decimal String representation of this Big java.lang.[Integer].
         ''' The digit-to-character mapping provided by
         ''' {@code Character.forDigit} is used, and a minus sign is
         ''' prepended if appropriate.  (This representation is compatible
         ''' with the <seealso cref="#BigInteger(String) (String)"/> constructor, and
         ''' allows for String concatenation with Java's + operator.)
         ''' </summary>
-        ''' <returns> decimal String representation of this BigInteger. </returns>
+        ''' <returns> decimal String representation of this Big java.lang.[Integer]. </returns>
         ''' <seealso cref=    Character#forDigit </seealso>
         ''' <seealso cref=    #BigInteger(java.lang.String) </seealso>
         Public Overrides Function ToString() As String
@@ -3542,7 +3542,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Returns a byte array containing the two's-complement
-        ''' representation of this BigInteger.  The byte array will be in
+        ''' representation of this Big java.lang.[Integer].  The byte array will be in
         ''' <i>big-endian</i> byte-order: the most significant byte is in
         ''' the zeroth element.  The array will contain the minimum number
         ''' of bytes required to represent this BigInteger, including at
@@ -3551,7 +3551,7 @@ Namespace java.math
         ''' <seealso cref="#BigInteger(byte[]) (byte[])"/> constructor.)
         ''' </summary>
         ''' <returns> a byte array containing the two's-complement representation of
-        '''         this BigInteger. </returns>
+        '''         this Big java.lang.[Integer]. </returns>
         ''' <seealso cref=    #BigInteger(byte[]) </seealso>
         Public Overridable Function toByteArray() As SByte()
             Dim byteLen As Integer = bitLength() \ 8 + 1
@@ -3639,7 +3639,7 @@ Namespace java.math
             Dim exponent As Integer = ((mag.Length - 1) << 5) + bitLengthForInt(mag(0)) - 1
 
             ' exponent == floor(log2(abs(this)))
-            If exponent < Long.SIZE - 1 Then
+            If exponent < java.lang.[Long].SIZE - 1 Then
                 Return longValue()
             ElseIf exponent > Float.MAX_EXPONENT Then
                 Return If(signum_Renamed > 0, Float.PositiveInfinity, Float.NegativeInfinity)
@@ -3716,10 +3716,10 @@ Namespace java.math
             Dim exponent As Integer = ((mag.Length - 1) << 5) + bitLengthForInt(mag(0)) - 1
 
             ' exponent == floor(log2(abs(this))Double)
-            If exponent < Long.SIZE - 1 Then
+            If exponent < java.lang.[Long].SIZE - 1 Then
                 Return longValue()
-            ElseIf exponent > Double.MAX_EXPONENT Then
-                Return If(signum_Renamed > 0, Double.PositiveInfinity, Double.NegativeInfinity)
+            ElseIf exponent > java.lang.[Double].MAX_EXPONENT Then
+                Return If(signum_Renamed > 0, java.lang.[Double].PositiveInfinity, java.lang.[Double].NegativeInfinity)
             End If
 
             '        
@@ -3775,11 +3775,11 @@ Namespace java.math
             '         * If signifRounded == 2^53, we'd need to set all of the significand
             '         * bits to zero and add 1 to the exponent. This is exactly the behavior
             '         * we get from just adding signifRounded to bits directly. If the
-            '         * exponent is Double.MAX_EXPONENT, we round up (correctly) to
-            '         * Double.POSITIVE_INFINITY.
+            '         * exponent is java.lang.[Double].MAX_EXPONENT, we round up (correctly) to
+            '         * java.lang.[Double].POSITIVE_INFINITY.
             '         
             bits = bits Or signum_Renamed And sun.misc.DoubleConsts.SIGN_BIT_MASK
-            Return Double.longBitsToDouble(bits)
+            Return java.lang.[Double].longBitsToDouble(bits)
         End Function
 
         ''' <summary>
@@ -3837,7 +3837,7 @@ Namespace java.math
                 result(i) = a(b) And &HFF
                 b -= 1
                 Dim bytesRemaining As Integer = b - keep + 1
-                Dim bytesToTransfer As Integer = math.Min(3, bytesRemaining)
+                Dim bytesToTransfer As Integer = System.Math.Min(3, bytesRemaining)
                 For j As Integer = 8 To (bytesToTransfer << 3) Step 8
                     result(i) = result(i) Or ((a(b) And &HFF) << j)
                     b -= 1
@@ -3863,7 +3863,7 @@ Namespace java.math
 
 
             '         Allocate output array.  If all non-sign bytes are 0x00, we must
-            '         * allocate space for one extra output byte. 
+            '         * allocate space for one extra output java.lang.[Byte]. 
             k = keep
             Do While k < byteLength AndAlso a(k) = 0
 
@@ -3880,7 +3880,7 @@ Namespace java.math
             For i As Integer = intLength - 1 To 0 Step -1
                 result(i) = a(b) And &HFF
                 b -= 1
-                Dim numBytesToTransfer As Integer = math.Min(3, b - keep + 1)
+                Dim numBytesToTransfer As Integer = System.Math.Min(3, b - keep + 1)
                 If numBytesToTransfer < 0 Then numBytesToTransfer = 0
                 For j As Integer = 8 To 8 * numBytesToTransfer Step 8
                     result(i) = result(i) Or ((a(b) And &HFF) << j)
@@ -4031,12 +4031,12 @@ Namespace java.math
         Private Const serialVersionUID As Long = -8287574255936472291L
 
         ''' <summary>
-        ''' Serializable fields for BigInteger.
+        ''' Serializable fields for Big java.lang.[Integer].
         ''' 
         ''' @serialField signum  int
-        '''              signum of this BigInteger.
+        '''              signum of this Big java.lang.[Integer].
         ''' @serialField magnitude int[]
-        '''              magnitude array of this BigInteger.
+        '''              magnitude array of this Big java.lang.[Integer].
         ''' @serialField bitCount  int
         '''              number of bits in this BigInteger
         ''' @serialField bitLength int
@@ -4045,7 +4045,7 @@ Namespace java.math
         ''' @serialField lowestSetBit int
         '''              lowest set bit in the twos complement representation
         ''' </summary>
-        Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = {New java.io.ObjectStreamField("signum", Integer.TYPE), New java.io.ObjectStreamField("magnitude", GetType(SByte())), New java.io.ObjectStreamField("bitCount", Integer.TYPE), New java.io.ObjectStreamField("bitLength", Integer.TYPE), New java.io.ObjectStreamField("firstNonzeroByteNum", Integer.TYPE), New java.io.ObjectStreamField("lowestSetBit", Integer.TYPE)}
+        Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = {New java.io.ObjectStreamField("signum",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("magnitude", GetType(SByte())), New java.io.ObjectStreamField("bitCount",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("bitLength",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("firstNonzeroByteNum",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("lowestSetBit",  java.lang.[Integer].TYPE)}
 
         ''' <summary>
         ''' Reconstitute the {@code BigInteger} instance from a stream (that is,
@@ -4222,7 +4222,7 @@ Namespace java.math
         Public Overridable Function shortValueExact() As Short
             If mag.Length <= 1 AndAlso bitLength() <= 31 Then
                 Dim value As Integer = intValue()
-                If value >= Short.MinValue AndAlso value <= Short.MaxValue Then Return shortValue()
+                If value >=  java.lang.[Short].MIN_VALUE AndAlso value <=  java.lang.[Short].Max_Value Then Return shortValue()
             End If
             Throw New ArithmeticException("BigInteger out of short range")
         End Function
@@ -4241,7 +4241,7 @@ Namespace java.math
         Public Overridable Function byteValueExact() As SByte
             If mag.Length <= 1 AndAlso bitLength() <= 31 Then
                 Dim value As Integer = intValue()
-                If value >= Byte.MinValue AndAlso value <= Byte.MaxValue Then Return byteValue()
+                If value >= java.lang.[Byte].MIN_VALUE AndAlso value <= java.lang.[Byte].Max_Value Then Return byteValue()
             End If
             Throw New ArithmeticException("BigInteger out of byte range")
         End Function

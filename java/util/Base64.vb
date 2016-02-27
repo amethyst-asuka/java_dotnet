@@ -369,7 +369,7 @@ Namespace java.util
 				If linemax > 0 AndAlso slen > linemax \ 4 * 3 Then slen = linemax \ 4 * 3
 				Dim dp As Integer = 0
 				Do While sp < sl
-					Dim sl0 As Integer = Math.Min(sp + slen, sl)
+					Dim sl0 As Integer = System.Math.Min(sp + slen, sl)
 					Dim sp0 As Integer = sp
 					Dim dp0 As Integer = dp
 					Do While sp0 < sl0
@@ -887,7 +887,7 @@ Namespace java.util
 					If v = -1 Then
 						eof = True
 						If nextin <> 18 Then
-							If nextin = 12 Then Throw New java.io.IOException("Base64 stream has one un-decoded dangling byte.")
+							If nextin = 12 Then Throw New java.io.IOException("Base64 stream has one un-decoded dangling java.lang.[Byte].")
 							' treat ending xx/xxx without padding character legal.
 							' same logic as v == '=' below
 							b([off]) = CByte(bits >> (16))

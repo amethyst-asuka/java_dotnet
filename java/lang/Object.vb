@@ -103,56 +103,56 @@ Namespace java.lang
         ''' <seealso cref=     java.lang.Object#equals(java.lang.Object) </seealso>
         ''' <seealso cref=     java.lang.System#identityHashCode </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-        <DllImport("unknown")> _
-		Public Function GetHashCode() As Integer
-		End Function
+        <DllImport("unknown")>
+        Public Shared Function GetHashCode() As Integer
+        End Function
 
-		''' <summary>
-		''' Indicates whether some other object is "equal to" this one.
-		''' <p>
-		''' The {@code equals} method implements an equivalence relation
-		''' on non-null object references:
-		''' <ul>
-		''' <li>It is <i>reflexive</i>: for any non-null reference value
-		'''     {@code x}, {@code x.equals(x)} should return
-		'''     {@code true}.
-		''' <li>It is <i>symmetric</i>: for any non-null reference values
-		'''     {@code x} and {@code y}, {@code x.equals(y)}
-		'''     should return {@code true} if and only if
-		'''     {@code y.equals(x)} returns {@code true}.
-		''' <li>It is <i>transitive</i>: for any non-null reference values
-		'''     {@code x}, {@code y}, and {@code z}, if
-		'''     {@code x.equals(y)} returns {@code true} and
-		'''     {@code y.equals(z)} returns {@code true}, then
-		'''     {@code x.equals(z)} should return {@code true}.
-		''' <li>It is <i>consistent</i>: for any non-null reference values
-		'''     {@code x} and {@code y}, multiple invocations of
-		'''     {@code x.equals(y)} consistently return {@code true}
-		'''     or consistently return {@code false}, provided no
-		'''     information used in {@code equals} comparisons on the
-		'''     objects is modified.
-		''' <li>For any non-null reference value {@code x},
-		'''     {@code x.equals(null)} should return {@code false}.
-		''' </ul>
-		''' <p>
-		''' The {@code equals} method for class {@code Object} implements
-		''' the most discriminating possible equivalence relation on objects;
-		''' that is, for any non-null reference values {@code x} and
-		''' {@code y}, this method returns {@code true} if and only
-		''' if {@code x} and {@code y} refer to the same object
-		''' ({@code x == y} has the value {@code true}).
-		''' <p>
-		''' Note that it is generally necessary to override the {@code hashCode}
-		''' method whenever this method is overridden, so as to maintain the
-		''' general contract for the {@code hashCode} method, which states
-		''' that equal objects must have equal hash codes.
-		''' </summary>
-		''' <param name="obj">   the reference object with which to compare. </param>
-		''' <returns>  {@code true} if this object is the same as the obj
-		'''          argument; {@code false} otherwise. </returns>
-		''' <seealso cref=     #hashCode() </seealso>
-		''' <seealso cref=     java.util.HashMap </seealso>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        ''' <summary>
+        ''' Indicates whether some other object is "equal to" this one.
+        ''' <p>
+        ''' The {@code equals} method implements an equivalence relation
+        ''' on non-null object references:
+        ''' <ul>
+        ''' <li>It is <i>reflexive</i>: for any non-null reference value
+        '''     {@code x}, {@code x.equals(x)} should return
+        '''     {@code true}.
+        ''' <li>It is <i>symmetric</i>: for any non-null reference values
+        '''     {@code x} and {@code y}, {@code x.equals(y)}
+        '''     should return {@code true} if and only if
+        '''     {@code y.equals(x)} returns {@code true}.
+        ''' <li>It is <i>transitive</i>: for any non-null reference values
+        '''     {@code x}, {@code y}, and {@code z}, if
+        '''     {@code x.equals(y)} returns {@code true} and
+        '''     {@code y.equals(z)} returns {@code true}, then
+        '''     {@code x.equals(z)} should return {@code true}.
+        ''' <li>It is <i>consistent</i>: for any non-null reference values
+        '''     {@code x} and {@code y}, multiple invocations of
+        '''     {@code x.equals(y)} consistently return {@code true}
+        '''     or consistently return {@code false}, provided no
+        '''     information used in {@code equals} comparisons on the
+        '''     objects is modified.
+        ''' <li>For any non-null reference value {@code x},
+        '''     {@code x.equals(null)} should return {@code false}.
+        ''' </ul>
+        ''' <p>
+        ''' The {@code equals} method for class {@code Object} implements
+        ''' the most discriminating possible equivalence relation on objects;
+        ''' that is, for any non-null reference values {@code x} and
+        ''' {@code y}, this method returns {@code true} if and only
+        ''' if {@code x} and {@code y} refer to the same object
+        ''' ({@code x == y} has the value {@code true}).
+        ''' <p>
+        ''' Note that it is generally necessary to override the {@code hashCode}
+        ''' method whenever this method is overridden, so as to maintain the
+        ''' general contract for the {@code hashCode} method, which states
+        ''' that equal objects must have equal hash codes.
+        ''' </summary>
+        ''' <param name="obj">   the reference object with which to compare. </param>
+        ''' <returns>  {@code true} if this object is the same as the obj
+        '''          argument; {@code false} otherwise. </returns>
+        ''' <seealso cref=     #hashCode() </seealso>
+        ''' <seealso cref=     java.util.HashMap </seealso>
+        Public Overrides Function Equals(ByVal obj As Object) As Boolean
 			Return (Me Is obj)
 		End Function
 
@@ -236,12 +236,12 @@ Namespace java.lang
 		''' value of:
 		''' <blockquote>
 		''' <pre>
-		''' getClass().getName() + '@' + Integer.toHexString(hashCode())
+		''' getClass().getName() + '@' +  java.lang.[Integer].toHexString(hashCode())
 		''' </pre></blockquote>
 		''' </summary>
 		''' <returns>  a string representation of the object. </returns>
 		Public Overrides Function ToString() As String
-			Return Me.GetType().name & "@" & Integer.toHexString(GetHashCode())
+			Return Me.GetType().name & "@" &  java.lang.[Integer].toHexString(GetHashCode())
 		End Function
 
 		''' <summary>
@@ -507,57 +507,65 @@ Namespace java.lang
 			wait(0)
 		End Sub
 
-		''' <summary>
-		''' Called by the garbage collector on an object when garbage collection
-		''' determines that there are no more references to the object.
-		''' A subclass overrides the {@code finalize} method to dispose of
-		''' system resources or to perform other cleanup.
-		''' <p>
-		''' The general contract of {@code finalize} is that it is invoked
-		''' if and when the Java&trade; virtual
-		''' machine has determined that there is no longer any
-		''' means by which this object can be accessed by any thread that has
-		''' not yet died, except as a result of an action taken by the
-		''' finalization of some other object or class which is ready to be
-		''' finalized. The {@code finalize} method may take any action, including
-		''' making this object available again to other threads; the usual purpose
-		''' of {@code finalize}, however, is to perform cleanup actions before
-		''' the object is irrevocably discarded. For example, the finalize method
-		''' for an object that represents an input/output connection might perform
-		''' explicit I/O transactions to break the connection before the object is
-		''' permanently discarded.
-		''' <p>
-		''' The {@code finalize} method of class {@code Object} performs no
-		''' special action; it simply returns normally. Subclasses of
-		''' {@code Object} may override this definition.
-		''' <p>
-		''' The Java programming language does not guarantee which thread will
-		''' invoke the {@code finalize} method for any given object. It is
-		''' guaranteed, however, that the thread that invokes finalize will not
-		''' be holding any user-visible synchronization locks when finalize is
-		''' invoked. If an uncaught exception is thrown by the finalize method,
-		''' the exception is ignored and finalization of that object terminates.
-		''' <p>
-		''' After the {@code finalize} method has been invoked for an object, no
-		''' further action is taken until the Java virtual machine has again
-		''' determined that there is no longer any means by which this object can
-		''' be accessed by any thread that has not yet died, including possible
-		''' actions by other objects or classes which are ready to be finalized,
-		''' at which point the object may be discarded.
-		''' <p>
-		''' The {@code finalize} method is never invoked more than once by a Java
-		''' virtual machine for any given object.
-		''' <p>
-		''' Any exception thrown by the {@code finalize} method causes
-		''' the finalization of this object to be halted, but is otherwise
-		''' ignored.
-		''' </summary>
-		''' <exception cref="Throwable"> the {@code Exception} raised by this method </exception>
-		''' <seealso cref= java.lang.ref.WeakReference </seealso>
-		''' <seealso cref= java.lang.ref.PhantomReference
-		''' @jls 12.6 Finalization of Class Instances </seealso>
-		Protected Overrides Sub Finalize()
-		End Sub
-	End Class
+        ''' <summary>
+        ''' Called by the garbage collector on an object when garbage collection
+        ''' determines that there are no more references to the object.
+        ''' A subclass overrides the {@code finalize} method to dispose of
+        ''' system resources or to perform other cleanup.
+        ''' <p>
+        ''' The general contract of {@code finalize} is that it is invoked
+        ''' if and when the Java&trade; virtual
+        ''' machine has determined that there is no longer any
+        ''' means by which this object can be accessed by any thread that has
+        ''' not yet died, except as a result of an action taken by the
+        ''' finalization of some other object or class which is ready to be
+        ''' finalized. The {@code finalize} method may take any action, including
+        ''' making this object available again to other threads; the usual purpose
+        ''' of {@code finalize}, however, is to perform cleanup actions before
+        ''' the object is irrevocably discarded. For example, the finalize method
+        ''' for an object that represents an input/output connection might perform
+        ''' explicit I/O transactions to break the connection before the object is
+        ''' permanently discarded.
+        ''' <p>
+        ''' The {@code finalize} method of class {@code Object} performs no
+        ''' special action; it simply returns normally. Subclasses of
+        ''' {@code Object} may override this definition.
+        ''' <p>
+        ''' The Java programming language does not guarantee which thread will
+        ''' invoke the {@code finalize} method for any given object. It is
+        ''' guaranteed, however, that the thread that invokes finalize will not
+        ''' be holding any user-visible synchronization locks when finalize is
+        ''' invoked. If an uncaught exception is thrown by the finalize method,
+        ''' the exception is ignored and finalization of that object terminates.
+        ''' <p>
+        ''' After the {@code finalize} method has been invoked for an object, no
+        ''' further action is taken until the Java virtual machine has again
+        ''' determined that there is no longer any means by which this object can
+        ''' be accessed by any thread that has not yet died, including possible
+        ''' actions by other objects or classes which are ready to be finalized,
+        ''' at which point the object may be discarded.
+        ''' <p>
+        ''' The {@code finalize} method is never invoked more than once by a Java
+        ''' virtual machine for any given object.
+        ''' <p>
+        ''' Any exception thrown by the {@code finalize} method causes
+        ''' the finalization of this object to be halted, but is otherwise
+        ''' ignored.
+        ''' </summary>
+        ''' <exception cref="Throwable"> the {@code Exception} raised by this method </exception>
+        ''' <seealso cref= java.lang.ref.WeakReference </seealso>
+        ''' <seealso cref= java.lang.ref.PhantomReference
+        ''' @jls 12.6 Finalization of Class Instances </seealso>
+        Protected Overrides Sub Finalize()
+        End Sub
+
+        Public Shared Operator &(x As [Object], s As String) As String
+            Return x.ToString & s
+        End Operator
+
+        Public Shared Operator &(s As String, x As [Object]) As String
+            Return x.ToString & s
+        End Operator
+    End Class
 
 End Namespace

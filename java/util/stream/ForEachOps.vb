@@ -373,7 +373,7 @@ Namespace java.util.stream
 				Me.spliterator = spliterator
 				Me.targetSize = AbstractTask.suggestTargetSize(spliterator.estimateSize())
 				' Size map to avoid concurrent re-sizes
-				Me.completionMap = New ConcurrentDictionary(Of )(Math.Max(16, AbstractTask.LEAF_TARGET << 1))
+				Me.completionMap = New ConcurrentDictionary(Of ) (System.Math.Max(16, AbstractTask.LEAF_TARGET << 1))
 				Me.action = action
 				Me.leftPredecessor = Nothing
 			End Sub

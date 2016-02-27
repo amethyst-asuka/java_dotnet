@@ -290,7 +290,7 @@ Namespace java.util
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' Increases the capacity of the array.
@@ -308,7 +308,7 @@ Namespace java.util
 
 		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
-			Return If(minCapacity > MAX_ARRAY_SIZE, Integer.MaxValue, MAX_ARRAY_SIZE)
+			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
 
 		''' <summary>
@@ -759,7 +759,7 @@ Namespace java.util
 			s.defaultWriteObject()
 
 			' Write out array length, for compatibility with 1.5 version
-			s.writeInt(Math.Max(2, size_Renamed + 1))
+			s.writeInt (System.Math.Max(2, size_Renamed + 1))
 
 			' Write out all elements in the "proper order".
 			For i As Integer = 0 To size_Renamed - 1

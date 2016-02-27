@@ -206,18 +206,18 @@ Namespace java.awt
 	'     * @param npoints the total number of points
 	'     
 		void calculateBounds(Integer xpoints() , Integer ypoints(), Integer npoints)
-			Dim boundsMinX As Integer = Integer.MaxValue
-			Dim boundsMinY As Integer = Integer.MaxValue
-			Dim boundsMaxX As Integer = Integer.MinValue
-			Dim boundsMaxY As Integer = Integer.MinValue
+			Dim boundsMinX As Integer =  java.lang.[Integer].Max_Value
+			Dim boundsMinY As Integer =  java.lang.[Integer].Max_Value
+			Dim boundsMaxX As Integer =  java.lang.[Integer].MIN_VALUE
+			Dim boundsMaxY As Integer =  java.lang.[Integer].MIN_VALUE
 
 			For i As Integer = 0 To npoints - 1
 				Dim x As Integer = xpoints(i)
-				boundsMinX = Math.Min(boundsMinX, x)
-				boundsMaxX = Math.Max(boundsMaxX, x)
+				boundsMinX = System.Math.Min(boundsMinX, x)
+				boundsMaxX = System.Math.Max(boundsMaxX, x)
 				Dim y As Integer = ypoints(i)
-				boundsMinY = Math.Min(boundsMinY, y)
-				boundsMaxY = Math.Max(boundsMaxY, y)
+				boundsMinY = System.Math.Min(boundsMinY, y)
+				boundsMaxY = System.Math.Max(boundsMaxY, y)
 			Next i
 			bounds = New Rectangle(boundsMinX, boundsMinY, boundsMaxX - boundsMinX, boundsMaxY - boundsMinY)
 
@@ -230,7 +230,7 @@ Namespace java.awt
 				bounds.width = bounds.width + (bounds.x - x)
 				bounds.x = x
 			Else
-				bounds.width = Math.Max(bounds.width, x - bounds.x)
+				bounds.width = System.Math.Max(bounds.width, x - bounds.x)
 				' bounds.x = bounds.x;
 			End If
 
@@ -238,7 +238,7 @@ Namespace java.awt
 				bounds.height = bounds.height + (bounds.y - y)
 				bounds.y = y
 			Else
-				bounds.height = Math.Max(bounds.height, y - bounds.y)
+				bounds.height = System.Math.Max(bounds.height, y - bounds.y)
 				' bounds.y = bounds.y;
 			End If
 
@@ -262,7 +262,7 @@ Namespace java.awt
 				If newLength < MIN_LENGTH Then
 					newLength = MIN_LENGTH
 				ElseIf (newLength And (newLength - 1)) <> 0 Then
-					newLength = Integer.highestOneBit(newLength)
+					newLength =  java.lang.[Integer].highestOneBit(newLength)
 				End If
 
 				xpoints = java.util.Arrays.copyOf(xpoints, newLength)

@@ -88,9 +88,9 @@ Namespace java.util.logging
 
 		''' <summary>
 		''' OFF is a special level that can be used to turn off logging.
-		''' This level is initialized to <CODE> [Integer].MAX_VALUE</CODE>.
+		''' This level is initialized to <CODE> java.lang.[Integer].MAX_VALUE</CODE>.
 		''' </summary>
-		Public Shared ReadOnly [OFF] As New Level("OFF", [Integer].MAX_VALUE, defaultBundle)
+		Public Shared ReadOnly [OFF] As New Level("OFF", java.lang.[Integer].MAX_VALUE, defaultBundle)
 
 		''' <summary>
 		''' SEVERE is a message level indicating a serious failure.
@@ -173,9 +173,9 @@ Namespace java.util.logging
 
 		''' <summary>
 		''' ALL indicates that all messages should be logged.
-		''' This level is initialized to <CODE>Integer.MIN_VALUE</CODE>.
+		''' This level is initialized to <CODE> java.lang.[Integer].MIN_VALUE</CODE>.
 		''' </summary>
-		Public Shared ReadOnly ALL As New Level("ALL", Integer.MIN_VALUE, defaultBundle)
+		Public Shared ReadOnly ALL As New Level("ALL",  java.lang.[Integer].MIN_VALUE, defaultBundle)
 
 		''' <summary>
 		''' Create a named Level with a given integer value.
@@ -326,7 +326,7 @@ Namespace java.util.logging
 		' specified in the Level.parse method.  Returns null if not found.
 		'
 		' It returns the same Level object as the one returned by Level.parse
-		' method if the given name is a non-localized name or integer.
+		' method if the given name is a non-localized name or  java.lang.[Integer].
 		'
 		' If the name is a localized name, findLevel and parse method may
 		' return a different level value if there is a custom Level subclass
@@ -342,7 +342,7 @@ Namespace java.util.logging
 			level_Renamed = KnownLevel.findByName(name)
 			If level_Renamed IsNot Nothing Then Return level_Renamed.mirroredLevel
 
-			' Now, check if the given name is an integer.  If so,
+			' Now, check if the given name is an  java.lang.[Integer].  If so,
 			' first look for a Level with the given value and then
 			' if necessary create one.
 			Try
@@ -355,7 +355,7 @@ Namespace java.util.logging
 				End If
 				Return level_Renamed.mirroredLevel
 			Catch ex As NumberFormatException
-				' Not an integer.
+				' Not an  java.lang.[Integer].
 				' Drop through.
 			End Try
 
@@ -411,8 +411,8 @@ Namespace java.util.logging
 		''' <param name="name">   string to be parsed </param>
 		''' <exception cref="NullPointerException"> if the name is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the value is not valid.
-		''' Valid values are integers between <CODE>Integer.MIN_VALUE</CODE>
-		''' and <CODE> [Integer].MAX_VALUE</CODE>, and all known level names.
+		''' Valid values are integers between <CODE> java.lang.[Integer].MIN_VALUE</CODE>
+		''' and <CODE> java.lang.[Integer].MAX_VALUE</CODE>, and all known level names.
 		''' Known names are the levels defined by this class (e.g., <CODE>FINE</CODE>,
 		''' <CODE>FINER</CODE>, <CODE>FINEST</CODE>), or created by this class with
 		''' appropriate package access, or new levels defined or created
@@ -433,7 +433,7 @@ Namespace java.util.logging
 			level_Renamed = KnownLevel.findByName(name)
 			If level_Renamed IsNot Nothing Then Return level_Renamed.levelObject
 
-			' Now, check if the given name is an integer.  If so,
+			' Now, check if the given name is an  java.lang.[Integer].  If so,
 			' first look for a Level with the given value and then
 			' if necessary create one.
 			Try
@@ -446,7 +446,7 @@ Namespace java.util.logging
 				End If
 				Return level_Renamed.levelObject
 			Catch ex As NumberFormatException
-				' Not an integer.
+				' Not an  java.lang.[Integer].
 				' Drop through.
 			End Try
 

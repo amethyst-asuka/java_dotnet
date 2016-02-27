@@ -62,7 +62,7 @@ Namespace java.util.concurrent.atomic
 				base = unsafe.arrayBaseOffset(GetType(Object()))
 				Dim scale As Integer = unsafe.arrayIndexScale(GetType(Object()))
 				If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")
-				shift = 31 - Integer.numberOfLeadingZeros(scale)
+				shift = 31 -  java.lang.[Integer].numberOfLeadingZeros(scale)
 			Catch e As Exception
 				Throw New [Error](e)
 			End Try

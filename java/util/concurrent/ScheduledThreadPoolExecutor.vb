@@ -427,7 +427,7 @@ Namespace java.util.concurrent
 		'''        if they are idle, unless {@code allowCoreThreadTimeOut} is set </param>
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		Public Sub New(ByVal corePoolSize As Integer)
-			MyBase.New(corePoolSize, Integer.MaxValue, 0, NANOSECONDS, New DelayedWorkQueue)
+			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue)
 		End Sub
 
 		''' <summary>
@@ -441,7 +441,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code threadFactory} is null </exception>
 		Public Sub New(ByVal corePoolSize As Integer, ByVal threadFactory As ThreadFactory)
-			MyBase.New(corePoolSize, Integer.MaxValue, 0, NANOSECONDS, New DelayedWorkQueue, threadFactory)
+			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue, threadFactory)
 		End Sub
 
 		''' <summary>
@@ -455,7 +455,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException"> if {@code corePoolSize < 0} </exception>
 		''' <exception cref="NullPointerException"> if {@code handler} is null </exception>
 		Public Sub New(ByVal corePoolSize As Integer, ByVal handler As RejectedExecutionHandler)
-			MyBase.New(corePoolSize, Integer.MaxValue, 0, NANOSECONDS, New DelayedWorkQueue, handler)
+			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue, handler)
 		End Sub
 
 		''' <summary>
@@ -472,7 +472,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if {@code threadFactory} or
 		'''         {@code handler} is null </exception>
 		Public Sub New(ByVal corePoolSize As Integer, ByVal threadFactory As ThreadFactory, ByVal handler As RejectedExecutionHandler)
-			MyBase.New(corePoolSize, Integer.MaxValue, 0, NANOSECONDS, New DelayedWorkQueue, threadFactory, handler)
+			MyBase.New(corePoolSize,  java.lang.[Integer].Max_Value, 0, NANOSECONDS, New DelayedWorkQueue, threadFactory, handler)
 		End Sub
 
 		''' <summary>
@@ -486,21 +486,21 @@ Namespace java.util.concurrent
 		''' Returns the trigger time of a delayed action.
 		''' </summary>
 		Friend Overridable Function triggerTime(ByVal delay As Long) As Long
-			Return now() + (If(delay < (Long.MaxValue >> 1), delay, overflowFree(delay)))
+			Return now() + (If(delay < (Long.Max_Value >> 1), delay, overflowFree(delay)))
 		End Function
 
 		''' <summary>
 		''' Constrains the values of all delays in the queue to be within
-		''' Long.MAX_VALUE of each other, to avoid overflow in compareTo.
+		''' java.lang.[Long].MAX_VALUE of each other, to avoid overflow in compareTo.
 		''' This may occur if a task is eligible to be dequeued, but has
 		''' not yet been, while some other task is added with a delay of
-		''' Long.MAX_VALUE.
+		''' java.lang.[Long].MAX_VALUE.
 		''' </summary>
 		Private Function overflowFree(ByVal delay As Long) As Long
 			Dim head As Delayed = CType(MyBase.queue.peek(), Delayed)
 			If head IsNot Nothing Then
 				Dim headDelay As Long = head.getDelay(NANOSECONDS)
-				If headDelay < 0 AndAlso (delay - headDelay < 0) Then delay = Long.MaxValue + headDelay
+				If headDelay < 0 AndAlso (delay - headDelay < 0) Then delay = java.lang.[Long].Max_Value + headDelay
 			End If
 			Return delay
 		End Function
@@ -832,7 +832,7 @@ Namespace java.util.concurrent
 			Private Sub grow()
 				Dim oldCapacity As Integer = queue.Length
 				Dim newCapacity As Integer = oldCapacity + (oldCapacity >> 1) ' grow 50%
-				If newCapacity < 0 Then ' overflow newCapacity = Integer.MaxValue
+				If newCapacity < 0 Then ' overflow newCapacity =  java.lang.[Integer].Max_Value
 				queue = New java.util.concurrent.RunnableScheduledFuture(Of JavaToDotNetGenericWildcard)(newCapacity - 1){}
 				Array.Copy(queue, queue, newCapacity)
 			End Sub
@@ -906,7 +906,7 @@ Namespace java.util.concurrent
 			End Property
 
 			Public Overridable Function remainingCapacity() As Integer Implements BlockingQueue(Of Runnable).remainingCapacity
-				Return Integer.MaxValue
+				Return  java.lang.[Integer].Max_Value
 			End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:

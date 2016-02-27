@@ -164,7 +164,7 @@ Namespace java.util
 		'''           this set </param>
 		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
 		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
-			MyBase.New(Math.Max(2*c.size(), 11),.75f, True)
+			MyBase.New (System.Math.Max(2*c.size(), 11),.75f, True)
 			addAll(c)
 		End Sub
 

@@ -88,8 +88,8 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns the number of elements in this set (its cardinality).  If this
-		''' set contains more than <tt> [Integer].MAX_VALUE</tt> elements, returns
-		''' <tt> [Integer].MAX_VALUE</tt>.
+		''' set contains more than <tt> java.lang.[Integer].MAX_VALUE</tt> elements, returns
+		''' <tt> java.lang.[Integer].MAX_VALUE</tt>.
 		''' </summary>
 		''' <returns> the number of elements in this set (its cardinality) </returns>
 		Function size() As Integer

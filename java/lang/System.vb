@@ -1127,7 +1127,7 @@ Namespace java.lang
 			' internal implementation use only, these properties should be
 			' removed from the system properties.
 			'
-			' See java.lang.Integer.IntegerCache and the
+			' See java.lang. java.lang.[Integer].IntegerCache and the
 			' sun.misc.VM.saveAndRemoveProperties method for example.
 			'
 			' Save a private copy of the system properties object that

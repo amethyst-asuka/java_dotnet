@@ -47,7 +47,7 @@ Namespace java.util
 
 		''' <summary>
 		''' Should debugging checks be enabled? </summary>
-		Friend Shared ReadOnly ENABLED As Boolean = java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedAction(Of Boolean?)) -> Boolean.getBoolean(TRIPWIRE_PROPERTY))
+		Friend Shared ReadOnly ENABLED As Boolean = java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedAction(Of Boolean?)) ->  java.lang.[Boolean].getBoolean(TRIPWIRE_PROPERTY))
 
 		Private Sub New()
 		End Sub

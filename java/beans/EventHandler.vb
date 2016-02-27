@@ -369,7 +369,7 @@ Namespace java.beans
 			Dim firstDot As Integer = getters.IndexOf("."c)
 			If firstDot = -1 Then firstDot = getters.length()
 			Dim first As String = getters.Substring(0, firstDot)
-			Dim rest As String = getters.Substring(Math.Min(firstDot + 1, getters.length()))
+			Dim rest As String = getters.Substring (System.Math.Min(firstDot + 1, getters.length()))
 
 			Try
 				Dim getter As Method = Nothing
@@ -417,9 +417,9 @@ Namespace java.beans
 				If methodName.Equals("hashCode") Then
 					Return New Integer?(System.identityHashCode(proxy))
 				ElseIf methodName.Equals("equals") Then
-					Return (If(proxy Is arguments(0), Boolean.TRUE, Boolean.FALSE))
+					Return (If(proxy Is arguments(0),  java.lang.[Boolean].TRUE,  java.lang.[Boolean].FALSE))
 				ElseIf methodName.Equals("toString") Then
-					Return proxy.GetType().name + AscW("@"c) + Integer.toHexString(proxy.GetHashCode())
+					Return proxy.GetType().name + AscW("@"c) +  java.lang.[Integer].toHexString(proxy.GetHashCode())
 				End If
 			End If
 

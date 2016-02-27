@@ -119,8 +119,8 @@ Namespace java.awt.image
 		'''         width and height. </returns>
 		''' <exception cref="IllegalArgumentException"> if <code>w</code> or
 		'''         <code>h</code> equals either
-		'''         <code> [Integer].MAX_VALUE</code> or
-		'''         <code>Integer.MIN_VALUE</code> </exception>
+		'''         <code> java.lang.[Integer].MAX_VALUE</code> or
+		'''         <code> java.lang.[Integer].MIN_VALUE</code> </exception>
 		''' <exception cref="IllegalArgumentException"> if <code>dataType</code> is not
 		'''         one of the supported data types </exception>
 		public SampleModel createCompatibleSampleModel(Integer w, Integer h)
@@ -424,7 +424,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the sample in a specified band
-		''' for a pixel located at (x,y) as a double.
+		''' for a pixel located at (x,y) as a java.lang.[Double].
 		''' ArrayIndexOutOfBoundsException may be thrown if the coordinates are
 		''' not in bounds. </summary>
 		''' <param name="x">         The X coordinate of the pixel location </param>

@@ -1256,7 +1256,7 @@ Namespace java.net
 		''' Returns the port number of this URI.
 		''' 
 		''' <p> The port component of a URI, if defined, is a non-negative
-		''' integer. </p>
+		'''  java.lang.[Integer]. </p>
 		''' </summary>
 		''' <returns>  The port component of this URI,
 		'''          or {@code -1} if the port is undefined </returns>
@@ -2386,8 +2386,8 @@ Namespace java.net
 		' between first and last, inclusive
 		Private Shared Function lowMask(ByVal first As Char, ByVal last As Char) As Long
 			Dim m As Long = 0
-			Dim f As Integer = Math.Max(Math.Min(first, 63), 0)
-			Dim l As Integer = Math.Max(Math.Min(last, 63), 0)
+			Dim f As Integer = System.Math.Max (System.Math.Min(first, 63), 0)
+			Dim l As Integer = System.Math.Max (System.Math.Min(last, 63), 0)
 			For i As Integer = f To l
 				m = m Or 1L << i
 			Next i
@@ -2398,8 +2398,8 @@ Namespace java.net
 		' between first and last, inclusive
 		Private Shared Function highMask(ByVal first As Char, ByVal last As Char) As Long
 			Dim m As Long = 0
-			Dim f As Integer = Math.Max(Math.Min(first, 127), 64) - 64
-			Dim l As Integer = Math.Max(Math.Min(last, 127), 64) - 64
+			Dim f As Integer = System.Math.Max (System.Math.Min(first, 127), 64) - 64
+			Dim l As Integer = System.Math.Max (System.Math.Min(last, 127), 64) - 64
 			For i As Integer = f To l
 				m = m Or 1L << i
 			Next i

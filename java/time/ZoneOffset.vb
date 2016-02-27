@@ -330,65 +330,65 @@ Namespace java.time
 			ElseIf (minutes > 0 AndAlso seconds < 0) OrElse (minutes < 0 AndAlso seconds > 0) Then
 				Throw New DateTimeException("Zone offset minutes and seconds must have the same sign")
 			End If
-			If Math.Abs(minutes) > 59 Then Throw New DateTimeException("Zone offset minutes not in valid range: abs(value) " & Math.Abs(minutes) & " is not in the range 0 to 59")
-			If Math.Abs(seconds) > 59 Then Throw New DateTimeException("Zone offset seconds not in valid range: abs(value) " & Math.Abs(seconds) & " is not in the range 0 to 59")
-			If Math.Abs(hours) = 18 AndAlso (Math.Abs(minutes) > 0 OrElse Math.Abs(seconds) > 0) Then Throw New DateTimeException("Zone offset not in valid range: -18:00 to +18:00")
-		End Sub
+            If System.Math.Abs(minutes) > 59 Then Throw New DateTimeException("Zone offset minutes not in valid range: abs(value) " & System.Math.Abs(minutes) & " is not in the range 0 to 59")
+            If System.Math.Abs(seconds) > 59 Then Throw New DateTimeException("Zone offset seconds not in valid range: abs(value) " & System.Math.Abs(seconds) & " is not in the range 0 to 59")
+            If System.Math.Abs(hours) = 18 AndAlso (System.Math.Abs(minutes) > 0 OrElse System.Math.Abs(seconds) > 0) Then Throw New DateTimeException("Zone offset not in valid range: -18:00 to +18:00")
+        End Sub
 
-		''' <summary>
-		''' Calculates the total offset in seconds.
-		''' </summary>
-		''' <param name="hours">  the time-zone offset in hours, from -18 to +18 </param>
-		''' <param name="minutes">  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours and seconds </param>
-		''' <param name="seconds">  the time-zone offset in seconds, from 0 to &plusmn;59, sign matches hours and minutes </param>
-		''' <returns> the total in seconds </returns>
-		Private Shared Function totalSeconds(ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Integer
-			Return hours * SECONDS_PER_HOUR + minutes * SECONDS_PER_MINUTE + seconds
-		End Function
+        ''' <summary>
+        ''' Calculates the total offset in seconds.
+        ''' </summary>
+        ''' <param name="hours">  the time-zone offset in hours, from -18 to +18 </param>
+        ''' <param name="minutes">  the time-zone offset in minutes, from 0 to &plusmn;59, sign matches hours and seconds </param>
+        ''' <param name="seconds">  the time-zone offset in seconds, from 0 to &plusmn;59, sign matches hours and minutes </param>
+        ''' <returns> the total in seconds </returns>
+        Private Shared Function totalSeconds(ByVal hours As Integer, ByVal minutes As Integer, ByVal seconds As Integer) As Integer
+            Return hours * SECONDS_PER_HOUR + minutes * SECONDS_PER_MINUTE + seconds
+        End Function
 
-		'-----------------------------------------------------------------------
-		''' <summary>
-		''' Obtains an instance of {@code ZoneOffset} specifying the total offset in seconds
-		''' <p>
-		''' The offset must be in the range {@code -18:00} to {@code +18:00}, which corresponds to -64800 to +64800.
-		''' </summary>
-		''' <param name="totalSeconds">  the total time-zone offset in seconds, from -64800 to +64800 </param>
-		''' <returns> the ZoneOffset, not null </returns>
-		''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
-		Public Shared Function ofTotalSeconds(ByVal totalSeconds As Integer) As ZoneOffset
-			If Math.Abs(totalSeconds) > MAX_SECONDS Then Throw New DateTimeException("Zone offset not in valid range: -18:00 to +18:00")
-			If totalSeconds Mod (15 * SECONDS_PER_MINUTE) = 0 Then
-				Dim totalSecs As Integer? = totalSeconds
-				Dim result As ZoneOffset = SECONDS_CACHE.get(totalSecs)
-				If result Is Nothing Then
-					result = New ZoneOffset(totalSeconds)
-					SECONDS_CACHE.putIfAbsent(totalSecs, result)
-					result = SECONDS_CACHE.get(totalSecs)
-					ID_CACHE.putIfAbsent(result.id, result)
-				End If
-				Return result
-			Else
-				Return New ZoneOffset(totalSeconds)
-			End If
-		End Function
+        '-----------------------------------------------------------------------
+        ''' <summary>
+        ''' Obtains an instance of {@code ZoneOffset} specifying the total offset in seconds
+        ''' <p>
+        ''' The offset must be in the range {@code -18:00} to {@code +18:00}, which corresponds to -64800 to +64800.
+        ''' </summary>
+        ''' <param name="totalSeconds">  the total time-zone offset in seconds, from -64800 to +64800 </param>
+        ''' <returns> the ZoneOffset, not null </returns>
+        ''' <exception cref="DateTimeException"> if the offset is not in the required range </exception>
+        Public Shared Function ofTotalSeconds(ByVal totalSeconds As Integer) As ZoneOffset
+            If System.Math.Abs(totalSeconds) > MAX_SECONDS Then Throw New DateTimeException("Zone offset not in valid range: -18:00 to +18:00")
+            If totalSeconds Mod (15 * SECONDS_PER_MINUTE) = 0 Then
+                Dim totalSecs As Integer? = totalSeconds
+                Dim result As ZoneOffset = SECONDS_CACHE.Get(totalSecs)
+                If result Is Nothing Then
+                    result = New ZoneOffset(totalSeconds)
+                    SECONDS_CACHE.putIfAbsent(totalSecs, result)
+                    result = SECONDS_CACHE.Get(totalSecs)
+                    ID_CACHE.putIfAbsent(result.id, result)
+                End If
+                Return result
+            Else
+                Return New ZoneOffset(totalSeconds)
+            End If
+        End Function
 
-		'-----------------------------------------------------------------------
-		''' <summary>
-		''' Constructor.
-		''' </summary>
-		''' <param name="totalSeconds">  the total time-zone offset in seconds, from -64800 to +64800 </param>
-		Private Sub New(ByVal totalSeconds As Integer)
-			MyBase.New()
-			Me.totalSeconds_Renamed = totalSeconds
-			id = buildId(totalSeconds)
-		End Sub
+        '-----------------------------------------------------------------------
+        ''' <summary>
+        ''' Constructor.
+        ''' </summary>
+        ''' <param name="totalSeconds">  the total time-zone offset in seconds, from -64800 to +64800 </param>
+        Private Sub New(ByVal totalSeconds As Integer)
+            MyBase.New()
+            Me.totalSeconds_Renamed = totalSeconds
+            id = buildId(totalSeconds)
+        End Sub
 
-		Private Shared Function buildId(ByVal totalSeconds As Integer) As String
-			If totalSeconds = 0 Then
-				Return "Z"
-			Else
-				Dim absTotalSeconds As Integer = Math.Abs(totalSeconds)
-				Dim buf As New StringBuilder
+        Private Shared Function buildId(ByVal totalSeconds As Integer) As String
+            If totalSeconds = 0 Then
+                Return "Z"
+            Else
+                Dim absTotalSeconds As Integer = System.Math.Abs(totalSeconds)
+                Dim buf As New StringBuilder
 				Dim absHours As Integer = absTotalSeconds / SECONDS_PER_HOUR
 				Dim absMinutes As Integer = (absTotalSeconds / SECONDS_PER_MINUTE) Mod MINUTES_PER_HOUR
 				buf.append(If(totalSeconds < 0, "-", "+")).append(If(absHours < 10, "0", "")).append(absHours).append(If(absMinutes < 10, ":0", ":")).append(absMinutes)
@@ -413,32 +413,32 @@ Namespace java.time
 			End Get
 		End Property
 
-		''' <summary>
-		''' Gets the normalized zone offset ID.
-		''' <p>
-		''' The ID is minor variation to the standard ISO-8601 formatted string
-		''' for the offset. There are three formats:
-		''' <ul>
-		''' <li>{@code Z} - for UTC (ISO-8601)
-		''' <li>{@code +hh:mm} or {@code -hh:mm} - if the seconds are zero (ISO-8601)
-		''' <li>{@code +hh:mm:ss} or {@code -hh:mm:ss} - if the seconds are non-zero (not ISO-8601)
-		''' </ul>
-		''' </summary>
-		''' <returns> the zone offset ID, not null </returns>
-		Public Property Overrides id As String
-			Get
-				Return id
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the normalized zone offset ID.
+        ''' <p>
+        ''' The ID is minor variation to the standard ISO-8601 formatted string
+        ''' for the offset. There are three formats:
+        ''' <ul>
+        ''' <li>{@code Z} - for UTC (ISO-8601)
+        ''' <li>{@code +hh:mm} or {@code -hh:mm} - if the seconds are zero (ISO-8601)
+        ''' <li>{@code +hh:mm:ss} or {@code -hh:mm:ss} - if the seconds are non-zero (not ISO-8601)
+        ''' </ul>
+        ''' </summary>
+        ''' <returns> the zone offset ID, not null </returns>
+        Public Overrides ReadOnly Property id As String
+            Get
+                Return id
+            End Get
+        End Property
 
-		''' <summary>
-		''' Gets the associated time-zone rules.
-		''' <p>
-		''' The rules will always return this offset when queried.
-		''' The implementation class is immutable, thread-safe and serializable.
-		''' </summary>
-		''' <returns> the rules, not null </returns>
-		Public Property Overrides rules As java.time.zone.ZoneRules
+        ''' <summary>
+        ''' Gets the associated time-zone rules.
+        ''' <p>
+        ''' The rules will always return this offset when queried.
+        ''' The implementation class is immutable, thread-safe and serializable.
+        ''' </summary>
+        ''' <returns> the rules, not null </returns>
+        Public Property Overrides rules As java.time.zone.ZoneRules
 			Get
 				Return java.time.zone.ZoneRules.of(Me)
 			End Get

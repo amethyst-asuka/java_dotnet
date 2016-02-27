@@ -116,7 +116,7 @@ Namespace java.awt
 		''' <summary>
 		''' The amount by which the scrollbar value will change when going
 		''' up or down by a line.
-		''' This value should be a non negative integer.
+		''' This value should be a non negative  java.lang.[Integer].
 		''' 
 		''' @serial </summary>
 		''' <seealso cref= #getUnitIncrement </seealso>
@@ -126,7 +126,7 @@ Namespace java.awt
 		''' <summary>
 		''' The amount by which the scrollbar value will change when going
 		''' up or down by a page.
-		''' This value should be a non negative integer.
+		''' This value should be a non negative  java.lang.[Integer].
 		''' 
 		''' @serial </summary>
 		''' <seealso cref= #getBlockIncrement </seealso>
@@ -194,10 +194,10 @@ Namespace java.awt
 		Friend Overridable Sub setSpan(ByVal min As Integer, ByVal max As Integer, ByVal visible As Integer)
 			' adjust the values to be reasonable
 			minimum = min
-			maximum = Math.Max(max, minimum + 1)
-			visibleAmount = Math.Min(visible, maximum - minimum)
-			visibleAmount = Math.Max(visibleAmount, 1)
-			blockIncrement = Math.Max(CInt(Fix(visible *.90)), 1)
+			maximum = System.Math.Max(max, minimum + 1)
+			visibleAmount = System.Math.Min(visible, maximum - minimum)
+			visibleAmount = System.Math.Max(visibleAmount, 1)
+			blockIncrement = System.Math.Max(CInt(Fix(visible *.90)), 1)
 			value = value
 		End Sub
 
@@ -339,8 +339,8 @@ Namespace java.awt
 		''' <param name="v"> the new value of the scrollbar </param>
 		''' <param name="type"> the type of the scrolling operation occurred </param>
 		Private Sub setTypedValue(ByVal v As Integer, ByVal type As Integer)
-			v = Math.Max(v, minimum)
-			v = Math.Min(v, maximum - visibleAmount)
+			v = System.Math.Max(v, minimum)
+			v = System.Math.Min(v, maximum - visibleAmount)
 
 			If v <> value Then
 				value = v

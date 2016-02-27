@@ -122,7 +122,7 @@ Namespace java.nio.file.attribute
 		''' Returns the value at the given unit of granularity.
 		''' 
 		''' <p> Conversion from a coarser granularity that would numerically overflow
-		''' saturate to {@code Long.MIN_VALUE} if negative or {@code Long.MAX_VALUE}
+		''' saturate to {@code java.lang.[Long].MIN_VALUE} if negative or {@code java.lang.[Long].MAX_VALUE}
 		''' if positive.
 		''' </summary>
 		''' <param name="unit">
@@ -136,11 +136,11 @@ Namespace java.nio.file.attribute
 				Return unit.convert(Me.value, Me.unit)
 			Else
 				Dim secs As Long = unit.convert(instant.epochSecond, java.util.concurrent.TimeUnit.SECONDS)
-				If secs = Long.MinValue OrElse secs = Long.MaxValue Then Return secs
+				If secs = java.lang.[Long].MIN_VALUE OrElse secs = java.lang.[Long].Max_Value Then Return secs
 				Dim nanos As Long = unit.convert(instant.nano, java.util.concurrent.TimeUnit.NANOSECONDS)
 				Dim r As Long = secs + nanos
-				' Math.addExact() variant
-				If ((secs Xor r) And (nanos Xor r)) < 0 Then Return If(secs < 0, Long.MinValue, Long.MaxValue)
+				' System.Math.addExact() variant
+				If ((secs Xor r) And (nanos Xor r)) < 0 Then Return If(secs < 0, java.lang.[Long].MIN_VALUE, java.lang.[Long].Max_Value)
 				Return r
 			End If
 		End Function
@@ -149,7 +149,7 @@ Namespace java.nio.file.attribute
 		''' Returns the value in milliseconds.
 		''' 
 		''' <p> Conversion from a coarser granularity that would numerically overflow
-		''' saturate to {@code Long.MIN_VALUE} if negative or {@code Long.MAX_VALUE}
+		''' saturate to {@code java.lang.[Long].MIN_VALUE} if negative or {@code java.lang.[Long].MAX_VALUE}
 		''' if positive.
 		''' </summary>
 		''' <returns>  the value in milliseconds, since the epoch (1970-01-01T00:00:00Z) </returns>
@@ -159,11 +159,11 @@ Namespace java.nio.file.attribute
 			Else
 				Dim secs As Long = instant.epochSecond
 				Dim nanos As Integer = instant.nano
-				' Math.multiplyExact() variant
+				' System.Math.multiplyExact() variant
 				Dim r As Long = secs * 1000
-				Dim ax As Long = Math.Abs(secs)
+				Dim ax As Long = System.Math.Abs(secs)
 				If (CInt(CUInt((ax Or 1000)) >> 31 <> 0)) Then
-					If (r \ 1000) <> secs Then Return If(secs < 0, Long.MinValue, Long.MaxValue)
+					If (r \ 1000) <> secs Then Return If(secs < 0, java.lang.[Long].MIN_VALUE, java.lang.[Long].Max_Value)
 				End If
 				Return r + nanos \ 1000000
 			End If
@@ -191,8 +191,8 @@ Namespace java.nio.file.attribute
 	'     * Scale d by m, checking for overflow.
 	'     
 		Private Shared Function scale(ByVal d As Long, ByVal m As Long, ByVal over As Long) As Long
-			If d > over Then Return Long.MaxValue
-			If d < -over Then Return Long.MinValue
+			If d > over Then Return java.lang.[Long].Max_Value
+			If d < -over Then Return java.lang.[Long].MIN_VALUE
 			Return d * m
 		End Function
 
@@ -217,22 +217,22 @@ Namespace java.nio.file.attribute
 				Dim nanos As Integer = 0
 				Select Case unit
 					Case java.util.concurrent.TimeUnit.DAYS
-						secs = scale(value, SECONDS_PER_DAY, Long.MaxValue/SECONDS_PER_DAY)
+						secs = scale(value, SECONDS_PER_DAY, java.lang.[Long].Max_Value/SECONDS_PER_DAY)
 					Case java.util.concurrent.TimeUnit.HOURS
-						secs = scale(value, SECONDS_PER_HOUR, Long.MaxValue/SECONDS_PER_HOUR)
+						secs = scale(value, SECONDS_PER_HOUR, java.lang.[Long].Max_Value/SECONDS_PER_HOUR)
 					Case java.util.concurrent.TimeUnit.MINUTES
-						secs = scale(value, SECONDS_PER_MINUTE, Long.MaxValue/SECONDS_PER_MINUTE)
+						secs = scale(value, SECONDS_PER_MINUTE, java.lang.[Long].Max_Value/SECONDS_PER_MINUTE)
 					Case java.util.concurrent.TimeUnit.SECONDS
 						secs = value
 					Case java.util.concurrent.TimeUnit.MILLISECONDS
-						secs = Math.floorDiv(value, MILLIS_PER_SECOND)
-						nanos = CInt(Math.floorMod(value, MILLIS_PER_SECOND)) * NANOS_PER_MILLI
+						secs = System.Math.floorDiv(value, MILLIS_PER_SECOND)
+						nanos = CInt (System.Math.floorMod(value, MILLIS_PER_SECOND)) * NANOS_PER_MILLI
 					Case java.util.concurrent.TimeUnit.MICROSECONDS
-						secs = Math.floorDiv(value, MICROS_PER_SECOND)
-						nanos = CInt(Math.floorMod(value, MICROS_PER_SECOND)) * NANOS_PER_MICRO
+						secs = System.Math.floorDiv(value, MICROS_PER_SECOND)
+						nanos = CInt (System.Math.floorMod(value, MICROS_PER_SECOND)) * NANOS_PER_MICRO
 					Case java.util.concurrent.TimeUnit.NANOSECONDS
-						secs = Math.floorDiv(value, NANOS_PER_SECOND)
-						nanos = CInt(Math.floorMod(value, NANOS_PER_SECOND))
+						secs = System.Math.floorDiv(value, NANOS_PER_SECOND)
+						nanos = CInt (System.Math.floorMod(value, NANOS_PER_SECOND))
 					Case Else
 						Throw New AssertionError("Unit not handled")
 				End Select
@@ -304,14 +304,14 @@ Namespace java.nio.file.attribute
 		Public Overrides Function compareTo(ByVal other As FileTime) As Integer Implements Comparable(Of FileTime).compareTo
 			' same granularity
 			If unit IsNot Nothing AndAlso unit = other.unit Then
-				Return Long.Compare(value, other.value)
+				Return java.lang.[Long].Compare(value, other.value)
 			Else
 				' compare using instant representation when unit differs
 				Dim secs As Long = toInstant().epochSecond
 				Dim secsOther As Long = other.toInstant().epochSecond
-				Dim cmp As Integer = Long.Compare(secs, secsOther)
+				Dim cmp As Integer = java.lang.[Long].Compare(secs, secsOther)
 				If cmp <> 0 Then Return cmp
-				cmp = Long.Compare(toInstant().nano, other.toInstant().nano)
+				cmp = java.lang.[Long].Compare(toInstant().nano, other.toInstant().nano)
 				If cmp <> 0 Then Return cmp
 				If secs <> MAX_SECOND AndAlso secs <> MIN_SECOND Then Return 0
 				' if both this and other's Instant reps are MIN/MAX,
@@ -319,8 +319,8 @@ Namespace java.nio.file.attribute
 				' saturate during calculation.
 				Dim days As Long = toDays()
 				Dim daysOther As Long = other.toDays()
-				If days = daysOther Then Return Long.Compare(toExcessNanos(days), other.toExcessNanos(daysOther))
-				Return Long.Compare(days, daysOther)
+				If days = daysOther Then Return java.lang.[Long].Compare(toExcessNanos(days), other.toExcessNanos(daysOther))
+				Return java.lang.[Long].Compare(days, daysOther)
 			End If
 		End Function
 
@@ -380,8 +380,8 @@ Namespace java.nio.file.attribute
 				If secs >= -SECONDS_0000_TO_1970 Then
 					' current era
 					Dim zeroSecs As Long = secs - SECONDS_PER_10000_YEARS + SECONDS_0000_TO_1970
-					Dim hi As Long = Math.floorDiv(zeroSecs, SECONDS_PER_10000_YEARS) + 1
-					Dim lo As Long = Math.floorMod(zeroSecs, SECONDS_PER_10000_YEARS)
+					Dim hi As Long = System.Math.floorDiv(zeroSecs, SECONDS_PER_10000_YEARS) + 1
+					Dim lo As Long = System.Math.floorMod(zeroSecs, SECONDS_PER_10000_YEARS)
 					ldt = java.time.LocalDateTime.ofEpochSecond(lo - SECONDS_0000_TO_1970, nanos, java.time.ZoneOffset.UTC)
 					year = ldt.year + CInt(hi) * 10000
 				Else
@@ -396,9 +396,9 @@ Namespace java.nio.file.attribute
 				Dim fraction As Integer = ldt.nano
 				Dim sb As New StringBuilder(64)
 				sb.append(If(year < 0, "-", ""))
-				year = Math.Abs(year)
+				year = System.Math.Abs(year)
 				If year < 10000 Then
-					append(sb, 1000, Math.Abs(year))
+					append(sb, 1000, System.Math.Abs(year))
 				Else
 					sb.append(Convert.ToString(year))
 				End If

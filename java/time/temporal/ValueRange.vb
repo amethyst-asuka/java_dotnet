@@ -259,7 +259,7 @@ Namespace java.time.temporal
 		''' <returns> true if a valid value always fits in an {@code int} </returns>
 		Public Property intValue As Boolean
 			Get
-				Return minimum >= Integer.MinValue AndAlso maximum <= Integer.MaxValue
+				Return minimum >=  java.lang.[Integer].MIN_VALUE AndAlso maximum <=  java.lang.[Integer].Max_Value
 			End Get
 		End Property
 

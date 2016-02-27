@@ -138,7 +138,7 @@ Namespace java.awt.image
 		''' <returns> the scale factors of this <code>RescaleOp</code>. </returns>
 		Public Function getScaleFactors(ByVal scaleFactors As Single()) As Single()
 			If scaleFactors Is Nothing Then Return CType(Me.scaleFactors.clone(), Single())
-			Array.Copy(Me.scaleFactors, 0, scaleFactors, 0, Math.Min(Me.scaleFactors.Length, scaleFactors.Length))
+			Array.Copy(Me.scaleFactors, 0, scaleFactors, 0, System.Math.Min(Me.scaleFactors.Length, scaleFactors.Length))
 			Return scaleFactors
 		End Function
 
@@ -152,7 +152,7 @@ Namespace java.awt.image
 		Public Function getOffsets(ByVal offsets As Single()) As Single()
 			If offsets Is Nothing Then Return CType(Me.offsets.clone(), Single())
 
-			Array.Copy(Me.offsets, 0, offsets, 0, Math.Min(Me.offsets.Length, offsets.Length))
+			Array.Copy(Me.offsets, 0, offsets, 0, System.Math.Min(Me.offsets.Length, offsets.Length))
 			Return offsets
 		End Function
 
@@ -173,7 +173,7 @@ Namespace java.awt.image
 		''' The table may have either a SHORT or BYTE input. </summary>
 		''' <param name="nElems">    Number of elements the table is to have.
 		'''                  This will generally be 256 for byte and
-		'''                  65536 for short. </param>
+		'''                  65536 for  java.lang.[Short]. </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 		private ByteLookupTable createByteLut(float scale() , float off(), int nBands, int nElems)
 
@@ -204,7 +204,7 @@ Namespace java.awt.image
 		''' The table may have either a SHORT or BYTE input. </summary>
 		''' <param name="nElems">    Number of elements the table is to have.
 		'''                  This will generally be 256 for byte and
-		'''                  65536 for short. </param>
+		'''                  65536 for  java.lang.[Short]. </param>
 		private ShortLookupTable createShortLut(Single scale() , Single off(), Integer nBands, Integer nElems)
 
 			Dim lutData As Short()() = RectangularArrays.ReturnRectangularShortArray(scale.length, nElems)

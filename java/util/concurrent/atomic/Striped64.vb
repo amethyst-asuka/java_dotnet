@@ -360,7 +360,7 @@ Namespace java.util.concurrent.atomic
 					ElseIf Not wasUncontended Then ' CAS already known to fail
 						wasUncontended = True ' Continue after rehash
 					Else
-						v = a.value, (If(fn Is Nothing, Double.doubleToRawLongBits(Double.longBitsToDouble(v) + x), Double.doubleToRawLongBits(fn.applyAsDouble(Double.longBitsToDouble(v), x))))
+						v = a.value, (If(fn Is Nothing, java.lang.[Double].doubleToRawLongBits(Double.longBitsToDouble(v) + x), java.lang.[Double].doubleToRawLongBits(fn.applyAsDouble(Double.longBitsToDouble(v), x))))
 						If a.casv Then
 							Exit Do
 						ElseIf n >= NCPU OrElse cells <> [as] Then
@@ -398,7 +398,7 @@ Namespace java.util.concurrent.atomic
 					End Try
 					If init Then Exit Do
 				Else
-					v = base, (If(fn Is Nothing, Double.doubleToRawLongBits(Double.longBitsToDouble(v) + x), Double.doubleToRawLongBits(fn.applyAsDouble(Double.longBitsToDouble(v), x))))
+					v = base, (If(fn Is Nothing, java.lang.[Double].doubleToRawLongBits(Double.longBitsToDouble(v) + x), java.lang.[Double].doubleToRawLongBits(fn.applyAsDouble(Double.longBitsToDouble(v), x))))
 					If casBasev Then Exit Do ' Fall back on using base
 					End If
 			Loop

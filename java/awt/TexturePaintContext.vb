@@ -137,7 +137,7 @@ Namespace java.awt
 		End Sub
 
 		Friend Shared Function fractAsInt(ByVal d As Double) As Integer
-			Return CInt(Fix((d Mod 1.0) * Integer.MaxValue))
+			Return CInt(Fix((d Mod 1.0) *  java.lang.[Integer].Max_Value))
 		End Function
 
 		Friend Shared Function [mod](ByVal num As Double, ByVal den As Double) As Double
@@ -171,7 +171,7 @@ Namespace java.awt
 		''' <param name="x">,y,w,h The area in device space for which colors are
 		''' generated. </param>
 		Public Overridable Function getRaster(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer) As java.awt.image.Raster Implements PaintContext.getRaster
-			If outRas Is Nothing OrElse outRas.width < w OrElse outRas.height < h Then outRas = makeRaster((If(h = 1, Math.Max(w, maxWidth), w)), h)
+			If outRas Is Nothing OrElse outRas.width < w OrElse outRas.height < h Then outRas = makeRaster((If(h = 1, System.Math.Max(w, maxWidth), w)), h)
 			Dim X_Renamed As Double = [mod](xOrg + x * incXAcross + y * incXDown, bWidth)
 			Dim Y_Renamed As Double = [mod](yOrg + x * incYAcross + y * incYDown, bHeight)
 
@@ -393,14 +393,14 @@ Namespace java.awt
 							End If
 							xerr += colincxerr
 							If xerr < 0 Then
-								xerr = xerr And Integer.MaxValue
+								xerr = xerr And  java.lang.[Integer].Max_Value
 								x += 1
 							End If
 							x += colincx
 							If x >= bWidth Then x -= bWidth
 							yerr += colincyerr
 							If yerr < 0 Then
-								yerr = yerr And Integer.MaxValue
+								yerr = yerr And  java.lang.[Integer].Max_Value
 								y += 1
 							End If
 							y += colincy
@@ -409,14 +409,14 @@ Namespace java.awt
 					End If
 					rowxerr += rowincxerr
 					If rowxerr < 0 Then
-						rowxerr = rowxerr And Integer.MaxValue
+						rowxerr = rowxerr And  java.lang.[Integer].Max_Value
 						rowx += 1
 					End If
 					rowx += rowincx
 					If rowx >= bWidth Then rowx -= bWidth
 					rowyerr += rowincyerr
 					If rowyerr < 0 Then
-						rowyerr = rowyerr And Integer.MaxValue
+						rowyerr = rowyerr And  java.lang.[Integer].Max_Value
 						rowy += 1
 					End If
 					rowy += rowincy
@@ -494,14 +494,14 @@ Namespace java.awt
 							outData(out + i) = inData(inOff + y * inSpan + x)
 							xerr += colincxerr
 							If xerr < 0 Then
-								xerr = xerr And Integer.MaxValue
+								xerr = xerr And  java.lang.[Integer].Max_Value
 								x += 1
 							End If
 							x += colincx
 							If x >= bWidth Then x -= bWidth
 							yerr += colincyerr
 							If yerr < 0 Then
-								yerr = yerr And Integer.MaxValue
+								yerr = yerr And  java.lang.[Integer].Max_Value
 								y += 1
 							End If
 							y += colincy
@@ -510,14 +510,14 @@ Namespace java.awt
 					End If
 					rowxerr += rowincxerr
 					If rowxerr < 0 Then
-						rowxerr = rowxerr And Integer.MaxValue
+						rowxerr = rowxerr And  java.lang.[Integer].Max_Value
 						rowx += 1
 					End If
 					rowx += rowincx
 					If rowx >= bWidth Then rowx -= bWidth
 					rowyerr += rowincyerr
 					If rowyerr < 0 Then
-						rowyerr = rowyerr And Integer.MaxValue
+						rowyerr = rowyerr And  java.lang.[Integer].Max_Value
 						rowy += 1
 					End If
 					rowy += rowincy
@@ -584,14 +584,14 @@ Namespace java.awt
 						outData(out + i) = TexturePaintContext.blend(rgbs, xerr, yerr)
 						xerr += colincxerr
 						If xerr < 0 Then
-							xerr = xerr And Integer.MaxValue
+							xerr = xerr And  java.lang.[Integer].Max_Value
 							x += 1
 						End If
 						x += colincx
 						If x >= bWidth Then x -= bWidth
 						yerr += colincyerr
 						If yerr < 0 Then
-							yerr = yerr And Integer.MaxValue
+							yerr = yerr And  java.lang.[Integer].Max_Value
 							y += 1
 						End If
 						y += colincy
@@ -599,14 +599,14 @@ Namespace java.awt
 					Next i
 					rowxerr += rowincxerr
 					If rowxerr < 0 Then
-						rowxerr = rowxerr And Integer.MaxValue
+						rowxerr = rowxerr And  java.lang.[Integer].Max_Value
 						rowx += 1
 					End If
 					rowx += rowincx
 					If rowx >= bWidth Then rowx -= bWidth
 					rowyerr += rowincyerr
 					If rowyerr < 0 Then
-						rowyerr = rowyerr And Integer.MaxValue
+						rowyerr = rowyerr And  java.lang.[Integer].Max_Value
 						rowy += 1
 					End If
 					rowy += rowincy
@@ -661,14 +661,14 @@ Namespace java.awt
 						outRas.dataElementsnts(i, j, data)
 						xerr += colincxerr
 						If xerr < 0 Then
-							xerr = xerr And Integer.MaxValue
+							xerr = xerr And  java.lang.[Integer].Max_Value
 							x += 1
 						End If
 						x += colincx
 						If x >= bWidth Then x -= bWidth
 						yerr += colincyerr
 						If yerr < 0 Then
-							yerr = yerr And Integer.MaxValue
+							yerr = yerr And  java.lang.[Integer].Max_Value
 							y += 1
 						End If
 						y += colincy
@@ -676,14 +676,14 @@ Namespace java.awt
 					Next i
 					rowxerr += rowincxerr
 					If rowxerr < 0 Then
-						rowxerr = rowxerr And Integer.MaxValue
+						rowxerr = rowxerr And  java.lang.[Integer].Max_Value
 						rowx += 1
 					End If
 					rowx += rowincx
 					If rowx >= bWidth Then rowx -= bWidth
 					rowyerr += rowincyerr
 					If rowyerr < 0 Then
-						rowyerr = rowyerr And Integer.MaxValue
+						rowyerr = rowyerr And  java.lang.[Integer].Max_Value
 						rowy += 1
 					End If
 					rowy += rowincy

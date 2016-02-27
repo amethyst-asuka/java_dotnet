@@ -175,7 +175,7 @@ Namespace java.util
             '         * computation below must be changed if MIN_MERGE is decreased.  See
             '         * the MIN_MERGE declaration above for more information.
             '         * The maximum value of 49 allows for an array up to length
-            '         *  [Integer].MAX_VALUE-4, if array is filled by the worst case stack size
+            '         *  java.lang.[Integer].MAX_VALUE-4, if array is filled by the worst case stack size
             '         * increasing scenario. More explanations are given in section 4 of:
             '         * http://envisage-project.eu/wp-content/uploads/2015/02/sorting.pdf
             '         
@@ -928,7 +928,7 @@ outer:
                 If newSize < 0 Then ' Not bloody likely!
                     newSize = minCapacity
                 Else
-                    newSize = math.Min(newSize, CInt(CUInt(a.Length) >> 1))
+                    newSize = System.Math.Min(newSize, CInt(CUInt(a.Length) >> 1))
                 End If
 
                 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:

@@ -439,7 +439,7 @@ Namespace java.util.zip
 		''' Returns the total number of uncompressed bytes input so far.
 		''' 
 		''' <p>Since the number of bytes may be greater than
-		'''  [Integer].MAX_VALUE, the <seealso cref="#getBytesRead()"/> method is now
+		'''  java.lang.[Integer].MAX_VALUE, the <seealso cref="#getBytesRead()"/> method is now
 		''' the preferred means of obtaining this information.</p>
 		''' </summary>
 		''' <returns> the total number of uncompressed bytes input so far </returns>
@@ -467,7 +467,7 @@ Namespace java.util.zip
 		''' Returns the total number of compressed bytes output so far.
 		''' 
 		''' <p>Since the number of bytes may be greater than
-		'''  [Integer].MAX_VALUE, the <seealso cref="#getBytesWritten()"/> method is now
+		'''  java.lang.[Integer].MAX_VALUE, the <seealso cref="#getBytesWritten()"/> method is now
 		''' the preferred means of obtaining this information.</p>
 		''' </summary>
 		''' <returns> the total number of compressed bytes output so far </returns>

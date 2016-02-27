@@ -46,8 +46,8 @@ Namespace java.awt.geom
 			Me.y = rr.y
 			Me.w = rr.width
 			Me.h = rr.height
-			Me.aw = Math.Min(w, Math.Abs(rr.arcWidth))
-			Me.ah = Math.Min(h, Math.Abs(rr.arcHeight))
+			Me.aw = System.Math.Min(w, System.Math.Abs(rr.arcWidth))
+			Me.ah = System.Math.Min(h, System.Math.Abs(rr.arcHeight))
 			Me.affine = at
 			If aw < 0 OrElse ah < 0 Then index = ctrlpts.Length
 		End Sub
@@ -81,10 +81,10 @@ Namespace java.awt.geom
 			index += 1
 		End Sub
 
-		Private Shared ReadOnly angle As Double = Math.PI / 4.0
-		Private Shared ReadOnly a As Double = 1.0 - Math.cos(angle)
-		Private Shared ReadOnly b As Double = Math.tan(angle)
-		Private Shared ReadOnly c As Double = Math.sqrt(1.0 + b * b) - 1 + a
+		Private Shared ReadOnly angle As Double = System.Math.PI / 4.0
+		Private Shared ReadOnly a As Double = 1.0 - System.Math.cos(angle)
+		Private Shared ReadOnly b As Double = System.Math.tan(angle)
+		Private Shared ReadOnly c As Double = System.Math.sqrt(1.0 + b * b) - 1 + a
 		Private Shared ReadOnly cv As Double = 4.0 / 3.0 * a * b / c
 		Private Shared ReadOnly acv As Double = (1.0 - cv) / 2.0
 

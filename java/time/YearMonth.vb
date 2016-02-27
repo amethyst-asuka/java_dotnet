@@ -743,13 +743,13 @@ Namespace java.time
 					Case YEARS
 						Return plusYears(amountToAdd)
 					Case DECADES
-						Return plusYears(Math.multiplyExact(amountToAdd, 10))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 10))
 					Case CENTURIES
-						Return plusYears(Math.multiplyExact(amountToAdd, 100))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 100))
 					Case MILLENNIA
-						Return plusYears(Math.multiplyExact(amountToAdd, 1000))
+						Return plusYears (System.Math.multiplyExact(amountToAdd, 1000))
 					Case ERAS
-						Return [with](ERA, Math.addExact(getLong(ERA), amountToAdd))
+						Return [with](ERA, System.Math.addExact(getLong(ERA), amountToAdd))
 				End Select
 				Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & unit)
 			End If
@@ -782,8 +782,8 @@ Namespace java.time
 			If monthsToAdd = 0 Then Return Me
 			Dim monthCount As Long = year_Renamed * 12L + (month - 1)
 			Dim calcMonths As Long = monthCount + monthsToAdd ' safe overflow
-			Dim newYear As Integer = YEAR.checkValidIntValue(Math.floorDiv(calcMonths, 12))
-			Dim newMonth As Integer = CInt(Math.floorMod(calcMonths, 12)) + 1
+			Dim newYear As Integer = YEAR.checkValidIntValue (System.Math.floorDiv(calcMonths, 12))
+			Dim newMonth As Integer = CInt (System.Math.floorMod(calcMonths, 12)) + 1
 			Return [with](newYear, newMonth)
 		End Function
 
@@ -830,7 +830,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As YearMonth
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		''' <summary>
@@ -842,7 +842,7 @@ Namespace java.time
 		''' <returns> a {@code YearMonth} based on this year-month with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
 		Public Function minusYears(ByVal yearsToSubtract As Long) As YearMonth
-			Return (If(yearsToSubtract = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-yearsToSubtract)))
+			Return (If(yearsToSubtract = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-yearsToSubtract)))
 		End Function
 
 		''' <summary>
@@ -854,7 +854,7 @@ Namespace java.time
 		''' <returns> a {@code YearMonth} based on this year-month with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported range </exception>
 		Public Function minusMonths(ByVal monthsToSubtract As Long) As YearMonth
-			Return (If(monthsToSubtract = Long.MinValue, plusMonths(Long.MaxValue).plusMonths(1), plusMonths(-monthsToSubtract)))
+			Return (If(monthsToSubtract = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-monthsToSubtract)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1101,7 +1101,7 @@ Namespace java.time
 		''' </summary>
 		''' <returns> a string representation of this year-month, not null </returns>
 		Public Overrides Function ToString() As String
-			Dim absYear As Integer = Math.Abs(year_Renamed)
+			Dim absYear As Integer = System.Math.Abs(year_Renamed)
 			Dim buf As New StringBuilder(9)
 			If absYear < 1000 Then
 				If year_Renamed < 0 Then

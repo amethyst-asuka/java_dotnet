@@ -217,7 +217,7 @@ Namespace java.net
 		''' <summary>
 		''' Returns the data buffer. The data received or the data to be sent
 		''' starts from the {@code offset} in the buffer,
-		''' and runs for {@code length} long.
+		''' and runs for {@code length} java.lang.[Long].
 		''' </summary>
 		''' <returns>  the buffer used to receive or  send data </returns>
 		''' <seealso cref= #setData(byte[], int, int) </seealso>

@@ -1043,7 +1043,7 @@ Namespace java.util
 		''' in the same year. cacheYear is set to startYear - 1 if
 		''' cacheStart and cacheEnd are in different years. cacheStart is 0
 		''' if the cache values are void. cacheYear is a long to support
-		''' Integer.MIN_VALUE - 1 (JCK requirement).
+		'''  java.lang.[Integer].MIN_VALUE - 1 (JCK requirement).
 		''' </summary>
 		<NonSerialized> _
 		Private cacheYear As Long

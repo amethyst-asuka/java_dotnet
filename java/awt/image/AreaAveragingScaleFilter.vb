@@ -105,7 +105,7 @@ Namespace java.awt.image
 			Dim outpix As Integer() = CType(outpixbuf, Integer())
 			For x As Integer = 0 To destWidth - 1
 				Dim mult As Single = origmult
-				Dim a As Integer = Math.Round(alphas(x) / mult)
+				Dim a As Integer = System.Math.Round(alphas(x) / mult)
 				If a <= 0 Then
 					a = 0
 				ElseIf a >= 255 Then
@@ -116,9 +116,9 @@ Namespace java.awt.image
 					' alpha in the same step)
 					mult = alphas(x) / 255
 				End If
-				Dim r As Integer = Math.Round(reds(x) / mult)
-				Dim g As Integer = Math.Round(greens(x) / mult)
-				Dim b As Integer = Math.Round(blues(x) / mult)
+				Dim r As Integer = System.Math.Round(reds(x) / mult)
+				Dim g As Integer = System.Math.Round(greens(x) / mult)
+				Dim b As Integer = System.Math.Round(blues(x) / mult)
 				If r < 0 Then
 					r = 0
 				ElseIf r > 255 Then

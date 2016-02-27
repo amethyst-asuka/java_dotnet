@@ -381,7 +381,7 @@ Namespace java.awt.font
 				Dim cont As Boolean=True
 				Do While cont
 					Dim gaLimit As Integer = compStart + fComponents(lim).numCharacters
-					If cdWsStart > Math.Max(compStart, startPos) AndAlso cdWsStart < Math.Min(gaLimit, limitPos) Then Split = True
+					If cdWsStart > System.Math.Max(compStart, startPos) AndAlso cdWsStart < System.Math.Min(gaLimit, limitPos) Then Split = True
 					If gaLimit >= limitPos Then
 						cont=False
 					Else
@@ -411,8 +411,8 @@ Namespace java.awt.font
 				Dim compLength As Integer = fComponents(tlcIndex).numCharacters
 				Dim tlcLimit As Integer = tlcStart + compLength
 
-				Dim start As Integer = Math.Max(linePos, tlcStart)
-				Dim limit As Integer = Math.Min(breakPt, tlcLimit)
+				Dim start As Integer = System.Math.Max(linePos, tlcStart)
+				Dim limit As Integer = System.Math.Min(breakPt, tlcLimit)
 
 				components(newCompIndex) = fComponents(tlcIndex).getSubset(start-tlcStart, limit-tlcStart, subsetFlag)
 				newCompIndex += 1
@@ -460,8 +460,8 @@ Namespace java.awt.font
 
 			' If we've already gone past the layout window, format to end of paragraph
 			If layoutCount > 0 AndAlso (Not haveLayoutWindow) Then
-				Dim avgLineLength As Single = Math.Max(layoutCharCount \ layoutCount, 1)
-				compLimit = Math.Min(localStart + CInt(Fix(avgLineLength*EST_LINES)), fChars.Length)
+				Dim avgLineLength As Single = System.Math.Max(layoutCharCount \ layoutCount, 1)
+				compLimit = System.Math.Min(localStart + CInt(Fix(avgLineLength*EST_LINES)), fChars.Length)
 			End If
 
 			If localStart > 0 OrElse compLimit < fChars.Length Then

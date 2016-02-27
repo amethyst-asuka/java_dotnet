@@ -87,7 +87,7 @@ Namespace java.awt.geom
 	''' are used to directly generate the values for the matrix modifications
 	''' during these radian-based rotation operations then the resulting
 	''' transform is never strictly classifiable as a quadrant rotation
-	''' even for a simple case like <code>rotate(Math.PI/2.0)</code>,
+	''' even for a simple case like <code>rotate (System.Math.PI/2.0)</code>,
 	''' due to minor variations in the matrix caused by the non-0.0 values
 	''' obtained for the sine and cosine.
 	''' If these transforms are not classified as quadrant rotations then
@@ -667,7 +667,7 @@ Namespace java.awt.geom
 		''' an identity transform is returned.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     AffineTransform.getRotateInstance(Math.atan2(vecy, vecx));
+		'''     AffineTransform.getRotateInstance (System.Math.atan2(vecy, vecx));
 		''' </pre>
 		''' </summary>
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
@@ -693,7 +693,7 @@ Namespace java.awt.geom
 		''' an identity transform is returned.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     AffineTransform.getRotateInstance(Math.atan2(vecy, vecx),
+		'''     AffineTransform.getRotateInstance (System.Math.atan2(vecy, vecx),
 		'''                                       anchorx, anchory);
 		''' </pre>
 		''' </summary>
@@ -716,7 +716,7 @@ Namespace java.awt.geom
 		''' number of quadrants.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     AffineTransform.getRotateInstance(numquadrants * Math.PI / 2.0);
+		'''     AffineTransform.getRotateInstance(numquadrants * System.Math.PI / 2.0);
 		''' </pre>
 		''' Rotating by a positive number of quadrants rotates points on
 		''' the positive X axis toward the positive Y axis. </summary>
@@ -735,7 +735,7 @@ Namespace java.awt.geom
 		''' number of quadrants around the specified anchor point.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     AffineTransform.getRotateInstance(numquadrants * Math.PI / 2.0,
+		'''     AffineTransform.getRotateInstance(numquadrants * System.Math.PI / 2.0,
 		'''                                       anchorx, anchory);
 		''' </pre>
 		''' Rotating by a positive number of quadrants rotates points on
@@ -1341,13 +1341,13 @@ Namespace java.awt.geom
 		''' <param name="theta"> the angle of rotation measured in radians
 		''' @since 1.2 </param>
 		Public Overridable Sub rotate(ByVal theta As Double)
-			Dim sin As Double = Math.Sin(theta)
+			Dim sin As Double = System.Math.Sin(theta)
 			If sin = 1.0 Then
 				rotate90()
 			ElseIf sin = -1.0 Then
 				rotate270()
 			Else
-				Dim cos As Double = Math.Cos(theta)
+				Dim cos As Double = System.Math.Cos(theta)
 				If cos = -1.0 Then
 					rotate180()
 				ElseIf cos <> 1.0 Then
@@ -1408,7 +1408,7 @@ Namespace java.awt.geom
 		''' no additional rotation is added to this transform.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''          rotate(Math.atan2(vecy, vecx));
+		'''          rotate (System.Math.atan2(vecy, vecx));
 		''' </pre>
 		''' </summary>
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
@@ -1426,7 +1426,7 @@ Namespace java.awt.geom
 					rotate270()
 				End If
 			Else
-				Dim len As Double = Math.Sqrt(vecx * vecx + vecy * vecy)
+				Dim len As Double = System.Math.Sqrt(vecx * vecx + vecy * vecy)
 				Dim sin As Double = vecy / len
 				Dim cos As Double = vecx / len
 				Dim M0, M1 As Double
@@ -1455,7 +1455,7 @@ Namespace java.awt.geom
 		''' the transform is not modified in any way.
 		''' This method is equivalent to calling:
 		''' <pre>
-		'''     rotate(Math.atan2(vecy, vecx), anchorx, anchory);
+		'''     rotate (System.Math.atan2(vecy, vecx), anchorx, anchory);
 		''' </pre>
 		''' </summary>
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
@@ -1475,7 +1475,7 @@ Namespace java.awt.geom
 		''' coordinates by the specified number of quadrants.
 		''' This is equivalent to calling:
 		''' <pre>
-		'''     rotate(numquadrants * Math.PI / 2.0);
+		'''     rotate(numquadrants * System.Math.PI / 2.0);
 		''' </pre>
 		''' Rotating by a positive number of quadrants rotates points on
 		''' the positive X axis toward the positive Y axis. </summary>
@@ -1499,7 +1499,7 @@ Namespace java.awt.geom
 		''' the specified anchor point.
 		''' This method is equivalent to calling:
 		''' <pre>
-		'''     rotate(numquadrants * Math.PI / 2.0, anchorx, anchory);
+		'''     rotate(numquadrants * System.Math.PI / 2.0, anchorx, anchory);
 		''' </pre>
 		''' Rotating by a positive number of quadrants rotates points on
 		''' the positive X axis toward the positive Y axis.
@@ -1713,14 +1713,14 @@ Namespace java.awt.geom
 		''' @since 1.2 </param>
 		Public Overridable Property toRotation As Double
 			Set(ByVal theta As Double)
-				Dim sin As Double = Math.Sin(theta)
+				Dim sin As Double = System.Math.Sin(theta)
 				Dim cos As Double
 				If sin = 1.0 OrElse sin = -1.0 Then
 					cos = 0.0
 					state = APPLY_SHEAR
 					type = TYPE_QUADRANT_ROTATION
 				Else
-					cos = Math.Cos(theta)
+					cos = System.Math.Cos(theta)
 					If cos = -1.0 Then
 						sin = 0.0
 						state = APPLY_SCALE
@@ -1796,7 +1796,7 @@ Namespace java.awt.geom
 		''' the transform is set to an identity transform.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     setToRotation(Math.atan2(vecy, vecx));
+		'''     setToRotation (System.Math.atan2(vecy, vecx));
 		''' </pre>
 		''' </summary>
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
@@ -1821,7 +1821,7 @@ Namespace java.awt.geom
 				state = APPLY_SHEAR
 				type = TYPE_QUADRANT_ROTATION
 			Else
-				Dim len As Double = Math.Sqrt(vecx * vecx + vecy * vecy)
+				Dim len As Double = System.Math.Sqrt(vecx * vecx + vecy * vecy)
 				cos = vecx / len
 				sin = vecy / len
 				state = APPLY_SHEAR Or APPLY_SCALE
@@ -1848,7 +1848,7 @@ Namespace java.awt.geom
 		''' the transform is set to an identity transform.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     setToTranslation(Math.atan2(vecy, vecx), anchorx, anchory);
+		'''     setToTranslation (System.Math.atan2(vecy, vecx), anchorx, anchory);
 		''' </pre>
 		''' </summary>
 		''' <param name="vecx"> the X coordinate of the rotation vector </param>
@@ -1873,7 +1873,7 @@ Namespace java.awt.geom
 		''' coordinates by the specified number of quadrants.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     setToRotation(numquadrants * Math.PI / 2.0);
+		'''     setToRotation(numquadrants * System.Math.PI / 2.0);
 		''' </pre>
 		''' Rotating by a positive number of quadrants rotates points on
 		''' the positive X axis toward the positive Y axis. </summary>
@@ -1928,7 +1928,7 @@ Namespace java.awt.geom
 		''' around the specified anchor point.
 		''' This operation is equivalent to calling:
 		''' <pre>
-		'''     setToRotation(numquadrants * Math.PI / 2.0, anchorx, anchory);
+		'''     setToRotation(numquadrants * System.Math.PI / 2.0, anchorx, anchory);
 		''' </pre>
 		''' Rotating by a positive number of quadrants rotates points on
 		''' the positive X axis toward the positive Y axis.
@@ -2514,11 +2514,11 @@ Namespace java.awt.geom
 				Return Nothing
 			Case (APPLY_SHEAR Or APPLY_SCALE Or APPLY_TRANSLATE)
 				det = m00 * m11 - m01 * m10
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				Return New AffineTransform(m11 / det, -m10 / det, -m01 / det, m00 / det, (m01 * m12 - m11 * m02) / det, (m10 * m02 - m00 * m12) / det, (APPLY_SHEAR Or APPLY_SCALE Or APPLY_TRANSLATE))
 			Case (APPLY_SHEAR Or APPLY_SCALE)
 				det = m00 * m11 - m01 * m10
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				Return New AffineTransform(m11 / det, -m10 / det, -m01 / det, m00 / det, 0.0, 0.0, (APPLY_SHEAR Or APPLY_SCALE))
 			Case (APPLY_SHEAR Or APPLY_TRANSLATE)
 				If m01 = 0.0 OrElse m10 = 0.0 Then Throw New NoninvertibleTransformException("Determinant is 0")
@@ -2576,7 +2576,7 @@ Namespace java.awt.geom
 				M11_Renamed = m11
 				M12_Renamed = m12
 				det = M00_Renamed * M11_Renamed - M01_Renamed * M10_Renamed
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				m00 = M11_Renamed / det
 				m10 = -M10_Renamed / det
 				m01 = -M01_Renamed / det
@@ -2589,7 +2589,7 @@ Namespace java.awt.geom
 				M10_Renamed = m10
 				M11_Renamed = m11
 				det = M00_Renamed * M11_Renamed - M01_Renamed * M10_Renamed
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				m00 = M11_Renamed / det
 				m10 = -M10_Renamed / det
 				m01 = -M01_Renamed / det
@@ -3470,7 +3470,7 @@ Namespace java.awt.geom
 'JAVA TO VB CONVERTER TODO TASK: VB does not allow fall-through from a non-empty 'case':
 			Case (APPLY_SHEAR Or APPLY_SCALE)
 				Dim det As Double = m00 * m11 - m01 * m10
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				ptDst.locationion((x * m11 - y * m01) / det, (y * m00 - x * m10) / det)
 				Return ptDst
 			Case (APPLY_SHEAR Or APPLY_TRANSLATE)
@@ -3554,7 +3554,7 @@ Namespace java.awt.geom
 				M11_Renamed = m11
 				M12_Renamed = m12
 				det = M00_Renamed * M11_Renamed - M01_Renamed * M10_Renamed
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				numPts -= 1
 				Do While numPts >= 0
 					Dim x As Double = srcPts(srcOff) - M02_Renamed
@@ -3574,7 +3574,7 @@ Namespace java.awt.geom
 				M10_Renamed = m10
 				M11_Renamed = m11
 				det = M00_Renamed * M11_Renamed - M01_Renamed * M10_Renamed
-				If Math.Abs(det) <= Double.MinValue Then Throw New NoninvertibleTransformException("Determinant is " & det)
+				If System.Math.Abs(det) <= java.lang.[Double].MIN_VALUE Then Throw New NoninvertibleTransformException("Determinant is " & det)
 				numPts -= 1
 				Do While numPts >= 0
 					Dim x As Double = srcPts(srcOff)
@@ -3853,9 +3853,9 @@ Namespace java.awt.geom
 		End Function
 
 		' Round values to sane precision for printing
-		' Note that Math.sin(Math.PI) has an error of about 10^-16
+		' Note that System.Math.sin (System.Math.PI) has an error of about 10^-16
 		Private Shared Function _matround(ByVal matval As Double) As Double
-			Return Math.rint(matval * 1E15) / 1E15
+			Return System.Math.rint(matval * 1E15) / 1E15
 		End Function
 
 		''' <summary>
@@ -3899,12 +3899,12 @@ Namespace java.awt.geom
 		''' <returns>      a hash code for this transform.
 		''' @since 1.2 </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Dim bits As Long = Double.doubleToLongBits(m00)
-			bits = bits * 31 + Double.doubleToLongBits(m01)
-			bits = bits * 31 + Double.doubleToLongBits(m02)
-			bits = bits * 31 + Double.doubleToLongBits(m10)
-			bits = bits * 31 + Double.doubleToLongBits(m11)
-			bits = bits * 31 + Double.doubleToLongBits(m12)
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(m00)
+			bits = bits * 31 + java.lang.[Double].doubleToLongBits(m01)
+			bits = bits * 31 + java.lang.[Double].doubleToLongBits(m02)
+			bits = bits * 31 + java.lang.[Double].doubleToLongBits(m10)
+			bits = bits * 31 + java.lang.[Double].doubleToLongBits(m11)
+			bits = bits * 31 + java.lang.[Double].doubleToLongBits(m12)
 			Return ((CInt(bits)) Xor (CInt(Fix(bits >> 32))))
 		End Function
 

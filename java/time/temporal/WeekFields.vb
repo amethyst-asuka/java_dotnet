@@ -681,7 +681,7 @@ Namespace java.time.temporal
 				' Clamp the week of year to keep it in the same year
 				Dim yearLen As Integer = date_Renamed.lengthOfYear()
 				Dim newYearWeek As Integer = computeWeek(offset, yearLen + weekDef.minimalDaysInFirstWeek)
-				wowby = Math.Min(wowby, newYearWeek - 1)
+				wowby = System.Math.Min(wowby, newYearWeek - 1)
 
 				Dim days As Integer = -offset + (dow - 1) + (wowby - 1) * 7
 				Return date_Renamed.plus(days, DAYS)
@@ -725,12 +725,12 @@ Namespace java.time.temporal
 			Private Function localizedDayOfWeek(ByVal temporal As TemporalAccessor) As Integer
 				Dim sow As Integer = weekDef.firstDayOfWeek.value
 				Dim isoDow As Integer = temporal.get(DAY_OF_WEEK)
-				Return Math.floorMod(isoDow - sow, 7) + 1
+				Return System.Math.floorMod(isoDow - sow, 7) + 1
 			End Function
 
 			Private Function localizedDayOfWeek(ByVal isoDow As Integer) As Integer
 				Dim sow As Integer = weekDef.firstDayOfWeek.value
-				Return Math.floorMod(isoDow - sow, 7) + 1
+				Return System.Math.floorMod(isoDow - sow, 7) + 1
 			End Function
 
 			Private Function localizedWeekOfMonth(ByVal temporal As TemporalAccessor) As Long
@@ -810,7 +810,7 @@ Namespace java.time.temporal
 			''' <returns>  an offset in days to align a day with the start of the first 'full' week </returns>
 			Private Function startOfWeekOffset(ByVal day As Integer, ByVal dow As Integer) As Integer
 				' offset of first day corresponding to the day of week in first 7 days (zero origin)
-				Dim weekStart As Integer = Math.floorMod(day - dow, 7)
+				Dim weekStart As Integer = System.Math.floorMod(day - dow, 7)
 				Dim offset As Integer = -weekStart
 				If weekStart + 1 > weekDef.minimalDaysInFirstWeek Then offset = 7 - weekStart
 				Return offset
@@ -848,14 +848,14 @@ Namespace java.time.temporal
 
 			Public Overrides Function resolve(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal partialTemporal As TemporalAccessor, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim value As Long = fieldValues(Me)
-				Dim newValue As Integer = Math.toIntExact(value) ' broad limit makes overflow checking lighter
+				Dim newValue As Integer = System.Math.toIntExact(value) ' broad limit makes overflow checking lighter
 				' first convert localized day-of-week to ISO day-of-week
 				' doing this first handles case where both ISO and localized were parsed and might mismatch
 				' day-of-week is always strict as two different day-of-week values makes lenient complex
 				If rangeUnit = WEEKS Then ' day-of-week
 					Dim checkedValue As Integer = range_Renamed.checkValidIntValue(value, Me) ' no leniency as too complex
 					Dim startDow As Integer = weekDef.firstDayOfWeek.value
-					Dim isoDow As Long = Math.floorMod((startDow - 1) + (checkedValue - 1), 7) + 1
+					Dim isoDow As Long = System.Math.floorMod((startDow - 1) + (checkedValue - 1), 7) + 1
 					fieldValues.Remove(Me)
 					fieldValues(DAY_OF_WEEK) = isoDow
 					Return Nothing
@@ -884,10 +884,10 @@ Namespace java.time.temporal
 			Private Function resolveWoM(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal chrono As java.time.chrono.Chronology, ByVal year_Renamed As Integer, ByVal month As Long, ByVal wom As Long, ByVal localDow As Integer, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim date_Renamed As java.time.chrono.ChronoLocalDate
 				If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-					date_Renamed = chrono.date(year_Renamed, 1, 1).plus(Math.subtractExact(month, 1), MONTHS)
-					Dim weeks As Long = Math.subtractExact(wom, localizedWeekOfMonth(date_Renamed))
+					date_Renamed = chrono.date(year_Renamed, 1, 1).plus (System.Math.subtractExact(month, 1), MONTHS)
+					Dim weeks As Long = System.Math.subtractExact(wom, localizedWeekOfMonth(date_Renamed))
 					Dim days As Integer = localDow - localizedDayOfWeek(date_Renamed) ' safe from overflow
-					date_Renamed = date_Renamed.plus(Math.addExact(Math.multiplyExact(weeks, 7), days), DAYS)
+					date_Renamed = date_Renamed.plus (System.Math.addExact (System.Math.multiplyExact(weeks, 7), days), DAYS)
 				Else
 					Dim monthValid As Integer = MONTH_OF_YEAR.checkValidIntValue(month) ' validate
 					date_Renamed = chrono.date(year_Renamed, monthValid, 1)
@@ -907,9 +907,9 @@ Namespace java.time.temporal
 			Private Function resolveWoY(ByVal fieldValues As IDictionary(Of TemporalField, Long?), ByVal chrono As java.time.chrono.Chronology, ByVal year_Renamed As Integer, ByVal woy As Long, ByVal localDow As Integer, ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.chrono.ChronoLocalDate
 				Dim date_Renamed As java.time.chrono.ChronoLocalDate = chrono.date(year_Renamed, 1, 1)
 				If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-					Dim weeks As Long = Math.subtractExact(woy, localizedWeekOfYear(date_Renamed))
+					Dim weeks As Long = System.Math.subtractExact(woy, localizedWeekOfYear(date_Renamed))
 					Dim days As Integer = localDow - localizedDayOfWeek(date_Renamed) ' safe from overflow
-					date_Renamed = date_Renamed.plus(Math.addExact(Math.multiplyExact(weeks, 7), days), DAYS)
+					date_Renamed = date_Renamed.plus (System.Math.addExact (System.Math.multiplyExact(weeks, 7), days), DAYS)
 				Else
 					Dim womInt As Integer = range_Renamed.checkValidIntValue(woy, Me) ' validate
 					Dim weeks As Integer = CInt(womInt - localizedWeekOfYear(date_Renamed)) ' safe from overflow
@@ -929,7 +929,7 @@ Namespace java.time.temporal
 				If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
 					date_Renamed = ofWeekBasedYear(chrono, yowby, 1, localDow)
 					Dim wowby As Long = fieldValues(weekDef.weekOfWeekBasedYear)
-					Dim weeks As Long = Math.subtractExact(wowby, 1)
+					Dim weeks As Long = System.Math.subtractExact(wowby, 1)
 					date_Renamed = date_Renamed.plus(weeks, WEEKS)
 				Else
 					Dim wowby As Integer = weekDef.weekOfWeekBasedYear.range().checkValidIntValue(fieldValues(weekDef.weekOfWeekBasedYear), weekDef.weekOfWeekBasedYear) ' validate

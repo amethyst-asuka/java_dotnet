@@ -91,7 +91,7 @@ Namespace java.awt
 	'    * A cards horizontal Layout gap (inset). It specifies
 	'    * the space between the left and right edges of a
 	'    * container and the current component.
-	'    * This should be a non negative Integer.
+	'    * This should be a non negative  java.lang.[Integer].
 	'    * @see getHgap()
 	'    * @see setHgap()
 	'    
@@ -101,7 +101,7 @@ Namespace java.awt
 	'    * A cards vertical Layout gap (inset). It specifies
 	'    * the space between the top and bottom edges of a
 	'    * container and the current component.
-	'    * This should be a non negative Integer.
+	'    * This should be a non negative  java.lang.[Integer].
 	'    * @see getVgap()
 	'    * @see setVgap()
 	'    
@@ -115,7 +115,7 @@ Namespace java.awt
 		''' @serialField vector      Vector
 		''' @serialField currentCard int
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("tab", GetType(Hashtable)), New java.io.ObjectStreamField("hgap", Integer.TYPE), New java.io.ObjectStreamField("vgap", Integer.TYPE), New java.io.ObjectStreamField("vector", GetType(ArrayList)), New java.io.ObjectStreamField("currentCard", Integer.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("tab", GetType(Hashtable)), New java.io.ObjectStreamField("hgap",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("vgap",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("vector", GetType(ArrayList)), New java.io.ObjectStreamField("currentCard",  java.lang.[Integer].TYPE) }
 
 		''' <summary>
 		''' Creates a new card layout with gaps of size zero.
@@ -286,7 +286,7 @@ Namespace java.awt
 		''' <seealso cref= #minimumLayoutSize </seealso>
 		''' <seealso cref= #preferredLayoutSize </seealso>
 		Public Overridable Function maximumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
-			Return New Dimension(Integer.MaxValue, Integer.MaxValue)
+			Return New Dimension( java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <summary>

@@ -530,7 +530,7 @@ Namespace java.time
 				Return New OffsetClock(baseClock.withZone(zone), offset)
 			End Function
 			Public Overrides Function millis() As Long
-				Return Math.addExact(baseClock.millis(), offset.toMillis())
+				Return System.Math.addExact(baseClock.millis(), offset.toMillis())
 			End Function
 			Public Overrides Function instant() As Instant
 				Return baseClock.instant().plus(offset)
@@ -577,16 +577,16 @@ Namespace java.time
 			End Function
 			Public Overrides Function millis() As Long
 				Dim millis_Renamed As Long = baseClock.millis()
-				Return millis_Renamed - Math.floorMod(millis_Renamed, tickNanos \ 1000_000L)
+				Return millis_Renamed - System.Math.floorMod(millis_Renamed, tickNanos \ 1000_000L)
 			End Function
 			Public Overrides Function instant() As Instant
 				If (tickNanos Mod 1000000) = 0 Then
 					Dim millis As Long = baseClock.millis()
-					Return Instant.ofEpochMilli(millis - Math.floorMod(millis, tickNanos \ 1000_000L))
+					Return Instant.ofEpochMilli(millis - System.Math.floorMod(millis, tickNanos \ 1000_000L))
 				End If
 				Dim instant_Renamed As Instant = baseClock.instant()
 				Dim nanos As Long = instant_Renamed.nano
-				Dim adjust As Long = Math.floorMod(nanos, tickNanos)
+				Dim adjust As Long = System.Math.floorMod(nanos, tickNanos)
 				Return instant_Renamed.minusNanos(adjust)
 			End Function
 			Public Overrides Function Equals(ByVal obj As Object) As Boolean

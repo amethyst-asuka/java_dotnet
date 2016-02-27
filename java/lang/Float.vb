@@ -102,7 +102,7 @@ Namespace java.lang
 		''' <summary>
 		''' Maximum exponent a finite {@code float} variable may have.  It
 		''' is equal to the value returned by {@code
-		''' Math.getExponent(Float.MAX_VALUE)}.
+		''' System.Math.getExponent(Float.MAX_VALUE)}.
 		''' 
 		''' @since 1.6
 		''' </summary>
@@ -111,7 +111,7 @@ Namespace java.lang
 		''' <summary>
 		''' Minimum exponent a normalized {@code float} variable may have.
 		''' It is equal to the value returned by {@code
-		''' Math.getExponent(Float.MIN_NORMAL)}.
+		''' System.Math.getExponent(Float.MIN_NORMAL)}.
 		''' 
 		''' @since 1.6
 		''' </summary>
@@ -129,7 +129,7 @@ Namespace java.lang
         ''' 
         ''' @since 1.8
         ''' </summary>
-        Public Shared ReadOnly BYTES As Integer = SIZE \ [Byte].SIZE
+        Public Shared ReadOnly BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
         ''' <summary>
         ''' The {@code Class} instance representing the primitive type
@@ -244,7 +244,7 @@ Namespace java.lang
         ''' are zero, in which case a single zero is used. Next, the
         ''' exponent is represented by {@code "p"} followed
         ''' by a decimal string of the unbiased exponent as if produced by
-        ''' a call to <seealso cref="Integer#toString(int) Integer.toString"/> on the
+        ''' a call to <seealso cref="Integer#toString(int)  java.lang.[Integer].toString"/> on the
         ''' exponent value.
         ''' 
         ''' <li>If <i>m</i> is a {@code float} value with a subnormal
@@ -283,15 +283,15 @@ Namespace java.lang
         ''' @since 1.5
         ''' @author Joseph D. Darcy </returns>
         Public Shared Function toHexString(ByVal f As Single) As String
-			If Math.Abs(f) < sun.misc.FloatConsts.MIN_NORMAL AndAlso f <> 0.0f Then ' float subnormal
+			If System.Math.Abs(f) < sun.misc.FloatConsts.MIN_NORMAL AndAlso f <> 0.0f Then ' float subnormal
                 ' Adjust exponent to create subnormal double, then
                 ' replace subnormal double exponent with subnormal float
                 ' exponent
-                Dim s As String = [Double].toHexString(Math.scalb(CDbl(f), sun.misc.DoubleConsts.MIN_EXPONENT - sun.misc.FloatConsts.MIN_EXPONENT))
+                Dim s As String = java.lang.[Double].toHexString (System.Math.scalb(CDbl(f), sun.misc.DoubleConsts.MIN_EXPONENT - sun.misc.FloatConsts.MIN_EXPONENT))
                 ' -1022+126 
                 Return s.replaceFirst("p-1022$", "p-126")
 			Else ' double string will be the same as float string
-                Return [Double].toHexString(f)
+                Return java.lang.[Double].toHexString(f)
             End If
 		End Function
 
@@ -402,7 +402,7 @@ Namespace java.lang
 		''' 
 		''' <p>To avoid calling this method on an invalid string and having
 		''' a {@code NumberFormatException} be thrown, the documentation
-		''' for <seealso cref="Double#valueOf Double.valueOf"/> lists a regular
+		''' for <seealso cref="Double#valueOf java.lang.[Double].valueOf"/> lists a regular
 		''' expression which can be used to screen the input.
 		''' </summary>
 		''' <param name="s">   the string to be parsed. </param>
@@ -480,7 +480,7 @@ Namespace java.lang
 		''' floating-point value, {@code false} otherwise.
 		''' @since 1.8 </returns>
 		 Public Shared Function isFinite(ByVal f As Single) As Boolean
-			Return Math.Abs(f) <= sun.misc.FloatConsts.MAX_VALUE
+			Return System.Math.Abs(f) <= sun.misc.FloatConsts.MAX_VALUE
 		 End Function
 
 		''' <summary>
@@ -821,7 +821,7 @@ Namespace java.lang
 		''' dependent; although all NaN bit patterns, quiet or signaling,
 		''' must be in the NaN range identified above.
 		''' </summary>
-		''' <param name="bits">   an integer. </param>
+		''' <param name="bits">   an  java.lang.[Integer]. </param>
 		''' <returns>  the {@code float} floating-point value with the same bit
 		'''          pattern. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
@@ -907,7 +907,7 @@ Namespace java.lang
 
 		''' <summary>
 		''' Returns the greater of two {@code float} values
-		''' as if by calling <seealso cref="Math#max(float, float) Math.max"/>.
+		''' as if by calling <seealso cref="Math#max(float, float) System.Math.max"/>.
 		''' </summary>
 		''' <param name="a"> the first operand </param>
 		''' <param name="b"> the second operand </param>
@@ -915,12 +915,12 @@ Namespace java.lang
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
 		Public Shared Function max(ByVal a As Single, ByVal b As Single) As Single
-			Return Math.Max(a, b)
+			Return System.Math.Max(a, b)
 		End Function
 
 		''' <summary>
 		''' Returns the smaller of two {@code float} values
-		''' as if by calling <seealso cref="Math#min(float, float) Math.min"/>.
+		''' as if by calling <seealso cref="Math#min(float, float) System.Math.min"/>.
 		''' </summary>
 		''' <param name="a"> the first operand </param>
 		''' <param name="b"> the second operand </param>
@@ -928,7 +928,7 @@ Namespace java.lang
 		''' <seealso cref= java.util.function.BinaryOperator
 		''' @since 1.8 </seealso>
 		Public Shared Function min(ByVal a As Single, ByVal b As Single) As Single
-			Return Math.Min(a, b)
+			Return System.Math.Min(a, b)
 		End Function
 
         ''' <summary>

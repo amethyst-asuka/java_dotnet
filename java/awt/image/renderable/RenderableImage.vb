@@ -140,9 +140,9 @@ Namespace java.awt.image.renderable
 		''' passed in.
 		''' 
 		''' <p> If w == 0, it will be taken to equal
-		''' Math.round(h*(getWidth()/getHeight())).
+		''' System.Math.round(h*(getWidth()/getHeight())).
 		''' Similarly, if h == 0, it will be taken to equal
-		''' Math.round(w*(getHeight()/getWidth())).  One of
+		''' System.Math.round(w*(getHeight()/getWidth())).  One of
 		''' w or h must be non-zero or else an IllegalArgumentException
 		''' will be thrown.
 		''' 

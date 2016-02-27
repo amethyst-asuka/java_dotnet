@@ -548,12 +548,12 @@ Namespace java.awt.font
 		''' <summary>
 		''' Standard superscript. </summary>
 		''' <seealso cref= #SUPERSCRIPT </seealso>
-		Public Shared ReadOnly SUPERSCRIPT_SUPER As Integer? = Integer.valueOf(1)
+		Public Shared ReadOnly SUPERSCRIPT_SUPER As Integer? =  java.lang.[Integer].valueOf(1)
 
 		''' <summary>
 		''' Standard subscript. </summary>
 		''' <seealso cref= #SUPERSCRIPT </seealso>
-		Public Shared ReadOnly SUPERSCRIPT_SUB As Integer? = Integer.valueOf(-1)
+		Public Shared ReadOnly SUPERSCRIPT_SUB As Integer? =  java.lang.[Integer].valueOf(-1)
 
 		''' <summary>
 		''' Attribute key used to provide the font to use to render text.
@@ -689,7 +689,7 @@ Namespace java.awt.font
 		''' Standard underline.
 		''' </summary>
 		''' <seealso cref= #UNDERLINE </seealso>
-		Public Shared ReadOnly UNDERLINE_ON As Integer? = Integer.valueOf(0)
+		Public Shared ReadOnly UNDERLINE_ON As Integer? =  java.lang.[Integer].valueOf(0)
 
 		''' <summary>
 		''' Attribute key for strikethrough.  Values are instances of
@@ -707,7 +707,7 @@ Namespace java.awt.font
 		''' A single strikethrough.
 		''' </summary>
 		''' <seealso cref= #STRIKETHROUGH </seealso>
-		Public Shared ReadOnly STRIKETHROUGH_ON As Boolean? = Boolean.TRUE
+		Public Shared ReadOnly STRIKETHROUGH_ON As Boolean? =  java.lang.[Boolean].TRUE
 
 		'
 		' Attributes use to control layout of text on a line.
@@ -737,12 +737,12 @@ Namespace java.awt.font
 		''' <summary>
 		''' Left-to-right run direction. </summary>
 		''' <seealso cref= #RUN_DIRECTION </seealso>
-		Public Shared ReadOnly RUN_DIRECTION_LTR As Boolean? = Boolean.FALSE
+		Public Shared ReadOnly RUN_DIRECTION_LTR As Boolean? =  java.lang.[Boolean].FALSE
 
 		''' <summary>
 		''' Right-to-left run direction. </summary>
 		''' <seealso cref= #RUN_DIRECTION </seealso>
-		Public Shared ReadOnly RUN_DIRECTION_RTL As Boolean? = Boolean.TRUE
+		Public Shared ReadOnly RUN_DIRECTION_RTL As Boolean? =  java.lang.[Boolean].TRUE
 
 		''' <summary>
 		''' Attribute key for the embedding level of the text.  Values are
@@ -853,31 +853,31 @@ Namespace java.awt.font
 		''' Single pixel solid low underline. </summary>
 		''' <seealso cref= #INPUT_METHOD_UNDERLINE
 		''' @since 1.3 </seealso>
-		Public Shared ReadOnly UNDERLINE_LOW_ONE_PIXEL As Integer? = Integer.valueOf(1)
+		Public Shared ReadOnly UNDERLINE_LOW_ONE_PIXEL As Integer? =  java.lang.[Integer].valueOf(1)
 
 		''' <summary>
 		''' Double pixel solid low underline. </summary>
 		''' <seealso cref= #INPUT_METHOD_UNDERLINE
 		''' @since 1.3 </seealso>
-		Public Shared ReadOnly UNDERLINE_LOW_TWO_PIXEL As Integer? = Integer.valueOf(2)
+		Public Shared ReadOnly UNDERLINE_LOW_TWO_PIXEL As Integer? =  java.lang.[Integer].valueOf(2)
 
 		''' <summary>
 		''' Single pixel dotted low underline. </summary>
 		''' <seealso cref= #INPUT_METHOD_UNDERLINE
 		''' @since 1.3 </seealso>
-		Public Shared ReadOnly UNDERLINE_LOW_DOTTED As Integer? = Integer.valueOf(3)
+		Public Shared ReadOnly UNDERLINE_LOW_DOTTED As Integer? =  java.lang.[Integer].valueOf(3)
 
 		''' <summary>
 		''' Double pixel gray low underline. </summary>
 		''' <seealso cref= #INPUT_METHOD_UNDERLINE
 		''' @since 1.3 </seealso>
-		Public Shared ReadOnly UNDERLINE_LOW_GRAY As Integer? = Integer.valueOf(4)
+		Public Shared ReadOnly UNDERLINE_LOW_GRAY As Integer? =  java.lang.[Integer].valueOf(4)
 
 		''' <summary>
 		''' Single pixel dashed low underline. </summary>
 		''' <seealso cref= #INPUT_METHOD_UNDERLINE
 		''' @since 1.3 </seealso>
-		Public Shared ReadOnly UNDERLINE_LOW_DASHED As Integer? = Integer.valueOf(5)
+		Public Shared ReadOnly UNDERLINE_LOW_DASHED As Integer? =  java.lang.[Integer].valueOf(5)
 
 		''' <summary>
 		''' Attribute key for swapping foreground and background
@@ -903,7 +903,7 @@ Namespace java.awt.font
 		''' Swap foreground and background. </summary>
 		''' <seealso cref= #SWAP_COLORS
 		''' @since 1.3 </seealso>
-		Public Shared ReadOnly SWAP_COLORS_ON As Boolean? = Boolean.TRUE
+		Public Shared ReadOnly SWAP_COLORS_ON As Boolean? =  java.lang.[Boolean].TRUE
 
 		''' <summary>
 		''' Attribute key for converting ASCII decimal digits to other
@@ -944,7 +944,7 @@ Namespace java.awt.font
 		''' Request standard kerning. </summary>
 		''' <seealso cref= #KERNING
 		''' @since 1.6 </seealso>
-		Public Shared ReadOnly KERNING_ON As Integer? = Integer.valueOf(1)
+		Public Shared ReadOnly KERNING_ON As Integer? =  java.lang.[Integer].valueOf(1)
 
 
 		''' <summary>
@@ -964,7 +964,7 @@ Namespace java.awt.font
 		''' Request standard optional ligatures. </summary>
 		''' <seealso cref= #LIGATURES
 		''' @since 1.6 </seealso>
-		Public Shared ReadOnly LIGATURES_ON As Integer? = Integer.valueOf(1)
+		Public Shared ReadOnly LIGATURES_ON As Integer? =  java.lang.[Integer].valueOf(1)
 
 		''' <summary>
 		''' Attribute key to control tracking.  Values are instances of

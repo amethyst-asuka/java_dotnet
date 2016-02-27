@@ -418,98 +418,97 @@ Namespace java.security
 
 			Dim parent As AccessControlContext = context
 			If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
-			Class caller = sun.reflect.Reflection.callerClass
-			Return AccessController.doPrivileged(action, createWrapper(Nothing, caller, parent, context, perms))
+            Dim caller As [Class] = sun.reflect.Reflection.callerClass
+            Return AccessController.doPrivileged(action, createWrapper(Nothing, caller, parent, context, perms))
 		End Function
 
 
-		''' <summary>
-		''' Performs the specified {@code PrivilegedAction} with privileges
-		''' enabled and restricted by the specified
-		''' {@code AccessControlContext} and with a privilege scope limited
-		''' by specified {@code Permission} arguments.
-		''' 
-		''' The action is performed with the intersection of the permissions
-		''' possessed by the caller's protection domain, and those possessed
-		''' by the domains represented by the specified
-		''' {@code AccessControlContext}.
-		''' <p>
-		''' If the action's {@code run} method throws an (unchecked) exception,
-		''' it will propagate through this method.
-		''' 
-		''' <p> This method preserves the current AccessControlContext's
-		''' DomainCombiner (which may be null) while the action is performed.
-		''' <p>
-		''' If a security manager is installed and the specified
-		''' {@code AccessControlContext} was not created by system code and the
-		''' caller's {@code ProtectionDomain} has not been granted the
-		''' {@literal "createAccessControlContext"}
-		''' <seealso cref="java.security.SecurityPermission"/>, then the action is performed
-		''' with no permissions.
-		''' </summary>
-		''' @param <T> the type of the value returned by the PrivilegedAction's
-		'''                  {@code run} method. </param>
-		''' <param name="action"> the action to be performed. </param>
-		''' <param name="context"> an <i>access control context</i>
-		'''                representing the restriction to be applied to the
-		'''                caller's domain's privileges before performing
-		'''                the specified action.  If the context is
-		'''                {@code null},
-		'''                then no additional restriction is applied. </param>
-		''' <param name="perms"> the {@code Permission} arguments which limit the
-		'''              scope of the caller's privileges. The number of arguments
-		'''              is variable.
-		''' </param>
-		''' <returns> the value returned by the action's {@code run} method.
-		''' </returns>
-		''' <exception cref="NullPointerException"> if action or perms or any element of
-		'''         perms is {@code null}
-		''' </exception>
-		''' <seealso cref= #doPrivileged(PrivilegedAction) </seealso>
-		''' <seealso cref= #doPrivileged(PrivilegedExceptionAction,AccessControlContext) </seealso>
-		''' <seealso cref= java.security.DomainCombiner
-		''' 
-		''' @since 1.8 </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
+        ''' <summary>
+        ''' Performs the specified {@code PrivilegedAction} with privileges
+        ''' enabled and restricted by the specified
+        ''' {@code AccessControlContext} and with a privilege scope limited
+        ''' by specified {@code Permission} arguments.
+        ''' 
+        ''' The action is performed with the intersection of the permissions
+        ''' possessed by the caller's protection domain, and those possessed
+        ''' by the domains represented by the specified
+        ''' {@code AccessControlContext}.
+        ''' <p>
+        ''' If the action's {@code run} method throws an (unchecked) exception,
+        ''' it will propagate through this method.
+        ''' 
+        ''' <p> This method preserves the current AccessControlContext's
+        ''' DomainCombiner (which may be null) while the action is performed.
+        ''' <p>
+        ''' If a security manager is installed and the specified
+        ''' {@code AccessControlContext} was not created by system code and the
+        ''' caller's {@code ProtectionDomain} has not been granted the
+        ''' {@literal "createAccessControlContext"}
+        ''' <seealso cref="java.security.SecurityPermission"/>, then the action is performed
+        ''' with no permissions.
+        ''' </summary>
+        ''' @param <T> the type of the value returned by the PrivilegedAction's
+        '''                  {@code run} method. </param>
+        ''' <param name="action"> the action to be performed. </param>
+        ''' <param name="context"> an <i>access control context</i>
+        '''                representing the restriction to be applied to the
+        '''                caller's domain's privileges before performing
+        '''                the specified action.  If the context is
+        '''                {@code null},
+        '''                then no additional restriction is applied. </param>
+        ''' <param name="perms"> the {@code Permission} arguments which limit the
+        '''              scope of the caller's privileges. The number of arguments
+        '''              is variable.
+        ''' </param>
+        ''' <returns> the value returned by the action's {@code run} method.
+        ''' </returns>
+        ''' <exception cref="NullPointerException"> if action or perms or any element of
+        '''         perms is {@code null}
+        ''' </exception>
+        ''' <seealso cref= #doPrivileged(PrivilegedAction) </seealso>
+        ''' <seealso cref= #doPrivileged(PrivilegedExceptionAction,AccessControlContext) </seealso>
+        ''' <seealso cref= java.security.DomainCombiner
+        ''' 
+        ''' @since 1.8 </seealso>
+        Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
 
-			Dim parent As AccessControlContext = context
-			Dim dc As DomainCombiner = parent.combiner
-			If dc Is Nothing AndAlso context IsNot Nothing Then dc = context.combiner
-			If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
-			Class caller = sun.reflect.Reflection.callerClass
-			Return AccessController.doPrivileged(action, createWrapper(dc, caller, parent, context, perms))
-		End Function
+            Dim parent As AccessControlContext = context
+            Dim dc As DomainCombiner = parent.combiner
+            If dc Is Nothing AndAlso context IsNot Nothing Then dc = context.combiner
+            If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
+            Dim caller As [Class] = sun.reflect.Reflection.callerClass
+            Return AccessController.doPrivileged(action, createWrapper(dc, caller, parent, context, perms))
+        End Function
 
-		''' <summary>
-		''' Performs the specified {@code PrivilegedExceptionAction} with
-		''' privileges enabled.  The action is performed with <i>all</i> of the
-		''' permissions possessed by the caller's protection domain.
-		''' 
-		''' <p> If the action's {@code run} method throws an <i>unchecked</i>
-		''' exception, it will propagate through this method.
-		''' 
-		''' <p> Note that any DomainCombiner associated with the current
-		''' AccessControlContext will be ignored while the action is performed.
-		''' </summary>
-		''' @param <T> the type of the value returned by the
-		'''                  PrivilegedExceptionAction's {@code run} method.
-		''' </param>
-		''' <param name="action"> the action to be performed
-		''' </param>
-		''' <returns> the value returned by the action's {@code run} method
-		''' </returns>
-		''' <exception cref="PrivilegedActionException"> if the specified action's
-		'''         {@code run} method threw a <i>checked</i> exception </exception>
-		''' <exception cref="NullPointerException"> if the action is {@code null}
-		''' </exception>
-		''' <seealso cref= #doPrivileged(PrivilegedAction) </seealso>
-		''' <seealso cref= #doPrivileged(PrivilegedExceptionAction,AccessControlContext) </seealso>
-		''' <seealso cref= #doPrivilegedWithCombiner(PrivilegedExceptionAction) </seealso>
-		''' <seealso cref= java.security.DomainCombiner </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
+        ''' <summary>
+        ''' Performs the specified {@code PrivilegedExceptionAction} with
+        ''' privileges enabled.  The action is performed with <i>all</i> of the
+        ''' permissions possessed by the caller's protection domain.
+        ''' 
+        ''' <p> If the action's {@code run} method throws an <i>unchecked</i>
+        ''' exception, it will propagate through this method.
+        ''' 
+        ''' <p> Note that any DomainCombiner associated with the current
+        ''' AccessControlContext will be ignored while the action is performed.
+        ''' </summary>
+        ''' @param <T> the type of the value returned by the
+        '''                  PrivilegedExceptionAction's {@code run} method.
+        ''' </param>
+        ''' <param name="action"> the action to be performed
+        ''' </param>
+        ''' <returns> the value returned by the action's {@code run} method
+        ''' </returns>
+        ''' <exception cref="PrivilegedActionException"> if the specified action's
+        '''         {@code run} method threw a <i>checked</i> exception </exception>
+        ''' <exception cref="NullPointerException"> if the action is {@code null}
+        ''' </exception>
+        ''' <seealso cref= #doPrivileged(PrivilegedAction) </seealso>
+        ''' <seealso cref= #doPrivileged(PrivilegedExceptionAction,AccessControlContext) </seealso>
+        ''' <seealso cref= #doPrivilegedWithCombiner(PrivilegedExceptionAction) </seealso>
+        ''' <seealso cref= java.security.DomainCombiner </seealso>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")> _
 		Public Shared Function doPrivileged(ByVal action As PrivilegedExceptionAction(Of T)) As T(Of T)
 		End Function
 
@@ -675,8 +674,8 @@ Namespace java.security
 		Public Shared Function doPrivileged(Of T)(ByVal action As PrivilegedExceptionAction(Of T), ByVal context As AccessControlContext, ParamArray ByVal perms As Permission()) As T
 			Dim parent As AccessControlContext = context
 			If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
-			Class caller = sun.reflect.Reflection.callerClass
-			Return AccessController.doPrivileged(action, createWrapper(Nothing, caller, parent, context, perms))
+            Dim caller As [Class] = sun.reflect.Reflection.callerClass
+            Return AccessController.doPrivileged(action, createWrapper(Nothing, caller, parent, context, perms))
 		End Function
 
 
@@ -735,8 +734,8 @@ Namespace java.security
 			Dim dc As DomainCombiner = parent.combiner
 			If dc Is Nothing AndAlso context IsNot Nothing Then dc = context.combiner
 			If perms Is Nothing Then Throw New NullPointerException("null permissions parameter")
-			Class caller = sun.reflect.Reflection.callerClass
-			Return AccessController.doPrivileged(action, createWrapper(dc, caller, parent, context, perms))
+            Dim caller As [Class] = sun.reflect.Reflection.callerClass
+            Return AccessController.doPrivileged(action, createWrapper(dc, caller, parent, context, perms))
 		End Function
 
 		''' <summary>
@@ -765,47 +764,47 @@ Namespace java.security
 		Friend Shared Function getInheritedAccessControlContext() As AccessControlContext
 		End Function
 
-		''' <summary>
-		''' This method takes a "snapshot" of the current calling context, which
-		''' includes the current Thread's inherited AccessControlContext and any
-		''' limited privilege scope, and places it in an AccessControlContext object.
-		''' This context may then be checked at a later point, possibly in another thread.
-		''' </summary>
-		''' <seealso cref= AccessControlContext
-		''' </seealso>
-		''' <returns> the AccessControlContext based on the current context. </returns>
+        ''' <summary>
+        ''' This method takes a "snapshot" of the current calling context, which
+        ''' includes the current Thread's inherited AccessControlContext and any
+        ''' limited privilege scope, and places it in an AccessControlContext object.
+        ''' This context may then be checked at a later point, possibly in another thread.
+        ''' </summary>
+        ''' <seealso cref= AccessControlContext
+        ''' </seealso>
+        ''' <returns> the AccessControlContext based on the current context. </returns>
 
-		Public Property Shared context As AccessControlContext
-			Get
-				Dim acc As AccessControlContext = stackAccessControlContext
-				If acc Is Nothing Then
-					' all we had was privileged system code. We don't want
-					' to return null though, so we construct a real ACC.
-					Return New AccessControlContext(Nothing, True)
-				Else
-					Return acc.optimize()
-				End If
-			End Get
-		End Property
+        Public Shared Property context As AccessControlContext
+            Get
+                Dim acc As AccessControlContext = stackAccessControlContext
+                If acc Is Nothing Then
+                    ' all we had was privileged system code. We don't want
+                    ' to return null though, so we construct a real ACC.
+                    Return New AccessControlContext(Nothing, True)
+                Else
+                    Return acc.optimize()
+                End If
+            End Get
+        End Property
 
-		''' <summary>
-		''' Determines whether the access request indicated by the
-		''' specified permission should be allowed or denied, based on
-		''' the current AccessControlContext and security policy.
-		''' This method quietly returns if the access request
-		''' is permitted, or throws an AccessControlException otherwise. The
-		''' getPermission method of the AccessControlException returns the
-		''' {@code perm} Permission object instance.
-		''' </summary>
-		''' <param name="perm"> the requested permission.
-		''' </param>
-		''' <exception cref="AccessControlException"> if the specified permission
-		'''            is not permitted, based on the current security policy. </exception>
-		''' <exception cref="NullPointerException"> if the specified permission
-		'''            is {@code null} and is checked based on the
-		'''            security policy currently in effect. </exception>
+        ''' <summary>
+        ''' Determines whether the access request indicated by the
+        ''' specified permission should be allowed or denied, based on
+        ''' the current AccessControlContext and security policy.
+        ''' This method quietly returns if the access request
+        ''' is permitted, or throws an AccessControlException otherwise. The
+        ''' getPermission method of the AccessControlException returns the
+        ''' {@code perm} Permission object instance.
+        ''' </summary>
+        ''' <param name="perm"> the requested permission.
+        ''' </param>
+        ''' <exception cref="AccessControlException"> if the specified permission
+        '''            is not permitted, based on the current security policy. </exception>
+        ''' <exception cref="NullPointerException"> if the specified permission
+        '''            is {@code null} and is checked based on the
+        '''            security policy currently in effect. </exception>
 
-		Public Shared Sub checkPermission(ByVal perm As Permission)
+        Public Shared Sub checkPermission(ByVal perm As Permission)
 			'System.err.println("checkPermission "+perm);
 			'Thread.currentThread().dumpStack();
 

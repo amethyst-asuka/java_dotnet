@@ -208,7 +208,7 @@ Namespace java.util
 		'''  <pre> {@code
 		''' public void nextBytes(byte[] bytes) {
 		'''   for (int i = 0; i < bytes.length; )
-		'''     for (int rnd = nextInt(), n = Math.min(bytes.length - i, 4);
+		'''     for (int rnd = nextInt(), n = System.Math.min(bytes.length - i, 4);
 		'''          n-- > 0; rnd >>= 8)
 		'''       bytes[i++] = (byte)rnd;
 		''' }}</pre>
@@ -221,11 +221,11 @@ Namespace java.util
 			Dim len As Integer = bytes.Length
 			Do While i < len
 				Dim rnd As Integer = nextInt()
-				Dim n As Integer = Math.Min(len - i, Integer.SIZE/Byte.SIZE)
+				Dim n As Integer = System.Math.Min(len - i,  java.lang.[Integer].SIZE/Byte.SIZE)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Do While n -= 1 > 0
 					bytes(i) = CByte(rnd)
-					rnd >>= Byte.SIZE
+					rnd >>= java.lang.[Byte].SIZE
 				Loop
 			Loop
 					i += 1
@@ -298,7 +298,7 @@ Namespace java.util
 			Dim r As Double = nextDouble()
 			If origin < bound Then
 				r = r * (bound - origin) + origin
-				If r >= bound Then ' correct for rounding r = Double.longBitsToDouble(Double.doubleToLongBits(bound) - 1)
+				If r >= bound Then ' correct for rounding r = java.lang.[Double].longBitsToDouble(Double.doubleToLongBits(bound) - 1)
 			End If
 			Return r
 		End Function
@@ -582,7 +582,7 @@ Namespace java.util
 					v2 = 2 * nextDouble() - 1 ' between -1 and 1
 					s = v1 * v1 + v2 * v2
 				Loop While s >= 1 OrElse s = 0
-				Dim multiplier As Double = Math.Sqrt(-2 * Math.Log(s)/s)
+				Dim multiplier As Double = System.Math.Sqrt(-2 * System.Math.Log(s)/s)
 				nextNextGaussian = v2 * multiplier
 				haveNextNextGaussian = True
 				Return v1 * multiplier
@@ -606,7 +606,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Overridable Function ints(ByVal streamSize As Long) As java.util.stream.IntStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
-			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, streamSize, Integer.MaxValue, 0), False)
+			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, streamSize,  java.lang.[Integer].Max_Value, 0), False)
 		End Function
 
 		''' <summary>
@@ -622,7 +622,7 @@ Namespace java.util
 		''' <returns> a stream of pseudorandom {@code int} values
 		''' @since 1.8 </returns>
 		Public Overridable Function ints() As java.util.stream.IntStream
-			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, Long.MaxValue, Integer.MaxValue, 0), False)
+			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, java.lang.[Long].Max_Value,  java.lang.[Integer].Max_Value, 0), False)
 		End Function
 
 		''' <summary>
@@ -696,7 +696,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Overridable Function ints(ByVal randomNumberOrigin As Integer, ByVal randomNumberBound As Integer) As java.util.stream.IntStream
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
-			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, Long.MaxValue, randomNumberOrigin, randomNumberBound), False)
+			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(Me, 0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
 
 		''' <summary>
@@ -713,7 +713,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Overridable Function longs(ByVal streamSize As Long) As java.util.stream.LongStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
-			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, streamSize, Long.MaxValue, 0L), False)
+			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, streamSize, java.lang.[Long].Max_Value, 0L), False)
 		End Function
 
 		''' <summary>
@@ -729,7 +729,7 @@ Namespace java.util
 		''' <returns> a stream of pseudorandom {@code long} values
 		''' @since 1.8 </returns>
 		Public Overridable Function longs() As java.util.stream.LongStream
-			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, Long.MaxValue, Long.MaxValue, 0L), False)
+			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, java.lang.[Long].Max_Value, java.lang.[Long].Max_Value, 0L), False)
 		End Function
 
 		''' <summary>
@@ -813,7 +813,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Overridable Function longs(ByVal randomNumberOrigin As Long, ByVal randomNumberBound As Long) As java.util.stream.LongStream
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
-			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, Long.MaxValue, randomNumberOrigin, randomNumberBound), False)
+			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(Me, 0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
 
 		''' <summary>
@@ -831,7 +831,7 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Overridable Function doubles(ByVal streamSize As Long) As java.util.stream.DoubleStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
-			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, streamSize, Double.MaxValue, 0.0), False)
+			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, streamSize, java.lang.[Double].Max_Value, 0.0), False)
 		End Function
 
 		''' <summary>
@@ -848,7 +848,7 @@ Namespace java.util
 		''' <returns> a stream of pseudorandom {@code double} values
 		''' @since 1.8 </returns>
 		Public Overridable Function doubles() As java.util.stream.DoubleStream
-			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, Long.MaxValue, Double.MaxValue, 0.0), False)
+			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, java.lang.[Long].Max_Value, java.lang.[Double].Max_Value, 0.0), False)
 		End Function
 
 		''' <summary>
@@ -863,7 +863,7 @@ Namespace java.util
 		'''   double r = nextDouble();
 		'''   r = r * (bound - origin) + origin;
 		'''   if (r >= bound) // correct for rounding
-		'''     r = Math.nextDown(bound);
+		'''     r = System.Math.nextDown(bound);
 		'''   return r;
 		''' }}</pre>
 		''' </summary>
@@ -895,7 +895,7 @@ Namespace java.util
 		'''   double r = nextDouble();
 		'''   r = r * (bound - origin) + origin;
 		'''   if (r >= bound) // correct for rounding
-		'''     r = Math.nextDown(bound);
+		'''     r = System.Math.nextDown(bound);
 		'''   return r;
 		''' }}</pre>
 		''' 
@@ -911,14 +911,14 @@ Namespace java.util
 		''' @since 1.8 </exception>
 		Public Overridable Function doubles(ByVal randomNumberOrigin As Double, ByVal randomNumberBound As Double) As java.util.stream.DoubleStream
 			If Not(randomNumberOrigin < randomNumberBound) Then Throw New IllegalArgumentException(BadRange)
-			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, Long.MaxValue, randomNumberOrigin, randomNumberBound), False)
+			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(Me, 0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
 
 		''' <summary>
 		''' Spliterator for int streams.  We multiplex the four int
 		''' versions into one class by treating a bound less than origin as
 		''' unbounded, and also by treating "infinite" as equivalent to
-		''' Long.MAX_VALUE. For splits, it uses the standard divide-by-two
+		''' java.lang.[Long].MAX_VALUE. For splits, it uses the standard divide-by-two
 		''' approach. The long and double versions of this class are
 		''' identical except for types.
 		''' </summary>
@@ -1107,7 +1107,7 @@ Namespace java.util
 		''' @serialField      haveNextNextGaussian boolean
 		'''              nextNextGaussian is valid
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As ObjectStreamField() = { New ObjectStreamField("seed", Long.TYPE), New ObjectStreamField("nextNextGaussian", Double.TYPE), New ObjectStreamField("haveNextNextGaussian", Boolean.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As ObjectStreamField() = { New ObjectStreamField("seed", java.lang.[Long].TYPE), New ObjectStreamField("nextNextGaussian", java.lang.[Double].TYPE), New ObjectStreamField("haveNextNextGaussian",  java.lang.[Boolean].TYPE) }
 
 		''' <summary>
 		''' Reconstitute the {@code Random} instance from a stream (that is,

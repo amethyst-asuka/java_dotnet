@@ -67,12 +67,12 @@ Namespace java.util
 
 		Private count As Long
 		Private sum As Long
-		Private min As Integer =  [Integer].MAX_VALUE
-		Private max As Integer = Integer.MIN_VALUE
+		Private min As Integer =  java.lang.[Integer].MAX_VALUE
+		Private max As Integer =  java.lang.[Integer].MIN_VALUE
 
 		''' <summary>
 		''' Construct an empty instance with zero count, zero sum,
-		''' {@code  [Integer].MAX_VALUE} min, {@code Integer.MIN_VALUE} max and zero
+		''' {@code  java.lang.[Integer].MAX_VALUE} min, {@code  java.lang.[Integer].MIN_VALUE} max and zero
 		''' average.
 		''' </summary>
 		Public Sub New()
@@ -85,8 +85,8 @@ Namespace java.util
 		Public Overrides Sub accept(ByVal value As Integer)
 			count += 1
 			sum += value
-			min = Math.Min(min, value)
-			max = Math.Max(max, value)
+			min = System.Math.Min(min, value)
+			max = System.Math.Max(max, value)
 		End Sub
 
 		''' <summary>
@@ -97,8 +97,8 @@ Namespace java.util
 		Public Overridable Sub combine(ByVal other As IntSummaryStatistics)
 			count += other.count
 			sum += other.sum
-			min = Math.Min(min, other.min)
-			max = Math.Max(max, other.max)
+			min = System.Math.Min(min, other.min)
+			max = System.Math.Max(max, other.max)
 		End Sub
 
 		''' <summary>
@@ -123,10 +123,10 @@ Namespace java.util
 		End Property
 
 		''' <summary>
-		''' Returns the minimum value recorded, or {@code  [Integer].MAX_VALUE} if no
+		''' Returns the minimum value recorded, or {@code  java.lang.[Integer].MAX_VALUE} if no
 		''' values have been recorded.
 		''' </summary>
-		''' <returns> the minimum value, or {@code  [Integer].MAX_VALUE} if none </returns>
+		''' <returns> the minimum value, or {@code  java.lang.[Integer].MAX_VALUE} if none </returns>
 		Public Property min As Integer
 			Get
 				Return min
@@ -134,10 +134,10 @@ Namespace java.util
 		End Property
 
 		''' <summary>
-		''' Returns the maximum value recorded, or {@code Integer.MIN_VALUE} if no
+		''' Returns the maximum value recorded, or {@code  java.lang.[Integer].MIN_VALUE} if no
 		''' values have been recorded.
 		''' </summary>
-		''' <returns> the maximum value, or {@code Integer.MIN_VALUE} if none </returns>
+		''' <returns> the maximum value, or {@code  java.lang.[Integer].MIN_VALUE} if none </returns>
 		Public Property max As Integer
 			Get
 				Return max

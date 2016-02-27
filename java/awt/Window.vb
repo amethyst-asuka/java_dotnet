@@ -862,8 +862,8 @@ Namespace java.awt
 					Dim size_Renamed As Dimension = size
 					If minimumSizeSet Then
 						If size_Renamed.width < minimumSize.width OrElse size_Renamed.height < minimumSize.height Then
-							Dim nw As Integer = Math.Max(width, minimumSize.width)
-							Dim nh As Integer = Math.Max(height, minimumSize.height)
+							Dim nw As Integer = System.Math.Max(width, minimumSize.width)
+							Dim nh As Integer = System.Math.Max(height, minimumSize.height)
 							sizeize(nw, nh)
 						End If
 					End If
@@ -3557,8 +3557,8 @@ Namespace java.awt
 		''' Limit the given double value with the given range.
 		''' </summary>
 		Private Shared Function limit(ByVal value As Double, ByVal min As Double, ByVal max As Double) As Double
-			value = Math.Max(value, min)
-			value = Math.Min(value, max)
+			value = System.Math.Max(value, min)
+			value = System.Math.Min(value, max)
 			Return value
 		End Function
 

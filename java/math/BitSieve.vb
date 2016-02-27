@@ -196,7 +196,7 @@ Namespace java.math
 				Dim nextLong As Long = Not bits(i)
 				For j As Integer = 0 To 63
 					If (nextLong And 1) = 1 Then
-						Dim candidate As BigInteger = initValue.add(BigInteger.valueOf(offset))
+						Dim candidate As BigInteger = initValue.add(Big java.lang.[Integer].valueOf(offset))
 						If candidate.primeToCertainty(certainty, random) Then Return candidate
 					End If
 					nextLong >>>= 1

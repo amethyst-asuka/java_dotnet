@@ -244,7 +244,7 @@ Namespace java.util
 		''' @since   1.3 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		Public Sub New(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
-			Me.New(Math.Max(CInt(Fix(m.size() / DEFAULT_LOAD_FACTOR)) + 1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR)
+			Me.New (System.Math.Max(CInt(Fix(m.size() / DEFAULT_LOAD_FACTOR)) + 1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR)
 			putAll(m)
 		End Sub
 
@@ -467,7 +467,7 @@ Namespace java.util
 		''' number of keys in this map reaches its threshold.
 		''' 
 		''' If current capacity is MAXIMUM_CAPACITY, this method does not
-		''' resize the map, but sets threshold to  [Integer].MAX_VALUE.
+		''' resize the map, but sets threshold to  java.lang.[Integer].MAX_VALUE.
 		''' This has the effect of preventing future calls.
 		''' </summary>
 		''' <param name="newCapacity"> the new capacity, MUST be a power of two;
@@ -478,7 +478,7 @@ Namespace java.util
 			Dim oldTable As Entry(Of K, V)() = table
 			Dim oldCapacity As Integer = oldTable.Length
 			If oldCapacity = MAXIMUM_CAPACITY Then
-				threshold = Integer.MaxValue
+				threshold =  java.lang.[Integer].Max_Value
 				Return
 			End If
 

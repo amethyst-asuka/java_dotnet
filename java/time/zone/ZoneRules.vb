@@ -787,7 +787,7 @@ Namespace java.time.zone
 		Public Function previousTransition(ByVal instant_Renamed As java.time.Instant) As ZoneOffsetTransition
 			If savingsInstantTransitions.Length = 0 Then Return Nothing
 			Dim epochSec As Long = instant_Renamed.epochSecond
-			If instant_Renamed.nano > 0 AndAlso epochSec < Long.MaxValue Then epochSec += 1 ' allow rest of method to only use seconds
+			If instant_Renamed.nano > 0 AndAlso epochSec < java.lang.[Long].Max_Value Then epochSec += 1 ' allow rest of method to only use seconds
 
 			' check if using last rules
 			Dim lastHistoric As Long = savingsInstantTransitions(savingsInstantTransitions.Length - 1)
@@ -819,7 +819,7 @@ Namespace java.time.zone
 		Private Function findYear(ByVal epochSecond As Long, ByVal offset As java.time.ZoneOffset) As Integer
 			' inline for performance
 			Dim localSecond As Long = epochSecond + offset.totalSeconds
-			Dim localEpochDay As Long = Math.floorDiv(localSecond, 86400)
+			Dim localEpochDay As Long = System.Math.floorDiv(localSecond, 86400)
 			Return java.time.LocalDate.ofEpochDay(localEpochDay).year
 		End Function
 

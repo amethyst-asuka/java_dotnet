@@ -166,7 +166,7 @@ Namespace java.util.concurrent
 	''' <p>These bulk operations accept a {@code parallelismThreshold}
 	''' argument. Methods proceed sequentially if the current map size is
 	''' estimated to be less than the given threshold. Using a value of
-	''' {@code Long.MAX_VALUE} suppresses all parallelism.  Using a value
+	''' {@code java.lang.[Long].MAX_VALUE} suppresses all parallelism.  Using a value
 	''' of {@code 1} results in maximal parallelism by partitioning into
 	''' enough subtasks to fully utilize the {@link
 	''' ForkJoinPool#commonPool()} that is used for all parallel
@@ -493,7 +493,7 @@ Namespace java.util.concurrent
 		''' The largest possible (non-power of two) array size.
 		''' Needed by toArray and related methods.
 		''' </summary>
-		Friend Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Friend Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' The default concurrency level for this table. Unused but
@@ -575,7 +575,7 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' For serialization compatibility. </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("segments", GetType(Segment())), New java.io.ObjectStreamField("segmentMask", Integer.TYPE), New java.io.ObjectStreamField("segmentShift", Integer.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("segments", GetType(Segment())), New java.io.ObjectStreamField("segmentMask",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("segmentShift",  java.lang.[Integer].TYPE) }
 
 		' ---------------- Nodes -------------- 
 
@@ -902,7 +902,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		Public Overridable Function size() As Integer
 			Dim n As Long = sumCount()
-			Return (If(n < 0L, 0, If(n > (Long)Integer.MaxValue, Integer.MaxValue, CInt(n))))
+			Return (If(n < 0L, 0, If(n > (Long) java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, CInt(n))))
 		End Function
 
 		''' <summary>
@@ -2181,18 +2181,18 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Creates a new <seealso cref="Set"/> backed by a ConcurrentHashMap
-		''' from the given type to {@code Boolean.TRUE}.
+		''' from the given type to {@code  java.lang.[Boolean].TRUE}.
 		''' </summary>
 		''' @param <K> the element type of the returned set </param>
 		''' <returns> the new set
 		''' @since 1.8 </returns>
 		Public Shared Function newKeySet(Of K)() As KeySetView(Of K, Boolean?)
-			Return New KeySetView(Of K, Boolean?) (New ConcurrentHashMap(Of K, Boolean?), Boolean.TRUE)
+			Return New KeySetView(Of K, Boolean?) (New ConcurrentHashMap(Of K, Boolean?),  java.lang.[Boolean].TRUE)
 		End Function
 
 		''' <summary>
 		''' Creates a new <seealso cref="Set"/> backed by a ConcurrentHashMap
-		''' from the given type to {@code Boolean.TRUE}.
+		''' from the given type to {@code  java.lang.[Boolean].TRUE}.
 		''' </summary>
 		''' <param name="initialCapacity"> The implementation performs internal
 		''' sizing to accommodate this many elements. </param>
@@ -2202,7 +2202,7 @@ Namespace java.util.concurrent
 		''' elements is negative
 		''' @since 1.8 </exception>
 		Public Shared Function newKeySet(Of K)(ByVal initialCapacity As Integer) As KeySetView(Of K, Boolean?)
-			Return New KeySetView(Of K, Boolean?) (New ConcurrentHashMap(Of K, Boolean?)(initialCapacity), Boolean.TRUE)
+			Return New KeySetView(Of K, Boolean?) (New ConcurrentHashMap(Of K, Boolean?)(initialCapacity),  java.lang.[Boolean].TRUE)
 		End Function
 
 		''' <summary>
@@ -2287,7 +2287,7 @@ Namespace java.util.concurrent
 		''' Must be negative when shifted left by RESIZE_STAMP_SHIFT.
 		''' </summary>
 		Friend Shared Function resizeStamp(ByVal n As Integer) As Integer
-			Return Integer.numberOfLeadingZeros(n) Or (1 << (RESIZE_STAMP_BITS - 1))
+			Return  java.lang.[Integer].numberOfLeadingZeros(n) Or (1 << (RESIZE_STAMP_BITS - 1))
 		End Function
 
 		''' <summary>
@@ -2458,7 +2458,7 @@ Namespace java.util.concurrent
 					Dim nt As Node(Of K, V)() = CType(New Node(Of ?, ?)(n << 1 - 1){}, Node(Of K, V)())
 					nextTab = nt ' try to cope with OOME
 				Catch ex As Throwable
-					sizeCtl = Integer.MaxValue
+					sizeCtl =  java.lang.[Integer].Max_Value
 					Return
 				End Try
 				nextTable = nextTab
@@ -3880,7 +3880,7 @@ Namespace java.util.concurrent
 		Friend Function batchFor(ByVal b As Long) As Integer
 			Dim n As Long
 			n = sumCount()
-			If b = Long.MaxValue OrElse n <= 1L OrElse n < b Then Return 0
+			If b = java.lang.[Long].Max_Value OrElse n <= 1L OrElse n < b Then Return 0
 			Dim sp As Integer = java.util.concurrent.ForkJoinPool.commonPoolParallelism << 2 ' slack of 4
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Return If(b <= 0L OrElse (n \= b) >= sp, sp, CInt(n))
@@ -6758,7 +6758,7 @@ Namespace java.util.concurrent
 				ABASE = U.arrayBaseOffset(ak)
 				Dim scale As Integer = U.arrayIndexScale(ak)
 				If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")
-				ASHIFT = 31 - Integer.numberOfLeadingZeros(scale)
+				ASHIFT = 31 -  java.lang.[Integer].numberOfLeadingZeros(scale)
 			Catch e As Exception
 				Throw New [Error](e)
 			End Try

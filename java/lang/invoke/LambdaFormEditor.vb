@@ -57,7 +57,7 @@ Namespace java.lang.invoke
 		''' A description of a cached transform, possibly associated with the result of the transform.
 		'''  The logical content is a sequence of byte values, starting with a Kind.ordinal value.
 		'''  The sequence is unterminated, ending with an indefinite number of zero bytes.
-		'''  Sequences that are simple (short enough and with small enough values) pack into a 64-bit long.
+		'''  Sequences that are simple (short enough and with small enough values) pack into a 64-bit java.lang.[Long].
 		''' </summary>
 		Private NotInheritable Class Transform
 			Inherits SoftReference(Of LambdaForm)
@@ -229,7 +229,7 @@ Namespace java.lang.invoke
 			Public Overrides Function GetHashCode() As Integer
 				If packedBytes_Renamed <> 0 Then
 					assert(fullBytes_Renamed Is Nothing)
-					Return Long.hashCode(packedBytes_Renamed)
+					Return java.lang.[Long].hashCode(packedBytes_Renamed)
 				End If
 				Return java.util.Arrays.hashCode(fullBytes_Renamed)
 			End Function
@@ -375,7 +375,7 @@ Namespace java.lang.invoke
 					If i < len OrElse stale >= 0 Then
 						' just fall through to cache update
 					ElseIf len < MAX_CACHE_ARRAY_SIZE Then
-						len = Math.Min(len * 2, MAX_CACHE_ARRAY_SIZE)
+						len = System.Math.Min(len * 2, MAX_CACHE_ARRAY_SIZE)
 						ta = java.util.Arrays.copyOf(ta, len)
 						lambdaForm_Renamed.transformCache = ta
 					Else
@@ -785,7 +785,7 @@ Namespace java.lang.invoke
 			For i As Integer = 0 To reorder.Length - 1
 				Dim inArg As Integer = reorder(i)
 				If inArg <> i Then nullPerm = False
-				inTypes = Math.Max(inTypes, inArg+1)
+				inTypes = System.Math.Max(inTypes, inArg+1)
 			Next i
 			assert(skip + reorder.Length = lambdaForm_Renamed.arity_Renamed)
 			If nullPerm Then ' do not bother to cache Return lambdaForm_Renamed

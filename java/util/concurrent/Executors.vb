@@ -182,7 +182,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> the newly created thread pool </returns>
 		Public Shared Function newCachedThreadPool() As ExecutorService
-			Return New ThreadPoolExecutor(0, Integer.MaxValue, 60L, TimeUnit.SECONDS, New SynchronousQueue(Of Runnable))
+			Return New ThreadPoolExecutor(0,  java.lang.[Integer].Max_Value, 60L, TimeUnit.SECONDS, New SynchronousQueue(Of Runnable))
 		End Function
 
 		''' <summary>
@@ -194,7 +194,7 @@ Namespace java.util.concurrent
 		''' <returns> the newly created thread pool </returns>
 		''' <exception cref="NullPointerException"> if threadFactory is null </exception>
 		Public Shared Function newCachedThreadPool(ByVal threadFactory As ThreadFactory) As ExecutorService
-			Return New ThreadPoolExecutor(0, Integer.MaxValue, 60L, TimeUnit.SECONDS, New SynchronousQueue(Of Runnable), threadFactory)
+			Return New ThreadPoolExecutor(0,  java.lang.[Integer].Max_Value, 60L, TimeUnit.SECONDS, New SynchronousQueue(Of Runnable), threadFactory)
 		End Function
 
 		''' <summary>

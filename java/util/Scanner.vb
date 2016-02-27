@@ -1747,7 +1747,7 @@ Namespace java.util
 		''' digits via <seealso cref="Character#digit Character.digit"/>, prepending a
 		''' negative sign (-) if the locale specific negative prefixes and suffixes
 		''' were present, and passing the resulting string to
-		''' <seealso cref="Byte#parseByte(String, int) Byte.parseByte"/> with the
+		''' <seealso cref="Byte#parseByte(String, int) java.lang.[Byte].parseByte"/> with the
 		''' specified radix.
 		''' </summary>
 		''' <param name="radix"> the radix used to interpret the token as a byte value </param>
@@ -1845,7 +1845,7 @@ Namespace java.util
 		''' digits via <seealso cref="Character#digit Character.digit"/>, prepending a
 		''' negative sign (-) if the locale specific negative prefixes and suffixes
 		''' were present, and passing the resulting string to
-		''' <seealso cref="Short#parseShort(String, int) Short.parseShort"/> with the
+		''' <seealso cref="Short#parseShort(String, int)  java.lang.[Short].parseShort"/> with the
 		''' specified radix.
 		''' </summary>
 		''' <param name="radix"> the radix used to interpret the token as a short value </param>
@@ -1965,7 +1965,7 @@ Namespace java.util
 		''' digits via <seealso cref="Character#digit Character.digit"/>, prepending a
 		''' negative sign (-) if the locale specific negative prefixes and suffixes
 		''' were present, and passing the resulting string to
-		''' <seealso cref="Integer#parseInt(String, int) Integer.parseInt"/> with the
+		''' <seealso cref="Integer#parseInt(String, int)  java.lang.[Integer].parseInt"/> with the
 		''' specified radix.
 		''' </summary>
 		''' <param name="radix"> the radix used to interpret the token as an int value </param>
@@ -2063,7 +2063,7 @@ Namespace java.util
 		''' digits via <seealso cref="Character#digit Character.digit"/>, prepending a
 		''' negative sign (-) if the locale specific negative prefixes and suffixes
 		''' were present, and passing the resulting string to
-		''' <seealso cref="Long#parseLong(String, int) Long.parseLong"/> with the
+		''' <seealso cref="Long#parseLong(String, int) java.lang.[Long].parseLong"/> with the
 		''' specified radix.
 		''' </summary>
 		''' <param name="radix"> the radix used to interpret the token as an int value </param>
@@ -2243,9 +2243,9 @@ Namespace java.util
 		''' digits via <seealso cref="Character#digit Character.digit"/>, prepending a
 		''' negative sign (-) if the locale specific negative prefixes and suffixes
 		''' were present, and passing the resulting string to
-		''' <seealso cref="Double#parseDouble Double.parseDouble"/>. If the token matches
+		''' <seealso cref="Double#parseDouble java.lang.[Double].parseDouble"/>. If the token matches
 		''' the localized NaN or infinity strings, then either "Nan" or "Infinity"
-		''' is passed to <seealso cref="Double#parseDouble(String) Double.parseDouble"/> as
+		''' is passed to <seealso cref="Double#parseDouble(String) java.lang.[Double].parseDouble"/> as
 		''' appropriate.
 		''' </summary>
 		''' <returns> the <tt>double</tt> scanned from the input </returns>

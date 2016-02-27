@@ -142,7 +142,7 @@ Namespace java.security
 		''' <li>Whenever it is invoked on the same Permission object more than
 		'''     once during an execution of a Java application, the
 		'''     {@code hashCode} method
-		'''     must consistently return the same integer. This integer need not
+		'''     must consistently return the same  java.lang.[Integer]. This integer need not
 		'''     remain consistent from one execution of an application to another
 		'''     execution of the same application.
 		''' <li>If two Permission objects are equal according to the

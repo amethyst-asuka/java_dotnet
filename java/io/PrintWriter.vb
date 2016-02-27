@@ -463,7 +463,7 @@ Namespace java.io
 			write(c)
 
 		''' <summary>
-		''' Prints an integer.  The string produced by <code>{@link
+		''' Prints an  java.lang.[Integer].  The string produced by <code>{@link
 		''' java.lang.String#valueOf(int)}</code> is translated into bytes according
 		''' to the platform's default character encoding, and these bytes are
 		''' written in exactly the manner of the <code><seealso cref="#write(int)"/></code>
@@ -475,7 +475,7 @@ Namespace java.io
 			write(Convert.ToString(i))
 
 		''' <summary>
-		''' Prints a long integer.  The string produced by <code>{@link
+		''' Prints a long  java.lang.[Integer].  The string produced by <code>{@link
 		''' java.lang.String#valueOf(long)}</code> is translated into bytes
 		''' according to the platform's default character encoding, and these bytes
 		''' are written in exactly the manner of the <code><seealso cref="#write(int)"/></code>

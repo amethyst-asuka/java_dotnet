@@ -317,7 +317,7 @@ Namespace java.util.concurrent
 			Dim r As Double = (CInt(CUInt(nextLong()) >> 11)) * DOUBLE_UNIT
 			If origin < bound Then
 				r = r * (bound - origin) + origin
-				If r >= bound Then ' correct for rounding r = Double.longBitsToDouble(Double.doubleToLongBits(bound) - 1)
+				If r >= bound Then ' correct for rounding r = java.lang.[Double].longBitsToDouble(Double.doubleToLongBits(bound) - 1)
 			End If
 			Return r
 		End Function
@@ -439,7 +439,7 @@ Namespace java.util.concurrent
 		Public Overridable Function nextDouble(ByVal bound As Double) As Double
 			If Not(bound > 0.0) Then Throw New IllegalArgumentException(BadBound)
 			Dim result As Double = (CInt(CUInt(mix64(nextSeed())) >> 11)) * DOUBLE_UNIT * bound
-			Return If(result < bound, result, Double.longBitsToDouble(Double.doubleToLongBits(bound) - 1)) ' correct for rounding
+			Return If(result < bound, result, java.lang.[Double].longBitsToDouble(Double.doubleToLongBits(bound) - 1)) ' correct for rounding
 		End Function
 
 		''' <summary>
@@ -488,7 +488,7 @@ Namespace java.util.concurrent
 				v2 = 2 * nextDouble() - 1 ' between -1 and 1
 				s = v1 * v1 + v2 * v2
 			Loop While s >= 1 OrElse s = 0
-			Dim multiplier As Double = Math.Sqrt(-2 * Math.Log(s)/s)
+			Dim multiplier As Double = System.Math.Sqrt(-2 * System.Math.Log(s)/s)
 			nextLocalGaussian.set(New Double?(v2 * multiplier))
 			Return v1 * multiplier
 		End Function
@@ -507,7 +507,7 @@ Namespace java.util.concurrent
 		''' @since 1.8 </exception>
 		Public Overrides Function ints(ByVal streamSize As Long) As java.util.stream.IntStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
-			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(0L, streamSize, Integer.MaxValue, 0), False)
+			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(0L, streamSize,  java.lang.[Integer].Max_Value, 0), False)
 		End Function
 
 		''' <summary>
@@ -520,7 +520,7 @@ Namespace java.util.concurrent
 		''' <returns> a stream of pseudorandom {@code int} values
 		''' @since 1.8 </returns>
 		Public Overrides Function ints() As java.util.stream.IntStream
-			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(0L, Long.MaxValue, Integer.MaxValue, 0), False)
+			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(0L, java.lang.[Long].Max_Value,  java.lang.[Integer].Max_Value, 0), False)
 		End Function
 
 		''' <summary>
@@ -560,7 +560,7 @@ Namespace java.util.concurrent
 		''' @since 1.8 </exception>
 		Public Overrides Function ints(ByVal randomNumberOrigin As Integer, ByVal randomNumberBound As Integer) As java.util.stream.IntStream
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
-			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(0L, Long.MaxValue, randomNumberOrigin, randomNumberBound), False)
+			Return java.util.stream.StreamSupport.intStream(New RandomIntsSpliterator(0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
 
 		''' <summary>
@@ -574,7 +574,7 @@ Namespace java.util.concurrent
 		''' @since 1.8 </exception>
 		Public Overrides Function longs(ByVal streamSize As Long) As java.util.stream.LongStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
-			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(0L, streamSize, Long.MaxValue, 0L), False)
+			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(0L, streamSize, java.lang.[Long].Max_Value, 0L), False)
 		End Function
 
 		''' <summary>
@@ -587,7 +587,7 @@ Namespace java.util.concurrent
 		''' <returns> a stream of pseudorandom {@code long} values
 		''' @since 1.8 </returns>
 		Public Overrides Function longs() As java.util.stream.LongStream
-			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(0L, Long.MaxValue, Long.MaxValue, 0L), False)
+			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(0L, java.lang.[Long].Max_Value, java.lang.[Long].Max_Value, 0L), False)
 		End Function
 
 		''' <summary>
@@ -627,7 +627,7 @@ Namespace java.util.concurrent
 		''' @since 1.8 </exception>
 		Public Overrides Function longs(ByVal randomNumberOrigin As Long, ByVal randomNumberBound As Long) As java.util.stream.LongStream
 			If randomNumberOrigin >= randomNumberBound Then Throw New IllegalArgumentException(BadRange)
-			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(0L, Long.MaxValue, randomNumberOrigin, randomNumberBound), False)
+			Return java.util.stream.StreamSupport.longStream(New RandomLongsSpliterator(0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
 
 		''' <summary>
@@ -642,7 +642,7 @@ Namespace java.util.concurrent
 		''' @since 1.8 </exception>
 		Public Overrides Function doubles(ByVal streamSize As Long) As java.util.stream.DoubleStream
 			If streamSize < 0L Then Throw New IllegalArgumentException(BadSize)
-			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(0L, streamSize, Double.MaxValue, 0.0), False)
+			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(0L, streamSize, java.lang.[Double].Max_Value, 0.0), False)
 		End Function
 
 		''' <summary>
@@ -656,7 +656,7 @@ Namespace java.util.concurrent
 		''' <returns> a stream of pseudorandom {@code double} values
 		''' @since 1.8 </returns>
 		Public Overrides Function doubles() As java.util.stream.DoubleStream
-			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(0L, Long.MaxValue, Double.MaxValue, 0.0), False)
+			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(0L, java.lang.[Long].Max_Value, java.lang.[Double].Max_Value, 0.0), False)
 		End Function
 
 		''' <summary>
@@ -697,14 +697,14 @@ Namespace java.util.concurrent
 		''' @since 1.8 </exception>
 		Public Overrides Function doubles(ByVal randomNumberOrigin As Double, ByVal randomNumberBound As Double) As java.util.stream.DoubleStream
 			If Not(randomNumberOrigin < randomNumberBound) Then Throw New IllegalArgumentException(BadRange)
-			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(0L, Long.MaxValue, randomNumberOrigin, randomNumberBound), False)
+			Return java.util.stream.StreamSupport.doubleStream(New RandomDoublesSpliterator(0L, java.lang.[Long].Max_Value, randomNumberOrigin, randomNumberBound), False)
 		End Function
 
 		''' <summary>
 		''' Spliterator for int streams.  We multiplex the four int
 		''' versions into one class by treating a bound less than origin as
 		''' unbounded, and also by treating "infinite" as equivalent to
-		''' Long.MAX_VALUE. For splits, it uses the standard divide-by-two
+		''' java.lang.[Long].MAX_VALUE. For splits, it uses the standard divide-by-two
 		''' approach. The long and double versions of this class are
 		''' identical except for types.
 		''' </summary>

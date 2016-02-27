@@ -334,7 +334,7 @@ Namespace java.awt.image
 		''' integral type source to a float or double destination, the source
 		''' is first converted to a 32-bit int (if necessary), using the above
 		''' rules for integral types, and then the int is cast to float or
-		''' double.
+		''' java.lang.[Double].
 		''' <p> </summary>
 		''' <param name="srcRaster">  The  Raster from which to copy pixels.
 		''' </param>
@@ -562,7 +562,7 @@ Namespace java.awt.image
 		''' <param name="x">        The X coordinate of the pixel location. </param>
 		''' <param name="y">        The Y coordinate of the pixel location. </param>
 		''' <param name="b">        The band to set. </param>
-		''' <param name="s">        The input sample as a double.
+		''' <param name="s">        The input sample as a java.lang.[Double].
 		''' </param>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>

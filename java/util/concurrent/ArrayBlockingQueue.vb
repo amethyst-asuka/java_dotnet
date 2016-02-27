@@ -423,7 +423,7 @@ Namespace java.util.concurrent
 		End Function
 
 		' this doc comment is overridden to remove the reference to collections
-		' greater in size than  [Integer].MAX_VALUE
+		' greater in size than  java.lang.[Integer].MAX_VALUE
 		''' <summary>
 		''' Returns the number of elements in this queue.
 		''' </summary>
@@ -680,7 +680,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
-			Return drainTo(c, Integer.MaxValue)
+			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
@@ -696,7 +696,7 @@ Namespace java.util.concurrent
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
-				Dim n As Integer = Math.Min(maxElements, count)
+				Dim n As Integer = System.Math.Min(maxElements, count)
 				Dim take As Integer = takeIndex
 				Dim i As Integer = 0
 				Try

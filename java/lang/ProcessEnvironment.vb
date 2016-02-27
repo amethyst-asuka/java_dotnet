@@ -272,7 +272,7 @@ Namespace java.lang
 				' sort *after* "Z", not before.
 				Dim n1 As Integer = s1.length()
 				Dim n2 As Integer = s2.length()
-				Dim min As Integer = Math.Min(n1, n2)
+				Dim min As Integer = System.Math.Min(n1, n2)
 				For i As Integer = 0 To min - 1
 					Dim c1 As Char = s1.Chars(i)
 					Dim c2 As Char = s2.Chars(i)

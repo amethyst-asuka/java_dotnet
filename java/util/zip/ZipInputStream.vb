@@ -194,7 +194,7 @@ Namespace java.util.zip
 				If len = -1 Then Throw New ZipException("unexpected EOF")
 				crc.update(b, [off], len)
 				remaining -= len
-				If remaining = 0 AndAlso entry.crc <> crc.value Then Throw New ZipException("invalid entry CRC (expected 0x" & Long.toHexString(entry.crc) & " but got 0x" & Long.toHexString(crc.value) & ")")
+				If remaining = 0 AndAlso entry.crc <> crc.value Then Throw New ZipException("invalid entry CRC (expected 0x" & java.lang.[Long].toHexString(entry.crc) & " but got 0x" & java.lang.[Long].toHexString(crc.value) & ")")
 				Return len
 			Case Else
 				Throw New ZipException("invalid compression method")
@@ -211,7 +211,7 @@ Namespace java.util.zip
 		Public Overrides Function skip(ByVal n As Long) As Long
 			If n < 0 Then Throw New IllegalArgumentException("negative skip length")
 			ensureOpen()
-			Dim max As Integer = CInt(Fix(Math.Min(n, Integer.MaxValue)))
+			Dim max As Integer = CInt(Fix (System.Math.Min(n,  java.lang.[Integer].Max_Value)))
 			Dim total As Integer = 0
 			Do While total < max
 				Dim len As Integer = max - total
@@ -333,7 +333,7 @@ Namespace java.util.zip
 			End If
 			If e.size <> inf.bytesWritten Then Throw New ZipException("invalid entry size (expected " & e.size & " but got " & inf.bytesWritten & " bytes)")
 			If e.csize <> inf.bytesRead Then Throw New ZipException("invalid entry compressed size (expected " & e.csize & " but got " & inf.bytesRead & " bytes)")
-			If e.crc <> crc.value Then Throw New ZipException("invalid entry CRC (expected 0x" & Long.toHexString(e.crc) & " but got 0x" & Long.toHexString(crc.value) & ")")
+			If e.crc <> crc.value Then Throw New ZipException("invalid entry CRC (expected 0x" & java.lang.[Long].toHexString(e.crc) & " but got 0x" & java.lang.[Long].toHexString(crc.value) & ")")
 		End Sub
 
 	'    

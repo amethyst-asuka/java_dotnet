@@ -131,7 +131,7 @@ Namespace java.util.concurrent
 		End Class
 
 		''' <summary>
-		''' The capacity bound, or  [Integer].MAX_VALUE if none </summary>
+		''' The capacity bound, or  java.lang.[Integer].MAX_VALUE if none </summary>
 		Private ReadOnly capacity As Integer
 
 		''' <summary>
@@ -251,7 +251,7 @@ Namespace java.util.concurrent
 		''' <seealso cref="Integer#MAX_VALUE"/>.
 		''' </summary>
 		Public Sub New()
-			Me.New(Integer.MaxValue)
+			Me.New( java.lang.[Integer].Max_Value)
 		End Sub
 
 		''' <summary>
@@ -277,7 +277,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
 		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
-			Me.New(Integer.MaxValue)
+			Me.New( java.lang.[Integer].Max_Value)
 			Dim putLock As java.util.concurrent.locks.ReentrantLock = Me.putLock
 			putLock.lock() ' Never contended, but necessary for visibility
 			Try
@@ -295,7 +295,7 @@ Namespace java.util.concurrent
 		End Sub
 
 		' this doc comment is overridden to remove the reference to collections
-		' greater in size than  [Integer].MAX_VALUE
+		' greater in size than  java.lang.[Integer].MAX_VALUE
 		''' <summary>
 		''' Returns the number of elements in this queue.
 		''' </summary>
@@ -696,7 +696,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
-			Return drainTo(c, Integer.MaxValue)
+			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
@@ -712,7 +712,7 @@ Namespace java.util.concurrent
 			Dim takeLock As java.util.concurrent.locks.ReentrantLock = Me.takeLock
 			takeLock.lock()
 			Try
-				Dim n As Integer = Math.Min(maxElements, count.get())
+				Dim n As Integer = System.Math.Min(maxElements, count.get())
 				' count.get provides visibility to first n Nodes
 				Dim h As Node(Of E) = head
 				Dim i As Integer = 0

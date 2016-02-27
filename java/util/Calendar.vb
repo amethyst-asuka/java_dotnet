@@ -820,7 +820,7 @@ Namespace java.util
 		''' <summary>
 		''' Pseudo-time-stamps which specify when each field was set. There
 		''' are two special values, UNSET and COMPUTED. Values from
-		''' MINIMUM_USER_SET to  [Integer].MAX_VALUE are legal user set values.
+		''' MINIMUM_USER_SET to  java.lang.[Integer].MAX_VALUE are legal user set values.
 		''' </summary>
 		<NonSerialized> _
 		Private stamp As Integer()
@@ -1400,7 +1400,7 @@ Namespace java.util
 				Case "iso8601"
 					Dim gcal As New GregorianCalendar(zone, locale, True)
 					' make gcal a proleptic Gregorian
-					gcal.gregorianChange = New Date(Long.MinValue)
+					gcal.gregorianChange = New Date(Long.MIN_VALUE)
 					' and week definition to be compatible with ISO 8601
 					weekDefinitionion(MONDAY, 4)
 					cal = gcal
@@ -1742,7 +1742,7 @@ Namespace java.util
 			isSet_Renamed(field) = True
 			stamp(field) = nextStamp
 			nextStamp += 1
-			If nextStamp = Integer.MaxValue Then adjustStamp()
+			If nextStamp =  java.lang.[Integer].Max_Value Then adjustStamp()
 		End Sub
 
 		''' <summary>
@@ -2280,9 +2280,9 @@ Namespace java.util
 	'         
 			If bestStamp = UNSET Then
 				womStamp = stamp(WEEK_OF_MONTH)
-				dowimStamp = Math.Max(stamp(DAY_OF_WEEK_IN_MONTH), dowStamp)
+				dowimStamp = System.Math.Max(stamp(DAY_OF_WEEK_IN_MONTH), dowStamp)
 				woyStamp = stamp(WEEK_OF_YEAR)
-				bestStamp = Math.Max(Math.Max(womStamp, dowimStamp), woyStamp)
+				bestStamp = System.Math.Max (System.Math.Max(womStamp, dowimStamp), woyStamp)
 
 	'             Treat MONTH alone or no fields at all as DAY_OF_MONTH.  This may
 	'             * result in bestStamp = domStamp = UNSET if no fields are set,
@@ -2337,7 +2337,7 @@ Namespace java.util
 			bestStamp = If(hourStamp > hourOfDayStamp, hourStamp, hourOfDayStamp)
 
 			' if bestStamp is still UNSET, then take HOUR or AM_PM. (See 4846659)
-			If bestStamp = UNSET Then bestStamp = Math.Max(stamp(HOUR), stamp(AM_PM))
+			If bestStamp = UNSET Then bestStamp = System.Math.Max(stamp(HOUR), stamp(AM_PM))
 
 			' Hours
 			If bestStamp <> UNSET Then
@@ -3124,13 +3124,13 @@ Namespace java.util
 			Dim newStamp As Integer = MINIMUM_USER_STAMP
 
 			Do
-				Dim min As Integer = Integer.MaxValue
+				Dim min As Integer =  java.lang.[Integer].Max_Value
 				For i As Integer = 0 To stamp.Length - 1
 					Dim v As Integer = stamp(i)
 					If v >= newStamp AndAlso min > v Then min = v
 					If max < v Then max = v
 				Next i
-				If max <> min AndAlso min = Integer.MaxValue Then Exit Do
+				If max <> min AndAlso min =  java.lang.[Integer].Max_Value Then Exit Do
 				For i As Integer = 0 To stamp.Length - 1
 					If stamp(i) = min Then stamp(i) = newStamp
 				Next i

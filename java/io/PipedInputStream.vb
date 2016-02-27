@@ -364,7 +364,7 @@ Namespace java.io
 				Dim available As Integer
 
 				If [in] > out Then
-					available = Math.Min((buffer.Length - out), ([in] - out))
+					available = System.Math.Min((buffer.Length - out), ([in] - out))
 				Else
 					available = buffer.Length - out
 				End If

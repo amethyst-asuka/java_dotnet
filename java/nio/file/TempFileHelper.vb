@@ -47,7 +47,7 @@ Namespace java.nio.file
 		Private Shared ReadOnly random As New java.security.SecureRandom
 		Private Shared Function generatePath(ByVal prefix As String, ByVal suffix As String, ByVal dir As Path) As Path
 			Dim n As Long = random.nextLong()
-			n = If(n = Long.MinValue, 0, Math.Abs(n))
+			n = If(n = java.lang.[Long].MIN_VALUE, 0, System.Math.Abs(n))
 			Dim name As Path = dir.fileSystem.getPath(prefix + Convert.ToString(n) + suffix)
 			' the generated name should be a simple file name
 			If name.parent IsNot Nothing Then Throw New IllegalArgumentException("Invalid prefix or suffix")

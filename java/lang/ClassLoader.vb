@@ -1797,7 +1797,7 @@ Namespace java.lang
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Object
-				Return If(file.exists(), Boolean.TRUE, Nothing)
+				Return If(file.exists(),  java.lang.[Boolean].TRUE, Nothing)
 			End Function
 		End Class
 

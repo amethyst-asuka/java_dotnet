@@ -1865,7 +1865,7 @@ Namespace java.util
 					Return False
 				End Function
 				Public Function estimateSize() As Long Implements Spliterator(Of K).estimateSize
-					Return Long.MaxValue
+					Return java.lang.[Long].Max_Value
 				End Function
 				Public Function characteristics() As Integer Implements Spliterator(Of K).characteristics
 					Return Spliterator.DISTINCT Or Spliterator.ORDERED Or Spliterator.SORTED
@@ -1911,7 +1911,7 @@ Namespace java.util
 					Return False
 				End Function
 				Public Function estimateSize() As Long Implements Spliterator(Of K).estimateSize
-					Return Long.MaxValue
+					Return java.lang.[Long].Max_Value
 				End Function
 				Public Function characteristics() As Integer Implements Spliterator(Of K).characteristics
 					Return Spliterator.DISTINCT Or Spliterator.ORDERED

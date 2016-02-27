@@ -345,7 +345,7 @@ Namespace java.util
 		Private Sub ensureCapacity(ByVal wordsRequired As Integer)
 			If words.Length < wordsRequired Then
 				' Allocate larger of doubled size or required size
-				Dim request As Integer = Math.Max(2 * words.Length, wordsRequired)
+				Dim request As Integer = System.Math.Max(2 * words.Length, wordsRequired)
 				words = New Long(request - 1){}
 				Array.Copy(words, words, request)
 				sizeIsSticky = False
@@ -689,7 +689,7 @@ Namespace java.util
 		'''  <pre> {@code
 		''' for (int i = bs.nextSetBit(0); i >= 0; i = bs.nextSetBit(i+1)) {
 		'''     // operate on index i here
-		'''     if (i ==  [Integer].MAX_VALUE) {
+		'''     if (i ==  java.lang.[Integer].MAX_VALUE) {
 		'''         break; // or (i+1) would overflow
 		'''     }
 		''' }}</pre>
@@ -710,7 +710,7 @@ Namespace java.util
 			Dim word As Long = words(u) And (WORD_MASK << fromIndex)
 
 			Do
-				If word <> 0 Then Return (u * BITS_PER_WORD) + Long.numberOfTrailingZeros(word)
+				If word <> 0 Then Return (u * BITS_PER_WORD) + java.lang.[Long].numberOfTrailingZeros(word)
 				u += 1
 				If u = wordsInUse Then Return -1
 				word = words(u)
@@ -738,7 +738,7 @@ Namespace java.util
 			Dim word As Long = (Not words(u)) And (WORD_MASK << fromIndex)
 
 			Do
-				If word <> 0 Then Return (u * BITS_PER_WORD) + Long.numberOfTrailingZeros(word)
+				If word <> 0 Then Return (u * BITS_PER_WORD) + java.lang.[Long].numberOfTrailingZeros(word)
 				u += 1
 				If u = wordsInUse Then Return wordsInUse * BITS_PER_WORD
 				word = Not words(u)
@@ -779,7 +779,7 @@ Namespace java.util
 			Dim word As Long = words(u) And (CLng(CULng(WORD_MASK) >> -(fromIndex+1)))
 
 			Do
-				If word <> 0 Then Return (u+1) * BITS_PER_WORD - 1 - Long.numberOfLeadingZeros(word)
+				If word <> 0 Then Return (u+1) * BITS_PER_WORD - 1 - java.lang.[Long].numberOfLeadingZeros(word)
 				Dim tempVar As Boolean = u = 0
 				u -= 1
 				If tempVar Then Return -1
@@ -813,7 +813,7 @@ Namespace java.util
 			Dim word As Long = (Not words(u)) And (CLng(CULng(WORD_MASK) >> -(fromIndex+1)))
 
 			Do
-				If word <> 0 Then Return (u+1) * BITS_PER_WORD -1 - Long.numberOfLeadingZeros(word)
+				If word <> 0 Then Return (u+1) * BITS_PER_WORD -1 - java.lang.[Long].numberOfLeadingZeros(word)
 				Dim tempVar As Boolean = u = 0
 				u -= 1
 				If tempVar Then Return -1
@@ -831,7 +831,7 @@ Namespace java.util
 		Public Overridable Function length() As Integer
 			If wordsInUse = 0 Then Return 0
 
-			Return BITS_PER_WORD * (wordsInUse - 1) + (BITS_PER_WORD - Long.numberOfLeadingZeros(words(wordsInUse - 1)))
+			Return BITS_PER_WORD * (wordsInUse - 1) + (BITS_PER_WORD - java.lang.[Long].numberOfLeadingZeros(words(wordsInUse - 1)))
 		End Function
 
 		''' <summary>
@@ -855,7 +855,7 @@ Namespace java.util
 		'''         the specified {@code BitSet}
 		''' @since  1.4 </returns>
 		Public Overridable Function intersects(ByVal [set] As BitSet) As Boolean
-			For i As Integer = Math.Min(wordsInUse, [set].wordsInUse) - 1 To 0 Step -1
+			For i As Integer = System.Math.Min(wordsInUse, [set].wordsInUse) - 1 To 0 Step -1
 				If (words(i) And [set].words(i)) <> 0 Then Return True
 			Next i
 			Return False
@@ -870,7 +870,7 @@ Namespace java.util
 			Dim sum As Integer = 0
 			Dim i As Integer = 0
 			Do While i < wordsInUse
-				sum += Long.bitCount(words(i))
+				sum += java.lang.[Long].bitCount(words(i))
 				i += 1
 			Loop
 			Return sum
@@ -914,7 +914,7 @@ Namespace java.util
 		Public Overridable Sub [or](ByVal [set] As BitSet)
 			If Me Is [set] Then Return
 
-			Dim wordsInCommon As Integer = Math.Min(wordsInUse, [set].wordsInUse)
+			Dim wordsInCommon As Integer = System.Math.Min(wordsInUse, [set].wordsInUse)
 
 			If wordsInUse < [set].wordsInUse Then
 				ensureCapacity([set].wordsInUse)
@@ -947,7 +947,7 @@ Namespace java.util
 		''' </summary>
 		''' <param name="set"> a bit set </param>
 		Public Overridable Sub [xor](ByVal [set] As BitSet)
-			Dim wordsInCommon As Integer = Math.Min(wordsInUse, [set].wordsInUse)
+			Dim wordsInCommon As Integer = System.Math.Min(wordsInUse, [set].wordsInUse)
 
 			If wordsInUse < [set].wordsInUse Then
 				ensureCapacity([set].wordsInUse)
@@ -975,7 +975,7 @@ Namespace java.util
 		''' @since  1.2 </param>
 		Public Overridable Sub andNot(ByVal [set] As BitSet)
 			' Perform logical (a & !b) on words in common
-			For i As Integer = Math.Min(wordsInUse, [set].wordsInUse) - 1 To 0 Step -1
+			For i As Integer = System.Math.Min(wordsInUse, [set].wordsInUse) - 1 To 0 Step -1
 				words(i) = words(i) And Not [set].words(i)
 			Next i
 

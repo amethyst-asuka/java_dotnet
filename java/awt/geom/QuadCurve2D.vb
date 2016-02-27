@@ -253,10 +253,10 @@ Namespace java.awt.geom
 			''' </summary>
 			Public Overridable Property bounds2D As Rectangle2D
 				Get
-					Dim left As Single = Math.Min(Math.Min(x1, x2), ctrlx)
-					Dim top As Single = Math.Min(Math.Min(y1, y2), ctrly)
-					Dim right As Single = Math.Max(Math.Max(x1, x2), ctrlx)
-					Dim bottom As Single = Math.Max(Math.Max(y1, y2), ctrly)
+					Dim left As Single = System.Math.Min (System.Math.Min(x1, x2), ctrlx)
+					Dim top As Single = System.Math.Min (System.Math.Min(y1, y2), ctrly)
+					Dim right As Single = System.Math.Max (System.Math.Max(x1, x2), ctrlx)
+					Dim bottom As Single = System.Math.Max (System.Math.Max(y1, y2), ctrly)
 					Return New Rectangle2D.Float(left, top, right - left, bottom - top)
 				End Get
 			End Property
@@ -457,10 +457,10 @@ Namespace java.awt.geom
 			''' </summary>
 			Public Overridable Property bounds2D As Rectangle2D
 				Get
-					Dim left As Double = Math.Min(Math.Min(x1, x2), ctrlx)
-					Dim top As Double = Math.Min(Math.Min(y1, y2), ctrly)
-					Dim right As Double = Math.Max(Math.Max(x1, x2), ctrlx)
-					Dim bottom As Double = Math.Max(Math.Max(y1, y2), ctrly)
+					Dim left As Double = System.Math.Min (System.Math.Min(x1, x2), ctrlx)
+					Dim top As Double = System.Math.Min (System.Math.Min(y1, y2), ctrly)
+					Dim right As Double = System.Math.Max (System.Math.Max(x1, x2), ctrlx)
+					Dim bottom As Double = System.Math.Max (System.Math.Max(y1, y2), ctrly)
 					Return New Rectangle2D.Double(left, top, right - left, bottom - top)
 				End Get
 			End Property
@@ -853,7 +853,7 @@ Namespace java.awt.geom
 				' From Numerical Recipes, 5.6, Quadratic and Cubic Equations
 				Dim d As Double = b * b - 4.0 * a * c
 				If d < 0.0 Then Return 0
-				d = Math.Sqrt(d)
+				d = System.Math.Sqrt(d)
 				' For accuracy, calculate one root using:
 				'     (-b +/- d) / 2a
 				' and the other using:

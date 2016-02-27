@@ -222,12 +222,12 @@ Namespace java.io
 		'''          If <tt>n</tt> is negative </exception>
 		public Long skip(Long n) throws IOException
 			If n < 0 Then Throw New IllegalArgumentException("skip() value is negative")
-			Dim nn As Integer = CInt(Fix(Math.Min(n, maxSkipBufferSize)))
+			Dim nn As Integer = CInt(Fix (System.Math.Min(n, maxSkipBufferSize)))
 			SyncLock lock
 				If (skipBuffer Is Nothing) OrElse (skipBuffer.Length < nn) Then skipBuffer = New Char(nn - 1){}
 				Dim r As Long = n
 				Do While r > 0
-					Dim nc As Integer = read(skipBuffer, 0, CInt(Fix(Math.Min(r, nn))))
+					Dim nc As Integer = read(skipBuffer, 0, CInt(Fix (System.Math.Min(r, nn))))
 					If nc = -1 Then Exit Do
 					r -= nc
 				Loop

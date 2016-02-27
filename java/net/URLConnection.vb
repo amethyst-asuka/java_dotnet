@@ -445,18 +445,18 @@ Namespace java.net
 		''' </summary>
 		''' <returns>  the content length of the resource that this connection's URL
 		'''          references, {@code -1} if the content length is not known,
-		'''          or if the content length is greater than  [Integer].MAX_VALUE. </returns>
+		'''          or if the content length is greater than  java.lang.[Integer].MAX_VALUE. </returns>
 		Public Overridable Property contentLength As Integer
 			Get
 				Dim l As Long = contentLengthLong
-				If l > Integer.MaxValue Then Return -1
+				If l >  java.lang.[Integer].Max_Value Then Return -1
 				Return CInt(l)
 			End Get
 		End Property
 
 		''' <summary>
 		''' Returns the value of the {@code content-length} header field as a
-		''' long.
+		''' java.lang.[Long].
 		''' </summary>
 		''' <returns>  the content length of the resource that this connection's URL
 		'''          references, or {@code -1} if the content length is
@@ -570,7 +570,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="name">      the name of the header field. </param>
 		''' <param name="Default">   the default value. </param>
-		''' <returns>  the value of the named field, parsed as an integer. The
+		''' <returns>  the value of the named field, parsed as an  java.lang.[Integer]. The
 		'''          {@code Default} value is returned if the field is
 		'''          missing or malformed. </returns>
 		Public Overridable Function getHeaderFieldInt(ByVal name As String, ByVal [Default] As Integer) As Integer
@@ -592,7 +592,7 @@ Namespace java.net
 		''' </summary>
 		''' <param name="name">      the name of the header field. </param>
 		''' <param name="Default">   the default value. </param>
-		''' <returns>  the value of the named field, parsed as a long. The
+		''' <returns>  the value of the named field, parsed as a java.lang.[Long]. The
 		'''          {@code Default} value is returned if the field is
 		'''          missing or malformed.
 		''' @since 7.0 </returns>

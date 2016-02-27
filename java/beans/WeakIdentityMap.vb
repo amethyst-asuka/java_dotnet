@@ -77,7 +77,7 @@ Namespace java.beans
 				Me.size += 1
 				If Me.size >= Me.threshold Then
 					If Me.table.Length = MAXIMUM_CAPACITY Then
-						Me.threshold = Integer.MaxValue
+						Me.threshold =  java.lang.[Integer].Max_Value
 					Else
 						removeStaleEntries()
 						table = newTable(Me.table.Length * 2)

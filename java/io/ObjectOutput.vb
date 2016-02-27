@@ -48,7 +48,7 @@ Namespace java.io
 		Sub writeObject(ByVal obj As Object)
 
 		''' <summary>
-		''' Writes a byte. This method will block until the byte is actually
+		''' Writes a java.lang.[Byte]. This method will block until the byte is actually
 		''' written. </summary>
 		''' <param name="b"> the byte </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>

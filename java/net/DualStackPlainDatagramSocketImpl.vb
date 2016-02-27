@@ -188,7 +188,7 @@ Namespace java.net
 
 			Select Case opt
 				Case SO_REUSEADDR , SO_BROADCAST
-					returnValue = If(value = 0, Boolean.FALSE, Boolean.TRUE)
+					returnValue = If(value = 0,  java.lang.[Boolean].FALSE,  java.lang.[Boolean].TRUE)
 				Case IP_TOS , SO_RCVBUF , SO_SNDBUF
 					returnValue = New Integer?(value)
 				Case Else ' shouldn't get here

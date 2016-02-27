@@ -733,7 +733,7 @@ Namespace java.awt
 		''' supplied by the system.  If non-<code>null</code> you can
 		''' override some of the system supplied values while accepting
 		''' others by setting those fields you want to accept from system
-		''' to <code> [Integer].MAX_VALUE</code>.
+		''' to <code> java.lang.[Integer].MAX_VALUE</code>.
 		''' <p>
 		''' Note, the given maximized bounds are used as a hint for the native
 		''' system, because the underlying platform may not support setting the

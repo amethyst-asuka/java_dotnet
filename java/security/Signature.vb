@@ -238,7 +238,7 @@ Namespace java.security
 
 		Shared Sub New()
 			signatureInfo = New ConcurrentDictionary(Of String, Boolean?)
-			Dim [TRUE] As Boolean? = Boolean.TRUE
+			Dim [TRUE] As Boolean? =  java.lang.[Boolean].TRUE
 			' pre-initialize with values for our SignatureSpi implementations
 			signatureInfo.put("sun.security.provider.DSA$RawDSA", [TRUE])
 			signatureInfo.put("sun.security.provider.DSA$SHA1withDSA", [TRUE])
@@ -605,7 +605,7 @@ Namespace java.security
 		End Function
 
 		''' <summary>
-		''' Updates the data to be signed or verified by a byte.
+		''' Updates the data to be signed or verified by a java.lang.[Byte].
 		''' </summary>
 		''' <param name="b"> the byte to use for the update.
 		''' </param>

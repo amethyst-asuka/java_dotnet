@@ -84,7 +84,7 @@ Namespace java.io
 		''' <param name="minCapacity"> the desired minimum capacity </param>
 		''' <exception cref="OutOfMemoryError"> if {@code minCapacity < 0}.  This is
 		''' interpreted as a request for the unsatisfiably large capacity
-		''' {@code (long)  [Integer].MAX_VALUE + (minCapacity -  [Integer].MAX_VALUE)}. </exception>
+		''' {@code (long)  java.lang.[Integer].MAX_VALUE + (minCapacity -  java.lang.[Integer].MAX_VALUE)}. </exception>
 		Private Sub ensureCapacity(ByVal minCapacity As Integer)
 			' overflow-conscious code
 			If minCapacity - buf.Length > 0 Then grow(minCapacity)
@@ -96,7 +96,7 @@ Namespace java.io
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' Increases the capacity to ensure that it can hold at least the
@@ -114,7 +114,7 @@ Namespace java.io
 
 		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
-			Return If(minCapacity > MAX_ARRAY_SIZE, Integer.MaxValue, MAX_ARRAY_SIZE)
+			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
 
 		''' <summary>

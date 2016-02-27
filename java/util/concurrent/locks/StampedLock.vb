@@ -157,7 +157,7 @@ Namespace java.util.concurrent.locks
 	'''           sl.unlockRead(stamp);
 	'''        }
 	'''     }
-	'''     return Math.sqrt(currentX * currentX + currentY * currentY);
+	'''     return System.Math.sqrt(currentX * currentX + currentY * currentY);
 	'''   }
 	''' 
 	'''   void moveIfAtOrigin(double newX, double newY) { // upgrade

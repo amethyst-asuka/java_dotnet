@@ -361,12 +361,12 @@ Namespace java.util
 		''' Sorts the specified array into ascending numerical order.
 		''' 
 		''' <p>The {@code <} relation does not provide a total order on all double
-		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
+		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code java.lang.[Double].NaN}
 		''' value compares neither less than, greater than, nor equal to any value,
 		''' even itself. This method uses the total order imposed by the method
 		''' <seealso cref="Double#compareTo"/>: {@code -0.0d} is treated as less than value
-		''' {@code 0.0d} and {@code Double.NaN} is considered greater than any
-		''' other value and all {@code Double.NaN} values are considered equal.
+		''' {@code 0.0d} and {@code java.lang.[Double].NaN} is considered greater than any
+		''' other value and all {@code java.lang.[Double].NaN} values are considered equal.
 		''' 
 		''' <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
 		''' by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
@@ -386,12 +386,12 @@ Namespace java.util
 		''' the range to be sorted is empty.
 		''' 
 		''' <p>The {@code <} relation does not provide a total order on all double
-		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
+		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code java.lang.[Double].NaN}
 		''' value compares neither less than, greater than, nor equal to any value,
 		''' even itself. This method uses the total order imposed by the method
 		''' <seealso cref="Double#compareTo"/>: {@code -0.0d} is treated as less than value
-		''' {@code 0.0d} and {@code Double.NaN} is considered greater than any
-		''' other value and all {@code Double.NaN} values are considered equal.
+		''' {@code 0.0d} and {@code java.lang.[Double].NaN} is considered greater than any
+		''' other value and all {@code java.lang.[Double].NaN} values are considered equal.
 		''' 
 		''' <p>Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
 		''' by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
@@ -567,7 +567,7 @@ Namespace java.util
 				DualPivotQuicksort.sort(a, 0, n - 1, Nothing, 0, 0)
 			Else
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				CType(New ArraysParallelSortHelpers.FJShort.Sorter(Nothing, a, New Short(n - 1){}, 0, n, 0,If((g = n / (p << 2)) <= MIN_ARRAY_SORT_GRAN, MIN_ARRAY_SORT_GRAN, g)), ArraysParallelSortHelpers.FJShort.Sorter).invoke()
+				CType(New ArraysParallelSortHelpers.FJ java.lang.[Short].Sorter(Nothing, a, New Short(n - 1){}, 0, n, 0,If((g = n / (p << 2)) <= MIN_ARRAY_SORT_GRAN, MIN_ARRAY_SORT_GRAN, g)), ArraysParallelSortHelpers.FJ java.lang.[Short].Sorter).invoke()
 			End If
 		End Sub
 
@@ -605,7 +605,7 @@ Namespace java.util
 				DualPivotQuicksort.sort(a, fromIndex, toIndex - 1, Nothing, 0, 0)
 			Else
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				CType(New ArraysParallelSortHelpers.FJShort.Sorter(Nothing, a, New Short(n - 1){}, fromIndex, n, 0,If((g = n / (p << 2)) <= MIN_ARRAY_SORT_GRAN, MIN_ARRAY_SORT_GRAN, g)), ArraysParallelSortHelpers.FJShort.Sorter).invoke()
+				CType(New ArraysParallelSortHelpers.FJ java.lang.[Short].Sorter(Nothing, a, New Short(n - 1){}, fromIndex, n, 0,If((g = n / (p << 2)) <= MIN_ARRAY_SORT_GRAN, MIN_ARRAY_SORT_GRAN, g)), ArraysParallelSortHelpers.FJ java.lang.[Short].Sorter).invoke()
 			End If
 		End Sub
 
@@ -827,12 +827,12 @@ Namespace java.util
 		''' Sorts the specified array into ascending numerical order.
 		''' 
 		''' <p>The {@code <} relation does not provide a total order on all double
-		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
+		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code java.lang.[Double].NaN}
 		''' value compares neither less than, greater than, nor equal to any value,
 		''' even itself. This method uses the total order imposed by the method
 		''' <seealso cref="Double#compareTo"/>: {@code -0.0d} is treated as less than value
-		''' {@code 0.0d} and {@code Double.NaN} is considered greater than any
-		''' other value and all {@code Double.NaN} values are considered equal.
+		''' {@code 0.0d} and {@code java.lang.[Double].NaN} is considered greater than any
+		''' other value and all {@code java.lang.[Double].NaN} values are considered equal.
 		''' 
 		''' @implNote The sorting algorithm is a parallel sort-merge that breaks the
 		''' array into sub-arrays that are themselves sorted and then merged. When
@@ -866,12 +866,12 @@ Namespace java.util
 		''' {@code fromIndex == toIndex}, the range to be sorted is empty.
 		''' 
 		''' <p>The {@code <} relation does not provide a total order on all double
-		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code Double.NaN}
+		''' values: {@code -0.0d == 0.0d} is {@code true} and a {@code java.lang.[Double].NaN}
 		''' value compares neither less than, greater than, nor equal to any value,
 		''' even itself. This method uses the total order imposed by the method
 		''' <seealso cref="Double#compareTo"/>: {@code -0.0d} is treated as less than value
-		''' {@code 0.0d} and {@code Double.NaN} is considered greater than any
-		''' other value and all {@code Double.NaN} values are considered equal.
+		''' {@code 0.0d} and {@code java.lang.[Double].NaN} is considered greater than any
+		''' other value and all {@code java.lang.[Double].NaN} values are considered equal.
 		''' 
 		''' @implNote The sorting algorithm is a parallel sort-merge that breaks the
 		''' array into sub-arrays that are themselves sorted and then merged. When
@@ -2146,8 +2146,8 @@ Namespace java.util
 				ElseIf midVal > key Then
 					high = mid - 1 ' Neither val is NaN, thisVal is larger
 				Else
-					Dim midBits As Long = Double.doubleToLongBits(midVal)
-					Dim keyBits As Long = Double.doubleToLongBits(key)
+					Dim midBits As Long = java.lang.[Double].doubleToLongBits(midVal)
+					Dim keyBits As Long = java.lang.[Double].doubleToLongBits(key)
 					If midBits = keyBits Then ' Values are equal
 						Return mid ' Key found
 					ElseIf midBits < keyBits Then ' (-0.0, 0.0) or (!NaN, NaN)
@@ -2626,7 +2626,7 @@ Namespace java.util
 			If a2.Length <> length Then Return False
 
 			For i As Integer = 0 To length - 1
-				If Double.doubleToLongBits(a(i))<>Double.doubleToLongBits(a2(i)) Then Return False
+				If java.lang.[Double].doubleToLongBits(a(i))<>Double.doubleToLongBits(a2(i)) Then Return False
 			Next i
 
 			Return True
@@ -3091,7 +3091,7 @@ Namespace java.util
 		Public Shared Function copyOf(Of T, U)(ByVal original As U(), ByVal newLength As Integer, ByVal newType As [Class]) As T()
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim copy As T() = If(CObj(newType) Is GetType(CObj(Object())), CType(New Object(newLength - 1){}, T()), CType(Array.newInstance(newType.componentType, newLength), T()))
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3113,7 +3113,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As SByte(), ByVal newLength As Integer) As SByte()
 			Dim copy As SByte() = New SByte(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3135,7 +3135,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Short(), ByVal newLength As Integer) As Short()
 			Dim copy As Short() = New Short(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3157,7 +3157,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Integer(), ByVal newLength As Integer) As Integer()
 			Dim copy As Integer() = New Integer(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3179,7 +3179,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Long(), ByVal newLength As Integer) As Long()
 			Dim copy As Long() = New Long(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3201,7 +3201,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Char(), ByVal newLength As Integer) As Char()
 			Dim copy As Char() = New Char(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3223,7 +3223,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Single(), ByVal newLength As Integer) As Single()
 			Dim copy As Single() = New Single(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3245,7 +3245,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Double(), ByVal newLength As Integer) As Double()
 			Dim copy As Double() = New Double(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3267,7 +3267,7 @@ Namespace java.util
 		''' @since 1.6 </exception>
 		Public Shared Function copyOf(ByVal original As Boolean(), ByVal newLength As Integer) As Boolean()
 			Dim copy As Boolean() = New Boolean(newLength - 1){}
-			Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength))
+			Array.Copy(original, 0, copy, 0, System.Math.Min(original.Length, newLength))
 			Return copy
 		End Function
 
@@ -3341,7 +3341,7 @@ Namespace java.util
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			Dim copy As T() = If(CObj(newType) Is GetType(CObj(Object())), CType(New Object(newLength - 1){}, T()), CType(Array.newInstance(newType.componentType, newLength), T()))
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3374,7 +3374,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As SByte() = New SByte(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3407,7 +3407,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Short() = New Short(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3440,7 +3440,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Integer() = New Integer(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3473,7 +3473,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Long() = New Long(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3506,7 +3506,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Char() = New Char(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3539,7 +3539,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Single() = New Single(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3572,7 +3572,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Double() = New Double(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3605,7 +3605,7 @@ Namespace java.util
 			Dim newLength As Integer = [to] - [from]
 			If newLength < 0 Then Throw New IllegalArgumentException([from] & " > " & [to])
 			Dim copy As Boolean() = New Boolean(newLength - 1){}
-			Array.Copy(original, [from], copy, 0, Math.Min(original.Length - [from], newLength))
+			Array.Copy(original, [from], copy, 0, System.Math.Min(original.Length - [from], newLength))
 			Return copy
 		End Function
 
@@ -3921,7 +3921,7 @@ Namespace java.util
 
 			Dim result As Integer = 1
 			For Each element As Double In a
-				Dim bits As Long = Double.doubleToLongBits(element)
+				Dim bits As Long = java.lang.[Double].doubleToLongBits(element)
 				result = 31 * result + CInt(Fix(bits Xor (CLng(CULng(bits) >> 32))))
 			Next element
 			Return result
@@ -4397,7 +4397,7 @@ Namespace java.util
 			If a Is Nothing Then Return "null"
 
 			Dim bufLen As Integer = 20 * a.Length
-			If a.Length <> 0 AndAlso bufLen <= 0 Then bufLen = Integer.MaxValue
+			If a.Length <> 0 AndAlso bufLen <= 0 Then bufLen =  java.lang.[Integer].Max_Value
 			Dim buf As New StringBuilder(bufLen)
 			deepToString(a, buf, New HashSet(Of Object()))
 			Return buf.ToString()

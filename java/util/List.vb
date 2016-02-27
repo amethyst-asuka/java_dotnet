@@ -115,8 +115,8 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns the number of elements in this list.  If this list contains
-		''' more than <tt> [Integer].MAX_VALUE</tt> elements, returns
-		''' <tt> [Integer].MAX_VALUE</tt>.
+		''' more than <tt> java.lang.[Integer].MAX_VALUE</tt> elements, returns
+		''' <tt> java.lang.[Integer].MAX_VALUE</tt>.
 		''' </summary>
 		''' <returns> the number of elements in this list </returns>
 		Function size() As Integer

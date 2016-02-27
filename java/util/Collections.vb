@@ -5699,7 +5699,7 @@ Namespace java.util
 			End Function
 
 			Public Overrides Function GetHashCode() As Integer
-				Return cmp.GetHashCode() Xor Integer.MinValue
+				Return cmp.GetHashCode() Xor  java.lang.[Integer].MIN_VALUE
 			End Function
 
 			Public Overrides Function reversed() As Comparator(Of T) Implements Comparator(Of T).reversed
@@ -5983,7 +5983,7 @@ Namespace java.util
 				Return m.remove(o) IsNot Nothing
 			End Function
 			Public Overridable Function add(ByVal e As E) As Boolean
-				Return m.put(e, Boolean.TRUE) Is Nothing
+				Return m.put(e,  java.lang.[Boolean].TRUE) Is Nothing
 			End Function
 			Public Overridable Function [iterator]() As [Iterator](Of E) Implements Set(Of E).iterator
 				Return s.GetEnumerator()

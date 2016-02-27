@@ -253,10 +253,10 @@ Namespace java.awt.font
 		''' @since 1.4 </returns>
 		Public Overridable Function getPixelBounds(ByVal renderFRC As FontRenderContext, ByVal x As Single, ByVal y As Single) As java.awt.Rectangle
 					Dim rect As java.awt.geom.Rectangle2D = visualBounds
-					Dim l As Integer = CInt(Fix(Math.Floor(rect.x + x)))
-					Dim t As Integer = CInt(Fix(Math.Floor(rect.y + y)))
-					Dim r As Integer = CInt(Fix(Math.Ceiling(rect.maxX + x)))
-					Dim b As Integer = CInt(Fix(Math.Ceiling(rect.maxY + y)))
+					Dim l As Integer = CInt(Fix (System.Math.Floor(rect.x + x)))
+					Dim t As Integer = CInt(Fix (System.Math.Floor(rect.y + y)))
+					Dim r As Integer = CInt(Fix (System.Math.Ceiling(rect.maxX + x)))
+					Dim b As Integer = CInt(Fix (System.Math.Ceiling(rect.maxY + y)))
 					Return New java.awt.Rectangle(l, t, r - l, b - t)
 		End Function
 
@@ -525,10 +525,10 @@ Namespace java.awt.font
 		''' @since 1.4 </returns>
 		Public Overridable Function getGlyphPixelBounds(ByVal index As Integer, ByVal renderFRC As FontRenderContext, ByVal x As Single, ByVal y As Single) As java.awt.Rectangle
 					Dim rect As java.awt.geom.Rectangle2D = getGlyphVisualBounds(index).bounds2D
-					Dim l As Integer = CInt(Fix(Math.Floor(rect.x + x)))
-					Dim t As Integer = CInt(Fix(Math.Floor(rect.y + y)))
-					Dim r As Integer = CInt(Fix(Math.Ceiling(rect.maxX + x)))
-					Dim b As Integer = CInt(Fix(Math.Ceiling(rect.maxY + y)))
+					Dim l As Integer = CInt(Fix (System.Math.Floor(rect.x + x)))
+					Dim t As Integer = CInt(Fix (System.Math.Floor(rect.y + y)))
+					Dim r As Integer = CInt(Fix (System.Math.Ceiling(rect.maxX + x)))
+					Dim b As Integer = CInt(Fix (System.Math.Ceiling(rect.maxY + y)))
 					Return New java.awt.Rectangle(l, t, r - l, b - t)
 		End Function
 

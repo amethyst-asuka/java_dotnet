@@ -201,8 +201,8 @@ Namespace java.awt
 					End If
 				End SyncLock
     
-				If oldManager IsNot Nothing Then oldManager.firePropertyChange("managingFocus", Boolean.TRUE, Boolean.FALSE)
-				If newManager IsNot Nothing Then newManager.firePropertyChange("managingFocus", Boolean.FALSE, Boolean.TRUE)
+				If oldManager IsNot Nothing Then oldManager.firePropertyChange("managingFocus",  java.lang.[Boolean].TRUE,  java.lang.[Boolean].FALSE)
+				If newManager IsNot Nothing Then newManager.firePropertyChange("managingFocus",  java.lang.[Boolean].FALSE,  java.lang.[Boolean].TRUE)
 			End Set
 		End Property
 

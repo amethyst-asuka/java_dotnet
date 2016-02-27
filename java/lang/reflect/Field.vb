@@ -166,7 +166,7 @@ Namespace java.lang.reflect
 
 		''' <summary>
 		''' Returns the Java language modifiers for the field represented
-		''' by this {@code Field} object, as an integer. The {@code Modifier} class should
+		''' by this {@code Field} object, as an  java.lang.[Integer]. The {@code Modifier} class should
 		''' be used to decode the modifiers.
 		''' </summary>
 		''' <seealso cref= Modifier </seealso>

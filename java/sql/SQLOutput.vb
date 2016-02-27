@@ -68,7 +68,7 @@ Namespace java.sql
 	  Sub writeString(ByVal x As String)
 
 	  ''' <summary>
-	  ''' Writes the next attribute to the stream as a Java boolean.
+	  ''' Writes the next attribute to the stream as a Java  java.lang.[Boolean].
 	  ''' Writes the next attribute to the stream as a <code>String</code>
 	  ''' in the Java programming language.
 	  ''' </summary>
@@ -80,7 +80,7 @@ Namespace java.sql
 	  Sub writeBoolean(ByVal x As Boolean)
 
 	  ''' <summary>
-	  ''' Writes the next attribute to the stream as a Java byte.
+	  ''' Writes the next attribute to the stream as a Java java.lang.[Byte].
 	  ''' Writes the next attribute to the stream as a <code>String</code>
 	  ''' in the Java programming language.
 	  ''' </summary>
@@ -92,7 +92,7 @@ Namespace java.sql
 	  Sub writeByte(ByVal x As SByte)
 
 	  ''' <summary>
-	  ''' Writes the next attribute to the stream as a Java short.
+	  ''' Writes the next attribute to the stream as a Java  java.lang.[Short].
 	  ''' Writes the next attribute to the stream as a <code>String</code>
 	  ''' in the Java programming language.
 	  ''' </summary>
@@ -116,7 +116,7 @@ Namespace java.sql
 	  Sub writeInt(ByVal x As Integer)
 
 	  ''' <summary>
-	  ''' Writes the next attribute to the stream as a Java long.
+	  ''' Writes the next attribute to the stream as a Java java.lang.[Long].
 	  ''' Writes the next attribute to the stream as a <code>String</code>
 	  ''' in the Java programming language.
 	  ''' </summary>
@@ -140,7 +140,7 @@ Namespace java.sql
 	  Sub writeFloat(ByVal x As Single)
 
 	  ''' <summary>
-	  ''' Writes the next attribute to the stream as a Java double.
+	  ''' Writes the next attribute to the stream as a Java java.lang.[Double].
 	  ''' Writes the next attribute to the stream as a <code>String</code>
 	  ''' in the Java programming language.
 	  ''' </summary>

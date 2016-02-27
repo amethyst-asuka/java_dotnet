@@ -45,12 +45,12 @@ Namespace java.security.spec
 		''' <summary>
 		''' The public-exponent value F0 = 3.
 		''' </summary>
-		Public Shared ReadOnly F0 As System.Numerics.BigInteger = System.Numerics.BigInteger.valueOf(3)
+		Public Shared ReadOnly F0 As System.Numerics.BigInteger = System.Numerics.Big java.lang.[Integer].valueOf(3)
 
 		''' <summary>
 		''' The public exponent-value F4 = 65537.
 		''' </summary>
-		Public Shared ReadOnly F4 As System.Numerics.BigInteger = System.Numerics.BigInteger.valueOf(65537)
+		Public Shared ReadOnly F4 As System.Numerics.BigInteger = System.Numerics.Big java.lang.[Integer].valueOf(65537)
 
 		''' <summary>
 		''' Constructs a new {@code RSAParameterSpec} object from the

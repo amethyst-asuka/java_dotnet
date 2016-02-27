@@ -1291,7 +1291,7 @@ Namespace java.awt.image
 		''' <returns> a <code>String</code> representing this
 		''' <code>DirectColorModel</code>. </returns>
 		Public Overrides Function ToString() As String
-			Return New String("DirectColorModel: rmask=" & Integer.toHexString(red_mask) & " gmask=" & Integer.toHexString(green_mask) & " bmask=" & Integer.toHexString(blue_mask) & " amask=" & Integer.toHexString(alpha_mask))
+			Return New String("DirectColorModel: rmask=" &  java.lang.[Integer].toHexString(red_mask) & " gmask=" &  java.lang.[Integer].toHexString(green_mask) & " bmask=" &  java.lang.[Integer].toHexString(blue_mask) & " amask=" &  java.lang.[Integer].toHexString(alpha_mask))
 		End Function
 	End Class
 

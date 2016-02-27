@@ -709,7 +709,7 @@ Namespace java.lang.invoke
                     Case TRUSTED
                         Return "/trusted" ' internal only; not exported
                     Case Else ' Should not happen, but it's a bitfield...
-                        cname = cname & "/" & [Integer].toHexString(allowedModes)
+                        cname = cname & "/" & java.lang.[Integer].toHexString(allowedModes)
                         Assert(False) : cname
                         Return cname
                 End Select
@@ -2026,8 +2026,8 @@ Namespace java.lang.invoke
                     Return 0
                 End If
                 ' find first zero
-                Dim zeroBit As Long = [Long].lowestOneBit((Not mask))
-                Dim zeroPos As Integer = [Long].numberOfTrailingZeros(zeroBit)
+                Dim zeroBit As Long = java.lang.[Long].lowestOneBit((Not mask))
+                Dim zeroPos As Integer = java.lang.[Long].numberOfTrailingZeros(zeroBit)
                 Assert(zeroPos <= newArity)
                 If zeroPos = newArity Then Return 0
                 Return Not zeroPos
@@ -2308,7 +2308,7 @@ Namespace java.lang.invoke
         ''' assertEquals("xz", (String) d1.invokeExact("x", "y", "z"));
         ''' MethodHandle d2 = dropArguments(cat, 2, String.class);
         ''' assertEquals("xy", (String) d2.invokeExact("x", "y", "z"));
-        ''' MethodHandle d12 = dropArguments(cat, 1, int.class, boolean.class);
+        ''' MethodHandle d12 = dropArguments(cat, 1, int.class,  java.lang.[Boolean].class);
         ''' assertEquals("xz", (String) d12.invokeExact("x", 12, true, "z"));
         ''' }</pre></blockquote>
         ''' <p>

@@ -461,7 +461,7 @@ Namespace java.sql
 
 		''' <summary>
 		''' Sets the designated parameter to the given <code>Reader</code>
-		''' object, which is the given number of characters long.
+		''' object, which is the given number of characters java.lang.[Long].
 		''' When a very large UNICODE value is input to a <code>LONGVARCHAR</code>
 		''' parameter, it may be more practical to send it via a
 		''' <code>java.io.Reader</code> object. The data will be read from the stream
@@ -937,7 +937,7 @@ Namespace java.sql
 		Sub setBinaryStream(ByVal parameterIndex As Integer, ByVal x As java.io.InputStream, ByVal length As Long)
 			''' <summary>
 			''' Sets the designated parameter to the given <code>Reader</code>
-			''' object, which is the given number of characters long.
+			''' object, which is the given number of characters java.lang.[Long].
 			''' When a very large UNICODE value is input to a <code>LONGVARCHAR</code>
 			''' parameter, it may be more practical to send it via a
 			''' <code>java.io.Reader</code> object. The data will be read from the stream

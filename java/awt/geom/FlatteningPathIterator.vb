@@ -130,7 +130,7 @@ Namespace java.awt.geom
 		''' <returns> the flatness of this <code>FlatteningPathIterator</code>. </returns>
 		Public Overridable Property flatness As Double
 			Get
-				Return Math.Sqrt(squareflat)
+				Return System.Math.Sqrt(squareflat)
 			End Get
 		End Property
 

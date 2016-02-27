@@ -65,7 +65,7 @@ Namespace java.util.concurrent
 	''' generation of a phaser has an associated phase number. The phase
 	''' number starts at zero, and advances when all parties arrive at the
 	''' phaser, wrapping around to zero after reaching {@code
-	'''  [Integer].MAX_VALUE}. The use of phase numbers enables independent
+	'''  java.lang.[Integer].MAX_VALUE}. The use of phase numbers enables independent
 	''' control of actions upon arrival at a phaser and upon awaiting
 	''' others, via two kinds of methods that may be invoked by any
 	''' registered party:
@@ -207,7 +207,7 @@ Namespace java.util.concurrent
 	''' 
 	''' <p>Related constructions may be used to await particular phase numbers
 	''' in contexts where you are sure that the phase will never wrap around
-	''' {@code  [Integer].MAX_VALUE}. For example:
+	''' {@code  java.lang.[Integer].MAX_VALUE}. For example:
 	''' 
 	'''  <pre> {@code
 	''' void awaitPhase(Phaser phaser, int phase) {
@@ -233,7 +233,7 @@ Namespace java.util.concurrent
 	''' void build(Task[] tasks, int lo, int hi, Phaser ph) {
 	'''   if (hi - lo > TASKS_PER_PHASER) {
 	'''     for (int i = lo; i < hi; i += TASKS_PER_PHASER) {
-	'''       int j = Math.min(i + TASKS_PER_PHASER, hi);
+	'''       int j = System.Math.min(i + TASKS_PER_PHASER, hi);
 	'''       build(tasks, i, j, new Phaser(ph));
 	'''     }
 	'''   } else {
@@ -277,9 +277,9 @@ Namespace java.util.concurrent
 		''' parties and one unarrived parties (encoded as EMPTY below).
 		''' 
 		''' To efficiently maintain atomicity, these values are packed into
-		''' a single (atomic) long. Good performance relies on keeping
+		''' a single (atomic) java.lang.[Long]. Good performance relies on keeping
 		''' state decoding and encoding simple, and keeping race windows
-		''' short.
+		'''  java.lang.[Short].
 		''' 
 		''' All state updates are performed via CAS except initial
 		''' registration of a sub-phaser (i.e., one with a non-null
@@ -295,7 +295,7 @@ Namespace java.util.concurrent
 		Private state As Long
 
 		Private Const MAX_PARTIES As Integer = &Hffff
-		Private Shared ReadOnly MAX_PHASE As Integer =  [Integer].MAX_VALUE
+		Private Shared ReadOnly MAX_PHASE As Integer =  java.lang.[Integer].MAX_VALUE
 		Private Const PARTIES_SHIFT As Integer = 16
 		Private Const PHASE_SHIFT As Integer = 32
 		Private Const UNARRIVED_MASK As Integer = &Hffff ' to mask ints
@@ -782,10 +782,10 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the current phase number. The maximum phase number is
-		''' {@code  [Integer].MAX_VALUE}, after which it restarts at
+		''' {@code  java.lang.[Integer].MAX_VALUE}, after which it restarts at
 		''' zero. Upon termination, the phase number is negative,
 		''' in which case the prevailing phase prior to termination
-		''' may be obtained via {@code getPhase() + Integer.MIN_VALUE}.
+		''' may be obtained via {@code getPhase() +  java.lang.[Integer].MIN_VALUE}.
 		''' </summary>
 		''' <returns> the phase number, or a negative value if terminated </returns>
 		Public Property phase As Integer

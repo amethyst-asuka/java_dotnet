@@ -198,15 +198,15 @@ Namespace java.util
 				components(i) = "0x" & components(i)
 			Next i
 
-			Dim mostSigBits As Long = Long.decode(components(0))
+			Dim mostSigBits As Long = java.lang.[Long].decode(components(0))
 			mostSigBits <<= 16
-			mostSigBits = mostSigBits Or Long.decode(components(1))
+			mostSigBits = mostSigBits Or java.lang.[Long].decode(components(1))
 			mostSigBits <<= 16
-			mostSigBits = mostSigBits Or Long.decode(components(2))
+			mostSigBits = mostSigBits Or java.lang.[Long].decode(components(2))
 
-			Dim leastSigBits As Long = Long.decode(components(3))
+			Dim leastSigBits As Long = java.lang.[Long].decode(components(3))
 			leastSigBits <<= 48
-			leastSigBits = leastSigBits Or Long.decode(components(4))
+			leastSigBits = leastSigBits Or java.lang.[Long].decode(components(4))
 
 			Return New UUID(mostSigBits, leastSigBits)
 		End Function
@@ -370,7 +370,7 @@ Namespace java.util
 		''' Returns val represented by the specified number of hex digits. </summary>
 		Private Shared Function digits(ByVal val As Long, ByVal digits_Renamed As Integer) As String
 			Dim hi As Long = 1L << (digits_Renamed * 4)
-			Return Long.toHexString(hi Or (val And (hi - 1))).Substring(1)
+			Return java.lang.[Long].toHexString(hi Or (val And (hi - 1))).Substring(1)
 		End Function
 
 		''' <summary>

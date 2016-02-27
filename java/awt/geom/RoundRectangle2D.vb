@@ -545,8 +545,8 @@ Namespace java.awt.geom
 			Dim rry1 As Double = rry0 + height
 			' Check for trivial rejection - point is outside bounding rectangle
 			If x < rrx0 OrElse y < rry0 OrElse x >= rrx1 OrElse y >= rry1 Then Return False
-			Dim aw As Double = Math.Min(width, Math.Abs(arcWidth)) / 2.0
-			Dim ah As Double = Math.Min(height, Math.Abs(arcHeight)) / 2.0
+			Dim aw As Double = System.Math.Min(width, System.Math.Abs(arcWidth)) / 2.0
+			Dim ah As Double = System.Math.Min(height, System.Math.Abs(arcHeight)) / 2.0
 			' Check which corner point is in and do circular containment
 			' test - otherwise simple acceptance
 			rrx0 += aw
@@ -586,8 +586,8 @@ Namespace java.awt.geom
 			Dim rry1 As Double = rry0 + height
 			' Check for trivial rejection - bounding rectangles do not intersect
 			If x + w <= rrx0 OrElse x >= rrx1 OrElse y + h <= rry0 OrElse y >= rry1 Then Return False
-			Dim aw As Double = Math.Min(width, Math.Abs(arcWidth)) / 2.0
-			Dim ah As Double = Math.Min(height, Math.Abs(arcHeight)) / 2.0
+			Dim aw As Double = System.Math.Min(width, System.Math.Abs(arcWidth)) / 2.0
+			Dim ah As Double = System.Math.Min(height, System.Math.Abs(arcHeight)) / 2.0
 			Dim x0class As Integer = classify(x, rrx0, rrx1, aw)
 			Dim x1class As Integer = classify(x + w, rrx0, rrx1, aw)
 			Dim y0class As Integer = classify(y, rry0, rry1, ah)
@@ -652,12 +652,12 @@ Namespace java.awt.geom
 		''' <returns> the hashcode for this <code>RoundRectangle2D</code>.
 		''' @since 1.6 </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Dim bits As Long = Double.doubleToLongBits(x)
-			bits += Double.doubleToLongBits(y) * 37
-			bits += Double.doubleToLongBits(width) * 43
-			bits += Double.doubleToLongBits(height) * 47
-			bits += Double.doubleToLongBits(arcWidth) * 53
-			bits += Double.doubleToLongBits(arcHeight) * 59
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(x)
+			bits += java.lang.[Double].doubleToLongBits(y) * 37
+			bits += java.lang.[Double].doubleToLongBits(width) * 43
+			bits += java.lang.[Double].doubleToLongBits(height) * 47
+			bits += java.lang.[Double].doubleToLongBits(arcWidth) * 53
+			bits += java.lang.[Double].doubleToLongBits(arcHeight) * 59
 			Return ((CInt(bits)) Xor (CInt(Fix(bits >> 32))))
 		End Function
 

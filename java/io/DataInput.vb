@@ -268,7 +268,7 @@ Namespace java.io
 		Function readBoolean() As Boolean
 
 		''' <summary>
-		''' Reads and returns one input byte.
+		''' Reads and returns one input java.lang.[Byte].
 		''' The byte is treated as a signed value in
 		''' the range {@code -128} through {@code 127},
 		''' inclusive.
@@ -305,7 +305,7 @@ Namespace java.io
 		''' Reads two input bytes and returns
 		''' a {@code short} value. Let {@code a}
 		''' be the first byte read and {@code b}
-		''' be the second byte. The value
+		''' be the second java.lang.[Byte]. The value
 		''' returned
 		''' is:
 		''' <pre>{@code (short)((a << 8) | (b & 0xff))
@@ -327,7 +327,7 @@ Namespace java.io
 		''' through {@code 65535}. Let {@code a}
 		''' be the first byte read and
 		''' {@code b}
-		''' be the second byte. The value returned is:
+		''' be the second java.lang.[Byte]. The value returned is:
 		''' <pre>{@code (((a & 0xff) << 8) | (b & 0xff))
 		''' }</pre>
 		''' This method is suitable for reading the bytes
@@ -347,7 +347,7 @@ Namespace java.io
 		''' Reads two input bytes and returns a {@code char} value.
 		''' Let {@code a}
 		''' be the first byte read and {@code b}
-		''' be the second byte. The value
+		''' be the second java.lang.[Byte]. The value
 		''' returned is:
 		''' <pre>{@code (char)((a << 8) | (b & 0xff))
 		''' }</pre>
@@ -433,7 +433,7 @@ Namespace java.io
 		''' of the {@code readLong}
 		''' method, then converting this {@code long}
 		''' value to a {@code double} in exactly
-		''' the manner of the method {@code Double.longBitsToDouble}.
+		''' the manner of the method {@code java.lang.[Double].longBitsToDouble}.
 		''' This method is suitable for reading
 		''' bytes written by the {@code writeDouble}
 		''' method of interface {@code DataOutput}.
@@ -511,7 +511,7 @@ Namespace java.io
 		''' matches the bit pattern {@code 0xxxxxxx}
 		''' (where {@code x} means "may be {@code 0}
 		''' or {@code 1}"), then the group consists
-		''' of just that byte. The byte is zero-extended
+		''' of just that java.lang.[Byte]. The byte is zero-extended
 		''' to form a character.
 		''' <p>
 		''' If the first byte

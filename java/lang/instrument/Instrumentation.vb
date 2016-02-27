@@ -342,7 +342,7 @@ Namespace java.lang.instrument
 		''' But the value of <code>isRedefineClassesSupported()</code> does not influence the value
 		''' returned by this function.
 		''' <P>
-		''' Primitive classes (for example, <code>java.lang.Integer.TYPE</code>)
+		''' Primitive classes (for example, <code>java.lang. java.lang.[Integer].TYPE</code>)
 		''' and array classes are never modifiable.
 		''' </summary>
 		''' <param name="theClass"> the class to check for being modifiable </param>

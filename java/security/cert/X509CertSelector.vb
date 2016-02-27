@@ -118,7 +118,7 @@ Namespace java.security.cert
 		Private x509Cert As X509Certificate
 		Private matchAllSubjectAltNames As Boolean = True
 
-		Private Shared ReadOnly [FALSE] As Boolean? = Boolean.FALSE
+		Private Shared ReadOnly [FALSE] As Boolean? =  java.lang.[Boolean].FALSE
 
 		Private Const PRIVATE_KEY_USAGE_ID As Integer = 0
 		Private Const SUBJECT_ALT_NAME_ID As Integer = 1
@@ -862,7 +862,7 @@ Namespace java.security.cert
 			Dim tempName As GeneralNameInterface = makeGeneralNameInterface(type, name)
 			If subjectAlternativeNames Is Nothing Then subjectAlternativeNames = New HashSet(Of List(Of ?))
 			If subjectAlternativeGeneralNames Is Nothing Then subjectAlternativeGeneralNames = New HashSet(Of GeneralNameInterface)
-			Dim list As List(Of Object) = New List(Of Object)(2)
+			Dim list As  ArrayList = New  ArrayList(2)
 			list.add(Convert.ToInt32(type))
 			list.add(name)
 			subjectAlternativeNames.add(list)
@@ -1279,7 +1279,7 @@ Namespace java.security.cert
 				pathToNames = New HashSet(Of List(Of ?))
 				pathToGeneralNames = New HashSet(Of GeneralNameInterface)
 			End If
-			Dim list As List(Of Object) = New List(Of Object)(2)
+			Dim list As  ArrayList = New  ArrayList(2)
 			list.add(Convert.ToInt32(type))
 			list.add(name)
 			pathToNames.add(list)
@@ -1511,14 +1511,14 @@ Namespace java.security.cert
 			Dim namesCopy As [Set](Of List(Of ?)) = New HashSet(Of List(Of ?))
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			For Each o As List(Of ?) In names
-				namesCopy.add(New List(Of Object)(o))
+				namesCopy.add(New  ArrayList(o))
 			Next o
 
 			' Check the contents of the Lists and clone any byte arrays
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			For Each list As List(Of ?) In namesCopy
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-				Dim nameList As List(Of Object) = CType(list, List(Of Object)) ' See javadoc for parameter "names".
+				Dim nameList As  ArrayList = CType(list,  ArrayList) ' See javadoc for parameter "names".
 				If nameList.size() <> 2 Then Throw New java.io.IOException("name list size not 2")
 				Dim o As Object = nameList.get(0)
 				If Not(TypeOf o Is Integer?) Then Throw New java.io.IOException("expected an Integer")

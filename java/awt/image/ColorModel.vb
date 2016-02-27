@@ -1555,9 +1555,9 @@ Namespace java.awt.image
 						If input <= 0.0031308f Then
 							output = input * 12.92f
 						Else
-							output = 1.055f * (CSng(Math.Pow(input, (1.0 / 2.4)))) - 0.055f
+							output = 1.055f * (CSng (System.Math.Pow(input, (1.0 / 2.4)))) - 0.055f
 						End If
-						l8Tos8(i) = CByte(Math.Round(output * 255.0f))
+						l8Tos8(i) = CByte (System.Math.Round(output * 255.0f))
 					Next i
 				End If
 				Return l8Tos8
@@ -1574,9 +1574,9 @@ Namespace java.awt.image
 					If input <= 0.04045f Then
 						output = input / 12.92f
 					Else
-						output = CSng(Math.Pow((input + 0.055f) / 1.055f, 2.4))
+						output = CSng (System.Math.Pow((input + 0.055f) / 1.055f, 2.4))
 					End If
-					s8Tol8(i) = CByte(Math.Round(output * 255.0f))
+					s8Tol8(i) = CByte (System.Math.Round(output * 255.0f))
 				Next i
 			End If
 			Return s8Tol8
@@ -1593,9 +1593,9 @@ Namespace java.awt.image
 						If input <= 0.0031308f Then
 							output = input * 12.92f
 						Else
-							output = 1.055f * (CSng(Math.Pow(input, (1.0 / 2.4)))) - 0.055f
+							output = 1.055f * (CSng (System.Math.Pow(input, (1.0 / 2.4)))) - 0.055f
 						End If
-						l16Tos8(i) = CByte(Math.Round(output * 255.0f))
+						l16Tos8(i) = CByte (System.Math.Round(output * 255.0f))
 					Next i
 				End If
 				Return l16Tos8
@@ -1612,9 +1612,9 @@ Namespace java.awt.image
 					If input <= 0.04045f Then
 						output = input / 12.92f
 					Else
-						output = CSng(Math.Pow((input + 0.055f) / 1.055f, 2.4))
+						output = CSng (System.Math.Pow((input + 0.055f) / 1.055f, 2.4))
 					End If
-					s8Tol16(i) = CShort(Fix(Math.Round(output * 65535.0f)))
+					s8Tol16(i) = CShort(Fix (System.Math.Round(output * 65535.0f)))
 				Next i
 			End If
 			Return s8Tol16

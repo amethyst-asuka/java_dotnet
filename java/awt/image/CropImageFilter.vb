@@ -154,9 +154,9 @@ Namespace java.awt.image
 		private Integer addWithoutOverflow(Integer x, Integer w)
 			Dim x2 As Integer = x + w
 			If x > 0 AndAlso w > 0 AndAlso x2 < 0 Then
-				x2 = Integer.MaxValue
+				x2 =  java.lang.[Integer].Max_Value
 			ElseIf x < 0 AndAlso w < 0 AndAlso x2 > 0 Then
-				x2 = Integer.MinValue
+				x2 =  java.lang.[Integer].MIN_VALUE
 			End If
 			Return x2
 	End Class

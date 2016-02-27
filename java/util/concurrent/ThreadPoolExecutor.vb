@@ -82,7 +82,7 @@ Namespace java.util.concurrent
 	''' if the queue is full.  By setting corePoolSize and maximumPoolSize
 	''' the same, you create a fixed-size thread pool. By setting
 	''' maximumPoolSize to an essentially unbounded value such as {@code
-	'''  [Integer].MAX_VALUE}, you allow the pool to accommodate an arbitrary
+	'''  java.lang.[Integer].MAX_VALUE}, you allow the pool to accommodate an arbitrary
 	''' number of concurrent tasks. Most typically, core and maximum pool
 	''' sizes are set only upon construction, but they may also be changed
 	''' dynamically using <seealso cref="#setCorePoolSize"/> and {@link
@@ -122,7 +122,7 @@ Namespace java.util.concurrent
 	''' pool is not being actively used. If the pool becomes more active
 	''' later, new threads will be constructed. This parameter can also be
 	''' changed dynamically using method {@link #setKeepAliveTime(long,
-	''' TimeUnit)}.  Using a value of {@code Long.MAX_VALUE} {@link
+	''' TimeUnit)}.  Using a value of {@code java.lang.[Long].MAX_VALUE} {@link
 	''' TimeUnit#NANOSECONDS} effectively disables idle threads from ever
 	''' terminating prior to shut down. By default, the keep-alive policy
 	''' applies only when there are more than corePoolSize threads. But
@@ -376,7 +376,7 @@ Namespace java.util.concurrent
 		''' below).
 		''' </summary>
 		Private ReadOnly ctl As New java.util.concurrent.atomic.AtomicInteger(ctlOf(RUNNING, 0))
-		Private Shared ReadOnly COUNT_BITS As Integer = Integer.SIZE - 3
+		Private Shared ReadOnly COUNT_BITS As Integer =  java.lang.[Integer].SIZE - 3
 		Private Shared ReadOnly CAPACITY As Integer = (1 << COUNT_BITS) - 1
 
 		' runState is stored in the high-order bits
@@ -1501,7 +1501,7 @@ Namespace java.util.concurrent
 					' As a heuristic, prestart enough new workers (up to new
 					' core size) to handle the current number of tasks in
 					' queue, but stop if queue becomes empty while doing so.
-					Dim k As Integer = Math.Min(delta, workQueue.size())
+					Dim k As Integer = System.Math.Min(delta, workQueue.size())
 					Dim tempVar As Boolean = k > 0 AndAlso addWorker(Nothing, True)
 					k -= 1
 					Do While tempVar

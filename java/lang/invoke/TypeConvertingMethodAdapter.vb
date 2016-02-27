@@ -260,9 +260,9 @@ Namespace java.lang.invoke
 		Friend Overridable Sub iconst(ByVal cst As Integer)
 			If cst >= -1 AndAlso cst <= 5 Then
 				mv.visitInsn(jdk.internal.org.objectweb.asm.Opcodes.ICONST_0 + cst)
-			ElseIf cst >= Byte.MinValue AndAlso cst <= Byte.MaxValue Then
+			ElseIf cst >= java.lang.[Byte].MIN_VALUE AndAlso cst <= java.lang.[Byte].Max_Value Then
 				mv.visitIntInsn(jdk.internal.org.objectweb.asm.Opcodes.BIPUSH, cst)
-			ElseIf cst >= Short.MinValue AndAlso cst <= Short.MaxValue Then
+			ElseIf cst >=  java.lang.[Short].MIN_VALUE AndAlso cst <=  java.lang.[Short].Max_Value Then
 				mv.visitIntInsn(jdk.internal.org.objectweb.asm.Opcodes.SIPUSH, cst)
 			Else
 				mv.visitLdcInsn(cst)

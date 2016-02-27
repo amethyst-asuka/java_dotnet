@@ -153,17 +153,17 @@ Namespace java.awt
 		''' <summary>
 		''' Sets the location of this point to the specified double coordinates.
 		''' The double values will be rounded to integer values.
-		''' Any number smaller than <code>Integer.MIN_VALUE</code>
+		''' Any number smaller than <code> java.lang.[Integer].MIN_VALUE</code>
 		''' will be reset to <code>MIN_VALUE</code>, and any number
-		''' larger than <code> [Integer].MAX_VALUE</code> will be
+		''' larger than <code> java.lang.[Integer].MAX_VALUE</code> will be
 		''' reset to <code>MAX_VALUE</code>.
 		''' </summary>
 		''' <param name="x"> the X coordinate of the new location </param>
 		''' <param name="y"> the Y coordinate of the new location </param>
 		''' <seealso cref= #getLocation </seealso>
 		Public Overrides Sub setLocation(ByVal x As Double, ByVal y As Double)
-			Me.x = CInt(Fix(Math.Floor(x+0.5)))
-			Me.y = CInt(Fix(Math.Floor(y+0.5)))
+			Me.x = CInt(Fix (System.Math.Floor(x+0.5)))
+			Me.y = CInt(Fix (System.Math.Floor(y+0.5)))
 		End Sub
 
 		''' <summary>

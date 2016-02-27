@@ -813,8 +813,8 @@ Namespace java.awt
         ''' size; not a developer specified minimum size).  For sizes
         ''' smaller than the minimum size the baseline may change in a way
         ''' other than the baseline resize behavior indicates.  Similarly,
-        ''' as the size approaches <code> [Integer].MAX_VALUE</code> and/or
-        ''' <code>Short.MAX_VALUE</code> the baseline may change in a way
+        ''' as the size approaches <code> java.lang.[Integer].MAX_VALUE</code> and/or
+        ''' <code> java.lang.[Short].MAX_VALUE</code> the baseline may change in a way
         ''' other than the baseline resize behavior indicates.
         ''' </summary>
         ''' <seealso cref= #getBaselineResizeBehavior </seealso>
@@ -2503,7 +2503,7 @@ Namespace java.awt
         End Property
 
         If maximumSizeSet Then Return New Dimension(maxSize)
-			Return New Dimension(Short.MaxValue, Short.MaxValue)
+			Return New Dimension( java.lang.[Short].Max_Value,  java.lang.[Short].Max_Value)
         End Function
 
         ''' <summary>
@@ -3913,8 +3913,8 @@ Namespace java.awt
                     ' It is possible for the component's width and/or height
                     ' to be 0 here.  Force the size of the backbuffers to
                     ' be > 0 so that creating the image won't fail.
-                    iWidth = math.Max(1, iWidth)
-                    iHeight = math.Max(1, iHeight)
+                    iWidth = System.Math.Max(1, iWidth)
+                    iHeight = System.Math.Max(1, iHeight)
                     If backBuffers Is Nothing Then
                         backBuffers = New java.awt.image.VolatileImage(numBuffers - 1) {}
                     Else

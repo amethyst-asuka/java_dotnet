@@ -57,7 +57,7 @@ Namespace java.math
 
         ''' <summary>
         ''' The number of ints of the value array that are currently used
-        ''' to hold the magnitude of this MutableBigInteger. The magnitude starts
+        ''' to hold the magnitude of this MutableBig java.lang.[Integer]. The magnitude starts
         ''' at an offset and offset + intLen may be less than value.length.
         ''' </summary>
         Friend intLen As Integer
@@ -126,7 +126,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Construct a new MutableBigInteger with a magnitude equal to the
-        ''' specified BigInteger.
+        ''' specified Big java.lang.[Integer].
         ''' </summary>
         Friend Sub New(ByVal b As BigInteger)
             intLen = b.mag.Length
@@ -135,7 +135,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Construct a new MutableBigInteger with a magnitude equal to the
-        ''' specified MutableBigInteger.
+        ''' specified MutableBig java.lang.[Integer].
         ''' </summary>
         Friend Sub New(ByVal val As MutableBigInteger)
             intLen = val.intLen
@@ -167,7 +167,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Convert this MutableBigInteger to a long value. The caller has to make
-        ''' sure this MutableBigInteger can be fit into long.
+        ''' sure this MutableBigInteger can be fit into java.lang.[Long].
         ''' </summary>
         Private Function toLong() As Long
             Assert(intLen <= 2) :   "this MutableBigInteger exceeds the range of long"
@@ -180,7 +180,7 @@ Namespace java.math
         ''' Convert this MutableBigInteger to a BigInteger object.
         ''' </summary>
         Friend Overridable Function toBigInteger(ByVal sign As Integer) As BigInteger
-            If intLen = 0 OrElse sign = 0 Then Return BigInteger.ZERO
+            If intLen = 0 OrElse sign = 0 Then Return Big java.lang.[Integer].ZERO
             Return New BigInteger(magnitudeArray, sign)
         End Function
 
@@ -257,7 +257,7 @@ Namespace java.math
             If intLen < blen Then Return -1
             If intLen > blen Then Return 1
 
-            ' Add Integer.MIN_VALUE to make the comparison act as unsigned integer
+            ' Add  java.lang.[Integer].MIN_VALUE to make the comparison act as unsigned integer
             ' comparison.
             Dim bval As Integer() = b.value
             Dim i As Integer = offset
@@ -283,7 +283,7 @@ Namespace java.math
             If alen < blen Then Return -1
             If alen > blen Then Return 1
 
-            ' Add Integer.MIN_VALUE to make the comparison act as unsigned integer
+            ' Add  java.lang.[Integer].MIN_VALUE to make the comparison act as unsigned integer
             ' comparison.
             Dim bval As Integer() = b.value
             Dim i As Integer = offset
@@ -341,7 +341,7 @@ Namespace java.math
         End Function
 
         ''' <summary>
-        ''' Return the index of the lowest set bit in this MutableBigInteger. If the
+        ''' Return the index of the lowest set bit in this MutableBig java.lang.[Integer]. If the
         ''' magnitude of this MutableBigInteger is zero, -1 is returned.
         ''' </summary>
         Private ReadOnly Property lowestSetBit As Integer
@@ -355,7 +355,7 @@ Namespace java.math
                 Loop
                 b = value(j + offset)
                 If b = 0 Then Return -1
-                Return ((intLen - 1 - j) << 5) + [Integer].numberOfTrailingZeros(b)
+                Return ((intLen - 1 - j) << 5) + java.lang.[Integer].numberOfTrailingZeros(b)
             End Get
         End Property
 
@@ -548,7 +548,7 @@ Namespace java.math
             Dim nBits As Integer = n And &H1F
             Me.intLen -= nInts
             If nBits = 0 Then Return
-            Dim bitsInHighWord As Integer = BigInteger.bitLengthForInt(value(offset))
+            Dim bitsInHighWord As Integer = Big java.lang.[Integer].bitLengthForInt(value(offset))
             If nBits >= bitsInHighWord Then
                 Me.primitiveLeftShift(32 - nBits)
                 Me.intLen -= 1
@@ -577,7 +577,7 @@ Namespace java.math
             If intLen = 0 Then Return
             Dim nInts As Integer = CInt(CUInt(n) >> 5)
             Dim nBits As Integer = n And &H1F
-            Dim bitsInHighWord As Integer = BigInteger.bitLengthForInt(value(offset))
+            Dim bitsInHighWord As Integer = Big java.lang.[Integer].bitLengthForInt(value(offset))
 
             ' If shift can be done without moving words, do so
             If n <= (32 - bitsInHighWord) Then
@@ -720,7 +720,7 @@ Namespace java.math
         ''' </summary>
         Private Function getLower(ByVal n As Integer) As BigInteger
             If zero Then
-                Return BigInteger.ZERO
+                Return Big java.lang.[Integer].ZERO
             ElseIf intLen < n Then
                 Return toBigInteger(1)
             Else
@@ -746,7 +746,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Adds the contents of two MutableBigInteger objects.The result
-        ''' is placed within this MutableBigInteger.
+        ''' is placed within this MutableBig java.lang.[Integer].
         ''' The contents of the addend are not changed.
         ''' </summary>
         Friend Overridable Sub add(ByVal addend As MutableBigInteger)
@@ -926,7 +926,7 @@ Namespace java.math
 
         ''' <summary>
         ''' Subtracts the smaller of this and b from the larger and places the
-        ''' result into this MutableBigInteger.
+        ''' result into this MutableBig java.lang.[Integer].
         ''' </summary>
         Friend Overridable Function subtract(ByVal b As MutableBigInteger) As Integer
             Dim a As MutableBigInteger = Me
@@ -1121,7 +1121,7 @@ Namespace java.math
             quotient.intLen = intLen
 
             ' Normalize the divisor
-            Dim shift As Integer = [Integer].numberOfLeadingZeros(divisor)
+            Dim shift As Integer = java.lang.[Integer].numberOfLeadingZeros(divisor)
 
             Dim [rem] As Integer = value(offset)
             Dim remLong As Long = [rem] And LONG_MASK
@@ -1169,7 +1169,7 @@ Namespace java.math
         End Function
 
         Friend Overridable Function divide(ByVal b As MutableBigInteger, ByVal quotient As MutableBigInteger, ByVal needRemainder As Boolean) As MutableBigInteger
-            If b.intLen < BigInteger.BURNIKEL_ZIEGLER_THRESHOLD OrElse intLen - b.intLen < BigInteger.BURNIKEL_ZIEGLER_OFFSET Then
+            If b.intLen < Big java.lang.[Integer].BURNIKEL_ZIEGLER_THRESHOLD OrElse intLen - b.intLen < Big java.lang.[Integer].BURNIKEL_ZIEGLER_OFFSET Then
                 Return divideKnuth(b, quotient, needRemainder)
             Else
                 Return divideAndRemainderBurnikelZiegler(b, quotient)
@@ -1272,7 +1272,7 @@ Namespace java.math
                 ' additional benefit.
 
                 ' step 1: let m = min{2^k | (2^k)*BURNIKEL_ZIEGLER_THRESHOLD > s}
-                Dim m As Integer = 1 << (32 - [Integer].numberOfLeadingZeros(s \ BigInteger.BURNIKEL_ZIEGLER_THRESHOLD))
+                Dim m As Integer = 1 << (32 - java.lang.[Integer].numberOfLeadingZeros(s \ Big java.lang.[Integer].BURNIKEL_ZIEGLER_THRESHOLD))
 
                 Dim j As Integer = (s + m - 1) \ m ' step 2a: j = ceil(s/m)
                 Dim n As Integer = j * m ' step 2b: block length in 32-bit units
@@ -1328,7 +1328,7 @@ Namespace java.math
             Dim n As Integer = b.intLen
 
             ' step 1: base case
-            If n Mod 2 <> 0 OrElse n < BigInteger.BURNIKEL_ZIEGLER_THRESHOLD Then Return divideKnuth(b, quotient)
+            If n Mod 2 <> 0 OrElse n < Big java.lang.[Integer].BURNIKEL_ZIEGLER_THRESHOLD Then Return divideKnuth(b, quotient)
 
             ' step 2: view this as [a1,a2,a3,a4] where each ai is n/2 ints or less
             Dim aUpper As New MutableBigInteger(Me)
@@ -1398,7 +1398,7 @@ Namespace java.math
             ' step 6: add b until r>=d
             Do While r.compare(d) < 0
                 r.add(b)
-                quotient.subtract(MutableBigInteger.ONE)
+                quotient.subtract(MutableBig java.lang.[Integer].ONE)
             Loop
             r.subtract(d)
 
@@ -1432,7 +1432,7 @@ Namespace java.math
         ''' <seealso cref= BigInteger#bitLength() </seealso>
         Friend Overridable Function bitLength() As Long
             If intLen = 0 Then Return 0
-            Return intLen * 32L - [Integer].numberOfLeadingZeros(value(offset))
+            Return intLen * 32L - java.lang.[Integer].numberOfLeadingZeros(value(offset))
         End Function
 
         ''' <summary>
@@ -1482,7 +1482,7 @@ Namespace java.math
         Private Function divideMagnitude(ByVal div As MutableBigInteger, ByVal quotient As MutableBigInteger, ByVal needRemainder As Boolean) As MutableBigInteger
             ' assert div.intLen > 1
             ' D1 normalize the divisor
-            Dim shift As Integer = Integer.numberOfLeadingZeros(div.value(div.offset))
+            Dim shift As Integer =  java.lang.[Integer].numberOfLeadingZeros(div.value(div.offset))
             ' Copy divisor value to protect divisor
             Dim dlen As Integer = div.intLen
             Dim divisor As Integer()
@@ -1490,7 +1490,7 @@ Namespace java.math
             If shift > 0 Then
                 divisor = New Integer(dlen - 1) {}
                 copyAndShift(div.value, div.offset, dlen, divisor, 0, shift)
-                If Integer.numberOfLeadingZeros(value(offset)) >= shift Then
+                If  java.lang.[Integer].numberOfLeadingZeros(value(offset)) >= shift Then
                     Dim remarr As Integer() = New Integer(intLen) {}
                     [rem] = New MutableBigInteger(remarr)
                     [rem].intLen = intLen
@@ -1699,7 +1699,7 @@ Namespace java.math
             Dim q As Integer() = quotient.value
 
             ' D1 normalize the divisor
-            Dim shift As Integer = Long.numberOfLeadingZeros(ldivisor)
+            Dim shift As Integer = java.lang.[Long].numberOfLeadingZeros(ldivisor)
             If shift > 0 Then
                 ldivisor <<= shift
                 [rem].leftShift(shift)
@@ -1785,7 +1785,7 @@ Namespace java.math
         End Function
 
         ''' <summary>
-        ''' A primitive used for division by long.
+        ''' A primitive used for division by java.lang.[Long].
         ''' Specialized version of the method divadd.
         ''' dh is a high part of the divisor, dl is a low part
         ''' </summary>
@@ -1802,7 +1802,7 @@ Namespace java.math
         End Function
 
         ''' <summary>
-        ''' This method is used for division by long.
+        ''' This method is used for division by java.lang.[Long].
         ''' Specialized version of the method sulsub.
         ''' dh is a high part of the divisor, dl is a low part
         ''' </summary>
@@ -1827,7 +1827,7 @@ Namespace java.math
         ''' Returns true iff one is bigger than two.
         ''' </summary>
         Private Function unsignedLongCompare(ByVal one As Long, ByVal two As Long) As Boolean
-            Return (one + Long.MinValue) > (two + Long.MinValue)
+            Return (one + java.lang.[Long].MIN_VALUE) > (two + java.lang.[Long].MIN_VALUE)
         End Function
 
         ''' <summary>
@@ -1874,7 +1874,7 @@ Namespace java.math
             Dim q As New MutableBigInteger
 
             Do While b.intLen <> 0
-                If math.Abs(a.intLen - b.intLen) < 2 Then Return a.binaryGCD(b)
+                If System.Math.Abs(a.intLen - b.intLen) < 2 Then Return a.binaryGCD(b)
 
                 Dim r As MutableBigInteger = a.divide(b, q)
                 a = b
@@ -1949,8 +1949,8 @@ Namespace java.math
             If a = 0 Then Return b
 
             ' Right shift a & b till their last bits equal to 1.
-            Dim aZeros As Integer = Integer.numberOfTrailingZeros(a)
-            Dim bZeros As Integer = Integer.numberOfTrailingZeros(b)
+            Dim aZeros As Integer =  java.lang.[Integer].numberOfTrailingZeros(a)
+            Dim bZeros As Integer =  java.lang.[Integer].numberOfTrailingZeros(b)
             a >>>= aZeros
             b >>>= bZeros
 
@@ -1959,10 +1959,10 @@ Namespace java.math
             Do While a <> b
                 If (a + &H80000000L) > (b + &H80000000L) Then ' a > b as unsigned
                     a -= b
-                    a >>>= Integer.numberOfTrailingZeros(a)
+                    a >>>=  java.lang.[Integer].numberOfTrailingZeros(a)
                 Else
                     b -= a
-                    b >>>= Integer.numberOfTrailingZeros(b)
+                    b >>>=  java.lang.[Integer].numberOfTrailingZeros(b)
                 End If
             Loop
             Return a << t

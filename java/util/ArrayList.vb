@@ -211,7 +211,7 @@ Namespace java.util
 		End Sub
 
 		Private Sub ensureCapacityInternal(ByVal minCapacity As Integer)
-			If elementData_Renamed = DEFAULTCAPACITY_EMPTY_ELEMENTDATA Then minCapacity = Math.Max(DEFAULT_CAPACITY, minCapacity)
+			If elementData_Renamed = DEFAULTCAPACITY_EMPTY_ELEMENTDATA Then minCapacity = System.Math.Max(DEFAULT_CAPACITY, minCapacity)
 
 			ensureExplicitCapacity(minCapacity)
 		End Sub
@@ -229,7 +229,7 @@ Namespace java.util
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' Increases the capacity to ensure that it can hold at least the
@@ -249,7 +249,7 @@ Namespace java.util
 
 		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
-			Return If(minCapacity > MAX_ARRAY_SIZE, Integer.MaxValue, MAX_ARRAY_SIZE)
+			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
 
 		''' <summary>

@@ -110,7 +110,7 @@ Namespace java.nio
 			MyBase.New(-1, 0, cap, cap)
 			Dim pa As Boolean = sun.misc.VM.directMemoryPageAligned
 			Dim ps As Integer = Bits.pageSize()
-			Dim size As Long = Math.Max(1L, CLng(cap) + (If(pa, ps, 0)))
+			Dim size As Long = System.Math.Max(1L, CLng(cap) + (If(pa, ps, 0)))
 			Bits.reserveMemory(size, cap)
 
 			Dim base As Long = 0
@@ -805,7 +805,7 @@ Namespace java.nio
 		Private Function getDouble(ByVal a As Long) As Double
 			If unaligned Then
 				Dim x As Long = unsafe.getLong(a)
-				Return Double.longBitsToDouble(If(nativeByteOrder, x, Bits.swap(x)))
+				Return java.lang.[Double].longBitsToDouble(If(nativeByteOrder, x, Bits.swap(x)))
 			End If
 			Return Bits.getDouble(a, bigEndian)
 		End Function
@@ -825,7 +825,7 @@ Namespace java.nio
 		Private Function putDouble(ByVal a As Long, ByVal x As Double) As ByteBuffer
 
 			If unaligned Then
-				Dim y As Long = Double.doubleToRawLongBits(x)
+				Dim y As Long = java.lang.[Double].doubleToRawLongBits(x)
 				unsafe.putLong(a, (If(nativeByteOrder, y, Bits.swap(y))))
 			Else
 				Bits.putDouble(a, x, bigEndian)

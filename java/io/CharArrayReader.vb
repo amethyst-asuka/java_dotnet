@@ -85,7 +85,7 @@ Namespace java.io
 			If (offset < 0) OrElse (offset > buf.Length) OrElse (length < 0) OrElse ((offset + length) < 0) Then Throw New IllegalArgumentException
 			Me.buf = buf
 			Me.pos = offset
-			Me.count = Math.Min(offset + length, buf.Length)
+			Me.count = System.Math.Min(offset + length, buf.Length)
 			Me.markedPos = offset
 
 		''' <summary>

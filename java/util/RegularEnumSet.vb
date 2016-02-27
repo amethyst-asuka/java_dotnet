@@ -107,7 +107,7 @@ Namespace java.util
 		''' </summary>
 		''' <returns> the number of elements in this set </returns>
 		public Integer size()
-			Return Long.bitCount(elements)
+			Return java.lang.[Long].bitCount(elements)
 
 		''' <summary>
 		''' Returns <tt>true</tt> if this set contains no elements.

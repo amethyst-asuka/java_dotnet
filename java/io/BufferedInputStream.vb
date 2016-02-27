@@ -60,7 +60,7 @@ Namespace java.io
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared MAX_BUFFER_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared MAX_BUFFER_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' The internal buffer array where the data is stored. When necessary,
@@ -380,7 +380,7 @@ Namespace java.io
 		public synchronized Integer available() throws IOException
 			Dim n As Integer = count - pos
 			Dim avail As Integer = inIfOpen.available()
-			Return If(n > (Integer.MaxValue - avail), Integer.MaxValue, n + avail)
+			Return If(n > ( java.lang.[Integer].Max_Value - avail),  java.lang.[Integer].Max_Value, n + avail)
 
 		''' <summary>
 		''' See the general contract of the <code>mark</code>

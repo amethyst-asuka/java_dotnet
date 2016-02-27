@@ -294,8 +294,8 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the instant exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Shared Function ofEpochSecond(ByVal epochSecond As Long, ByVal nanoAdjustment As Long) As Instant
-			Dim secs As Long = Math.addExact(epochSecond, Math.floorDiv(nanoAdjustment, NANOS_PER_SECOND))
-			Dim nos As Integer = CInt(Math.floorMod(nanoAdjustment, NANOS_PER_SECOND))
+			Dim secs As Long = System.Math.addExact(epochSecond, System.Math.floorDiv(nanoAdjustment, NANOS_PER_SECOND))
+			Dim nos As Integer = CInt (System.Math.floorMod(nanoAdjustment, NANOS_PER_SECOND))
 			Return create(secs, nos)
 		End Function
 
@@ -309,8 +309,8 @@ Namespace java.time
 		''' <returns> an instant, not null </returns>
 		''' <exception cref="DateTimeException"> if the instant exceeds the maximum or minimum instant </exception>
 		Public Shared Function ofEpochMilli(ByVal epochMilli As Long) As Instant
-			Dim secs As Long = Math.floorDiv(epochMilli, 1000)
-			Dim mos As Integer = CInt(Math.floorMod(epochMilli, 1000))
+			Dim secs As Long = System.Math.floorDiv(epochMilli, 1000)
+			Dim mos As Integer = CInt (System.Math.floorMod(epochMilli, 1000))
 			Return create(secs, mos * 1000000)
 		End Function
 
@@ -797,13 +797,13 @@ Namespace java.time
 					Case SECONDS
 						Return plusSeconds(amountToAdd)
 					Case MINUTES
-						Return plusSeconds(Math.multiplyExact(amountToAdd, SECONDS_PER_MINUTE))
+						Return plusSeconds (System.Math.multiplyExact(amountToAdd, SECONDS_PER_MINUTE))
 					Case HOURS
-						Return plusSeconds(Math.multiplyExact(amountToAdd, SECONDS_PER_HOUR))
+						Return plusSeconds (System.Math.multiplyExact(amountToAdd, SECONDS_PER_HOUR))
 					Case HALF_DAYS
-						Return plusSeconds(Math.multiplyExact(amountToAdd, SECONDS_PER_DAY / 2))
+						Return plusSeconds (System.Math.multiplyExact(amountToAdd, SECONDS_PER_DAY / 2))
 					Case DAYS
-						Return plusSeconds(Math.multiplyExact(amountToAdd, SECONDS_PER_DAY))
+						Return plusSeconds (System.Math.multiplyExact(amountToAdd, SECONDS_PER_DAY))
 				End Select
 				Throw New java.time.temporal.UnsupportedTemporalTypeException("Unsupported unit: " & unit)
 			End If
@@ -862,8 +862,8 @@ Namespace java.time
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Private Function plus(ByVal secondsToAdd As Long, ByVal nanosToAdd As Long) As Instant
 			If (secondsToAdd Or nanosToAdd) = 0 Then Return Me
-			Dim epochSec As Long = Math.addExact(seconds, secondsToAdd)
-			epochSec = Math.addExact(epochSec, nanosToAdd / NANOS_PER_SECOND)
+			Dim epochSec As Long = System.Math.addExact(seconds, secondsToAdd)
+			epochSec = System.Math.addExact(epochSec, nanosToAdd / NANOS_PER_SECOND)
 			nanosToAdd = nanosToAdd Mod NANOS_PER_SECOND
 			Dim nanoAdjustment As Long = nanos + nanosToAdd ' safe int+NANOS_PER_SECOND
 			Return ofEpochSecond(epochSec, nanoAdjustment)
@@ -912,7 +912,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As Instant
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -926,7 +926,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusSeconds(ByVal secondsToSubtract As Long) As Instant
-			If secondsToSubtract = Long.MinValue Then Return plusSeconds(Long.MaxValue).plusSeconds(1)
+			If secondsToSubtract = java.lang.[Long].MIN_VALUE Then Return plusSeconds(Long.Max_Value).plusSeconds(1)
 			Return plusSeconds(-secondsToSubtract)
 		End Function
 
@@ -940,7 +940,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusMillis(ByVal millisToSubtract As Long) As Instant
-			If millisToSubtract = Long.MinValue Then Return plusMillis(Long.MaxValue).plusMillis(1)
+			If millisToSubtract = java.lang.[Long].MIN_VALUE Then Return plusMillis(Long.Max_Value).plusMillis(1)
 			Return plusMillis(-millisToSubtract)
 		End Function
 
@@ -954,7 +954,7 @@ Namespace java.time
 		''' <exception cref="DateTimeException"> if the result exceeds the maximum or minimum instant </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function minusNanos(ByVal nanosToSubtract As Long) As Instant
-			If nanosToSubtract = Long.MinValue Then Return plusNanos(Long.MaxValue).plusNanos(1)
+			If nanosToSubtract = java.lang.[Long].MIN_VALUE Then Return plusNanos(Long.Max_Value).plusNanos(1)
 			Return plusNanos(-nanosToSubtract)
 		End Function
 
@@ -1065,7 +1065,7 @@ Namespace java.time
 					Case MICROS
 						Return nanosUntil([end]) \ 1000
 					Case MILLIS
-						Return Math.subtractExact([end].toEpochMilli(), toEpochMilli())
+						Return System.Math.subtractExact([end].toEpochMilli(), toEpochMilli())
 					Case SECONDS
 						Return secondsUntil([end])
 					Case MINUTES
@@ -1083,13 +1083,13 @@ Namespace java.time
 		End Function
 
 		Private Function nanosUntil(ByVal [end] As Instant) As Long
-			Dim secsDiff As Long = Math.subtractExact([end].seconds, seconds)
-			Dim totalNanos As Long = Math.multiplyExact(secsDiff, NANOS_PER_SECOND)
-			Return Math.addExact(totalNanos, [end].nanos - nanos)
+			Dim secsDiff As Long = System.Math.subtractExact([end].seconds, seconds)
+			Dim totalNanos As Long = System.Math.multiplyExact(secsDiff, NANOS_PER_SECOND)
+			Return System.Math.addExact(totalNanos, [end].nanos - nanos)
 		End Function
 
 		Private Function secondsUntil(ByVal [end] As Instant) As Long
-			Dim secsDiff As Long = Math.subtractExact([end].seconds, seconds)
+			Dim secsDiff As Long = System.Math.subtractExact([end].seconds, seconds)
 			Dim nanosDiff As Long = [end].nanos - nanos
 			If secsDiff > 0 AndAlso nanosDiff < 0 Then
 				secsDiff -= 1
@@ -1149,7 +1149,7 @@ Namespace java.time
 		''' <returns> the number of milliseconds since the epoch of 1970-01-01T00:00:00Z </returns>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Function toEpochMilli() As Long
-			Dim millis As Long = Math.multiplyExact(seconds, 1000)
+			Dim millis As Long = System.Math.multiplyExact(seconds, 1000)
 			Return millis + nanos \ 1000000
 		End Function
 
@@ -1164,7 +1164,7 @@ Namespace java.time
 		''' <returns> the comparator value, negative if less, positive if greater </returns>
 		''' <exception cref="NullPointerException"> if otherInstant is null </exception>
 		Public Overrides Function compareTo(ByVal otherInstant As Instant) As Integer Implements Comparable(Of Instant).compareTo
-			Dim cmp As Integer = Long.Compare(seconds, otherInstant.seconds)
+			Dim cmp As Integer = java.lang.[Long].Compare(seconds, otherInstant.seconds)
 			If cmp <> 0 Then Return cmp
 			Return nanos - otherInstant.nanos
 		End Function

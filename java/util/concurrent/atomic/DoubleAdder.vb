@@ -95,13 +95,13 @@ Namespace java.util.concurrent.atomic
 			Dim m As Integer
 			Dim a As Cell
 			[as] = cells
-			b = base, Double.doubleToRawLongBits(Double.longBitsToDouble(b) + x)
+			b = base, java.lang.[Double].doubleToRawLongBits(Double.longBitsToDouble(b) + x)
 			If [as] IsNot Nothing OrElse (Not casBaseb) Then
 				Dim uncontended As Boolean = True
 				m = [as].Length - 1
 				a = [as](probe And m)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				uncontended = a.cas(v = a.value, Double.doubleToRawLongBits(Double.longBitsToDouble(v) + x))
+				uncontended = a.cas(v = a.value, java.lang.[Double].doubleToRawLongBits(Double.longBitsToDouble(v) + x))
 				If [as] Is Nothing OrElse m < 0 OrElse a Is Nothing OrElse (Not uncontended) Then doubleAccumulate(x, Nothing, uncontended)
 			End If
 		End Sub
@@ -120,11 +120,11 @@ Namespace java.util.concurrent.atomic
 		Public Overridable Function sum() As Double
 			Dim [as] As Cell() = cells
 			Dim a As Cell
-			Dim sum_Renamed As Double = Double.longBitsToDouble(base)
+			Dim sum_Renamed As Double = java.lang.[Double].longBitsToDouble(base)
 			If [as] IsNot Nothing Then
 				For i As Integer = 0 To [as].Length - 1
 					a = [as](i)
-					If a IsNot Nothing Then sum_Renamed += Double.longBitsToDouble(a.value)
+					If a IsNot Nothing Then sum_Renamed += java.lang.[Double].longBitsToDouble(a.value)
 				Next i
 			End If
 			Return sum_Renamed
@@ -161,7 +161,7 @@ Namespace java.util.concurrent.atomic
 		Public Overridable Function sumThenReset() As Double
 			Dim [as] As Cell() = cells
 			Dim a As Cell
-			Dim sum As Double = Double.longBitsToDouble(base)
+			Dim sum As Double = java.lang.[Double].longBitsToDouble(base)
 			base = 0L
 			If [as] IsNot Nothing Then
 				For i As Integer = 0 To [as].Length - 1
@@ -169,7 +169,7 @@ Namespace java.util.concurrent.atomic
 					If a IsNot Nothing Then
 						Dim v As Long = a.value
 						a.value = 0L
-						sum += Double.longBitsToDouble(v)
+						sum += java.lang.[Double].longBitsToDouble(v)
 					End If
 				Next i
 			End If
@@ -242,7 +242,7 @@ Namespace java.util.concurrent.atomic
 			''' held by this proxy. </returns>
 			Private Function readResolve() As Object
 				Dim a As New DoubleAdder
-				a.base = Double.doubleToRawLongBits(value)
+				a.base = java.lang.[Double].doubleToRawLongBits(value)
 				Return a
 			End Function
 		End Class

@@ -779,7 +779,7 @@ Namespace java.net
 		static String numericToTextFormat(SByte() src)
 			Dim sb As New StringBuilder(39)
 			For i As Integer = 0 To (INADDRSZ \ INT16SZ) - 1
-				sb.append(Integer.toHexString(((src(i<<1)<<8) And &Hff00) Or (src((i<<1)+1) And &Hff)))
+				sb.append( java.lang.[Integer].toHexString(((src(i<<1)<<8) And &Hff00) Or (src((i<<1)+1) And &Hff)))
 				If i < (INADDRSZ \ INT16SZ) -1 Then sb.append(":")
 			Next i
 			Return sb.ToString()

@@ -415,7 +415,7 @@ Namespace java.lang.invoke
 				Next d
 				' Note:  Do not simplify this, because INIT_DONE must not be
 				' a compile-time constant during bootstrapping.
-				INIT_DONE = Boolean.TRUE
+				INIT_DONE =  java.lang.[Boolean].TRUE
 			End Sub
 			Private Shared ReadOnly INIT_DONE As Boolean ' set after <clinit> finishes...
 

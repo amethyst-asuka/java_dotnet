@@ -1437,7 +1437,7 @@ Namespace java.awt.image
 	   ''' in the <CODE>components</CODE> array starting at <CODE>offset</CODE>
 	   ''' (even if the array is allocated by this method).
 	   ''' </summary>
-	   ''' <param name="pixel"> The pixel value specified as an integer. </param>
+	   ''' <param name="pixel"> The pixel value specified as an  java.lang.[Integer]. </param>
 	   ''' <param name="components"> An integer array in which to store the unnormalized
 	   ''' color/alpha components. If the <CODE>components</CODE> array is null,
 	   ''' a new array is allocated. </param>

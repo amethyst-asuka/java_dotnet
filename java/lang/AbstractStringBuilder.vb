@@ -149,7 +149,7 @@ Namespace java.lang
 			If newCapacity - minimumCapacity < 0 Then newCapacity = minimumCapacity
 			If newCapacity < 0 Then
 				If minimumCapacity < 0 Then ' overflow Throw New OutOfMemoryError
-				newCapacity = Integer.MaxValue
+				newCapacity =  java.lang.[Integer].Max_Value
 			End If
 			value_Renamed = java.util.Arrays.copyOf(value_Renamed, newCapacity)
 
@@ -601,14 +601,14 @@ Namespace java.lang
 		''' <param name="i">   an {@code int}. </param>
 		''' <returns>  a reference to this object. </returns>
 		public AbstractStringBuilder append(Integer i)
-			If i = Integer.MinValue Then
+			If i =  java.lang.[Integer].MIN_VALUE Then
 				append("-2147483648")
 				Return Me
 			End If
-			Dim appendedLength As Integer = If(i < 0, Integer.stringSize(-i) + 1, Integer.stringSize(i))
+			Dim appendedLength As Integer = If(i < 0,  java.lang.[Integer].stringSize(-i) + 1,  java.lang.[Integer].stringSize(i))
 			Dim spaceNeeded As Integer = count + appendedLength
 			ensureCapacityInternal(spaceNeeded)
-			Integer.getChars(i, spaceNeeded, value_Renamed)
+			 java.lang.[Integer].getChars(i, spaceNeeded, value_Renamed)
 			count = spaceNeeded
 			Return Me
 
@@ -624,11 +624,11 @@ Namespace java.lang
 		''' <param name="l">   a {@code long}. </param>
 		''' <returns>  a reference to this object. </returns>
 		public AbstractStringBuilder append(Long l)
-			If l = Long.MinValue Then
+			If l = java.lang.[Long].MIN_VALUE Then
 				append("-9223372036854775808")
 				Return Me
 			End If
-			Dim appendedLength As Integer = If(l < 0, Long.stringSize(-l) + 1, Long.stringSize(l))
+			Dim appendedLength As Integer = If(l < 0, java.lang.[Long].stringSize(-l) + 1, java.lang.[Long].stringSize(l))
 			Dim spaceNeeded As Integer = count + appendedLength
 			ensureCapacityInternal(spaceNeeded)
 			Long.getChars(l, spaceNeeded, value_Renamed)
@@ -1194,7 +1194,7 @@ Namespace java.lang
 		''' specified substring, starting at the specified index.  The integer
 		''' returned is the smallest value {@code k} for which:
 		''' <pre>{@code
-		'''     k >= Math.min(fromIndex, this.length()) &&
+		'''     k >= System.Math.min(fromIndex, this.length()) &&
 		'''                   this.toString().startsWith(str, k)
 		''' }</pre>
 		''' If no such value of <i>k</i> exists, then -1 is returned.
@@ -1229,7 +1229,7 @@ Namespace java.lang
 		''' specified substring. The integer returned is the largest value <i>k</i>
 		''' such that:
 		''' <pre>{@code
-		'''     k <= Math.min(fromIndex, this.length()) &&
+		'''     k <= System.Math.min(fromIndex, this.length()) &&
 		'''                   this.toString().startsWith(str, k)
 		''' }</pre>
 		''' If no such value of <i>k</i> exists, then -1 is returned.

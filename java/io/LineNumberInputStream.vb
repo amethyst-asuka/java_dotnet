@@ -178,7 +178,7 @@ Namespace java.io
 
 			data = New SByte(chunk - 1){}
 			Do While remaining > 0
-				nr = read(data, 0, CInt(Fix(Math.Min(chunk, remaining))))
+				nr = read(data, 0, CInt(Fix (System.Math.Min(chunk, remaining))))
 				If nr < 0 Then Exit Do
 				remaining -= nr
 			Loop

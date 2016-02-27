@@ -580,7 +580,7 @@ Namespace java.time.temporal
 		''' This is necessary to ensure interoperation between calendars.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Enum values must be single integer values in .NET:
-		INSTANT_SECONDS("InstantSeconds", SECONDS, FOREVER, ValueRange.of(Long.MIN_VALUE, Long.MAX_VALUE)),
+		INSTANT_SECONDS("InstantSeconds", SECONDS, FOREVER, ValueRange.of(Long.MIN_VALUE, java.lang.[Long].MAX_VALUE)),
 		''' <summary>
 		''' The offset from UTC/Greenwich.
 		''' <p>
@@ -658,7 +658,7 @@ Namespace java.time.temporal
 		''' <summary>
 		''' Gets the range of valid values for the field.
 		''' <p>
-		''' All fields can be expressed as a {@code long} integer.
+		''' All fields can be expressed as a {@code long}  java.lang.[Integer].
 		''' This method returns an object that describes the valid range for that value.
 		''' <p>
 		''' This method returns the range of the field in the ISO-8601 calendar system.

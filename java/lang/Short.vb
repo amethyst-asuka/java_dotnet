@@ -156,7 +156,7 @@ Namespace java.lang
 		''' equal to the value of:
 		''' 
 		''' <blockquote>
-		'''  {@code new Short(Short.parseShort(s, radix))}
+		'''  {@code new Short( java.lang.[Short].parseShort(s, radix))}
 		''' </blockquote>
 		''' </summary>
 		''' <param name="s">         the string to be parsed </param>
@@ -183,7 +183,7 @@ Namespace java.lang
 		''' equal to the value of:
 		''' 
 		''' <blockquote>
-		'''  {@code new Short(Short.parseShort(s))}
+		'''  {@code new Short( java.lang.[Short].parseShort(s))}
 		''' </blockquote>
 		''' </summary>
 		''' <param name="s"> the string to be parsed </param>
@@ -258,7 +258,7 @@ Namespace java.lang
 		''' <p>The sequence of characters following an optional
 		''' sign and/or radix specifier ("{@code 0x}", "{@code 0X}",
 		''' "{@code #}", or leading zero) is parsed as by the {@code
-		''' Short.parseShort} method with the indicated radix (10, 16, or
+		'''  java.lang.[Short].parseShort} method with the indicated radix (10, 16, or
 		''' 8).  This sequence of characters must represent a positive
 		''' value or a <seealso cref="NumberFormatException"/> will be thrown.  The
 		''' result is negated if first character of the specified {@code
@@ -272,7 +272,7 @@ Namespace java.lang
 		'''            contain a parsable {@code short}. </exception>
 		''' <seealso cref= java.lang.Short#parseShort(java.lang.String, int) </seealso>
 		Public Shared Function decode(ByVal nm As String) As Short?
-			Dim i As Integer = Integer.decode(nm)
+			Dim i As Integer =  java.lang.[Integer].decode(nm)
 			If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value " & i & " out of range from input " & nm)
 			Return valueOf(CShort(i))
 		End Function
@@ -382,12 +382,12 @@ Namespace java.lang
 		''' </summary>
 		''' <returns> a hash code value for this {@code Short} </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return Short.hashCode(value)
+			Return  java.lang.[Short].hashCode(value)
 		End Function
 
 		''' <summary>
 		''' Returns a hash code for a {@code short} value; compatible with
-		''' {@code Short.hashCode()}.
+		''' {@code  java.lang.[Short].hashCode()}.
 		''' </summary>
 		''' <param name="value"> the value to hash </param>
 		''' <returns> a hash code value for a {@code short} value.
@@ -423,14 +423,14 @@ Namespace java.lang
 		'''           comparison).
 		''' @since   1.2 </returns>
 		Public Function compareTo(ByVal anotherShort As Short?) As Integer
-			Return compare(Me.value, anotherShort.value)
+			Return compare(Me.value, another java.lang.[Short].value)
 		End Function
 
 		''' <summary>
 		''' Compares two {@code short} values numerically.
 		''' The value returned is identical to what would be returned by:
 		''' <pre>
-		'''    Short.valueOf(x).compareTo(Short.valueOf(y))
+		'''     java.lang.[Short].valueOf(x).compareTo( java.lang.[Short].valueOf(y))
 		''' </pre>
 		''' </summary>
 		''' <param name="x"> the first {@code short} to compare </param>
@@ -456,7 +456,7 @@ Namespace java.lang
 		''' 
 		''' @since 1.8
 		''' </summary>
-		Public Shared ReadOnly BYTES As Integer = SIZE \ Byte.SIZE
+		Public Shared ReadOnly BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
 		''' <summary>
 		''' Returns the value obtained by reversing the order of the bytes in the

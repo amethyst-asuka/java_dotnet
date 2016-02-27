@@ -104,7 +104,7 @@ Namespace java.awt
 		''' <summary>
 		''' This is the horizontal gap (in pixels) which specifies the space
 		''' between columns.  They can be changed at any time.
-		''' This should be a non-negative integer.
+		''' This should be a non-negative  java.lang.[Integer].
 		''' 
 		''' @serial </summary>
 		''' <seealso cref= #getHgap() </seealso>
@@ -113,7 +113,7 @@ Namespace java.awt
 		''' <summary>
 		''' This is the vertical gap (in pixels) which specifies the space
 		''' between rows.  They can be changed at any time.
-		''' This should be a non negative integer.
+		''' This should be a non negative  java.lang.[Integer].
 		''' 
 		''' @serial </summary>
 		''' <seealso cref= #getVgap() </seealso>

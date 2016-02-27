@@ -119,7 +119,7 @@ Namespace java.lang
         ''' be called on the result:
         ''' 
         ''' <blockquote>
-        '''  {@code Integer.toString(n, 16).toUpperCase()}
+        '''  {@code  java.lang.[Integer].toString(n, 16).toUpperCase()}
         ''' </blockquote>
         ''' </summary>
         ''' <param name="i">       an integer to be converted to a string. </param>
@@ -180,7 +180,7 @@ Namespace java.lang
         ''' <seealso cref=     #toString(int, int)
         ''' @since 1.8 </seealso>
         Public Shared Function toUnsignedString(ByVal i As Integer, ByVal radix As Integer) As String
-            Return [Long].toUnsignedString(toUnsignedLong(i), radix)
+            Return java.lang.[Long].toUnsignedString(toUnsignedLong(i), radix)
         End Function
 
         ''' <summary>
@@ -196,7 +196,7 @@ Namespace java.lang
         ''' <p>The value of the argument can be recovered from the returned
         ''' string {@code s} by calling {@link
         ''' Integer#parseUnsignedInt(String, int)
-        ''' Integer.parseUnsignedInt(s, 16)}.
+        '''  java.lang.[Integer].parseUnsignedInt(s, 16)}.
         ''' 
         ''' <p>If the unsigned magnitude is zero, it is represented by a
         ''' single zero character {@code '0'} ({@code '\u005Cu0030'});
@@ -215,7 +215,7 @@ Namespace java.lang
         ''' be called on the result:
         ''' 
         ''' <blockquote>
-        '''  {@code Integer.toHexString(n).toUpperCase()}
+        '''  {@code  java.lang.[Integer].toHexString(n).toUpperCase()}
         ''' </blockquote>
         ''' </summary>
         ''' <param name="i">   an integer to be converted to a string. </param>
@@ -240,7 +240,7 @@ Namespace java.lang
         ''' <p>The value of the argument can be recovered from the returned
         ''' string {@code s} by calling {@link
         ''' Integer#parseUnsignedInt(String, int)
-        ''' Integer.parseUnsignedInt(s, 8)}.
+        '''  java.lang.[Integer].parseUnsignedInt(s, 8)}.
         ''' 
         ''' <p>If the unsigned magnitude is zero, it is represented by a
         ''' single zero character {@code '0'} ({@code '\u005Cu0030'});
@@ -277,7 +277,7 @@ Namespace java.lang
         ''' <p>The value of the argument can be recovered from the returned
         ''' string {@code s} by calling {@link
         ''' Integer#parseUnsignedInt(String, int)
-        ''' Integer.parseUnsignedInt(s, 2)}.
+        '''  java.lang.[Integer].parseUnsignedInt(s, 2)}.
         ''' 
         ''' <p>If the unsigned magnitude is zero, it is represented by a
         ''' single zero character {@code '0'} ({@code '\u005Cu0030'});
@@ -301,8 +301,8 @@ Namespace java.lang
         ''' </summary>
         Private Shared Function toUnsignedString0(ByVal val As Integer, ByVal shift As Integer) As String
             ' assert shift > 0 && shift <=5 : "Illegal shift value";
-            Dim mag As Integer = Integer.SIZE - Integer.numberOfLeadingZeros(val)
-            Dim chars_Renamed As Integer = Math.max(((mag + (shift - 1)) \ shift), 1)
+            Dim mag As Integer =  java.lang.[Integer].SIZE -  java.lang.[Integer].numberOfLeadingZeros(val)
+            Dim chars_Renamed As Integer = System.Math.max(((mag + (shift - 1)) \ shift), 1)
             Dim buf As Char() = New Char(chars_Renamed - 1) {}
 
             formatUnsignedInt(val, shift, buf, 0, chars_Renamed)
@@ -325,7 +325,7 @@ Namespace java.lang
             Dim mask As Integer = radix - 1
             Do
                 charPos -= 1
-                buf(offset + charPos) = Integer.digits(val And mask)
+                buf(offset + charPos) =  java.lang.[Integer].digits(val And mask)
                 val >>>= shift
             Loop While val <> 0 AndAlso charPos > 0
 
@@ -337,11 +337,11 @@ Namespace java.lang
         Friend Shared ReadOnly DigitOnes As Char() = {"0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c, "0"c, "1"c, "2"c, "3"c, "4"c, "5"c, "6"c, "7"c, "8"c, "9"c}
 
         ' I use the "invariant division by multiplication" trick to
-        ' accelerate Integer.toString.  In particular we want to
+        ' accelerate  java.lang.[Integer].toString.  In particular we want to
         ' avoid division by 10.
         '
         ' The "trick" has roughly the same performance characteristics
-        ' as the "classic" Integer.toString code on a non-JIT VM.
+        ' as the "classic"  java.lang.[Integer].toString code on a non-JIT VM.
         ' The trick avoids .rem and .div calls but has a longer code
         ' path and is thus dominated by dispatch overhead.  In the
         ' JIT case the dispatch overhead doesn't exist and the
@@ -357,7 +357,7 @@ Namespace java.lang
 
         ''' <summary>
         ''' Returns a {@code String} object representing the
-        ''' specified integer. The argument is converted to signed decimal
+        ''' specified  java.lang.[Integer]. The argument is converted to signed decimal
         ''' representation and returned as a string, exactly as if the
         ''' argument and radix 10 were given as arguments to the {@link
         ''' #toString(int, int)} method.
@@ -365,7 +365,7 @@ Namespace java.lang
         ''' <param name="i">   an integer to be converted. </param>
         ''' <returns>  a string representation of the argument in base&nbsp;10. </returns>
         Public Shared Function ToString(ByVal i As Integer) As String
-            If i = Integer.MinValue Then Return "-2147483648"
+            If i =  java.lang.[Integer].MIN_VALUE Then Return "-2147483648"
             Dim size_Renamed As Integer = If(i < 0, stringSize(-i) + 1, stringSize(i))
             Dim buf As Char() = New Char(size_Renamed - 1) {}
             getChars(i, size_Renamed, buf)
@@ -396,7 +396,7 @@ Namespace java.lang
         ''' digit at the specified index (exclusive), and working
         ''' backwards from there.
         ''' 
-        ''' Will fail if i == Integer.MIN_VALUE
+        ''' Will fail if i ==  java.lang.[Integer].MIN_VALUE
         ''' </summary>
         Friend Shared Sub getChars(ByVal i As Integer, ByVal index As Integer, ByVal buf As Char())
             Dim q, r As Integer
@@ -436,7 +436,7 @@ Namespace java.lang
             End If
         End Sub
 
-        Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999,  [Integer].MAX_VALUE}
+        Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999,  java.lang.[Integer].MAX_VALUE}
 
         ' Requires positive x
         Friend Shared Function stringSize(ByVal x As Integer) As Integer
@@ -517,7 +517,7 @@ Namespace java.lang
             Dim result As Integer = 0
             Dim negative As Boolean = False
             Dim i As Integer = 0, len As Integer = s.Length()
-            Dim limit As Integer = -Integer.MaxValue
+            Dim limit As Integer = - java.lang.[Integer].Max_Value
             Dim multmin As Integer
             Dim digit As Integer
 
@@ -526,7 +526,7 @@ Namespace java.lang
                 If firstChar < "0"c Then ' Possible leading "+" or "-"
                     If firstChar = "-"c Then
                         negative = True
-                        limit = Integer.MinValue
+                        limit =  java.lang.[Integer].MIN_VALUE
                     ElseIf firstChar <> "+"c Then
                         Throw NumberFormatException.forInputString(s)
                     End If
@@ -552,7 +552,7 @@ Namespace java.lang
         End Function
 
         ''' <summary>
-        ''' Parses the string argument as a signed decimal integer. The
+        ''' Parses the string argument as a signed decimal  java.lang.[Integer]. The
         ''' characters in the string must all be decimal digits, except
         ''' that the first character may be an ASCII minus sign {@code '-'}
         ''' ({@code '\u005Cu002D'}) to indicate a negative value or an
@@ -566,7 +566,7 @@ Namespace java.lang
         '''             representation to be parsed </param>
         ''' <returns>     the integer value represented by the argument in decimal. </returns>
         ''' <exception cref="NumberFormatException">  if the string does not contain a
-        '''               parsable integer. </exception>
+        '''               parsable  java.lang.[Integer]. </exception>
         Public Shared Function parseInt(ByVal s As String) As Integer
             Return parseInt(s, 10)
         End Function
@@ -622,7 +622,7 @@ Namespace java.lang
                 If firstChar = "-"c Then
                     Throw New NumberFormatException(String.Format("Illegal leading minus sign " & "on unsigned string {0}.", s))
                 Else
-                    If len <= 5 OrElse (radix = 10 AndAlso len <= 9) Then '  [Integer].MAX_VALUE in base 10 is 10 digits -   [Integer].MAX_VALUE in Character.MAX_RADIX is 6 digits
+                    If len <= 5 OrElse (radix = 10 AndAlso len <= 9) Then '  java.lang.[Integer].MAX_VALUE in base 10 is 10 digits -   java.lang.[Integer].MAX_VALUE in Character.MAX_RADIX is 6 digits
                         Return parseInt(s, radix)
                     Else
                         Dim ell As Long = Convert.ToInt64(s, radix)
@@ -639,7 +639,7 @@ Namespace java.lang
         End Function
 
         ''' <summary>
-        ''' Parses the string argument as an unsigned decimal integer. The
+        ''' Parses the string argument as an unsigned decimal  java.lang.[Integer]. The
         ''' characters in the string must all be decimal digits, except
         ''' that the first character may be an an ASCII plus sign {@code
         ''' '+'} ({@code '\u005Cu002B'}). The resulting integer value
@@ -651,7 +651,7 @@ Namespace java.lang
         '''            representation to be parsed </param>
         ''' <returns>    the unsigned integer value represented by the argument in decimal. </returns>
         ''' <exception cref="NumberFormatException">  if the string does not contain a
-        '''            parsable unsigned integer.
+        '''            parsable unsigned  java.lang.[Integer].
         ''' @since 1.8 </exception>
         Public Shared Function parseUnsignedInt(ByVal s As String) As Integer
             Return parseUnsignedInt(s, 10)
@@ -671,7 +671,7 @@ Namespace java.lang
         ''' object equal to the value of:
         ''' 
         ''' <blockquote>
-        '''  {@code new Integer(Integer.parseInt(s, radix))}
+        '''  {@code new Integer( java.lang.[Integer].parseInt(s, radix))}
         ''' </blockquote>
         ''' </summary>
         ''' <param name="s">   the string to be parsed. </param>
@@ -698,14 +698,14 @@ Namespace java.lang
         ''' object equal to the value of:
         ''' 
         ''' <blockquote>
-        '''  {@code new Integer(Integer.parseInt(s))}
+        '''  {@code new Integer( java.lang.[Integer].parseInt(s))}
         ''' </blockquote>
         ''' </summary>
         ''' <param name="s">   the string to be parsed. </param>
         ''' <returns>     an {@code Integer} object holding the value
         '''             represented by the string argument. </returns>
         ''' <exception cref="NumberFormatException">  if the string cannot be parsed
-        '''             as an integer. </exception>
+        '''             as an  java.lang.[Integer]. </exception>
         Public Shared Function valueOf(ByVal s As String) As Integer?
             Return Convert.ToInt32(parseInt(s, 10))
         End Function
@@ -716,7 +716,7 @@ Namespace java.lang
         ''' 
         ''' The cache is initialized on first usage.  The size of the cache
         ''' may be controlled by the {@code -XX:AutoBoxCacheMax=<size>} option.
-        ''' During VM initialization, java.lang.Integer.IntegerCache.high property
+        ''' During VM initialization, java.lang. java.lang.[Integer].IntegerCache.high property
         ''' may be set and saved in the private system properties in the
         ''' sun.misc.VM class.
         ''' </summary>
@@ -729,13 +729,13 @@ Namespace java.lang
             Shared Sub New()
                 ' high value may be configured by property
                 Dim h As Integer = 127
-                Dim integerCacheHighPropValue As String = sun.misc.VM.getSavedProperty("java.lang.Integer.IntegerCache.high")
+                Dim integerCacheHighPropValue As String = sun.misc.VM.getSavedProperty("java.lang. java.lang.[Integer].IntegerCache.high")
                 If integerCacheHighPropValue IsNot Nothing Then
                     Try
                         Dim i As Integer = parseInt(integerCacheHighPropValue)
-                        i = Math.max(i, 127)
-                        ' Maximum array size is  [Integer].MAX_VALUE
-                        h = Math.min(i, Integer.MaxValue - (-low) - 1)
+                        i = System.Math.max(i, 127)
+                        ' Maximum array size is  java.lang.[Integer].MAX_VALUE
+                        h = System.Math.min(i,  java.lang.[Integer].Max_Value - (-low) - 1)
                     Catch nfe As NumberFormatException
                         ' If the property cannot be parsed into an int, ignore it.
                     End Try
@@ -803,7 +803,7 @@ Namespace java.lang
         ''' <param name="s">   the {@code String} to be converted to an
         '''                 {@code Integer}. </param>
         ''' <exception cref="NumberFormatException">  if the {@code String} does not
-        '''               contain a parsable integer. </exception>
+        '''               contain a parsable  java.lang.[Integer]. </exception>
         ''' <seealso cref=        java.lang.Integer#parseInt(java.lang.String, int) </seealso>
         Function java.lang.Integer(ByVal s As String) As [Public]
 			Me.value = parseInt(s, 10)
@@ -882,12 +882,12 @@ Namespace java.lang
         '''          primitive {@code int} value represented by this
         '''          {@code Integer} object. </returns>
         Public Overrides Function GetHashCode() As Integer
-            Return Integer.hashCode(value)
+            Return  java.lang.[Integer].hashCode(value)
         End Function
 
         ''' <summary>
         ''' Returns a hash code for a {@code int} value; compatible with
-        ''' {@code Integer.hashCode()}.
+        ''' {@code  java.lang.[Integer].hashCode()}.
         ''' </summary>
         ''' <param name="value"> the value to hash
         ''' @since 1.8
@@ -1035,7 +1035,7 @@ Namespace java.lang
 			End Try
             If v IsNot Nothing Then
                 Try
-                    Return Integer.decode(v)
+                    Return  java.lang.[Integer].decode(v)
                 Catch e As NumberFormatException
                 End Try
             End If
@@ -1070,7 +1070,7 @@ Namespace java.lang
         ''' <p>The sequence of characters following an optional
         ''' sign and/or radix specifier ("{@code 0x}", "{@code 0X}",
         ''' "{@code #}", or leading zero) is parsed as by the {@code
-        ''' Integer.parseInt} method with the indicated radix (10, 16, or
+        '''  java.lang.[Integer].parseInt} method with the indicated radix (10, 16, or
         ''' 8).  This sequence of characters must represent a positive
         ''' value or a <seealso cref="NumberFormatException"/> will be thrown.  The
         ''' result is negated if first character of the specified {@code
@@ -1081,7 +1081,7 @@ Namespace java.lang
         ''' <returns>    an {@code Integer} object holding the {@code int}
         '''             value represented by {@code nm} </returns>
         ''' <exception cref="NumberFormatException">  if the {@code String} does not
-        '''            contain a parsable integer. </exception>
+        '''            contain a parsable  java.lang.[Integer]. </exception>
         ''' <seealso cref= java.lang.Integer#parseInt(java.lang.String, int) </seealso>
         Public Shared Function decode(ByVal nm As String) As Integer?
             Dim radix As Integer = 10
@@ -1117,7 +1117,7 @@ Namespace java.lang
                 result = Convert.ToInt32(nm.Substring(index), radix)
                 result = If(negative, Convert.ToInt32(-result), result)
             Catch e As NumberFormatException
-                ' If number is Integer.MIN_VALUE, we'll end up here. The next line
+                ' If number is  java.lang.[Integer].MIN_VALUE, we'll end up here. The next line
                 ' handles this case, and causes any genuine format error to be
                 ' rethrown.
                 Dim constant As String = If(negative, ("-" & nm.Substring(index)), nm.Substring(index))
@@ -1139,14 +1139,14 @@ Namespace java.lang
         '''           comparison).
         ''' @since   1.2 </returns>
         Public Function compareTo(ByVal anotherInteger As Integer?) As Integer
-            Return compare(Me.value, anotherInteger.Value)
+            Return compare(Me.value, another java.lang.[Integer].Value)
         End Function
 
         ''' <summary>
         ''' Compares two {@code int} values numerically.
         ''' The value returned is identical to what would be returned by:
         ''' <pre>
-        '''    Integer.valueOf(x).compareTo(Integer.valueOf(y))
+        '''     java.lang.[Integer].valueOf(x).compareTo( java.lang.[Integer].valueOf(y))
         ''' </pre>
         ''' </summary>
         ''' <param name="x"> the first {@code int} to compare </param>
@@ -1250,7 +1250,7 @@ Namespace java.lang
         ''' 
         ''' @since 1.8
         ''' </summary>
-        Public Shared ReadOnly BYTES As Integer = SIZE \ Byte.SIZE
+        Public Shared ReadOnly BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
         ''' <summary>
         ''' Returns an {@code int} value with at most a single one-bit, in the
@@ -1498,7 +1498,7 @@ Namespace java.lang
 
         ''' <summary>
         ''' Returns the greater of two {@code int} values
-        ''' as if by calling <seealso cref="Math#max(int, int) Math.max"/>.
+        ''' as if by calling <seealso cref="Math#max(int, int) System.Math.max"/>.
         ''' </summary>
         ''' <param name="a"> the first operand </param>
         ''' <param name="b"> the second operand </param>
@@ -1506,12 +1506,12 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function max(ByVal a As Integer, ByVal b As Integer) As Integer
-            Return Math.max(a, b)
+            Return System.Math.max(a, b)
         End Function
 
         ''' <summary>
         ''' Returns the smaller of two {@code int} values
-        ''' as if by calling <seealso cref="Math#min(int, int) Math.min"/>.
+        ''' as if by calling <seealso cref="Math#min(int, int) System.Math.min"/>.
         ''' </summary>
         ''' <param name="a"> the first operand </param>
         ''' <param name="b"> the second operand </param>
@@ -1519,7 +1519,7 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function min(ByVal a As Integer, ByVal b As Integer) As Integer
-            Return Math.min(a, b)
+            Return System.Math.min(a, b)
         End Function
 
         ''' <summary>

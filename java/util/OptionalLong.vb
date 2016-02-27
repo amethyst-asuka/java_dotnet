@@ -206,7 +206,7 @@ Namespace java.util
 		''' </summary>
 		''' <returns> hash code value of the present value or 0 if no value is present </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return If(isPresent_Renamed, Long.hashCode(value), 0)
+			Return If(isPresent_Renamed, java.lang.[Long].hashCode(value), 0)
 		End Function
 
 		''' <summary>

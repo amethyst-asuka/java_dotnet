@@ -57,7 +57,7 @@ Namespace java.util.concurrent.atomic
 		Shared Sub New()
 			Dim scale As Integer = unsafe.arrayIndexScale(GetType(Integer()))
 			If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")
-			shift = 31 - Integer.numberOfLeadingZeros(scale)
+			shift = 31 -  java.lang.[Integer].numberOfLeadingZeros(scale)
 		End Sub
 
 		Private Function checkedByteOffset(ByVal i As Integer) As Long

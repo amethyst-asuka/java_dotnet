@@ -465,7 +465,7 @@ Namespace java.util.stream
 			' Better error bounds to add both terms as the final sum
 			Dim tmp As Double = summands(0) + summands(1)
 			Dim simpleSum As Double = summands(summands.Length - 1)
-			If Double.IsNaN(tmp) AndAlso Double.IsInfinity(simpleSum) Then
+			If java.lang.[Double].IsNaN(tmp) AndAlso java.lang.[Double].IsInfinity(simpleSum) Then
 				Return simpleSum
 			Else
 				Return tmp

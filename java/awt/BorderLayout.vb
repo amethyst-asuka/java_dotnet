@@ -617,30 +617,30 @@ Namespace java.awt
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.minimumSize
 				[dim].width += d.width + hgap
-				[dim].height = Math.Max(d.height, [dim].height)
+				[dim].height = System.Math.Max(d.height, [dim].height)
 			End If
 			c=getChild(WEST,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.minimumSize
 				[dim].width += d.width + hgap
-				[dim].height = Math.Max(d.height, [dim].height)
+				[dim].height = System.Math.Max(d.height, [dim].height)
 			End If
 			c=getChild(CENTER,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.minimumSize
 				[dim].width += d.width
-				[dim].height = Math.Max(d.height, [dim].height)
+				[dim].height = System.Math.Max(d.height, [dim].height)
 			End If
 			c=getChild(NORTH,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.minimumSize
-				[dim].width = Math.Max(d.width, [dim].width)
+				[dim].width = System.Math.Max(d.width, [dim].width)
 				[dim].height += d.height + vgap
 			End If
 			c=getChild(SOUTH,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.minimumSize
-				[dim].width = Math.Max(d.width, [dim].width)
+				[dim].width = System.Math.Max(d.width, [dim].width)
 				[dim].height += d.height + vgap
 			End If
 
@@ -677,30 +677,30 @@ Namespace java.awt
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.preferredSize
 				[dim].width += d.width + hgap
-				[dim].height = Math.Max(d.height, [dim].height)
+				[dim].height = System.Math.Max(d.height, [dim].height)
 			End If
 			c=getChild(WEST,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.preferredSize
 				[dim].width += d.width + hgap
-				[dim].height = Math.Max(d.height, [dim].height)
+				[dim].height = System.Math.Max(d.height, [dim].height)
 			End If
 			c=getChild(CENTER,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.preferredSize
 				[dim].width += d.width
-				[dim].height = Math.Max(d.height, [dim].height)
+				[dim].height = System.Math.Max(d.height, [dim].height)
 			End If
 			c=getChild(NORTH,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.preferredSize
-				[dim].width = Math.Max(d.width, [dim].width)
+				[dim].width = System.Math.Max(d.width, [dim].width)
 				[dim].height += d.height + vgap
 			End If
 			c=getChild(SOUTH,ltr)
 			If c IsNot Nothing Then
 				Dim d As Dimension = c.preferredSize
-				[dim].width = Math.Max(d.width, [dim].width)
+				[dim].width = System.Math.Max(d.width, [dim].width)
 				[dim].height += d.height + vgap
 			End If
 
@@ -720,7 +720,7 @@ Namespace java.awt
 		''' <seealso cref= #minimumLayoutSize </seealso>
 		''' <seealso cref= #preferredLayoutSize </seealso>
 		Public Overridable Function maximumLayoutSize(ByVal target As Container) As Dimension Implements LayoutManager2.maximumLayoutSize
-			Return New Dimension(Integer.MaxValue, Integer.MaxValue)
+			Return New Dimension( java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <summary>

@@ -32,7 +32,7 @@ Namespace java.util.zip
 	''' </summary>
 	Public Interface Checksum
 		''' <summary>
-		''' Updates the current checksum with the specified byte.
+		''' Updates the current checksum with the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="b"> the byte to update the checksum with </param>
 		Sub update(ByVal b As Integer)

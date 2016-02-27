@@ -324,8 +324,8 @@ Namespace java.time.chrono
 			Dim totNanos As Long = nanos Mod NANOS_PER_DAY + (seconds Mod SECONDS_PER_DAY) * NANOS_PER_SECOND + (minutes Mod MINUTES_PER_DAY) * NANOS_PER_MINUTE + (hours Mod HOURS_PER_DAY) * NANOS_PER_HOUR '   max  86400000000000 -    max  86400000000000 -    max  86400000000000 -    max  86400000000000
 			Dim curNoD As Long = time.toNanoOfDay() '   max  86400000000000
 			totNanos = totNanos + curNoD ' total 432000000000000
-			totDays += Math.floorDiv(totNanos, NANOS_PER_DAY)
-			Dim newNoD As Long = Math.floorMod(totNanos, NANOS_PER_DAY)
+			totDays += System.Math.floorDiv(totNanos, NANOS_PER_DAY)
+			Dim newNoD As Long = System.Math.floorMod(totNanos, NANOS_PER_DAY)
 			Dim newTime As java.time.LocalTime = (If(newNoD = curNoD, time, java.time.LocalTime.ofNanoOfDay(newNoD)))
 			Return [with](newDate.plus(totDays, java.time.temporal.ChronoUnit.DAYS), newTime)
 		End Function
@@ -345,21 +345,21 @@ Namespace java.time.chrono
 					Dim amount As Long = [end].getLong(EPOCH_DAY) - [date].getLong(EPOCH_DAY)
 					Select Case CType(unit, java.time.temporal.ChronoUnit)
 						Case NANOS
-							amount = Math.multiplyExact(amount, NANOS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, NANOS_PER_DAY)
 						Case MICROS
-							amount = Math.multiplyExact(amount, MICROS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, MICROS_PER_DAY)
 						Case MILLIS
-							amount = Math.multiplyExact(amount, MILLIS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, MILLIS_PER_DAY)
 						Case SECONDS
-							amount = Math.multiplyExact(amount, SECONDS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, SECONDS_PER_DAY)
 						Case MINUTES
-							amount = Math.multiplyExact(amount, MINUTES_PER_DAY)
+							amount = System.Math.multiplyExact(amount, MINUTES_PER_DAY)
 						Case HOURS
-							amount = Math.multiplyExact(amount, HOURS_PER_DAY)
+							amount = System.Math.multiplyExact(amount, HOURS_PER_DAY)
 						Case HALF_DAYS
-							amount = Math.multiplyExact(amount, 2)
+							amount = System.Math.multiplyExact(amount, 2)
 					End Select
-					Return Math.addExact(amount, time.until([end].toLocalTime(), unit))
+					Return System.Math.addExact(amount, time.until([end].toLocalTime(), unit))
 				End If
 				Dim endDate As ChronoLocalDate = [end].toLocalDate()
 				If [end].toLocalTime().isBefore(time) Then endDate = endDate.minus(1, java.time.temporal.ChronoUnit.DAYS)

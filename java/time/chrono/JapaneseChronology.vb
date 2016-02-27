@@ -386,8 +386,8 @@ Namespace java.time.chrono
 			 fieldValues.Remove(YEAR_OF_ERA)
 			 If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
 				 Dim y As Integer = prolepticYearLenient(era, yoe)
-				 Dim months As Long = Math.subtractExact(fieldValues.Remove(MONTH_OF_YEAR), 1)
-				 Dim days As Long = Math.subtractExact(fieldValues.Remove(DAY_OF_MONTH), 1)
+				 Dim months As Long = System.Math.subtractExact(fieldValues.Remove(MONTH_OF_YEAR), 1)
+				 Dim days As Long = System.Math.subtractExact(fieldValues.Remove(DAY_OF_MONTH), 1)
 				 Return [date](y, 1, 1).plus(months, MONTHS).plus(days, DAYS)
 			 End If
 			 Dim moy As Integer = range(MONTH_OF_YEAR).checkValidIntValue(fieldValues.Remove(MONTH_OF_YEAR), MONTH_OF_YEAR)
@@ -415,7 +415,7 @@ Namespace java.time.chrono
 			fieldValues.Remove(YEAR_OF_ERA)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
 				Dim y As Integer = prolepticYearLenient(era, yoe)
-				Dim days As Long = Math.subtractExact(fieldValues.Remove(DAY_OF_YEAR), 1)
+				Dim days As Long = System.Math.subtractExact(fieldValues.Remove(DAY_OF_YEAR), 1)
 				Return dateYearDay(y, 1).plus(days, DAYS)
 			End If
 			Dim doy As Integer = range(DAY_OF_YEAR).checkValidIntValue(fieldValues.Remove(DAY_OF_YEAR), DAY_OF_YEAR)

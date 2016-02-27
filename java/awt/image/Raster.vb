@@ -192,7 +192,7 @@ Namespace java.awt.image
 		''' <code>DataBuffer.TYPE_INT</code>, use
 		''' Raster.createPackedRaster().
 		''' <p> The only dataTypes supported currently are TYPE_BYTE
-		''' and TYPE_USHORT. </summary>
+		''' and TYPE_U java.lang.[Short]. </summary>
 		''' <param name="dataType">  the data type for storing samples </param>
 		''' <param name="w">         the width in pixels of the image data </param>
 		''' <param name="h">         the height in pixels of the image data </param>
@@ -229,7 +229,7 @@ Namespace java.awt.image
 		''' <code>DataBuffer.TYPE_INT</code>, use
 		''' Raster.createPackedRaster().
 		''' <p> The only dataTypes supported currently are TYPE_BYTE
-		''' and TYPE_USHORT. </summary>
+		''' and TYPE_U java.lang.[Short]. </summary>
 		''' <param name="dataType">  the data type for storing samples </param>
 		''' <param name="w">         the width in pixels of the image data </param>
 		''' <param name="h">         the height in pixels of the image data </param>
@@ -493,13 +493,13 @@ Namespace java.awt.image
 				Dim fw As Double = w
 				Select Case dataType
 				Case DataBuffer.TYPE_BYTE
-					d = New DataBufferByte(CInt(Fix(Math.Ceiling(fw/(8/bitsPerBand))))*h)
+					d = New DataBufferByte(CInt(Fix (System.Math.Ceiling(fw/(8/bitsPerBand))))*h)
 
 				Case DataBuffer.TYPE_USHORT
-					d = New DataBufferUShort(CInt(Fix(Math.Ceiling(fw/(16/bitsPerBand))))*h)
+					d = New DataBufferUShort(CInt(Fix (System.Math.Ceiling(fw/(16/bitsPerBand))))*h)
 
 				Case DataBuffer.TYPE_INT
-					d = New DataBufferInt(CInt(Fix(Math.Ceiling(fw/(32/bitsPerBand))))*h)
+					d = New DataBufferInt(CInt(Fix (System.Math.Ceiling(fw/(32/bitsPerBand))))*h)
 
 				Case Else
 					Throw New IllegalArgumentException("Unsupported data type " & dataType)
@@ -1363,7 +1363,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the sample in a specified band
-		''' for a pixel located at (x,y) as a double.
+		''' for a pixel located at (x,y) as a java.lang.[Double].
 		''' An ArrayIndexOutOfBoundsException may be thrown
 		''' if the coordinates are not in bounds.  However, explicit bounds
 		''' checking is not guaranteed. </summary>

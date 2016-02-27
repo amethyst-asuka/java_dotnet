@@ -68,9 +68,9 @@ Namespace java.lang.reflect
 
 		''' <summary>
 		''' Returns the Java language modifiers for the member or
-		''' constructor represented by this Member, as an integer.  The
+		''' constructor represented by this Member, as an  java.lang.[Integer].  The
 		''' Modifier class should be used to decode the modifiers in
-		''' the integer.
+		''' the  java.lang.[Integer].
 		''' </summary>
 		''' <returns> the Java language modifiers for the underlying member </returns>
 		''' <seealso cref= Modifier </seealso>

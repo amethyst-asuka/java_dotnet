@@ -247,7 +247,7 @@ Namespace java.security
 					ElseIf attrValueSet(i).tag = DerValue.tag_UtcTime Then
 						values(i) = attrValueSet(i).uTCTime.ToString()
 					ElseIf attrValueSet(i).tag = DerValue.tag_Integer Then
-						values(i) = attrValueSet(i).bigInteger.ToString()
+						values(i) = attrValueSet(i).big java.lang.[Integer].ToString()
 					ElseIf attrValueSet(i).tag = DerValue.tag_Boolean Then
 						values(i) = Convert.ToString(attrValueSet(i).boolean)
 					Else

@@ -1121,7 +1121,7 @@ Namespace java.awt
 					'
 					' In tiger, we will probably give timestamps to all events, so this
 					' will no longer be an issue.
-					Dim mostRecentEventTime2 As Long = Long.MinValue
+					Dim mostRecentEventTime2 As Long = java.lang.[Long].MIN_VALUE
 					If TypeOf e Is InputEvent Then
 						Dim ie As InputEvent = CType(e, InputEvent)
 						mostRecentEventTime2 = ie.when
@@ -1136,7 +1136,7 @@ Namespace java.awt
 						Dim ie As InvocationEvent = CType(e, InvocationEvent)
 						mostRecentEventTime2 = ie.when
 					End If
-					mostRecentEventTime = Math.Max(mostRecentEventTime, mostRecentEventTime2)
+					mostRecentEventTime = System.Math.Max(mostRecentEventTime, mostRecentEventTime2)
 				Finally
 					pushPopLock.unlock()
 				End Try

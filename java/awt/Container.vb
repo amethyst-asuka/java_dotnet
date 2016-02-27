@@ -219,7 +219,7 @@ Namespace java.awt
 		''' @serialField focusTraversalPolicyProvider    boolean
 		'''       Stores the value of focusTraversalPolicyProvider property.
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("ncomponents", Integer.TYPE), New java.io.ObjectStreamField("component", GetType(Component())), New java.io.ObjectStreamField("layoutMgr", GetType(LayoutManager)), New java.io.ObjectStreamField("dispatcher", GetType(LightweightDispatcher)), New java.io.ObjectStreamField("maxSize", GetType(Dimension)), New java.io.ObjectStreamField("focusCycleRoot", Boolean.TYPE), New java.io.ObjectStreamField("containerSerializedDataVersion", Integer.TYPE), New java.io.ObjectStreamField("focusTraversalPolicyProvider", Boolean.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("ncomponents",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("component", GetType(Component())), New java.io.ObjectStreamField("layoutMgr", GetType(LayoutManager)), New java.io.ObjectStreamField("dispatcher", GetType(LightweightDispatcher)), New java.io.ObjectStreamField("maxSize", GetType(Dimension)), New java.io.ObjectStreamField("focusCycleRoot",  java.lang.[Boolean].TYPE), New java.io.ObjectStreamField("containerSerializedDataVersion",  java.lang.[Integer].TYPE), New java.io.ObjectStreamField("focusTraversalPolicyProvider",  java.lang.[Boolean].TYPE) }
 
 		Shared Sub New()
 			' ensure that the necessary native libraries are loaded 

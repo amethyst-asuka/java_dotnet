@@ -248,7 +248,7 @@ Namespace java.util
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		Private Sub grow(ByVal minCapacity As Integer)
 			' overflow-conscious code
@@ -262,7 +262,7 @@ Namespace java.util
 
 		Private Shared Function hugeCapacity(ByVal minCapacity As Integer) As Integer
 			If minCapacity < 0 Then ' overflow Throw New OutOfMemoryError
-			Return If(minCapacity > MAX_ARRAY_SIZE, Integer.MaxValue, MAX_ARRAY_SIZE)
+			Return If(minCapacity > MAX_ARRAY_SIZE,  java.lang.[Integer].Max_Value, MAX_ARRAY_SIZE)
 		End Function
 
 		''' <summary>

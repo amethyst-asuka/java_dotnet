@@ -398,7 +398,7 @@ Namespace java.util
 	''' <p>For compatibility reasons, two
 	''' non-conforming locales are treated as special cases.  These are
 	''' <b><tt>ja_JP_JP</tt></b> and <b><tt>th_TH_TH</tt></b>. These are ill-formed
-	''' in BCP 47 since the variants are too short. To ease migration to BCP 47,
+	''' in BCP 47 since the variants are too  java.lang.[Short]. To ease migration to BCP 47,
 	''' these are treated specially during construction.  These two cases (and only
 	''' these) cause a constructor to generate an extension, all other values behave
 	''' exactly as they did prior to Java 7.
@@ -2917,7 +2917,7 @@ Namespace java.util
 				If hash = 0 Then
 					Dim result As Integer = 17
 					result = 37*result + range.GetHashCode()
-					Dim bitsWeight As Long = Double.doubleToLongBits(weight)
+					Dim bitsWeight As Long = java.lang.[Double].doubleToLongBits(weight)
 					result = 37*result + CInt(Fix(bitsWeight Xor (CLng(CULng(bitsWeight) >> 32))))
 					hash = result
 				End If

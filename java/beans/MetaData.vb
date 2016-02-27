@@ -931,7 +931,7 @@ Namespace java.beans
 
             Public Overrides Sub writeObject(ByVal oldInstance As Object, ByVal out As Encoder)
                 If out.getAttribute(Me) Is Nothing Then
-                    out.attributeute(Me, Boolean.TRUE)
+                    out.attributeute(Me,  java.lang.[Boolean].TRUE)
                     installFields(out, oldInstance.GetType())
                 End If
                 MyBase.writeObject(oldInstance, out)

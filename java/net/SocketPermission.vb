@@ -653,9 +653,9 @@ Namespace java.net
 				Dim sb As New StringBuffer(39)
 
 				For i As Integer = 15 To 0 Step -1
-					sb.append(Integer.toHexString(((addr(i)) And &Hf)))
+					sb.append( java.lang.[Integer].toHexString(((addr(i)) And &Hf)))
 					sb.append("."c)
-					sb.append(Integer.toHexString(((addr(i) >> 4) And &Hf)))
+					sb.append( java.lang.[Integer].toHexString(((addr(i) >> 4) And &Hf)))
 					sb.append("."c)
 				Next i
 				authHost = "auth." & sb.ToString() & "IP6.ARPA"
@@ -1082,7 +1082,7 @@ Namespace java.net
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Integer?
-				Dim val As Integer = Integer.getInteger("jdk.net.ephemeralPortRange." & suffix, -1)
+				Dim val As Integer =  java.lang.[Integer].getInteger("jdk.net.ephemeralPortRange." & suffix, -1)
 				If val <> -1 Then
 					Return val
 				Else

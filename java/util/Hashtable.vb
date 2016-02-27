@@ -190,7 +190,7 @@ Namespace java.util
 			Me.loadFactor = loadFactor
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			table = New Entry(Of ?, ?)(initialCapacity - 1){}
-			threshold = CInt(Fix(Math.Min(initialCapacity * loadFactor, MAX_ARRAY_SIZE + 1)))
+			threshold = CInt(Fix (System.Math.Min(initialCapacity * loadFactor, MAX_ARRAY_SIZE + 1)))
 		End Sub
 
 		''' <summary>
@@ -222,7 +222,7 @@ Namespace java.util
 		''' @since   1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		Public Sub New(Of T1 As K, ? As V)(ByVal t As Map(Of T1))
-			Me.New(Math.Max(2*t.size(), 11), 0.75f)
+			Me.New (System.Math.Max(2*t.size(), 11), 0.75f)
 			putAll(t)
 		End Sub
 
@@ -384,7 +384,7 @@ Namespace java.util
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' Increases the capacity of and internally reorganizes this
@@ -409,7 +409,7 @@ Namespace java.util
 			Dim newMap As Entry(Of ?, ?)() = New Entry(Of ?, ?)(newCapacity - 1){}
 
 			modCount += 1
-			threshold = CInt(Fix(Math.Min(newCapacity * loadFactor, MAX_ARRAY_SIZE + 1)))
+			threshold = CInt(Fix (System.Math.Min(newCapacity * loadFactor, MAX_ARRAY_SIZE + 1)))
 			table = newMap
 
 			Dim i As Integer = oldCapacity
@@ -1254,7 +1254,7 @@ Namespace java.util
 			If origlength > 0 AndAlso length > origlength Then length = origlength
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			table = New Entry(Of ?, ?)(length - 1){}
-			threshold = CInt(Fix(Math.Min(length * loadFactor, MAX_ARRAY_SIZE + 1)))
+			threshold = CInt(Fix (System.Math.Min(length * loadFactor, MAX_ARRAY_SIZE + 1)))
 			count = 0
 
 			' Read the number of elements and then all the key/value objects

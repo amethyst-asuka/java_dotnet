@@ -1112,7 +1112,7 @@ Namespace java.nio
         ''' 
         '''   This method considers two double elements {@code a} and {@code b}
         '''   to be equal if
-        '''   {@code (a == b) || (Double.isNaN(a) && Double.isNaN(b))}.
+        '''   {@code (a == b) || (Double.isNaN(a) && java.lang.[Double].isNaN(b))}.
         '''   The values {@code -0.0} and {@code +0.0} are considered to be
         '''   equal, unlike <seealso cref="Double#equals(Object)"/>.
         ''' 
@@ -1144,7 +1144,7 @@ Namespace java.nio
 
         Private Shared Function Equals(ByVal x As Double, ByVal y As Double) As Boolean
 
-            Return (x = y) OrElse (Double.IsNaN(x) AndAlso Double.IsNaN(y))
+            Return (x = y) OrElse (Double.IsNaN(x) AndAlso java.lang.[Double].IsNaN(y))
 
 
 
@@ -1160,9 +1160,9 @@ Namespace java.nio
         ''' Pairs of {@code double} elements are compared as if by invoking
         ''' <seealso cref="Double#compare(double,double)"/>, except that
         ''' {@code -0.0} and {@code 0.0} are considered to be equal.
-        ''' {@code Double.NaN} is considered by this method to be equal
+        ''' {@code java.lang.[Double].NaN} is considered by this method to be equal
         ''' to itself and greater than all other {@code double} values
-        ''' (including {@code Double.POSITIVE_INFINITY}).
+        ''' (including {@code java.lang.[Double].POSITIVE_INFINITY}).
         ''' 
         ''' 
         ''' 
@@ -1173,7 +1173,7 @@ Namespace java.nio
         ''' <returns>  A negative integer, zero, or a positive integer as this buffer
         '''          is less than, equal to, or greater than the given buffer </returns>
         Public Overridable Function compareTo(ByVal that As DoubleBuffer) As Integer Implements Comparable(Of DoubleBuffer).compareTo
-            Dim n As Integer = Me.position() + math.Min(Me.remaining(), that.remaining())
+            Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
             Dim i As Integer = Me.position()
             Dim j As Integer = that.position()
             Do While i < n

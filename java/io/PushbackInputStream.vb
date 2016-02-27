@@ -32,7 +32,7 @@ Namespace java.io
 	''' A <code>PushbackInputStream</code> adds
 	''' functionality to another input stream, namely
 	''' the  ability to "push back" or "unread"
-	''' one byte. This is useful in situations where
+	''' one java.lang.[Byte]. This is useful in situations where
 	''' it is  convenient for a fragment of code
 	''' to read an indefinite number of data bytes
 	''' that  are delimited by a particular byte
@@ -263,8 +263,8 @@ Namespace java.io
 			ensureOpen()
 			Dim n As Integer = buf.Length - pos
 			Dim avail As Integer = MyBase.available()
-			Return If(n > (Integer.MaxValue - avail), Integer.MaxValue, n + avail)
-		End Function
+            Return If(n > (java.lang.[Integer].MAX_VALUE - avail), java.lang.[Integer].MAX_VALUE, n + avail)
+        End Function
 
 		''' <summary>
 		''' Skips over and discards <code>n</code> bytes of data from this

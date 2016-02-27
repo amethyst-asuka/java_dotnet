@@ -145,7 +145,7 @@ Namespace java.nio.channels
 					Return
 				End If
 				Dim bb As java.nio.ByteBuffer = (If(Me.bs = bs, Me.bb, java.nio.ByteBuffer.wrap(bs)))
-				bb.limit(Math.Min([off] + len, bb.capacity()))
+				bb.limit (System.Math.Min([off] + len, bb.capacity()))
 				bb.position([off])
 				Me.bb = bb
 				Me.bs = bs
@@ -202,7 +202,7 @@ Namespace java.nio.channels
 
 				Dim bb As java.nio.ByteBuffer = (If(Me.bs = bs, Me.bb, java.nio.ByteBuffer.wrap(bs)))
 				bb.position([off])
-				bb.limit(Math.Min([off] + len, bb.capacity()))
+				bb.limit (System.Math.Min([off] + len, bb.capacity()))
 				Me.bb = bb
 				Me.bs = bs
 
@@ -267,7 +267,7 @@ Namespace java.nio.channels
 					Return
 				End If
 				Dim bb As java.nio.ByteBuffer = (If(Me.bs = bs, Me.bb, java.nio.ByteBuffer.wrap(bs)))
-				bb.limit(Math.Min([off] + len, bb.capacity()))
+				bb.limit (System.Math.Min([off] + len, bb.capacity()))
 				bb.position([off])
 				Me.bb = bb
 				Me.bs = bs
@@ -335,7 +335,7 @@ Namespace java.nio.channels
 				Dim bytesRead As Integer = 0
 				SyncLock readLock
 					Do While totalRead < len
-						Dim bytesToRead As Integer = Math.Min((len - totalRead), TRANSFER_SIZE)
+						Dim bytesToRead As Integer = System.Math.Min((len - totalRead), TRANSFER_SIZE)
 						If buf.Length < bytesToRead Then buf = New SByte(bytesToRead - 1){}
 						If (totalRead > 0) AndAlso Not([in].available() > 0) Then Exit Do ' block at most once
 						Try
@@ -402,7 +402,7 @@ Namespace java.nio.channels
 				Dim totalWritten As Integer = 0
 				SyncLock writeLock
 					Do While totalWritten < len
-						Dim bytesToWrite As Integer = Math.Min((len - totalWritten), TRANSFER_SIZE)
+						Dim bytesToWrite As Integer = System.Math.Min((len - totalWritten), TRANSFER_SIZE)
 						If buf.Length < bytesToWrite Then buf = New SByte(bytesToWrite - 1){}
 						src.get(buf, 0, bytesToWrite)
 						Try

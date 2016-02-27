@@ -98,7 +98,7 @@ Namespace java.awt.font
 		Public Property Overrides ascent As Single
 			Get
     
-				Return CSng(Math.Max(0, -fShapeBounds.minY))
+				Return CSng (System.Math.Max(0, -fShapeBounds.minY))
 			End Get
 		End Property
 
@@ -111,7 +111,7 @@ Namespace java.awt.font
 		Public Property Overrides descent As Single
 			Get
     
-				Return CSng(Math.Max(0, fShapeBounds.maxY))
+				Return CSng (System.Math.Max(0, fShapeBounds.maxY))
 			End Get
 		End Property
 
@@ -124,7 +124,7 @@ Namespace java.awt.font
 		Public Property Overrides advance As Single
 			Get
     
-				Return CSng(Math.Max(0, fShapeBounds.maxX))
+				Return CSng (System.Math.Max(0, fShapeBounds.maxX))
 			End Get
 		End Property
 

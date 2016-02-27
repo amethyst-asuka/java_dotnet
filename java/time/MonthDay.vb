@@ -492,7 +492,7 @@ Namespace java.time
 		Public Function [with](ByVal month As Month) As MonthDay
 			java.util.Objects.requireNonNull(month, "month")
 			If month.value = Me.month Then Return Me
-			Dim day As Integer = Math.Min(Me.day, month.maxLength())
+			Dim day As Integer = System.Math.Min(Me.day, month.maxLength())
 			Return New MonthDay(month.value, day)
 		End Function
 
@@ -566,7 +566,7 @@ Namespace java.time
 		Public Overrides Function adjustInto(ByVal temporal As java.time.temporal.Temporal) As java.time.temporal.Temporal
 			If java.time.chrono.Chronology.from(temporal).Equals(java.time.chrono.IsoChronology.INSTANCE) = False Then Throw New DateTimeException("Adjustment only supported on ISO date-time")
 			temporal = temporal.with(MONTH_OF_YEAR, month)
-			Return temporal.with(DAY_OF_MONTH, Math.Min(temporal.range(DAY_OF_MONTH).maximum, day))
+			Return temporal.with(DAY_OF_MONTH, System.Math.Min(temporal.range(DAY_OF_MONTH).maximum, day))
 		End Function
 
 		''' <summary>

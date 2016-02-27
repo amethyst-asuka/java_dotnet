@@ -97,7 +97,7 @@ Namespace java.io
 					Return 0
 				End If
 				If [next] >= length Then Return -1
-				Dim n As Integer = Math.Min(length - [next], len)
+				Dim n As Integer = System.Math.Min(length - [next], len)
 				str.getChars([next], [next] + n, cbuf, off)
 				[next] += n
 				Return n
@@ -123,8 +123,8 @@ Namespace java.io
 				ensureOpen()
 				If [next] >= length Then Return 0
 				' Bound skip by beginning and end of the source
-				Dim n As Long = Math.Min(length - [next], ns)
-				n = Math.Max(-[next], n)
+				Dim n As Long = System.Math.Min(length - [next], ns)
+				n = System.Math.Max(-[next], n)
 				[next] += n
 				Return n
 			End SyncLock

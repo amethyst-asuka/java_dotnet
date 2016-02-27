@@ -251,7 +251,7 @@ Namespace java.awt
 			SyncLock Me
 				If index < 0 Then Throw New IllegalArgumentException("index less than zero.")
 				' if the index greater than item count, add item to the end 
-				index = Math.Min(index, pItems.size())
+				index = System.Math.Min(index, pItems.size())
 
 				insertNoInvalidate(item, index)
 			End SyncLock

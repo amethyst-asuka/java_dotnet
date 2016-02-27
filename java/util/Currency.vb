@@ -141,7 +141,7 @@ Namespace java.util
 		'   - other: index into sc* arrays + 1
 		' - scCutOverTimes: cut-over time in millis as returned by
 		'   System.currentTimeMillis for special case countries that are changing
-		'   currencies; Long.MAX_VALUE for countries that are not changing currencies
+		'   currencies; java.lang.[Long].MAX_VALUE for countries that are not changing currencies
 		' - scOldCurrencies: old currencies for special case countries
 		' - scNewCurrencies: new currencies for special case countries that are
 		'   changing currencies; null for others
@@ -285,7 +285,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <code>currencyCode</code> is not
 		''' a supported ISO 4217 code. </exception>
 		Public Shared Function getInstance(ByVal currencyCode As String) As Currency
-			Return getInstance(currencyCode, Integer.MinValue, 0)
+			Return getInstance(currencyCode,  java.lang.[Integer].MIN_VALUE, 0)
 		End Function
 
 		Private Shared Function getInstance(ByVal currencyCode As String, ByVal defaultFractionDigits As Integer, ByVal numericCode As Integer) As Currency
@@ -295,7 +295,7 @@ Namespace java.util
 			Dim instance_Renamed As Currency = instances.get(currencyCode)
 			If instance_Renamed IsNot Nothing Then Return instance_Renamed
 
-			If defaultFractionDigits = Integer.MinValue Then
+			If defaultFractionDigits =  java.lang.[Integer].MIN_VALUE Then
 				' Currency code not internally generated, need to verify first
 				' A currency code must have 3 characters and exist in the main table
 				' or in the list of other currencies.
@@ -364,7 +364,7 @@ Namespace java.util
 					Return Nothing
 				Else
 					Dim index As Integer = (tableEntry And SPECIAL_CASE_COUNTRY_INDEX_MASK) - SPECIAL_CASE_COUNTRY_INDEX_DELTA
-					If scCutOverTimes(index) = Long.MaxValue OrElse System.currentTimeMillis() < scCutOverTimes(index) Then
+					If scCutOverTimes(index) = java.lang.[Long].Max_Value OrElse System.currentTimeMillis() < scCutOverTimes(index) Then
 						Return getInstance(scOldCurrencies(index), scOldCurrenciesDFD(index), scOldCurrenciesNumericCode(index))
 					Else
 						Return getInstance(scNewCurrencies(index), scNewCurrenciesDFD(index), scNewCurrenciesNumericCode(index))

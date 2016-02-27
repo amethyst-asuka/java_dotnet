@@ -444,13 +444,13 @@ Namespace java.net
 				Do
 					Try
 						clazz.getDeclaredMethod("connect", GetType(SocketAddress), GetType(Integer))
-						Return Boolean.FALSE
+						Return  java.lang.[Boolean].FALSE
 					Catch e As NoSuchMethodException
 						clazz = clazz.BaseType
 						' java.net.SocketImpl class will always have this abstract method.
 						' If we have not found it by now in the hierarchy then it does not
 						' exist, we are an old style impl.
-						If clazz.Equals(GetType(java.net.SocketImpl)) Then Return Boolean.TRUE
+						If clazz.Equals(GetType(java.net.SocketImpl)) Then Return  java.lang.[Boolean].TRUE
 					End Try
 				Loop
 			End Function

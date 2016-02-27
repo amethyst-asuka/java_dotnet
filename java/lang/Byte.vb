@@ -254,7 +254,7 @@ Namespace java.lang
 		''' <p>The sequence of characters following an optional
 		''' sign and/or radix specifier ("{@code 0x}", "{@code 0X}",
 		''' "{@code #}", or leading zero) is parsed as by the {@code
-		''' Byte.parseByte} method with the indicated radix (10, 16, or 8).
+		''' java.lang.[Byte].parseByte} method with the indicated radix (10, 16, or 8).
 		''' This sequence of characters must represent a positive value or
 		''' a <seealso cref="NumberFormatException"/> will be thrown.  The result is
 		''' negated if first character of the specified {@code String} is
@@ -268,7 +268,7 @@ Namespace java.lang
 		'''            contain a parsable {@code byte}. </exception>
 		''' <seealso cref= java.lang.Byte#parseByte(java.lang.String, int) </seealso>
 		Public Shared Function decode(ByVal nm As String) As Byte
-            Dim i As Integer = [Integer].decode(nm)
+            Dim i As Integer = java.lang.[Integer].decode(nm)
             If i < MIN_VALUE OrElse i > MAX_VALUE Then Throw New NumberFormatException("Value " & i & " out of range from input " & nm)
 			Return valueOf(CByte(i))
 		End Function
@@ -378,12 +378,12 @@ Namespace java.lang
 		''' </summary>
 		''' <returns> a hash code value for this {@code Byte} </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return Byte.hashCode(value)
+			Return java.lang.[Byte].hashCode(value)
 		End Function
 
 		''' <summary>
 		''' Returns a hash code for a {@code byte} value; compatible with
-		''' {@code Byte.hashCode()}.
+		''' {@code java.lang.[Byte].hashCode()}.
 		''' </summary>
 		''' <param name="value"> the value to hash </param>
 		''' <returns> a hash code value for a {@code byte} value.
@@ -426,7 +426,7 @@ Namespace java.lang
 		''' Compares two {@code byte} values numerically.
 		''' The value returned is identical to what would be returned by:
 		''' <pre>
-		'''    Byte.valueOf(x).compareTo(Byte.valueOf(y))
+		'''    java.lang.[Byte].valueOf(x).compareTo(Byte.valueOf(y))
 		''' </pre>
 		''' </summary>
 		''' <param name="x"> the first {@code byte} to compare </param>
@@ -492,7 +492,7 @@ Namespace java.lang
 		''' 
 		''' @since 1.8
 		''' </summary>
-		Public Const BYTES As Integer = SIZE \ Byte.SIZE
+		Public Const BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
 		''' <summary>
 		''' use serialVersionUID from JDK 1.1. for interoperability </summary>

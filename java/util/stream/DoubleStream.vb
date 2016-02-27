@@ -454,7 +454,7 @@ Namespace java.util.stream
 		''' <summary>
 		''' Returns an {@code OptionalDouble} describing the minimum element of this
 		''' stream, or an empty OptionalDouble if this stream is empty.  The minimum
-		''' element will be {@code Double.NaN} if any stream element was NaN. Unlike
+		''' element will be {@code java.lang.[Double].NaN} if any stream element was NaN. Unlike
 		''' the numerical comparison operators, this method considers negative zero
 		''' to be strictly smaller than positive zero. This is a special case of a
 		''' <a href="package-summary.html#Reduction">reduction</a> and is
@@ -473,7 +473,7 @@ Namespace java.util.stream
 		''' <summary>
 		''' Returns an {@code OptionalDouble} describing the maximum element of this
 		''' stream, or an empty OptionalDouble if this stream is empty.  The maximum
-		''' element will be {@code Double.NaN} if any stream element was NaN. Unlike
+		''' element will be {@code java.lang.[Double].NaN} if any stream element was NaN. Unlike
 		''' the numerical comparison operators, this method considers negative zero
 		''' to be strictly smaller than positive zero. This is a
 		''' special case of a

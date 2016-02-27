@@ -403,7 +403,7 @@ Namespace java.time.zone
 		''' </summary>
 		''' <returns> the hash code </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return transition.GetHashCode() Xor offsetBefore.GetHashCode() Xor Integer.rotateLeft(offsetAfter.GetHashCode(), 16)
+			Return transition.GetHashCode() Xor offsetBefore.GetHashCode() Xor  java.lang.[Integer].rotateLeft(offsetAfter.GetHashCode(), 16)
 		End Function
 
 		'-----------------------------------------------------------------------

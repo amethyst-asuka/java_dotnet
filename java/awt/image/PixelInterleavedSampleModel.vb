@@ -86,8 +86,8 @@ Namespace java.awt.image
 			Dim minBandOff As Integer=Me.bandOffsets(0)
 			Dim maxBandOff As Integer=Me.bandOffsets(0)
 			For i As Integer = 1 To Me.bandOffsets.Length - 1
-				minBandOff = Math.Min(minBandOff,Me.bandOffsets(i))
-				maxBandOff = Math.Max(maxBandOff,Me.bandOffsets(i))
+				minBandOff = System.Math.Min(minBandOff,Me.bandOffsets(i))
+				maxBandOff = System.Math.Max(maxBandOff,Me.bandOffsets(i))
 			Next i
 			maxBandOff -= minBandOff
 			If maxBandOff > scanlineStride Then Throw New IllegalArgumentException("Offsets between bands must be" & " less than the scanline " & " stride")

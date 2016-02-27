@@ -467,7 +467,7 @@ Namespace java.awt.image
 		' transform the image.  If the determinant of the matrix is 0,
 		' then we can't invert the transform.
 		Friend Overridable Sub validateTransform(ByVal xform As java.awt.geom.AffineTransform)
-			If Math.Abs(xform.determinant) <= Double.MinValue Then Throw New ImagingOpException("Unable to invert transform " & xform)
+			If System.Math.Abs(xform.determinant) <= java.lang.[Double].MIN_VALUE Then Throw New ImagingOpException("Unable to invert transform " & xform)
 		End Sub
 	End Class
 

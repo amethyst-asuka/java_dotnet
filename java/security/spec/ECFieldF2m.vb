@@ -128,7 +128,7 @@ Namespace java.security.spec
 				If (i <> 0) AndAlso (Me.ks(i) >= Me.ks(i-1)) Then Throw New IllegalArgumentException("values in ks are not in descending order")
 			Next i
 			' convert ks into rp
-			Me.rp = System.Numerics.BigInteger.ONE
+			Me.rp = System.Numerics.Big java.lang.[Integer].ONE
 			Me.rp = rp.bitBit(m)
 			For j As Integer = 0 To Me.ks.Length - 1
 				rp = rp.bitBit(Me.ks(j))

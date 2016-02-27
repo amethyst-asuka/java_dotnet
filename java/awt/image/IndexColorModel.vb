@@ -503,8 +503,8 @@ Namespace java.awt.image
 			transparency = transparency_Renamed
 
 		private Integer calcRealMapSize(Integer bits, Integer size)
-			Dim newSize As Integer = Math.Max(1 << bits, size)
-			Return Math.Max(newSize, 256)
+			Dim newSize As Integer = System.Math.Max(1 << bits, size)
+			Return System.Math.Max(newSize, 256)
 
 		private System.Numerics.BigInteger allValid
 			Dim numbytes As Integer = (map_size+7)\8
@@ -760,262 +760,262 @@ Namespace java.awt.image
 		'''         is invalid </exception>
 		''' <seealso cref= WritableRaster#setDataElements </seealso>
 		''' <seealso cref= SampleModel#setDataElements </seealso>
-		public synchronized Object getDataElements(Integer rgb, Object pixel)
-			Dim red_Renamed As Integer = (rgb>>16) And &Hff
-			Dim green_Renamed As Integer = (rgb>>8) And &Hff
-			Dim blue_Renamed As Integer = rgb And &Hff
-			Dim alpha_Renamed As Integer = (CInt(CUInt(rgb)>>24))
-			Dim pix As Integer = 0
+		Public Function getDataElements(rgb As Integer, pixel As Object) As Object
+            Dim red_Renamed As Integer = (rgb >> 16) And &HFF
+            Dim green_Renamed As Integer = (rgb >> 8) And &HFF
+            Dim blue_Renamed As Integer = rgb And &HFF
+            Dim alpha_Renamed As Integer = (CInt(CUInt(rgb) >> 24))
+            Dim pix As Integer = 0
 
-			' Note that pixels are stored at lookupcache[2*i]
-			' and the rgb that was searched is stored at
-			' lookupcache[2*i+1].  Also, the pixel is first
-			' inverted using the unary complement operator
-			' before storing in the cache so it can never be 0.
-			For i As Integer = CACHESIZE - 2 To 0 Step -2
-				pix = lookupcache(i)
-				If pix = 0 Then Exit For
-				If rgb = lookupcache(i+1) Then Return installpixel(pixel, (Not pix))
-			Next i
+            ' Note that pixels are stored at lookupcache[2*i]
+            ' and the rgb that was searched is stored at
+            ' lookupcache[2*i+1].  Also, the pixel is first
+            ' inverted using the unary complement operator
+            ' before storing in the cache so it can never be 0.
+            For i As Integer = CACHESIZE - 2 To 0 Step -2
+                pix = lookupcache(i)
+                If pix = 0 Then Exit For
+                If rgb = lookupcache(i + 1) Then Return installpixel(pixel, (Not pix))
+            Next i
 
-			If allgrayopaque Then
-				' IndexColorModel objects are all tagged as
-				' non-premultiplied so ignore the alpha value
-				' of the incoming color, convert the
-				' non-premultiplied color components to a
-				' grayscale value and search for the closest
-				' gray value in the palette.  Since all colors
-				' in the palette are gray, we only need compare
-				' to one of the color components for a match
-				' using a simple linear distance formula.
+            If allgrayopaque Then
+                ' IndexColorModel objects are all tagged as
+                ' non-premultiplied so ignore the alpha value
+                ' of the incoming color, convert the
+                ' non-premultiplied color components to a
+                ' grayscale value and search for the closest
+                ' gray value in the palette.  Since all colors
+                ' in the palette are gray, we only need compare
+                ' to one of the color components for a match
+                ' using a simple linear distance formula.
 
-				Dim minDist As Integer = 256
-				Dim d As Integer
-				Dim gray As Integer = CInt(red_Renamed*77 + green_Renamed*150 + blue_Renamed*29 + 128)\256
+                Dim minDist As Integer = 256
+                Dim d As Integer
+                Dim gray As Integer = CInt(red_Renamed * 77 + green_Renamed * 150 + blue_Renamed * 29 + 128) \ 256
 
-				For i As Integer = 0 To map_size - 1
-					If Me.rgb(i) = &H0 Then Continue For
-					d = (Me.rgb(i) And &Hff) - gray
-					If d < 0 Then d = -d
-					If d < minDist Then
-						pix = i
-						If d = 0 Then Exit For
-						minDist = d
-					End If
-				Next i
-			ElseIf transparency = OPAQUE Then
-				' IndexColorModel objects are all tagged as
-				' non-premultiplied so ignore the alpha value
-				' of the incoming color and search for closest
-				' color match independently using a 3 component
-				' Euclidean distance formula.
-				' For opaque colormaps, palette entries are 0
-				' iff they are an invalid color and should be
-				' ignored during color searches.
-				' As an optimization, exact color searches are
-				' likely to be fairly common in opaque colormaps
-				' so first we will do a quick search for an
-				' exact match.
+                For i As Integer = 0 To map_size - 1
+                    If Me.rgb(i) = &H0 Then Continue For
+                    d = (Me.rgb(i) And &HFF) - gray
+                    If d < 0 Then d = -d
+                    If d < minDist Then
+                        pix = i
+                        If d = 0 Then Exit For
+                        minDist = d
+                    End If
+                Next i
+            ElseIf transparency = OPAQUE Then
+                ' IndexColorModel objects are all tagged as
+                ' non-premultiplied so ignore the alpha value
+                ' of the incoming color and search for closest
+                ' color match independently using a 3 component
+                ' Euclidean distance formula.
+                ' For opaque colormaps, palette entries are 0
+                ' iff they are an invalid color and should be
+                ' ignored during color searches.
+                ' As an optimization, exact color searches are
+                ' likely to be fairly common in opaque colormaps
+                ' so first we will do a quick search for an
+                ' exact match.
 
-				Dim smallestError As Integer = Integer.MaxValue
-				Dim lut As Integer() = Me.rgb
-				Dim lutrgb As Integer
-				For i As Integer = 0 To map_size - 1
-					lutrgb = lut(i)
-					If lutrgb = rgb AndAlso lutrgb <> 0 Then
-						pix = i
-						smallestError = 0
-						Exit For
-					End If
-				Next i
+                Dim smallestError As Integer = java.lang.[Integer].Max_Value
+                Dim lut As Integer() = Me.rgb
+                Dim lutrgb As Integer
+                For i As Integer = 0 To map_size - 1
+                    lutrgb = lut(i)
+                    If lutrgb = rgb AndAlso lutrgb <> 0 Then
+                        pix = i
+                        smallestError = 0
+                        Exit For
+                    End If
+                Next i
 
-				If smallestError <> 0 Then
-					For i As Integer = 0 To map_size - 1
-						lutrgb = lut(i)
-						If lutrgb = 0 Then Continue For
+                If smallestError <> 0 Then
+                    For i As Integer = 0 To map_size - 1
+                        lutrgb = lut(i)
+                        If lutrgb = 0 Then Continue For
 
-						Dim tmp As Integer = ((lutrgb >> 16) And &Hff) - red_Renamed
-						Dim currentError As Integer = tmp*tmp
-						If currentError < smallestError Then
-							tmp = ((lutrgb >> 8) And &Hff) - green_Renamed
-							currentError += tmp * tmp
-							If currentError < smallestError Then
-								tmp = (lutrgb And &Hff) - blue_Renamed
-								currentError += tmp * tmp
-								If currentError < smallestError Then
-									pix = i
-									smallestError = currentError
-								End If
-							End If
-						End If
-					Next i
-				End If
-			ElseIf alpha_Renamed = 0 AndAlso transparent_index >= 0 Then
-				' Special case - transparent color maps to the
-				' specified transparent pixel, if there is one
+                        Dim tmp As Integer = ((lutrgb >> 16) And &HFF) - red_Renamed
+                        Dim currentError As Integer = tmp * tmp
+                        If currentError < smallestError Then
+                            tmp = ((lutrgb >> 8) And &HFF) - green_Renamed
+                            currentError += tmp * tmp
+                            If currentError < smallestError Then
+                                tmp = (lutrgb And &HFF) - blue_Renamed
+                                currentError += tmp * tmp
+                                If currentError < smallestError Then
+                                    pix = i
+                                    smallestError = currentError
+                                End If
+                            End If
+                        End If
+                    Next i
+                End If
+            ElseIf alpha_Renamed = 0 AndAlso transparent_index >= 0 Then
+                ' Special case - transparent color maps to the
+                ' specified transparent pixel, if there is one
 
-				pix = transparent_index
-			Else
-				' IndexColorModel objects are all tagged as
-				' non-premultiplied so use non-premultiplied
-				' color components in the distance calculations.
-				' Look for closest match using a 4 component
-				' Euclidean distance formula.
+                pix = transparent_index
+            Else
+                ' IndexColorModel objects are all tagged as
+                ' non-premultiplied so use non-premultiplied
+                ' color components in the distance calculations.
+                ' Look for closest match using a 4 component
+                ' Euclidean distance formula.
 
-				Dim smallestError As Integer = Integer.MaxValue
-				Dim lut As Integer() = Me.rgb
-				For i As Integer = 0 To map_size - 1
-					Dim lutrgb As Integer = lut(i)
-					If lutrgb = rgb Then
-						If validBits IsNot Nothing AndAlso (Not validBits.testBit(i)) Then Continue For
-						pix = i
-						Exit For
-					End If
+                Dim smallestError As Integer = java.lang.[Integer].Max_Value
+                Dim lut As Integer() = Me.rgb
+                For i As Integer = 0 To map_size - 1
+                    Dim lutrgb As Integer = lut(i)
+                    If lutrgb = rgb Then
+                        If validBits IsNot Nothing AndAlso (Not validBits.testBit(i)) Then Continue For
+                        pix = i
+                        Exit For
+                    End If
 
-					Dim tmp As Integer = ((lutrgb >> 16) And &Hff) - red_Renamed
-					Dim currentError As Integer = tmp*tmp
-					If currentError < smallestError Then
-						tmp = ((lutrgb >> 8) And &Hff) - green_Renamed
-						currentError += tmp * tmp
-						If currentError < smallestError Then
-							tmp = (lutrgb And &Hff) - blue_Renamed
-							currentError += tmp * tmp
-							If currentError < smallestError Then
-								tmp = (CInt(CUInt(lutrgb) >> 24)) - alpha_Renamed
-								currentError += tmp * tmp
-								If currentError < smallestError AndAlso (validBits Is Nothing OrElse validBits.testBit(i)) Then
-									pix = i
-									smallestError = currentError
-								End If
-							End If
-						End If
-					End If
-				Next i
-			End If
-			Array.Copy(lookupcache, 2, lookupcache, 0, CACHESIZE - 2)
-			lookupcache(CACHESIZE - 1) = rgb
-			lookupcache(CACHESIZE - 2) = Not pix
-			Return installpixel(pixel, pix)
+                    Dim tmp As Integer = ((lutrgb >> 16) And &HFF) - red_Renamed
+                    Dim currentError As Integer = tmp * tmp
+                    If currentError < smallestError Then
+                        tmp = ((lutrgb >> 8) And &HFF) - green_Renamed
+                        currentError += tmp * tmp
+                        If currentError < smallestError Then
+                            tmp = (lutrgb And &HFF) - blue_Renamed
+                            currentError += tmp * tmp
+                            If currentError < smallestError Then
+                                tmp = (CInt(CUInt(lutrgb) >> 24)) - alpha_Renamed
+                                currentError += tmp * tmp
+                                If currentError < smallestError AndAlso (validBits Is Nothing OrElse validBits.testBit(i)) Then
+                                    pix = i
+                                    smallestError = currentError
+                                End If
+                            End If
+                        End If
+                    End If
+                Next i
+            End If
+            Array.Copy(lookupcache, 2, lookupcache, 0, CACHESIZE - 2)
+            lookupcache(CACHESIZE - 1) = rgb
+            lookupcache(CACHESIZE - 2) = Not pix
+            Return installpixel(pixel, pix)
+        End Function
+        Private Function installpixel(pixel As Object, pix As Integer) As Object
+            Select Case transferType
+                Case DataBuffer.TYPE_INT
+                    Dim intObj As Integer()
+                    If pixel Is Nothing Then
+                        intObj = New Integer(0) {}
+                        pixel = intObj
+                    Else
+                        intObj = CType(pixel, Integer())
+                    End If
+                    intObj(0) = pix
+                Case DataBuffer.TYPE_BYTE
+                    Dim byteObj As SByte()
+                    If pixel Is Nothing Then
+                        byteObj = New SByte(0) {}
+                        pixel = byteObj
+                    Else
+                        byteObj = CType(pixel, SByte())
+                    End If
+                    byteObj(0) = CByte(pix)
+                Case DataBuffer.TYPE_USHORT
+                    Dim shortObj As Short()
+                    If pixel Is Nothing Then
+                        shortObj = New Short(0) {}
+                        pixel = shortObj
+                    Else
+                        shortObj = CType(pixel, Short())
+                    End If
+                    shortObj(0) = CShort(Fix(pix))
+                Case Else
+                    Throw New UnsupportedOperationException("This method has not been " & "implemented for transferType " & transferType)
+            End Select
+            Return pixel
+        End Function
+        ''' <summary>
+        ''' Returns an array of unnormalized color/alpha components for a
+        ''' specified pixel in this <code>ColorModel</code>.  The pixel value
+        ''' is specified as an int.  If the <code>components</code> array is <code>null</code>,
+        ''' a new array is allocated that contains
+        ''' <code>offset + getNumComponents()</code> elements.
+        ''' The <code>components</code> array is returned,
+        ''' with the alpha component included
+        ''' only if <code>hasAlpha</code> returns true.
+        ''' Color/alpha components are stored in the <code>components</code> array starting
+        ''' at <code>offset</code> even if the array is allocated by this method.
+        ''' An <code>ArrayIndexOutOfBoundsException</code>
+        ''' is thrown if  the <code>components</code> array is not <code>null</code> and is
+        ''' not large enough to hold all the color and alpha components
+        ''' starting at <code>offset</code>. </summary>
+        ''' <param name="pixel"> the specified pixel </param>
+        ''' <param name="components"> the array to receive the color and alpha
+        ''' components of the specified pixel </param>
+        ''' <param name="offset"> the offset into the <code>components</code> array at
+        ''' which to start storing the color and alpha components </param>
+        ''' <returns> an array containing the color and alpha components of the
+        ''' specified pixel starting at the specified offset. </returns>
+        ''' <seealso cref= ColorModel#hasAlpha </seealso>
+        ''' <seealso cref= ColorModel#getNumComponents </seealso>
+        Public Function getComponents(pixel As Integer, components As Integer(), offset As Integer) As Integer()
+            If components Is Nothing Then components = New Integer(offset + numComponents - 1) {}
 
-		private Object installpixel(Object pixel, Integer pix)
-			Select Case transferType
-			Case DataBuffer.TYPE_INT
-				Dim intObj As Integer()
-				If pixel Is Nothing Then
-						intObj = New Integer(0){}
-						pixel = intObj
-				Else
-					intObj = CType(pixel, Integer())
-				End If
-				intObj(0) = pix
-			Case DataBuffer.TYPE_BYTE
-				Dim byteObj As SByte()
-				If pixel Is Nothing Then
-						byteObj = New SByte(0){}
-						pixel = byteObj
-				Else
-					byteObj = CType(pixel, SByte())
-				End If
-				byteObj(0) = CByte(pix)
-			Case DataBuffer.TYPE_USHORT
-				Dim shortObj As Short()
-				If pixel Is Nothing Then
-						shortObj = New Short(0){}
-						pixel = shortObj
-				Else
-					shortObj = CType(pixel, Short())
-				End If
-				shortObj(0) = CShort(Fix(pix))
-			Case Else
-				Throw New UnsupportedOperationException("This method has not been " & "implemented for transferType " & transferType)
-			End Select
-			Return pixel
+            ' REMIND: Needs to change if different color space
+            components(offset + 0) = getRed(pixel)
+            components(offset + 1) = getGreen(pixel)
+            components(offset + 2) = getBlue(pixel)
+            If supportsAlpha AndAlso (components.Length - offset) > 3 Then components(offset + 3) = getAlpha(pixel)
 
-		''' <summary>
-		''' Returns an array of unnormalized color/alpha components for a
-		''' specified pixel in this <code>ColorModel</code>.  The pixel value
-		''' is specified as an int.  If the <code>components</code> array is <code>null</code>,
-		''' a new array is allocated that contains
-		''' <code>offset + getNumComponents()</code> elements.
-		''' The <code>components</code> array is returned,
-		''' with the alpha component included
-		''' only if <code>hasAlpha</code> returns true.
-		''' Color/alpha components are stored in the <code>components</code> array starting
-		''' at <code>offset</code> even if the array is allocated by this method.
-		''' An <code>ArrayIndexOutOfBoundsException</code>
-		''' is thrown if  the <code>components</code> array is not <code>null</code> and is
-		''' not large enough to hold all the color and alpha components
-		''' starting at <code>offset</code>. </summary>
-		''' <param name="pixel"> the specified pixel </param>
-		''' <param name="components"> the array to receive the color and alpha
-		''' components of the specified pixel </param>
-		''' <param name="offset"> the offset into the <code>components</code> array at
-		''' which to start storing the color and alpha components </param>
-		''' <returns> an array containing the color and alpha components of the
-		''' specified pixel starting at the specified offset. </returns>
-		''' <seealso cref= ColorModel#hasAlpha </seealso>
-		''' <seealso cref= ColorModel#getNumComponents </seealso>
-		public Integer() getComponents(Integer pixel, Integer() components, Integer offset)
-			If components Is Nothing Then components = New Integer(offset+numComponents - 1){}
-
-			' REMIND: Needs to change if different color space
-			components(offset+0) = getRed(pixel)
-			components(offset+1) = getGreen(pixel)
-			components(offset+2) = getBlue(pixel)
-			If supportsAlpha AndAlso (components.length-offset) > 3 Then components(offset+3) = getAlpha(pixel)
-
-			Return components
-
-		''' <summary>
-		''' Returns an array of unnormalized color/alpha components for
-		''' a specified pixel in this <code>ColorModel</code>.  The pixel
-		''' value is specified by an array of data elements of type
-		''' <code>transferType</code> passed in as an object reference.
-		''' If <code>pixel</code> is not a primitive array of type
-		''' <code>transferType</code>, a <code>ClassCastException</code>
-		''' is thrown.  An <code>ArrayIndexOutOfBoundsException</code>
-		''' is thrown if <code>pixel</code> is not large enough to hold
-		''' a pixel value for this <code>ColorModel</code>.  If the
-		''' <code>components</code> array is <code>null</code>, a new array
-		''' is allocated that contains
-		''' <code>offset + getNumComponents()</code> elements.
-		''' The <code>components</code> array is returned,
-		''' with the alpha component included
-		''' only if <code>hasAlpha</code> returns true.
-		''' Color/alpha components are stored in the <code>components</code>
-		''' array starting at <code>offset</code> even if the array is
-		''' allocated by this method.  An
-		''' <code>ArrayIndexOutOfBoundsException</code> is also
-		''' thrown if  the <code>components</code> array is not
-		''' <code>null</code> and is not large enough to hold all the color
-		''' and alpha components starting at <code>offset</code>.
-		''' <p>
-		''' Since <code>IndexColorModel</code> can be subclassed, subclasses
-		''' inherit the implementation of this method and if they don't
-		''' override it then they throw an exception if they use an
-		''' unsupported <code>transferType</code>.
-		''' </summary>
-		''' <param name="pixel"> the specified pixel </param>
-		''' <param name="components"> an array that receives the color and alpha
-		''' components of the specified pixel </param>
-		''' <param name="offset"> the index into the <code>components</code> array at
-		''' which to begin storing the color and alpha components of the
-		''' specified pixel </param>
-		''' <returns> an array containing the color and alpha components of the
-		''' specified pixel starting at the specified offset. </returns>
-		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>pixel</code>
-		'''            is not large enough to hold a pixel value for this
-		'''            <code>ColorModel</code> or if the
-		'''            <code>components</code> array is not <code>null</code>
-		'''            and is not large enough to hold all the color
-		'''            and alpha components starting at <code>offset</code> </exception>
-		''' <exception cref="ClassCastException"> if <code>pixel</code> is not a
-		'''            primitive array of type <code>transferType</code> </exception>
-		''' <exception cref="UnsupportedOperationException"> if <code>transferType</code>
-		'''         is not one of the supported transfer types </exception>
-		''' <seealso cref= ColorModel#hasAlpha </seealso>
-		''' <seealso cref= ColorModel#getNumComponents </seealso>
-		public Integer() getComponents(Object pixel, Integer() components, Integer offset)
+            Return components
+        End Function
+        ''' <summary>
+        ''' Returns an array of unnormalized color/alpha components for
+        ''' a specified pixel in this <code>ColorModel</code>.  The pixel
+        ''' value is specified by an array of data elements of type
+        ''' <code>transferType</code> passed in as an object reference.
+        ''' If <code>pixel</code> is not a primitive array of type
+        ''' <code>transferType</code>, a <code>ClassCastException</code>
+        ''' is thrown.  An <code>ArrayIndexOutOfBoundsException</code>
+        ''' is thrown if <code>pixel</code> is not large enough to hold
+        ''' a pixel value for this <code>ColorModel</code>.  If the
+        ''' <code>components</code> array is <code>null</code>, a new array
+        ''' is allocated that contains
+        ''' <code>offset + getNumComponents()</code> elements.
+        ''' The <code>components</code> array is returned,
+        ''' with the alpha component included
+        ''' only if <code>hasAlpha</code> returns true.
+        ''' Color/alpha components are stored in the <code>components</code>
+        ''' array starting at <code>offset</code> even if the array is
+        ''' allocated by this method.  An
+        ''' <code>ArrayIndexOutOfBoundsException</code> is also
+        ''' thrown if  the <code>components</code> array is not
+        ''' <code>null</code> and is not large enough to hold all the color
+        ''' and alpha components starting at <code>offset</code>.
+        ''' <p>
+        ''' Since <code>IndexColorModel</code> can be subclassed, subclasses
+        ''' inherit the implementation of this method and if they don't
+        ''' override it then they throw an exception if they use an
+        ''' unsupported <code>transferType</code>.
+        ''' </summary>
+        ''' <param name="pixel"> the specified pixel </param>
+        ''' <param name="components"> an array that receives the color and alpha
+        ''' components of the specified pixel </param>
+        ''' <param name="offset"> the index into the <code>components</code> array at
+        ''' which to begin storing the color and alpha components of the
+        ''' specified pixel </param>
+        ''' <returns> an array containing the color and alpha components of the
+        ''' specified pixel starting at the specified offset. </returns>
+        ''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>pixel</code>
+        '''            is not large enough to hold a pixel value for this
+        '''            <code>ColorModel</code> or if the
+        '''            <code>components</code> array is not <code>null</code>
+        '''            and is not large enough to hold all the color
+        '''            and alpha components starting at <code>offset</code> </exception>
+        ''' <exception cref="ClassCastException"> if <code>pixel</code> is not a
+        '''            primitive array of type <code>transferType</code> </exception>
+        ''' <exception cref="UnsupportedOperationException"> if <code>transferType</code>
+        '''         is not one of the supported transfer types </exception>
+        ''' <seealso cref= ColorModel#hasAlpha </seealso>
+        ''' <seealso cref= ColorModel#getNumComponents </seealso>
+        Public Integer() getComponents(Object pixel, Integer() components, Integer offset)
 			Dim intpixel As Integer
 			Select Case transferType
 				Case DataBuffer.TYPE_BYTE
@@ -1292,36 +1292,37 @@ Namespace java.awt.image
 		public Boolean valid
 			Return (validBits Is Nothing)
 
-		''' <summary>
-		''' Returns a <code>BigInteger</code> that indicates the valid/invalid
-		''' pixels in the colormap.  A bit is valid if the
-		''' <code>BigInteger</code> value at that index is set, and is invalid
-		''' if the <code>BigInteger</code> value at that index is not set.
-		''' The only valid ranges to query in the <code>BigInteger</code> are
-		''' between 0 and the map size. </summary>
-		''' <returns> a <code>BigInteger</code> indicating the valid/invalid pixels.
-		''' @since 1.3 </returns>
-		public System.Numerics.BigInteger validPixels
-			If validBits Is Nothing Then
-				Return allValid
-			Else
-				Return validBits
-			End If
-
-		''' <summary>
-		''' Disposes of system resources associated with this
-		''' <code>ColorModel</code> once this <code>ColorModel</code> is no
-		''' longer referenced.
-		''' </summary>
-		public void Finalize()
-
-		''' <summary>
-		''' Returns the <code>String</code> representation of the contents of
-		''' this <code>ColorModel</code>object. </summary>
-		''' <returns> a <code>String</code> representing the contents of this
-		''' <code>ColorModel</code> object. </returns>
-		public String ToString()
-		   Return New String("IndexColorModel: #pixelBits = " & pixel_bits & " numComponents = " & numComponents & " color space = " & colorSpace & " transparency = " & transparency & " transIndex   = " & transparent_index & " has alpha = " & supportsAlpha & " isAlphaPre = " & isAlphaPremultiplied_Renamed)
-	End Class
+        ''' <summary>
+        ''' Returns a <code>BigInteger</code> that indicates the valid/invalid
+        ''' pixels in the colormap.  A bit is valid if the
+        ''' <code>BigInteger</code> value at that index is set, and is invalid
+        ''' if the <code>BigInteger</code> value at that index is not set.
+        ''' The only valid ranges to query in the <code>BigInteger</code> are
+        ''' between 0 and the map size. </summary>
+        ''' <returns> a <code>BigInteger</code> indicating the valid/invalid pixels.
+        ''' @since 1.3 </returns>
+        Public Function validPixels() As System.Numerics.BigInteger
+            If validBits Is Nothing Then
+                Return allValid
+            Else
+                Return validBits
+            End If
+        End Function
+        ''' <summary>
+        ''' Disposes of system resources associated with this
+        ''' <code>ColorModel</code> once this <code>ColorModel</code> is no
+        ''' longer referenced.
+        ''' </summary>
+        Public Sub Finalize()
+        End Sub
+        ''' <summary>
+        ''' Returns the <code>String</code> representation of the contents of
+        ''' this <code>ColorModel</code>object. </summary>
+        ''' <returns> a <code>String</code> representing the contents of this
+        ''' <code>ColorModel</code> object. </returns>
+        Public Function ToString() As String
+            Return New String("IndexColorModel: #pixelBits = " & pixel_bits & " numComponents = " & numComponents & " color space = " & colorSpace & " transparency = " & transparency & " transIndex   = " & transparent_index & " has alpha = " & supportsAlpha & " isAlphaPre = " & isAlphaPremultiplied_Renamed)
+        End Function
+    End Class
 
 End Namespace

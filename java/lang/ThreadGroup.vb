@@ -223,7 +223,7 @@ Namespace java.lang
 			SyncLock Me
 				checkAccess()
 				If pri < Thread.MIN_PRIORITY OrElse pri > Thread.MAX_PRIORITY Then Return
-				maxPriority = If(parent IsNot Nothing, Math.Min(pri, parent.maxPriority), pri)
+				maxPriority = If(parent IsNot Nothing, System.Math.Min(pri, parent.maxPriority), pri)
 				ngroupsSnapshot = ngroups
 				If groups IsNot Nothing Then
 					groupsSnapshot = java.util.Arrays.copyOf(groups, ngroupsSnapshot)

@@ -553,7 +553,7 @@ Namespace java.io
 		''' for a primitive type or void, then the <code>Class</code> object
 		''' representing that primitive type or void will be returned
 		''' (e.g., an <code>ObjectStreamClass</code> with the name
-		''' <code>"int"</code> will be resolved to <code>Integer.TYPE</code>).
+		''' <code>"int"</code> will be resolved to <code> java.lang.[Integer].TYPE</code>).
 		''' Otherwise, the <code>ClassNotFoundException</code> will be thrown to
 		''' the caller of this method.
 		''' </summary>
@@ -803,7 +803,7 @@ Namespace java.io
 		End Sub
 
 		''' <summary>
-		''' Reads in a boolean.
+		''' Reads in a  java.lang.[Boolean].
 		''' </summary>
 		''' <returns>  the boolean read. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
@@ -813,7 +813,7 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads an 8 bit byte.
+		''' Reads an 8 bit java.lang.[Byte].
 		''' </summary>
 		''' <returns>  the 8 bit byte read. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
@@ -823,7 +823,7 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads an unsigned 8 bit byte.
+		''' Reads an unsigned 8 bit java.lang.[Byte].
 		''' </summary>
 		''' <returns>  the 8 bit byte read. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
@@ -843,7 +843,7 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads a 16 bit short.
+		''' Reads a 16 bit  java.lang.[Short].
 		''' </summary>
 		''' <returns>  the 16 bit short read. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
@@ -853,7 +853,7 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads an unsigned 16 bit short.
+		''' Reads an unsigned 16 bit  java.lang.[Short].
 		''' </summary>
 		''' <returns>  the 16 bit short read. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
@@ -873,9 +873,9 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads a 64 bit long.
+		''' Reads a 64 bit java.lang.[Long].
 		''' </summary>
-		''' <returns>  the read 64 bit long. </returns>
+		''' <returns>  the read 64 bit java.lang.[Long]. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
 		''' <exception cref="IOException"> If other I/O error has occurred. </exception>
 		Public Overridable Function readLong() As Long Implements DataInput.readLong
@@ -893,7 +893,7 @@ Namespace java.io
 		End Function
 
 		''' <summary>
-		''' Reads a 64 bit double.
+		''' Reads a 64 bit java.lang.[Double].
 		''' </summary>
 		''' <returns>  the 64 bit double read. </returns>
 		''' <exception cref="EOFException"> If end of file is reached. </exception>
@@ -1145,17 +1145,17 @@ Namespace java.io
 				Do While cl IsNot GetType(ObjectInputStream)
 					Try
 						cl.getDeclaredMethod("readUnshared", CType(Nothing, Class()))
-						Return Boolean.FALSE
+						Return  java.lang.[Boolean].FALSE
 					Catch ex As NoSuchMethodException
 					End Try
 					Try
 						cl.getDeclaredMethod("readFields", CType(Nothing, Class()))
-						Return Boolean.FALSE
+						Return  java.lang.[Boolean].FALSE
 					Catch ex As NoSuchMethodException
 					End Try
 					cl = cl.BaseType
 				Loop
-				Return Boolean.TRUE
+				Return  java.lang.[Boolean].TRUE
 			End Function
 		End Class
 
@@ -1507,21 +1507,21 @@ Namespace java.io
 					readObject0(False)
 				Next i
 			ElseIf ccl.primitive Then
-				If ccl Is Integer.TYPE Then
+				If ccl Is  java.lang.[Integer].TYPE Then
 					bin.readInts(CType(array, Integer()), 0, len)
-				ElseIf ccl Is Byte.TYPE Then
+				ElseIf ccl Is java.lang.[Byte].TYPE Then
 					bin.readFully(CType(array, SByte()), 0, len, True)
-				ElseIf ccl Is Long.TYPE Then
+				ElseIf ccl Is java.lang.[Long].TYPE Then
 					bin.readLongs(CType(array, Long()), 0, len)
 				ElseIf ccl Is Float.TYPE Then
 					bin.readFloats(CType(array, Single()), 0, len)
-				ElseIf ccl Is Double.TYPE Then
+				ElseIf ccl Is java.lang.[Double].TYPE Then
 					bin.readDoubles(CType(array, Double()), 0, len)
-				ElseIf ccl Is Short.TYPE Then
+				ElseIf ccl Is  java.lang.[Short].TYPE Then
 					bin.readShorts(CType(array, Short()), 0, len)
 				ElseIf ccl Is Character.TYPE Then
 					bin.readChars(CType(array, Char()), 0, len)
-				ElseIf ccl Is Boolean.TYPE Then
+				ElseIf ccl Is  java.lang.[Boolean].TYPE Then
 					bin.readBooleans(CType(array, Boolean()), 0, len)
 				Else
 					Throw New InternalError
@@ -1809,7 +1809,7 @@ Namespace java.io
 		''' <summary>
 		''' Converts specified span of bytes into double values.
 		''' </summary>
-		' REMIND: remove once hotspot inlines Double.longBitsToDouble
+		' REMIND: remove once hotspot inlines java.lang.[Double].longBitsToDouble
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
 		Private Shared Sub bytesToDoubles(ByVal src As SByte(), ByVal srcpos As Integer, ByVal dst As Double(), ByVal dstpos As Integer, ByVal ndoubles As Integer)
@@ -1875,12 +1875,12 @@ Namespace java.io
 			End Function
 
 			Public Overrides Function [get](ByVal name As String, ByVal val As Boolean) As Boolean
-				Dim [off] As Integer = getFieldOffset(name, Boolean.TYPE)
+				Dim [off] As Integer = getFieldOffset(name,  java.lang.[Boolean].TYPE)
 				Return If([off] >= 0, Bits.getBoolean(primVals, [off]), val)
 			End Function
 
 			Public Overrides Function [get](ByVal name As String, ByVal val As SByte) As SByte
-				Dim [off] As Integer = getFieldOffset(name, Byte.TYPE)
+				Dim [off] As Integer = getFieldOffset(name, java.lang.[Byte].TYPE)
 				Return If([off] >= 0, primVals([off]), val)
 			End Function
 
@@ -1890,12 +1890,12 @@ Namespace java.io
 			End Function
 
 			Public Overrides Function [get](ByVal name As String, ByVal val As Short) As Short
-				Dim [off] As Integer = getFieldOffset(name, Short.TYPE)
+				Dim [off] As Integer = getFieldOffset(name,  java.lang.[Short].TYPE)
 				Return If([off] >= 0, Bits.getShort(primVals, [off]), val)
 			End Function
 
 			Public Overrides Function [get](ByVal name As String, ByVal val As Integer) As Integer
-				Dim [off] As Integer = getFieldOffset(name, Integer.TYPE)
+				Dim [off] As Integer = getFieldOffset(name,  java.lang.[Integer].TYPE)
 				Return If([off] >= 0, Bits.getInt(primVals, [off]), val)
 			End Function
 
@@ -1905,12 +1905,12 @@ Namespace java.io
 			End Function
 
 			Public Overrides Function [get](ByVal name As String, ByVal val As Long) As Long
-				Dim [off] As Integer = getFieldOffset(name, Long.TYPE)
+				Dim [off] As Integer = getFieldOffset(name, java.lang.[Long].TYPE)
 				Return If([off] >= 0, Bits.getLong(primVals, [off]), val)
 			End Function
 
 			Public Overrides Function [get](ByVal name As String, ByVal val As Double) As Double
-				Dim [off] As Integer = getFieldOffset(name, Double.TYPE)
+				Dim [off] As Integer = getFieldOffset(name, java.lang.[Double].TYPE)
 				Return If([off] >= 0, Bits.getDouble(primVals, [off]), val)
 			End Function
 
@@ -2257,7 +2257,7 @@ Namespace java.io
 				If outerInstance.defaultDataEnd Then Return -1
 				Try
 					Do
-						Dim avail As Integer = If(canBlock, Integer.MaxValue, [in].available())
+						Dim avail As Integer = If(canBlock,  java.lang.[Integer].Max_Value, [in].available())
 						If avail = 0 Then Return HEADER_BLOCKED
 
 						Dim tc As Integer = [in].peek()
@@ -2306,7 +2306,7 @@ Namespace java.io
 					Do
 						pos = 0
 						If unread > 0 Then
-							Dim n As Integer = [in].read(buf, 0, Math.Min(unread, MAX_BLOCK_SIZE))
+							Dim n As Integer = [in].read(buf, 0, System.Math.Min(unread, MAX_BLOCK_SIZE))
 							If n >= 0 Then
 								[end] = n
 								unread -= n
@@ -2400,11 +2400,11 @@ Namespace java.io
 					If blkmode Then
 						If pos = [end] Then refill()
 						If [end] < 0 Then Exit Do
-						Dim nread As Integer = CInt(Fix(Math.Min(remain, [end] - pos)))
+						Dim nread As Integer = CInt(Fix (System.Math.Min(remain, [end] - pos)))
 						remain -= nread
 						pos += nread
 					Else
-						Dim nread As Integer = CInt(Fix(Math.Min(remain, MAX_BLOCK_SIZE)))
+						Dim nread As Integer = CInt(Fix (System.Math.Min(remain, MAX_BLOCK_SIZE)))
 						nread = [in].read(buf, 0, nread)
 						If nread < 0 Then Exit Do
 						remain -= nread
@@ -2436,7 +2436,7 @@ Namespace java.io
 						End Select
 					End If
 					' avoid unnecessary call to in.available() if possible
-					Dim unreadAvail As Integer = If(unread > 0, Math.Min([in].available(), unread), 0)
+					Dim unreadAvail As Integer = If(unread > 0, System.Math.Min([in].available(), unread), 0)
 					Return If([end] >= 0, ([end] - pos) + unreadAvail, 0)
 				Else
 					Return [in].available()
@@ -2465,12 +2465,12 @@ Namespace java.io
 				ElseIf blkmode Then
 					If pos = [end] Then refill()
 					If [end] < 0 Then Return -1
-					Dim nread As Integer = Math.Min(len, [end] - pos)
+					Dim nread As Integer = System.Math.Min(len, [end] - pos)
 					Array.Copy(buf, pos, b, [off], nread)
 					pos += nread
 					Return nread
 				ElseIf copy Then
-					Dim nread As Integer = [in].read(buf, 0, Math.Min(len, MAX_BLOCK_SIZE))
+					Dim nread As Integer = [in].read(buf, 0, System.Math.Min(len, MAX_BLOCK_SIZE))
 					If nread > 0 Then Array.Copy(buf, 0, b, [off], nread)
 					Return nread
 				Else
@@ -2630,7 +2630,7 @@ Namespace java.io
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						Dim span As Integer = Math.Min(endoff - [off], MAX_BLOCK_SIZE)
+						Dim span As Integer = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE)
 						[in].readFully(buf, 0, span)
 						[stop] = [off] + span
 						pos = 0
@@ -2639,7 +2639,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						[stop] = Math.Min(endoff, [off] + [end] - pos)
+						[stop] = System.Math.Min(endoff, [off] + [end] - pos)
 					End If
 
 					Do While [off] < [stop]
@@ -2654,7 +2654,7 @@ Namespace java.io
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						Dim span As Integer = Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 1)
+						Dim span As Integer = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 1)
 						[in].readFully(buf, 0, span << 1)
 						[stop] = [off] + span
 						pos = 0
@@ -2663,7 +2663,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						[stop] = Math.Min(endoff, [off] + (([end] - pos) >> 1))
+						[stop] = System.Math.Min(endoff, [off] + (([end] - pos) >> 1))
 					End If
 
 					Do While [off] < [stop]
@@ -2678,7 +2678,7 @@ Namespace java.io
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						Dim span As Integer = Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 1)
+						Dim span As Integer = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 1)
 						[in].readFully(buf, 0, span << 1)
 						[stop] = [off] + span
 						pos = 0
@@ -2687,7 +2687,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						[stop] = Math.Min(endoff, [off] + (([end] - pos) >> 1))
+						[stop] = System.Math.Min(endoff, [off] + (([end] - pos) >> 1))
 					End If
 
 					Do While [off] < [stop]
@@ -2702,7 +2702,7 @@ Namespace java.io
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						Dim span As Integer = Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 2)
+						Dim span As Integer = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 2)
 						[in].readFully(buf, 0, span << 2)
 						[stop] = [off] + span
 						pos = 0
@@ -2711,7 +2711,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						[stop] = Math.Min(endoff, [off] + (([end] - pos) >> 2))
+						[stop] = System.Math.Min(endoff, [off] + (([end] - pos) >> 2))
 					End If
 
 					Do While [off] < [stop]
@@ -2726,7 +2726,7 @@ Namespace java.io
 				Dim span As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						span = Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 2)
+						span = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 2)
 						[in].readFully(buf, 0, span << 2)
 						pos = 0
 					ElseIf [end] - pos < 4 Then
@@ -2734,7 +2734,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						span = Math.Min(endoff - [off], (([end] - pos) >> 2))
+						span = System.Math.Min(endoff - [off], (([end] - pos) >> 2))
 					End If
 
 					bytesToFloats(buf, pos, v, [off], span)
@@ -2747,7 +2747,7 @@ Namespace java.io
 				Dim [stop] As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						Dim span As Integer = Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 3)
+						Dim span As Integer = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 3)
 						[in].readFully(buf, 0, span << 3)
 						[stop] = [off] + span
 						pos = 0
@@ -2756,7 +2756,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						[stop] = Math.Min(endoff, [off] + (([end] - pos) >> 3))
+						[stop] = System.Math.Min(endoff, [off] + (([end] - pos) >> 3))
 					End If
 
 					Do While [off] < [stop]
@@ -2771,7 +2771,7 @@ Namespace java.io
 				Dim span As Integer, endoff As Integer = [off] + len
 				Do While [off] < endoff
 					If Not blkmode Then
-						span = Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 3)
+						span = System.Math.Min(endoff - [off], MAX_BLOCK_SIZE >> 3)
 						[in].readFully(buf, 0, span << 3)
 						pos = 0
 					ElseIf [end] - pos < 8 Then
@@ -2779,7 +2779,7 @@ Namespace java.io
 						[off] += 1
 						Continue Do
 					Else
-						span = Math.Min(endoff - [off], (([end] - pos) >> 3))
+						span = System.Math.Min(endoff - [off], (([end] - pos) >> 3))
 					End If
 
 					bytesToDoubles(buf, pos, v, [off], span)
@@ -2822,7 +2822,7 @@ Namespace java.io
 							' shift and refill buffer manually
 							If avail > 0 Then Array.Copy(buf, pos, buf, 0, avail)
 							pos = 0
-							[end] = CInt(Fix(Math.Min(MAX_BLOCK_SIZE, utflen)))
+							[end] = CInt(Fix (System.Math.Min(MAX_BLOCK_SIZE, utflen)))
 							[in].readFully(buf, avail, [end] - avail)
 						End If
 					End If
@@ -2840,7 +2840,7 @@ Namespace java.io
 			Private Function readUTFSpan(ByVal sbuf As StringBuilder, ByVal utflen As Long) As Long
 				Dim cpos As Integer = 0
 				Dim start As Integer = pos
-				Dim avail As Integer = Math.Min([end] - pos, CHAR_BUF_SIZE)
+				Dim avail As Integer = System.Math.Min([end] - pos, CHAR_BUF_SIZE)
 				' stop short of last char unless all of utf bytes in buffer
 				Dim [stop] As Integer = pos + (If(utflen > avail, avail - 2, CInt(utflen)))
 				Dim outOfBounds As Boolean = False

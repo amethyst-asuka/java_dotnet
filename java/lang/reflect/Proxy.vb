@@ -544,7 +544,7 @@ Namespace java.lang.reflect
 	'                
 	'                 * Verify that this interface is not a duplicate.
 	'                 
-					If interfaceSet.put(interfaceClass, Boolean.TRUE) IsNot Nothing Then Throw New IllegalArgumentException("repeated interface: " & interfaceClass.name)
+					If interfaceSet.put(interfaceClass,  java.lang.[Boolean].TRUE) IsNot Nothing Then Throw New IllegalArgumentException("repeated interface: " & interfaceClass.name)
 				Next intf
 
 				Dim proxyPkg As String = Nothing ' package to define proxy class in

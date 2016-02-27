@@ -592,7 +592,7 @@ Namespace java.util.stream
 					If leftSplit Is Nothing Then Return Nothing
 
 					Dim leftSplitFenceUnbounded As Long = index + leftSplit.estimateSize()
-					Dim leftSplitFence As Long = Math.Min(leftSplitFenceUnbounded, sliceFence)
+					Dim leftSplitFence As Long = System.Math.Min(leftSplitFenceUnbounded, sliceFence)
 					If sliceOrigin >= leftSplitFence Then
 						' The left split does not intersect with, and is to the left of, the slice
 						' The right split does intersect
@@ -619,7 +619,7 @@ Namespace java.util.stream
 			End Function
 
 			Public Overridable Function estimateSize() As Long
-				Return If(sliceOrigin < fence, fence - Math.Max(sliceOrigin, index), 0)
+				Return If(sliceOrigin < fence, fence - System.Math.Max(sliceOrigin, index), 0)
 			End Function
 
 			Public Overridable Function characteristics() As Integer
@@ -631,7 +631,7 @@ Namespace java.util.stream
 				Implements java.util.Spliterator(Of T)
 
 				Friend Sub New(ByVal s As java.util.Spliterator(Of T), ByVal sliceOrigin As Long, ByVal sliceFence As Long)
-					Me.New(s, sliceOrigin, sliceFence, 0, Math.Min(s.estimateSize(), sliceFence))
+					Me.New(s, sliceOrigin, sliceFence, 0, System.Math.Min(s.estimateSize(), sliceFence))
 				End Sub
 
 				Private Sub New(ByVal s As java.util.Spliterator(Of T), ByVal sliceOrigin As Long, ByVal sliceFence As Long, ByVal origin As Long, ByVal fence As Long)
@@ -691,7 +691,7 @@ Namespace java.util.stream
 				Implements java.util.Spliterator.OfPrimitive(Of T, T_CONS, T_SPLITR)
 
 				Friend Sub New(ByVal s As T_SPLITR, ByVal sliceOrigin As Long, ByVal sliceFence As Long)
-					Me.New(s, sliceOrigin, sliceFence, 0, Math.Min(s.estimateSize(), sliceFence))
+					Me.New(s, sliceOrigin, sliceFence, 0, System.Math.Min(s.estimateSize(), sliceFence))
 				End Sub
 
 				Private Sub New(ByVal s As T_SPLITR, ByVal sliceOrigin As Long, ByVal sliceFence As Long, ByVal origin As Long, ByVal fence As Long)
@@ -859,13 +859,13 @@ Namespace java.util.stream
 				Do
 					remainingPermits = permits.get()
 					If remainingPermits = 0 Then Return If(unlimited, numElements, 0)
-					grabbing = Math.Min(remainingPermits, numElements)
+					grabbing = System.Math.Min(remainingPermits, numElements)
 				Loop While grabbing > 0 AndAlso Not permits.compareAndSet(remainingPermits, remainingPermits - grabbing)
 
 				If unlimited Then
-					Return Math.Max(numElements - grabbing, 0)
+					Return System.Math.Max(numElements - grabbing, 0)
 				ElseIf remainingPermits > skipThreshold Then
-					Return Math.Max(grabbing - (remainingPermits - skipThreshold), 0)
+					Return System.Math.Max(grabbing - (remainingPermits - skipThreshold), 0)
 				Else
 					Return grabbing
 				End If
@@ -1177,7 +1177,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 			Public Overrides Function tryAdvance(Of T1)(ByVal action As java.util.function.Consumer(Of T1)) As Boolean
 				Do While s.tryAdvance(Me)
-					If seen.GetOrAdd(mapNull(tmpSlot), Boolean.TRUE) Is Nothing Then
+					If seen.GetOrAdd(mapNull(tmpSlot),  java.lang.[Boolean].TRUE) Is Nothing Then
 						action.accept(tmpSlot)
 						tmpSlot = Nothing
 						Return True
@@ -1188,7 +1188,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 			Public Overrides Sub forEachRemaining(Of T1)(ByVal action As java.util.function.Consumer(Of T1))
-				s.forEachRemaining(t -> { if(seen.GetOrAdd(mapNull(t), Boolean.TRUE) Is Nothing) { action.accept(t); } })
+				s.forEachRemaining(t -> { if(seen.GetOrAdd(mapNull(t),  java.lang.[Boolean].TRUE) Is Nothing) { action.accept(t); } })
 			End Sub
 
 			Public Overrides Function trySplit() As java.util.Spliterator(Of T)

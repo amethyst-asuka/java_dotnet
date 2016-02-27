@@ -52,7 +52,7 @@ Namespace java.net
 	'''     one or more bytes using some encoding scheme. Then each byte is
 	'''     represented by the 3-character string
 	'''     &quot;<i>{@code %xy}</i>&quot;, where <i>xy</i> is the
-	'''     two-digit hexadecimal representation of the byte.
+	'''     two-digit hexadecimal representation of the java.lang.[Byte].
 	'''     The recommended encoding scheme to use is UTF-8. However,
 	'''     for compatibility reasons, if an encoding is not specified,
 	'''     then the default encoding of the platform is used.
@@ -227,19 +227,19 @@ Namespace java.net
 	'                     
 						If c >= &HD800 AndAlso c <= &HDBFF Then
 	'                        
-	'                          System.out.println(Integer.toHexString(c)
+	'                          System.out.println( java.lang.[Integer].toHexString(c)
 	'                          + " is high surrogate");
 	'                        
 							If (i+1) < s.length() Then
 								Dim d As Integer = AscW(s.Chars(i+1))
 	'                            
 	'                              System.out.println("\tExamining "
-	'                              + Integer.toHexString(d));
+	'                              +  java.lang.[Integer].toHexString(d));
 	'                            
 								If d >= &HDC00 AndAlso d <= &HDFFF Then
 	'                                
 	'                                  System.out.println("\t"
-	'                                  + Integer.toHexString(d)
+	'                                  +  java.lang.[Integer].toHexString(d)
 	'                                  + " is low surrogate");
 	'                                
 									charArrayWriter.write(d)

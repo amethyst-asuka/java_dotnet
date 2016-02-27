@@ -608,14 +608,14 @@ Namespace java.text
 			Dim resource As java.util.ResourceBundle = CType(adapter, sun.util.locale.provider.ResourceBundleBasedAdapter).localeData.getDateFormatData(locale)
 
 			' JRE and CLDR use different keys
-			' JRE: Eras, short.Eras and narrow.Eras
-			' CLDR: long.Eras, Eras and narrow.Eras
+			' JRE: Eras,  java.lang.[Short].Eras and narrow.Eras
+			' CLDR: java.lang.[Long].Eras, Eras and narrow.Eras
 			If resource.containsKey("Eras") Then
 				eras = resource.getStringArray("Eras")
 			ElseIf resource.containsKey("long.Eras") Then
 				eras = resource.getStringArray("long.Eras")
-			ElseIf resource.containsKey("short.Eras") Then
-				eras = resource.getStringArray("short.Eras")
+			ElseIf resource.containsKey(" java.lang.[Short].Eras") Then
+				eras = resource.getStringArray(" java.lang.[Short].Eras")
 			End If
 			months = resource.getStringArray("MonthNames")
 			shortMonths = resource.getStringArray("MonthAbbreviations")

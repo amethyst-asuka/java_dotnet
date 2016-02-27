@@ -150,7 +150,7 @@ Namespace java.net
 	'                
 	'                 * Starting with this instance of %, process all
 	'                 * consecutive substrings of the form %xy. Each
-	'                 * substring %xy will yield a byte. Convert all
+	'                 * substring %xy will yield a java.lang.[Byte]. Convert all
 	'                 * consecutive  bytes obtained this way to whatever
 	'                 * character(s) they represent in the provided
 	'                 * encoding.

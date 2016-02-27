@@ -1171,7 +1171,7 @@ Namespace java.nio
 		''' <returns>  A negative integer, zero, or a positive integer as this buffer
 		'''          is less than, equal to, or greater than the given buffer </returns>
 		Public Overridable Function compareTo(ByVal that As IntBuffer) As Integer Implements Comparable(Of IntBuffer).compareTo
-			Dim n As Integer = Me.position() + Math.Min(Me.remaining(), that.remaining())
+			Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
 			Dim i As Integer = Me.position()
 			Dim j As Integer = that.position()
 			Do While i < n
@@ -1190,7 +1190,7 @@ Namespace java.nio
 
 
 
-			Return Integer.Compare(x, y)
+			Return  java.lang.[Integer].Compare(x, y)
 
 		End Function
 

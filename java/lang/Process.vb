@@ -188,7 +188,7 @@ Namespace java.lang
 					exitValue()
 					Return True
 				Catch ex As IllegalThreadStateException
-					If [rem] > 0 Then Thread.Sleep(Math.Min(java.util.concurrent.TimeUnit.NANOSECONDS.toMillis([rem]) + 1, 100))
+					If [rem] > 0 Then Thread.Sleep (System.Math.Min(java.util.concurrent.TimeUnit.NANOSECONDS.toMillis([rem]) + 1, 100))
 				End Try
 				[rem] = unit.toNanos(timeout) - (System.nanoTime() - startTime)
 			Loop While [rem] > 0

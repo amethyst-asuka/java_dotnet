@@ -1144,7 +1144,7 @@ Namespace java.util.concurrent
 				If p IsNot Nothing AndAlso sc IsNot Nothing Then
 					Dim s As Integer = nsteals
 					nsteals = 0 ' if negative, correct for overflow
-					sc.getAndAdd(CLng(Fix(If(s < 0, Integer.MaxValue, s))))
+					sc.getAndAdd(CLng(Fix(If(s < 0,  java.lang.[Integer].Max_Value, s))))
 				End If
 			End Sub
 
@@ -1261,7 +1261,7 @@ Namespace java.util.concurrent
 				b = base
 				a = array
 				If b - top >= 0 OrElse a Is Nothing Then
-					h = b Or Integer.MinValue ' to sense movement on re-poll
+					h = b Or  java.lang.[Integer].MIN_VALUE ' to sense movement on re-poll
 				Else
 					Dim j As Long = (((a.Length - 1) And b) << ASHIFT) + ABASE
 					o = U.getObjectVolatile(a, j)
@@ -1327,7 +1327,7 @@ Namespace java.util.concurrent
 					ABASE = U.arrayBaseOffset(ak)
 					Dim scale As Integer = U.arrayIndexScale(ak)
 					If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")
-					ASHIFT = 31 - Integer.numberOfLeadingZeros(scale)
+					ASHIFT = 31 -  java.lang.[Integer].numberOfLeadingZeros(scale)
 				Catch e As Exception
 					Throw New [Error](e)
 				End Try
@@ -2705,7 +2705,7 @@ Namespace java.util.concurrent
 		'''         because it does not hold {@link
 		'''         java.lang.RuntimePermission}{@code ("modifyThread")} </exception>
 		Public Sub New()
-			Me.New(Math.Min(MAX_CAP, Runtime.runtime.availableProcessors()), defaultForkJoinWorkerThreadFactory, Nothing, False)
+			Me.New (System.Math.Min(MAX_CAP, Runtime.runtime.availableProcessors()), defaultForkJoinWorkerThreadFactory, Nothing, False)
 		End Sub
 
 		''' <summary>
@@ -3423,7 +3423,7 @@ Namespace java.util.concurrent
 		''' until the <seealso cref="#commonPool()"/> <seealso cref="#isQuiescent"/>.
 		''' </summary>
 		Friend Shared Sub quiesceCommonPool()
-			common.awaitQuiescence(Long.MaxValue, java.util.concurrent.TimeUnit.NANOSECONDS)
+			common.awaitQuiescence(Long.Max_Value, java.util.concurrent.TimeUnit.NANOSECONDS)
 		End Sub
 
 		''' <summary>
@@ -3596,7 +3596,7 @@ Namespace java.util.concurrent
 				ABASE = U.arrayBaseOffset(ak)
 				Dim scale As Integer = U.arrayIndexScale(ak)
 				If (scale And (scale - 1)) <> 0 Then Throw New [Error]("data type scale not a power of two")
-				ASHIFT = 31 - Integer.numberOfLeadingZeros(scale)
+				ASHIFT = 31 -  java.lang.[Integer].numberOfLeadingZeros(scale)
 			Catch e As Exception
 				Throw New [Error](e)
 			End Try

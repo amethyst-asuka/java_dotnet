@@ -137,7 +137,7 @@ Namespace java.awt
 		Friend Property Shared headlessMessage As String
 			Get
 				If headless Is Nothing Then headlessProperty ' initialize the values
-				Return If(defaultHeadless IsNot Boolean.TRUE, Nothing, vbLf & "No X11 DISPLAY variable was set, " & "but this program performed an operation which requires it.")
+				Return If(defaultHeadless IsNot  java.lang.[Boolean].TRUE, Nothing, vbLf & "No X11 DISPLAY variable was set, " & "but this program performed an operation which requires it.")
 			End Get
 		End Property
 
@@ -145,7 +145,7 @@ Namespace java.awt
 		''' @since 1.4 </returns>
 		Private Property Shared headlessProperty As Boolean
 			Get
-				If headless Is Nothing Then java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedAction(Of Void)) -> { String nm = System.getProperty("java.awt.headless"); if(nm Is Nothing) { if(System.getProperty("javaplugin.version") IsNot Nothing) { headless = defaultHeadless = Boolean.FALSE; } else { String osName = System.getProperty("os.name"); if(osName.contains("OS X") AndAlso "sun.awt.HToolkit".Equals(System.getProperty("awt.toolkit"))) { headless = defaultHeadless = Boolean.TRUE; } else { final String display = System.getenv("DISPLAY"); headless = defaultHeadless = ("Linux".Equals(osName) OrElse "SunOS".Equals(osName) OrElse "FreeBSD".Equals(osName) OrElse "NetBSD".Equals(osName) OrElse "OpenBSD".Equals(osName) OrElse "AIX".Equals(osName)) AndAlso (display Is Nothing OrElse display.Trim().empty); } } } else { headless = Convert.ToBoolean(nm); } Return Nothing; })
+				If headless Is Nothing Then java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedAction(Of Void)) -> { String nm = System.getProperty("java.awt.headless"); if(nm Is Nothing) { if(System.getProperty("javaplugin.version") IsNot Nothing) { headless = defaultHeadless =  java.lang.[Boolean].FALSE; } else { String osName = System.getProperty("os.name"); if(osName.contains("OS X") AndAlso "sun.awt.HToolkit".Equals(System.getProperty("awt.toolkit"))) { headless = defaultHeadless =  java.lang.[Boolean].TRUE; } else { final String display = System.getenv("DISPLAY"); headless = defaultHeadless = ("Linux".Equals(osName) OrElse "SunOS".Equals(osName) OrElse "FreeBSD".Equals(osName) OrElse "NetBSD".Equals(osName) OrElse "OpenBSD".Equals(osName) OrElse "AIX".Equals(osName)) AndAlso (display Is Nothing OrElse display.Trim().empty); } } } else { headless = Convert.ToBoolean(nm); } Return Nothing; })
 				Return headless
 			End Get
 		End Property

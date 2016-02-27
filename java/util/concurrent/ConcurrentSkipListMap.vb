@@ -1609,8 +1609,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of key-value mappings in this map.  If this map
-		''' contains more than {@code  [Integer].MAX_VALUE} elements, it
-		''' returns {@code  [Integer].MAX_VALUE}.
+		''' contains more than {@code  java.lang.[Integer].MAX_VALUE} elements, it
+		''' returns {@code  java.lang.[Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the
@@ -1629,7 +1629,7 @@ Namespace java.util.concurrent
 				If n.validValue IsNot Nothing Then count += 1
 				n = n.next
 			Loop
-			Return If(count >= Integer.MaxValue, Integer.MaxValue, CInt(count))
+			Return If(count >=  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, CInt(count))
 		End Function
 
 		''' <summary>
@@ -2934,7 +2934,7 @@ Namespace java.util.concurrent
 					If n.validValue IsNot Nothing Then count += 1
 					n = n.next
 				Loop
-				Return If(count >= Integer.MaxValue, Integer.MaxValue, CInt(count))
+				Return If(count >=  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, CInt(count))
 			End Function
 
 			Public Property empty As Boolean
@@ -3316,7 +3316,7 @@ Namespace java.util.concurrent
 				End Sub
 
 				Public Overridable Function estimateSize() As Long
-					Return Long.MaxValue
+					Return java.lang.[Long].Max_Value
 				End Function
 
 			End Class
@@ -3432,7 +3432,7 @@ Namespace java.util.concurrent
 		''' remaining number of elements of a skip list when advancing
 		''' either across or down decreases by about 25%. To make this
 		''' observation useful, we need to know initial size, which we
-		''' don't. But we can just use  [Integer].MAX_VALUE so that we
+		''' don't. But we can just use  java.lang.[Integer].MAX_VALUE so that we
 		''' don't prematurely zero out while splitting.
 		''' </summary>
 		Friend MustInherit Class CSLMSpliterator(Of K, V)
@@ -3570,7 +3570,7 @@ q = row
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Dim b As Node(Of K, V) = (h = head).node
 				p = b.next
-				If p Is Nothing OrElse p.value IsNot Nothing Then Return New KeySpliterator(Of K, V)(cmp, h, p, Nothing,If(p Is Nothing, 0, Integer.MaxValue))
+				If p Is Nothing OrElse p.value IsNot Nothing Then Return New KeySpliterator(Of K, V)(cmp, h, p, Nothing,If(p Is Nothing, 0,  java.lang.[Integer].Max_Value))
 				p.helpDelete(b, p.next)
 			Loop
 		End Function
@@ -3687,7 +3687,7 @@ q = row
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Dim b As Node(Of K, V) = (h = head).node
 				p = b.next
-				If p Is Nothing OrElse p.value IsNot Nothing Then Return New ValueSpliterator(Of K, V)(cmp, h, p, Nothing,If(p Is Nothing, 0, Integer.MaxValue))
+				If p Is Nothing OrElse p.value IsNot Nothing Then Return New ValueSpliterator(Of K, V)(cmp, h, p, Nothing,If(p Is Nothing, 0,  java.lang.[Integer].Max_Value))
 				p.helpDelete(b, p.next)
 			Loop
 		End Function
@@ -3820,7 +3820,7 @@ q = row
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Dim b As Node(Of K, V) = (h = head).node
 				p = b.next
-				If p Is Nothing OrElse p.value IsNot Nothing Then Return New EntrySpliterator(Of K, V)(cmp, h, p, Nothing,If(p Is Nothing, 0, Integer.MaxValue))
+				If p Is Nothing OrElse p.value IsNot Nothing Then Return New EntrySpliterator(Of K, V)(cmp, h, p, Nothing,If(p Is Nothing, 0,  java.lang.[Integer].Max_Value))
 				p.helpDelete(b, p.next)
 			Loop
 		End Function

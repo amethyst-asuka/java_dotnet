@@ -77,7 +77,7 @@ Namespace java.lang
     ''' <seealso cref=     java.lang.ClassLoader#defineClass(byte[], int, int)
     ''' @since   JDK1.0 </seealso>
     <Serializable>
-    Public NotInheritable Class [Class]
+    Public NotInheritable Class [Class] : Inherits java.lang.Object
         Implements GenericDeclaration, Type, AnnotatedElement
 
         Private Const ANNOTATION As Integer = &H2000
@@ -590,7 +590,7 @@ Namespace java.lang
         ''' <blockquote><pre>
         ''' String.class.getName()
         '''     returns "java.lang.String"
-        ''' byte.class.getName()
+        ''' java.lang.[Byte].class.getName()
         '''     returns "byte"
         ''' (new Object[3]).getClass().getName()
         '''     returns "[Ljava.lang.Object;"
@@ -913,7 +913,7 @@ Namespace java.lang
 
         ''' <summary>
         ''' Returns the Java language modifiers for this class or interface, encoded
-        ''' in an integer. The modifiers consist of the Java Virtual Machine's
+        ''' in an  java.lang.[Integer]. The modifiers consist of the Java Virtual Machine's
         ''' constants for {@code public}, {@code protected},
         ''' {@code private}, {@code final}, {@code static},
         ''' {@code abstract} and {@code interface}; they should be decoded
@@ -3218,7 +3218,7 @@ Namespace java.lang
 
                 If System.out Is Nothing Then Return Nothing
 
-                ' Doesn't use Boolean.getBoolean to avoid class init.
+                ' Doesn't use  java.lang.[Boolean].getBoolean to avoid class init.
                 Dim val As String = System.getProperty("sun.reflect.noCaches")
                 If val IsNot Nothing AndAlso val.Equals("true") Then useCaches = False
 
@@ -3460,7 +3460,7 @@ Namespace java.lang
                 For Each e As KeyValuePair(Of [Class], annotation) In superAnnotations
                     Dim annotationClass As  [Class] = e.Key
                     If annotationType.getInstance(annotationClass).inherited Then
-                        If annotations_Renamed Is Nothing Then ' lazy construction annotations_Renamed = New java.util.LinkedHashMap(Of )((Math.Max(declaredAnnotations_Renamed.Count, Math.Min(12, declaredAnnotations_Renamed.Count + superAnnotations.Count)) * 4 + 2) / 3)
+                        If annotations_Renamed Is Nothing Then ' lazy construction annotations_Renamed = New java.util.LinkedHashMap(Of )( (System.Math.Max(declaredAnnotations_Renamed.Count, System.Math.Min(12, declaredAnnotations_Renamed.Count + superAnnotations.Count)) * 4 + 2) / 3)
                             annotations_Renamed(annotationClass) = e.Value
                         End If
                 Next e

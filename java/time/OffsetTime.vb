@@ -226,7 +226,7 @@ Namespace java.time
 			Dim rules As java.time.zone.ZoneRules = zone.rules
 			Dim offset_Renamed As ZoneOffset = rules.getOffset(instant_Renamed)
 			Dim localSecond As Long = instant_Renamed.epochSecond + offset_Renamed.totalSeconds ' overflow caught later
-			Dim secsOfDay As Integer = CInt(Math.floorMod(localSecond, SECONDS_PER_DAY))
+			Dim secsOfDay As Integer = CInt (System.Math.floorMod(localSecond, SECONDS_PER_DAY))
 			Dim time As LocalTime = LocalTime.ofNanoOfDay(secsOfDay * NANOS_PER_SECOND + instant_Renamed.nano)
 			Return New OffsetTime(time, offset_Renamed)
 		End Function
@@ -907,7 +907,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As OffsetTime
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1170,7 +1170,7 @@ Namespace java.time
 		''' <exception cref="NullPointerException"> if {@code other} is null </exception>
 		Public Overrides Function compareTo(ByVal other As OffsetTime) As Integer Implements Comparable(Of OffsetTime).compareTo
 			If offset.Equals(other.offset) Then Return time.CompareTo(other.time)
-			Dim compare As Integer = Long.Compare(toEpochNano(), other.toEpochNano())
+			Dim compare As Integer = java.lang.[Long].Compare(toEpochNano(), other.toEpochNano())
 			If compare = 0 Then compare = time.CompareTo(other.time)
 			Return compare
 		End Function

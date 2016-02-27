@@ -451,7 +451,7 @@ Namespace java.util.concurrent
 '		static final long C6 = C5 * 24L;
 
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain fields in .NET:
-'		static final long MAX = Long.MAX_VALUE;
+'		static final long MAX = java.lang.[Long].MAX_VALUE;
 
 		''' <summary>
 		''' Scale d by m, checking for overflow.
@@ -461,9 +461,9 @@ Namespace java.util.concurrent
 '		static long x(long d, long m, long over)
 	'	{
 	'		if (d > over)
-	'			Return Long.MAX_VALUE;
+	'			Return java.lang.[Long].MAX_VALUE;
 	'		if (d < -over)
-	'			Return Long.MIN_VALUE;
+	'			Return java.lang.[Long].MIN_VALUE;
 	'		Return d * m;
 	'	}
 
@@ -478,8 +478,8 @@ Namespace java.util.concurrent
 		''' lose precision. For example, converting {@code 999} milliseconds
 		''' to seconds results in {@code 0}. Conversions from coarser to
 		''' finer granularities with arguments that would numerically
-		''' overflow saturate to {@code Long.MIN_VALUE} if negative or
-		''' {@code Long.MAX_VALUE} if positive.
+		''' overflow saturate to {@code java.lang.[Long].MIN_VALUE} if negative or
+		''' {@code java.lang.[Long].MAX_VALUE} if positive.
 		''' 
 		''' <p>For example, to convert 10 minutes to milliseconds, use:
 		''' {@code TimeUnit.MILLISECONDS.convert(10L, TimeUnit.MINUTES)}
@@ -487,8 +487,8 @@ Namespace java.util.concurrent
 		''' <param name="sourceDuration"> the time duration in the given {@code sourceUnit} </param>
 		''' <param name="sourceUnit"> the unit of the {@code sourceDuration} argument </param>
 		''' <returns> the converted duration in this unit,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow. </returns>
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long convert(long sourceDuration, TimeUnit sourceUnit)
 	'	{
@@ -500,8 +500,8 @@ Namespace java.util.concurrent
 		''' <seealso cref="#convert(long, TimeUnit) NANOSECONDS.convert(duration, this)"/>. </summary>
 		''' <param name="duration"> the duration </param>
 		''' <returns> the converted duration,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow. </returns>
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long toNanos(long duration)
 	'	{
@@ -513,8 +513,8 @@ Namespace java.util.concurrent
 		''' <seealso cref="#convert(long, TimeUnit) MICROSECONDS.convert(duration, this)"/>. </summary>
 		''' <param name="duration"> the duration </param>
 		''' <returns> the converted duration,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow. </returns>
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long toMicros(long duration)
 	'	{
@@ -526,8 +526,8 @@ Namespace java.util.concurrent
 		''' <seealso cref="#convert(long, TimeUnit) MILLISECONDS.convert(duration, this)"/>. </summary>
 		''' <param name="duration"> the duration </param>
 		''' <returns> the converted duration,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow. </returns>
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long toMillis(long duration)
 	'	{
@@ -539,8 +539,8 @@ Namespace java.util.concurrent
 		''' <seealso cref="#convert(long, TimeUnit) SECONDS.convert(duration, this)"/>. </summary>
 		''' <param name="duration"> the duration </param>
 		''' <returns> the converted duration,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow. </returns>
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long toSeconds(long duration)
 	'	{
@@ -552,8 +552,8 @@ Namespace java.util.concurrent
 		''' <seealso cref="#convert(long, TimeUnit) MINUTES.convert(duration, this)"/>. </summary>
 		''' <param name="duration"> the duration </param>
 		''' <returns> the converted duration,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow.
 		''' @since 1.6 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long toMinutes(long duration)
@@ -566,8 +566,8 @@ Namespace java.util.concurrent
 		''' <seealso cref="#convert(long, TimeUnit) HOURS.convert(duration, this)"/>. </summary>
 		''' <param name="duration"> the duration </param>
 		''' <returns> the converted duration,
-		''' or {@code Long.MIN_VALUE} if conversion would negatively
-		''' overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+		''' or {@code java.lang.[Long].MIN_VALUE} if conversion would negatively
+		''' overflow, or {@code java.lang.[Long].MAX_VALUE} if it would positively overflow.
 		''' @since 1.6 </returns>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '		public long toHours(long duration)

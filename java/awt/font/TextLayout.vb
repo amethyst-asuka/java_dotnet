@@ -2261,7 +2261,7 @@ Namespace java.awt.font
 			' bit odd if you're visually over an adjacent wide character. this makes
 			' a difference with bidi, so perhaps i need to revisit this yet again.
 
-			Dim distance As Double = Double.MaxValue
+			Dim distance As Double = java.lang.[Double].Max_Value
 			Dim index As Integer = 0
 			Dim trail As Integer = -1
 			Dim lcm As sun.font.CoreMetrics = Nothing
@@ -2292,7 +2292,7 @@ Namespace java.awt.font
 				cx += dx - dya
 
 				' proximity in x (along baseline) is two times as important as proximity in y
-				Dim nd As Double = Math.Sqrt(4*(cx - x)*(cx - x) + ydsq)
+				Dim nd As Double = System.Math.Sqrt(4*(cx - x)*(cx - x) + ydsq)
 				If nd < distance Then
 					distance = nd
 					index = i

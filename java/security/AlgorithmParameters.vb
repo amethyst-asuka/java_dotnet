@@ -23,6 +23,7 @@
 ' *
 ' 
 
+Imports java.io
 Imports java.lang
 
 Namespace java.security
@@ -73,13 +74,13 @@ Namespace java.security
     Public Class AlgorithmParameters
 
         ' The provider
-        Private provider As Provider
+        Private _provider As Provider
 
         ' The provider implementation (delegate)
         Private paramSpi As AlgorithmParametersSpi
 
         ' The algorithm
-        Private algorithm As String
+        Private _algorithm As String
 
         ' Has this object been initialized?
         Private initialized As Boolean = False
@@ -92,17 +93,17 @@ Namespace java.security
         ''' <param name="algorithm"> the algorithm </param>
         Protected Friend Sub New(ByVal paramSpi As AlgorithmParametersSpi, ByVal provider_Renamed As Provider, ByVal algorithm As String)
             Me.paramSpi = paramSpi
-            Me.provider = provider_Renamed
-            Me.algorithm = algorithm
+            Me._provider = provider_Renamed
+            Me._algorithm = algorithm
         End Sub
 
         ''' <summary>
         ''' Returns the name of the algorithm associated with this parameter object.
         ''' </summary>
         ''' <returns> the algorithm name. </returns>
-        Public Property algorithm As String
+        Public ReadOnly Property algorithm As String
             Get
-                Return Me.algorithm
+                Return Me._algorithm
             End Get
         End Property
 
@@ -227,9 +228,9 @@ Namespace java.security
         ''' Returns the provider of this parameter object.
         ''' </summary>
         ''' <returns> the provider of this parameter object </returns>
-        Public Property provider As Provider
+        Public ReadOnly Property provider As Provider
             Get
-                Return Me.provider
+                Return Me._provider
             End Get
         End Property
 
@@ -315,7 +316,7 @@ Namespace java.security
         ''' </returns>
         ''' <exception cref="IOException"> on encoding errors, or if this parameter object
         ''' has not been initialized. </exception>
-        Public Property encoded As SByte()
+        Public ReadOnly Property encoded As SByte()
             Get
                 If Me.initialized = False Then Throw New IOException("not initialized")
                 Return paramSpi.engineGetEncoded()

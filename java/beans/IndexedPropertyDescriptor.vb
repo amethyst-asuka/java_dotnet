@@ -314,14 +314,14 @@ Namespace java.beans
 			If indexedReadMethod IsNot Nothing Then
 				Dim params As  [Class]() = getParameterTypes(class0, indexedReadMethod)
 				If params.Length <> 1 Then Throw New IntrospectionException("bad indexed read method arg count")
-				If params(0) IsNot Integer.TYPE Then Throw New IntrospectionException("non int index to indexed read method")
+				If params(0) IsNot  java.lang.[Integer].TYPE Then Throw New IntrospectionException("non int index to indexed read method")
 				indexedPropertyType_Renamed = getReturnType(class0, indexedReadMethod)
 				If indexedPropertyType_Renamed Is Void.TYPE Then Throw New IntrospectionException("indexed read method returns void")
 			End If
 			If indexedWriteMethod IsNot Nothing Then
 				Dim params As  [Class]() = getParameterTypes(class0, indexedWriteMethod)
 				If params.Length <> 2 Then Throw New IntrospectionException("bad indexed write method arg count")
-				If params(0) IsNot Integer.TYPE Then Throw New IntrospectionException("non int index to indexed write method")
+				If params(0) IsNot  java.lang.[Integer].TYPE Then Throw New IntrospectionException("non int index to indexed write method")
 				If indexedPropertyType_Renamed Is Nothing OrElse indexedPropertyType_Renamed.IsSubclassOf(params(1)) Then
 					indexedPropertyType_Renamed = params(1)
 				ElseIf Not params(1).IsSubclassOf(indexedPropertyType_Renamed) Then

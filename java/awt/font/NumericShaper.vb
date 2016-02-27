@@ -632,7 +632,7 @@ Namespace java.awt.font
 			Do While key < NUM_KEYS AndAlso ((mask And (1<<key)) = 0)
 				key += 1
 			Loop
-			If key = NUM_KEYS OrElse ((mask And Not(1<<key)) <> 0) Then Throw New IllegalArgumentException("invalid shaper: " & Integer.toHexString(mask))
+			If key = NUM_KEYS OrElse ((mask And Not(1<<key)) <> 0) Then Throw New IllegalArgumentException("invalid shaper: " &  java.lang.[Integer].toHexString(mask))
 			Return key
 		End Function
 

@@ -427,7 +427,7 @@ Namespace java.nio
 			Dim targetRemaining As Integer = target.remaining()
 			Dim remaining As Integer = remaining()
 			If remaining = 0 Then Return -1
-			Dim n As Integer = Math.Min(remaining, targetRemaining)
+			Dim n As Integer = System.Math.Min(remaining, targetRemaining)
 			Dim limit As Integer = limit()
 			' Set source limit to prevent target overflow
 			If targetRemaining < remaining Then limit(position() + n)
@@ -1164,7 +1164,7 @@ Namespace java.nio
 		''' <returns>  A negative integer, zero, or a positive integer as this buffer
 		'''          is less than, equal to, or greater than the given buffer </returns>
 		public Integer compareTo(CharBuffer that)
-			Dim n As Integer = Me.position() + Math.Min(Me.remaining(), that.remaining())
+			Dim n As Integer = Me.position() + System.Math.Min(Me.remaining(), that.remaining())
 			Dim i As Integer = Me.position()
 			Dim j As Integer = that.position()
 			Do While i < n

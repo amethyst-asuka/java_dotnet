@@ -451,7 +451,7 @@ Namespace java.nio.channels
 		''' <p> An invocation of this method of the form {@code ch.lock(att,handler)}
 		''' behaves in exactly the same way as the invocation
 		''' <pre>
-		'''     ch.<seealso cref="#lock(long,long,boolean,Object,CompletionHandler) lock"/>(0L, Long.MAX_VALUE, false, att, handler)
+		'''     ch.<seealso cref="#lock(long,long,boolean,Object,CompletionHandler) lock"/>(0L, java.lang.[Long].MAX_VALUE, false, att, handler)
 		''' </pre>
 		''' </summary>
 		''' @param   <A>
@@ -468,7 +468,7 @@ Namespace java.nio.channels
 		'''          If this channel was not opened for writing </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		Public Sub lock(Of A, T1)(ByVal attachment As A, ByVal handler As CompletionHandler(Of T1))
-			lock(0L, Long.MaxValue, False, attachment, handler)
+			lock(0L, java.lang.[Long].Max_Value, False, attachment, handler)
 		End Sub
 
 		''' <summary>
@@ -518,7 +518,7 @@ Namespace java.nio.channels
 		''' <p> An invocation of this method behaves in exactly the same way as the
 		''' invocation
 		''' <pre>
-		'''     ch.<seealso cref="#lock(long,long,boolean) lock"/>(0L, Long.MAX_VALUE, false)
+		'''     ch.<seealso cref="#lock(long,long,boolean) lock"/>(0L, java.lang.[Long].MAX_VALUE, false)
 		''' </pre>
 		''' </summary>
 		''' <returns>  a {@code Future} object representing the pending result
@@ -529,7 +529,7 @@ Namespace java.nio.channels
 		''' <exception cref="NonWritableChannelException">
 		'''          If this channel was not opened for writing </exception>
 		Public Function lock() As java.util.concurrent.Future(Of FileLock)
-			Return lock(0L, Long.MaxValue, False)
+			Return lock(0L, java.lang.[Long].Max_Value, False)
 		End Function
 
 		''' <summary>
@@ -586,7 +586,7 @@ Namespace java.nio.channels
 		''' behaves in exactly the same way as the invocation
 		''' 
 		''' <pre>
-		'''     ch.<seealso cref="#tryLock(long,long,boolean) tryLock"/>(0L, Long.MAX_VALUE, false) </pre>
+		'''     ch.<seealso cref="#tryLock(long,long,boolean) tryLock"/>(0L, java.lang.[Long].MAX_VALUE, false) </pre>
 		''' </summary>
 		''' <returns>  A lock object representing the newly-acquired lock,
 		'''          or {@code null} if the lock could not be acquired
@@ -609,7 +609,7 @@ Namespace java.nio.channels
 		''' <seealso cref=     #lock(long,long,boolean,Object,CompletionHandler) </seealso>
 		''' <seealso cref=     #tryLock(long,long,boolean) </seealso>
 		Public Function tryLock() As FileLock
-			Return tryLock(0L, Long.MaxValue, False)
+			Return tryLock(0L, java.lang.[Long].Max_Value, False)
 		End Function
 
 		''' <summary>

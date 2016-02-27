@@ -223,7 +223,7 @@ Namespace java.util.regex
 			Me.text = text
 
 			' Allocate state storage
-			Dim parentGroupCount As Integer = Math.Max(parent.capturingGroupCount, 10)
+			Dim parentGroupCount As Integer = System.Math.Max(parent.capturingGroupCount, 10)
 			groups = New Integer(parentGroupCount * 2 - 1){}
 			locals = New Integer(parent.localCount - 1){}
 
@@ -274,7 +274,7 @@ Namespace java.util.regex
 			parentPattern = newPattern
 
 			' Reallocate state storage
-			Dim parentGroupCount As Integer = Math.Max(newPattern.capturingGroupCount, 10)
+			Dim parentGroupCount As Integer = System.Math.Max(newPattern.capturingGroupCount, 10)
 			groups = New Integer(parentGroupCount * 2 - 1){}
 			locals = New Integer(newPattern.localCount - 1){}
 			For i As Integer = 0 To groups.Length - 1

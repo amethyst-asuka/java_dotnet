@@ -424,7 +424,7 @@ Namespace java.beans
 		''' @serialField source                                     Object
 		''' @serialField vetoableChangeSupportSerializedDataVersion int
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("children", GetType(Hashtable)), New java.io.ObjectStreamField("source", GetType(Object)), New java.io.ObjectStreamField("vetoableChangeSupportSerializedDataVersion", Integer.TYPE) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("children", GetType(Hashtable)), New java.io.ObjectStreamField("source", GetType(Object)), New java.io.ObjectStreamField("vetoableChangeSupportSerializedDataVersion",  java.lang.[Integer].TYPE) }
 
 		''' <summary>
 		''' Serialization version ID, so we're compatible with JDK 1.1

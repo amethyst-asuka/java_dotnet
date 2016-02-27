@@ -48,7 +48,7 @@ Namespace java.util.zip
 		End Sub
 
 		''' <summary>
-		''' Writes a byte. Will block until the byte is actually written. </summary>
+		''' Writes a java.lang.[Byte]. Will block until the byte is actually written. </summary>
 		''' <param name="b"> the byte to be written </param>
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		Public Overrides Sub write(ByVal b As Integer)

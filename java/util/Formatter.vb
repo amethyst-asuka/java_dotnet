@@ -68,7 +68,7 @@ Namespace java.util
 	'''   // Optional locale as the first argument can be used to get
 	'''   // locale-specific formatting of numbers.  The precision and width can be
 	'''   // given to round and align the value.
-	'''   formatter.format(Locale.FRANCE, "e = %+10.4f", Math.E);
+	'''   formatter.format(Locale.FRANCE, "e = %+10.4f", System.Math.E);
 	'''   // -&gt; "e =    +2,7183"
 	''' 
 	'''   // The '(' numeric flag may be used to format negative numbers with
@@ -274,7 +274,7 @@ Namespace java.util
 	'''     <td valign="top"> general
 	'''     <td> If the argument <i>arg</i> is {@code null}, then the result is
 	'''     "{@code null}".  Otherwise, the result is obtained by invoking
-	'''     {@code Integer.toHexString(arg.hashCode())}.
+	'''     {@code  java.lang.[Integer].toHexString(arg.hashCode())}.
 	''' 
 	''' <tr><td valign="top"> {@code 's'}, {@code 'S'}
 	'''     <td valign="top"> general
@@ -406,13 +406,13 @@ Namespace java.util
 	''' 
 	''' <tr><td valign="top">{@code 's'}
 	'''     <td> Seconds since the beginning of the epoch starting at 1 January 1970
-	'''     {@code 00:00:00} UTC, i.e. {@code Long.MIN_VALUE/1000} to
-	'''     {@code Long.MAX_VALUE/1000}.
+	'''     {@code 00:00:00} UTC, i.e. {@code java.lang.[Long].MIN_VALUE/1000} to
+	'''     {@code java.lang.[Long].MAX_VALUE/1000}.
 	''' 
 	''' <tr><td valign="top">{@code 'Q'}
 	'''     <td> Milliseconds since the beginning of the epoch starting at 1 January
-	'''     1970 {@code 00:00:00} UTC, i.e. {@code Long.MIN_VALUE} to
-	'''     {@code Long.MAX_VALUE}.
+	'''     1970 {@code 00:00:00} UTC, i.e. {@code java.lang.[Long].MIN_VALUE} to
+	'''     {@code java.lang.[Long].MAX_VALUE}.
 	''' 
 	''' </table>
 	''' 
@@ -695,7 +695,7 @@ Namespace java.util
 	''' 
 	'''     <p> If the argument, <i>arg</i> is {@code null}, then the
 	'''     result is "{@code null}".  Otherwise, the result is obtained
-	'''     by invoking {@code Integer.toHexString(arg.hashCode())}.
+	'''     by invoking {@code  java.lang.[Integer].toHexString(arg.hashCode())}.
 	''' 
 	'''     <p> If the {@code '#'} flag is given, then a {@link
 	'''     FormatFlagsConversionMismatchException} will be thrown.
@@ -872,7 +872,7 @@ Namespace java.util
 	''' 
 	''' <tr><td valign="top"> {@code 'd'}
 	'''     <td valign="top"> <tt>'&#92;u0064'</tt>
-	'''     <td> Formats the argument as a decimal integer. The <a
+	'''     <td> Formats the argument as a decimal  java.lang.[Integer]. The <a
 	'''     href="#L10nAlgorithm">localization algorithm</a> is applied.
 	''' 
 	'''     <p> If the {@code '0'} flag is given and the value is negative, then
@@ -1030,7 +1030,7 @@ Namespace java.util
 	''' 
 	''' <tr><td valign="top"> {@code 'd'}
 	'''     <td valign="top"> <tt>'&#92;u0064'</tt>
-	'''     <td> Requires the output to be formatted as a decimal integer. The <a
+	'''     <td> Requires the output to be formatted as a decimal  java.lang.[Integer]. The <a
 	'''     href="#L10nAlgorithm">localization algorithm</a> is applied.
 	''' 
 	'''     <p> If the {@code '#'} flag is given {@link
@@ -1107,10 +1107,10 @@ Namespace java.util
 	''' 
 	''' <p> All <a href="#intFlags">flags</a> defined for Byte, Short, Integer, and
 	''' Long apply.  The <a href="#intdFlags">default behavior</a> when no flags are
-	''' given is the same as for Byte, Short, Integer, and Long.
+	''' given is the same as for Byte, Short, Integer, and java.lang.[Long].
 	''' 
 	''' <p> The specification of <a href="#intWidth">width</a> is the same as
-	''' defined for Byte, Short, Integer, and Long.
+	''' defined for Byte, Short, Integer, and java.lang.[Long].
 	''' 
 	''' <p> The precision is not applicable.  If precision is specified then an
 	''' <seealso cref="IllegalFormatPrecisionException"/> will be thrown.
@@ -1268,7 +1268,7 @@ Namespace java.util
 	'''     of the significand as a fraction.  The exponent is represented by
 	'''     {@code 'p'} (<tt>'&#92;u0070'</tt>) followed by a decimal string of the
 	'''     unbiased exponent as if produced by invoking {@link
-	'''     Integer#toString(int) Integer.toString} on the exponent value.  If the
+	'''     Integer#toString(int)  java.lang.[Integer].toString} on the exponent value.  If the
 	'''     precision is specified, the value is rounded to the given number of
 	'''     hexadecimal digits.
 	''' 
@@ -1467,11 +1467,11 @@ Namespace java.util
 	''' always be present.
 	''' 
 	''' <p> The <a href="#floatdFlags">default behavior</a> when no flags are
-	''' given is the same as for Float and Double.
+	''' given is the same as for Float and java.lang.[Double].
 	''' 
 	''' <p> The specification of <a href="#floatDWidth">width</a> and <a
 	''' href="#floatDPrec">precision</a> is the same as defined for Float and
-	''' Double.
+	''' java.lang.[Double].
 	''' 
 	''' <h4><a name="ddt">Date/Time</a></h4>
 	''' 
@@ -1576,14 +1576,14 @@ Namespace java.util
 	''' <tr><td valign="top">{@code 's'}
 	'''     <td valign="top"> <tt>'&#92;u0073'</tt>
 	'''     <td> Seconds since the beginning of the epoch starting at 1 January 1970
-	'''     {@code 00:00:00} UTC, i.e. {@code Long.MIN_VALUE/1000} to
-	'''     {@code Long.MAX_VALUE/1000}.
+	'''     {@code 00:00:00} UTC, i.e. {@code java.lang.[Long].MIN_VALUE/1000} to
+	'''     {@code java.lang.[Long].MAX_VALUE/1000}.
 	''' 
 	''' <tr><td valign="top">{@code 'Q'}
 	'''     <td valign="top"> <tt>'&#92;u004f'</tt>
 	'''     <td> Milliseconds since the beginning of the epoch starting at 1 January
-	'''     1970 {@code 00:00:00} UTC, i.e. {@code Long.MIN_VALUE} to
-	'''     {@code Long.MAX_VALUE}. The precision of this value is limited by
+	'''     1970 {@code 00:00:00} UTC, i.e. {@code java.lang.[Long].MIN_VALUE} to
+	'''     {@code java.lang.[Long].MAX_VALUE}. The precision of this value is limited by
 	'''     the resolution of the underlying operating system or hardware.
 	''' 
 	''' </table>
@@ -2827,7 +2827,7 @@ Namespace java.util
 			End Sub
 
 			Private Sub printHashCode(ByVal arg As Object)
-				Dim s As String = (If(arg Is Nothing, "null", Integer.toHexString(arg.GetHashCode())))
+				Dim s As String = (If(arg Is Nothing, "null",  java.lang.[Integer].toHexString(arg.GetHashCode())))
 				print(s)
 			End Sub
 
@@ -2999,7 +2999,7 @@ Namespace java.util
 					trailingSign(sb, neg)
 				ElseIf c = Conversion.OCTAL_INTEGER Then
 					checkBadFlags(Flags.PARENTHESES, Flags.LEADING_SPACE, Flags.PLUS)
-					Dim s As String = Long.toOctalString(value)
+					Dim s As String = java.lang.[Long].toOctalString(value)
 					Dim len As Integer = (If(f.contains(Flags.ALTERNATE), s.length() + 1, s.length()))
 
 					' apply ALTERNATE (radix indicator for octal) before ZERO_PAD
@@ -3012,7 +3012,7 @@ Namespace java.util
 					sb.append(s)
 				ElseIf c = Conversion.HEXADECIMAL_INTEGER Then
 					checkBadFlags(Flags.PARENTHESES, Flags.LEADING_SPACE, Flags.PLUS)
-					Dim s As String = Long.toHexString(value)
+					Dim s As String = java.lang.[Long].toHexString(value)
 					Dim len As Integer = (If(f.contains(Flags.ALTERNATE), s.length() + 2, s.length()))
 
 					' apply ALTERNATE (radix indicator for hex) before ZERO_PAD
@@ -3116,16 +3116,16 @@ Namespace java.util
 
 			Private Sub print(ByVal value As Double, ByVal l As Locale)
 				Dim sb As New StringBuilder
-				Dim neg As Boolean = Double.Compare(value, 0.0) = -1
+				Dim neg As Boolean = java.lang.[Double].Compare(value, 0.0) = -1
 
-				If Not Double.IsNaN(value) Then
-					Dim v As Double = Math.Abs(value)
+				If Not java.lang.[Double].IsNaN(value) Then
+					Dim v As Double = System.Math.Abs(value)
 
 					' leading sign indicator
 					leadingSign(sb, neg)
 
 					' the value
-					If Not Double.IsInfinity(v) Then
+					If Not java.lang.[Double].IsInfinity(v) Then
 						print(sb, v, l, f, c, precision_Renamed, neg)
 					Else
 						sb.append(If(f.contains(Flags.UPPERCASE), "INFINITY", "Infinity"))
@@ -3315,24 +3315,24 @@ Namespace java.util
 
 			' Method assumes that d > 0.
 			Private Function hexDouble(ByVal d As Double, ByVal prec As Integer) As String
-				' Let Double.toHexString handle simple cases
-				If (Not Double.isFinite(d)) OrElse d = 0.0 OrElse prec = 0 OrElse prec >= 13 Then
+				' Let java.lang.[Double].toHexString handle simple cases
+				If (Not java.lang.[Double].isFinite(d)) OrElse d = 0.0 OrElse prec = 0 OrElse prec >= 13 Then
 					' remove "0x"
-					Return Double.toHexString(d).Substring(2)
+					Return java.lang.[Double].toHexString(d).Substring(2)
 				Else
 					assert(prec >= 1 AndAlso prec <= 12)
 
-					Dim exponent As Integer = Math.getExponent(d)
+					Dim exponent As Integer = System.Math.getExponent(d)
 					Dim subnormal As Boolean = (exponent = sun.misc.DoubleConsts.MIN_EXPONENT - 1)
 
 					' If this is subnormal input so normalize (could be faster to
 					' do as integer operation).
 					If subnormal Then
-						scaleUp = Math.scalb(1.0, 54)
+						scaleUp = System.Math.scalb(1.0, 54)
 						d *= scaleUp
 						' Calculate the exponent.  This is not just exponent + 54
 						' since the former is not the normalized exponent.
-						exponent = Math.getExponent(d)
+						exponent = System.Math.getExponent(d)
 						Debug.Assert(exponent >= sun.misc.DoubleConsts.MIN_EXPONENT AndAlso exponent <= sun.misc.DoubleConsts.MAX_EXPONENT, exponent)
 					End If
 
@@ -3340,7 +3340,7 @@ Namespace java.util
 					Dim shiftDistance As Integer = sun.misc.DoubleConsts.SIGNIFICAND_WIDTH - precision
 					assert(shiftDistance >= 1 AndAlso shiftDistance < sun.misc.DoubleConsts.SIGNIFICAND_WIDTH)
 
-					Dim doppel As Long = Double.doubleToLongBits(d)
+					Dim doppel As Long = java.lang.[Double].doubleToLongBits(d)
 					' Deterime the number of bits to keep.
 					Dim newSignif As Long = (doppel And (sun.misc.DoubleConsts.EXP_BIT_MASK Or sun.misc.DoubleConsts.SIGNIF_BIT_MASK)) >> shiftDistance
 					' Bits to round away.
@@ -3358,13 +3358,13 @@ Namespace java.util
 
 					Dim signBit As Long = doppel And sun.misc.DoubleConsts.SIGN_BIT_MASK
 					newSignif = signBit Or (newSignif << shiftDistance)
-					Dim result As Double = Double.longBitsToDouble(newSignif)
+					Dim result As Double = java.lang.[Double].longBitsToDouble(newSignif)
 
-					If Double.IsInfinity(result) Then
+					If java.lang.[Double].IsInfinity(result) Then
 						' Infinite result generated by rounding
 						Return "1.0p1024"
 					Else
-						Dim res As String = Double.toHexString(result).Substring(2)
+						Dim res As String = java.lang.[Double].toHexString(result).Substring(2)
 						If Not subnormal Then
 							Return res
 						Else
@@ -3644,7 +3644,7 @@ Namespace java.util
 						End If
 						exp = New StringBuilder
 						If adjusted <> 0 Then
-							Dim abs As Long = Math.Abs(adjusted)
+							Dim abs As Long = System.Math.Abs(adjusted)
 							' require sign
 							exp.append(If(adjusted < 0, "-"outerInstance.c, "+"outerInstance.c))
 							If abs < 10 Then exp.append("0"outerInstance.c)

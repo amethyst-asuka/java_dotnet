@@ -298,7 +298,7 @@ Namespace java.time.temporal
 	'			{
 	'				throw New DateTimeException("Invalid value: " + name + " " + newValue);
 	'			}
-	'			Return (R) temporal.with(EPOCH_DAY, Math.subtractExact(newValue, offset));
+	'			Return (R) temporal.with(EPOCH_DAY, System.Math.subtractExact(newValue, offset));
 	'		}
 
 			'-----------------------------------------------------------------------
@@ -309,7 +309,7 @@ Namespace java.time.temporal
 	'			Chronology chrono = Chronology.from(partialTemporal);
 	'			if (resolverStyle == ResolverStyle.LENIENT)
 	'			{
-	'				Return chrono.dateEpochDay(Math.subtractExact(value, offset));
+	'				Return chrono.dateEpochDay (System.Math.subtractExact(value, offset));
 	'			}
 	'			range().checkValidValue(value, Me);
 	'			Return chrono.dateEpochDay(value - offset);

@@ -98,7 +98,7 @@ Namespace java.lang.invoke
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overrides Function run() As Void
-				values(0) = Integer.getInteger(GetType(MethodHandleImpl).name & ".MAX_ARITY", 255)
+				values(0) =  java.lang.[Integer].getInteger(GetType(MethodHandleImpl).name & ".MAX_ARITY", 255)
 				Return Nothing
 			End Function
 		End Class
@@ -762,7 +762,7 @@ Namespace java.lang.invoke
 			' Profile is int[2] where [0] and [1] correspond to false and true occurrences respectively.
 			Dim idx As Integer = If(result, 1, 0)
 			Try
-				counters(idx) = Math.addExact(counters(idx), 1)
+				counters(idx) = System.Math.addExact(counters(idx), 1)
 			Catch e As ArithmeticException
 				' Avoid continuous overflow by halving the problematic count.
 				counters(idx) = counters(idx) \ 2
@@ -1544,7 +1544,7 @@ Namespace java.lang.invoke
 			' Build up the result mh as a sequence of fills like this:
 			'   finisher(fill(fill(newArrayWA(23,x1..x10),10,x11..x20),20,x21..x23))
 			' The various fill(_,10*I,___*[J]) are reusable.
-			Dim leftLen As Integer = Math.Min(nargs, LEFT_ARGS) ' absorb some arguments immediately
+			Dim leftLen As Integer = System.Math.Min(nargs, LEFT_ARGS) ' absorb some arguments immediately
 			Dim rightLen As Integer = nargs - leftLen
 			Dim leftCollector As MethodHandle = newArray.bindTo(nargs)
 			leftCollector = leftCollector.asCollector(GetType(Object()), leftLen)

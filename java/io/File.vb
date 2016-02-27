@@ -1759,10 +1759,10 @@ Namespace java.io
 			Private Shared ReadOnly random As New java.security.SecureRandom
 			Friend Shared Function generateFile(ByVal prefix As String, ByVal suffix As String, ByVal dir As File) As File
 				Dim n As Long = random.nextLong()
-				If n = Long.MinValue Then
+				If n = java.lang.[Long].MIN_VALUE Then
 					n = 0 ' corner case
 				Else
-					n = Math.Abs(n)
+					n = System.Math.Abs(n)
 				End If
 
 				' Use only the file name from the supplied prefix
@@ -1799,7 +1799,7 @@ Namespace java.io
 		''' <code><seealso cref="#deleteOnExit"/></code> method.
 		''' 
 		''' <p> The <code>prefix</code> argument must be at least three characters
-		''' long.  It is recommended that the prefix be a short, meaningful string
+		''' java.lang.[Long].  It is recommended that the prefix be a short, meaningful string
 		''' such as <code>"hjb"</code> or <code>"mail"</code>.  The
 		''' <code>suffix</code> argument may be <code>null</code>, in which case the
 		''' suffix <code>".tmp"</code> will be used.

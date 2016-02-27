@@ -383,7 +383,7 @@ Namespace java.util
 		''' accurate count, it could estimate size to be the power of two
 		''' corresponding to its maximum depth.
 		''' </summary>
-		''' <returns> the estimated size, or {@code Long.MAX_VALUE} if infinite,
+		''' <returns> the estimated size, or {@code java.lang.[Long].MAX_VALUE} if infinite,
 		'''         unknown, or too expensive to compute. </returns>
 		Function estimateSize() As Long
 

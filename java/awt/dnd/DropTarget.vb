@@ -663,7 +663,7 @@ Namespace java.awt.dnd
 				prev = locn
 				locn = newLocn
 
-				If Math.Abs(locn.x - prev.x) > hysteresis OrElse Math.Abs(locn.y - prev.y) > hysteresis Then
+				If System.Math.Abs(locn.x - prev.x) > hysteresis OrElse System.Math.Abs(locn.y - prev.y) > hysteresis Then
 					If timer.running Then timer.stop()
 				Else
 					If Not timer.running Then timer.start()

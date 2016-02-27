@@ -1233,7 +1233,7 @@ Namespace java.util
 			''' additionalCharacteristics.
 			''' </summary>
 			''' <param name="est"> the estimated size of this spliterator if known, otherwise
-			'''        {@code Long.MAX_VALUE}. </param>
+			'''        {@code java.lang.[Long].MAX_VALUE}. </param>
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
@@ -1284,7 +1284,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso tryAdvance(holder)
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New ArraySpliterator(Of )(a, 0, j, characteristics())
 				End If
 				Return Nothing
@@ -1352,7 +1352,7 @@ Namespace java.util
 			''' characteristics.
 			''' </summary>
 			''' <param name="est"> the estimated size of this spliterator if known, otherwise
-			'''        {@code Long.MAX_VALUE}. </param>
+			'''        {@code java.lang.[Long].MAX_VALUE}. </param>
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
@@ -1390,7 +1390,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso tryAdvance(holder)
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New IntArraySpliterator(a, 0, j, characteristics())
 				End If
 				Return Nothing
@@ -1458,7 +1458,7 @@ Namespace java.util
 			''' characteristics.
 			''' </summary>
 			''' <param name="est"> the estimated size of this spliterator if known, otherwise
-			'''        {@code Long.MAX_VALUE}. </param>
+			'''        {@code java.lang.[Long].MAX_VALUE}. </param>
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
@@ -1496,7 +1496,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso tryAdvance(holder)
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New LongArraySpliterator(a, 0, j, characteristics())
 				End If
 				Return Nothing
@@ -1564,7 +1564,7 @@ Namespace java.util
 			''' characteristics.
 			''' </summary>
 			''' <param name="est"> the estimated size of this spliterator if known, otherwise
-			'''        {@code Long.MAX_VALUE}. </param>
+			'''        {@code java.lang.[Long].MAX_VALUE}. </param>
 			''' <param name="additionalCharacteristics"> properties of this spliterator's
 			'''        source or elements.  If {@code SIZED} is reported then this
 			'''        spliterator will additionally report {@code SUBSIZED}. </param>
@@ -1602,7 +1602,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso tryAdvance(holder)
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New DoubleArraySpliterator(a, 0, j, characteristics())
 				End If
 				Return Nothing
@@ -1694,7 +1694,7 @@ Namespace java.util
 			Public Sub New(Of T1 As T)(ByVal [iterator] As [Iterator](Of T1), ByVal characteristics As Integer)
 				Me.collection = Nothing
 				Me.it = [iterator]
-				Me.est = Long.MaxValue
+				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
 			End Sub
 
@@ -1735,7 +1735,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso i.hasNext()
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New ArraySpliterator(Of )(a, 0, j, characteristics_Renamed)
 				End If
 				Return Nothing
@@ -1829,7 +1829,7 @@ Namespace java.util
 			''' source or elements. </param>
 			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfInt, ByVal characteristics As Integer)
 				Me.it = [iterator]
-				Me.est = Long.MaxValue
+				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
 			End Sub
 
@@ -1847,7 +1847,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso i.hasNext()
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New IntArraySpliterator(a, 0, j, characteristics_Renamed)
 				End If
 				Return Nothing
@@ -1919,7 +1919,7 @@ Namespace java.util
 			''' source or elements. </param>
 			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfLong, ByVal characteristics As Integer)
 				Me.it = [iterator]
-				Me.est = Long.MaxValue
+				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
 			End Sub
 
@@ -1937,7 +1937,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso i.hasNext()
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New LongArraySpliterator(a, 0, j, characteristics_Renamed)
 				End If
 				Return Nothing
@@ -2009,7 +2009,7 @@ Namespace java.util
 			''' source or elements. </param>
 			Public Sub New(ByVal [iterator] As PrimitiveIterator.OfDouble, ByVal characteristics As Integer)
 				Me.it = [iterator]
-				Me.est = Long.MaxValue
+				Me.est = java.lang.[Long].Max_Value
 				Me.characteristics_Renamed = characteristics And Not(Spliterator.SIZED Or Spliterator.SUBSIZED)
 			End Sub
 
@@ -2027,7 +2027,7 @@ Namespace java.util
 						j += 1
 					Loop While j < n AndAlso i.hasNext()
 					batch = j
-					If est <> Long.MaxValue Then est -= j
+					If est <> java.lang.[Long].Max_Value Then est -= j
 					Return New DoubleArraySpliterator(a, 0, j, characteristics_Renamed)
 				End If
 				Return Nothing

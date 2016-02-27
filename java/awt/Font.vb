@@ -353,7 +353,7 @@ Namespace java.awt
 		Protected Friend style As Integer
 
 		''' <summary>
-		''' The point size of this <code>Font</code>, rounded to integer.
+		''' The point size of this <code>Font</code>, rounded to  java.lang.[Integer].
 		''' @since JDK1.0
 		''' 
 		''' @serial </summary>
@@ -1021,7 +1021,7 @@ Namespace java.awt
 							n = newn
 						Loop
 						trans *= pointSize
-						Dim scale As Double = Math.Pow(2.0/3.0, n)
+						Dim scale As Double = System.Math.Pow(2.0/3.0, n)
     
 						at.preConcatenate(java.awt.geom.AffineTransform.getTranslateInstance(0, trans))
 						at.scale(scale, scale)
@@ -1194,7 +1194,7 @@ Namespace java.awt
 
 		''' <summary>
 		''' Returns the point size of this <code>Font</code>, rounded to
-		''' an integer.
+		''' an  java.lang.[Integer].
 		''' Most users are familiar with the idea of using <i>point size</i> to
 		''' specify the size of glyphs in a font. This point size defines a
 		''' measurement between the baseline of one line to the baseline of the
@@ -1823,7 +1823,7 @@ Namespace java.awt
 		''' <seealso cref= Character#isValidCodePoint(int)
 		''' @since 1.5 </seealso>
 		Public Overridable Function canDisplay(ByVal codePoint As Integer) As Boolean
-			If Not Character.isValidCodePoint(codePoint) Then Throw New IllegalArgumentException("invalid code point: " & Integer.toHexString(codePoint))
+			If Not Character.isValidCodePoint(codePoint) Then Throw New IllegalArgumentException("invalid code point: " &  java.lang.[Integer].toHexString(codePoint))
 			Return font2D.canDisplay(codePoint)
 		End Function
 

@@ -77,7 +77,7 @@ Namespace java.awt.geom
 			index += 1
 		End Sub
 
-		' ArcIterator.btan(Math.PI/2)
+		' ArcIterator.btan (System.Math.PI/2)
 		Public Const CtrlVal As Double = 0.5522847498307933
 
 	'    

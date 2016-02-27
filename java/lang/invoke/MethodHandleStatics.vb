@@ -73,15 +73,15 @@ Namespace java.lang.invoke
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As Void
-				values(0) = Boolean.getBoolean("java.lang.invoke.MethodHandle.DEBUG_NAMES")
-				values(1) = Boolean.getBoolean("java.lang.invoke.MethodHandle.DUMP_CLASS_FILES")
-				values(2) = Boolean.getBoolean("java.lang.invoke.MethodHandle.TRACE_INTERPRETER")
-				values(3) = Boolean.getBoolean("java.lang.invoke.MethodHandle.TRACE_METHOD_LINKAGE")
-				values(4) = Integer.getInteger("java.lang.invoke.MethodHandle.COMPILE_THRESHOLD", 0)
-				values(5) = Integer.getInteger("java.lang.invoke.MethodHandle.DONT_INLINE_THRESHOLD", 30)
-				values(6) = Integer.getInteger("java.lang.invoke.MethodHandle.PROFILE_LEVEL", 0)
+				values(0) =  java.lang.[Boolean].getBoolean("java.lang.invoke.MethodHandle.DEBUG_NAMES")
+				values(1) =  java.lang.[Boolean].getBoolean("java.lang.invoke.MethodHandle.DUMP_CLASS_FILES")
+				values(2) =  java.lang.[Boolean].getBoolean("java.lang.invoke.MethodHandle.TRACE_INTERPRETER")
+				values(3) =  java.lang.[Boolean].getBoolean("java.lang.invoke.MethodHandle.TRACE_METHOD_LINKAGE")
+				values(4) =  java.lang.[Integer].getInteger("java.lang.invoke.MethodHandle.COMPILE_THRESHOLD", 0)
+				values(5) =  java.lang.[Integer].getInteger("java.lang.invoke.MethodHandle.DONT_INLINE_THRESHOLD", 30)
+				values(6) =  java.lang.[Integer].getInteger("java.lang.invoke.MethodHandle.PROFILE_LEVEL", 0)
 				values(7) = Convert.ToBoolean(System.getProperty("java.lang.invoke.MethodHandle.PROFILE_GWT", "true"))
-				values(8) = Integer.getInteger("java.lang.invoke.MethodHandle.CUSTOMIZE_THRESHOLD", 127)
+				values(8) =  java.lang.[Integer].getInteger("java.lang.invoke.MethodHandle.CUSTOMIZE_THRESHOLD", 127)
 				Return Nothing
 			End Function
 		End Class

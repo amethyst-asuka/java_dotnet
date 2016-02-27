@@ -57,7 +57,7 @@ Namespace java.util.concurrent.atomic
 	''' value as its first argument, and the given update as the second
 	''' argument.  For example, to maintain a running maximum value, you
 	''' could supply {@code Double::max} along with {@code
-	''' Double.NEGATIVE_INFINITY} as the identity. The order of
+	''' java.lang.[Double].NEGATIVE_INFINITY} as the identity. The order of
 	''' accumulation within or across threads is not guaranteed. Thus, this
 	''' class may not be applicable if numerical stability is required,
 	''' especially when combining values of substantially different orders
@@ -92,7 +92,7 @@ Namespace java.util.concurrent.atomic
 		''' <param name="identity"> identity (initial value) for the accumulator function </param>
 		Public Sub New(ByVal accumulatorFunction As java.util.function.DoubleBinaryOperator, ByVal identity As Double)
 			Me.function = accumulatorFunction
-				Me.identity = Double.doubleToRawLongBits(identity)
+				Me.identity = java.lang.[Double].doubleToRawLongBits(identity)
 				base = Me.identity
 		End Sub
 
@@ -107,13 +107,13 @@ Namespace java.util.concurrent.atomic
 			Dim a As Cell
 			[as] = cells
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-			r = Double.doubleToRawLongBits([function].applyAsDouble(Double.longBitsToDouble(b = base), x))
+			r = java.lang.[Double].doubleToRawLongBits([function].applyAsDouble(Double.longBitsToDouble(b = base), x))
 			If [as] IsNot Nothing OrElse r <> b AndAlso (Not casBase(b, r)) Then
 				Dim uncontended As Boolean = True
 				m = [as].Length - 1
 				a = [as](probe And m)
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				uncontended = (r = Double.doubleToRawLongBits([function].applyAsDouble(Double.longBitsToDouble(v = a.value), x))) = v OrElse a.cas(v, r)
+				uncontended = (r = java.lang.[Double].doubleToRawLongBits([function].applyAsDouble(Double.longBitsToDouble(v = a.value), x))) = v OrElse a.cas(v, r)
 				If [as] Is Nothing OrElse m < 0 OrElse a Is Nothing OrElse (Not uncontended) Then doubleAccumulate(x, [function], uncontended)
 			End If
 		End Sub
@@ -129,11 +129,11 @@ Namespace java.util.concurrent.atomic
 		Public Overridable Function [get]() As Double
 			Dim [as] As Cell() = cells
 			Dim a As Cell
-			Dim result As Double = Double.longBitsToDouble(base)
+			Dim result As Double = java.lang.[Double].longBitsToDouble(base)
 			If [as] IsNot Nothing Then
 				For i As Integer = 0 To [as].Length - 1
 					a = [as](i)
-					If a IsNot Nothing Then result = [function].applyAsDouble(result, Double.longBitsToDouble(a.value))
+					If a IsNot Nothing Then result = [function].applyAsDouble(result, java.lang.[Double].longBitsToDouble(a.value))
 				Next i
 			End If
 			Return result
@@ -172,13 +172,13 @@ Namespace java.util.concurrent.atomic
 			Get
 				Dim [as] As Cell() = cells
 				Dim a As Cell
-				Dim result As Double = Double.longBitsToDouble(base)
+				Dim result As Double = java.lang.[Double].longBitsToDouble(base)
 				base = identity
 				If [as] IsNot Nothing Then
 					For i As Integer = 0 To [as].Length - 1
 						a = [as](i)
 						If a IsNot Nothing Then
-							Dim v As Double = Double.longBitsToDouble(a.value)
+							Dim v As Double = java.lang.[Double].longBitsToDouble(a.value)
 							a.value = identity
 							result = [function].applyAsDouble(result, v)
 						End If
@@ -265,9 +265,9 @@ Namespace java.util.concurrent.atomic
 			''' <returns> a {@code DoubleAccumulator} object with initial state
 			''' held by this proxy. </returns>
 			Private Function readResolve() As Object
-				Dim d As Double = Double.longBitsToDouble(identity)
+				Dim d As Double = java.lang.[Double].longBitsToDouble(identity)
 				Dim a As New DoubleAccumulator([function], d)
-				a.base = Double.doubleToRawLongBits(value)
+				a.base = java.lang.[Double].doubleToRawLongBits(value)
 				Return a
 			End Function
 		End Class

@@ -204,10 +204,10 @@ Namespace java.net
 		public Long skip(Long numbytes) throws java.io.IOException
 			If numbytes <= 0 Then Return 0
 			Dim n As Long = numbytes
-			Dim buflen As Integer = CInt(Fix(Math.Min(1024, n)))
+			Dim buflen As Integer = CInt(Fix (System.Math.Min(1024, n)))
 			Dim data As SByte() = New SByte(buflen - 1){}
 			Do While n > 0
-				Dim r As Integer = read(data, 0, CInt(Fix(Math.Min(CLng(buflen), n))))
+				Dim r As Integer = read(data, 0, CInt(Fix (System.Math.Min(CLng(buflen), n))))
 				If r < 0 Then Exit Do
 				n -= r
 			Loop

@@ -224,9 +224,9 @@ Namespace java.awt.image.renderable
 		''' passed in.
 		''' 
 		''' <p> If w == 0, it will be taken to equal
-		''' Math.round(h*(getWidth()/getHeight())).
+		''' System.Math.round(h*(getWidth()/getHeight())).
 		''' Similarly, if h == 0, it will be taken to equal
-		''' Math.round(w*(getHeight()/getWidth())).  One of
+		''' System.Math.round(w*(getHeight()/getWidth())).  One of
 		''' w or h must be non-zero or else an IllegalArgumentException
 		''' will be thrown.
 		''' 
@@ -244,7 +244,7 @@ Namespace java.awt.image.renderable
 			' DSR -- code to try to get a unit scale
 			Dim sx As Double = CDbl(w)/width
 			Dim sy As Double = CDbl(h)/height
-			If Math.Abs(sx/sy - 1.0) < 0.01 Then sx = sy
+			If System.Math.Abs(sx/sy - 1.0) < 0.01 Then sx = sy
 			Dim usr2dev As java.awt.geom.AffineTransform = java.awt.geom.AffineTransform.getScaleInstance(sx, sy)
 			Dim newRC As New RenderContext(usr2dev, hints)
 			Return createRendering(newRC)

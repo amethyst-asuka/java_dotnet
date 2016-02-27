@@ -41,7 +41,7 @@ Namespace java.io
 
 		''' <summary>
 		''' The number of bytes written to the data output stream so far.
-		''' If this counter overflows, it will be wrapped to  [Integer].MAX_VALUE.
+		''' If this counter overflows, it will be wrapped to  java.lang.[Integer].MAX_VALUE.
 		''' </summary>
 		Protected Friend written As Integer
 
@@ -64,11 +64,11 @@ Namespace java.io
 
 		''' <summary>
 		''' Increases the written counter by the specified value
-		''' until it reaches  [Integer].MAX_VALUE.
+		''' until it reaches  java.lang.[Integer].MAX_VALUE.
 		''' </summary>
 		Private Sub incCount(ByVal value As Integer)
 			Dim temp As Integer = written + value
-			If temp < 0 Then temp = Integer.MaxValue
+			If temp < 0 Then temp =  java.lang.[Integer].Max_Value
 			written = temp
 		End Sub
 
@@ -383,7 +383,7 @@ Namespace java.io
 		''' <summary>
 		''' Returns the current value of the counter <code>written</code>,
 		''' the number of bytes written to this data output stream so far.
-		''' If the counter overflows, it will be wrapped to  [Integer].MAX_VALUE.
+		''' If the counter overflows, it will be wrapped to  java.lang.[Integer].MAX_VALUE.
 		''' </summary>
 		''' <returns>  the value of the <code>written</code> field. </returns>
 		''' <seealso cref=     java.io.DataOutputStream#written </seealso>

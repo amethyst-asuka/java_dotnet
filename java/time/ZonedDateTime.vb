@@ -1733,7 +1733,7 @@ Namespace java.time
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		Public Overrides Function minus(ByVal amountToSubtract As Long, ByVal unit As java.time.temporal.TemporalUnit) As ZonedDateTime
-			Return (If(amountToSubtract = Long.MinValue, plus(Long.MaxValue, unit).plus(1, unit), plus(-amountToSubtract, unit)))
+			Return (If(amountToSubtract = java.lang.[Long].MIN_VALUE, plus(Long.Max_Value, unit).plus(1, unit), plus(-amountToSubtract, unit)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1755,7 +1755,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the years subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusYears(ByVal years As Long) As ZonedDateTime
-			Return (If(years = Long.MinValue, plusYears(Long.MaxValue).plusYears(1), plusYears(-years)))
+			Return (If(years = java.lang.[Long].MIN_VALUE, plusYears(Long.Max_Value).plusYears(1), plusYears(-years)))
 		End Function
 
 		''' <summary>
@@ -1776,7 +1776,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the months subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusMonths(ByVal months As Long) As ZonedDateTime
-			Return (If(months = Long.MinValue, plusMonths(Long.MaxValue).plusMonths(1), plusMonths(-months)))
+			Return (If(months = java.lang.[Long].MIN_VALUE, plusMonths(Long.Max_Value).plusMonths(1), plusMonths(-months)))
 		End Function
 
 		''' <summary>
@@ -1797,7 +1797,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the weeks subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusWeeks(ByVal weeks As Long) As ZonedDateTime
-			Return (If(weeks = Long.MinValue, plusWeeks(Long.MaxValue).plusWeeks(1), plusWeeks(-weeks)))
+			Return (If(weeks = java.lang.[Long].MIN_VALUE, plusWeeks(Long.Max_Value).plusWeeks(1), plusWeeks(-weeks)))
 		End Function
 
 		''' <summary>
@@ -1818,7 +1818,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the days subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusDays(ByVal days As Long) As ZonedDateTime
-			Return (If(days = Long.MinValue, plusDays(Long.MaxValue).plusDays(1), plusDays(-days)))
+			Return (If(days = java.lang.[Long].MIN_VALUE, plusDays(Long.Max_Value).plusDays(1), plusDays(-days)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -1846,7 +1846,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the hours subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusHours(ByVal hours As Long) As ZonedDateTime
-			Return (If(hours = Long.MinValue, plusHours(Long.MaxValue).plusHours(1), plusHours(-hours)))
+			Return (If(hours = java.lang.[Long].MIN_VALUE, plusHours(Long.Max_Value).plusHours(1), plusHours(-hours)))
 		End Function
 
 		''' <summary>
@@ -1863,7 +1863,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the minutes subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusMinutes(ByVal minutes As Long) As ZonedDateTime
-			Return (If(minutes = Long.MinValue, plusMinutes(Long.MaxValue).plusMinutes(1), plusMinutes(-minutes)))
+			Return (If(minutes = java.lang.[Long].MIN_VALUE, plusMinutes(Long.Max_Value).plusMinutes(1), plusMinutes(-minutes)))
 		End Function
 
 		''' <summary>
@@ -1880,7 +1880,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the seconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusSeconds(ByVal seconds As Long) As ZonedDateTime
-			Return (If(seconds = Long.MinValue, plusSeconds(Long.MaxValue).plusSeconds(1), plusSeconds(-seconds)))
+			Return (If(seconds = java.lang.[Long].MIN_VALUE, plusSeconds(Long.Max_Value).plusSeconds(1), plusSeconds(-seconds)))
 		End Function
 
 		''' <summary>
@@ -1897,7 +1897,7 @@ Namespace java.time
 		''' <returns> a {@code ZonedDateTime} based on this date-time with the nanoseconds subtracted, not null </returns>
 		''' <exception cref="DateTimeException"> if the result exceeds the supported date range </exception>
 		Public Function minusNanos(ByVal nanos As Long) As ZonedDateTime
-			Return (If(nanos = Long.MinValue, plusNanos(Long.MaxValue).plusNanos(1), plusNanos(-nanos)))
+			Return (If(nanos = java.lang.[Long].MIN_VALUE, plusNanos(Long.Max_Value).plusNanos(1), plusNanos(-nanos)))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -2050,7 +2050,7 @@ Namespace java.time
 		''' </summary>
 		''' <returns> a suitable hash code </returns>
 		Public Overrides Function GetHashCode() As Integer
-			Return dateTime.GetHashCode() Xor offset.GetHashCode() Xor Integer.rotateLeft(zone.GetHashCode(), 3)
+			Return dateTime.GetHashCode() Xor offset.GetHashCode() Xor  java.lang.[Integer].rotateLeft(zone.GetHashCode(), 3)
 		End Function
 
 		'-----------------------------------------------------------------------

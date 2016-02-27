@@ -192,7 +192,7 @@ Namespace java.lang
 		'''          in radians. </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent to 'strictfp' in .NET:
 		Public Shared Function toRadians(ByVal angdeg As Double) As Double
-			' Do not delegate to Math.toRadians(angdeg) because
+			' Do not delegate to System.Math.toRadians(angdeg) because
 			' this method has the strictfp modifier.
 			Return angdeg / 180.0 * PI
 		End Function
@@ -209,7 +209,7 @@ Namespace java.lang
 		'''          in degrees. </returns>
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent to 'strictfp' in .NET:
 		Public Shared Function toDegrees(ByVal angrad As Double) As Double
-			' Do not delegate to Math.toDegrees(angrad) because
+			' Do not delegate to System.Math.toDegrees(angrad) because
 			' this method has the strictfp modifier.
 			Return angrad * 180.0 / PI
 		End Function
@@ -348,7 +348,7 @@ Namespace java.lang
 		''' <summary>
 		''' Returns the smallest (closest to negative infinity)
 		''' {@code double} value that is greater than or equal to the
-		''' argument and is equal to a mathematical integer. Special cases:
+		''' argument and is equal to a mathematical  java.lang.[Integer]. Special cases:
 		''' <ul><li>If the argument value is already equal to a
 		''' mathematical integer, then the result is the same as the
 		''' argument.  <li>If the argument is NaN or an infinity or
@@ -361,7 +361,7 @@ Namespace java.lang
 		''' <param name="a">   a value. </param>
 		''' <returns>  the smallest (closest to negative infinity)
 		'''          floating-point value that is greater than or equal to
-		'''          the argument and is equal to a mathematical integer. </returns>
+		'''          the argument and is equal to a mathematical  java.lang.[Integer]. </returns>
 		Public Shared Function ceil(ByVal a As Double) As Double
 			Return floorOrCeil(a, -0.0, 1.0, 1.0)
 		End Function
@@ -369,7 +369,7 @@ Namespace java.lang
 		''' <summary>
 		''' Returns the largest (closest to positive infinity)
 		''' {@code double} value that is less than or equal to the
-		''' argument and is equal to a mathematical integer. Special cases:
+		''' argument and is equal to a mathematical  java.lang.[Integer]. Special cases:
 		''' <ul><li>If the argument value is already equal to a
 		''' mathematical integer, then the result is the same as the
 		''' argument.  <li>If the argument is NaN or an infinity or
@@ -379,7 +379,7 @@ Namespace java.lang
 		''' <param name="a">   a value. </param>
 		''' <returns>  the largest (closest to positive infinity)
 		'''          floating-point value that less than or equal to the argument
-		'''          and is equal to a mathematical integer. </returns>
+		'''          and is equal to a mathematical  java.lang.[Integer]. </returns>
 		Public Shared Function floor(ByVal a As Double) As Double
 			Return floorOrCeil(a, -1.0, 0.0, -1.0)
 		End Function
@@ -392,7 +392,7 @@ Namespace java.lang
 		''' <param name="positiveBoundary"> result for values in (0, 1) </param>
 		''' <param name="increment"> value to add when the argument is non-integral </param>
 		Private Shared Function floorOrCeil(ByVal a As Double, ByVal negativeBoundary As Double, ByVal positiveBoundary As Double, ByVal sign As Double) As Double
-			Dim exponent_Renamed As Integer = Math.getExponent(a)
+			Dim exponent_Renamed As Integer = System.Math.getExponent(a)
 
 			If exponent_Renamed < 0 Then
 	'            
@@ -411,13 +411,13 @@ Namespace java.lang
 			' has to be rounded to one.
 			Debug.Assert(exponent_Renamed >= 0 AndAlso exponent_Renamed <= 51)
 
-			Dim doppel As Long = Double.doubleToRawLongBits(a)
+			Dim doppel As Long = java.lang.[Double].doubleToRawLongBits(a)
 			Dim mask As Long = sun.misc.DoubleConsts.SIGNIF_BIT_MASK >> exponent_Renamed
 
 			If (mask And doppel) = 0L Then
 				Return a ' integral value
 			Else
-				Dim result As Double = Double.longBitsToDouble(doppel And ((Not mask)))
+				Dim result As Double = java.lang.[Double].longBitsToDouble(doppel And ((Not mask)))
 				If sign*a > 0.0 Then result = result + sign
 				Return result
 			End If
@@ -425,7 +425,7 @@ Namespace java.lang
 
 		''' <summary>
 		''' Returns the {@code double} value that is closest in value
-		''' to the argument and is equal to a mathematical integer. If two
+		''' to the argument and is equal to a mathematical  java.lang.[Integer]. If two
 		''' {@code double} values that are mathematical integers are
 		''' equally close to the value of the argument, the result is the
 		''' integer value that is even. Special cases:
@@ -436,7 +436,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="a">   a value. </param>
 		''' <returns>  the closest floating-point value to {@code a} that is
-		'''          equal to a mathematical integer.
+		'''          equal to a mathematical  java.lang.[Integer].
 		''' @author Joseph D. Darcy </returns>
 		Public Shared Function rint(ByVal a As Double) As Double
 	'        
@@ -465,8 +465,8 @@ Namespace java.lang
 	'         * 1.0, which is exact too.
 	'         
 			Dim twoToThe52 As Double = CDbl(1L << 52) ' 2^52
-			Dim sign As Double = Math.copySign(1.0, a) ' preserve sign info
-			a = Math.Abs(a)
+			Dim sign As Double = System.Math.copySign(1.0, a) ' preserve sign info
+			a = System.Math.Abs(a)
 
 			If a < twoToThe52 Then ' E_min <= ilogb(a) <= 51 a = ((twoToThe52 + a) - twoToThe52)
 
@@ -658,19 +658,19 @@ Namespace java.lang
 		''' <p>Special cases:
 		''' <ul><li>If the argument is NaN, the result is 0.
 		''' <li>If the argument is negative infinity or any value less than or
-		''' equal to the value of {@code Integer.MIN_VALUE}, the result is
-		''' equal to the value of {@code Integer.MIN_VALUE}.
+		''' equal to the value of {@code  java.lang.[Integer].MIN_VALUE}, the result is
+		''' equal to the value of {@code  java.lang.[Integer].MIN_VALUE}.
 		''' <li>If the argument is positive infinity or any value greater than or
-		''' equal to the value of {@code  [Integer].MAX_VALUE}, the result is
-		''' equal to the value of {@code  [Integer].MAX_VALUE}.</ul>
+		''' equal to the value of {@code  java.lang.[Integer].MAX_VALUE}, the result is
+		''' equal to the value of {@code  java.lang.[Integer].MAX_VALUE}.</ul>
 		''' </summary>
-		''' <param name="a">   a floating-point value to be rounded to an integer. </param>
+		''' <param name="a">   a floating-point value to be rounded to an  java.lang.[Integer]. </param>
 		''' <returns>  the value of the argument rounded to the nearest
 		'''          {@code int} value. </returns>
 		''' <seealso cref=     java.lang.Integer#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Integer#MIN_VALUE </seealso>
 		Public Shared Function round(ByVal a As Single) As Integer
-			Return Math.Round(a)
+			Return System.Math.Round(a)
 		End Function
 
 		''' <summary>
@@ -680,11 +680,11 @@ Namespace java.lang
 		''' <p>Special cases:
 		''' <ul><li>If the argument is NaN, the result is 0.
 		''' <li>If the argument is negative infinity or any value less than or
-		''' equal to the value of {@code Long.MIN_VALUE}, the result is
-		''' equal to the value of {@code Long.MIN_VALUE}.
+		''' equal to the value of {@code java.lang.[Long].MIN_VALUE}, the result is
+		''' equal to the value of {@code java.lang.[Long].MIN_VALUE}.
 		''' <li>If the argument is positive infinity or any value greater than or
-		''' equal to the value of {@code Long.MAX_VALUE}, the result is
-		''' equal to the value of {@code Long.MAX_VALUE}.</ul>
+		''' equal to the value of {@code java.lang.[Long].MAX_VALUE}, the result is
+		''' equal to the value of {@code java.lang.[Long].MAX_VALUE}.</ul>
 		''' </summary>
 		''' <param name="a">  a floating-point value to be rounded to a
 		'''          {@code long}. </param>
@@ -693,7 +693,7 @@ Namespace java.lang
 		''' <seealso cref=     java.lang.Long#MAX_VALUE </seealso>
 		''' <seealso cref=     java.lang.Long#MIN_VALUE </seealso>
 		Public Shared Function round(ByVal a As Double) As Long
-			Return Math.Round(a)
+			Return System.Math.Round(a)
 		End Function
 
 		Private NotInheritable Class RandomNumberGeneratorHolder
@@ -737,7 +737,7 @@ Namespace java.lang
 		''' <seealso cref= Math#addExact(int,int)
 		''' @since 1.8 </seealso>
 		Public Shared Function addExact(ByVal x As Integer, ByVal y As Integer) As Integer
-			Return Math.addExact(x, y)
+			Return System.Math.addExact(x, y)
 		End Function
 
 		''' <summary>
@@ -751,7 +751,7 @@ Namespace java.lang
 		''' <seealso cref= Math#addExact(long,long)
 		''' @since 1.8 </seealso>
 		Public Shared Function addExact(ByVal x As Long, ByVal y As Long) As Long
-			Return Math.addExact(x, y)
+			Return System.Math.addExact(x, y)
 		End Function
 
 		''' <summary>
@@ -765,7 +765,7 @@ Namespace java.lang
 		''' <seealso cref= Math#subtractExact(int,int)
 		''' @since 1.8 </seealso>
 		Public Shared Function subtractExact(ByVal x As Integer, ByVal y As Integer) As Integer
-			Return Math.subtractExact(x, y)
+			Return System.Math.subtractExact(x, y)
 		End Function
 
 		''' <summary>
@@ -779,7 +779,7 @@ Namespace java.lang
 		''' <seealso cref= Math#subtractExact(long,long)
 		''' @since 1.8 </seealso>
 		Public Shared Function subtractExact(ByVal x As Long, ByVal y As Long) As Long
-			Return Math.subtractExact(x, y)
+			Return System.Math.subtractExact(x, y)
 		End Function
 
 		''' <summary>
@@ -793,7 +793,7 @@ Namespace java.lang
 		''' <seealso cref= Math#multiplyExact(int,int)
 		''' @since 1.8 </seealso>
 		Public Shared Function multiplyExact(ByVal x As Integer, ByVal y As Integer) As Integer
-			Return Math.multiplyExact(x, y)
+			Return System.Math.multiplyExact(x, y)
 		End Function
 
 		''' <summary>
@@ -807,7 +807,7 @@ Namespace java.lang
 		''' <seealso cref= Math#multiplyExact(long,long)
 		''' @since 1.8 </seealso>
 		Public Shared Function multiplyExact(ByVal x As Long, ByVal y As Long) As Long
-			Return Math.multiplyExact(x, y)
+			Return System.Math.multiplyExact(x, y)
 		End Function
 
 		''' <summary>
@@ -820,18 +820,18 @@ Namespace java.lang
 		''' <seealso cref= Math#toIntExact(long)
 		''' @since 1.8 </seealso>
 		Public Shared Function toIntExact(ByVal value As Long) As Integer
-			Return Math.toIntExact(value)
+			Return System.Math.toIntExact(value)
 		End Function
 
 		''' <summary>
 		''' Returns the largest (closest to positive infinity)
 		''' {@code int} value that is less than or equal to the algebraic quotient.
 		''' There is one special case, if the dividend is the
-		''' <seealso cref="Integer#MIN_VALUE Integer.MIN_VALUE"/> and the divisor is {@code -1},
+		''' <seealso cref="Integer#MIN_VALUE  java.lang.[Integer].MIN_VALUE"/> and the divisor is {@code -1},
 		''' then integer overflow occurs and
-		''' the result is equal to the {@code Integer.MIN_VALUE}.
+		''' the result is equal to the {@code  java.lang.[Integer].MIN_VALUE}.
 		''' <p>
-		''' See <seealso cref="Math#floorDiv(int, int) Math.floorDiv"/> for examples and
+		''' See <seealso cref="Math#floorDiv(int, int) System.Math.floorDiv"/> for examples and
 		''' a comparison to the integer division {@code /} operator.
 		''' </summary>
 		''' <param name="x"> the dividend </param>
@@ -843,18 +843,18 @@ Namespace java.lang
 		''' <seealso cref= Math#floor(double)
 		''' @since 1.8 </seealso>
 		Public Shared Function floorDiv(ByVal x As Integer, ByVal y As Integer) As Integer
-			Return Math.floorDiv(x, y)
+			Return System.Math.floorDiv(x, y)
 		End Function
 
 		''' <summary>
 		''' Returns the largest (closest to positive infinity)
 		''' {@code long} value that is less than or equal to the algebraic quotient.
 		''' There is one special case, if the dividend is the
-		''' <seealso cref="Long#MIN_VALUE Long.MIN_VALUE"/> and the divisor is {@code -1},
+		''' <seealso cref="Long#MIN_VALUE java.lang.[Long].MIN_VALUE"/> and the divisor is {@code -1},
 		''' then integer overflow occurs and
-		''' the result is equal to the {@code Long.MIN_VALUE}.
+		''' the result is equal to the {@code java.lang.[Long].MIN_VALUE}.
 		''' <p>
-		''' See <seealso cref="Math#floorDiv(int, int) Math.floorDiv"/> for examples and
+		''' See <seealso cref="Math#floorDiv(int, int) System.Math.floorDiv"/> for examples and
 		''' a comparison to the integer division {@code /} operator.
 		''' </summary>
 		''' <param name="x"> the dividend </param>
@@ -866,7 +866,7 @@ Namespace java.lang
 		''' <seealso cref= Math#floor(double)
 		''' @since 1.8 </seealso>
 		Public Shared Function floorDiv(ByVal x As Long, ByVal y As Long) As Long
-			Return Math.floorDiv(x, y)
+			Return System.Math.floorDiv(x, y)
 		End Function
 
 		''' <summary>
@@ -881,7 +881,7 @@ Namespace java.lang
 		'''   <li>{@code floorDiv(x, y) * y + floorMod(x, y) == x}
 		''' </ul>
 		''' <p>
-		''' See <seealso cref="Math#floorMod(int, int) Math.floorMod"/> for examples and
+		''' See <seealso cref="Math#floorMod(int, int) System.Math.floorMod"/> for examples and
 		''' a comparison to the {@code %} operator.
 		''' </summary>
 		''' <param name="x"> the dividend </param>
@@ -892,7 +892,7 @@ Namespace java.lang
 		''' <seealso cref= StrictMath#floorDiv(int, int)
 		''' @since 1.8 </seealso>
 		Public Shared Function floorMod(ByVal x As Integer, ByVal y As Integer) As Integer
-			Return Math.floorMod(x, y)
+			Return System.Math.floorMod(x, y)
 		End Function
 		''' <summary>
 		''' Returns the floor modulus of the {@code long} arguments.
@@ -906,7 +906,7 @@ Namespace java.lang
 		'''   <li>{@code floorDiv(x, y) * y + floorMod(x, y) == x}
 		''' </ul>
 		''' <p>
-		''' See <seealso cref="Math#floorMod(int, int) Math.floorMod"/> for examples and
+		''' See <seealso cref="Math#floorMod(int, int) System.Math.floorMod"/> for examples and
 		''' a comparison to the {@code %} operator.
 		''' </summary>
 		''' <param name="x"> the dividend </param>
@@ -917,7 +917,7 @@ Namespace java.lang
 		''' <seealso cref= StrictMath#floorDiv(long, long)
 		''' @since 1.8 </seealso>
 		Public Shared Function floorMod(ByVal x As Long, ByVal y As Long) As Long
-			Return Math.floorMod(x, y)
+			Return System.Math.floorMod(x, y)
 		End Function
 
 		''' <summary>
@@ -933,7 +933,7 @@ Namespace java.lang
 		''' <param name="a">   the  argument whose absolute value is to be determined. </param>
 		''' <returns>  the absolute value of the argument. </returns>
 		Public Shared Function abs(ByVal a As Integer) As Integer
-			Return Math.Abs(a)
+			Return System.Math.Abs(a)
 		End Function
 
 		''' <summary>
@@ -949,7 +949,7 @@ Namespace java.lang
 		''' <param name="a">   the  argument whose absolute value is to be determined. </param>
 		''' <returns>  the absolute value of the argument. </returns>
 		Public Shared Function abs(ByVal a As Long) As Long
-			Return Math.Abs(a)
+			Return System.Math.Abs(a)
 		End Function
 
 		''' <summary>
@@ -967,7 +967,7 @@ Namespace java.lang
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
 		Public Shared Function abs(ByVal a As Single) As Single
-			Return Math.Abs(a)
+			Return System.Math.Abs(a)
 		End Function
 
 		''' <summary>
@@ -980,12 +980,12 @@ Namespace java.lang
 		''' <li>If the argument is infinite, the result is positive infinity.
 		''' <li>If the argument is NaN, the result is NaN.</ul>
 		''' In other words, the result is the same as the value of the expression:
-		''' <p>{@code Double.longBitsToDouble((Double.doubleToLongBits(a)<<1)>>>1)}
+		''' <p>{@code java.lang.[Double].longBitsToDouble((Double.doubleToLongBits(a)<<1)>>>1)}
 		''' </summary>
 		''' <param name="a">   the argument whose absolute value is to be determined </param>
 		''' <returns>  the absolute value of the argument. </returns>
 		Public Shared Function abs(ByVal a As Double) As Double
-			Return Math.Abs(a)
+			Return System.Math.Abs(a)
 		End Function
 
 		''' <summary>
@@ -998,7 +998,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
 		Public Shared Function max(ByVal a As Integer, ByVal b As Integer) As Integer
-			Return Math.Max(a, b)
+			Return System.Math.Max(a, b)
 		End Function
 
 		''' <summary>
@@ -1011,7 +1011,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
 		Public Shared Function max(ByVal a As Long, ByVal b As Long) As Long
-			Return Math.Max(a, b)
+			Return System.Math.Max(a, b)
 		End Function
 
 		''' <summary>
@@ -1028,7 +1028,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
 		Public Shared Function max(ByVal a As Single, ByVal b As Single) As Single
-			Return Math.Max(a, b)
+			Return System.Math.Max(a, b)
 		End Function
 
 		''' <summary>
@@ -1045,7 +1045,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the larger of {@code a} and {@code b}. </returns>
 		Public Shared Function max(ByVal a As Double, ByVal b As Double) As Double
-			Return Math.Max(a, b)
+			Return System.Math.Max(a, b)
 		End Function
 
 		''' <summary>
@@ -1058,7 +1058,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
 		Public Shared Function min(ByVal a As Integer, ByVal b As Integer) As Integer
-			Return Math.Min(a, b)
+			Return System.Math.Min(a, b)
 		End Function
 
 		''' <summary>
@@ -1071,7 +1071,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
 		Public Shared Function min(ByVal a As Long, ByVal b As Long) As Long
-			Return Math.Min(a, b)
+			Return System.Math.Min(a, b)
 		End Function
 
 		''' <summary>
@@ -1088,7 +1088,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b.} </returns>
 		Public Shared Function min(ByVal a As Single, ByVal b As Single) As Single
-			Return Math.Min(a, b)
+			Return System.Math.Min(a, b)
 		End Function
 
 		''' <summary>
@@ -1105,7 +1105,7 @@ Namespace java.lang
 		''' <param name="b">   another argument. </param>
 		''' <returns>  the smaller of {@code a} and {@code b}. </returns>
 		Public Shared Function min(ByVal a As Double, ByVal b As Double) As Double
-			Return Math.Min(a, b)
+			Return System.Math.Min(a, b)
 		End Function
 
 		''' <summary>
@@ -1121,8 +1121,8 @@ Namespace java.lang
 		''' <li> If the argument is positive or negative infinity, then the
 		''' result is positive infinity.
 		''' <li> If the argument is positive or negative zero, then the result is
-		''' {@code Double.MIN_VALUE}.
-		''' <li> If the argument is &plusmn;{@code Double.MAX_VALUE}, then
+		''' {@code java.lang.[Double].MIN_VALUE}.
+		''' <li> If the argument is &plusmn;{@code java.lang.[Double].MAX_VALUE}, then
 		''' the result is equal to 2<sup>971</sup>.
 		''' </ul>
 		''' </summary>
@@ -1131,7 +1131,7 @@ Namespace java.lang
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
 		Public Shared Function ulp(ByVal d As Double) As Double
-			Return Math.ulp(d)
+			Return System.Math.ulp(d)
 		End Function
 
 		''' <summary>
@@ -1157,7 +1157,7 @@ Namespace java.lang
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
 		Public Shared Function ulp(ByVal f As Single) As Single
-			Return Math.ulp(f)
+			Return System.Math.ulp(f)
 		End Function
 
 		''' <summary>
@@ -1177,7 +1177,7 @@ Namespace java.lang
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
 		Public Shared Function signum(ByVal d As Double) As Double
-			Return Math.Sign(d)
+			Return System.Math.Sign(d)
 		End Function
 
 		''' <summary>
@@ -1197,7 +1197,7 @@ Namespace java.lang
 		''' @author Joseph D. Darcy
 		''' @since 1.5 </returns>
 		Public Shared Function signum(ByVal f As Single) As Single
-			Return Math.Sign(f)
+			Return System.Math.Sign(f)
 		End Function
 
 		''' <summary>
@@ -1386,7 +1386,7 @@ Namespace java.lang
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
 		Public Shared Function copySign(ByVal magnitude As Double, ByVal sign As Double) As Double
-			Return Math.copySign(magnitude, (If(Double.IsNaN(sign), 1.0R, sign)))
+			Return System.Math.copySign(magnitude, (If(Double.IsNaN(sign), 1.0R, sign)))
 		End Function
 
 		''' <summary>
@@ -1401,7 +1401,7 @@ Namespace java.lang
 		''' and the sign of {@code sign}.
 		''' @since 1.6 </returns>
 		Public Shared Function copySign(ByVal magnitude As Single, ByVal sign As Single) As Single
-			Return Math.copySign(magnitude, (If(Float.IsNaN(sign), 1.0f, sign)))
+			Return System.Math.copySign(magnitude, (If(Float.IsNaN(sign), 1.0f, sign)))
 		End Function
 		''' <summary>
 		''' Returns the unbiased exponent used in the representation of a
@@ -1417,7 +1417,7 @@ Namespace java.lang
 		''' <returns> the unbiased exponent of the argument
 		''' @since 1.6 </returns>
 		Public Shared Function getExponent(ByVal f As Single) As Integer
-			Return Math.getExponent(f)
+			Return System.Math.getExponent(f)
 		End Function
 
 		''' <summary>
@@ -1434,7 +1434,7 @@ Namespace java.lang
 		''' <returns> the unbiased exponent of the argument
 		''' @since 1.6 </returns>
 		Public Shared Function getExponent(ByVal d As Double) As Integer
-			Return Math.getExponent(d)
+			Return System.Math.getExponent(d)
 		End Function
 
 		''' <summary>
@@ -1476,7 +1476,7 @@ Namespace java.lang
 		''' direction of {@code direction}.
 		''' @since 1.6 </returns>
 		Public Shared Function nextAfter(ByVal start As Double, ByVal direction As Double) As Double
-			Return Math.nextAfter(start, direction)
+			Return System.Math.nextAfter(start, direction)
 		End Function
 
 		''' <summary>
@@ -1517,14 +1517,14 @@ Namespace java.lang
 		''' direction of {@code direction}.
 		''' @since 1.6 </returns>
 		Public Shared Function nextAfter(ByVal start As Single, ByVal direction As Double) As Single
-			Return Math.nextAfter(start, direction)
+			Return System.Math.nextAfter(start, direction)
 		End Function
 
 		''' <summary>
 		''' Returns the floating-point value adjacent to {@code d} in
 		''' the direction of positive infinity.  This method is
 		''' semantically equivalent to {@code nextAfter(d,
-		''' Double.POSITIVE_INFINITY)}; however, a {@code nextUp}
+		''' java.lang.[Double].POSITIVE_INFINITY)}; however, a {@code nextUp}
 		''' implementation may run faster than its equivalent
 		''' {@code nextAfter} call.
 		''' 
@@ -1545,7 +1545,7 @@ Namespace java.lang
 		''' infinity.
 		''' @since 1.6 </returns>
 		Public Shared Function nextUp(ByVal d As Double) As Double
-			Return Math.nextUp(d)
+			Return System.Math.nextUp(d)
 		End Function
 
 		''' <summary>
@@ -1573,14 +1573,14 @@ Namespace java.lang
 		''' infinity.
 		''' @since 1.6 </returns>
 		Public Shared Function nextUp(ByVal f As Single) As Single
-			Return Math.nextUp(f)
+			Return System.Math.nextUp(f)
 		End Function
 
 		''' <summary>
 		''' Returns the floating-point value adjacent to {@code d} in
 		''' the direction of negative infinity.  This method is
 		''' semantically equivalent to {@code nextAfter(d,
-		''' Double.NEGATIVE_INFINITY)}; however, a
+		''' java.lang.[Double].NEGATIVE_INFINITY)}; however, a
 		''' {@code nextDown} implementation may run faster than its
 		''' equivalent {@code nextAfter} call.
 		''' 
@@ -1601,7 +1601,7 @@ Namespace java.lang
 		''' infinity.
 		''' @since 1.8 </returns>
 		Public Shared Function nextDown(ByVal d As Double) As Double
-			Return Math.nextDown(d)
+			Return System.Math.nextDown(d)
 		End Function
 
 		''' <summary>
@@ -1629,7 +1629,7 @@ Namespace java.lang
 		''' infinity.
 		''' @since 1.8 </returns>
 		Public Shared Function nextDown(ByVal f As Single) As Single
-			Return Math.nextDown(f)
+			Return System.Math.nextDown(f)
 		End Function
 
 		''' <summary>
@@ -1641,7 +1641,7 @@ Namespace java.lang
 		''' value sets.  If the exponent of the result is between {@link
 		''' Double#MIN_EXPONENT} and <seealso cref="Double#MAX_EXPONENT"/>, the
 		''' answer is calculated exactly.  If the exponent of the result
-		''' would be larger than {@code Double.MAX_EXPONENT}, an
+		''' would be larger than {@code java.lang.[Double].MAX_EXPONENT}, an
 		''' infinity is returned.  Note that if the result is subnormal,
 		''' precision may be lost; that is, when {@code scalb(x, n)}
 		''' is subnormal, {@code scalb(scalb(x, n), -n)} may not equal
@@ -1662,7 +1662,7 @@ Namespace java.lang
 		''' <returns> {@code d} &times; 2<sup>{@code scaleFactor}</sup>
 		''' @since 1.6 </returns>
 		Public Shared Function scalb(ByVal d As Double, ByVal scaleFactor As Integer) As Double
-			Return Math.scalb(d, scaleFactor)
+			Return System.Math.scalb(d, scaleFactor)
 		End Function
 
 		''' <summary>
@@ -1695,7 +1695,7 @@ Namespace java.lang
 		''' <returns> {@code f} &times; 2<sup>{@code scaleFactor}</sup>
 		''' @since 1.6 </returns>
 		Public Shared Function scalb(ByVal f As Single, ByVal scaleFactor As Integer) As Single
-			Return Math.scalb(f, scaleFactor)
+			Return System.Math.scalb(f, scaleFactor)
 		End Function
 	End Class
 

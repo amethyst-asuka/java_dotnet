@@ -65,7 +65,7 @@ Namespace java.nio.file
 	'''     final Path source = ...
 	'''     final Path target = ...
 	''' 
-	'''     Files.walkFileTree(source, EnumSet.of(FileVisitOption.FOLLOW_LINKS),  [Integer].MAX_VALUE,
+	'''     Files.walkFileTree(source, EnumSet.of(FileVisitOption.FOLLOW_LINKS),  java.lang.[Integer].MAX_VALUE,
 	'''         new SimpleFileVisitor&lt;Path&gt;() {
 	'''             &#64;Override
 	'''             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)

@@ -2525,7 +2525,7 @@ Namespace java.nio.file
         ''' <p> This method works as if invoking it were equivalent to evaluating the
         ''' expression:
         ''' <blockquote><pre>
-        ''' walkFileTree(start, EnumSet.noneOf(FileVisitOption.class),  [Integer].MAX_VALUE, visitor)
+        ''' walkFileTree(start, EnumSet.noneOf(FileVisitOption.class),  java.lang.[Integer].MAX_VALUE, visitor)
         ''' </pre></blockquote>
         ''' In other words, it does not follow symbolic links, and visits all levels
         ''' of the file tree.
@@ -2546,7 +2546,7 @@ Namespace java.nio.file
         '''          if an I/O error is thrown by a visitor method </exception>
         'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
         Public Shared Function walkFileTree(Of T1)(ByVal start As Path, ByVal visitor As FileVisitor(Of T1)) As Path
-            Return walkFileTree(start, java.util.EnumSet.noneOf(GetType(FileVisitOption)), Integer.MaxValue, visitor)
+            Return walkFileTree(start, java.util.EnumSet.noneOf(GetType(FileVisitOption)),  java.lang.[Integer].Max_Value, visitor)
         End Function
 
 
@@ -2865,7 +2865,7 @@ Namespace java.nio.file
         ''' Attempts to allocate larger arrays may result in
         ''' OutOfMemoryError: Requested array size exceeds VM limit
         ''' </summary>
-        Private Shared ReadOnly MAX_BUFFER_SIZE As Integer = [Integer].MAX_VALUE - 8
+        Private Shared ReadOnly MAX_BUFFER_SIZE As Integer = java.lang.[Integer].MAX_VALUE - 8
 
         ''' <summary>
         ''' Reads all the bytes from an input stream. Uses {@code initialSize} as a hint
@@ -2903,7 +2903,7 @@ Namespace java.nio.file
 
                 ' one more byte was read; need to allocate a larger buffer
                 If capacity <= MAX_BUFFER_SIZE - capacity Then
-                    capacity = math.Max(capacity << 1, BUFFER_SIZE)
+                    capacity = System.Math.Max(capacity << 1, BUFFER_SIZE)
                 Else
                     If capacity = MAX_BUFFER_SIZE Then Throw New OutOfMemoryError("Required array size too large")
                     capacity = MAX_BUFFER_SIZE
@@ -3075,7 +3075,7 @@ Namespace java.nio.file
                 Dim len As Integer = bytes.Length
                 Dim [rem] As Integer = len
                 Do While [rem] > 0
-                    Dim n As Integer = math.Min([rem], BUFFER_SIZE)
+                    Dim n As Integer = System.Math.Min([rem], BUFFER_SIZE)
                     out.write(bytes, (len - [rem]), n)
                     [rem] -= n
                 Loop
@@ -3361,7 +3361,7 @@ Namespace java.nio.file
         ''' <p> This method works as if invoking it were equivalent to evaluating the
         ''' expression:
         ''' <blockquote><pre>
-        ''' walk(start,  [Integer].MAX_VALUE, options)
+        ''' walk(start,  java.lang.[Integer].MAX_VALUE, options)
         ''' </pre></blockquote>
         ''' In other words, it visits all levels of the file tree.
         ''' 
@@ -3390,7 +3390,7 @@ Namespace java.nio.file
         ''' <seealso cref=     #walk(Path, int, FileVisitOption...)
         ''' @since   1.8 </seealso>
         Public Shared Function walk(ByVal start As Path, ParamArray ByVal options As FileVisitOption()) As java.util.stream.Stream(Of Path)
-            Return walk(start, Integer.MaxValue, options)
+            Return walk(start,  java.lang.[Integer].Max_Value, options)
         End Function
 
         ''' <summary>

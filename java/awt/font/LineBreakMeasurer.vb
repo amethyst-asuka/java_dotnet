@@ -197,8 +197,8 @@ Namespace java.awt.font
 	'''                 layouts.addElement(layout);
 	'''                 penPositions.addElement(new Float(horizontalPos));
 	'''                 horizontalPos += layout.getAdvance();
-	'''                 maxAscent = Math.max(maxAscent, layout.getAscent());
-	'''                 maxDescent = Math.max(maxDescent,
+	'''                 maxAscent = System.Math.max(maxAscent, layout.getAscent());
+	'''                 maxDescent = System.Math.max(maxDescent,
 	'''                     layout.getDescent() + layout.getLeading());
 	'''             } else {
 	'''                 lineComplete = true;
@@ -369,7 +369,7 @@ Namespace java.awt.font
 						If requireNextWord Then
 							nextOffset_Renamed = pos
 						Else
-							nextOffset_Renamed = Math.Max(pos+1, charAtMaxAdvance)
+							nextOffset_Renamed = System.Math.Max(pos+1, charAtMaxAdvance)
 						End If
 					End If
 				End If

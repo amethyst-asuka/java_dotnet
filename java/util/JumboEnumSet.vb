@@ -134,7 +134,7 @@ Namespace java.util
 				lastReturned = unseen And -unseen
 				lastReturnedIndex = unseenIndex
 				unseen -= lastReturned
-				Return CType(universe((lastReturnedIndex << 6) + Long.numberOfTrailingZeros(lastReturned)), E)
+				Return CType(universe((lastReturnedIndex << 6) + java.lang.[Long].numberOfTrailingZeros(lastReturned)), E)
 
 			public void remove()
 				If lastReturned = 0 Then Throw New IllegalStateException
@@ -335,7 +335,7 @@ Namespace java.util
 			Dim oldSize As Integer = size_Renamed
 			size_Renamed = 0
 			For Each elt As Long In elements
-				size_Renamed += Long.bitCount(elt)
+				size_Renamed += java.lang.[Long].bitCount(elt)
 			Next elt
 
 			Return size_Renamed <> oldSize

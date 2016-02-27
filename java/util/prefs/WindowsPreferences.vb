@@ -146,7 +146,7 @@ Namespace java.util.prefs
 			If result(ERROR_CODE) = ERROR_SUCCESS Then
 				Return result
 			ElseIf result(ERROR_CODE) = ERROR_FILE_NOT_FOUND Then
-				logger().warning("Trying to recreate Windows registry node " & byteArrayToString(subKey) & " at root 0x" & Integer.toHexString(hKey) & ".")
+				logger().warning("Trying to recreate Windows registry node " & byteArrayToString(subKey) & " at root 0x" &  java.lang.[Integer].toHexString(hKey) & ".")
 				' Try recreation
 				Dim handle As Integer = WindowsRegCreateKeyEx(hKey, subKey)(NATIVE_HANDLE)
 				WindowsRegCloseKey(handle)
@@ -397,7 +397,7 @@ Namespace java.util.prefs
 			End If
 			Dim result As Integer() = WindowsRegCreateKeyEx1(parentNativeHandle, toWindowsName(name))
 			If result(ERROR_CODE) <> ERROR_SUCCESS Then
-				logger().warning("Could not create windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegCreateKeyEx(...) returned error code " & result(ERROR_CODE) & ".")
+				logger().warning("Could not create windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegCreateKeyEx(...) returned error code " & result(ERROR_CODE) & ".")
 				isBackingStoreAvailable = False
 				Return
 			End If
@@ -417,7 +417,7 @@ Namespace java.util.prefs
 			MyBase.New(Nothing, "")
 			Dim result As Integer() = WindowsRegCreateKeyEx1(rootNativeHandle, rootDirectory)
 			If result(ERROR_CODE) <> ERROR_SUCCESS Then
-				logger().warning("Could not open/create prefs root node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegCreateKeyEx(...) returned error code " & result(ERROR_CODE) & ".")
+				logger().warning("Could not open/create prefs root node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegCreateKeyEx(...) returned error code " & result(ERROR_CODE) & ".")
 				isBackingStoreAvailable = False
 				Return
 			End If
@@ -488,9 +488,9 @@ Namespace java.util.prefs
 				If result(ERROR_CODE) = ERROR_ACCESS_DENIED AndAlso mask2 <> mask1 Then result = WindowsRegOpenKey1(rootNativeHandle(), windowsAbsolutePath, mask2)
 
 				If result(ERROR_CODE) <> ERROR_SUCCESS Then
-					logger().warning("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegOpenKey(...) returned error code " & result(ERROR_CODE) & ".")
+					logger().warning("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegOpenKey(...) returned error code " & result(ERROR_CODE) & ".")
 					result(NATIVE_HANDLE) = NULL_NATIVE_HANDLE
-					If result(ERROR_CODE) = ERROR_ACCESS_DENIED Then Throw New SecurityException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ": Access denied")
+					If result(ERROR_CODE) = ERROR_ACCESS_DENIED Then Throw New SecurityException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ": Access denied")
 				End If
 				Return result(NATIVE_HANDLE)
 			Else
@@ -517,7 +517,7 @@ Namespace java.util.prefs
 				If result(ERROR_CODE) = ERROR_ACCESS_DENIED AndAlso mask2 <> mask1 Then result = WindowsRegOpenKey1(nativeHandle, windowsRelativePath, mask2)
 
 				If result(ERROR_CODE) <> ERROR_SUCCESS Then
-					logger().warning("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(nativeHandle) & ". Windows RegOpenKey(...) returned error code " & result(ERROR_CODE) & ".")
+					logger().warning("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(nativeHandle) & ". Windows RegOpenKey(...) returned error code " & result(ERROR_CODE) & ".")
 					result(NATIVE_HANDLE) = NULL_NATIVE_HANDLE
 				End If
 				Return result(NATIVE_HANDLE)
@@ -553,7 +553,7 @@ Namespace java.util.prefs
 		 ''' <seealso cref= #openKey(int, byte[],int) </seealso>
 		Private Sub closeKey(ByVal nativeHandle As Integer)
 			Dim result As Integer = WindowsRegCloseKey(nativeHandle)
-			If result <> ERROR_SUCCESS Then logger().warning("Could not close windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegCloseKey(...) returned error code " & result & ".")
+			If result <> ERROR_SUCCESS Then logger().warning("Could not close windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegCloseKey(...) returned error code " & result & ".")
 		End Sub
 
 		 ''' <summary>
@@ -569,7 +569,7 @@ Namespace java.util.prefs
 			End If
 			Dim result As Integer = WindowsRegSetValueEx1(nativeHandle, toWindowsName(javaName), toWindowsValueString(value))
 			If result <> ERROR_SUCCESS Then
-				logger().warning("Could not assign value to key " & byteArrayToString(toWindowsName(javaName)) & " at Windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegSetValueEx(...) returned error code " & result & ".")
+				logger().warning("Could not assign value to key " & byteArrayToString(toWindowsName(javaName)) & " at Windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegSetValueEx(...) returned error code " & result & ".")
 				isBackingStoreAvailable = False
 			End If
 			closeKey(nativeHandle)
@@ -604,7 +604,7 @@ Namespace java.util.prefs
 			If nativeHandle = NULL_NATIVE_HANDLE Then Return
 			Dim result As Integer = WindowsRegDeleteValue(nativeHandle, toWindowsName(key))
 			If result <> ERROR_SUCCESS AndAlso result <> ERROR_FILE_NOT_FOUND Then
-				logger().warning("Could not delete windows registry value " & byteArrayToString(windowsAbsolutePath()) & "\" & toWindowsName(key) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegDeleteValue(...) returned error code " & result & ".")
+				logger().warning("Could not delete windows registry value " & byteArrayToString(windowsAbsolutePath()) & "\" & toWindowsName(key) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegDeleteValue(...) returned error code " & result & ".")
 				isBackingStoreAvailable = False
 			End If
 			closeKey(nativeHandle)
@@ -619,10 +619,10 @@ Namespace java.util.prefs
 		Protected Friend Overrides Function keysSpi() As String()
 			' Find out the number of values
 			Dim nativeHandle As Integer = openKey(KEY_QUERY_VALUE)
-			If nativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ".")
+			If nativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ".")
 			Dim result As Integer() = WindowsRegQueryInfoKey1(nativeHandle)
 			If result(ERROR_CODE) <> ERROR_SUCCESS Then
-				Dim info As String = "Could not query windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegQueryInfoKeyEx(...) returned error code " & result(ERROR_CODE) & "."
+				Dim info As String = "Could not query windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegQueryInfoKeyEx(...) returned error code " & result(ERROR_CODE) & "."
 				logger().warning(info)
 				Throw New BackingStoreException(info)
 			End If
@@ -637,7 +637,7 @@ Namespace java.util.prefs
 			For i As Integer = 0 To valuesNumber - 1
 				Dim windowsName As SByte() = WindowsRegEnumValue1(nativeHandle, i, maxValueNameLength+1)
 				If windowsName Is Nothing Then
-					Dim info As String = "Could not enumerate value #" & i & "  of windows node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & "."
+					Dim info As String = "Could not enumerate value #" & i & "  of windows node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & "."
 					logger().warning(info)
 					Throw New BackingStoreException(info)
 				End If
@@ -656,11 +656,11 @@ Namespace java.util.prefs
 		Protected Friend Overrides Function childrenNamesSpi() As String()
 			' Open key
 			Dim nativeHandle As Integer = openKey(KEY_ENUMERATE_SUB_KEYS Or KEY_QUERY_VALUE)
-			If nativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ".")
+			If nativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ".")
 			' Get number of children
 			Dim result As Integer() = WindowsRegQueryInfoKey1(nativeHandle)
 			If result(ERROR_CODE) <> ERROR_SUCCESS Then
-				Dim info As String = "Could not query windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegQueryInfoKeyEx(...) returned error code " & result(ERROR_CODE) & "."
+				Dim info As String = "Could not query windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegQueryInfoKeyEx(...) returned error code " & result(ERROR_CODE) & "."
 				logger().warning(info)
 				Throw New BackingStoreException(info)
 			End If
@@ -676,7 +676,7 @@ Namespace java.util.prefs
 			For i As Integer = 0 To subKeysNumber - 1
 				Dim windowsName As SByte() = WindowsRegEnumKeyEx1(nativeHandle, i, maxKeyLength+1)
 				If windowsName Is Nothing Then
-					Dim info As String = "Could not enumerate key #" & i & "  of windows node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". "
+					Dim info As String = "Could not enumerate key #" & i & "  of windows node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". "
 					logger().warning(info)
 					Throw New BackingStoreException(info)
 				End If
@@ -701,10 +701,10 @@ Namespace java.util.prefs
 			End If
 			If Not isBackingStoreAvailable Then Throw New BackingStoreException("flush(): Backing store not available.")
 			Dim nativeHandle As Integer = openKey(KEY_READ)
-			If nativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ".")
+			If nativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ".")
 			Dim result As Integer = WindowsRegFlushKey1(nativeHandle)
 			If result <> ERROR_SUCCESS Then
-				Dim info As String = "Could not flush windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegFlushKey(...) returned error code " & result & "."
+				Dim info As String = "Could not flush windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegFlushKey(...) returned error code " & result & "."
 				logger().warning(info)
 				Throw New BackingStoreException(info)
 			End If
@@ -740,10 +740,10 @@ Namespace java.util.prefs
 		''' </summary>
 		Public Overrides Sub removeNodeSpi()
 			Dim parentNativeHandle As Integer = CType(parent(), WindowsPreferences).openKey(DELETE)
-			If parentNativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open parent windows registry node of " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ".")
+			If parentNativeHandle = NULL_NATIVE_HANDLE Then Throw New BackingStoreException("Could not open parent windows registry node of " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ".")
 			Dim result As Integer = WindowsRegDeleteKey(parentNativeHandle, toWindowsName(name()))
 			If result <> ERROR_SUCCESS Then
-				Dim info As String = "Could not delete windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" & Integer.toHexString(rootNativeHandle()) & ". Windows RegDeleteKeyEx(...) returned error code " & result & "."
+				Dim info As String = "Could not delete windows registry node " & byteArrayToString(windowsAbsolutePath()) & " at root 0x" &  java.lang.[Integer].toHexString(rootNativeHandle()) & ". Windows RegDeleteKeyEx(...) returned error code " & result & "."
 				logger().warning(info)
 				Throw New BackingStoreException(info)
 			End If
@@ -918,7 +918,7 @@ Namespace java.util.prefs
 				If (AscW(ch) < &H20) OrElse (AscW(ch) > &H7f) Then
 					' write \udddd
 					windowsName.append("/u")
-					Dim hex As String = Integer.toHexString(javaName.Chars(i))
+					Dim hex As String =  java.lang.[Integer].toHexString(javaName.Chars(i))
 					Dim hex4 As New StringBuilder(hex)
 					hex4.reverse()
 					Dim len As Integer = 4 - hex4.length()

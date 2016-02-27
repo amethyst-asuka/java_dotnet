@@ -63,7 +63,7 @@ Namespace java.io
 		End Function
 
 		Friend Shared Function getDouble(ByVal b As SByte(), ByVal [off] As Integer) As Double
-			Return Double.longBitsToDouble(getLong(b, [off]))
+			Return java.lang.[Double].longBitsToDouble(getLong(b, [off]))
 		End Function
 
 	'    
@@ -108,7 +108,7 @@ Namespace java.io
 		End Sub
 
 		Friend Shared Sub putDouble(ByVal b As SByte(), ByVal [off] As Integer, ByVal val As Double)
-			putLong(b, [off], Double.doubleToLongBits(val))
+			putLong(b, [off], java.lang.[Double].doubleToLongBits(val))
 		End Sub
 	End Class
 

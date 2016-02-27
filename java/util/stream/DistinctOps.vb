@@ -70,7 +70,7 @@ Namespace java.util.stream
 					' Holder of null state since ConcurrentHashMap does not support null values
 					Dim seenNull As New java.util.concurrent.atomic.AtomicBoolean(False)
 					Dim map As New ConcurrentDictionary(Of T, Boolean?)
-					Dim forEachOp As TerminalOp(Of T, Void) = ForEachOps.makeRef(t -> { if(t Is Nothing) seenNull.set(True); else map.GetOrAdd(t, Boolean.TRUE); }, False)
+					Dim forEachOp As TerminalOp(Of T, Void) = ForEachOps.makeRef(t -> { if(t Is Nothing) seenNull.set(True); else map.GetOrAdd(t,  java.lang.[Boolean].TRUE); }, False)
 					forEachOp.evaluateParallel(helper, spliterator)
 
 					' If null has been seen then copy the key set into a HashSet that supports null values

@@ -235,7 +235,7 @@ Namespace java.util
 		''' </summary>
 		Private Shared Function capacity(ByVal expectedMaxSize As Integer) As Integer
 			' assert expectedMaxSize >= 0;
-			Return If(expectedMaxSize > MAXIMUM_CAPACITY \ 3, MAXIMUM_CAPACITY, If(expectedMaxSize <= 2 * MINIMUM_CAPACITY \ 3, MINIMUM_CAPACITY, Integer.highestOneBit(expectedMaxSize + (expectedMaxSize << 1))))
+			Return If(expectedMaxSize > MAXIMUM_CAPACITY \ 3, MAXIMUM_CAPACITY, If(expectedMaxSize <= 2 * MINIMUM_CAPACITY \ 3, MINIMUM_CAPACITY,  java.lang.[Integer].highestOneBit(expectedMaxSize + (expectedMaxSize << 1))))
 		End Function
 
 		''' <summary>

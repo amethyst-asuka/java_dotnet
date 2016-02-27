@@ -390,7 +390,7 @@ Namespace java.time.chrono
 					Case DAY_OF_MONTH
 						Return resolvePreviousValid(prolepticYear, monthOfYear, nvalue)
 					Case DAY_OF_YEAR
-						Return plusDays(Math.Min(nvalue, lengthOfYear()) - dayOfYear)
+						Return plusDays (System.Math.Min(nvalue, lengthOfYear()) - dayOfYear)
 					Case EPOCH_DAY
 						Return New HijrahDate(chrono, newValue)
 					Case ALIGNED_WEEK_OF_MONTH
@@ -482,7 +482,7 @@ Namespace java.time.chrono
 		''' <returns> the day-of-week; computed from the epochday </returns>
 		Private Property dayOfWeek As Integer
 			Get
-				Dim dow0 As Integer = CInt(Math.floorMod(toEpochDay() + 3, 7))
+				Dim dow0 As Integer = CInt (System.Math.floorMod(toEpochDay() + 3, 7))
 				Return dow0 + 1
 			End Get
 		End Property
@@ -511,7 +511,7 @@ Namespace java.time.chrono
 		'-----------------------------------------------------------------------
 		Friend Overrides Function plusYears(ByVal years As Long) As HijrahDate
 			If years = 0 Then Return Me
-			Dim newYear As Integer = Math.addExact(Me.prolepticYear, CInt(years))
+			Dim newYear As Integer = System.Math.addExact(Me.prolepticYear, CInt(years))
 			Return resolvePreviousValid(newYear, monthOfYear, dayOfMonth)
 		End Function
 
@@ -519,8 +519,8 @@ Namespace java.time.chrono
 			If monthsToAdd = 0 Then Return Me
 			Dim monthCount As Long = prolepticYear * 12L + (monthOfYear - 1)
 			Dim calcMonths As Long = monthCount + monthsToAdd ' safe overflow
-			Dim newYear As Integer = chrono.checkValidYear(Math.floorDiv(calcMonths, 12L))
-			Dim newMonth As Integer = CInt(Math.floorMod(calcMonths, 12L)) + 1
+			Dim newYear As Integer = chrono.checkValidYear (System.Math.floorDiv(calcMonths, 12L))
+			Dim newMonth As Integer = CInt (System.Math.floorMod(calcMonths, 12L)) + 1
 			Return resolvePreviousValid(newYear, newMonth, dayOfMonth)
 		End Function
 
@@ -576,7 +576,7 @@ Namespace java.time.chrono
 			End If
 			Dim years As Long = totalMonths \ 12 ' safe
 			Dim months As Integer = CInt(Fix(totalMonths Mod 12)) ' safe
-			Return chronology.period(Math.toIntExact(years), months, days)
+			Return chronology.period (System.Math.toIntExact(years), months, days)
 		End Function
 
 		'-------------------------------------------------------------------------

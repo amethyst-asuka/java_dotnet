@@ -469,7 +469,7 @@ Namespace java.util
 						len += 1
 						If len = lineBuf.Length Then
 							Dim newLength As Integer = lineBuf.Length * 2
-							If newLength < 0 Then newLength = Integer.MaxValue
+							If newLength < 0 Then newLength =  java.lang.[Integer].Max_Value
 							Dim buf As Char() = New Char(newLength - 1){}
 							Array.Copy(lineBuf, 0, buf, 0, lineBuf.Length)
 							lineBuf = buf
@@ -519,7 +519,7 @@ Namespace java.util
 		Private Function loadConvert(ByVal [in] As Char(), ByVal [off] As Integer, ByVal len As Integer, ByVal convtBuf As Char()) As String
 			If convtBuf.Length < len Then
 				Dim newLen As Integer = len * 2
-				If newLen < 0 Then newLen = Integer.MaxValue
+				If newLen < 0 Then newLen =  java.lang.[Integer].Max_Value
 				convtBuf = New Char(newLen - 1){}
 			End If
 			Dim aChar As Char
@@ -580,7 +580,7 @@ Namespace java.util
 		Private Function saveConvert(ByVal theString As String, ByVal escapeSpace As Boolean, ByVal escapeUnicode As Boolean) As String
 			Dim len As Integer = theString.length()
 			Dim bufLen As Integer = len * 2
-			If bufLen < 0 Then bufLen = Integer.MaxValue
+			If bufLen < 0 Then bufLen =  java.lang.[Integer].Max_Value
 			Dim outBuffer As New StringBuffer(bufLen)
 
 			For x As Integer = 0 To len - 1

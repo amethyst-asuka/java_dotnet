@@ -129,7 +129,7 @@ Namespace java.util.concurrent
 		''' Attempts to allocate larger arrays may result in
 		''' OutOfMemoryError: Requested array size exceeds VM limit
 		''' </summary>
-		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  [Integer].MAX_VALUE - 8
+		Private Shared ReadOnly MAX_ARRAY_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
 		''' <summary>
 		''' Priority queue represented as a balanced binary heap: the two
@@ -603,11 +603,11 @@ Namespace java.util.concurrent
 		End Function
 
 		''' <summary>
-		''' Always returns {@code  [Integer].MAX_VALUE} because
+		''' Always returns {@code  java.lang.[Integer].MAX_VALUE} because
 		''' a {@code PriorityBlockingQueue} is not capacity constrained. </summary>
-		''' <returns> {@code  [Integer].MAX_VALUE} always </returns>
+		''' <returns> {@code  java.lang.[Integer].MAX_VALUE} always </returns>
 		Public Overridable Function remainingCapacity() As Integer Implements BlockingQueue(Of E).remainingCapacity
-			Return Integer.MaxValue
+			Return  java.lang.[Integer].Max_Value
 		End Function
 
 		Private Function indexOf(ByVal o As Object) As Integer
@@ -760,7 +760,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer Implements BlockingQueue(Of E).drainTo
-			Return drainTo(c, Integer.MaxValue)
+			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
@@ -775,7 +775,7 @@ Namespace java.util.concurrent
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
-				Dim n As Integer = Math.Min(size_Renamed, maxElements)
+				Dim n As Integer = System.Math.Min(size_Renamed, maxElements)
 				For i As Integer = 0 To n - 1
 					c.Add(CType(queue(0), E)) ' In this order, in case add() throws.
 					dequeue()
@@ -916,7 +916,7 @@ Namespace java.util.concurrent
 			lock.lock()
 			Try
 				' avoid zero capacity argument
-				q = New java.util.PriorityQueue(Of E)(Math.Max(size_Renamed, 1), comparator_Renamed)
+				q = New java.util.PriorityQueue(Of E) (System.Math.Max(size_Renamed, 1), comparator_Renamed)
 				q.addAll(Me)
 				s.defaultWriteObject()
 			Finally

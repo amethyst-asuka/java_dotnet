@@ -94,7 +94,7 @@ Namespace java.awt
 	''' <p>
 	''' This class uses 32-bit integers to store its location and dimensions.
 	''' Frequently operations may produce a result that exceeds the range of
-	''' a 32-bit integer.
+	''' a 32-bit  java.lang.[Integer].
 	''' The methods will calculate their results in a way that avoids any
 	''' 32-bit overflow for intermediate results and then choose the best
 	''' representation to store the final results back into the 32-bit fields
@@ -365,7 +365,7 @@ Namespace java.awt
 		Public Overrides Sub setRect(ByVal x As Double, ByVal y As Double, ByVal width As Double, ByVal height As Double)
 			Dim newx, newy, neww, newh As Integer
 
-			If x > 2.0 * Integer.MaxValue Then
+			If x > 2.0 *  java.lang.[Integer].Max_Value Then
 				' Too far in positive X direction to represent...
 				' We cannot even reach the left side of the specified
 				' rectangle even with both x & width set to MAX_VALUE.
@@ -373,7 +373,7 @@ Namespace java.awt
 				' is non-existant so we should use a width < 0.
 				' REMIND: Should we try to determine a more "meaningful"
 				' adjusted value for neww than just "-1"?
-				newx = Integer.MaxValue
+				newx =  java.lang.[Integer].Max_Value
 				neww = -1
 			Else
 				newx = clip(x, False)
@@ -381,9 +381,9 @@ Namespace java.awt
 				neww = clip(width, width >= 0)
 			End If
 
-			If y > 2.0 * Integer.MaxValue Then
+			If y > 2.0 *  java.lang.[Integer].Max_Value Then
 				' Too far in positive Y direction to represent...
-				newy = Integer.MaxValue
+				newy =  java.lang.[Integer].Max_Value
 				newh = -1
 			Else
 				newy = clip(y, False)
@@ -394,11 +394,11 @@ Namespace java.awt
 			reshape(newx, newy, neww, newh)
 		End Sub
 		' Return best integer representation for v, clipped to integer
-		' range and floor-ed or ceiling-ed, depending on the boolean.
+		' range and floor-ed or ceiling-ed, depending on the  java.lang.[Boolean].
 		Private Shared Function clip(ByVal v As Double, ByVal doceil As Boolean) As Integer
-			If v <= Integer.MinValue Then Return Integer.MinValue
-			If v >= Integer.MaxValue Then Return Integer.MaxValue
-			Return CInt(Fix(If(doceil, Math.Ceiling(v), Math.Floor(v))))
+			If v <=  java.lang.[Integer].MIN_VALUE Then Return  java.lang.[Integer].MIN_VALUE
+			If v >=  java.lang.[Integer].Max_Value Then Return  java.lang.[Integer].Max_Value
+			Return CInt(Fix(If(doceil, System.Math.Ceiling(v), System.Math.Floor(v))))
 		End Function
 
 		''' <summary>
@@ -489,8 +489,8 @@ Namespace java.awt
 				If newv > oldv Then
 					' negative overflow
 					' Only adjust width if it was valid (>= 0).
-					If width >= 0 Then width += newv - Integer.MinValue
-					newv = Integer.MinValue
+					If width >= 0 Then width += newv -  java.lang.[Integer].MIN_VALUE
+					newv =  java.lang.[Integer].MIN_VALUE
 				End If
 			Else
 				' moving rightward (or staying still)
@@ -499,12 +499,12 @@ Namespace java.awt
 					If width >= 0 Then
 						' Conceptually the same as:
 						' width += newv; newv = MAX_VALUE; width -= newv;
-						width += newv - Integer.MaxValue
+						width += newv -  java.lang.[Integer].Max_Value
 						' With large widths and large displacements
 						' we may overflow so we need to check it.
-						If width < 0 Then width = Integer.MaxValue
+						If width < 0 Then width =  java.lang.[Integer].Max_Value
 					End If
-					newv = Integer.MaxValue
+					newv =  java.lang.[Integer].Max_Value
 				End If
 			End If
 			Me.x = newv
@@ -515,18 +515,18 @@ Namespace java.awt
 				' moving upward
 				If newv > oldv Then
 					' negative overflow
-					If height >= 0 Then height += newv - Integer.MinValue
-					newv = Integer.MinValue
+					If height >= 0 Then height += newv -  java.lang.[Integer].MIN_VALUE
+					newv =  java.lang.[Integer].MIN_VALUE
 				End If
 			Else
 				' moving downward (or staying still)
 				If newv < oldv Then
 					' positive overflow
 					If height >= 0 Then
-						height += newv - Integer.MaxValue
-						If height < 0 Then height = Integer.MaxValue
+						height += newv -  java.lang.[Integer].Max_Value
+						If height < 0 Then height =  java.lang.[Integer].Max_Value
 					End If
-					newv = Integer.MaxValue
+					newv =  java.lang.[Integer].Max_Value
 				End If
 			End If
 			Me.y = newv
@@ -757,8 +757,8 @@ Namespace java.awt
 			' tx2,ty2 will never overflow (they will never be
 			' larger than the smallest of the two source w,h)
 			' they might underflow, though...
-			If tx2 < Integer.MinValue Then tx2 = Integer.MinValue
-			If ty2 < Integer.MinValue Then ty2 = Integer.MinValue
+			If tx2 <  java.lang.[Integer].MIN_VALUE Then tx2 =  java.lang.[Integer].MIN_VALUE
+			If ty2 <  java.lang.[Integer].MIN_VALUE Then ty2 =  java.lang.[Integer].MIN_VALUE
 			Return New Rectangle(tx1, ty1, CInt(tx2), CInt(ty2))
 		End Function
 
@@ -778,7 +778,7 @@ Namespace java.awt
 		''' <p>
 		''' If the resulting {@code Rectangle} would have a dimension
 		''' too large to be expressed as an {@code int}, the result
-		''' will have a dimension of {@code  [Integer].MAX_VALUE} along
+		''' will have a dimension of {@code  java.lang.[Integer].MAX_VALUE} along
 		''' that dimension. </summary>
 		''' <param name="r"> the specified <code>Rectangle</code> </param>
 		''' <returns>    the smallest <code>Rectangle</code> containing both
@@ -808,8 +808,8 @@ Namespace java.awt
 			' tx2,ty2 will never underflow since both original rectangles
 			' were already proven to be non-empty
 			' they might overflow, though...
-			If tx2 > Integer.MaxValue Then tx2 = Integer.MaxValue
-			If ty2 > Integer.MaxValue Then ty2 = Integer.MaxValue
+			If tx2 >  java.lang.[Integer].Max_Value Then tx2 =  java.lang.[Integer].Max_Value
+			If ty2 >  java.lang.[Integer].Max_Value Then ty2 =  java.lang.[Integer].Max_Value
 			Return New Rectangle(tx1, ty1, CInt(tx2), CInt(ty2))
 		End Function
 
@@ -859,8 +859,8 @@ Namespace java.awt
 			If y2 < newy Then y2 = newy
 			x2 -= x1
 			y2 -= y1
-			If x2 > Integer.MaxValue Then x2 = Integer.MaxValue
-			If y2 > Integer.MaxValue Then y2 = Integer.MaxValue
+			If x2 >  java.lang.[Integer].Max_Value Then x2 =  java.lang.[Integer].Max_Value
+			If y2 >  java.lang.[Integer].Max_Value Then y2 =  java.lang.[Integer].Max_Value
 			reshape(x1, y1, CInt(x2), CInt(y2))
 		End Sub
 
@@ -913,7 +913,7 @@ Namespace java.awt
 		''' <p>
 		''' If the resulting {@code Rectangle} would have a dimension
 		''' too large to be expressed as an {@code int}, the result
-		''' will have a dimension of {@code  [Integer].MAX_VALUE} along
+		''' will have a dimension of {@code  java.lang.[Integer].MAX_VALUE} along
 		''' that dimension. </summary>
 		''' <param name="r"> the specified <code>Rectangle</code> </param>
 		Public Overridable Sub add(ByVal r As Rectangle)
@@ -940,8 +940,8 @@ Namespace java.awt
 			' tx2,ty2 will never underflow since both original
 			' rectangles were non-empty
 			' they might overflow, though...
-			If tx2 > Integer.MaxValue Then tx2 = Integer.MaxValue
-			If ty2 > Integer.MaxValue Then ty2 = Integer.MaxValue
+			If tx2 >  java.lang.[Integer].Max_Value Then tx2 =  java.lang.[Integer].Max_Value
+			If ty2 >  java.lang.[Integer].Max_Value Then ty2 =  java.lang.[Integer].Max_Value
 			reshape(tx1, ty1, CInt(tx2), CInt(ty2))
 		End Sub
 
@@ -986,52 +986,52 @@ Namespace java.awt
 				' it is clipped so that we avoid the risk that the clipping
 				' of x0 will reverse the ordering of x0 and x1.
 				x1 -= x0
-				If x1 < Integer.MinValue Then x1 = Integer.MinValue
-				If x0 < Integer.MinValue Then
-					x0 = Integer.MinValue
-				ElseIf x0 > Integer.MaxValue Then
-					x0 = Integer.MaxValue
+				If x1 <  java.lang.[Integer].MIN_VALUE Then x1 =  java.lang.[Integer].MIN_VALUE
+				If x0 <  java.lang.[Integer].MIN_VALUE Then
+					x0 =  java.lang.[Integer].MIN_VALUE
+				ElseIf x0 >  java.lang.[Integer].Max_Value Then
+					x0 =  java.lang.[Integer].Max_Value
 				End If ' (x1 >= x0)
 			Else
 				' Clip x0 before we subtract it from x1 in case the clipping
 				' affects the representable area of the rectangle.
-				If x0 < Integer.MinValue Then
-					x0 = Integer.MinValue
-				ElseIf x0 > Integer.MaxValue Then
-					x0 = Integer.MaxValue
+				If x0 <  java.lang.[Integer].MIN_VALUE Then
+					x0 =  java.lang.[Integer].MIN_VALUE
+				ElseIf x0 >  java.lang.[Integer].Max_Value Then
+					x0 =  java.lang.[Integer].Max_Value
 				End If
 				x1 -= x0
 				' The only way x1 can be negative now is if we clipped
 				' x0 against MIN and x1 is less than MIN - in which case
 				' we want to leave the width negative since the result
 				' did not intersect the representable area.
-				If x1 < Integer.MinValue Then
-					x1 = Integer.MinValue
-				ElseIf x1 > Integer.MaxValue Then
-					x1 = Integer.MaxValue
+				If x1 <  java.lang.[Integer].MIN_VALUE Then
+					x1 =  java.lang.[Integer].MIN_VALUE
+				ElseIf x1 >  java.lang.[Integer].Max_Value Then
+					x1 =  java.lang.[Integer].Max_Value
 				End If
 			End If
 
 			If y1 < y0 Then
 				' Non-existant in Y direction
 				y1 -= y0
-				If y1 < Integer.MinValue Then y1 = Integer.MinValue
-				If y0 < Integer.MinValue Then
-					y0 = Integer.MinValue
-				ElseIf y0 > Integer.MaxValue Then
-					y0 = Integer.MaxValue
+				If y1 <  java.lang.[Integer].MIN_VALUE Then y1 =  java.lang.[Integer].MIN_VALUE
+				If y0 <  java.lang.[Integer].MIN_VALUE Then
+					y0 =  java.lang.[Integer].MIN_VALUE
+				ElseIf y0 >  java.lang.[Integer].Max_Value Then
+					y0 =  java.lang.[Integer].Max_Value
 				End If ' (y1 >= y0)
 			Else
-				If y0 < Integer.MinValue Then
-					y0 = Integer.MinValue
-				ElseIf y0 > Integer.MaxValue Then
-					y0 = Integer.MaxValue
+				If y0 <  java.lang.[Integer].MIN_VALUE Then
+					y0 =  java.lang.[Integer].MIN_VALUE
+				ElseIf y0 >  java.lang.[Integer].Max_Value Then
+					y0 =  java.lang.[Integer].Max_Value
 				End If
 				y1 -= y0
-				If y1 < Integer.MinValue Then
-					y1 = Integer.MinValue
-				ElseIf y1 > Integer.MaxValue Then
-					y1 = Integer.MaxValue
+				If y1 <  java.lang.[Integer].MIN_VALUE Then
+					y1 =  java.lang.[Integer].MIN_VALUE
+				ElseIf y1 >  java.lang.[Integer].Max_Value Then
+					y1 =  java.lang.[Integer].Max_Value
 				End If
 			End If
 

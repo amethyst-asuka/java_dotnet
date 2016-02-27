@@ -158,12 +158,12 @@ Namespace java.time.chrono
 		'-----------------------------------------------------------------------
 		Public Overrides Function plus(ByVal amountToAdd As java.time.temporal.TemporalAmount) As ChronoPeriod Implements ChronoPeriod.plus
 			Dim amount As ChronoPeriodImpl = validateAmount(amountToAdd)
-			Return New ChronoPeriodImpl(chrono, Math.addExact(years, amount.years), Math.addExact(months, amount.months), Math.addExact(days, amount.days))
+			Return New ChronoPeriodImpl(chrono, System.Math.addExact(years, amount.years), System.Math.addExact(months, amount.months), System.Math.addExact(days, amount.days))
 		End Function
 
 		Public Overrides Function minus(ByVal amountToSubtract As java.time.temporal.TemporalAmount) As ChronoPeriod Implements ChronoPeriod.minus
 			Dim amount As ChronoPeriodImpl = validateAmount(amountToSubtract)
-			Return New ChronoPeriodImpl(chrono, Math.subtractExact(years, amount.years), Math.subtractExact(months, amount.months), Math.subtractExact(days, amount.days))
+			Return New ChronoPeriodImpl(chrono, System.Math.subtractExact(years, amount.years), System.Math.subtractExact(months, amount.months), System.Math.subtractExact(days, amount.days))
 		End Function
 
 		''' <summary>
@@ -182,7 +182,7 @@ Namespace java.time.chrono
 		'-----------------------------------------------------------------------
 		Public Overrides Function multipliedBy(ByVal scalar As Integer) As ChronoPeriod Implements ChronoPeriod.multipliedBy
 			If Me.zero OrElse scalar = 1 Then Return Me
-			Return New ChronoPeriodImpl(chrono, Math.multiplyExact(years, scalar), Math.multiplyExact(months, scalar), Math.multiplyExact(days, scalar))
+			Return New ChronoPeriodImpl(chrono, System.Math.multiplyExact(years, scalar), System.Math.multiplyExact(months, scalar), System.Math.multiplyExact(days, scalar))
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -193,7 +193,7 @@ Namespace java.time.chrono
 				Dim splitYears As Long = totalMonths \ monthRange
 				Dim splitMonths As Integer = CInt(Fix(totalMonths Mod monthRange)) ' no overflow
 				If splitYears = years AndAlso splitMonths = months Then Return Me
-				Return New ChronoPeriodImpl(chrono, Math.toIntExact(splitYears), splitMonths, days)
+				Return New ChronoPeriodImpl(chrono, System.Math.toIntExact(splitYears), splitMonths, days)
 
 			End If
 			Return Me
@@ -266,7 +266,7 @@ Namespace java.time.chrono
 		End Function
 
 		Public Overrides Function GetHashCode() As Integer
-			Return (years + Integer.rotateLeft(months, 8) + Integer.rotateLeft(days, 16)) Xor chrono.GetHashCode()
+			Return (years +  java.lang.[Integer].rotateLeft(months, 8) +  java.lang.[Integer].rotateLeft(days, 16)) Xor chrono.GetHashCode()
 		End Function
 
 		'-----------------------------------------------------------------------

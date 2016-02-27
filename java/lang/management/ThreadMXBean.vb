@@ -241,7 +241,7 @@ Namespace java.lang.management
 		''' with stack trace of a specified number of stack trace elements.
 		''' The <tt>maxDepth</tt> parameter indicates the maximum number of
 		''' <seealso cref="StackTraceElement"/> to be retrieved from the stack trace.
-		''' If <tt>maxDepth ==  [Integer].MAX_VALUE</tt>, the entire stack trace of
+		''' If <tt>maxDepth ==  java.lang.[Integer].MAX_VALUE</tt>, the entire stack trace of
 		''' the thread will be dumped.
 		''' If <tt>maxDepth == 0</tt>, no stack trace of the thread
 		''' will be dumped.
@@ -267,7 +267,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <param name="id"> the thread ID of the thread. Must be positive. </param>
 		''' <param name="maxDepth"> the maximum number of entries in the stack trace
-		''' to be dumped. <tt> [Integer].MAX_VALUE</tt> could be used to request
+		''' to be dumped. <tt> java.lang.[Integer].MAX_VALUE</tt> could be used to request
 		''' the entire stack to be dumped.
 		''' </param>
 		''' <returns> a <seealso cref="ThreadInfo"/> of the thread of the given ID
@@ -289,7 +289,7 @@ Namespace java.lang.management
 		''' with stack trace of a specified number of stack trace elements.
 		''' The <tt>maxDepth</tt> parameter indicates the maximum number of
 		''' <seealso cref="StackTraceElement"/> to be retrieved from the stack trace.
-		''' If <tt>maxDepth ==  [Integer].MAX_VALUE</tt>, the entire stack trace of
+		''' If <tt>maxDepth ==  java.lang.[Integer].MAX_VALUE</tt>, the entire stack trace of
 		''' the thread will be dumped.
 		''' If <tt>maxDepth == 0</tt>, no stack trace of the thread
 		''' will be dumped.
@@ -318,7 +318,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <param name="ids"> an array of thread IDs </param>
 		''' <param name="maxDepth"> the maximum number of entries in the stack trace
-		''' to be dumped. <tt> [Integer].MAX_VALUE</tt> could be used to request
+		''' to be dumped. <tt> java.lang.[Integer].MAX_VALUE</tt> could be used to request
 		''' the entire stack to be dumped.
 		''' </param>
 		''' <returns> an array of the <seealso cref="ThreadInfo"/> objects, each containing
@@ -665,7 +665,7 @@ Namespace java.lang.management
 		''' When both <tt>lockedMonitors</tt> and <tt>lockedSynchronizers</tt>
 		''' parameters are <tt>false</tt>, it is equivalent to calling:
 		''' <blockquote><pre>
-		'''     <seealso cref="#getThreadInfo(long[], int)  getThreadInfo(ids,  [Integer].MAX_VALUE)"/>
+		'''     <seealso cref="#getThreadInfo(long[], int)  getThreadInfo(ids,  java.lang.[Integer].MAX_VALUE)"/>
 		''' </pre></blockquote>
 		''' 
 		''' <p>

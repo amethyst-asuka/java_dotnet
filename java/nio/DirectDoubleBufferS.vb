@@ -228,11 +228,11 @@ Namespace java.nio
         End Function
 
         Public Overrides Function [get]() As Double
-            Return Double.longBitsToDouble(Bits.swap(unsafe.getLong(ix(nextGetIndex()))))
+            Return java.lang.[Double].longBitsToDouble(Bits.swap(unsafe.getLong(ix(nextGetIndex()))))
         End Function
 
         Public Overrides Function [get](ByVal i As Integer) As Double
-            Return Double.longBitsToDouble(Bits.swap(unsafe.getLong(ix(checkIndex(i)))))
+            Return java.lang.[Double].longBitsToDouble(Bits.swap(unsafe.getLong(ix(checkIndex(i)))))
         End Function
 
 

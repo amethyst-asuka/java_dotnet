@@ -329,7 +329,7 @@ Namespace java.awt.event
 		End Property
 
 		''' <summary>
-		''' Returns the number of "clicks" the mouse wheel was rotated, as an integer.
+		''' Returns the number of "clicks" the mouse wheel was rotated, as an  java.lang.[Integer].
 		''' A partial rotation may occur if the mouse supports a high-resolution wheel.
 		''' In this case, the method returns zero until a full "click" has been accumulated.
 		''' </summary>
@@ -344,7 +344,7 @@ Namespace java.awt.event
 		End Property
 
 		''' <summary>
-		''' Returns the number of "clicks" the mouse wheel was rotated, as a double.
+		''' Returns the number of "clicks" the mouse wheel was rotated, as a java.lang.[Double].
 		''' A partial rotation may occur if the mouse supports a high-resolution wheel.
 		''' In this case, the return value will include a fractional "click".
 		''' </summary>

@@ -113,7 +113,7 @@ Namespace java.util.zip
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		Public Overrides Function read() As Integer
 			ensureOpen()
-			Return If(read(singleByteBuf, 0, 1) = -1, -1, Byte.toUnsignedInt(singleByteBuf(0)))
+			Return If(read(singleByteBuf, 0, 1) = -1, -1, java.lang.[Byte].toUnsignedInt(singleByteBuf(0)))
 		End Function
 
 		''' <summary>
@@ -187,7 +187,7 @@ Namespace java.util.zip
 		Public Overrides Function skip(ByVal n As Long) As Long
 			If n < 0 Then Throw New IllegalArgumentException("negative skip length")
 			ensureOpen()
-			Dim max As Integer = CInt(Fix(Math.Min(n, Integer.MaxValue)))
+			Dim max As Integer = CInt(Fix (System.Math.Min(n,  java.lang.[Integer].Max_Value)))
 			Dim total As Integer = 0
 			Do While total < max
 				Dim len As Integer = max - total

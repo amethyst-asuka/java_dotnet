@@ -1220,7 +1220,7 @@ k = left
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Do While i += 1 <= right
 
-					count(a(i) - Short.MinValue) += 1
+					count(a(i) -  java.lang.[Short].MIN_VALUE) += 1
 				Loop
 				i = NUM_SHORT_VALUES
 				Dim k As Integer = right + 1
@@ -1230,7 +1230,7 @@ k = left
 
 						i -= 1
 					Loop
-					Dim value As Short = CShort(Fix(i + Short.MinValue))
+					Dim value As Short = CShort(Fix(i +  java.lang.[Short].MIN_VALUE))
 					Dim s As Integer = count(i)
 
 					Do
@@ -2416,7 +2416,7 @@ k = left
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 				Do While i += 1 <= right
 
-					count(a(i) - Byte.MinValue) += 1
+					count(a(i) - java.lang.[Byte].MIN_VALUE) += 1
 				Loop
 				i = NUM_BYTE_VALUES
 				Dim k As Integer = right + 1
@@ -2426,7 +2426,7 @@ k = left
 
 						i -= 1
 					Loop
-					Dim value As SByte = CByte(i + Byte.MinValue)
+					Dim value As SByte = CByte(i + java.lang.[Byte].MIN_VALUE)
 					Dim s As Integer = count(i)
 
 					Do
@@ -3112,7 +3112,7 @@ k = left
 	'        
 	'         * Phase 1: Move NaNs to the end of the array.
 	'         
-			Do While left <= right AndAlso Double.IsNaN(a(right))
+			Do While left <= right AndAlso java.lang.[Double].IsNaN(a(right))
 				right -= 1
 			Loop
 			Dim k As Integer = right
@@ -3153,7 +3153,7 @@ k = left
 	'        
 	'         * Skip the last negative value (if any) or all leading negative zeros.
 	'         
-			Do While left <= right AndAlso Double.doubleToRawLongBits(a(left)) < 0
+			Do While left <= right AndAlso java.lang.[Double].doubleToRawLongBits(a(left)) < 0
 				left += 1
 			Loop
 
@@ -3184,7 +3184,7 @@ k = left
 			Do While k += 1 <= right
 				Dim ak As Double = a(k)
 				If ak <> 0.0R Then Exit Do
-				If Double.doubleToRawLongBits(ak) < 0 Then ' ak is -0.0d
+				If java.lang.[Double].doubleToRawLongBits(ak) < 0 Then ' ak is -0.0d
 					a(k) = 0.0R
 					p += 1
 					a(p) = -0.0R

@@ -563,7 +563,7 @@ Namespace java.time.chrono
 		''' <summary>
 		''' Gets the range of valid values for the specified field.
 		''' <p>
-		''' All fields can be expressed as a {@code long} integer.
+		''' All fields can be expressed as a {@code long}  java.lang.[Integer].
 		''' This method returns an object that describes the valid range for that value.
 		''' <p>
 		''' Note that the result only describes the minimum and maximum valid values

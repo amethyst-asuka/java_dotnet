@@ -53,7 +53,7 @@ Namespace java.text
 	''' 
 	''' A DigitList is really a representation of a floating point value.
 	''' It may be an integer value; we assume that a double has sufficient
-	''' precision to represent all digits of a long.
+	''' precision to represent all digits of a java.lang.[Long].
 	''' 
 	''' The DigitList representation consists of a string of characters,
 	''' which are the digits radix 10, from '0' to '9'.  It also has a radix
@@ -74,10 +74,10 @@ Namespace java.text
 
 		''' <summary>
 		''' The maximum number of significant digits in an IEEE 754 double, that
-		''' is, in a Java double.  This must not be increased, or garbage digits
+		''' is, in a Java java.lang.[Double].  This must not be increased, or garbage digits
 		''' will be generated, and should not be decreased, or accuracy will be lost.
 		''' </summary>
-		Public Const MAX_COUNT As Integer = 19 ' == Long.toString(Long.MAX_VALUE).length()
+		Public Const MAX_COUNT As Integer = 19 ' == java.lang.[Long].toString(Long.MAX_VALUE).length()
 
 		''' <summary>
 		''' These data members are intentionally public and can be set directly.
@@ -157,7 +157,7 @@ Namespace java.text
 		''' <summary>
 		''' Utility routine to get the value of the digit list
 		''' If (count == 0) this throws a NumberFormatException, which
-		''' mimics Long.parseLong().
+		''' mimics java.lang.[Long].parseLong().
 		''' </summary>
 		Public Property [double] As Double
 			Get
@@ -174,7 +174,7 @@ Namespace java.text
 
 		''' <summary>
 		''' Utility routine to get the value of the digit list.
-		''' If (count == 0) this returns 0, unlike Long.parseLong().
+		''' If (count == 0) this returns 0, unlike java.lang.[Long].parseLong().
 		''' </summary>
 		Public Property [long] As Long
 			Get
@@ -185,7 +185,7 @@ Namespace java.text
 				' We have to check for this, because this is the one NEGATIVE value
 				' we represent.  If we tried to just pass the digits off to parseLong,
 				' we'd get a parse failure.
-				If longMIN_VALUE Then Return Long.MinValue
+				If longMIN_VALUE Then Return java.lang.[Long].MIN_VALUE
     
 				Dim temp As StringBuffer = stringBuffer
 				temp.append(digits, 0, count)
@@ -216,16 +216,16 @@ Namespace java.text
 
 		''' <summary>
 		''' Return true if the number represented by this object can fit into
-		''' a long. </summary>
+		''' a java.lang.[Long]. </summary>
 		''' <param name="isPositive"> true if this number should be regarded as positive </param>
 		''' <param name="ignoreNegativeZero"> true if -0 should be regarded as identical to
 		''' +0; otherwise they are considered distinct </param>
 		''' <returns> true if this number fits into a Java long </returns>
 		Friend Function fitsIntoLong(ByVal isPositive As Boolean, ByVal ignoreNegativeZero As Boolean) As Boolean
-			' Figure out if the result will fit in a long.  We have to
+			' Figure out if the result will fit in a java.lang.[Long].  We have to
 			' first look for nonzero digits after the decimal point;
 			' then check the size.  If the digit count is 18 or less, then
-			' the value can definitely be represented as a long.  If it is 19
+			' the value can definitely be represented as a java.lang.[Long].  If it is 19
 			' then it may be too large.
 
 			' Trim trailing zeros.  This does not change the represented value.
@@ -252,7 +252,7 @@ Namespace java.text
 			' than count, then the remaining digits are zero, and we return true.
 			If count < decimalAt Then Return True
 
-			' Now we have a representation of Long.MIN_VALUE, without the leading
+			' Now we have a representation of java.lang.[Long].MIN_VALUE, without the leading
 			' negative sign.  If this represents a positive value, then it does
 			' not fit; otherwise it fits.
 			Return Not isPositive
@@ -568,7 +568,7 @@ Namespace java.text
 		''' Set the digit list to a representation of the given long value. </summary>
 		''' <param name="isNegative"> Boolean value indicating whether the number is negative. </param>
 		''' <param name="source"> Value to be converted; must be >= 0 or ==
-		''' Long.MIN_VALUE. </param>
+		''' java.lang.[Long].MIN_VALUE. </param>
 		''' <param name="maximumDigits"> The most digits which should be converted.
 		''' If maximumDigits is lower than the number of significant digits
 		''' in source, the representation will be rounded.  Ignored if <= 0. </param>
@@ -576,13 +576,13 @@ Namespace java.text
 			Me.isNegative = isNegative
 
 			' This method does not expect a negative number. However,
-			' "source" can be a Long.MIN_VALUE (-9223372036854775808),
-			' if the number being formatted is a Long.MIN_VALUE.  In that
+			' "source" can be a java.lang.[Long].MIN_VALUE (-9223372036854775808),
+			' if the number being formatted is a java.lang.[Long].MIN_VALUE.  In that
 			' case, it will be formatted as -Long.MIN_VALUE, a number
 			' which is outside the legal range of a long, but which can
 			' be represented by DigitList.
 			If source <= 0 Then
-				If source = Long.MinValue Then
+				If source = java.lang.[Long].MIN_VALUE Then
 						count = MAX_COUNT
 						decimalAt = count
 					Array.Copy(LONG_MIN_REP, 0, digits, 0, count)
@@ -592,7 +592,7 @@ Namespace java.text
 				End If
 			Else
 				' Rewritten to improve performance.  I used to call
-				' Long.toString(), which was about 4x slower than this code.
+				' java.lang.[Long].toString(), which was about 4x slower than this code.
 				Dim left As Integer = MAX_COUNT
 				Dim right As Integer
 				Do While source > 0
@@ -700,7 +700,7 @@ Namespace java.text
 		End Function
 
 		''' <summary>
-		''' Returns true if this DigitList represents Long.MIN_VALUE;
+		''' Returns true if this DigitList represents java.lang.[Long].MIN_VALUE;
 		''' false, otherwise.  This is required so that getLong() works.
 		''' </summary>
 		Private Property longMIN_VALUE As Boolean

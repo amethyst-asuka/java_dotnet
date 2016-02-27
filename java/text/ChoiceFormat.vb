@@ -180,7 +180,7 @@ Namespace java.text
 			Dim count As Integer = 0
 			Dim part As Integer = 0
 			Dim startValue As Double = 0
-			Dim oldStartValue As Double = Double.NaN
+			Dim oldStartValue As Double = java.lang.[Double].NaN
 			Dim inQuote As Boolean = False
 			For i As Integer = 0 To newPattern.length() - 1
 				Dim ch As Char = newPattern.Chars(i)
@@ -199,16 +199,16 @@ Namespace java.text
 					Try
 						Dim tempBuffer As String = segments(0).ToString()
 						If tempBuffer.Equals(ChrW(&H221E).ToString()) Then
-							startValue = Double.PositiveInfinity
+							startValue = java.lang.[Double].PositiveInfinity
 						ElseIf tempBuffer.Equals("-" & ChrW(&H221E).ToString()) Then
-							startValue = Double.NegativeInfinity
+							startValue = java.lang.[Double].NegativeInfinity
 						Else
 							startValue = Convert.ToDouble(segments(0).ToString())
 						End If
 					Catch e As Exception
 						Throw New IllegalArgumentException
 					End Try
-					If ch = "<"c AndAlso startValue <> Double.PositiveInfinity AndAlso startValue <> Double.NegativeInfinity Then startValue = nextDouble(startValue)
+					If ch = "<"c AndAlso startValue <> java.lang.[Double].PositiveInfinity AndAlso startValue <> java.lang.[Double].NegativeInfinity Then startValue = nextDouble(startValue)
 					If startValue <= oldStartValue Then Throw New IllegalArgumentException
 					segments(0).length = 0
 					part = 1
@@ -252,19 +252,19 @@ Namespace java.text
 			For i As Integer = 0 To choiceLimits.Length - 1
 				If i <> 0 Then result.append("|"c)
 				' choose based upon which has less precision
-				' approximate that by choosing the closest one to an integer.
+				' approximate that by choosing the closest one to an  java.lang.[Integer].
 				' could do better, but it's not worth it.
 				Dim less As Double = previousDouble(choiceLimits(i))
-				Dim tryLessOrEqual As Double = Math.Abs(Math.IEEERemainder(choiceLimits(i), 1.0R))
-				Dim tryLess As Double = Math.Abs(Math.IEEERemainder(less, 1.0R))
+				Dim tryLessOrEqual As Double = System.Math.Abs (System.Math.IEEERemainder(choiceLimits(i), 1.0R))
+				Dim tryLess As Double = System.Math.Abs (System.Math.IEEERemainder(less, 1.0R))
 
 				If tryLessOrEqual < tryLess Then
 					result.append("" & choiceLimits(i))
 					result.append("#"c)
 				Else
-					If choiceLimits(i) = Double.PositiveInfinity Then
+					If choiceLimits(i) = java.lang.[Double].PositiveInfinity Then
 						result.append(ChrW(&H221E).ToString())
-					ElseIf choiceLimits(i) = Double.NegativeInfinity Then
+					ElseIf choiceLimits(i) = java.lang.[Double].NegativeInfinity Then
 						result.append("-" & ChrW(&H221E).ToString())
 					Else
 						result.append("" & less)
@@ -354,7 +354,7 @@ Namespace java.text
 		''' Specialization of format. This method really calls
 		''' <code>format(double, StringBuffer, FieldPosition)</code>
 		''' thus the range of longs that are supported is only equal to
-		''' the range that can be stored by double. This will never be
+		''' the range that can be stored by java.lang.[Double]. This will never be
 		''' a practical limitation.
 		''' </summary>
 		Public Overrides Function format(ByVal number As Long, ByVal toAppendTo As StringBuffer, ByVal status As FieldPosition) As StringBuffer
@@ -362,7 +362,7 @@ Namespace java.text
 		End Function
 
 		''' <summary>
-		''' Returns pattern with formatted double. </summary>
+		''' Returns pattern with formatted java.lang.[Double]. </summary>
 		''' <param name="number"> number to be formatted and substituted. </param>
 		''' <param name="toAppendTo"> where text is appended. </param>
 		''' <param name="status"> ignore no useful status is returned. </param>
@@ -393,7 +393,7 @@ Namespace java.text
 			' find the best number (defined as the one with the longest parse)
 			Dim start As Integer = status.index
 			Dim furthest As Integer = start
-			Dim bestNumber As Double = Double.NaN
+			Dim bestNumber As Double = java.lang.[Double].NaN
 			Dim tempNumber As Double = 0.0
 			For i As Integer = 0 To choiceFormats.Length - 1
 				Dim tempString As String = choiceFormats(i)
@@ -499,10 +499,10 @@ Namespace java.text
 	'    static final long SIGNIFICAND   = 0x000FFFFFFFFFFFFFL;
 	'
 	'    private static double nextDouble (double d, boolean positive) {
-	'        if (Double.isNaN(d) || Double.isInfinite(d)) {
+	'        if (Double.isNaN(d) || java.lang.[Double].isInfinite(d)) {
 	'                return d;
 	'            }
-	'        long bits = Double.doubleToLongBits(d);
+	'        long bits = java.lang.[Double].doubleToLongBits(d);
 	'        long significand = bits & SIGNIFICAND;
 	'        if (bits < 0) {
 	'            significand |= (SIGN | EXPONENT);
@@ -516,7 +516,7 @@ Namespace java.text
 	'            // FIXME fix overflow & underflow
 	'        }
 	'        bits = exponent | (significand & ~EXPONENT);
-	'        return Double.longBitsToDouble(bits);
+	'        return java.lang.[Double].longBitsToDouble(bits);
 	'    }
 	'    
 
@@ -532,9 +532,9 @@ Namespace java.text
 		''' 
 		''' Does not affect floating-point flags,
 		''' provided these member functions do not:
-		'''          Double.longBitsToDouble(long)
-		'''          Double.doubleToLongBits(double)
-		'''          Double.isNaN(double)
+		'''          java.lang.[Double].longBitsToDouble(long)
+		'''          java.lang.[Double].doubleToLongBits(double)
+		'''          java.lang.[Double].isNaN(double)
 		''' </summary>
 		''' <param name="d">        the reference value </param>
 		''' <param name="positive"> {@code true} if the least double is desired;
@@ -543,11 +543,11 @@ Namespace java.text
 		Public Shared Function nextDouble(ByVal d As Double, ByVal positive As Boolean) As Double
 
 			' filter out NaN's 
-			If Double.IsNaN(d) Then Return d
+			If java.lang.[Double].IsNaN(d) Then Return d
 
 			' zero's are also a special case 
 			If d = 0.0 Then
-				Dim smallestPositiveDouble As Double = Double.longBitsToDouble(1L)
+				Dim smallestPositiveDouble As Double = java.lang.[Double].longBitsToDouble(1L)
 				If positive Then
 					Return smallestPositiveDouble
 				Else
@@ -558,7 +558,7 @@ Namespace java.text
 			' if entering here, d is a nonzero value 
 
 			' hold all bits in a long for later use 
-			Dim bits As Long = Double.doubleToLongBits(d)
+			Dim bits As Long = java.lang.[Double].doubleToLongBits(d)
 
 			' strip off the sign bit 
 			Dim magnitude As Long = bits And Not SIGN
@@ -573,7 +573,7 @@ Namespace java.text
 
 			' restore sign bit and return 
 			Dim signbit As Long = bits And SIGN
-			Return Double.longBitsToDouble(magnitude Or signbit)
+			Return java.lang.[Double].longBitsToDouble(magnitude Or signbit)
 		End Function
 
 		Private Shared Function doubleArraySize(ByVal array As Double()) As Double()

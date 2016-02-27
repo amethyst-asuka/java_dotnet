@@ -154,8 +154,8 @@ Namespace java.text
 	'        for (int j = 0; j < 0xffff; j++) {
 	'            int value = mapping.elementAt(j);
 	'            if (value != RBCollationTables.UNMAPPED)
-	'                System.out.println("index=" + Integer.toString(j, 16)
-	'                           + ", value=" + Integer.toString(value, 16));
+	'                System.out.println("index=" +  java.lang.[Integer].toString(j, 16)
+	'                           + ", value=" +  java.lang.[Integer].toString(value, 16));
 	'        }
 	'        
 			tables.fillInTables(frenchSec, seAsianSwapping, mapping, contractTable, expandTable, contractFlags, maxSecOrder, maxTerOrder)

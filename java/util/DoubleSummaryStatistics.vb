@@ -67,12 +67,12 @@ Namespace java.util
 		Private sum As Double
 		Private sumCompensation As Double ' Low order bits of sum
 		Private simpleSum As Double ' Used to compute right sum for non-finite inputs
-		Private min As Double = Double.POSITIVE_INFINITY
-		Private max As Double = Double.NEGATIVE_INFINITY
+		Private min As Double = java.lang.[Double].POSITIVE_INFINITY
+		Private max As Double = java.lang.[Double].NEGATIVE_INFINITY
 
 		''' <summary>
 		''' Construct an empty instance with zero count, zero sum,
-		''' {@code Double.POSITIVE_INFINITY} min, {@code Double.NEGATIVE_INFINITY}
+		''' {@code java.lang.[Double].POSITIVE_INFINITY} min, {@code java.lang.[Double].NEGATIVE_INFINITY}
 		''' max and zero average.
 		''' </summary>
 		Public Sub New()
@@ -86,8 +86,8 @@ Namespace java.util
 			count += 1
 			simpleSum += value
 			sumWithCompensation(value)
-			min = Math.Min(min, value)
-			max = Math.Max(max, value)
+			min = System.Math.Min(min, value)
+			max = System.Math.Max(max, value)
 		End Sub
 
 		''' <summary>
@@ -101,8 +101,8 @@ Namespace java.util
 			simpleSum += other.simpleSum
 			sumWithCompensation(other.sum)
 			sumWithCompensation(other.sumCompensation)
-			min = Math.Min(min, other.min)
-			max = Math.Max(max, other.max)
+			min = System.Math.Min(min, other.min)
+			max = System.Math.Max(max, other.max)
 		End Sub
 
 		''' <summary>
@@ -152,7 +152,7 @@ Namespace java.util
 			Get
 				' Better error bounds to add both terms as the final sum
 				Dim tmp As Double = sum + sumCompensation
-				If Double.IsNaN(tmp) AndAlso Double.IsInfinity(simpleSum) Then
+				If java.lang.[Double].IsNaN(tmp) AndAlso java.lang.[Double].IsInfinity(simpleSum) Then
 					' If the compensated sum is spuriously NaN from
 					' accumulating one or more same-signed infinite values,
 					' return the correctly-signed infinity stored in
@@ -165,13 +165,13 @@ Namespace java.util
 		End Property
 
 		''' <summary>
-		''' Returns the minimum recorded value, {@code Double.NaN} if any recorded
-		''' value was NaN or {@code Double.POSITIVE_INFINITY} if no values were
+		''' Returns the minimum recorded value, {@code java.lang.[Double].NaN} if any recorded
+		''' value was NaN or {@code java.lang.[Double].POSITIVE_INFINITY} if no values were
 		''' recorded. Unlike the numerical comparison operators, this method
 		''' considers negative zero to be strictly smaller than positive zero.
 		''' </summary>
-		''' <returns> the minimum recorded value, {@code Double.NaN} if any recorded
-		''' value was NaN or {@code Double.POSITIVE_INFINITY} if no values were
+		''' <returns> the minimum recorded value, {@code java.lang.[Double].NaN} if any recorded
+		''' value was NaN or {@code java.lang.[Double].POSITIVE_INFINITY} if no values were
 		''' recorded </returns>
 		Public Property min As Double
 			Get
@@ -180,13 +180,13 @@ Namespace java.util
 		End Property
 
 		''' <summary>
-		''' Returns the maximum recorded value, {@code Double.NaN} if any recorded
-		''' value was NaN or {@code Double.NEGATIVE_INFINITY} if no values were
+		''' Returns the maximum recorded value, {@code java.lang.[Double].NaN} if any recorded
+		''' value was NaN or {@code java.lang.[Double].NEGATIVE_INFINITY} if no values were
 		''' recorded. Unlike the numerical comparison operators, this method
 		''' considers negative zero to be strictly smaller than positive zero.
 		''' </summary>
-		''' <returns> the maximum recorded value, {@code Double.NaN} if any recorded
-		''' value was NaN or {@code Double.NEGATIVE_INFINITY} if no values were
+		''' <returns> the maximum recorded value, {@code java.lang.[Double].NaN} if any recorded
+		''' value was NaN or {@code java.lang.[Double].NEGATIVE_INFINITY} if no values were
 		''' recorded </returns>
 		Public Property max As Double
 			Get

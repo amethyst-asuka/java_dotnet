@@ -439,8 +439,8 @@ Namespace java.time.chrono
 			Dim pMonth As Long? = fieldValues.Remove(PROLEPTIC_MONTH)
 			If pMonth IsNot Nothing Then
 				If resolverStyle <> java.time.format.ResolverStyle.LENIENT Then PROLEPTIC_MONTH.checkValidValue(pMonth)
-				addFieldValue(fieldValues, MONTH_OF_YEAR, Math.floorMod(pMonth, 12) + 1)
-				addFieldValue(fieldValues, YEAR, Math.floorDiv(pMonth, 12))
+				addFieldValue(fieldValues, MONTH_OF_YEAR, System.Math.floorMod(pMonth, 12) + 1)
+				addFieldValue(fieldValues, YEAR, System.Math.floorDiv(pMonth, 12))
 			End If
 		End Sub
 
@@ -454,19 +454,19 @@ Namespace java.time.chrono
 					If resolverStyle = java.time.format.ResolverStyle.STRICT Then
 						' do not invent era if strict, but do cross-check with year
 						If year_Renamed IsNot Nothing Then
-							addFieldValue(fieldValues, YEAR, (If(year_Renamed > 0, yoeLong, Math.subtractExact(1, yoeLong))))
+							addFieldValue(fieldValues, YEAR, (If(year_Renamed > 0, yoeLong, System.Math.subtractExact(1, yoeLong))))
 						Else
 							' reinstate the field removed earlier, no cross-check issues
 							fieldValues(YEAR_OF_ERA) = yoeLong
 						End If
 					Else
 						' invent era
-						addFieldValue(fieldValues, YEAR, (If(year_Renamed Is Nothing OrElse year_Renamed > 0, yoeLong, Math.subtractExact(1, yoeLong))))
+						addFieldValue(fieldValues, YEAR, (If(year_Renamed Is Nothing OrElse year_Renamed > 0, yoeLong, System.Math.subtractExact(1, yoeLong))))
 					End If
 				ElseIf era = 1L Then
 					addFieldValue(fieldValues, YEAR, yoeLong)
 				ElseIf era = 0L Then
-					addFieldValue(fieldValues, YEAR, Math.subtractExact(1, yoeLong))
+					addFieldValue(fieldValues, YEAR, System.Math.subtractExact(1, yoeLong))
 				Else
 					Throw New java.time.DateTimeException("Invalid value for era: " & era)
 				End If
@@ -479,17 +479,17 @@ Namespace java.time.chrono
 		Friend Overrides Function resolveYMD(j ByVal fieldValues As IDictionary(Of java.time.temporal.TemporalField, Long?), ByVal resolverStyle As java.time.format.ResolverStyle) As java.time.LocalDate ' override for performance
 			Dim y As Integer = YEAR.checkValidIntValue(fieldValues.Remove(YEAR))
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim months As Long = Math.subtractExact(fieldValues.Remove(MONTH_OF_YEAR), 1)
-				Dim days As Long = Math.subtractExact(fieldValues.Remove(DAY_OF_MONTH), 1)
+				Dim months As Long = System.Math.subtractExact(fieldValues.Remove(MONTH_OF_YEAR), 1)
+				Dim days As Long = System.Math.subtractExact(fieldValues.Remove(DAY_OF_MONTH), 1)
 				Return java.time.LocalDate.of(y, 1, 1).plusMonths(months).plusDays(days)
 			End If
 			Dim moy As Integer = MONTH_OF_YEAR.checkValidIntValue(fieldValues.Remove(MONTH_OF_YEAR))
 			Dim dom As Integer = DAY_OF_MONTH.checkValidIntValue(fieldValues.Remove(DAY_OF_MONTH))
 			If resolverStyle = java.time.format.ResolverStyle.SMART Then ' previous valid
 				If moy = 4 OrElse moy = 6 OrElse moy = 9 OrElse moy = 11 Then
-					dom = Math.Min(dom, 30)
+					dom = System.Math.Min(dom, 30)
 				ElseIf moy = 2 Then
-					dom = Math.Min(dom, java.time.Month.FEBRUARY.length(java.time.Year.isLeap(y)))
+					dom = System.Math.Min(dom, java.time.Month.FEBRUARY.length(java.time.Year.isLeap(y)))
 
 				End If
 			End If

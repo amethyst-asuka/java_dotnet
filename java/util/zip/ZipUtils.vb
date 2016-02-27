@@ -73,7 +73,7 @@ Namespace java.util.zip
 
 		''' <summary>
 		''' Converts extended DOS time to Java time, where up to 1999 milliseconds
-		''' might be encoded into the upper half of the returned long.
+		''' might be encoded into the upper half of the returned java.lang.[Long].
 		''' </summary>
 		''' <param name="xdostime"> the extended DOS time value </param>
 		''' <returns> milliseconds since epoch </returns>
@@ -95,7 +95,7 @@ Namespace java.util.zip
 
 		''' <summary>
 		''' Converts Java time to DOS time, encoding any milliseconds lost
-		''' in the conversion into the upper half of the returned long.
+		''' in the conversion into the upper half of the returned java.lang.[Long].
 		''' </summary>
 		''' <param name="time"> milliseconds since epoch </param>
 		''' <returns> DOS time with 2s remainder encoded into upper half </returns>
@@ -111,7 +111,7 @@ Namespace java.util.zip
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 		public static final int get16(byte b() , int off)
-			Return Byte.toUnsignedInt(b(off)) Or (Byte.toUnsignedInt(b(off+1)) << 8)
+			Return java.lang.[Byte].toUnsignedInt(b(off)) Or (Byte.toUnsignedInt(b(off+1)) << 8)
 
 		''' <summary>
 		''' Fetches unsigned 32-bit value from byte array at specified offset.

@@ -144,13 +144,13 @@ Namespace java.lang.management
 		''' of the object.  This method returns a string equals to the value of:
 		''' <blockquote>
 		''' <pre>
-		''' lock.getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(lock))
+		''' lock.getClass().getName() + '@' +  java.lang.[Integer].toHexString(System.identityHashCode(lock))
 		''' </pre></blockquote>
 		''' where <tt>lock</tt> is the lock object.
 		''' </summary>
 		''' <returns> the string representation of a lock. </returns>
 		Public Overrides Function ToString() As String
-			Return className + AscW("@"c) + Integer.toHexString(identityHashCode)
+			Return className + AscW("@"c) +  java.lang.[Integer].toHexString(identityHashCode)
 		End Function
 	End Class
 

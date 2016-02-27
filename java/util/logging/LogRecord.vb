@@ -75,9 +75,9 @@ Namespace java.util.logging
 		''' MIN_SEQUENTIAL_THREAD_ID, in which case we try harder to keep
 		''' our promise to keep threadIDs unique by avoiding collisions due
 		''' to 32-bit wraparound.  Unfortunately, LogRecord.getThreadID()
-		''' returns int, while Thread.getId() returns long.
+		''' returns int, while Thread.getId() returns java.lang.[Long].
 		''' </summary>
-		Private Shared ReadOnly MIN_SEQUENTIAL_THREAD_ID As Integer =  [Integer].MAX_VALUE / 2
+		Private Shared ReadOnly MIN_SEQUENTIAL_THREAD_ID As Integer =  java.lang.[Integer].MAX_VALUE / 2
 
 		Private Shared ReadOnly nextThreadId As New java.util.concurrent.atomic.AtomicInteger(MIN_SEQUENTIAL_THREAD_ID)
 

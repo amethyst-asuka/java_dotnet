@@ -189,7 +189,7 @@ Namespace java.util.zip
 		''' 
 		''' @since 1.7 </seealso>
 		Public Sub New(ByVal file As java.io.File, ByVal mode As Integer, ByVal charset As java.nio.charset.Charset)
-			If ((mode And OPEN_READ) = 0) OrElse ((mode And Not(OPEN_READ Or OPEN_DELETE)) <> 0) Then Throw New IllegalArgumentException("Illegal mode: 0x" & Integer.toHexString(mode))
+			If ((mode And OPEN_READ) = 0) OrElse ((mode And Not(OPEN_READ Or OPEN_DELETE)) <> 0) Then Throw New IllegalArgumentException("Illegal mode: 0x" &  java.lang.[Integer].toHexString(mode))
 			Dim name_Renamed As String = file.path
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
@@ -403,7 +403,7 @@ Namespace java.util.zip
 			Public Overrides Function available() As Integer
 				If closeRequested Then Return 0
 				Dim avail As Long = zfin.size() - inf.bytesWritten
-				Return (If(avail > (Long) Integer.MaxValue, Integer.MaxValue, CInt(avail)))
+				Return (If(avail > (Long)  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, CInt(avail)))
 			End Function
 
 			Protected Overrides Sub Finalize()
@@ -706,7 +706,7 @@ Namespace java.util.zip
 				Return n
 
 			public Integer available()
-				Return If([rem] > Integer.MaxValue, Integer.MaxValue, CInt([rem]))
+				Return If([rem] >  java.lang.[Integer].Max_Value,  java.lang.[Integer].Max_Value, CInt([rem]))
 
 			public Long size()
 				Return size_Renamed

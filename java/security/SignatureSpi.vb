@@ -94,7 +94,7 @@ Namespace java.security
 
 		''' <summary>
 		''' Updates the data to be signed or verified
-		''' using the specified byte.
+		''' using the specified java.lang.[Byte].
 		''' </summary>
 		''' <param name="b"> the byte to use for the update.
 		''' </param>
@@ -137,7 +137,7 @@ Namespace java.security
 					Dim len As Integer = input.remaining()
 					Dim b As SByte() = New SByte(sun.security.jca.JCAUtil.getTempArraySize(len) - 1){}
 					Do While len > 0
-						Dim chunk As Integer = Math.Min(len, b.Length)
+						Dim chunk As Integer = System.Math.Min(len, b.Length)
 						input.get(b, 0, chunk)
 						engineUpdate(b, 0, chunk)
 						len -= chunk

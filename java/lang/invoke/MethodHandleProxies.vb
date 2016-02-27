@@ -85,7 +85,7 @@ Namespace java.lang.invoke
 		''' <seealso cref="java.lang.reflect.UndeclaredThrowableException UndeclaredThrowableException"/>
 		''' and thrown in that wrapped form.
 		''' <p>
-		''' Like <seealso cref="java.lang.Integer#valueOf Integer.valueOf"/>,
+		''' Like <seealso cref="java.lang.Integer#valueOf  java.lang.[Integer].valueOf"/>,
 		''' {@code asInterfaceInstance} is a factory method whose results are defined
 		''' by their behavior.
 		''' It is not guaranteed to return a new instance for every call.
@@ -271,7 +271,7 @@ Namespace java.lang.invoke
 			assert(isObjectMethod(m)) : m
 			Select Case m.name
 			Case "toString"
-				Return self.GetType().name & "@" & Integer.toHexString(self.GetHashCode())
+				Return self.GetType().name & "@" &  java.lang.[Integer].toHexString(self.GetHashCode())
 			Case "hashCode"
 				Return System.identityHashCode(self)
 			Case "equals"

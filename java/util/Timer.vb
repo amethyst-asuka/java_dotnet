@@ -374,7 +374,7 @@ Namespace java.util
 
 			' Constrain value of period sufficiently to prevent numeric
 			' overflow while still being effectively infinitely large.
-			If Math.Abs(period) > (Long.MaxValue >> 1) Then period >>= 1
+			If System.Math.Abs(period) > (Long.Max_Value >> 1) Then period >>= 1
 
 			SyncLock queue
 				If Not thread_Renamed.newTasksMayBeScheduled Then Throw New IllegalStateException("Timer already cancelled.")

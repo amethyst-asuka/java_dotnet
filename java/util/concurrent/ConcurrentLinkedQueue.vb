@@ -438,8 +438,8 @@ Namespace java.util.concurrent
 
 		''' <summary>
 		''' Returns the number of elements in this queue.  If this queue
-		''' contains more than {@code  [Integer].MAX_VALUE} elements, returns
-		''' {@code  [Integer].MAX_VALUE}.
+		''' contains more than {@code  java.lang.[Integer].MAX_VALUE} elements, returns
+		''' {@code  java.lang.[Integer].MAX_VALUE}.
 		''' 
 		''' <p>Beware that, unlike in most collections, this method is
 		''' <em>NOT</em> a constant-time operation. Because of the
@@ -458,7 +458,7 @@ Namespace java.util.concurrent
 				If p.item IsNot Nothing Then
 					' Collection.size() spec says to max out
 					count += 1
-					If count = Integer.MaxValue Then Exit Do
+					If count =  java.lang.[Integer].Max_Value Then Exit Do
 				End If
 				p = succ(p)
 			Loop
@@ -896,7 +896,7 @@ Namespace java.util.concurrent
 			End Function
 
 			Public Function estimateSize() As Long
-				Return Long.MaxValue
+				Return java.lang.[Long].Max_Value
 			End Function
 
 			Public Function characteristics() As Integer

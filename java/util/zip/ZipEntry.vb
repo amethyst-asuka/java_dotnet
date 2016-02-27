@@ -431,7 +431,7 @@ Namespace java.util.zip
 						atime = winTimeToFileTime(get64(extra, pos + 12))
 						ctime = winTimeToFileTime(get64(extra, pos + 20))
 					Case EXTID_EXTT
-						Dim flag As Integer = Byte.toUnsignedInt(extra([off]))
+						Dim flag As Integer = java.lang.[Byte].toUnsignedInt(extra([off]))
 						Dim sz0 As Integer = 1
 						' The CEN-header extra field contains the modification
 						' time only, or no timestamp at all. 'sz' is used to

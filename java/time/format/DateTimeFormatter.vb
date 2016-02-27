@@ -1173,7 +1173,7 @@ Namespace java.time.format
 			If TypeOf t Is Parsed Then
 				Return CType(t, Parsed).leapSecond
 			Else
-				Return [Boolean].FALSE
+				Return  java.lang.[Boolean].FALSE
 			End If
 
 		'-----------------------------------------------------------------------

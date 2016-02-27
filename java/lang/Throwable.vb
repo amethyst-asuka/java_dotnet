@@ -149,9 +149,9 @@ Namespace java.lang
             ''' stack trace} to a one-element array containing this sentinel
             ''' value indicates future attempts to set the stack trace will be
             ''' ignored.  The sentinal is equal to the result of calling:<br>
-            ''' {@code new StackTraceElement("", "", null, Integer.MIN_VALUE)}
+            ''' {@code new StackTraceElement("", "", null,  java.lang.[Integer].MIN_VALUE)}
             ''' </summary>
-            Public Shared ReadOnly STACK_TRACE_ELEMENT_SENTINEL As New StackTraceElement("", "", Nothing, Integer.MIN_VALUE)
+            Public Shared ReadOnly STACK_TRACE_ELEMENT_SENTINEL As New StackTraceElement("", "", Nothing,  java.lang.[Integer].MIN_VALUE)
 
             ''' <summary>
             ''' Sentinel value used in the serial form to indicate an immutable
@@ -885,7 +885,7 @@ Namespace java.lang
         ''' trace elements.  A null stack trace in the serial form results
         ''' in a zero-length stack element array. A single-element stack
         ''' trace whose entry is equal to {@code new StackTraceElement("",
-        ''' "", null, Integer.MIN_VALUE)} results in a {@code null} {@code
+        ''' "", null,  java.lang.[Integer].MIN_VALUE)} results in a {@code null} {@code
         ''' stackTrace} field.
         ''' 
         ''' Note that there are no constraints on the value the {@code
@@ -946,7 +946,7 @@ Namespace java.lang
         ''' 
         ''' A {@code null} stack trace field is represented in the serial
         ''' form as a one-element array whose element is equal to {@code
-        ''' new StackTraceElement("", "", null, Integer.MIN_VALUE)}.
+        ''' new StackTraceElement("", "", null,  java.lang.[Integer].MIN_VALUE)}.
         ''' </summary>
         <MethodImpl(MethodImplOptions.Synchronized)>
         Private Sub writeObject(ByVal s As ObjectOutputStream)

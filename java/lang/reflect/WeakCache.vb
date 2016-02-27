@@ -219,7 +219,7 @@ Namespace java.lang.reflect
 				' try replacing us with CacheValue (this should always succeed)
 				If valuesMap.replace(subKey, Me, cacheValue) Then
 					' put also in reverseMap
-					outerInstance.reverseMap.put(cacheValue, Boolean.TRUE)
+					outerInstance.reverseMap.put(cacheValue,  java.lang.[Boolean].TRUE)
 				Else
 					Throw New AssertionError("Should not reach here")
 				End If

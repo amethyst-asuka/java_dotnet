@@ -96,32 +96,32 @@ Namespace java.security
 		Private limitedContext As ProtectionDomain()
 
 		Private Shared debugInit As Boolean = False
-		Private Shared debug As sun.security.util.Debug = Nothing
+        Private Shared _debug As sun.security.util.Debug = Nothing
 
-		Friend Property Shared debug As sun.security.util.Debug
-			Get
-				If debugInit Then
-					Return debug
-				Else
-					If Policy.set Then
-						debug = sun.security.util.Debug.getInstance("access")
-						debugInit = True
-					End If
-					Return debug
-				End If
-			End Get
-		End Property
+        Friend Shared ReadOnly Property debug As sun.security.util.Debug
+            Get
+                If debugInit Then
+                    Return _debug
+                Else
+                    If Policy.set Then
+                        _debug = sun.security.util.Debug.getInstance("access")
+                        debugInit = True
+                    End If
+                    Return _debug
+                End If
+            End Get
+        End Property
 
-		''' <summary>
-		''' Create an AccessControlContext with the given array of ProtectionDomains.
-		''' Context must not be null. Duplicate domains will be removed from the
-		''' context.
-		''' </summary>
-		''' <param name="context"> the ProtectionDomains associated with this context.
-		''' The non-duplicate domains are copied from the array. Subsequent
-		''' changes to the array will not affect this AccessControlContext. </param>
-		''' <exception cref="NullPointerException"> if {@code context} is {@code null} </exception>
-		Public Sub New(ByVal context As ProtectionDomain())
+        ''' <summary>
+        ''' Create an AccessControlContext with the given array of ProtectionDomains.
+        ''' Context must not be null. Duplicate domains will be removed from the
+        ''' context.
+        ''' </summary>
+        ''' <param name="context"> the ProtectionDomains associated with this context.
+        ''' The non-duplicate domains are copied from the array. Subsequent
+        ''' changes to the array will not affect this AccessControlContext. </param>
+        ''' <exception cref="NullPointerException"> if {@code context} is {@code null} </exception>
+        Public Sub New(ByVal context As ProtectionDomain())
 			If context.Length = 0 Then
 				Me.context = Nothing
 			ElseIf context.Length = 1 Then
@@ -263,435 +263,435 @@ Namespace java.security
 		End Sub
 
 
-		''' <summary>
-		''' package private constructor for AccessController.getContext()
-		''' </summary>
+        ''' <summary>
+        ''' package private constructor for AccessController.getContext()
+        ''' </summary>
+        Sub New(context() As ProtectionDomain, isPrivileged As Boolean)
+            Me.context = context
+            Me.isPrivileged_Renamed = isPrivileged_Renamed
+            Me.isAuthorized_Renamed = True
+        End Sub
+        ''' <summary>
+        ''' Constructor for JavaSecurityAccess.doIntersectionPrivilege()
+        ''' </summary>
+        Sub New(context As ProtectionDomain(), privilegedContext As AccessControlContext)
+            Me.context = context
+            Me.privilegedContext = privilegedContext
+            Me.isPrivileged_Renamed = True
+        End Sub
+        ''' <summary>
+        ''' Returns this context's context.
+        ''' </summary>
+        Public Function context() As ProtectionDomain()
+            Return context
+        End Function
 
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		AccessControlContext(ProtectionDomain context() , boolean isPrivileged)
-			Me.context = context
-			Me.isPrivileged_Renamed = isPrivileged_Renamed
-			Me.isAuthorized_Renamed = True
+        ''' <summary>
+        ''' Returns true if this context is privileged.
+        ''' </summary>
+        Public Function privileged() As Boolean
+            Return isPrivileged_Renamed
+        End Function
 
-		''' <summary>
-		''' Constructor for JavaSecurityAccess.doIntersectionPrivilege()
-		''' </summary>
-		AccessControlContext(ProtectionDomain() context, AccessControlContext privilegedContext)
-			Me.context = context
-			Me.privilegedContext = privilegedContext
-			Me.isPrivileged_Renamed = True
+        ''' <summary>
+        ''' get the assigned combiner from the privileged or inherited context
+        ''' </summary>
+        Public Function assignedCombiner() As DomainCombiner
+            Dim acc As AccessControlContext
+            If isPrivileged_Renamed Then
+                acc = privilegedContext
+            Else
+                acc = AccessController.inheritedAccessControlContext
+            End If
+            If acc IsNot Nothing Then Return acc.combiner
+            Return Nothing
+        End Function
+        ''' <summary>
+        ''' Get the {@code DomainCombiner} associated with this
+        ''' {@code AccessControlContext}.
+        ''' 
+        ''' <p>
+        ''' </summary>
+        ''' <returns> the {@code DomainCombiner} associated with this
+        '''          {@code AccessControlContext}, or {@code null}
+        '''          if there is none.
+        ''' </returns>
+        ''' <exception cref="SecurityException"> if a security manager is installed and
+        '''          the caller does not have the "getDomainCombiner"
+        '''          <seealso cref="SecurityPermission"/>
+        ''' @since 1.3 </exception>
+        Public Function domainCombiner() As DomainCombiner
 
-		''' <summary>
-		''' Returns this context's context.
-		''' </summary>
-		ProtectionDomain() context
-			Return context
+            Dim sm As SecurityManager = System.securityManager
+            If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_COMBINER_PERMISSION)
+            Return combiner
+        End Function
+        ''' <summary>
+        ''' package private for AccessController
+        ''' </summary>
+        Public Function combiner() As DomainCombiner
+            Return combiner
+        End Function
+        Public Function authorized() As Boolean
+            Return isAuthorized_Renamed
+        End Function
+        ''' <summary>
+        ''' Determines whether the access request indicated by the
+        ''' specified permission should be allowed or denied, based on
+        ''' the security policy currently in effect, and the context in
+        ''' this object. The request is allowed only if every ProtectionDomain
+        ''' in the context implies the permission. Otherwise the request is
+        ''' denied.
+        ''' 
+        ''' <p>
+        ''' This method quietly returns if the access request
+        ''' is permitted, or throws a suitable AccessControlException otherwise.
+        ''' </summary>
+        ''' <param name="perm"> the requested permission.
+        ''' </param>
+        ''' <exception cref="AccessControlException"> if the specified permission
+        ''' is not permitted, based on the current security policy and the
+        ''' context encapsulated by this object. </exception>
+        ''' <exception cref="NullPointerException"> if the permission to check for is null. </exception>
+        Public Sub checkPermission(perm As Permission) 'throws AccessControlException
+            Dim dumpDebug As Boolean = False
 
-		''' <summary>
-		''' Returns true if this context is privileged.
-		''' </summary>
-		Boolean privileged
-			Return isPrivileged_Renamed
+            If perm Is Nothing Then Throw New NullPointerException("permission can't be null")
+            If debug IsNot Nothing Then
+                ' If "codebase" is not specified, we dump the info by default.
+                dumpDebug = Not sun.security.util.Debug.isOn("codebase=")
+                If Not dumpDebug Then
+                    ' If "codebase" is specified, only dump if the specified code
+                    ' value is in the stack.
+                    Dim i As Integer = 0
+                    Do While context IsNot Nothing AndAlso i < context.Length
+                        If context(i).codeSource IsNot Nothing AndAlso context(i).codeSource.location IsNot Nothing AndAlso sun.security.util.Debug.isOn("codebase=" & context(i).codeSource.location.ToString()) Then
+                            dumpDebug = True
+                            Exit Do
+                        End If
+                        i += 1
+                    Loop
+                End If
 
-		''' <summary>
-		''' get the assigned combiner from the privileged or inherited context
-		''' </summary>
-		DomainCombiner assignedCombiner
-			Dim acc As AccessControlContext
-			If isPrivileged_Renamed Then
-				acc = privilegedContext
-			Else
-				acc = AccessController.inheritedAccessControlContext
-			End If
-			If acc IsNot Nothing Then Return acc.combiner
-			Return Nothing
+                dumpDebug = dumpDebug And (Not sun.security.util.Debug.isOn("permission=")) OrElse sun.security.util.Debug.isOn("permission=" & perm.GetType().canonicalName)
 
-		''' <summary>
-		''' Get the {@code DomainCombiner} associated with this
-		''' {@code AccessControlContext}.
-		''' 
-		''' <p>
-		''' </summary>
-		''' <returns> the {@code DomainCombiner} associated with this
-		'''          {@code AccessControlContext}, or {@code null}
-		'''          if there is none.
-		''' </returns>
-		''' <exception cref="SecurityException"> if a security manager is installed and
-		'''          the caller does not have the "getDomainCombiner"
-		'''          <seealso cref="SecurityPermission"/>
-		''' @since 1.3 </exception>
-		public DomainCombiner domainCombiner
+                If dumpDebug AndAlso sun.security.util.Debug.isOn("stack") Then Thread.dumpStack()
 
-			Dim sm As SecurityManager = System.securityManager
-			If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_COMBINER_PERMISSION)
-			Return combiner
+                If dumpDebug AndAlso sun.security.util.Debug.isOn("domain") Then
+                    If context Is Nothing Then
+                        debug.println("domain (context is null)")
+                    Else
+                        For i As Integer = 0 To context.Length - 1
+                            debug.println("domain " & i & " " & context(i))
+                        Next i
+                    End If
+                End If
+            End If
 
-		''' <summary>
-		''' package private for AccessController
-		''' </summary>
-		DomainCombiner combiner
-			Return combiner
+            '        
+            '         * iterate through the ProtectionDomains in the context.
+            '         * Stop at the first one that doesn't allow the
+            '         * requested permission (throwing an exception).
+            '         *
+            '         
 
-		Boolean authorized
-			Return isAuthorized_Renamed
+            '         if ctxt is null, all we had on the stack were system domains,
+            '           or the first domain was a Privileged system domain. This
+            '           is to make the common case for system code very fast 
 
-		''' <summary>
-		''' Determines whether the access request indicated by the
-		''' specified permission should be allowed or denied, based on
-		''' the security policy currently in effect, and the context in
-		''' this object. The request is allowed only if every ProtectionDomain
-		''' in the context implies the permission. Otherwise the request is
-		''' denied.
-		''' 
-		''' <p>
-		''' This method quietly returns if the access request
-		''' is permitted, or throws a suitable AccessControlException otherwise.
-		''' </summary>
-		''' <param name="perm"> the requested permission.
-		''' </param>
-		''' <exception cref="AccessControlException"> if the specified permission
-		''' is not permitted, based on the current security policy and the
-		''' context encapsulated by this object. </exception>
-		''' <exception cref="NullPointerException"> if the permission to check for is null. </exception>
-		public void checkPermission(Permission perm) throws AccessControlException
-			Dim dumpDebug As Boolean = False
+            If context Is Nothing Then
+                checkPermission2(perm)
+                Return
+            End If
 
-			If perm Is Nothing Then Throw New NullPointerException("permission can't be null")
-			If debug IsNot Nothing Then
-				' If "codebase" is not specified, we dump the info by default.
-				dumpDebug = Not sun.security.util.Debug.isOn("codebase=")
-				If Not dumpDebug Then
-					' If "codebase" is specified, only dump if the specified code
-					' value is in the stack.
-					Dim i As Integer = 0
-					Do While context IsNot Nothing AndAlso i < context.Length
-						If context(i).codeSource IsNot Nothing AndAlso context(i).codeSource.location IsNot Nothing AndAlso sun.security.util.Debug.isOn("codebase=" & context(i).codeSource.location.ToString()) Then
-							dumpDebug = True
-							Exit Do
-						End If
-						i += 1
-					Loop
-				End If
+            For i As Integer = 0 To context.Length - 1
+                If context(i) IsNot Nothing AndAlso (Not context(i).implies(perm)) Then
+                    If dumpDebug Then debug.println("access denied " & perm)
 
-				dumpDebug = dumpDebug And (Not sun.security.util.Debug.isOn("permission=")) OrElse sun.security.util.Debug.isOn("permission=" & perm.GetType().canonicalName)
+                    If sun.security.util.Debug.isOn("failure") AndAlso debug IsNot Nothing Then
+                        ' Want to make sure this is always displayed for failure,
+                        ' but do not want to display again if already displayed
+                        ' above.
+                        If Not dumpDebug Then debug.println("access denied " & perm)
+                        Thread.dumpStack()
+                        Dim pd As ProtectionDomain = context(i)
+                        Dim db As sun.security.util.Debug = debug
+                        AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+                    End If
+                    Throw New AccessControlException("access denied " & perm, perm)
+                End If
+            Next i
 
-				If dumpDebug AndAlso sun.security.util.Debug.isOn("stack") Then Thread.dumpStack()
+            ' allow if all of them allowed access
+            If dumpDebug Then debug.println("access allowed " & perm)
 
-				If dumpDebug AndAlso sun.security.util.Debug.isOn("domain") Then
-					If context Is Nothing Then
-						debug.println("domain (context is null)")
-					Else
-						For i As Integer = 0 To context.Length - 1
-							debug.println("domain " & i & " " & context(i))
-						Next i
-					End If
-				End If
-			End If
+            checkPermission2(perm)
+        End Sub
+        '    
+        '     * Check the domains associated with the limited privilege scope.
+        '     
+        Private Sub checkPermission2(perm As Permission)
+            If Not isLimited Then Return
 
-	'        
-	'         * iterate through the ProtectionDomains in the context.
-	'         * Stop at the first one that doesn't allow the
-	'         * requested permission (throwing an exception).
-	'         *
-	'         
+            '        
+            '         * Check the doPrivileged() context parameter, if present.
+            '         
+            If privilegedContext IsNot Nothing Then privilegedContext.checkPermission2(perm)
 
-	'         if ctxt is null, all we had on the stack were system domains,
-	'           or the first domain was a Privileged system domain. This
-	'           is to make the common case for system code very fast 
+            '        
+            '         * Ignore the limited permissions and parent fields of a wrapper
+            '         * context since they were already carried down into the unwrapped
+            '         * context.
+            '         
+            If isWrapped Then Return
 
-			If context Is Nothing Then
-				checkPermission2(perm)
-				Return
-			End If
+            '        
+            '         * Try to match any limited privilege scope.
+            '         
+            If permissions IsNot Nothing Then
+                Dim permClass As [Class] = perm.GetType()
+                For i As Integer = 0 To permissions.Length - 1
+                    Dim limit As Permission = permissions(i)
+                    If limit.GetType().Equals(permClass) AndAlso limit.implies(perm) Then Return
+                Next i
+            End If
 
-			For i As Integer = 0 To context.Length - 1
-				If context(i) IsNot Nothing AndAlso (Not context(i).implies(perm)) Then
-					If dumpDebug Then debug.println("access denied " & perm)
+            '        
+            '         * Check the limited privilege scope up the call stack or the inherited
+            '         * parent thread call stack of this ACC.
+            '         
+            If parent IsNot Nothing Then
+                '            
+                '             * As an optimization, if the parent context is the inherited call
+                '             * stack context from a parent thread then checking the protection
+                '             * domains of the parent context is redundant since they have
+                '             * already been merged into the child thread's context by
+                '             * optimize(). When parent is set to an inherited context this
+                '             * context was not directly created by a limited scope
+                '             * doPrivileged() and it does not have its own limited permissions.
+                '             
+                If permissions Is Nothing Then
+                    parent.checkPermission2(perm)
+                Else
+                    parent.checkPermission(perm)
+                End If
+            End If
+        End Sub
+        ''' <summary>
+        ''' Take the stack-based context (this) and combine it with the
+        ''' privileged or inherited context, if need be. Any limited
+        ''' privilege scope is flagged regardless of whether the assigned
+        ''' context comes from an immediately enclosing limited doPrivileged().
+        ''' The limited privilege scope can indirectly flow from the inherited
+        ''' parent thread or an assigned context previously captured by getContext().
+        ''' </summary>
+        Public Function optimize() As AccessControlContext
+            ' the assigned (privileged or inherited) context
+            Dim acc As AccessControlContext
+            Dim combiner_Renamed As DomainCombiner = Nothing
+            Dim parent As AccessControlContext = Nothing
+            Dim permissions As Permission() = Nothing
 
-					If sun.security.util.Debug.isOn("failure") AndAlso debug IsNot Nothing Then
-						' Want to make sure this is always displayed for failure,
-						' but do not want to display again if already displayed
-						' above.
-						If Not dumpDebug Then debug.println("access denied " & perm)
-						Thread.dumpStack()
-						Dim pd As ProtectionDomain = context(i)
-						Dim db As sun.security.util.Debug = debug
-						AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
-					End If
-					Throw New AccessControlException("access denied " & perm, perm)
-				End If
-			Next i
+            If isPrivileged_Renamed Then
+                acc = privilegedContext
+                If acc IsNot Nothing Then
+                    '                
+                    '                 * If the context is from a limited scope doPrivileged() then
+                    '                 * copy the permissions and parent fields out of the wrapper
+                    '                 * context that was created to hold them.
+                    '                 
+                    If acc.isWrapped Then
+                        permissions = acc.permissions
+                        parent = acc.parent
+                    End If
+                End If
+            Else
+                acc = AccessController.inheritedAccessControlContext
+                If acc IsNot Nothing Then
+                    '                
+                    '                 * If the inherited context is constrained by a limited scope
+                    '                 * doPrivileged() then set it as our parent so we will process
+                    '                 * the non-domain-related state.
+                    '                 
+                    If acc.isLimited Then parent = acc
+                End If
+            End If
 
-			' allow if all of them allowed access
-			If dumpDebug Then debug.println("access allowed " & perm)
+            ' this.context could be null if only system code is on the stack;
+            ' in that case, ignore the stack context
+            Dim skipStack As Boolean = (context Is Nothing)
 
-			checkPermission2(perm)
+            ' acc.context could be null if only system code was involved;
+            ' in that case, ignore the assigned context
+            Dim skipAssigned As Boolean = (acc Is Nothing OrElse acc.context Is Nothing)
+            Dim assigned As ProtectionDomain() = If(skipAssigned, Nothing, acc.context)
+            Dim pd As ProtectionDomain()
 
-	'    
-	'     * Check the domains associated with the limited privilege scope.
-	'     
-		private void checkPermission2(Permission perm)
-			If Not isLimited Then Return
+            ' if there is no enclosing limited privilege scope on the stack or
+            ' inherited from a parent thread
+            Dim skipLimited As Boolean = ((acc Is Nothing OrElse (Not acc.isWrapped)) AndAlso parent Is Nothing)
 
-	'        
-	'         * Check the doPrivileged() context parameter, if present.
-	'         
-			If privilegedContext IsNot Nothing Then privilegedContext.checkPermission2(perm)
+            If acc IsNot Nothing AndAlso acc.combiner IsNot Nothing Then
+                ' let the assigned acc's combiner do its thing
+                If debug IsNot Nothing Then debug.println("AccessControlContext invoking the Combiner")
 
-	'        
-	'         * Ignore the limited permissions and parent fields of a wrapper
-	'         * context since they were already carried down into the unwrapped
-	'         * context.
-	'         
-			If isWrapped Then Return
+                ' No need to clone current and assigned.context
+                ' combine() will not update them
+                combiner_Renamed = acc.combiner
+                pd = combiner_Renamed.combine(context, assigned)
+            Else
+                If skipStack Then
+                    If skipAssigned Then
+                        calculateFields(acc, parent, permissions)
+                        Return Me
+                    ElseIf skipLimited Then
+                        Return acc
+                    End If
+                ElseIf assigned IsNot Nothing Then
+                    If skipLimited Then
+                        ' optimization: if there is a single stack domain and
+                        ' that domain is already in the assigned context; no
+                        ' need to combine
+                        If context.Length = 1 AndAlso context(0) Is assigned(0) Then Return acc
+                    End If
+                End If
 
-	'        
-	'         * Try to match any limited privilege scope.
-	'         
-			If permissions IsNot Nothing Then
-				Dim permClass As  [Class] = perm.GetType()
-				For i As Integer = 0 To permissions.Length - 1
-					Dim limit As Permission = permissions(i)
-					If limit.GetType().Equals(permClass) AndAlso limit.implies(perm) Then Return
-				Next i
-			End If
+                pd = combine(context, assigned)
+                If skipLimited AndAlso (Not skipAssigned) AndAlso pd = assigned Then
+                    Return acc
+                ElseIf skipAssigned AndAlso pd = context Then
+                    calculateFields(acc, parent, permissions)
+                    Return Me
+                End If
+            End If
 
-	'        
-	'         * Check the limited privilege scope up the call stack or the inherited
-	'         * parent thread call stack of this ACC.
-	'         
-			If parent IsNot Nothing Then
-	'            
-	'             * As an optimization, if the parent context is the inherited call
-	'             * stack context from a parent thread then checking the protection
-	'             * domains of the parent context is redundant since they have
-	'             * already been merged into the child thread's context by
-	'             * optimize(). When parent is set to an inherited context this
-	'             * context was not directly created by a limited scope
-	'             * doPrivileged() and it does not have its own limited permissions.
-	'             
-				If permissions Is Nothing Then
-					parent.checkPermission2(perm)
-				Else
-					parent.checkPermission(perm)
-				End If
-			End If
+            ' Reuse existing ACC
+            Me.context = pd
+            Me.combiner = combiner_Renamed
+            Me.isPrivileged_Renamed = False
 
-		''' <summary>
-		''' Take the stack-based context (this) and combine it with the
-		''' privileged or inherited context, if need be. Any limited
-		''' privilege scope is flagged regardless of whether the assigned
-		''' context comes from an immediately enclosing limited doPrivileged().
-		''' The limited privilege scope can indirectly flow from the inherited
-		''' parent thread or an assigned context previously captured by getContext().
-		''' </summary>
-		AccessControlContext optimize()
-			' the assigned (privileged or inherited) context
-			Dim acc As AccessControlContext
-			Dim combiner_Renamed As DomainCombiner = Nothing
-			Dim parent As AccessControlContext = Nothing
-			Dim permissions As Permission() = Nothing
+            calculateFields(acc, parent, permissions)
+            Return Me
+        End Function
 
-			If isPrivileged_Renamed Then
-				acc = privilegedContext
-				If acc IsNot Nothing Then
-	'                
-	'                 * If the context is from a limited scope doPrivileged() then
-	'                 * copy the permissions and parent fields out of the wrapper
-	'                 * context that was created to hold them.
-	'                 
-					If acc.isWrapped Then
-						permissions = acc.permissions
-						parent = acc.parent
-					End If
-				End If
-			Else
-				acc = AccessController.inheritedAccessControlContext
-				If acc IsNot Nothing Then
-	'                
-	'                 * If the inherited context is constrained by a limited scope
-	'                 * doPrivileged() then set it as our parent so we will process
-	'                 * the non-domain-related state.
-	'                 
-					If acc.isLimited Then parent = acc
-				End If
-			End If
+        '    
+        '     * Combine the current (stack) and assigned domains.
+        '     
+        Private Shared Function combine(current As ProtectionDomain(), assigned As ProtectionDomain()) As ProtectionDomain()
 
-			' this.context could be null if only system code is on the stack;
-			' in that case, ignore the stack context
-			Dim skipStack As Boolean = (context Is Nothing)
+            ' current could be null if only system code is on the stack;
+            ' in that case, ignore the stack context
+            Dim skipStack As Boolean = (current Is Nothing)
 
-			' acc.context could be null if only system code was involved;
-			' in that case, ignore the assigned context
-			Dim skipAssigned As Boolean = (acc Is Nothing OrElse acc.context Is Nothing)
-			Dim assigned As ProtectionDomain() = If(skipAssigned, Nothing, acc.context)
-			Dim pd As ProtectionDomain()
+            ' assigned could be null if only system code was involved;
+            ' in that case, ignore the assigned context
+            Dim skipAssigned As Boolean = (assigned Is Nothing)
 
-			' if there is no enclosing limited privilege scope on the stack or
-			' inherited from a parent thread
-			Dim skipLimited As Boolean = ((acc Is Nothing OrElse (Not acc.isWrapped)) AndAlso parent Is Nothing)
+            Dim slen As Integer = If(skipStack, 0, current.Length)
 
-			If acc IsNot Nothing AndAlso acc.combiner IsNot Nothing Then
-				' let the assigned acc's combiner do its thing
-				If debug IsNot Nothing Then debug.println("AccessControlContext invoking the Combiner")
+            ' optimization: if there is no assigned context and the stack length
+            ' is less then or equal to two; there is no reason to compress the
+            ' stack context, it already is
+            If skipAssigned AndAlso slen <= 2 Then Return current
 
-				' No need to clone current and assigned.context
-				' combine() will not update them
-				combiner_Renamed = acc.combiner
-				pd = combiner_Renamed.combine(context, assigned)
-			Else
-				If skipStack Then
-					If skipAssigned Then
-						calculateFields(acc, parent, permissions)
-						Return Me
-					ElseIf skipLimited Then
-						Return acc
-					End If
-				ElseIf assigned IsNot Nothing Then
-					If skipLimited Then
-						' optimization: if there is a single stack domain and
-						' that domain is already in the assigned context; no
-						' need to combine
-						If context.Length = 1 AndAlso context(0) Is assigned(0) Then Return acc
-					End If
-				End If
+            Dim n As Integer = If(skipAssigned, 0, assigned.Length)
 
-				pd = combine(context, assigned)
-				If skipLimited AndAlso (Not skipAssigned) AndAlso pd = assigned Then
-					Return acc
-				ElseIf skipAssigned AndAlso pd = context Then
-					calculateFields(acc, parent, permissions)
-					Return Me
-				End If
-			End If
+            ' now we combine both of them, and create a new context
+            Dim pd As ProtectionDomain() = New ProtectionDomain(slen + n - 1) {}
 
-			' Reuse existing ACC
-			Me.context = pd
-			Me.combiner = combiner_Renamed
-			Me.isPrivileged_Renamed = False
+            ' first copy in the assigned context domains, no need to compress
+            If Not skipAssigned Then Array.Copy(assigned, 0, pd, 0, n)
 
-			calculateFields(acc, parent, permissions)
-			Return Me
+            ' now add the stack context domains, discarding nulls and duplicates
+outer:
+            For i As Integer = 0 To slen - 1
+                Dim sd As ProtectionDomain = current(i)
+                If sd IsNot Nothing Then
+                    For j As Integer = 0 To n - 1
+                        If sd Is pd(j) Then GoTo outer
+                    Next j
+                    pd(n) = sd
+                    n += 1
+                End If
+            Next i
 
+            ' if length isn't equal, we need to shorten the array
+            If n <> pd.Length Then
+                ' optimization: if we didn't really combine anything
+                If (Not skipAssigned) AndAlso n = assigned.Length Then
+                    Return assigned
+                ElseIf skipAssigned AndAlso n = slen Then
+                    Return current
+                End If
+                Dim tmp As ProtectionDomain() = New ProtectionDomain(n - 1) {}
+                Array.Copy(pd, 0, tmp, 0, n)
+                pd = tmp
+            End If
 
-	'    
-	'     * Combine the current (stack) and assigned domains.
-	'     
-		private static ProtectionDomain() combine(ProtectionDomain()current, ProtectionDomain() assigned)
+            Return pd
+        End Function
 
-			' current could be null if only system code is on the stack;
-			' in that case, ignore the stack context
-			Dim skipStack As Boolean = (current Is Nothing)
+        '    
+        '     * Calculate the additional domains that could potentially be reached via
+        '     * limited privilege scope. Mark the context as being subject to limited
+        '     * privilege scope unless the reachable domains (if any) are already
+        '     * contained in this domain context (in which case any limited
+        '     * privilege scope checking would be redundant).
+        '     
+        Private Sub calculateFields(assigned As AccessControlContext, parent As AccessControlContext, permissions As Permission())
+            Dim parentLimit As ProtectionDomain() = Nothing
+            Dim assignedLimit As ProtectionDomain() = Nothing
+            Dim newLimit As ProtectionDomain()
 
-			' assigned could be null if only system code was involved;
-			' in that case, ignore the assigned context
-			Dim skipAssigned As Boolean = (assigned Is Nothing)
+            parentLimit = If(parent IsNot Nothing, parent.limitedContext, Nothing)
+            assignedLimit = If(assigned IsNot Nothing, assigned.limitedContext, Nothing)
+            newLimit = combine(parentLimit, assignedLimit)
+            If newLimit IsNot Nothing Then
+                If context Is Nothing OrElse (Not containsAllPDs(newLimit, context)) Then
+                    Me.limitedContext = newLimit
+                    Me.permissions = permissions
+                    Me.parent = parent
+                    Me.isLimited = True
+                End If
+            End If
+        End Sub
 
-			Dim slen As Integer = If(skipStack, 0, current.length)
+        ''' <summary>
+        ''' Checks two AccessControlContext objects for equality.
+        ''' Checks that <i>obj</i> is
+        ''' an AccessControlContext and has the same set of ProtectionDomains
+        ''' as this context.
+        ''' <P> </summary>
+        ''' <param name="obj"> the object we are testing for equality with this object. </param>
+        ''' <returns> true if <i>obj</i> is an AccessControlContext, and has the
+        ''' same set of ProtectionDomains as this context, false otherwise. </returns>
+        Public Function Equals(obj As Object) As Boolean
+            If obj Is Me Then Return True
 
-			' optimization: if there is no assigned context and the stack length
-			' is less then or equal to two; there is no reason to compress the
-			' stack context, it already is
-			If skipAssigned AndAlso slen <= 2 Then Return current
+            If Not (TypeOf obj Is AccessControlContext) Then Return False
 
-			Dim n As Integer = If(skipAssigned, 0, assigned.length)
+            Dim that As AccessControlContext = CType(obj, AccessControlContext)
 
-			' now we combine both of them, and create a new context
-			Dim pd As ProtectionDomain() = New ProtectionDomain(slen + n - 1){}
+            If Not equalContext(that) Then Return False
 
-			' first copy in the assigned context domains, no need to compress
-			If Not skipAssigned Then Array.Copy(assigned, 0, pd, 0, n)
+            If Not equalLimitedContext(that) Then Return False
 
-			' now add the stack context domains, discarding nulls and duplicates
-		outer:
-			For i As Integer = 0 To slen - 1
-				Dim sd As ProtectionDomain = current(i)
-				If sd IsNot Nothing Then
-					For j As Integer = 0 To n - 1
-						If sd Is pd(j) Then GoTo outer
-					Next j
-					pd(n) = sd
-					n += 1
-				End If
-			Next i
+            Return True
+        End Function
+        '    
+        '     * Compare for equality based on state that is free of limited
+        '     * privilege complications.
+        '     
+        Private Function equalContext(that As AccessControlContext) As Boolean
+            If Not equalPDs(Me.context, that.context) Then Return False
 
-			' if length isn't equal, we need to shorten the array
-			If n <> pd.Length Then
-				' optimization: if we didn't really combine anything
-				If (Not skipAssigned) AndAlso n = assigned.length Then
-					Return assigned
-				ElseIf skipAssigned AndAlso n = slen Then
-					Return current
-				End If
-				Dim tmp As ProtectionDomain() = New ProtectionDomain(n - 1){}
-				Array.Copy(pd, 0, tmp, 0, n)
-				pd = tmp
-			End If
+            If Me.combiner Is Nothing AndAlso that.combiner IsNot Nothing Then Return False
 
-			Return pd
+            If Me.combiner IsNot Nothing AndAlso (Not Me.combiner.Equals(that.combiner)) Then Return False
 
-
-	'    
-	'     * Calculate the additional domains that could potentially be reached via
-	'     * limited privilege scope. Mark the context as being subject to limited
-	'     * privilege scope unless the reachable domains (if any) are already
-	'     * contained in this domain context (in which case any limited
-	'     * privilege scope checking would be redundant).
-	'     
-		private void calculateFields(AccessControlContext assigned, AccessControlContext parent, Permission() permissions)
-			Dim parentLimit As ProtectionDomain() = Nothing
-			Dim assignedLimit As ProtectionDomain() = Nothing
-			Dim newLimit As ProtectionDomain()
-
-			parentLimit = If(parent IsNot Nothing, parent.limitedContext, Nothing)
-			assignedLimit = If(assigned IsNot Nothing, assigned.limitedContext, Nothing)
-			newLimit = combine(parentLimit, assignedLimit)
-			If newLimit IsNot Nothing Then
-				If context Is Nothing OrElse (Not containsAllPDs(newLimit, context)) Then
-					Me.limitedContext = newLimit
-					Me.permissions = permissions
-					Me.parent = parent
-					Me.isLimited = True
-				End If
-			End If
-
-
-		''' <summary>
-		''' Checks two AccessControlContext objects for equality.
-		''' Checks that <i>obj</i> is
-		''' an AccessControlContext and has the same set of ProtectionDomains
-		''' as this context.
-		''' <P> </summary>
-		''' <param name="obj"> the object we are testing for equality with this object. </param>
-		''' <returns> true if <i>obj</i> is an AccessControlContext, and has the
-		''' same set of ProtectionDomains as this context, false otherwise. </returns>
-		public Boolean Equals(Object obj)
-			If obj Is Me Then Return True
-
-			If Not(TypeOf obj Is AccessControlContext) Then Return False
-
-			Dim that As AccessControlContext = CType(obj, AccessControlContext)
-
-			If Not equalContext(that) Then Return False
-
-			If Not equalLimitedContext(that) Then Return False
-
-			Return True
-
-	'    
-	'     * Compare for equality based on state that is free of limited
-	'     * privilege complications.
-	'     
-		private Boolean equalContext(AccessControlContext that)
-			If Not equalPDs(Me.context, that.context) Then Return False
-
-			If Me.combiner Is Nothing AndAlso that.combiner IsNot Nothing Then Return False
-
-			If Me.combiner IsNot Nothing AndAlso (Not Me.combiner.Equals(that.combiner)) Then Return False
-
-			Return True
-
-		private Boolean equalPDs(ProtectionDomain() a, ProtectionDomain() b)
+            Return True
+        End Function
+        Private Boolean equalPDs(ProtectionDomain() a, ProtectionDomain() b)
 			If a Is Nothing Then Return (b Is Nothing)
 
 			If b Is Nothing Then Return False
@@ -700,108 +700,109 @@ Namespace java.security
 
 			Return True
 
-	'    
-	'     * Compare for equality based on state that is captured during a
-	'     * call to AccessController.getContext() when a limited privilege
-	'     * scope is in effect.
-	'     
-		private Boolean equalLimitedContext(AccessControlContext that)
-			If that Is Nothing Then Return False
+        '    
+        '     * Compare for equality based on state that is captured during a
+        '     * call to AccessController.getContext() when a limited privilege
+        '     * scope is in effect.
+        '     
+        Private Function equalLimitedContext(AccessControlContext that) As Boolean
+            If that Is Nothing Then Return False
 
-	'        
-	'         * If neither instance has limited privilege scope then we're done.
-	'         
-			If (Not Me.isLimited) AndAlso (Not that.isLimited) Then Return True
+            '        
+            '         * If neither instance has limited privilege scope then we're done.
+            '         
+            If (Not Me.isLimited) AndAlso (Not that.isLimited) Then Return True
 
-	'        
-	'         * If only one instance has limited privilege scope then we're done.
-	'         
-			 If Not(Me.isLimited AndAlso that.isLimited) Then Return False
+            '        
+            '         * If only one instance has limited privilege scope then we're done.
+            '         
+            If Not (Me.isLimited AndAlso that.isLimited) Then Return False
 
-	'        
-	'         * Wrapped instances should never escape outside the implementation
-	'         * this class and AccessController so this will probably never happen
-	'         * but it only makes any sense to compare if they both have the same
-	'         * isWrapped state.
-	'         
-			If (Me.isWrapped AndAlso (Not that.isWrapped)) OrElse ((Not Me.isWrapped) AndAlso that.isWrapped) Then Return False
+            '        
+            '         * Wrapped instances should never escape outside the implementation
+            '         * this class and AccessController so this will probably never happen
+            '         * but it only makes any sense to compare if they both have the same
+            '         * isWrapped state.
+            '         
+            If (Me.isWrapped AndAlso (Not that.isWrapped)) OrElse ((Not Me.isWrapped) AndAlso that.isWrapped) Then Return False
 
-			If Me.permissions Is Nothing AndAlso that.permissions IsNot Nothing Then Return False
+            If Me.permissions Is Nothing AndAlso that.permissions IsNot Nothing Then Return False
 
-			If Me.permissions IsNot Nothing AndAlso that.permissions Is Nothing Then Return False
+            If Me.permissions IsNot Nothing AndAlso that.permissions Is Nothing Then Return False
 
-			If Not(Me.containsAllLimits(that) AndAlso that.containsAllLimits(Me)) Then Return False
+            If Not (Me.containsAllLimits(that) AndAlso that.containsAllLimits(Me)) Then Return False
 
-	'        
-	'         * Skip through any wrapped contexts.
-	'         
-			Dim thisNextPC As AccessControlContext = getNextPC(Me)
-			Dim thatNextPC As AccessControlContext = getNextPC(that)
+            '        
+            '         * Skip through any wrapped contexts.
+            '         
+            Dim thisNextPC As AccessControlContext = getNextPC(Me)
+            Dim thatNextPC As AccessControlContext = getNextPC(that)
 
-	'        
-	'         * The protection domains and combiner of a privilegedContext are
-	'         * not relevant because they have already been included in the context
-	'         * of this instance by optimize() so we only care about any limited
-	'         * privilege state they may have.
-	'         
-			If thisNextPC Is Nothing AndAlso thatNextPC IsNot Nothing AndAlso thatNextPC.isLimited Then Return False
+            '        
+            '         * The protection domains and combiner of a privilegedContext are
+            '         * not relevant because they have already been included in the context
+            '         * of this instance by optimize() so we only care about any limited
+            '         * privilege state they may have.
+            '         
+            If thisNextPC Is Nothing AndAlso thatNextPC IsNot Nothing AndAlso thatNextPC.isLimited Then Return False
 
-			If thisNextPC IsNot Nothing AndAlso (Not thisNextPC.equalLimitedContext(thatNextPC)) Then Return False
+            If thisNextPC IsNot Nothing AndAlso (Not thisNextPC.equalLimitedContext(thatNextPC)) Then Return False
 
-			If Me.parent Is Nothing AndAlso that.parent IsNot Nothing Then Return False
+            If Me.parent Is Nothing AndAlso that.parent IsNot Nothing Then Return False
 
-			If Me.parent IsNot Nothing AndAlso (Not Me.parent.Equals(that.parent)) Then Return False
+            If Me.parent IsNot Nothing AndAlso (Not Me.parent.Equals(that.parent)) Then Return False
 
-			Return True
+            Return True
+        End Function
+        '    
+        '     * Follow the privilegedContext link making our best effort to skip
+        '     * through any wrapper contexts.
+        '     
+        Private Shared Function getNextPC(acc As AccessControlContext) As AccessControlContext
+            Do While acc IsNot Nothing AndAlso acc.privilegedContext IsNot Nothing
+                acc = acc.privilegedContext
+                If Not acc.isWrapped Then Return acc
+            Loop
+            Return Nothing
+        End Function
+        Private Shared Function containsAllPDs(ProtectionDomain() thisContext, ProtectionDomain() thatContext) As Boolean
+            Dim match As Boolean = False
 
-	'    
-	'     * Follow the privilegedContext link making our best effort to skip
-	'     * through any wrapper contexts.
-	'     
-		private static AccessControlContext getNextPC(AccessControlContext acc)
-			Do While acc IsNot Nothing AndAlso acc.privilegedContext IsNot Nothing
-				acc = acc.privilegedContext
-				If Not acc.isWrapped Then Return acc
-			Loop
-			Return Nothing
+            '
+            ' ProtectionDomains within an ACC currently cannot be null
+            ' and this is enforced by the constructor and the various
+            ' optimize methods. However, historically this logic made attempts
+            ' to support the notion of a null PD and therefore this logic continues
+            ' to support that notion.
+            Dim thisPd As ProtectionDomain
+            For i As Integer = 0 To thisContext.length - 1
+                match = False
+                thisPd = thisContext(i)
+                If thisPd Is Nothing Then
+                    Dim j As Integer = 0
+                    Do While (j < thatContext.length) AndAlso Not match
+                        match = (thatContext(j) Is Nothing)
+                        j += 1
+                    Loop
+                Else
+                    Dim thisPdClass As [Class] = thisPd.GetType()
+                    Dim thatPd As ProtectionDomain
+                    Dim j As Integer = 0
+                    Do While (j < thatContext.length) AndAlso Not match
+                        thatPd = thatContext(j)
 
-		private static Boolean containsAllPDs(ProtectionDomain() thisContext, ProtectionDomain() thatContext)
-			Dim match As Boolean = False
+                        ' Class check required to avoid PD exposure (4285406)
+                        match = (thatPd IsNot Nothing AndAlso thisPdClass Is thatPd.GetType() AndAlso thisPd.Equals(thatPd))
+                        j += 1
+                    Loop
+                End If
+                If Not match Then Return False
+            Next i
+            Return match
+        End Function
 
-			'
-			' ProtectionDomains within an ACC currently cannot be null
-			' and this is enforced by the constructor and the various
-			' optimize methods. However, historically this logic made attempts
-			' to support the notion of a null PD and therefore this logic continues
-			' to support that notion.
-			Dim thisPd As ProtectionDomain
-			For i As Integer = 0 To thisContext.length - 1
-				match = False
-				thisPd = thisContext(i)
-				If thisPd Is Nothing Then
-					Dim j As Integer = 0
-					Do While (j < thatContext.length) AndAlso Not match
-						match = (thatContext(j) Is Nothing)
-						j += 1
-					Loop
-				Else
-					Dim thisPdClass As  [Class] = thisPd.GetType()
-					Dim thatPd As ProtectionDomain
-					Dim j As Integer = 0
-					Do While (j < thatContext.length) AndAlso Not match
-						thatPd = thatContext(j)
-
-						' Class check required to avoid PD exposure (4285406)
-						match = (thatPd IsNot Nothing AndAlso thisPdClass Is thatPd.GetType() AndAlso thisPd.Equals(thatPd))
-						j += 1
-					Loop
-				End If
-				If Not match Then Return False
-			Next i
-			Return match
-
-		private Boolean containsAllLimits(AccessControlContext that)
-			Dim match As Boolean = False
+        Private Function containsAllLimits(that As AccessControlContext) As Boolean
+            Dim match As Boolean = False
 			Dim thisPerm As Permission
 
 			If Me.permissions Is Nothing AndAlso that.permissions Is Nothing Then Return True
@@ -819,34 +820,34 @@ Namespace java.security
 				If Not match Then Return False
 			Next i
 			Return match
+            End Function
 
+            ''' <summary>
+            ''' Returns the hash code value for this context. The hash code
+            ''' is computed by exclusive or-ing the hash code of all the protection
+            ''' domains in the context together.
+            ''' </summary>
+            ''' <returns> a hash code value for this context. </returns>
 
-		''' <summary>
-		''' Returns the hash code value for this context. The hash code
-		''' is computed by exclusive or-ing the hash code of all the protection
-		''' domains in the context together.
-		''' </summary>
-		''' <returns> a hash code value for this context. </returns>
+            Public Function GetHashCode() As Integer
+                Dim hashCode As Integer = 0
 
-		public Integer GetHashCode()
-			Dim hashCode As Integer = 0
+                If context Is Nothing Then Return hashCode
 
-			If context Is Nothing Then Return hashCode
+                For i As Integer = 0 To context.Length - 1
+                    If context(i) IsNot Nothing Then hashCode = hashCode Xor context(i).GetHashCode()
+                Next i
 
-			For i As Integer = 0 To context.Length - 1
-				If context(i) IsNot Nothing Then hashCode = hashCode Xor context(i).GetHashCode()
-			Next i
-
-			Return hashCode
-	End Class
+                Return hashCode
+            End Function
+        End Class
 
 
 	Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 		Implements PrivilegedAction(Of T)
 
-		Public Overridable Function run() As Void
-			db.println("domain that failed " & pd)
-			Return Nothing
-		End Function
-	End Class
+            Public Overridable Sub run()
+                db.println("domain that failed " & pd)
+            End Sub
+        End Class
 End Namespace

@@ -370,7 +370,7 @@ Namespace java.lang.management
 				Me.lockName = Nothing
 			Else
 				Me.lock = New LockInfo(lockObj)
-				Me.lockName = lock.className + AscW("@"c) + Integer.toHexString(lock.identityHashCode)
+				Me.lockName = lock.className + AscW("@"c) +  java.lang.[Integer].toHexString(lock.identityHashCode)
 			End If
 			If lockOwner Is Nothing Then
 				Me.lockOwnerId = -1

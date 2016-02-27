@@ -447,7 +447,7 @@ Namespace java.security
 		'''   The class to which all BasicPermissions in this
 		'''   BasicPermissionCollection belongs.
 		''' </summary>
-		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("permissions", GetType(Hashtable)), New java.io.ObjectStreamField("all_allowed", Boolean.TYPE), New java.io.ObjectStreamField("permClass", GetType(Class)) }
+		Private Shared ReadOnly serialPersistentFields As java.io.ObjectStreamField() = { New java.io.ObjectStreamField("permissions", GetType(Hashtable)), New java.io.ObjectStreamField("all_allowed",  java.lang.[Boolean].TYPE), New java.io.ObjectStreamField("permClass", GetType(Class)) }
 
 		''' <summary>
 		''' @serialData Default fields.

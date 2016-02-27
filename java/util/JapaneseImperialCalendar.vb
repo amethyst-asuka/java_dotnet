@@ -117,7 +117,7 @@ Namespace java.util
 		Private Shared ReadOnly gcal As sun.util.calendar.Gregorian = sun.util.calendar.CalendarSystem.gregorianCalendar
 
 		' The Era instance representing "before Meiji".
-		Private Shared ReadOnly BEFORE_MEIJI_ERA As New sun.util.calendar.Era("BeforeMeiji", "BM", Long.MIN_VALUE, False)
+		Private Shared ReadOnly BEFORE_MEIJI_ERA As New sun.util.calendar.Era("BeforeMeiji", "BM", java.lang.[Long].MIN_VALUE, False)
 
 		' Imperial eras. The sun.util.calendar.LocalGregorianCalendar
 		' doesn't have an Era representing before Meiji, which is
@@ -185,26 +185,26 @@ Namespace java.util
 			' Calculate the least maximum year and least day of Year
 			' values. The following code assumes that there's at most one
 			' era transition in a Gregorian year.
-			Dim year_Renamed As Integer = Integer.MaxValue
-			Dim dayOfYear As Integer = Integer.MaxValue
+			Dim year_Renamed As Integer =  java.lang.[Integer].Max_Value
+			Dim dayOfYear As Integer =  java.lang.[Integer].Max_Value
 			Dim date_Renamed As sun.util.calendar.CalendarDate = gcal.newCalendarDate(TimeZone.NO_TIMEZONE)
 			For i As Integer = 1 To eras.Length - 1
 				Dim fd As Long = sinceFixedDates(i)
 				Dim transitionDate As sun.util.calendar.CalendarDate = eras(i).sinceDate
 				date_Renamed.dateate(transitionDate.year, sun.util.calendar.BaseCalendar.JANUARY, 1)
 				Dim fdd As Long = gcal.getFixedDate(date_Renamed)
-				If fd <> fdd Then dayOfYear = Math.Min(CInt(fd - fdd) + 1, dayOfYear)
+				If fd <> fdd Then dayOfYear = System.Math.Min(CInt(fd - fdd) + 1, dayOfYear)
 				date_Renamed.dateate(transitionDate.year, sun.util.calendar.BaseCalendar.DECEMBER, 31)
 				fdd = gcal.getFixedDate(date_Renamed)
-				If fd <> fdd Then dayOfYear = Math.Min(CInt(fdd - fd) + 1, dayOfYear)
+				If fd <> fdd Then dayOfYear = System.Math.Min(CInt(fdd - fd) + 1, dayOfYear)
 				Dim lgd As sun.util.calendar.LocalGregorianCalendar.Date = getCalendarDate(fd - 1)
 				Dim y As Integer = lgd.year
 				' Unless the first year starts from January 1, the actual
-				' max value could be one year short. For example, if it's
+				' max value could be one year  java.lang.[Short]. For example, if it's
 				' Showa 63 January 8, 63 is the actual max value since
 				' Showa 64 January 8 doesn't exist.
 				If Not(lgd.month = sun.util.calendar.BaseCalendar.JANUARY AndAlso lgd.dayOfMonth = 1) Then y -= 1
-				year_Renamed = Math.Min(y, year_Renamed)
+				year_Renamed = System.Math.Min(y, year_Renamed)
 			Next i
 			LEAST_MAX_VALUES(YEAR) = year_Renamed ' Max year could be smaller than this value.
 			LEAST_MAX_VALUES(DAY_OF_YEAR) = dayOfYear
@@ -520,7 +520,7 @@ Namespace java.util
 						Dim year_Renamed As Integer = jdate.year
 						If year_Renamed = getMaximum(YEAR) Then
 							Dim jd As sun.util.calendar.CalendarDate = jcal.getCalendarDate(time, zone)
-							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MaxValue, zone)
+							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.Max_Value, zone)
 							max = d.month - 1
 							Dim n As Integer = getRolledValue(internalGet(field), amount, min, max)
 							If n = max Then
@@ -543,7 +543,7 @@ Namespace java.util
 							[set](MONTH, n)
 						ElseIf year_Renamed = getMinimum(YEAR) Then
 							Dim jd As sun.util.calendar.CalendarDate = jcal.getCalendarDate(time, zone)
-							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 							min = d.month - 1
 							Dim n As Integer = getRolledValue(internalGet(field), amount, min, max)
 							If n = min Then
@@ -637,7 +637,7 @@ Namespace java.util
 						If year_Renamed <> getMinimum(YEAR) Then
 							If gcal.getYearFromFixedDate(day1) <> y Then min += 1
 						Else
-							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 							If day1 < jcal.getFixedDate(d) Then min += 1
 						End If
 
@@ -893,8 +893,8 @@ Namespace java.util
 			Select Case field
 			Case YEAR
 					' The value should depend on the time zone of this calendar.
-					Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MaxValue, zone)
-					Return Math.Max(LEAST_MAX_VALUES(YEAR), d.year)
+					Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.Max_Value, zone)
+					Return System.Math.Max(LEAST_MAX_VALUES(YEAR), d.year)
 			End Select
 			Return MAX_VALUES(field)
 		End Function
@@ -940,7 +940,7 @@ Namespace java.util
 		Public Overrides Function getLeastMaximum(ByVal field As Integer) As Integer
 			Select Case field
 			Case YEAR
-					Return Math.Min(LEAST_MAX_VALUES(YEAR), getMaximum(YEAR))
+					Return System.Math.Min(LEAST_MAX_VALUES(YEAR), getMaximum(YEAR))
 			End Select
 			Return LEAST_MAX_VALUES(field)
 		End Function
@@ -985,7 +985,7 @@ Namespace java.util
 						If getYearOffsetInMillis(jd) < getYearOffsetInMillis(d) Then value += 1
 					Else
 						value = getMinimum(field)
-						Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+						Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 						' Use an equvalent year of d.getYear() if
 						' possible. Otherwise, ignore the leap year and
 						' common year difference.
@@ -1007,7 +1007,7 @@ Namespace java.util
 
 			Case WEEK_OF_YEAR
 					value = 1
-					Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+					Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 					' shift 400 years to avoid underflow
 					d.addYear(+400)
 					jcal.normalize(d)
@@ -1072,7 +1072,7 @@ Namespace java.util
 							value = ldate.month - 1
 						End If
 					Else
-						Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MaxValue, zone)
+						Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.Max_Value, zone)
 						If date_Renamed.era = d.era AndAlso date_Renamed.year = d.year Then value = d.month - 1
 					End If
 
@@ -1099,13 +1099,13 @@ Namespace java.util
 							value = CInt(Fix(gcal.getFixedDate(d) - transition))
 						End If
 					Else
-						Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MaxValue, zone)
+						Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.Max_Value, zone)
 						If date_Renamed.era = d.era AndAlso date_Renamed.year = d.year Then
 							Dim fd As Long = jcal.getFixedDate(d)
 							Dim jan1 As Long = getFixedDateJan1(d, fd)
 							value = CInt(fd - jan1) + 1
 						ElseIf date_Renamed.year = getMinimum(YEAR) Then
-							Dim d1 As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+							Dim d1 As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 							Dim fd1 As Long = jcal.getFixedDate(d1)
 							d1.addYear(1)
 							d1.monthnth(sun.util.calendar.BaseCalendar.JANUARY).setDayOfMonth(1)
@@ -1119,13 +1119,13 @@ Namespace java.util
 
 			Case WEEK_OF_YEAR
 					If Not isTransitionYear(date_Renamed.normalizedYear) Then
-						Dim jd As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MaxValue, zone)
+						Dim jd As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.Max_Value, zone)
 						If date_Renamed.era = jd.era AndAlso date_Renamed.year = jd.year Then
 							Dim fd As Long = jcal.getFixedDate(jd)
 							Dim jan1 As Long = getFixedDateJan1(jd, fd)
 							value = getWeekNumber(jan1, fd)
 						ElseIf date_Renamed.era Is Nothing AndAlso date_Renamed.year = getMinimum(YEAR) Then
-							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+							Dim d As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 							' shift 400 years to avoid underflow
 							d.addYear(+400)
 							jcal.normalize(d)
@@ -1163,7 +1163,7 @@ Namespace java.util
 					End If
 
 			Case WEEK_OF_MONTH
-					Dim jd As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MaxValue, zone)
+					Dim jd As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.Max_Value, zone)
 					If Not(date_Renamed.era = jd.era AndAlso date_Renamed.year = jd.year) Then
 						Dim d As sun.util.calendar.CalendarDate = gcal.newCalendarDate(TimeZone.NO_TIMEZONE)
 						d.dateate(date_Renamed.normalizedYear, date_Renamed.month, 1)
@@ -1203,7 +1203,7 @@ Namespace java.util
 					Dim d As sun.util.calendar.CalendarDate
 					Dim eraIndex_Renamed As Integer = getEraIndex(date_Renamed)
 					If eraIndex_Renamed = eras.Length - 1 Then
-						d = jcal.getCalendarDate(Long.MaxValue, zone)
+						d = jcal.getCalendarDate(Long.Max_Value, zone)
 						value = d.year
 						' Use an equivalent year for the
 						' getYearOffsetInMillis call to avoid overflow.
@@ -1226,7 +1226,7 @@ Namespace java.util
 
 		''' <summary>
 		''' Returns the millisecond offset from the beginning of the
-		''' year. In the year for Long.MIN_VALUE, it's a pseudo value
+		''' year. In the year for java.lang.[Long].MIN_VALUE, it's a pseudo value
 		''' beyond the limit. The given CalendarDate object must have been
 		''' normalized before calling this method.
 		''' </summary>
@@ -1261,10 +1261,10 @@ Namespace java.util
 
 		''' <summary>
 		''' The fixed date corresponding to jdate. If the value is
-		''' Long.MIN_VALUE, the fixed date value is unknown.
+		''' java.lang.[Long].MIN_VALUE, the fixed date value is unknown.
 		''' </summary>
 		<NonSerialized> _
-		Private cachedFixedDate As Long = Long.MIN_VALUE
+		Private cachedFixedDate As Long = java.lang.[Long].MIN_VALUE
 
 		''' <summary>
 		''' Converts the time value (millisecond offset from the <a
@@ -1280,7 +1280,7 @@ Namespace java.util
 				' Determine which calendar fields need to be computed.
 				mask = stateFieldslds
 				Dim fieldMask As Integer = (Not mask) And ALL_FIELDS
-				If fieldMask <> 0 OrElse cachedFixedDate = Long.MinValue Then
+				If fieldMask <> 0 OrElse cachedFixedDate = java.lang.[Long].MIN_VALUE Then
 					mask = mask Or computeFields(fieldMask, mask And (ZONE_OFFSET_MASK Or DST_OFFSET_MASK))
 					Debug.Assert(mask = ALL_FIELDS)
 				End If
@@ -1406,7 +1406,7 @@ Namespace java.util
 					fixedDateJan1_Renamed = getFixedDateJan1(jdate, fixedDate_Renamed)
 					dayOfYear = CInt(fixedDate_Renamed - fixedDateJan1_Renamed) + 1
 				ElseIf normalizedYear = MIN_VALUES(YEAR) Then
-					Dim dx As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+					Dim dx As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 					fixedDateJan1_Renamed = jcal.getFixedDate(dx)
 					dayOfYear = CInt(fixedDate_Renamed - fixedDateJan1_Renamed) + 1
 				Else
@@ -1681,7 +1681,7 @@ Namespace java.util
 
 			' Adjust the base date if year is the minimum value.
 			If year = MIN_VALUES(JapaneseImperialCalendar.YEAR) Then
-				Dim dx As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MinValue, zone)
+				Dim dx As sun.util.calendar.CalendarDate = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 				Dim m As Integer = dx.month - 1
 				If month_Renamed < m Then month_Renamed = m
 				If month_Renamed = m Then firstDayOfMonth = dx.dayOfMonth
@@ -1935,7 +1935,7 @@ Namespace java.util
 				End If
 				jcal.normalize(date_Renamed)
 			Else
-				Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MinValue, zone)
+				Dim d As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(Long.MIN_VALUE, zone)
 				Dim realDate As sun.util.calendar.LocalGregorianCalendar.Date = jcal.getCalendarDate(time, zone)
 				Dim tod As Long = realDate.timeOfDay
 				' Use an equivalent year.
@@ -1953,7 +1953,7 @@ Namespace java.util
 						realDate.dayOfMonth = dom
 					End If
 				End If
-				If realDate.dayOfMonth = d.dayOfMonth AndAlso tod < d.timeOfDay Then realDate.dayOfMonth = Math.Min(dom + 1, monthLength)
+				If realDate.dayOfMonth = d.dayOfMonth AndAlso tod < d.timeOfDay Then realDate.dayOfMonth = System.Math.Min(dom + 1, monthLength)
 				' restore the year.
 				date_Renamed.dateate(year_Renamed, realDate.month, realDate.dayOfMonth)
 				' Don't normalize date here so as not to cause underflow.
@@ -1992,7 +1992,7 @@ Namespace java.util
 			stream.defaultReadObject()
 			If jdate Is Nothing Then
 				jdate = jcal.newCalendarDate(zone)
-				cachedFixedDate = Long.MinValue
+				cachedFixedDate = java.lang.[Long].MIN_VALUE
 			End If
 		End Sub
 	End Class

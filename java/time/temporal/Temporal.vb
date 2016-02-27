@@ -349,7 +349,7 @@ Namespace java.time.temporal
 		''' <p>
 		''' The default implementation must behave equivalent to this code:
 		''' <pre>
-		'''  return (amountToSubtract == Long.MIN_VALUE ?
+		'''  return (amountToSubtract == java.lang.[Long].MIN_VALUE ?
 		'''      plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit));
 		''' </pre>
 		''' </summary>
@@ -360,7 +360,7 @@ Namespace java.time.temporal
 		''' <exception cref="UnsupportedTemporalTypeException"> if the unit is not supported </exception>
 		''' <exception cref="ArithmeticException"> if numeric overflow occurs </exception>
 		default Function minus(ByVal amountToSubtract As Long, ByVal unit As TemporalUnit) As Temporal
-			Sub [New](amountToSubtract == Long.MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit) ByVal  As )
+			Sub [New](amountToSubtract == java.lang.[Long].MIN_VALUE ? plus(Long.MAX_VALUE, unit).plus(1, unit) : plus(-amountToSubtract, unit) ByVal  As )
 
 		'-----------------------------------------------------------------------
 		''' <summary>

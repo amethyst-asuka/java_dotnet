@@ -171,7 +171,7 @@ Namespace java.util.concurrent
 		''' <seealso cref="Integer#MAX_VALUE"/>.
 		''' </summary>
 		Public Sub New()
-			Me.New(Integer.MaxValue)
+			Me.New( java.lang.[Integer].Max_Value)
 		End Sub
 
 		''' <summary>
@@ -194,7 +194,7 @@ Namespace java.util.concurrent
 		''' <exception cref="NullPointerException"> if the specified collection or any
 		'''         of its elements are null </exception>
 		Public Sub New(Of T1 As E)(ByVal c As ICollection(Of T1))
-			Me.New(Integer.MaxValue)
+			Me.New( java.lang.[Integer].Max_Value)
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock() ' Never contended, but necessary for visibility
 			Try
@@ -704,7 +704,7 @@ Namespace java.util.concurrent
 		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 		Public Overridable Function drainTo(Of T1)(ByVal c As ICollection(Of T1)) As Integer
-			Return drainTo(c, Integer.MaxValue)
+			Return drainTo(c,  java.lang.[Integer].Max_Value)
 		End Function
 
 		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
@@ -719,7 +719,7 @@ Namespace java.util.concurrent
 			Dim lock As java.util.concurrent.locks.ReentrantLock = Me.lock
 			lock.lock()
 			Try
-				Dim n As Integer = Math.Min(maxElements, count)
+				Dim n As Integer = System.Math.Min(maxElements, count)
 				For i As Integer = 0 To n - 1
 					c.Add(first.item) ' In this order, in case add() throws.
 					unlinkFirst()

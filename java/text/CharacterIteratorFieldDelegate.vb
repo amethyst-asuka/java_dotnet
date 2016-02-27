@@ -68,9 +68,9 @@ Namespace java.text
 						Dim [as] As AttributedString = attributedStrings(asIndex)
 						asIndex -= 1
 						Dim newIndex As Integer = index - [as].length()
-						Dim aStart As Integer = Math.Max(0, start - newIndex)
+						Dim aStart As Integer = System.Math.Max(0, start - newIndex)
 
-						[as].addAttribute(attr, value, aStart, Math.Min([end] - start, [as].length() - aStart) + aStart)
+						[as].addAttribute(attr, value, aStart, System.Math.Min([end] - start, [as].length() - aStart) + aStart)
 						index = newIndex
 					Loop
 				End If
@@ -81,7 +81,7 @@ Namespace java.text
 				End If
 				If size < [end] Then
 					' Add new string
-					Dim aStart As Integer = Math.Max(start, size)
+					Dim aStart As Integer = System.Math.Max(start, size)
 					Dim string_Renamed As New AttributedString(buffer.Substring(aStart, [end] - aStart))
 
 					string_Renamed.addAttribute(attr, value)

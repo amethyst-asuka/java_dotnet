@@ -738,7 +738,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #ptLineDist(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
 		Public Shared Function ptSegDist(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Double
-			Return Math.Sqrt(ptSegDistSq(x1, y1, x2, y2, px, py))
+			Return System.Math.Sqrt(ptSegDistSq(x1, y1, x2, y2, px, py))
 		End Function
 
 		''' <summary>
@@ -874,7 +874,7 @@ Namespace java.awt.geom
 		''' <seealso cref= #ptSegDist(double, double, double, double, double, double)
 		''' @since 1.2 </seealso>
 		Public Shared Function ptLineDist(ByVal x1 As Double, ByVal y1 As Double, ByVal x2 As Double, ByVal y2 As Double, ByVal px As Double, ByVal py As Double) As Double
-			Return Math.Sqrt(ptLineDistSq(x1, y1, x2, y2, px, py))
+			Return System.Math.Sqrt(ptLineDistSq(x1, y1, x2, y2, px, py))
 		End Function
 
 		''' <summary>

@@ -50,7 +50,7 @@ Namespace java.util.zip
 		''' total entry count fields, such as the ones in jdk6, and even
 		''' some in jdk7.
 		''' </summary>
-		Private Shared ReadOnly inhibitZip64 As Boolean = Boolean.parseBoolean(java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction("jdk.util.zip.inhibitZip64", "false")))
+		Private Shared ReadOnly inhibitZip64 As Boolean =  java.lang.[Boolean].parseBoolean(java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction("jdk.util.zip.inhibitZip64", "false")))
 
 		Private Class XEntry
 			Friend ReadOnly entry As ZipEntry
@@ -138,7 +138,7 @@ Namespace java.util.zip
 			Set(ByVal comment As String)
 				If comment IsNot Nothing Then
 					Me.comment = zc.getBytes(comment)
-					If Me.comment.Length > &Hffff Then Throw New IllegalArgumentException("ZIP file comment too long.")
+					If Me.comment.Length > &Hffff Then Throw New IllegalArgumentException("ZIP file comment too java.lang.[Long].")
 				End If
 			End Set
 		End Property
@@ -230,7 +230,7 @@ Namespace java.util.zip
 						' verify size, compressed size, and crc-32 settings
 						If e.size <> def.bytesRead Then Throw New ZipException("invalid entry size (expected " & e.size & " but got " & def.bytesRead & " bytes)")
 						If e.csize <> def.bytesWritten Then Throw New ZipException("invalid entry compressed size (expected " & e.csize & " but got " & def.bytesWritten & " bytes)")
-						If e.crc <> crc.value Then Throw New ZipException("invalid entry CRC-32 (expected 0x" & Long.toHexString(e.crc) & " but got 0x" & Long.toHexString(crc.value) & ")")
+						If e.crc <> crc.value Then Throw New ZipException("invalid entry CRC-32 (expected 0x" & java.lang.[Long].toHexString(e.crc) & " but got 0x" & java.lang.[Long].toHexString(crc.value) & ")")
 					Else
 						e.size = def.bytesRead
 						e.csize = def.bytesWritten
@@ -242,7 +242,7 @@ Namespace java.util.zip
 				Case STORED
 					' we already know that both e.size and e.csize are the same
 					If e.size <> written - locoff Then Throw New ZipException("invalid entry size (expected " & e.size & " but got " & (written - locoff) & " bytes)")
-					If e.crc <> crc.value Then Throw New ZipException("invalid entry crc-32 (expected 0x" & Long.toHexString(e.crc) & " but got 0x" & Long.toHexString(crc.value) & ")")
+					If e.crc <> crc.value Then Throw New ZipException("invalid entry crc-32 (expected 0x" & java.lang.[Long].toHexString(e.crc) & " but got 0x" & java.lang.[Long].toHexString(crc.value) & ")")
 				Case Else
 					Throw New ZipException("invalid compression method")
 				End Select
@@ -468,7 +468,7 @@ Namespace java.util.zip
 			Dim commentBytes As SByte()
 			If e.comment IsNot Nothing Then
 				commentBytes = zc.getBytes(e.comment)
-				writeShort(Math.Min(commentBytes.Length, &Hffff))
+				writeShort (System.Math.Min(commentBytes.Length, &Hffff))
 			Else
 				commentBytes = Nothing
 				writeShort(0)
@@ -499,7 +499,7 @@ Namespace java.util.zip
 				End If
 			End If
 			writeExtra(e.extra)
-			If commentBytes IsNot Nothing Then writeBytes(commentBytes, 0, Math.Min(commentBytes.Length, &Hffff))
+			If commentBytes IsNot Nothing Then writeBytes(commentBytes, 0, System.Math.Min(commentBytes.Length, &Hffff))
 		End Sub
 
 	'    

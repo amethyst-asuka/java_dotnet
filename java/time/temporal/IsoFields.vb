@@ -345,8 +345,8 @@ Namespace java.time.temporal
 	'				LocalDate date;
 	'				if (resolverStyle == ResolverStyle.LENIENT)
 	'				{
-	'					date = LocalDate.of(y, 1, 1).plusMonths(Math.multiplyExact(Math.subtractExact(qoyLong, 1), 3));
-	'					doq = Math.subtractExact(doq, 1);
+	'					date = LocalDate.of(y, 1, 1).plusMonths (System.Math.multiplyExact (System.Math.subtractExact(qoyLong, 1), 3));
+	'					doq = System.Math.subtractExact(doq, 1);
 	'				}
 	'				else
 	'				{
@@ -480,7 +480,7 @@ Namespace java.time.temporal
 	'			{
 	'				' calls getFrom() to check if supported
 	'				range().checkValidValue(newValue, Me); ' lenient range
-	'				Return (R) temporal.plus(Math.subtractExact(newValue, getFrom(temporal)), WEEKS);
+	'				Return (R) temporal.plus (System.Math.subtractExact(newValue, getFrom(temporal)), WEEKS);
 	'			}
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
 '				public java.time.chrono.ChronoLocalDate resolve(java.util.Map(Of TemporalField, java.lang.Long) fieldValues, TemporalAccessor partialTemporal, java.time.format.ResolverStyle resolverStyle)
@@ -505,10 +505,10 @@ Namespace java.time.temporal
 	'					}
 	'					else if (dow < 1)
 	'					{
-	'						date = date.plusWeeks(Math.subtractExact(dow, 7) / 7);
+	'						date = date.plusWeeks (System.Math.subtractExact(dow, 7) / 7);
 	'						dow = ((dow + 6) Mod 7) + 1;
 	'					}
-	'					date = date.plusWeeks(Math.subtractExact(wowby, 1)).with(DAY_OF_WEEK, dow);
+	'					date = date.plusWeeks (System.Math.subtractExact(wowby, 1)).with(DAY_OF_WEEK, dow);
 	'				}
 	'				else
 	'				{
@@ -772,7 +772,7 @@ Namespace java.time.temporal
 	'			switch (Me)
 	'			{
 	'				case WEEK_BASED_YEARS:
-	'					Return (R) temporal.with(WEEK_BASED_YEAR, Math.addExact(temporal.get(WEEK_BASED_YEAR), amount));
+	'					Return (R) temporal.with(WEEK_BASED_YEAR, System.Math.addExact(temporal.get(WEEK_BASED_YEAR), amount));
 	'				case QUARTER_YEARS:
 	'					' no overflow (256 is multiple of 4)
 	'					Return (R) temporal.plus(amount / 256, YEARS).plus((amount Mod 256) * 3, MONTHS);
@@ -791,7 +791,7 @@ Namespace java.time.temporal
 	'			switch(Me)
 	'			{
 	'				case WEEK_BASED_YEARS:
-	'					Return Math.subtractExact(temporal2Exclusive.getLong(WEEK_BASED_YEAR), temporal1Inclusive.getLong(WEEK_BASED_YEAR));
+	'					Return System.Math.subtractExact(temporal2Exclusive.getLong(WEEK_BASED_YEAR), temporal1Inclusive.getLong(WEEK_BASED_YEAR));
 	'				case QUARTER_YEARS:
 	'					Return temporal1Inclusive.until(temporal2Exclusive, MONTHS) / 3;
 	'				default:

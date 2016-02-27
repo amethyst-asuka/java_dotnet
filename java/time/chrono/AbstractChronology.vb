@@ -160,22 +160,22 @@ Namespace java.time.chrono
 		''' ChronoLocalDate order constant.
 		''' </summary>
 		static final IComparer(Of ChronoLocalDate) DATE_ORDER = (IComparer(Of ChronoLocalDate) And java.io.Serializable)(date1, date2) ->
-				Return Long.Compare(date1.toEpochDay(), date2.toEpochDay())
+				Return java.lang.[Long].Compare(date1.toEpochDay(), date2.toEpochDay())
 		''' <summary>
 		''' ChronoLocalDateTime order constant.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		static final IComparer(Of ChronoLocalDateTime(Of ? As ChronoLocalDate)) DATE_TIME_ORDER = (IComparer(Of ChronoLocalDateTime(Of ? As ChronoLocalDate)) And java.io.Serializable)(dateTime1, dateTime2) ->
-				Dim cmp As Integer = Long.Compare(dateTime1.toLocalDate().toEpochDay(), dateTime2.toLocalDate().toEpochDay())
-				If cmp = 0 Then cmp = Long.Compare(dateTime1.toLocalTime().toNanoOfDay(), dateTime2.toLocalTime().toNanoOfDay())
+				Dim cmp As Integer = java.lang.[Long].Compare(dateTime1.toLocalDate().toEpochDay(), dateTime2.toLocalDate().toEpochDay())
+				If cmp = 0 Then cmp = java.lang.[Long].Compare(dateTime1.toLocalTime().toNanoOfDay(), dateTime2.toLocalTime().toNanoOfDay())
 				Return cmp
 		''' <summary>
 		''' ChronoZonedDateTime order constant.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		static final IComparer(Of ChronoZonedDateTime(Of ?)) INSTANT_ORDER = (IComparer(Of ChronoZonedDateTime(Of ?)) And java.io.Serializable)(dateTime1, dateTime2) ->
-					Dim cmp As Integer = Long.Compare(dateTime1.toEpochSecond(), dateTime2.toEpochSecond())
-					If cmp = 0 Then cmp = Long.Compare(dateTime1.toLocalTime().nano, dateTime2.toLocalTime().nano)
+					Dim cmp As Integer = java.lang.[Long].Compare(dateTime1.toEpochSecond(), dateTime2.toEpochSecond())
+					If cmp = 0 Then cmp = java.lang.[Long].Compare(dateTime1.toLocalTime().nano, dateTime2.toLocalTime().nano)
 					Return cmp
 
 		''' <summary>
@@ -488,7 +488,7 @@ Namespace java.time.chrono
 				If resolverStyle <> java.time.format.ResolverStyle.LENIENT Then
 					yoe = range(YEAR_OF_ERA).checkValidIntValue(yoeLong, YEAR_OF_ERA)
 				Else
-					yoe = Math.toIntExact(yoeLong)
+					yoe = System.Math.toIntExact(yoeLong)
 				End If
 				If eraLong IsNot Nothing Then
 					Dim eraObj As Era = eraOf(range(ERA).checkValidIntValue(eraLong, ERA))
@@ -520,8 +520,8 @@ Namespace java.time.chrono
 		ChronoLocalDate resolveYMD(IDictionary(Of java.time.temporal.TemporalField, Long?) fieldValues, java.time.format.ResolverStyle resolverStyle)
 			Dim y As Integer = range(YEAR).checkValidIntValue(fieldValues.remove(YEAR), YEAR)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim months As Long = Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1)
-				Dim days As Long = Math.subtractExact(fieldValues.remove(DAY_OF_MONTH), 1)
+				Dim months As Long = System.Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1)
+				Dim days As Long = System.Math.subtractExact(fieldValues.remove(DAY_OF_MONTH), 1)
 				Return [date](y, 1, 1).plus(months, MONTHS).plus(days, DAYS)
 			End If
 			Dim moy As Integer = range(MONTH_OF_YEAR).checkValidIntValue(fieldValues.remove(MONTH_OF_YEAR), MONTH_OF_YEAR)
@@ -539,7 +539,7 @@ Namespace java.time.chrono
 		ChronoLocalDate resolveYD(IDictionary(Of java.time.temporal.TemporalField, Long?) fieldValues, java.time.format.ResolverStyle resolverStyle)
 			Dim y As Integer = range(YEAR).checkValidIntValue(fieldValues.remove(YEAR), YEAR)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim days As Long = Math.subtractExact(fieldValues.remove(DAY_OF_YEAR), 1)
+				Dim days As Long = System.Math.subtractExact(fieldValues.remove(DAY_OF_YEAR), 1)
 				Return dateYearDay(y, 1).plus(days, DAYS)
 			End If
 			Dim doy As Integer = range(DAY_OF_YEAR).checkValidIntValue(fieldValues.remove(DAY_OF_YEAR), DAY_OF_YEAR)
@@ -548,9 +548,9 @@ Namespace java.time.chrono
 		ChronoLocalDate resolveYMAA(IDictionary(Of java.time.temporal.TemporalField, Long?) fieldValues, java.time.format.ResolverStyle resolverStyle)
 			Dim y As Integer = range(YEAR).checkValidIntValue(fieldValues.remove(YEAR), YEAR)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim months As Long = Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1)
-				Dim weeks As Long = Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_MONTH), 1)
-				Dim days As Long = Math.subtractExact(fieldValues.remove(ALIGNED_DAY_OF_WEEK_IN_MONTH), 1)
+				Dim months As Long = System.Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1)
+				Dim weeks As Long = System.Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_MONTH), 1)
+				Dim days As Long = System.Math.subtractExact(fieldValues.remove(ALIGNED_DAY_OF_WEEK_IN_MONTH), 1)
 				Return [date](y, 1, 1).plus(months, MONTHS).plus(weeks, WEEKS).plus(days, DAYS)
 			End If
 			Dim moy As Integer = range(MONTH_OF_YEAR).checkValidIntValue(fieldValues.remove(MONTH_OF_YEAR), MONTH_OF_YEAR)
@@ -563,9 +563,9 @@ Namespace java.time.chrono
 		ChronoLocalDate resolveYMAD(IDictionary(Of java.time.temporal.TemporalField, Long?) fieldValues, java.time.format.ResolverStyle resolverStyle)
 			Dim y As Integer = range(YEAR).checkValidIntValue(fieldValues.remove(YEAR), YEAR)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim months As Long = Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1)
-				Dim weeks As Long = Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_MONTH), 1)
-				Dim dow As Long = Math.subtractExact(fieldValues.remove(DAY_OF_WEEK), 1)
+				Dim months As Long = System.Math.subtractExact(fieldValues.remove(MONTH_OF_YEAR), 1)
+				Dim weeks As Long = System.Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_MONTH), 1)
+				Dim dow As Long = System.Math.subtractExact(fieldValues.remove(DAY_OF_WEEK), 1)
 				Return resolveAligned([date](y, 1, 1), months, weeks, dow)
 			End If
 			Dim moy As Integer = range(MONTH_OF_YEAR).checkValidIntValue(fieldValues.remove(MONTH_OF_YEAR), MONTH_OF_YEAR)
@@ -578,8 +578,8 @@ Namespace java.time.chrono
 		ChronoLocalDate resolveYAA(IDictionary(Of java.time.temporal.TemporalField, Long?) fieldValues, java.time.format.ResolverStyle resolverStyle)
 			Dim y As Integer = range(YEAR).checkValidIntValue(fieldValues.remove(YEAR), YEAR)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim weeks As Long = Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_YEAR), 1)
-				Dim days As Long = Math.subtractExact(fieldValues.remove(ALIGNED_DAY_OF_WEEK_IN_YEAR), 1)
+				Dim weeks As Long = System.Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_YEAR), 1)
+				Dim days As Long = System.Math.subtractExact(fieldValues.remove(ALIGNED_DAY_OF_WEEK_IN_YEAR), 1)
 				Return dateYearDay(y, 1).plus(weeks, WEEKS).plus(days, DAYS)
 			End If
 			Dim aw As Integer = range(ALIGNED_WEEK_OF_YEAR).checkValidIntValue(fieldValues.remove(ALIGNED_WEEK_OF_YEAR), ALIGNED_WEEK_OF_YEAR)
@@ -591,8 +591,8 @@ Namespace java.time.chrono
 		ChronoLocalDate resolveYAD(IDictionary(Of java.time.temporal.TemporalField, Long?) fieldValues, java.time.format.ResolverStyle resolverStyle)
 			Dim y As Integer = range(YEAR).checkValidIntValue(fieldValues.remove(YEAR), YEAR)
 			If resolverStyle = java.time.format.ResolverStyle.LENIENT Then
-				Dim weeks As Long = Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_YEAR), 1)
-				Dim dow As Long = Math.subtractExact(fieldValues.remove(DAY_OF_WEEK), 1)
+				Dim weeks As Long = System.Math.subtractExact(fieldValues.remove(ALIGNED_WEEK_OF_YEAR), 1)
+				Dim dow As Long = System.Math.subtractExact(fieldValues.remove(DAY_OF_WEEK), 1)
 				Return resolveAligned(dateYearDay(y, 1), 0, weeks, dow)
 			End If
 			Dim aw As Integer = range(ALIGNED_WEEK_OF_YEAR).checkValidIntValue(fieldValues.remove(ALIGNED_WEEK_OF_YEAR), ALIGNED_WEEK_OF_YEAR)
@@ -607,7 +607,7 @@ Namespace java.time.chrono
 				date_Renamed = date_Renamed.plus((dow - 1) / 7, WEEKS)
 				dow = ((dow - 1) Mod 7) + 1
 			ElseIf dow < 1 Then
-				date_Renamed = date_Renamed.plus(Math.subtractExact(dow, 7) \ 7, WEEKS)
+				date_Renamed = date_Renamed.plus (System.Math.subtractExact(dow, 7) \ 7, WEEKS)
 				dow = ((dow + 6) Mod 7) + 1
 			End If
 			Return date_Renamed.with(nextOrSame(java.time.DayOfWeek.of(CInt(Fix(dow)))))

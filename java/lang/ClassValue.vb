@@ -693,7 +693,7 @@ Namespace java.lang
 					cache(i And mask) = replacement
 					If replacement Is Nothing Then removed += 1
 				Next i
-				cacheLoad = Math.Max(0, cacheLoad - removed)
+				cacheLoad = System.Math.Max(0, cacheLoad - removed)
 			End Sub
 
 			''' <summary>
