@@ -128,91 +128,97 @@ Namespace java.io
 			count += 1
 		End Sub
 
-		''' <summary>
-		''' Writes <code>len</code> bytes from the specified byte array
-		''' starting at offset <code>off</code> to this byte array output stream.
-		''' </summary>
-		''' <param name="b">     the data. </param>
-		''' <param name="off">   the start offset in the data. </param>
-		''' <param name="len">   the number of bytes to write. </param>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public synchronized void write(byte b() , int off, int len)
-			If (off < 0) OrElse (off > b.length) OrElse (len < 0) OrElse ((off + len) - b.length > 0) Then Throw New IndexOutOfBoundsException
-			ensureCapacity(count + len)
-			Array.Copy(b, off, buf, count, len)
-			count += len
+        ''' <summary>
+        ''' Writes <code>len</code> bytes from the specified byte array
+        ''' starting at offset <code>off</code> to this byte array output stream.
+        ''' </summary>
+        ''' <param name="b">     the data. </param>
+        ''' <param name="off">   the start offset in the data. </param>
+        ''' <param name="len">   the number of bytes to write. </param>
+        Public Sub write(b() As Byte, off As Integer, len As Integer)
+            If (off < 0) OrElse (off > b.Length) OrElse (len < 0) OrElse ((off + len) - b.Length > 0) Then Throw New IndexOutOfBoundsException
+            ensureCapacity(count + len)
+            Array.Copy(b, off, buf, count, len)
+            count += len
+        End Sub
+        ''' <summary>
+        ''' Writes the complete contents of this byte array output stream to
+        ''' the specified output stream argument, as if by calling the output
+        ''' stream's write method using <code>out.write(buf, 0, count)</code>.
+        ''' </summary>
+        ''' <param name="out">   the output stream to which to write the data. </param>
+        ''' <exception cref="IOException">  if an I/O error occurs. </exception>
+        Public Sub writeTo(out As OutputStream) ' throws IOException
+            out.write(buf, 0, count)
+        End Sub
+        ''' <summary>
+        ''' Resets the <code>count</code> field of this byte array output
+        ''' stream to zero, so that all currently accumulated output in the
+        ''' output stream is discarded. The output stream can be used again,
+        ''' reusing the already allocated buffer space.
+        ''' </summary>
+        ''' <seealso cref=     java.io.ByteArrayInputStream#count </seealso>
+        Public Sub reset()
+            count = 0
+        End Sub
+        ''' <summary>
+        ''' Creates a newly allocated byte array. Its size is the current
+        ''' size of this output stream and the valid contents of the buffer
+        ''' have been copied into it.
+        ''' </summary>
+        ''' <returns>  the current contents of this output stream, as a byte array. </returns>
+        ''' <seealso cref=     java.io.ByteArrayOutputStream#size() </seealso>
+        Public Function toByteArray() As SByte()
+            Return java.util.Arrays.copyOf(buf, count)
+        End Function
 
-		''' <summary>
-		''' Writes the complete contents of this byte array output stream to
-		''' the specified output stream argument, as if by calling the output
-		''' stream's write method using <code>out.write(buf, 0, count)</code>.
-		''' </summary>
-		''' <param name="out">   the output stream to which to write the data. </param>
-		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public synchronized void writeTo(OutputStream out) throws IOException
-			out.write(buf, 0, count)
-
-		''' <summary>
-		''' Resets the <code>count</code> field of this byte array output
-		''' stream to zero, so that all currently accumulated output in the
-		''' output stream is discarded. The output stream can be used again,
-		''' reusing the already allocated buffer space.
-		''' </summary>
-		''' <seealso cref=     java.io.ByteArrayInputStream#count </seealso>
-		public synchronized void reset()
-			count = 0
-
-		''' <summary>
-		''' Creates a newly allocated byte array. Its size is the current
-		''' size of this output stream and the valid contents of the buffer
-		''' have been copied into it.
-		''' </summary>
-		''' <returns>  the current contents of this output stream, as a byte array. </returns>
-		''' <seealso cref=     java.io.ByteArrayOutputStream#size() </seealso>
-		public synchronized SByte toByteArray()() { Return java.util.Arrays.copyOf(buf, count); } public synchronized Integer size()
-		''' <summary>
-		''' Returns the current size of the buffer.
-		''' </summary>
-		''' <returns>  the value of the <code>count</code> field, which is the number
-		'''          of valid bytes in this output stream. </returns>
-		''' <seealso cref=     java.io.ByteArrayOutputStream#count </seealso>
-			Return count
-
-		''' <summary>
-		''' Converts the buffer's contents into a string decoding bytes using the
-		''' platform's default character set. The length of the new <tt>String</tt>
-		''' is a function of the character set, and hence may not be equal to the
-		''' size of the buffer.
-		''' 
-		''' <p> This method always replaces malformed-input and unmappable-character
-		''' sequences with the default replacement string for the platform's
-		''' default character set. The <seealso cref="java.nio.charset.CharsetDecoder"/>
-		''' class should be used when more control over the decoding process is
-		''' required.
-		''' </summary>
-		''' <returns> String decoded from the buffer's contents.
-		''' @since  JDK1.1 </returns>
-		public synchronized String ToString()
-			Return New String(buf, 0, count)
-
-		''' <summary>
-		''' Converts the buffer's contents into a string by decoding the bytes using
-		''' the named <seealso cref="java.nio.charset.Charset charset"/>. The length of the new
-		''' <tt>String</tt> is a function of the charset, and hence may not be equal
-		''' to the length of the byte array.
-		''' 
-		''' <p> This method always replaces malformed-input and unmappable-character
-		''' sequences with this charset's default replacement string. The {@link
-		''' java.nio.charset.CharsetDecoder} class should be used when more control
-		''' over the decoding process is required.
-		''' </summary>
-		''' <param name="charsetName">  the name of a supported
-		'''             <seealso cref="java.nio.charset.Charset charset"/> </param>
-		''' <returns>     String decoded from the buffer's contents. </returns>
-		''' <exception cref="UnsupportedEncodingException">
-		'''             If the named charset is not supported
-		''' @since      JDK1.1 </exception>
-		public synchronized String ToString(String charsetName) throws UnsupportedEncodingException
+        ''' <summary>
+        ''' Returns the current size of the buffer.
+        ''' </summary>
+        ''' <returns>  the value of the <code>count</code> field, which is the number
+        '''          of valid bytes in this output stream. </returns>
+        ''' <seealso cref=     java.io.ByteArrayOutputStream#count </seealso>
+        ''' 
+        Public ReadOnly Property size() As Integer
+            Get
+                Return count
+            End Get
+        End Property
+        ''' <summary>
+        ''' Converts the buffer's contents into a string decoding bytes using the
+        ''' platform's default character set. The length of the new <tt>String</tt>
+        ''' is a function of the character set, and hence may not be equal to the
+        ''' size of the buffer.
+        ''' 
+        ''' <p> This method always replaces malformed-input and unmappable-character
+        ''' sequences with the default replacement string for the platform's
+        ''' default character set. The <seealso cref="java.nio.charset.CharsetDecoder"/>
+        ''' class should be used when more control over the decoding process is
+        ''' required.
+        ''' </summary>
+        ''' <returns> String decoded from the buffer's contents.
+        ''' @since  JDK1.1 </returns>
+        Public Overrides Function ToString() As String
+            Return New java.lang.String(buf, 0, count)
+        End Function
+        ''' <summary>
+        ''' Converts the buffer's contents into a string by decoding the bytes using
+        ''' the named <seealso cref="java.nio.charset.Charset charset"/>. The length of the new
+        ''' <tt>String</tt> is a function of the charset, and hence may not be equal
+        ''' to the length of the byte array.
+        ''' 
+        ''' <p> This method always replaces malformed-input and unmappable-character
+        ''' sequences with this charset's default replacement string. The {@link
+        ''' java.nio.charset.CharsetDecoder} class should be used when more control
+        ''' over the decoding process is required.
+        ''' </summary>
+        ''' <param name="charsetName">  the name of a supported
+        '''             <seealso cref="java.nio.charset.Charset charset"/> </param>
+        ''' <returns>     String decoded from the buffer's contents. </returns>
+        ''' <exception cref="UnsupportedEncodingException">
+        '''             If the named charset is not supported
+        ''' @since      JDK1.1 </exception>
+        Public synchronized String ToString(String charsetName) throws UnsupportedEncodingException
 			Return New String(buf, 0, count, charsetName)
 
 		''' <summary>

@@ -120,94 +120,94 @@ Namespace java.io
 			write(cbuf, 0, cbuf.Length)
 		End Sub
 
-		''' <summary>
-		''' Writes a portion of an array of characters.
-		''' </summary>
-		''' <param name="cbuf">
-		'''         Array of characters
-		''' </param>
-		''' <param name="off">
-		'''         Offset from which to start writing characters
-		''' </param>
-		''' <param name="len">
-		'''         Number of characters to write
-		''' </param>
-		''' <exception cref="IOException">
-		'''          If an I/O error occurs </exception>
-		Public MustOverride Sub write(Char ByVal As cbuf(), ByVal [off] As Integer, ByVal len As Integer)
+        ''' <summary>
+        ''' Writes a portion of an array of characters.
+        ''' </summary>
+        ''' <param name="cbuf">
+        '''         Array of characters
+        ''' </param>
+        ''' <param name="off">
+        '''         Offset from which to start writing characters
+        ''' </param>
+        ''' <param name="len">
+        '''         Number of characters to write
+        ''' </param>
+        ''' <exception cref="IOException">
+        '''          If an I/O error occurs </exception>
+        Public MustOverride Sub write(cbuf() As Char, ByVal [off] As Integer, ByVal len As Integer)
 
-		''' <summary>
-		''' Writes a string.
-		''' </summary>
-		''' <param name="str">
-		'''         String to be written
-		''' </param>
-		''' <exception cref="IOException">
-		'''          If an I/O error occurs </exception>
-		Public Overridable Sub write(ByVal str As String)
+        ''' <summary>
+        ''' Writes a string.
+        ''' </summary>
+        ''' <param name="str">
+        '''         String to be written
+        ''' </param>
+        ''' <exception cref="IOException">
+        '''          If an I/O error occurs </exception>
+        Public Overridable Sub write(ByVal str As String)
 			write(str, 0, str.length())
 		End Sub
 
-		''' <summary>
-		''' Writes a portion of a string.
-		''' </summary>
-		''' <param name="str">
-		'''         A String
-		''' </param>
-		''' <param name="off">
-		'''         Offset from which to start writing characters
-		''' </param>
-		''' <param name="len">
-		'''         Number of characters to write
-		''' </param>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If <tt>off</tt> is negative, or <tt>len</tt> is negative,
-		'''          or <tt>off+len</tt> is negative or greater than the length
-		'''          of the given string
-		''' </exception>
-		''' <exception cref="IOException">
-		'''          If an I/O error occurs </exception>
-		Public Overridable Sub write(ByVal str As String, ByVal [off] As Integer, ByVal len As Integer)
-			SyncLock lock
-				Dim cbuf As Char()
-				If len <= WRITE_BUFFER_SIZE Then
-					If writeBuffer Is Nothing Then writeBuffer = New Char(WRITE_BUFFER_SIZE - 1){}
-					cbuf = writeBuffer ' Don't permanently allocate very large buffers.
-				Else
-					cbuf = New Char(len - 1){}
-				End If
-				str.getChars([off], ([off] + len), cbuf, 0)
-				write(cbuf, 0, len)
-			End SyncLock
-		End Sub
+        ''' <summary>
+        ''' Writes a portion of a string.
+        ''' </summary>
+        ''' <param name="str">
+        '''         A String
+        ''' </param>
+        ''' <param name="off">
+        '''         Offset from which to start writing characters
+        ''' </param>
+        ''' <param name="len">
+        '''         Number of characters to write
+        ''' </param>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If <tt>off</tt> is negative, or <tt>len</tt> is negative,
+        '''          or <tt>off+len</tt> is negative or greater than the length
+        '''          of the given string
+        ''' </exception>
+        ''' <exception cref="IOException">
+        '''          If an I/O error occurs </exception>
+        Public Overridable Sub write(ByVal str As String, ByVal [off] As Integer, ByVal len As Integer)
+            SyncLock lock
+                Dim cbuf As Char()
+                If len <= WRITE_BUFFER_SIZE Then
+                    If writeBuffer Is Nothing Then writeBuffer = New Char(WRITE_BUFFER_SIZE - 1) {}
+                    cbuf = writeBuffer ' Don't permanently allocate very large buffers.
+                Else
+                    cbuf = New Char(len - 1) {}
+                End If
+                str.getChars([off], ([off] + len), cbuf, 0)
+                write(cbuf, 0, len)
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Appends the specified character sequence to this writer.
-		''' 
-		''' <p> An invocation of this method of the form <tt>out.append(csq)</tt>
-		''' behaves in exactly the same way as the invocation
-		''' 
-		''' <pre>
-		'''     out.write(csq.toString()) </pre>
-		''' 
-		''' <p> Depending on the specification of <tt>toString</tt> for the
-		''' character sequence <tt>csq</tt>, the entire sequence may not be
-		''' appended. For instance, invoking the <tt>toString</tt> method of a
-		''' character buffer will return a subsequence whose content depends upon
-		''' the buffer's position and limit.
-		''' </summary>
-		''' <param name="csq">
-		'''         The character sequence to append.  If <tt>csq</tt> is
-		'''         <tt>null</tt>, then the four characters <tt>"null"</tt> are
-		'''         appended to this writer.
-		''' </param>
-		''' <returns>  This writer
-		''' </returns>
-		''' <exception cref="IOException">
-		'''          If an I/O error occurs
-		''' 
-		''' @since  1.5 </exception>
-		Public Overridable Function append(ByVal csq As CharSequence) As Writer
+        ''' <summary>
+        ''' Appends the specified character sequence to this writer.
+        ''' 
+        ''' <p> An invocation of this method of the form <tt>out.append(csq)</tt>
+        ''' behaves in exactly the same way as the invocation
+        ''' 
+        ''' <pre>
+        '''     out.write(csq.toString()) </pre>
+        ''' 
+        ''' <p> Depending on the specification of <tt>toString</tt> for the
+        ''' character sequence <tt>csq</tt>, the entire sequence may not be
+        ''' appended. For instance, invoking the <tt>toString</tt> method of a
+        ''' character buffer will return a subsequence whose content depends upon
+        ''' the buffer's position and limit.
+        ''' </summary>
+        ''' <param name="csq">
+        '''         The character sequence to append.  If <tt>csq</tt> is
+        '''         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+        '''         appended to this writer.
+        ''' </param>
+        ''' <returns>  This writer
+        ''' </returns>
+        ''' <exception cref="IOException">
+        '''          If an I/O error occurs
+        ''' 
+        ''' @since  1.5 </exception>
+        Public Overridable Function append(ByVal csq As CharSequence) As Writer
 			If csq Is Nothing Then
 				write("null")
 			Else

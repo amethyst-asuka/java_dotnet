@@ -64,103 +64,102 @@ Namespace java.io
 			Me.count = buf.Length
 		End Sub
 
-		''' <summary>
-		''' Creates a CharArrayReader from the specified array of chars.
-		''' 
-		''' <p> The resulting reader will start reading at the given
-		''' <tt>offset</tt>.  The total number of <tt>char</tt> values that can be
-		''' read from this reader will be either <tt>length</tt> or
-		''' <tt>buf.length-offset</tt>, whichever is smaller.
-		''' </summary>
-		''' <exception cref="IllegalArgumentException">
-		'''         If <tt>offset</tt> is negative or greater than
-		'''         <tt>buf.length</tt>, or if <tt>length</tt> is negative, or if
-		'''         the sum of these two values is negative.
-		''' </exception>
-		''' <param name="buf">       Input buffer (not copied) </param>
-		''' <param name="offset">    Offset of the first char to read </param>
-		''' <param name="length">    Number of chars to read </param>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public CharArrayReader(char buf() , int offset, int length)
-			If (offset < 0) OrElse (offset > buf.Length) OrElse (length < 0) OrElse ((offset + length) < 0) Then Throw New IllegalArgumentException
-			Me.buf = buf
-			Me.pos = offset
-			Me.count = System.Math.Min(offset + length, buf.Length)
-			Me.markedPos = offset
+        ''' <summary>
+        ''' Creates a CharArrayReader from the specified array of chars.
+        ''' 
+        ''' <p> The resulting reader will start reading at the given
+        ''' <tt>offset</tt>.  The total number of <tt>char</tt> values that can be
+        ''' read from this reader will be either <tt>length</tt> or
+        ''' <tt>buf.length-offset</tt>, whichever is smaller.
+        ''' </summary>
+        ''' <exception cref="IllegalArgumentException">
+        '''         If <tt>offset</tt> is negative or greater than
+        '''         <tt>buf.length</tt>, or if <tt>length</tt> is negative, or if
+        '''         the sum of these two values is negative.
+        ''' </exception>
+        ''' <param name="buf">       Input buffer (not copied) </param>
+        ''' <param name="offset">    Offset of the first char to read </param>
+        ''' <param name="length">    Number of chars to read </param>
+        Sub New(buf() As Char, offset As Integer, length As Integer)
+            If (offset < 0) OrElse (offset > buf.Length) OrElse (length < 0) OrElse ((offset + length) < 0) Then Throw New IllegalArgumentException
+            Me.buf = buf
+            Me.pos = offset
+            Me.count = System.Math.Min(offset + length, buf.Length)
+            Me.markedPos = offset
+        End Sub
+        ''' <summary>
+        ''' Checks to make sure that the stream has not been closed </summary>
+        Private Sub ensureOpen() 'throws IOException
+            If buf Is Nothing Then Throw New IOException("Stream closed")
+        End Sub
+        ''' <summary>
+        ''' Reads a single character.
+        ''' </summary>
+        ''' <exception cref="IOException">  If an I/O error occurs </exception>
+        Public Function read() As Integer ' throws IOException
+            SyncLock lock
+                ensureOpen()
+                If pos >= count Then
+                    Return -1
+                Else
+                    Dim tempVar As Integer = pos
+                End If
+                pos += 1
+                Return buf(tempVar)
+            End SyncLock
+        End Function
+        ''' <summary>
+        ''' Reads characters into a portion of an array. </summary>
+        ''' <param name="b">  Destination buffer </param>
+        ''' <param name="off">  Offset at which to start storing characters </param>
+        ''' <param name="len">   Maximum number of characters to read </param>
+        ''' <returns>  The actual number of characters read, or -1 if
+        '''          the end of the stream has been reached
+        ''' </returns>
+        ''' <exception cref="IOException">  If an I/O error occurs </exception>
+        Public Function read(b() As Char, off As Integer, len As Integer) As Integer ' throws IOException
+            SyncLock lock
+                ensureOpen()
+                If (off < 0) OrElse (off > b.Length) OrElse (len < 0) OrElse ((off + len) > b.Length) OrElse ((off + len) < 0) Then
+                    Throw New IndexOutOfBoundsException
+                ElseIf len = 0 Then
+                    Return 0
+                End If
 
-		''' <summary>
-		''' Checks to make sure that the stream has not been closed </summary>
-		private void ensureOpen() throws IOException
-			If buf Is Nothing Then Throw New IOException("Stream closed")
-
-		''' <summary>
-		''' Reads a single character.
-		''' </summary>
-		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public Integer read() throws IOException
-			SyncLock lock
-				ensureOpen()
-				If pos >= count Then
-					Return -1
-				Else
-						Dim tempVar As Integer = pos
-				End If
-						pos += 1
-						Return buf(tempVar)
-			End SyncLock
-
-		''' <summary>
-		''' Reads characters into a portion of an array. </summary>
-		''' <param name="b">  Destination buffer </param>
-		''' <param name="off">  Offset at which to start storing characters </param>
-		''' <param name="len">   Maximum number of characters to read </param>
-		''' <returns>  The actual number of characters read, or -1 if
-		'''          the end of the stream has been reached
-		''' </returns>
-		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public Integer read(Char b() , Integer off, Integer len) throws IOException
-			SyncLock lock
-				ensureOpen()
-				If (off < 0) OrElse (off > b.length) OrElse (len < 0) OrElse ((off + len) > b.length) OrElse ((off + len) < 0) Then
-					Throw New IndexOutOfBoundsException
-				ElseIf len = 0 Then
-					Return 0
-				End If
-
-				If pos >= count Then Return -1
-				If pos + len > count Then len = count - pos
-				If len <= 0 Then Return 0
-				Array.Copy(buf, pos, b, off, len)
-				pos += len
-				Return len
-			End SyncLock
-
-		''' <summary>
-		''' Skips characters.  Returns the number of characters that were skipped.
-		''' 
-		''' <p>The <code>n</code> parameter may be negative, even though the
-		''' <code>skip</code> method of the <seealso cref="Reader"/> superclass throws
-		''' an exception in this case. If <code>n</code> is negative, then
-		''' this method does nothing and returns <code>0</code>.
-		''' </summary>
-		''' <param name="n"> The number of characters to skip </param>
-		''' <returns>       The number of characters actually skipped </returns>
-		''' <exception cref="IOException"> If the stream is closed, or an I/O error occurs </exception>
-		public Long skip(Long n) throws IOException
-			SyncLock lock
-				ensureOpen()
-				If pos + n > count Then n = count - pos
-				If n < 0 Then Return 0
-				pos += n
-				Return n
-			End SyncLock
-
-		''' <summary>
-		''' Tells whether this stream is ready to be read.  Character-array readers
-		''' are always ready to be read.
-		''' </summary>
-		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public Boolean ready() throws IOException
+                If pos >= count Then Return -1
+                If pos + len > count Then len = count - pos
+                If len <= 0 Then Return 0
+                Array.Copy(buf, pos, b, off, len)
+                pos += len
+                Return len
+            End SyncLock
+        End Function
+        ''' <summary>
+        ''' Skips characters.  Returns the number of characters that were skipped.
+        ''' 
+        ''' <p>The <code>n</code> parameter may be negative, even though the
+        ''' <code>skip</code> method of the <seealso cref="Reader"/> superclass throws
+        ''' an exception in this case. If <code>n</code> is negative, then
+        ''' this method does nothing and returns <code>0</code>.
+        ''' </summary>
+        ''' <param name="n"> The number of characters to skip </param>
+        ''' <returns>       The number of characters actually skipped </returns>
+        ''' <exception cref="IOException"> If the stream is closed, or an I/O error occurs </exception>
+        Public Function skip(n As Long n) As Long ' throws IOException
+            SyncLock lock
+                ensureOpen()
+                If pos + n > count Then n = count - pos
+                If n < 0 Then Return 0
+                pos += n
+                Return n
+            End SyncLock
+        End Function
+        ''' <summary>
+        ''' Tells whether this stream is ready to be read.  Character-array readers
+        ''' are always ready to be read.
+        ''' </summary>
+        ''' <exception cref="IOException">  If an I/O error occurs </exception>
+        Public Boolean ready() throws IOException
 			SyncLock lock
 				ensureOpen()
 				Return (count - pos) > 0
