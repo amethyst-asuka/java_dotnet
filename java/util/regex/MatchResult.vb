@@ -128,54 +128,54 @@ Namespace java.util.regex
 		'''          or if the previous match operation failed </exception>
 		Function group() As String
 
-		''' <summary>
-		''' Returns the input subsequence captured by the given group during the
-		''' previous match operation.
-		''' 
-		''' <p> For a matcher <i>m</i>, input sequence <i>s</i>, and group index
-		''' <i>g</i>, the expressions <i>m.</i><tt>group(</tt><i>g</i><tt>)</tt> and
-		''' <i>s.</i><tt>substring(</tt><i>m.</i><tt>start(</tt><i>g</i><tt>),</tt>&nbsp;<i>m.</i><tt>end(</tt><i>g</i><tt>))</tt>
-		''' are equivalent.  </p>
-		''' 
-		''' <p> <a href="Pattern.html#cg">Capturing groups</a> are indexed from left
-		''' to right, starting at one.  Group zero denotes the entire pattern, so
-		''' the expression <tt>m.group(0)</tt> is equivalent to <tt>m.group()</tt>.
-		''' </p>
-		''' 
-		''' <p> If the match was successful but the group specified failed to match
-		''' any part of the input sequence, then <tt>null</tt> is returned. Note
-		''' that some groups, for example <tt>(a*)</tt>, match the empty string.
-		''' This method will return the empty string when such a group successfully
-		''' matches the empty string in the input.  </p>
-		''' </summary>
-		''' <param name="group">
-		'''         The index of a capturing group in this matcher's pattern
-		''' </param>
-		''' <returns>  The (possibly empty) subsequence captured by the group
-		'''          during the previous match, or <tt>null</tt> if the group
-		'''          failed to match part of the input
-		''' </returns>
-		''' <exception cref="IllegalStateException">
-		'''          If no match has yet been attempted,
-		'''          or if the previous match operation failed
-		''' </exception>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If there is no capturing group in the pattern
-		'''          with the given index </exception>
-		Function group(ByVal group As Integer) As String
+        ''' <summary>
+        ''' Returns the input subsequence captured by the given group during the
+        ''' previous match operation.
+        ''' 
+        ''' <p> For a matcher <i>m</i>, input sequence <i>s</i>, and group index
+        ''' <i>g</i>, the expressions <i>m.</i><tt>group(</tt><i>g</i><tt>)</tt> and
+        ''' <i>s.</i><tt>substring(</tt><i>m.</i><tt>start(</tt><i>g</i><tt>),</tt>&nbsp;<i>m.</i><tt>end(</tt><i>g</i><tt>))</tt>
+        ''' are equivalent.  </p>
+        ''' 
+        ''' <p> <a href="Pattern.html#cg">Capturing groups</a> are indexed from left
+        ''' to right, starting at one.  Group zero denotes the entire pattern, so
+        ''' the expression <tt>m.group(0)</tt> is equivalent to <tt>m.group()</tt>.
+        ''' </p>
+        ''' 
+        ''' <p> If the match was successful but the group specified failed to match
+        ''' any part of the input sequence, then <tt>null</tt> is returned. Note
+        ''' that some groups, for example <tt>(a*)</tt>, match the empty string.
+        ''' This method will return the empty string when such a group successfully
+        ''' matches the empty string in the input.  </p>
+        ''' </summary>
+        ''' <param name="group">
+        '''         The index of a capturing group in this matcher's pattern
+        ''' </param>
+        ''' <returns>  The (possibly empty) subsequence captured by the group
+        '''          during the previous match, or <tt>null</tt> if the group
+        '''          failed to match part of the input
+        ''' </returns>
+        ''' <exception cref="IllegalStateException">
+        '''          If no match has yet been attempted,
+        '''          or if the previous match operation failed
+        ''' </exception>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If there is no capturing group in the pattern
+        '''          with the given index </exception>
+        Function group(ByVal igroup As Integer) As String
 
-		''' <summary>
-		''' Returns the number of capturing groups in this match result's pattern.
-		''' 
-		''' <p> Group zero denotes the entire pattern by convention. It is not
-		''' included in this count.
-		''' 
-		''' <p> Any non-negative integer smaller than or equal to the value
-		''' returned by this method is guaranteed to be a valid group index for
-		''' this matcher.  </p>
-		''' </summary>
-		''' <returns> The number of capturing groups in this matcher's pattern </returns>
-		Function groupCount() As Integer
+        ''' <summary>
+        ''' Returns the number of capturing groups in this match result's pattern.
+        ''' 
+        ''' <p> Group zero denotes the entire pattern by convention. It is not
+        ''' included in this count.
+        ''' 
+        ''' <p> Any non-negative integer smaller than or equal to the value
+        ''' returned by this method is guaranteed to be a valid group index for
+        ''' this matcher.  </p>
+        ''' </summary>
+        ''' <returns> The number of capturing groups in this matcher's pattern </returns>
+        Function groupCount() As Integer
 
 	End Interface
 

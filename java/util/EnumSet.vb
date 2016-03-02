@@ -1,4 +1,5 @@
 Imports System
+Imports java.lang
 
 '
 ' * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -28,58 +29,58 @@ Imports System
 Namespace java.util
 
 
-	''' <summary>
-	''' A specialized <seealso cref="Set"/> implementation for use with enum types.  All of
-	''' the elements in an enum set must come from a single enum type that is
-	''' specified, explicitly or implicitly, when the set is created.  Enum sets
-	''' are represented internally as bit vectors.  This representation is
-	''' extremely compact and efficient. The space and time performance of this
-	''' class should be good enough to allow its use as a high-quality, typesafe
-	''' alternative to traditional <tt>int</tt>-based "bit flags."  Even bulk
-	''' operations (such as <tt>containsAll</tt> and <tt>retainAll</tt>) should
-	''' run very quickly if their argument is also an enum set.
-	''' 
-	''' <p>The iterator returned by the <tt>iterator</tt> method traverses the
-	''' elements in their <i>natural order</i> (the order in which the enum
-	''' constants are declared).  The returned iterator is <i>weakly
-	''' consistent</i>: it will never throw <seealso cref="ConcurrentModificationException"/>
-	''' and it may or may not show the effects of any modifications to the set that
-	''' occur while the iteration is in progress.
-	''' 
-	''' <p>Null elements are not permitted.  Attempts to insert a null element
-	''' will throw <seealso cref="NullPointerException"/>.  Attempts to test for the
-	''' presence of a null element or to remove one will, however, function
-	''' properly.
-	''' 
-	''' <P>Like most collection implementations, <tt>EnumSet</tt> is not
-	''' synchronized.  If multiple threads access an enum set concurrently, and at
-	''' least one of the threads modifies the set, it should be synchronized
-	''' externally.  This is typically accomplished by synchronizing on some
-	''' object that naturally encapsulates the enum set.  If no such object exists,
-	''' the set should be "wrapped" using the <seealso cref="Collections#synchronizedSet"/>
-	''' method.  This is best done at creation time, to prevent accidental
-	''' unsynchronized access:
-	''' 
-	''' <pre>
-	''' Set&lt;MyEnum&gt; s = Collections.synchronizedSet(EnumSet.noneOf(MyEnum.class));
-	''' </pre>
-	''' 
-	''' <p>Implementation note: All basic operations execute in constant time.
-	''' They are likely (though not guaranteed) to be much faster than their
-	''' <seealso cref="HashSet"/> counterparts.  Even bulk operations execute in
-	''' constant time if their argument is also an enum set.
-	''' 
-	''' <p>This class is a member of the
-	''' <a href="{@docRoot}/../technotes/guides/collections/index.html">
-	''' Java Collections Framework</a>.
-	''' 
-	''' @author Josh Bloch
-	''' @since 1.5 </summary>
-	''' <seealso cref= EnumMap
-	''' @serial exclude </seealso>
-	<Serializable> _
-	Public MustInherit Class EnumSet(Of E As System.Enum(Of E))
-		Inherits AbstractSet(Of E)
+    ''' <summary>
+    ''' A specialized <seealso cref="Set"/> implementation for use with enum types.  All of
+    ''' the elements in an enum set must come from a single enum type that is
+    ''' specified, explicitly or implicitly, when the set is created.  Enum sets
+    ''' are represented internally as bit vectors.  This representation is
+    ''' extremely compact and efficient. The space and time performance of this
+    ''' class should be good enough to allow its use as a high-quality, typesafe
+    ''' alternative to traditional <tt>int</tt>-based "bit flags."  Even bulk
+    ''' operations (such as <tt>containsAll</tt> and <tt>retainAll</tt>) should
+    ''' run very quickly if their argument is also an enum set.
+    ''' 
+    ''' <p>The iterator returned by the <tt>iterator</tt> method traverses the
+    ''' elements in their <i>natural order</i> (the order in which the enum
+    ''' constants are declared).  The returned iterator is <i>weakly
+    ''' consistent</i>: it will never throw <seealso cref="ConcurrentModificationException"/>
+    ''' and it may or may not show the effects of any modifications to the set that
+    ''' occur while the iteration is in progress.
+    ''' 
+    ''' <p>Null elements are not permitted.  Attempts to insert a null element
+    ''' will throw <seealso cref="NullPointerException"/>.  Attempts to test for the
+    ''' presence of a null element or to remove one will, however, function
+    ''' properly.
+    ''' 
+    ''' <P>Like most collection implementations, <tt>EnumSet</tt> is not
+    ''' synchronized.  If multiple threads access an enum set concurrently, and at
+    ''' least one of the threads modifies the set, it should be synchronized
+    ''' externally.  This is typically accomplished by synchronizing on some
+    ''' object that naturally encapsulates the enum set.  If no such object exists,
+    ''' the set should be "wrapped" using the <seealso cref="Collections#synchronizedSet"/>
+    ''' method.  This is best done at creation time, to prevent accidental
+    ''' unsynchronized access:
+    ''' 
+    ''' <pre>
+    ''' Set&lt;MyEnum&gt; s = Collections.synchronizedSet(EnumSet.noneOf(MyEnum.class));
+    ''' </pre>
+    ''' 
+    ''' <p>Implementation note: All basic operations execute in constant time.
+    ''' They are likely (though not guaranteed) to be much faster than their
+    ''' <seealso cref="HashSet"/> counterparts.  Even bulk operations execute in
+    ''' constant time if their argument is also an enum set.
+    ''' 
+    ''' <p>This class is a member of the
+    ''' <a href="{@docRoot}/../technotes/guides/collections/index.html">
+    ''' Java Collections Framework</a>.
+    ''' 
+    ''' @author Josh Bloch
+    ''' @since 1.5 </summary>
+    ''' <seealso cref= EnumMap
+    ''' @serial exclude </seealso>
+    <Serializable>
+    Public MustInherit Class EnumSet(Of E As [Enum](Of E))
+        Inherits AbstractSet(Of E)
 		Implements Cloneable
 
 		''' <summary>
@@ -87,14 +88,13 @@ Namespace java.util
 		''' </summary>
 		Friend ReadOnly elementType As  [Class]
 
-		''' <summary>
-		''' All of the values comprising T.  (Cached for performance.)
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend ReadOnly universe As System.Enum(Of ?)()
+        ''' <summary>
+        ''' All of the values comprising T.  (Cached for performance.)
+        ''' </summary>
+        Friend ReadOnly universe As [Enum](Of ?)()
 
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared ZERO_LENGTH_ENUM_ARRAY As System.Enum(Of ?)() = New [Enum](Of ?)(){}
+        'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+        Private Shared ZERO_LENGTH_ENUM_ARRAY As System.Enum(Of ?)() = New [Enum](Of ?)(){}
 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
 		EnumSet(ClasselementType, Enum<?>() universe)

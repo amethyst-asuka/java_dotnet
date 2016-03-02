@@ -23,18 +23,20 @@
 ' *
 ' 
 
+Imports java.lang
+
 Namespace java.util
 
-	''' <summary>
-	''' Private implementation class for EnumSet, for "regular sized" enum types
-	''' (i.e., those with 64 or fewer enum constants).
-	''' 
-	''' @author Josh Bloch
-	''' @since 1.5
-	''' @serial exclude
-	''' </summary>
-	Friend Class RegularEnumSet(Of E As System.Enum(Of E))
-		Inherits EnumSet(Of E)
+    ''' <summary>
+    ''' Private implementation class for EnumSet, for "regular sized" enum types
+    ''' (i.e., those with 64 or fewer enum constants).
+    ''' 
+    ''' @author Josh Bloch
+    ''' @since 1.5
+    ''' @serial exclude
+    ''' </summary>
+    Friend Class RegularEnumSet(Of E As [Enum](Of E))
+        Inherits EnumSet(Of E)
 
 		Private Const serialVersionUID As Long = 3411599620347842686L
 		''' <summary>
@@ -42,10 +44,9 @@ Namespace java.util
 		''' presence of universe[k] in this set.
 		''' </summary>
 		Private elements As Long = 0L
-
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		RegularEnumSet(ClasselementType, Enum<?>() universe)
-			MyBase(elementType, universe)
+        Sub New(ClasselementType, Enum<?>() universe)
+			MyBase.New(elementType, universe)
+        End Sub 
 
 		void addRange(E from, E to)
 			elements = (-CInt(CUInt(1L) >> (from.ordinal() - to.ordinal() - 1))) << from.ordinal()

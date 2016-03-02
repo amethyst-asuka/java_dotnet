@@ -60,7 +60,7 @@ Namespace java.util
     ''' <seealso cref= Collection
     ''' @since 1.2 </seealso>
 
-    Public MustInherit Class AbstractCollection(Of E)
+    Public MustInherit Class AbstractCollection(Of E) : Inherits java.lang.Object
         Implements Collection(Of E)
 
         ''' <summary>
@@ -85,7 +85,7 @@ Namespace java.util
         ''' 
         ''' <p>This implementation returns <tt>size() == 0</tt>.
         ''' </summary>
-        Public Overridable Property empty As Boolean Implements Collection(Of E).isEmpty
+        Public Overridable ReadOnly Property empty As Boolean Implements Collection(Of E).empty
             Get
                 Return size() = 0
             End Get
@@ -140,7 +140,7 @@ Namespace java.util
             Dim r As Object() = New Object(size() - 1) {}
             Dim it As [Iterator](Of E) = [iterator]()
             For i As Integer = 0 To r.Length - 1
-                If Not it.hasNext() Then ' fewer elements than expected Return Arrays.copyOf(r, i)
+                If Not it.hasNext() Then _' fewer elements than expected Return Arrays.copyOf(r, i)
                     r(i) = it.next()
             Next i
             Return If(it.hasNext(), finishToArray(r, it), r)
