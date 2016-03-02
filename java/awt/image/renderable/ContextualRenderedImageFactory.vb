@@ -74,34 +74,34 @@ Namespace java.awt.image.renderable
 		'''         Vector contained in the specified ParameterBlock. </returns>
 		Function mapRenderContext(ByVal i As Integer, ByVal renderContext As RenderContext, ByVal paramBlock As ParameterBlock, ByVal image As RenderableImage) As RenderContext
 
-		''' <summary>
-		''' Creates a rendering, given a RenderContext and a ParameterBlock
-		''' containing the operation's sources and parameters.  The output
-		''' is a RenderedImage that takes the RenderContext into account to
-		''' determine its dimensions and placement on the image plane.
-		''' This method houses the "intelligence" that allows a
-		''' rendering-independent operation to adapt to a specific
-		''' RenderContext.
-		''' </summary>
-		''' <param name="renderContext"> The RenderContext specifying the rendering </param>
-		''' <param name="paramBlock"> a ParameterBlock containing the operation's
-		'''        sources and parameters </param>
-		''' <returns> a <code>RenderedImage</code> from the sources and parameters
-		'''         in the specified ParameterBlock and according to the
-		'''         rendering instructions in the specified RenderContext. </returns>
-		Function create(ByVal renderContext As RenderContext, ByVal paramBlock As ParameterBlock) As java.awt.image.RenderedImage
+        ''' <summary>
+        ''' Creates a rendering, given a RenderContext and a ParameterBlock
+        ''' containing the operation's sources and parameters.  The output
+        ''' is a RenderedImage that takes the RenderContext into account to
+        ''' determine its dimensions and placement on the image plane.
+        ''' This method houses the "intelligence" that allows a
+        ''' rendering-independent operation to adapt to a specific
+        ''' RenderContext.
+        ''' </summary>
+        ''' <param name="renderContext"> The RenderContext specifying the rendering </param>
+        ''' <param name="paramBlock"> a ParameterBlock containing the operation's
+        '''        sources and parameters </param>
+        ''' <returns> a <code>RenderedImage</code> from the sources and parameters
+        '''         in the specified ParameterBlock and according to the
+        '''         rendering instructions in the specified RenderContext. </returns>
+        Overloads Function create(ByVal renderContext As RenderContext, ByVal paramBlock As ParameterBlock) As RenderedImage
 
-		''' <summary>
-		''' Returns the bounding box for the output of the operation,
-		''' performed on a given set of sources, in rendering-independent
-		''' space.  The bounds are returned as a Rectangle2D, that is, an
-		''' axis-aligned rectangle with floating-point corner coordinates.
-		''' </summary>
-		''' <param name="paramBlock"> a ParameterBlock containing the operation's
-		'''        sources and parameters. </param>
-		''' <returns> a Rectangle2D specifying the rendering-independent
-		'''         bounding box of the output. </returns>
-		Function getBounds2D(ByVal paramBlock As ParameterBlock) As java.awt.geom.Rectangle2D
+        ''' <summary>
+        ''' Returns the bounding box for the output of the operation,
+        ''' performed on a given set of sources, in rendering-independent
+        ''' space.  The bounds are returned as a Rectangle2D, that is, an
+        ''' axis-aligned rectangle with floating-point corner coordinates.
+        ''' </summary>
+        ''' <param name="paramBlock"> a ParameterBlock containing the operation's
+        '''        sources and parameters. </param>
+        ''' <returns> a Rectangle2D specifying the rendering-independent
+        '''         bounding box of the output. </returns>
+        Function getBounds2D(ByVal paramBlock As ParameterBlock) As java.awt.geom.Rectangle2D
 
 		''' <summary>
 		''' Gets the appropriate instance of the property specified by the name

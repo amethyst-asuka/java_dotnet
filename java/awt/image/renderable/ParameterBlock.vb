@@ -30,74 +30,74 @@ Imports System.Collections.Generic
 
 Namespace java.awt.image.renderable
 
-	''' <summary>
-	''' A <code>ParameterBlock</code> encapsulates all the information about sources and
-	''' parameters (Objects) required by a RenderableImageOp, or other
-	''' classes that process images.
-	''' 
-	''' <p> Although it is possible to place arbitrary objects in the
-	''' source Vector, users of this class may impose semantic constraints
-	''' such as requiring all sources to be RenderedImages or
-	''' RenderableImage.  <code>ParameterBlock</code> itself is merely a container and
-	''' performs no checking on source or parameter types.
-	''' 
-	''' <p> All parameters in a <code>ParameterBlock</code> are objects; convenience
-	''' add and set methods are available that take arguments of base type and
-	''' construct the appropriate subclass of Number (such as
-	''' Integer or Float).  Corresponding get methods perform a
-	''' downward cast and have return values of base type; an exception
-	''' will be thrown if the stored values do not have the correct type.
-	''' There is no way to distinguish between the results of
-	''' "short s; add(s)" and "add(new Short(s))".
-	''' 
-	''' <p> Note that the get and set methods operate on references.
-	''' Therefore, one must be careful not to share references between
-	''' <code>ParameterBlock</code>s when this is inappropriate.  For example, to create
-	''' a new <code>ParameterBlock</code> that is equal to an old one except for an
-	''' added source, one might be tempted to write:
-	''' 
-	''' <pre>
-	''' ParameterBlock addSource(ParameterBlock pb, RenderableImage im) {
-	'''     ParameterBlock pb1 = new ParameterBlock(pb.getSources());
-	'''     pb1.addSource(im);
-	'''     return pb1;
-	''' }
-	''' </pre>
-	''' 
-	''' <p> This code will have the side effect of altering the original
-	''' <code>ParameterBlock</code>, since the getSources operation returned a reference
-	''' to its source Vector.  Both pb and pb1 share their source Vector,
-	''' and a change in either is visible to both.
-	''' 
-	''' <p> A correct way to write the addSource function is to clone
-	''' the source Vector:
-	''' 
-	''' <pre>
-	''' ParameterBlock addSource (ParameterBlock pb, RenderableImage im) {
-	'''     ParameterBlock pb1 = new ParameterBlock(pb.getSources().clone());
-	'''     pb1.addSource(im);
-	'''     return pb1;
-	''' }
-	''' </pre>
-	''' 
-	''' <p> The clone method of <code>ParameterBlock</code> has been defined to
-	''' perform a clone of both the source and parameter Vectors for
-	''' this reason.  A standard, shallow clone is available as
-	''' shallowClone.
-	''' 
-	''' <p> The addSource, setSource, add, and set methods are
-	''' defined to return 'this' after adding their argument.  This allows
-	''' use of syntax like:
-	''' 
-	''' <pre>
-	''' ParameterBlock pb = new ParameterBlock();
-	''' op = new RenderableImageOp("operation", pb.add(arg1).add(arg2));
-	''' </pre>
-	''' 
-	''' </summary>
-	<Serializable> _
-	Public Class ParameterBlock
-		Implements Cloneable
+    ''' <summary>
+    ''' A <code>ParameterBlock</code> encapsulates all the information about sources and
+    ''' parameters (Objects) required by a RenderableImageOp, or other
+    ''' classes that process images.
+    ''' 
+    ''' <p> Although it is possible to place arbitrary objects in the
+    ''' source Vector, users of this class may impose semantic constraints
+    ''' such as requiring all sources to be RenderedImages or
+    ''' RenderableImage.  <code>ParameterBlock</code> itself is merely a container and
+    ''' performs no checking on source or parameter types.
+    ''' 
+    ''' <p> All parameters in a <code>ParameterBlock</code> are objects; convenience
+    ''' add and set methods are available that take arguments of base type and
+    ''' construct the appropriate subclass of Number (such as
+    ''' Integer or Float).  Corresponding get methods perform a
+    ''' downward cast and have return values of base type; an exception
+    ''' will be thrown if the stored values do not have the correct type.
+    ''' There is no way to distinguish between the results of
+    ''' "short s; add(s)" and "add(new Short(s))".
+    ''' 
+    ''' <p> Note that the get and set methods operate on references.
+    ''' Therefore, one must be careful not to share references between
+    ''' <code>ParameterBlock</code>s when this is inappropriate.  For example, to create
+    ''' a new <code>ParameterBlock</code> that is equal to an old one except for an
+    ''' added source, one might be tempted to write:
+    ''' 
+    ''' <pre>
+    ''' ParameterBlock addSource(ParameterBlock pb, RenderableImage im) {
+    '''     ParameterBlock pb1 = new ParameterBlock(pb.getSources());
+    '''     pb1.addSource(im);
+    '''     return pb1;
+    ''' }
+    ''' </pre>
+    ''' 
+    ''' <p> This code will have the side effect of altering the original
+    ''' <code>ParameterBlock</code>, since the getSources operation returned a reference
+    ''' to its source Vector.  Both pb and pb1 share their source Vector,
+    ''' and a change in either is visible to both.
+    ''' 
+    ''' <p> A correct way to write the addSource function is to clone
+    ''' the source Vector:
+    ''' 
+    ''' <pre>
+    ''' ParameterBlock addSource (ParameterBlock pb, RenderableImage im) {
+    '''     ParameterBlock pb1 = new ParameterBlock(pb.getSources().clone());
+    '''     pb1.addSource(im);
+    '''     return pb1;
+    ''' }
+    ''' </pre>
+    ''' 
+    ''' <p> The clone method of <code>ParameterBlock</code> has been defined to
+    ''' perform a clone of both the source and parameter Vectors for
+    ''' this reason.  A standard, shallow clone is available as
+    ''' shallowClone.
+    ''' 
+    ''' <p> The addSource, setSource, add, and set methods are
+    ''' defined to return 'this' after adding their argument.  This allows
+    ''' use of syntax like:
+    ''' 
+    ''' <pre>
+    ''' ParameterBlock pb = new ParameterBlock();
+    ''' op = new RenderableImageOp("operation", pb.add(arg1).add(arg2));
+    ''' </pre>
+    ''' 
+    ''' </summary>
+    <Serializable>
+    Public Class ParameterBlock : Inherits java.lang.Object
+        Implements Cloneable
 
         ''' <summary>
         ''' A dummy constructor. </summary>
@@ -147,7 +147,7 @@ Namespace java.awt.image.renderable
         ''' parameters themselves will still be visible.
         ''' </summary>
         ''' <returns> an Object clone of the <code>ParameterBlock</code>. </returns>
-        Public Overridable Function clone() As Object
+        Public Overrides Function clone() As Object
             Dim theClone As ParameterBlock
 
             Try
