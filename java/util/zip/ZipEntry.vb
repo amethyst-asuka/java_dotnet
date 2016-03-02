@@ -27,33 +27,31 @@ Namespace java.util.zip
 
 
 
-	''' <summary>
-	''' This class is used to represent a ZIP file entry.
-	''' 
-	''' @author      David Connelly
-	''' </summary>
-	Public Class ZipEntry
-		Implements ZipConstants, Cloneable
+    ''' <summary>
+    ''' This class is used to represent a ZIP file entry.
+    ''' 
+    ''' @author      David Connelly
+    ''' </summary>
+    Public Class ZipEntry : Inherits java.lang.Object
+        Implements ZipConstants, Cloneable
 
-		Friend name As String ' entry name
-		Friend xdostime As Long = -1 ' last modification time (in extended DOS time,
-							' where milliseconds lost in conversion might
-							' be encoded into the upper half)
-		Friend mtime As java.nio.file.attribute.FileTime ' last modification time, from extra field data
+        Friend xdostime As Long = -1 ' last modification time (in extended DOS time,
+        ' where milliseconds lost in conversion might
+        ' be encoded into the upper half)
+        Friend mtime As java.nio.file.attribute.FileTime ' last modification time, from extra field data
 		Friend atime As java.nio.file.attribute.FileTime ' last access time, from extra field data
 		Friend ctime As java.nio.file.attribute.FileTime ' creation time, from extra field data
 		Friend crc As Long = -1 ' crc-32 of entry data
-		Friend size As Long = -1 ' uncompressed size of entry data
-		Friend csize As Long = -1 ' compressed size of entry data
+        Friend _size As Long = -1 ' uncompressed size of entry data
+        Friend csize As Long = -1 ' compressed size of entry data
 		Friend method As Integer = -1 ' compression method
 		Friend flag As Integer = 0 ' general purpose flag
 		Friend extra As SByte() ' optional extra field data for entry
-		Friend comment As String ' optional comment string for entry
 
-		''' <summary>
-		''' Compression method for uncompressed entries.
-		''' </summary>
-		Public Const STORED As Integer = 0
+        ''' <summary>
+        ''' Compression method for uncompressed entries.
+        ''' </summary>
+        Public Const STORED As Integer = 0
 
 		''' <summary>
 		''' Compression method for compressed (deflated) entries.
@@ -126,32 +124,28 @@ Namespace java.util.zip
 		Friend Sub New()
 		End Sub
 
-		''' <summary>
-		''' Returns the name of the entry. </summary>
-		''' <returns> the name of the entry </returns>
-		Public Overridable Property name As String
-			Get
-				Return name
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the name of the entry. </summary>
+        ''' <returns> the name of the entry </returns>
+        Public Overridable ReadOnly Property name As String
 
-		''' <summary>
-		''' Sets the last modification time of the entry.
-		''' 
-		''' <p> If the entry is output to a ZIP file or ZIP file formatted
-		''' output stream the last modification time set by this method will
-		''' be stored into the {@code date and time fields} of the zip file
-		''' entry and encoded in standard {@code MS-DOS date and time format}.
-		''' The <seealso cref="java.util.TimeZone#getDefault() default TimeZone"/> is
-		''' used to convert the epoch time to the MS-DOS data and time.
-		''' </summary>
-		''' <param name="time">
-		'''         The last modification time of the entry in milliseconds
-		'''         since the epoch
-		''' </param>
-		''' <seealso cref= #getTime() </seealso>
-		''' <seealso cref= #getLastModifiedTime() </seealso>
-		Public Overridable Property time As Long
+        ''' <summary>
+        ''' Sets the last modification time of the entry.
+        ''' 
+        ''' <p> If the entry is output to a ZIP file or ZIP file formatted
+        ''' output stream the last modification time set by this method will
+        ''' be stored into the {@code date and time fields} of the zip file
+        ''' entry and encoded in standard {@code MS-DOS date and time format}.
+        ''' The <seealso cref="java.util.TimeZone#getDefault() default TimeZone"/> is
+        ''' used to convert the epoch time to the MS-DOS data and time.
+        ''' </summary>
+        ''' <param name="time">
+        '''         The last modification time of the entry in milliseconds
+        '''         since the epoch
+        ''' </param>
+        ''' <seealso cref= #getTime() </seealso>
+        ''' <seealso cref= #getLastModifiedTime() </seealso>
+        Public Overridable Property time As Long
 			Set(ByVal time As Long)
 				Me.xdostime = javaToExtendedDosTime(time)
 				' Avoid setting the mtime field if time is in the valid
@@ -192,120 +186,120 @@ Namespace java.util.zip
 			Return Me
 		End Function
 
-		''' <summary>
-		''' Returns the last modification time of the entry.
-		''' 
-		''' <p> If the entry is read from a ZIP file or ZIP file formatted
-		''' input stream, this is the last modification time from the zip
-		''' file entry's {@code optional extra data} if the extended timestamp
-		''' fields are present. Otherwise the last modification time is read
-		''' from the entry's {@code date and time fields}, the {@link
-		''' java.util.TimeZone#getDefault() default TimeZone} is used to convert
-		''' the standard MS-DOS formatted date and time to the epoch time.
-		''' </summary>
-		''' <returns> The last modification time of the entry, null if not specified
-		''' </returns>
-		''' <seealso cref= #setLastModifiedTime(FileTime)
-		''' @since 1.8 </seealso>
-		Public Overridable Property lastModifiedTime As java.nio.file.attribute.FileTime
-			Get
-				If mtime IsNot Nothing Then Return mtime
-				If xdostime = -1 Then Return Nothing
-				Return java.nio.file.attribute.FileTime.from(time, java.util.concurrent.TimeUnit.MILLISECONDS)
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the last modification time of the entry.
+        ''' 
+        ''' <p> If the entry is read from a ZIP file or ZIP file formatted
+        ''' input stream, this is the last modification time from the zip
+        ''' file entry's {@code optional extra data} if the extended timestamp
+        ''' fields are present. Otherwise the last modification time is read
+        ''' from the entry's {@code date and time fields}, the {@link
+        ''' java.util.TimeZone#getDefault() default TimeZone} is used to convert
+        ''' the standard MS-DOS formatted date and time to the epoch time.
+        ''' </summary>
+        ''' <returns> The last modification time of the entry, null if not specified
+        ''' </returns>
+        ''' <seealso cref= #setLastModifiedTime(FileTime)
+        ''' @since 1.8 </seealso>
+        Public Overridable ReadOnly Property lastModifiedTime As java.nio.file.attribute.FileTime
+            Get
+                If mtime IsNot Nothing Then Return mtime
+                If xdostime = -1 Then Return Nothing
+                Return java.nio.file.attribute.FileTime.from(time, java.util.concurrent.TimeUnit.MILLISECONDS)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Sets the last access time of the entry.
-		''' 
-		''' <p> If set, the last access time will be stored into the extended
-		''' timestamp fields of entry's {@code optional extra data}, when output
-		''' to a ZIP file or ZIP file formatted stream.
-		''' </summary>
-		''' <param name="time">
-		'''         The last access time of the entry </param>
-		''' <returns> This zip entry
-		''' </returns>
-		''' <exception cref="NullPointerException"> if the {@code time} is null
-		''' </exception>
-		''' <seealso cref= #getLastAccessTime()
-		''' @since 1.8 </seealso>
-		Public Overridable Function setLastAccessTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
+        ''' <summary>
+        ''' Sets the last access time of the entry.
+        ''' 
+        ''' <p> If set, the last access time will be stored into the extended
+        ''' timestamp fields of entry's {@code optional extra data}, when output
+        ''' to a ZIP file or ZIP file formatted stream.
+        ''' </summary>
+        ''' <param name="time">
+        '''         The last access time of the entry </param>
+        ''' <returns> This zip entry
+        ''' </returns>
+        ''' <exception cref="NullPointerException"> if the {@code time} is null
+        ''' </exception>
+        ''' <seealso cref= #getLastAccessTime()
+        ''' @since 1.8 </seealso>
+        Public Overridable Function setLastAccessTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
 			Me.atime = java.util.Objects.requireNonNull(time, "lastAccessTime")
 			Return Me
 		End Function
 
-		''' <summary>
-		''' Returns the last access time of the entry.
-		''' 
-		''' <p> The last access time is from the extended timestamp fields
-		''' of entry's {@code optional extra data} when read from a ZIP file
-		''' or ZIP file formatted stream.
-		''' </summary>
-		''' <returns> The last access time of the entry, null if not specified
-		''' </returns>
-		''' <seealso cref= #setLastAccessTime(FileTime)
-		''' @since 1.8 </seealso>
-		Public Overridable Property lastAccessTime As java.nio.file.attribute.FileTime
-			Get
-				Return atime
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the last access time of the entry.
+        ''' 
+        ''' <p> The last access time is from the extended timestamp fields
+        ''' of entry's {@code optional extra data} when read from a ZIP file
+        ''' or ZIP file formatted stream.
+        ''' </summary>
+        ''' <returns> The last access time of the entry, null if not specified
+        ''' </returns>
+        ''' <seealso cref= #setLastAccessTime(FileTime)
+        ''' @since 1.8 </seealso>
+        Public Overridable ReadOnly Property lastAccessTime As java.nio.file.attribute.FileTime
+            Get
+                Return atime
+            End Get
+        End Property
 
-		''' <summary>
-		''' Sets the creation time of the entry.
-		''' 
-		''' <p> If set, the creation time will be stored into the extended
-		''' timestamp fields of entry's {@code optional extra data}, when
-		''' output to a ZIP file or ZIP file formatted stream.
-		''' </summary>
-		''' <param name="time">
-		'''         The creation time of the entry </param>
-		''' <returns> This zip entry
-		''' </returns>
-		''' <exception cref="NullPointerException"> if the {@code time} is null
-		''' </exception>
-		''' <seealso cref= #getCreationTime()
-		''' @since 1.8 </seealso>
-		Public Overridable Function setCreationTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
+        ''' <summary>
+        ''' Sets the creation time of the entry.
+        ''' 
+        ''' <p> If set, the creation time will be stored into the extended
+        ''' timestamp fields of entry's {@code optional extra data}, when
+        ''' output to a ZIP file or ZIP file formatted stream.
+        ''' </summary>
+        ''' <param name="time">
+        '''         The creation time of the entry </param>
+        ''' <returns> This zip entry
+        ''' </returns>
+        ''' <exception cref="NullPointerException"> if the {@code time} is null
+        ''' </exception>
+        ''' <seealso cref= #getCreationTime()
+        ''' @since 1.8 </seealso>
+        Public Overridable Function setCreationTime(ByVal time As java.nio.file.attribute.FileTime) As ZipEntry
 			Me.ctime = java.util.Objects.requireNonNull(time, "creationTime")
 			Return Me
 		End Function
 
-		''' <summary>
-		''' Returns the creation time of the entry.
-		''' 
-		''' <p> The creation time is from the extended timestamp fields of
-		''' entry's {@code optional extra data} when read from a ZIP file
-		''' or ZIP file formatted stream.
-		''' </summary>
-		''' <returns> the creation time of the entry, null if not specified </returns>
-		''' <seealso cref= #setCreationTime(FileTime)
-		''' @since 1.8 </seealso>
-		Public Overridable Property creationTime As java.nio.file.attribute.FileTime
-			Get
-				Return ctime
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the creation time of the entry.
+        ''' 
+        ''' <p> The creation time is from the extended timestamp fields of
+        ''' entry's {@code optional extra data} when read from a ZIP file
+        ''' or ZIP file formatted stream.
+        ''' </summary>
+        ''' <returns> the creation time of the entry, null if not specified </returns>
+        ''' <seealso cref= #setCreationTime(FileTime)
+        ''' @since 1.8 </seealso>
+        Public Overridable ReadOnly Property creationTime As java.nio.file.attribute.FileTime
+            Get
+                Return ctime
+            End Get
+        End Property
 
-		''' <summary>
-		''' Sets the uncompressed size of the entry data.
-		''' </summary>
-		''' <param name="size"> the uncompressed size in bytes
-		''' </param>
-		''' <exception cref="IllegalArgumentException"> if the specified size is less
-		'''         than 0, is greater than 0xFFFFFFFF when
-		'''         <a href="package-summary.html#zip64">ZIP64 format</a> is not supported,
-		'''         or is less than 0 when ZIP64 is supported </exception>
-		''' <seealso cref= #getSize() </seealso>
-		Public Overridable Property size As Long
+        ''' <summary>
+        ''' Sets the uncompressed size of the entry data.
+        ''' </summary>
+        ''' <param name="size"> the uncompressed size in bytes
+        ''' </param>
+        ''' <exception cref="IllegalArgumentException"> if the specified size is less
+        '''         than 0, is greater than 0xFFFFFFFF when
+        '''         <a href="package-summary.html#zip64">ZIP64 format</a> is not supported,
+        '''         or is less than 0 when ZIP64 is supported </exception>
+        ''' <seealso cref= #getSize() </seealso>
+        Public Overridable Property size As Long
 			Set(ByVal size As Long)
 				If size < 0 Then Throw New IllegalArgumentException("invalid entry size")
-				Me.size = size
-			End Set
+                Me._size = size
+            End Set
 			Get
-				Return size
-			End Get
+                Return _size
+            End Get
 		End Property
 
 
@@ -469,20 +463,12 @@ Namespace java.util.zip
 		''' </param>
 		''' <seealso cref= #getComment() </seealso>
 		Public Overridable Property comment As String
-			Set(ByVal comment As String)
-				Me.comment = comment
-			End Set
-			Get
-				Return comment
-			End Get
-		End Property
 
-
-		''' <summary>
-		''' Returns true if this is a directory entry. A directory entry is
-		''' defined to be one whose name ends with a '/'. </summary>
-		''' <returns> true if this is a directory entry </returns>
-		Public Overridable Property directory As Boolean
+        ''' <summary>
+        ''' Returns true if this is a directory entry. A directory entry is
+        ''' defined to be one whose name ends with a '/'. </summary>
+        ''' <returns> true if this is a directory entry </returns>
+        Public Overridable Property directory As Boolean
 			Get
 				Return name.EndsWith("/")
 			End Get
@@ -502,19 +488,19 @@ Namespace java.util.zip
 			Return name.GetHashCode()
 		End Function
 
-		''' <summary>
-		''' Returns a copy of this entry.
-		''' </summary>
-		Public Overridable Function clone() As Object
-			Try
-				Dim e As ZipEntry = CType(MyBase.clone(), ZipEntry)
-				e.extra = If(extra Is Nothing, Nothing, extra.clone())
-				Return e
-			Catch e As CloneNotSupportedException
-				' This should never happen, since we are Cloneable
-				Throw New InternalError(e)
-			End Try
-		End Function
-	End Class
+        ''' <summary>
+        ''' Returns a copy of this entry.
+        ''' </summary>
+        Public Overrides Function clone() As Object
+            Try
+                Dim e As ZipEntry = CType(MyBase.clone(), ZipEntry)
+                e.extra = If(extra Is Nothing, Nothing, extra.Clone())
+                Return e
+            Catch e As CloneNotSupportedException
+                ' This should never happen, since we are Cloneable
+                Throw New InternalError(e)
+            End Try
+        End Function
+    End Class
 
 End Namespace
