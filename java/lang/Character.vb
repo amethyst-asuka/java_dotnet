@@ -1083,7 +1083,7 @@ Namespace java.lang
             '''             the block definitions of the Unicode Standard.
             '''             The <seealso cref="#of(char)"/> and <seealso cref="#of(int)"/> methods
             '''             return the new constants, not SURROGATES_AREA. 
-            <Obsolete("As of J2SE 5, use <seealso cref="#HIGH_SURROGATES"/>,")>
+            <Obsolete("As of J2SE 5, use <seealso cref=""#HIGH_SURROGATES""/>,")>
             Public Shared ReadOnly SURROGATES_AREA As New UnicodeBlock("SURROGATES_AREA")
 
             ''' <summary>
@@ -2681,116 +2681,137 @@ Namespace java.lang
             '			private static final int[] scriptStarts = { &H0, &H41, &H5B, &H61, &H7B, &HAA, &HAB, &HBA, &HBB, &HC0, &HD7, &HD8, &HF7, &HF8, &H2B9, &H2E0, &H2E5, &H2EA, &H2EC, &H300, &H370, &H374, &H375, &H37E, &H384, &H385, &H386, &H387, &H388, &H3E2, &H3F0, &H400, &H485, &H487, &H531, &H589, &H58A, &H591, &H600, &H60C, &H60D, &H61B, &H61E, &H61F, &H620, &H640, &H641, &H64B, &H656, &H660, &H66A, &H670, &H671, &H6DD, &H6DE, &H700, &H750, &H780, &H7C0, &H800, &H840, &H8A0, &H900, &H951, &H953, &H964, &H966, &H981, &HA01, &HA81, &HB01, &HB82, &HC01, &HC82, &HD02, &HD82, &HE01, &HE3F, &HE40, &HE81, &HF00, &HFD5, &HFD9, &H1000, &H10A0, &H10FB, &H10FC, &H1100, &H1200, &H13A0, &H1400, &H1680, &H16A0, &H16EB, &H16EE, &H1700, &H1720, &H1735, &H1740, &H1760, &H1780, &H1800, &H1802, &H1804, &H1805, &H1806, &H18B0, &H1900, &H1950, &H1980, &H19E0, &H1A00, &H1A20, &H1B00, &H1B80, &H1BC0, &H1C00, &H1C50, &H1CC0, &H1CD0, &H1CD3, &H1CD4, &H1CE1, &H1CE2, &H1CE9, &H1CED, &H1CEE, &H1CF4, &H1CF5, &H1D00, &H1D26, &H1D2B, &H1D2C, &H1D5D, &H1D62, &H1D66, &H1D6B, &H1D78, &H1D79, &H1DBF, &H1DC0, &H1E00, &H1F00, &H2000, &H200C, &H200E, &H2071, &H2074, &H207F, &H2080, &H2090, &H20A0, &H20D0, &H2100, &H2126, &H2127, &H212A, &H212C, &H2132, &H2133, &H214E, &H214F, &H2160, &H2189, &H2800, &H2900, &H2C00, &H2C60, &H2C80, &H2D00, &H2D30, &H2D80, &H2DE0, &H2E00, &H2E80, &H2FF0, &H3005, &H3006, &H3007, &H3008, &H3021, &H302A, &H302E, &H3030, &H3038, &H303C, &H3041, &H3099, &H309B, &H309D, &H30A0, &H30A1, &H30FB, &H30FD, &H3105, &H3131, &H3190, &H31A0, &H31C0, &H31F0, &H3200, &H3220, &H3260, &H327F, &H32D0, &H3358, &H3400, &H4DC0, &H4E00, &HA000, &HA4D0, &HA500, &HA640, &HA6A0, &HA700, &HA722, &HA788, &HA78B, &HA800, &HA830, &HA840, &HA880, &HA8E0, &HA900, &HA930, &HA960, &HA980, &HAA00, &HAA60, &HAA80, &HAAE0, &HAB01, &HABC0, &HAC00, &HD7FC, &HF900, &HFB00, &HFB13, &HFB1D, &HFB50, &HFD3E, &HFD50, &HFDFD, &HFE00, &HFE10, &HFE20, &HFE30, &HFE70, &HFEFF, &HFF21, &HFF3B, &HFF41, &HFF5B, &HFF66, &HFF70, &HFF71, &HFF9E, &HFFA0, &HFFE0, &H10000, &H10100, &H10140, &H10190, &H101FD, &H10280, &H102A0, &H10300, &H10330, &H10380, &H103A0, &H10400, &H10450, &H10480, &H10800, &H10840, &H10900, &H10920, &H10980, &H109A0, &H10A00, &H10A60, &H10B00, &H10B40, &H10B60, &H10C00, &H10E60, &H11000, &H11080, &H110D0, &H11100, &H11180, &H11680, &H12000, &H13000, &H16800, &H16F00, &H1B000, &H1B001, &H1D000, &H1D167, &H1D16A, &H1D17B, &H1D183, &H1D185, &H1D18C, &H1D1AA, &H1D1AE, &H1D200, &H1D300, &H1EE00, &H1F000, &H1F200, &H1F201, &H20000, &HE0001, &HE0100, &HE01F0
         End Enum
 
-        Private Shared ReadOnly scripts As UnicodeScript() = {Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, BOPOMOFO, Common, INHERITED, GREEK, Common, GREEK, Common, GREEK, Common, GREEK, Common, GREEK, COPTIC, GREEK, CYRILLIC, INHERITED, CYRILLIC, ARMENIAN, Common, ARMENIAN, HEBREW, ARABIC, Common, ARABIC, Common, ARABIC, Common, ARABIC, Common, ARABIC, INHERITED, ARABIC, Common, ARABIC, INHERITED, ARABIC, Common, ARABIC, SYRIAC, ARABIC, THAANA, NKO, SAMARITAN, MANDAIC, ARABIC, DEVANAGARI, INHERITED, DEVANAGARI, Common, DEVANAGARI, BENGALI, GURMUKHI, GUJARATI, ORIYA, TAMIL, TELUGU, KANNADA, MALAYALAM, SINHALA, THAI, Common, THAI, LAO, TIBETAN, Common, TIBETAN, MYANMAR, GEORGIAN, Common, GEORGIAN, HANGUL, ETHIOPIC, CHEROKEE, CANADIAN_ABORIGINAL, OGHAM, RUNIC, Common, RUNIC, TAGALOG, HANUNOO, Common, BUHID, TAGBANWA, KHMER, MONGOLIAN, Common, MONGOLIAN, Common, MONGOLIAN, CANADIAN_ABORIGINAL, LIMBU, TAI_LE, NEW_TAI_LUE, KHMER, BUGINESE, TAI_THAM, BALINESE, SUNDANESE, BATAK, LEPCHA, OL_CHIKI, SUNDANESE, INHERITED, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, LATIN, GREEK, CYRILLIC, LATIN, GREEK, LATIN, GREEK, LATIN, CYRILLIC, LATIN, GREEK, INHERITED, LATIN, GREEK, Common, INHERITED, Common, LATIN, Common, LATIN, Common, LATIN, Common, INHERITED, Common, GREEK, Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, BRAILLE, Common, GLAGOLITIC, LATIN, COPTIC, GEORGIAN, TIFINAGH, ETHIOPIC, CYRILLIC, Common, HAN, Common, HAN, Common, HAN, Common, HAN, INHERITED, HANGUL, Common, HAN, Common, HIRAGANA, INHERITED, Common, HIRAGANA, Common, KATAKANA, Common, KATAKANA, BOPOMOFO, HANGUL, Common, BOPOMOFO, Common, KATAKANA, HANGUL, Common, HANGUL, Common, KATAKANA, Common, HAN, Common, HAN, YI, LISU, VAI, CYRILLIC, BAMUM, Common, LATIN, Common, LATIN, SYLOTI_NAGRI, Common, PHAGS_PA, SAURASHTRA, DEVANAGARI, KAYAH_LI, REJANG, HANGUL, JAVANESE, CHAM, MYANMAR, TAI_VIET, MEETEI_MAYEK, ETHIOPIC, MEETEI_MAYEK, HANGUL, UNKNOWN, HAN, LATIN, ARMENIAN, HEBREW, ARABIC, Common, ARABIC, Common, INHERITED, Common, INHERITED, Common, ARABIC, Common, LATIN, Common, LATIN, Common, KATAKANA, Common, KATAKANA, Common, HANGUL, Common, LINEAR_B, Common, GREEK, Common, INHERITED, LYCIAN, CARIAN, OLD_ITALIC, GOTHIC, UGARITIC, OLD_PERSIAN, DESERET, SHAVIAN, OSMANYA, CYPRIOT, IMPERIAL_ARAMAIC, PHOENICIAN, LYDIAN, MEROITIC_HIEROGLYPHS, MEROITIC_CURSIVE, KHAROSHTHI, OLD_SOUTH_ARABIAN, AVESTAN, INSCRIPTIONAL_PARTHIAN, INSCRIPTIONAL_PAHLAVI, OLD_TURKIC, ARABIC, BRAHMI, KAITHI, SORA_SOMPENG, CHAKMA, SHARADA, TAKRI, CUNEIFORM, EGYPTIAN_HIEROGLYPHS, BAMUM, MIAO, KATAKANA, HIRAGANA, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, GREEK, Common, ARABIC, Common, HIRAGANA, Common, HAN, Common, INHERITED, UNKNOWN}
+        Private Shared ReadOnly Property scripts As UnicodeScript() = {
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON,
+            UnicodeScript.LATIN,
+            UnicodeScript.COMMON, UnicodeScript.BOPOMOFO, UnicodeScript.COMMON, UnicodeScript.INHERITED, UnicodeScript.GREEK, UnicodeScript.COMMON, UnicodeScript.GREEK,
+            UnicodeScript.COMMON, UnicodeScript.GREEK, UnicodeScript.COMMON, UnicodeScript.GREEK, UnicodeScript.COMMON, UnicodeScript.GREEK, UnicodeScript.COPTIC,
+            UnicodeScript.GREEK, UnicodeScript.CYRILLIC, UnicodeScript.INHERITED, UnicodeScript.CYRILLIC, UnicodeScript.ARMENIAN,
+            UnicodeScript.COMMON, UnicodeScript.ARMENIAN, UnicodeScript.HEBREW, UnicodeScript.ARABIC,
+            UnicodeScript.COMMON, UnicodeScript.ARABIC, Common, ARABIC, Common, ARABIC, Common, ARABIC, INHERITED, ARABIC, Common, ARABIC, INHERITED, ARABIC, Common, ARABIC, SYRIAC, ARABIC, THAANA, NKO, SAMARITAN, MANDAIC, ARABIC, DEVANAGARI, INHERITED, DEVANAGARI, Common, DEVANAGARI, BENGALI, GURMUKHI, GUJARATI, ORIYA, TAMIL, TELUGU, KANNADA, MALAYALAM, SINHALA, THAI, Common, THAI, LAO, TIBETAN, Common, TIBETAN, MYANMAR, GEORGIAN, Common, GEORGIAN, HANGUL, ETHIOPIC, CHEROKEE, CANADIAN_ABORIGINAL, OGHAM, RUNIC, Common, RUNIC, TAGALOG, HANUNOO, Common, BUHID, TAGBANWA, KHMER, MONGOLIAN, Common, MONGOLIAN, Common, MONGOLIAN, CANADIAN_ABORIGINAL, LIMBU, TAI_LE, NEW_TAI_LUE, KHMER, BUGINESE, TAI_THAM, BALINESE, SUNDANESE, BATAK, LEPCHA, OL_CHIKI, SUNDANESE, INHERITED, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, LATIN, GREEK, CYRILLIC, LATIN, GREEK, LATIN, GREEK, LATIN, CYRILLIC, LATIN, GREEK, INHERITED, LATIN, GREEK, Common, INHERITED, Common, LATIN, Common, LATIN, Common, LATIN, Common, INHERITED, Common, GREEK, Common, LATIN, Common, LATIN, Common, LATIN, Common, LATIN, Common, BRAILLE, Common, GLAGOLITIC, LATIN, COPTIC, GEORGIAN, TIFINAGH, ETHIOPIC, CYRILLIC, Common, HAN, Common, HAN, Common, HAN, Common, HAN, INHERITED, HANGUL, Common, HAN, Common, HIRAGANA, INHERITED, Common, HIRAGANA, Common, KATAKANA, Common, KATAKANA, BOPOMOFO, HANGUL, Common, BOPOMOFO, Common, KATAKANA, HANGUL, Common, HANGUL, Common, KATAKANA, Common, HAN, Common, HAN, YI, LISU, VAI, CYRILLIC, BAMUM, Common, LATIN, Common, LATIN, SYLOTI_NAGRI, Common, PHAGS_PA, SAURASHTRA, DEVANAGARI, KAYAH_LI, REJANG, HANGUL, JAVANESE, CHAM, MYANMAR, TAI_VIET, MEETEI_MAYEK, ETHIOPIC, MEETEI_MAYEK, HANGUL, UNKNOWN, HAN, LATIN, ARMENIAN, HEBREW, ARABIC, Common, ARABIC, Common, INHERITED, Common, INHERITED, Common, ARABIC, Common, LATIN, Common, LATIN, Common, KATAKANA, Common, KATAKANA, Common, HANGUL, Common, LINEAR_B, Common, GREEK, Common, INHERITED, LYCIAN, CARIAN, OLD_ITALIC, GOTHIC, UGARITIC, OLD_PERSIAN, DESERET, SHAVIAN, OSMANYA, CYPRIOT, IMPERIAL_ARAMAIC, PHOENICIAN, LYDIAN, MEROITIC_HIEROGLYPHS, MEROITIC_CURSIVE, KHAROSHTHI, OLD_SOUTH_ARABIAN, AVESTAN, INSCRIPTIONAL_PARTHIAN, INSCRIPTIONAL_PAHLAVI, OLD_TURKIC, ARABIC, BRAHMI, KAITHI, SORA_SOMPENG, CHAKMA, SHARADA, TAKRI, CUNEIFORM, EGYPTIAN_HIEROGLYPHS, BAMUM, MIAO, KATAKANA, HIRAGANA, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, INHERITED, Common, GREEK, Common, ARABIC, Common, HIRAGANA, Common, HAN, Common, INHERITED, UNKNOWN}
 
         Private Shared aliases As Dictionary(Of String, Character.UnicodeScript)
         Shared Sub New()
-            aliases = New Dictionary(Of )(128)
-            aliases("ARAB") = ARABIC
-            aliases("ARMI") = IMPERIAL_ARAMAIC
-            aliases("ARMN") = ARMENIAN
-            aliases("AVST") = AVESTAN
-            aliases("BALI") = BALINESE
-            aliases("BAMU") = BAMUM
-            aliases("BATK") = BATAK
-            aliases("BENG") = BENGALI
-            aliases("BOPO") = BOPOMOFO
-            aliases("BRAI") = BRAILLE
-            aliases("BRAH") = BRAHMI
-            aliases("BUGI") = BUGINESE
-            aliases("BUHD") = BUHID
-            aliases("CAKM") = CHAKMA
-            aliases("CANS") = CANADIAN_ABORIGINAL
-            aliases("CARI") = CARIAN
-            aliases("CHAM") = CHAM
-            aliases("CHER") = CHEROKEE
-            aliases("COPT") = COPTIC
-            aliases("CPRT") = CYPRIOT
-            aliases("CYRL") = CYRILLIC
-            aliases("DEVA") = DEVANAGARI
-            aliases("DSRT") = DESERET
-            aliases("EGYP") = EGYPTIAN_HIEROGLYPHS
-            aliases("ETHI") = ETHIOPIC
-            aliases("GEOR") = GEORGIAN
-            aliases("GLAG") = GLAGOLITIC
-            aliases("GOTH") = GOTHIC
-            aliases("GREK") = GREEK
-            aliases("GUJR") = GUJARATI
-            aliases("GURU") = GURMUKHI
-            aliases("HANG") = HANGUL
-            aliases("HANI") = HAN
-            aliases("HANO") = HANUNOO
-            aliases("HEBR") = HEBREW
-            aliases("HIRA") = HIRAGANA
+            aliases = New Dictionary(Of String, UnicodeScript)(128)
+            aliases("ARAB") = UnicodeScript.ARABIC
+            aliases("ARMI") = UnicodeScript.IMPERIAL_ARAMAIC
+            aliases("ARMN") = UnicodeScript.ARMENIAN
+            aliases("AVST") = UnicodeScript.AVESTAN
+            aliases("BALI") = UnicodeScript.BALINESE
+            aliases("BAMU") = UnicodeScript.BAMUM
+            aliases("BATK") = UnicodeScript.BATAK
+            aliases("BENG") = UnicodeScript.BENGALI
+            aliases("BOPO") = UnicodeScript.BOPOMOFO
+            aliases("BRAI") = UnicodeScript.BRAILLE
+            aliases("BRAH") = UnicodeScript.BRAHMI
+            aliases("BUGI") = UnicodeScript.BUGINESE
+            aliases("BUHD") = UnicodeScript.BUHID
+            aliases("CAKM") = UnicodeScript.CHAKMA
+            aliases("CANS") = UnicodeScript.CANADIAN_ABORIGINAL
+            aliases("CARI") = UnicodeScript.CARIAN
+            aliases("CHAM") = UnicodeScript.CHAM
+            aliases("CHER") = UnicodeScript.CHEROKEE
+            aliases("COPT") = UnicodeScript.COPTIC
+            aliases("CPRT") = UnicodeScript.CYPRIOT
+            aliases("CYRL") = UnicodeScript.CYRILLIC
+            aliases("DEVA") = UnicodeScript.DEVANAGARI
+            aliases("DSRT") = UnicodeScript.DESERET
+            aliases("EGYP") = UnicodeScript.EGYPTIAN_HIEROGLYPHS
+            aliases("ETHI") = UnicodeScript.ETHIOPIC
+            aliases("GEOR") = UnicodeScript.GEORGIAN
+            aliases("GLAG") = UnicodeScript.GLAGOLITIC
+            aliases("GOTH") = UnicodeScript.GOTHIC
+            aliases("GREK") = UnicodeScript.GREEK
+            aliases("GUJR") = UnicodeScript.GUJARATI
+            aliases("GURU") = UnicodeScript.GURMUKHI
+            aliases("HANG") = UnicodeScript.HANGUL
+            aliases("HANI") = UnicodeScript.HAN
+            aliases("HANO") = UnicodeScript.HANUNOO
+            aliases("HEBR") = UnicodeScript.HEBREW
+            aliases("HIRA") = UnicodeScript.HIRAGANA
             ' it appears we don't have the KATAKANA_OR_HIRAGANA
             'aliases.put("HRKT", KATAKANA_OR_HIRAGANA);
-            aliases("ITAL") = OLD_ITALIC
-            aliases("JAVA") = JAVANESE
-            aliases("KALI") = KAYAH_LI
-            aliases("KANA") = KATAKANA
-            aliases("KHAR") = KHAROSHTHI
-            aliases("KHMR") = KHMER
-            aliases("KNDA") = KANNADA
-            aliases("KTHI") = KAITHI
-            aliases("LANA") = TAI_THAM
-            aliases("LAOO") = LAO
-            aliases("LATN") = LATIN
-            aliases("LEPC") = LEPCHA
-            aliases("LIMB") = LIMBU
-            aliases("LINB") = LINEAR_B
-            aliases("LISU") = LISU
-            aliases("LYCI") = LYCIAN
-            aliases("LYDI") = LYDIAN
-            aliases("MAND") = MANDAIC
-            aliases("MERC") = MEROITIC_CURSIVE
-            aliases("MERO") = MEROITIC_HIEROGLYPHS
-            aliases("MLYM") = MALAYALAM
-            aliases("MONG") = MONGOLIAN
-            aliases("MTEI") = MEETEI_MAYEK
-            aliases("MYMR") = MYANMAR
-            aliases("NKOO") = NKO
-            aliases("OGAM") = OGHAM
-            aliases("OLCK") = OL_CHIKI
-            aliases("ORKH") = OLD_TURKIC
-            aliases("ORYA") = ORIYA
-            aliases("OSMA") = OSMANYA
-            aliases("PHAG") = PHAGS_PA
-            aliases("PLRD") = MIAO
-            aliases("PHLI") = INSCRIPTIONAL_PAHLAVI
-            aliases("PHNX") = PHOENICIAN
-            aliases("PRTI") = INSCRIPTIONAL_PARTHIAN
-            aliases("RJNG") = REJANG
-            aliases("RUNR") = RUNIC
-            aliases("SAMR") = SAMARITAN
-            aliases("SARB") = OLD_SOUTH_ARABIAN
-            aliases("SAUR") = SAURASHTRA
-            aliases("SHAW") = SHAVIAN
-            aliases("SHRD") = SHARADA
-            aliases("SINH") = SINHALA
-            aliases("SORA") = SORA_SOMPENG
-            aliases("SUND") = SUNDANESE
-            aliases("SYLO") = SYLOTI_NAGRI
-            aliases("SYRC") = SYRIAC
-            aliases("TAGB") = TAGBANWA
-            aliases("TALE") = TAI_LE
-            aliases("TAKR") = TAKRI
-            aliases("TALU") = NEW_TAI_LUE
-            aliases("TAML") = TAMIL
-            aliases("TAVT") = TAI_VIET
-            aliases("TELU") = TELUGU
-            aliases("TFNG") = TIFINAGH
-            aliases("TGLG") = TAGALOG
-            aliases("THAA") = THAANA
-            aliases("THAI") = THAI
-            aliases("TIBT") = TIBETAN
-            aliases("UGAR") = UGARITIC
-            aliases("VAII") = VAI
-            aliases("XPEO") = OLD_PERSIAN
-            aliases("XSUX") = CUNEIFORM
-            aliases("YIII") = YI
-            aliases("ZINH") = INHERITED
-            aliases("ZYYY") = Common
-            aliases("ZZZZ") = UNKNOWN
+            aliases("ITAL") = UnicodeScript.OLD_ITALIC
+            aliases("JAVA") = UnicodeScript.JAVANESE
+            aliases("KALI") = UnicodeScript.KAYAH_LI
+            aliases("KANA") = UnicodeScript.KATAKANA
+            aliases("KHAR") = UnicodeScript.KHAROSHTHI
+            aliases("KHMR") = UnicodeScript.KHMER
+            aliases("KNDA") = UnicodeScript.KANNADA
+            aliases("KTHI") = UnicodeScript.KAITHI
+            aliases("LANA") = UnicodeScript.TAI_THAM
+            aliases("LAOO") = UnicodeScript.LAO
+            aliases("LATN") = UnicodeScript.LATIN
+            aliases("LEPC") = UnicodeScript.LEPCHA
+            aliases("LIMB") = UnicodeScript.LIMBU
+            aliases("LINB") = UnicodeScript.LINEAR_B
+            aliases("LISU") = UnicodeScript.LISU
+            aliases("LYCI") = UnicodeScript.LYCIAN
+            aliases("LYDI") = UnicodeScript.LYDIAN
+            aliases("MAND") = UnicodeScript.MANDAIC
+            aliases("MERC") = UnicodeScript.MEROITIC_CURSIVE
+            aliases("MERO") = UnicodeScript.MEROITIC_HIEROGLYPHS
+            aliases("MLYM") = UnicodeScript.MALAYALAM
+            aliases("MONG") = UnicodeScript.MONGOLIAN
+            aliases("MTEI") = UnicodeScript.MEETEI_MAYEK
+            aliases("MYMR") = UnicodeScript.MYANMAR
+            aliases("NKOO") = UnicodeScript.NKO
+            aliases("OGAM") = UnicodeScript.OGHAM
+            aliases("OLCK") = UnicodeScript.OL_CHIKI
+            aliases("ORKH") = UnicodeScript.OLD_TURKIC
+            aliases("ORYA") = UnicodeScript.ORIYA
+            aliases("OSMA") = UnicodeScript.OSMANYA
+            aliases("PHAG") = UnicodeScript.PHAGS_PA
+            aliases("PLRD") = UnicodeScript.MIAO
+            aliases("PHLI") = UnicodeScript.INSCRIPTIONAL_PAHLAVI
+            aliases("PHNX") = UnicodeScript.PHOENICIAN
+            aliases("PRTI") = UnicodeScript.INSCRIPTIONAL_PARTHIAN
+            aliases("RJNG") = UnicodeScript.REJANG
+            aliases("RUNR") = UnicodeScript.RUNIC
+            aliases("SAMR") = UnicodeScript.SAMARITAN
+            aliases("SARB") = UnicodeScript.OLD_SOUTH_ARABIAN
+            aliases("SAUR") = UnicodeScript.SAURASHTRA
+            aliases("SHAW") = UnicodeScript.SHAVIAN
+            aliases("SHRD") = UnicodeScript.SHARADA
+            aliases("SINH") = UnicodeScript.SINHALA
+            aliases("SORA") = UnicodeScript.SORA_SOMPENG
+            aliases("SUND") = UnicodeScript.SUNDANESE
+            aliases("SYLO") = UnicodeScript.SYLOTI_NAGRI
+            aliases("SYRC") = UnicodeScript.SYRIAC
+            aliases("TAGB") = UnicodeScript.TAGBANWA
+            aliases("TALE") = UnicodeScript.TAI_LE
+            aliases("TAKR") = UnicodeScript.TAKRI
+            aliases("TALU") = UnicodeScript.NEW_TAI_LUE
+            aliases("TAML") = UnicodeScript.TAMIL
+            aliases("TAVT") = UnicodeScript.TAI_VIET
+            aliases("TELU") = UnicodeScript.TELUGU
+            aliases("TFNG") = UnicodeScript.TIFINAGH
+            aliases("TGLG") = UnicodeScript.TAGALOG
+            aliases("THAA") = UnicodeScript.THAANA
+            aliases("THAI") = UnicodeScript.THAI
+            aliases("TIBT") = UnicodeScript.TIBETAN
+            aliases("UGAR") = UnicodeScript.UGARITIC
+            aliases("VAII") = UnicodeScript.VAI
+            aliases("XPEO") = UnicodeScript.OLD_PERSIAN
+            aliases("XSUX") = UnicodeScript.CUNEIFORM
+            aliases("YIII") = UnicodeScript.YI
+            aliases("ZINH") = UnicodeScript.INHERITED
+            aliases("ZYYY") = UnicodeScript.COMMON
+            aliases("ZZZZ") = UnicodeScript.UNKNOWN
         End Sub
 
         ''' <summary>
@@ -2866,12 +2887,12 @@ Namespace java.lang
         Me.value = value
     End Sub
 
-    Private Static Class CharacterCache
+    Private Class CharacterCache
         Private CharacterCache()
 
-        Static final Character cache() = New Character(127){}
+        Shared cache As Character() = New Character(127) {}
 
-			Static ImpliedClass()
+        Static ImpliedClass()
         For i As Integer = 0 To cache.length - 1
 					cache(i) = New Character(ChrW(i))
 				Next i
@@ -2892,9 +2913,10 @@ Namespace java.lang
         ''' <param name="c"> a char value. </param>
         ''' <returns> a <tt>Character</tt> instance representing <tt>c</tt>.
         ''' @since  1.5 </returns>
-        Public Static Character valueOf(Char c)
-			If c <= 127 Then ' must cache Return CharacterCache.cache(CInt(Fix(c)))
-        Return New Character(c)
+        Public Shared Function valueOf(c As Char) As Character
+            If Asc(c) <= 127 Then _ ' must cache Return CharacterCache.cache(CInt(Fix(c)))
+                Return New Character(c)
+        End Function
 
         ''' <summary>
         ''' Returns the value of this {@code Character} object. </summary>
@@ -4738,8 +4760,9 @@ Namespace java.lang
         ''' <seealso cref=     Character#forDigit(int, int) </seealso>
         ''' <seealso cref=     Character#isDigit(char)
         ''' @since   1.1 </seealso>
-        Public Static Integer getNumericValue(Char ch)
-			Return getNumericValue(CInt(Fix(ch)))
+        Public Shared Function getNumericValue(ch As Char) As Integer
+            Return getNumericValue(CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Returns the {@code int} value that the specified
@@ -4769,8 +4792,9 @@ Namespace java.lang
         ''' <seealso cref=     Character#forDigit(int, int) </seealso>
         ''' <seealso cref=     Character#isDigit(int)
         ''' @since   1.5 </seealso>
-        Public Static Integer getNumericValue(Integer codePoint)
-			Return CharacterData.of(codePoint).getNumericValue(codePoint)
+        Public Shared Function getNumericValue(codePoint As Integer) As Integer
+            Return CharacterData.of(codePoint).getNumericValue(codePoint)
+        End Function
 
         ''' <summary>
         ''' Determines if the specified character is ISO-LATIN-1 white space.
@@ -4796,9 +4820,9 @@ Namespace java.lang
         ''' <seealso cref=        Character#isWhitespace(char) </seealso>
         ''' @deprecated Replaced by isWhitespace(char). 
         <Obsolete("Replaced by isWhitespace(char).")>
-        Public Static Boolean isSpace(Char ch)
-			Return (ch <= &H20) AndAlso (((((1L << &H9) Or (1L << &HA) Or (1L << &HC) Or (1L << &HD) Or (1L << &H20)) >> ch) And 1L) <> 0)
-
+        Public Shared Function isSpace(ch As Char) As Boolean
+            Return (ch <= &H20) AndAlso (((((1L << &H9) Or (1L << &HA) Or (1L << &HC) Or (1L << &HD) Or (1L << &H20)) >> ch) And 1L) <> 0)
+        End Function
 
         ''' <summary>
         ''' Determines if the specified character is a Unicode space character.
@@ -4822,8 +4846,9 @@ Namespace java.lang
         '''          {@code false} otherwise. </returns>
         ''' <seealso cref=     Character#isWhitespace(char)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isSpaceChar(Char ch)
-			Return isSpaceChar(CInt(Fix(ch)))
+        Public Shared Function isSpaceChar(ch As Char) As Boolean
+            Return isSpaceChar(CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Determines if the specified character (Unicode code point) is a
@@ -4843,8 +4868,9 @@ Namespace java.lang
         '''          {@code false} otherwise. </returns>
         ''' <seealso cref=     Character#isWhitespace(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isSpaceChar(Integer codePoint)
-			Return ((((1 << Character.SPACE_SEPARATOR) Or (1 << Character.LINE_SEPARATOR) Or (1 << Character.PARAGRAPH_SEPARATOR)) >> [getType](codePoint)) And 1) <> 0
+        Public Shared Function isSpaceChar(codePoint As Integer) As Boolean
+            Return ((((1 << Character.SPACE_SEPARATOR) Or (1 << Character.LINE_SEPARATOR) Or (1 << Character.PARAGRAPH_SEPARATOR)) >> [getType](codePoint)) And 1) <> 0
+        End Function
 
         ''' <summary>
         ''' Determines if the specified character is white space according to Java.
@@ -4876,8 +4902,9 @@ Namespace java.lang
         '''          character; {@code false} otherwise. </returns>
         ''' <seealso cref=     Character#isSpaceChar(char)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isWhitespace(Char ch)
-			Return isWhitespace(CInt(Fix(ch)))
+        Public Shared Function isWhitespace(ch As Char) As Boolean
+            Return isWhitespace(CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Determines if the specified character (Unicode code point) is
@@ -4906,8 +4933,9 @@ Namespace java.lang
         '''          character; {@code false} otherwise. </returns>
         ''' <seealso cref=     Character#isSpaceChar(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isWhitespace(Integer codePoint)
-			Return CharacterData.of(codePoint).isWhitespace(codePoint)
+        Public Shared Function isWhitespace(codePoint As Integer) As Boolean
+            Return CharacterData.of(codePoint).isWhitespace(codePoint)
+        End Function
 
         ''' <summary>
         ''' Determines if the specified character is an ISO control
@@ -4928,8 +4956,9 @@ Namespace java.lang
         ''' <seealso cref=     Character#isSpaceChar(char) </seealso>
         ''' <seealso cref=     Character#isWhitespace(char)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isISOControl(Char ch)
-			Return isISOControl(CInt(Fix(ch)))
+        Public Shared Function isISOControl(ch As Char) As Boolean
+            Return isISOControl(CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Determines if the referenced character (Unicode code point) is an ISO control
@@ -4944,11 +4973,12 @@ Namespace java.lang
         ''' <seealso cref=     Character#isSpaceChar(int) </seealso>
         ''' <seealso cref=     Character#isWhitespace(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isISOControl(Integer codePoint)
-			' Optimized form of:
-			'     (codePoint >= 0x00 && codePoint <= 0x1F) ||
-			'     (codePoint >= 0x7F && codePoint <= 0x9F);
-			Return codePoint <= &H9F AndAlso (codePoint >= &H7F OrElse (CInt(CUInt(codePoint) >> 5 = 0)))
+        Public Shared Function isISOControl(codePoint As Integer) As Boolean
+            ' Optimized form of:
+            '     (codePoint >= 0x00 && codePoint <= 0x1F) ||
+            '     (codePoint >= 0x7F && codePoint <= 0x9F);
+            Return codePoint <= &H9F AndAlso (codePoint >= &H7F OrElse (CInt(CUInt(codePoint) >> 5 = 0)))
+        End Function
 
         ''' <summary>
         ''' Returns a value indicating a character's general category.
@@ -4992,8 +5022,9 @@ Namespace java.lang
         ''' <seealso cref=     Character#UNASSIGNED </seealso>
         ''' <seealso cref=     Character#UPPERCASE_LETTER
         ''' @since   1.1 </seealso>
-        Public Static Integer [getType](Char ch)
-			Return [getType](CInt(Fix(ch)))
+        Public Shared Function [getType](ch As Char) As Integer
+            Return [getType](CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Returns a value indicating a character's general category.
@@ -5058,11 +5089,12 @@ Namespace java.lang
         ''' <seealso cref=     Character#MIN_RADIX </seealso>
         ''' <seealso cref=     Character#MAX_RADIX </seealso>
         ''' <seealso cref=     Character#digit(char, int) </seealso>
-        Public Static Char forDigit(Integer digit, Integer radix)
-			If (digit >= radix) OrElse (digit < 0) Then Return ControlChars.NullChar
-			If (radix < Character.MIN_RADIX) OrElse (radix > Character.MAX_RADIX) Then Return ControlChars.NullChar
-			If digit < 10 Then Return ChrW(AscW("0"c) + digit)
-			Return ChrW(AscW("a"c) - 10 + digit)
+        Public Shared Function forDigit(digit As Integer, radix As Integer) As Char
+            If (digit >= radix) OrElse (digit < 0) Then Return ControlChars.NullChar
+            If (radix < Character.MIN_RADIX) OrElse (radix > Character.MAX_RADIX) Then Return ControlChars.NullChar
+            If digit < 10 Then Return ChrW(AscW("0"c) + digit)
+            Return ChrW(AscW("a"c) - 10 + digit)
+        End Function
 
         ''' <summary>
         ''' Returns the Unicode directionality property for the given
@@ -5100,8 +5132,9 @@ Namespace java.lang
         ''' <seealso cref= Character#DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE </seealso>
         ''' <seealso cref= Character#DIRECTIONALITY_POP_DIRECTIONAL_FORMAT
         ''' @since 1.4 </seealso>
-        Public Static SByte getDirectionality(Char ch)
-			Return getDirectionality(CInt(Fix(ch)))
+        Public Function getDirectionality(ch As Char) As SByte
+            Return getDirectionality(CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Returns the Unicode directionality property for the given
@@ -5135,8 +5168,9 @@ Namespace java.lang
         ''' <seealso cref= Character#DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE </seealso>
         ''' <seealso cref= Character#DIRECTIONALITY_POP_DIRECTIONAL_FORMAT DIRECTIONALITY_POP_DIRECTIONAL_FORMAT
         ''' @since    1.5 </seealso>
-        Public Static SByte getDirectionality(Integer codePoint)
-			Return CharacterData.of(codePoint).getDirectionality(codePoint)
+        Public Shared Function getDirectionality(codePoint As Integer) As SByte
+            Return CharacterData.of(codePoint).getDirectionality(codePoint)
+        End Function
 
         ''' <summary>
         ''' Determines whether the character is mirrored according to the
@@ -5156,8 +5190,9 @@ Namespace java.lang
         ''' <returns> {@code true} if the char is mirrored, {@code false}
         '''         if the {@code char} is not mirrored or is not defined.
         ''' @since 1.4 </returns>
-        Public Static Boolean isMirrored(Char ch)
-			Return isMirrored(CInt(Fix(ch)))
+        Public Shared Function isMirrored(ch As Char) As Boolean
+            Return isMirrored(CInt(Fix(ch)))
+        End Function
 
         ''' <summary>
         ''' Determines whether the specified character (Unicode code point)
@@ -5173,8 +5208,9 @@ Namespace java.lang
         ''' <returns>  {@code true} if the character is mirrored, {@code false}
         '''          if the character is not mirrored or is not defined.
         ''' @since   1.5 </returns>
-        Public Static Boolean isMirrored(Integer codePoint)
-			Return CharacterData.of(codePoint).isMirrored(codePoint)
+        Public Shared Function isMirrored(codePoint As Integer) As Boolean
+            Return CharacterData.of(codePoint).isMirrored(codePoint)
+        End Function
 
         ''' <summary>
         ''' Compares two {@code Character} objects numerically.
@@ -5224,9 +5260,10 @@ Namespace java.lang
         ''' <seealso cref=     Character#toLowerCase(char) </seealso>
         ''' <seealso cref=     Character#toTitleCase(char)
         ''' @since 1.4 </seealso>
-        Static Integer toUpperCaseEx(Integer codePoint)
-			Debug.Assert(isValidCodePoint(codePoint))
-			Return CharacterData.of(codePoint).toUpperCaseEx(codePoint)
+        Public Shared Function toUpperCaseEx(codePoint As Integer) As Integer
+            Debug.Assert(isValidCodePoint(codePoint))
+            Return CharacterData.of(codePoint).toUpperCaseEx(codePoint)
+        End Function
 
         ''' <summary>
         ''' Converts the character (Unicode code point) argument to uppercase using case
@@ -5238,10 +5275,11 @@ Namespace java.lang
         ''' <param name="codePoint">   the character (Unicode code point) to be converted. </param>
         ''' <returns> a {@code char[]} with the uppercased character.
         ''' @since 1.4 </returns>
-        Static Char() toUpperCaseCharArray(Integer codePoint)
-			' As of Unicode 6.0, 1:M uppercasings only happen in the BMP.
-			Debug.Assert(isBmpCodePoint(codePoint))
-			Return CharacterData.of(codePoint).toUpperCaseCharArray(codePoint)
+        Public Shared Function toUpperCaseCharArray(codePoint As Integer) As Char()
+            ' As of Unicode 6.0, 1:M uppercasings only happen in the BMP.
+            Debug.Assert(isBmpCodePoint(codePoint))
+            Return CharacterData.of(codePoint).toUpperCaseCharArray(codePoint)
+        End Function
 
         ''' <summary>
         ''' The number of bits used to represent a <tt>char</tt> value in unsigned
@@ -5249,25 +5287,25 @@ Namespace java.lang
         ''' 
         ''' @since 1.5
         ''' </summary>
-        Public Static final Integer SIZE = 16
+        Public Shared SIZE As Integer = 16
 
-		''' <summary>
-		''' The number of bytes used to represent a {@code char} value in unsigned
-		''' binary form.
-		''' 
-		''' @since 1.8
-		''' </summary>
-		Public Static final Integer BYTES = SIZE \ java.lang.[Byte].SIZE
+        ''' <summary>
+        ''' The number of bytes used to represent a {@code char} value in unsigned
+        ''' binary form.
+        ''' 
+        ''' @since 1.8
+        ''' </summary>
+        Public Shared ReadOnly BYTES As Integer = SIZE \ java.lang.[Byte].SIZE
 
-		''' <summary>
-		''' Returns the value obtained by reversing the order of the bytes in the
-		''' specified <tt>char</tt> value.
-		''' </summary>
-		''' <param name="ch"> The {@code char} of which to reverse the byte order. </param>
-		''' <returns> the value obtained by reversing (or, equivalently, swapping)
-		'''     the bytes in the specified <tt>char</tt> value.
-		''' @since 1.5 </returns>
-		Public Shared Function reverseBytes(ch As [Char]) As Char
+        ''' <summary>
+        ''' Returns the value obtained by reversing the order of the bytes in the
+        ''' specified <tt>char</tt> value.
+        ''' </summary>
+        ''' <param name="ch"> The {@code char} of which to reverse the byte order. </param>
+        ''' <returns> the value obtained by reversing (or, equivalently, swapping)
+        '''     the bytes in the specified <tt>char</tt> value.
+        ''' @since 1.5 </returns>
+        Public Shared Function reverseBytes(ch As [Char]) As Char
             Return CChar(((ch And &HFF00) >> 8) Or (ch << 8))
         End Function
         ''' <summary>
@@ -5303,9 +5341,9 @@ Namespace java.lang
             If name_Renamed IsNot Nothing Then Return name_Renamed
             If [getType](codePoint) = UNASSIGNED Then Return Nothing
             Dim block As UnicodeBlock = UnicodeBlock.of(codePoint)
-            If block IsNot Nothing Then Return block.ToString().Replace("_"c, " "c) & " " &  java.lang.[Integer].toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
+            If block IsNot Nothing Then Return block.ToString().Replace("_"c, " "c) & " " & java.lang.[Integer].toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
             ' should never come here
-            Return  java.lang.[Integer].toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
+            Return java.lang.[Integer].toHexString(codePoint).ToUpper(java.util.Locale.ENGLISH)
         End Function
     End Class
     End Class
