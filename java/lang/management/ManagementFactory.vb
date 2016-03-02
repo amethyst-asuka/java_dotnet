@@ -564,7 +564,7 @@ Namespace java.lang.management
 			' Only allow MXBean interfaces from rt.jar loaded by the
 			' bootstrap class loader
 			Dim cls As  [Class] = mxbeanInterface
-			Dim loader As  [Class]Loader = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+			Dim loader As  ClassLoader = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			If Not sun.misc.VM.isSystemDomainLoader(loader) Then Throw New IllegalArgumentException(mxbeanName & " is not a platform MXBean")
 
 			Try
@@ -588,7 +588,7 @@ Namespace java.lang.management
 		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Implements java.security.PrivilegedAction(Of T)
 
-			Public Overridable Function run() As  [Class]Loader
+			Public Overridable Function run() As  ClassLoader
 				Return cls.classLoader
 			End Function
 		End Class

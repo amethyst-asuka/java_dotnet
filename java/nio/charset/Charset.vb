@@ -322,7 +322,7 @@ Namespace java.nio.charset
 		Private Class IteratorAnonymousInnerClassHelper(Of E)
 			Implements IEnumerator(Of E)
 
-			Friend cl As  [Class]Loader = ClassLoader.systemClassLoader
+			Friend cl As  ClassLoader = ClassLoader.systemClassLoader
 			Friend sl As java.util.ServiceLoader(Of java.nio.charset.spi.CharsetProvider) = java.util.ServiceLoader.load(GetType(java.nio.charset.spi.CharsetProvider), cl)
 			Friend i As IEnumerator(Of java.nio.charset.spi.CharsetProvider) = sl.GetEnumerator()
 
@@ -416,7 +416,7 @@ Namespace java.nio.charset
 					 Try
 						 Dim epc As  [Class] = Type.GetType("sun.nio.cs.ext.ExtendedCharsets")
 						 Return CType(epc.newInstance(), java.nio.charset.spi.CharsetProvider)
-					 Catch x As  [Class]NotFoundException
+					 Catch x As  ClassNotFoundException
 						 ' Extended charsets not available
 						 ' (charsets.jar not present)
 'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:

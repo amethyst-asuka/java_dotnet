@@ -215,9 +215,9 @@ Namespace java.security
 
 			Public Overridable Function run() As Policy
 				Try
-					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
+					Dim cl As  ClassLoader = ClassLoader.systemClassLoader
 					' we want the extension loader
-					Dim extcl As  [Class]Loader = Nothing
+					Dim extcl As  ClassLoader = Nothing
 					Do While cl IsNot Nothing
 						extcl = cl
 						cl = cl.parent

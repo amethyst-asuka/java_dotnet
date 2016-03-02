@@ -56,28 +56,9 @@ Namespace java.awt
 	Public Class Dimension
 		Inherits java.awt.geom.Dimension2D
 
-		''' <summary>
-		''' The width dimension; negative values can be used.
-		''' 
-		''' @serial </summary>
-		''' <seealso cref= #getSize </seealso>
-		''' <seealso cref= #setSize
-		''' @since 1.0 </seealso>
-		Public width As Integer
-
-		''' <summary>
-		''' The height dimension; negative values can be used.
-		''' 
-		''' @serial </summary>
-		''' <seealso cref= #getSize </seealso>
-		''' <seealso cref= #setSize
-		''' @since 1.0 </seealso>
-		Public height As Integer
-
-	'    
-	'     * JDK 1.1 serialVersionUID
-	'     
-		 Private Const serialVersionUID As Long = 4723952579491349524L
+        '     * JDK 1.1 serialVersionUID
+        '     
+        Private Const serialVersionUID As Long = 4723952579491349524L
 
 		''' <summary>
 		''' Initialize JNI field and method IDs
@@ -123,82 +104,73 @@ Namespace java.awt
 			Me.height = height
 		End Sub
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		Public Property Overrides width As Double
-			Get
-				Return width
-			End Get
-		End Property
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Overrides ReadOnly Property width As Double
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		Public Property Overrides height As Double
-			Get
-				Return height
-			End Get
-		End Property
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Overrides ReadOnly Property height As Double
 
-		''' <summary>
-		''' Sets the size of this <code>Dimension</code> object to
-		''' the specified width and height in double precision.
-		''' Note that if <code>width</code> or <code>height</code>
-		''' are larger than <code> java.lang.[Integer].MAX_VALUE</code>, they will
-		''' be reset to <code> java.lang.[Integer].MAX_VALUE</code>.
-		''' </summary>
-		''' <param name="width">  the new width for the <code>Dimension</code> object </param>
-		''' <param name="height"> the new height for the <code>Dimension</code> object
-		''' @since 1.2 </param>
-		Public Overrides Sub setSize(ByVal width As Double, ByVal height As Double)
-			Me.width = CInt(Fix (System.Math.Ceiling(width)))
-			Me.height = CInt(Fix (System.Math.Ceiling(height)))
-		End Sub
+        ''' <summary>
+        ''' Sets the size of this <code>Dimension</code> object to
+        ''' the specified width and height in double precision.
+        ''' Note that if <code>width</code> or <code>height</code>
+        ''' are larger than <code> java.lang.[Integer].MAX_VALUE</code>, they will
+        ''' be reset to <code> java.lang.[Integer].MAX_VALUE</code>.
+        ''' </summary>
+        ''' <param name="width">  the new width for the <code>Dimension</code> object </param>
+        ''' <param name="height"> the new height for the <code>Dimension</code> object
+        ''' @since 1.2 </param>
+        Public Overrides Sub setSize(ByVal width As Double, ByVal height As Double)
+            Me._width = CInt(Fix(System.Math.Ceiling(width)))
+            Me._height = CInt(Fix(System.Math.Ceiling(height)))
+        End Sub
 
-		''' <summary>
-		''' Gets the size of this <code>Dimension</code> object.
-		''' This method is included for completeness, to parallel the
-		''' <code>getSize</code> method defined by <code>Component</code>.
-		''' </summary>
-		''' <returns>   the size of this dimension, a new instance of
-		'''           <code>Dimension</code> with the same width and height </returns>
-		''' <seealso cref=      java.awt.Dimension#setSize </seealso>
-		''' <seealso cref=      java.awt.Component#getSize
-		''' @since    1.1 </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Property size As Dimension
-			Get
-				Return New Dimension(width, height)
-			End Get
-			Set(ByVal d As Dimension)
-				sizeize(d.width, d.height)
-			End Set
-		End Property
+        ''' <summary>
+        ''' Gets the size of this <code>Dimension</code> object.
+        ''' This method is included for completeness, to parallel the
+        ''' <code>getSize</code> method defined by <code>Component</code>.
+        ''' </summary>
+        ''' <returns>   the size of this dimension, a new instance of
+        '''           <code>Dimension</code> with the same width and height </returns>
+        ''' <seealso cref=      java.awt.Dimension#setSize </seealso>
+        ''' <seealso cref=      java.awt.Component#getSize
+        ''' @since    1.1 </seealso>
+        Public Overridable Property size As Dimension
+            Get
+                Return New Dimension(width, height)
+            End Get
+            Set(ByVal d As Dimension)
+                sizeize(d.width, d.height)
+            End Set
+        End Property
 
 
-		''' <summary>
-		''' Sets the size of this <code>Dimension</code> object
-		''' to the specified width and height.
-		''' This method is included for completeness, to parallel the
-		''' <code>setSize</code> method defined by <code>Component</code>.
-		''' </summary>
-		''' <param name="width">   the new width for this <code>Dimension</code> object </param>
-		''' <param name="height">  the new height for this <code>Dimension</code> object </param>
-		''' <seealso cref=      java.awt.Dimension#getSize </seealso>
-		''' <seealso cref=      java.awt.Component#setSize
-		''' @since    1.1 </seealso>
-		Public Overridable Sub setSize(ByVal width As Integer, ByVal height As Integer)
-			Me.width = width
-			Me.height = height
-		End Sub
+        ''' <summary>
+        ''' Sets the size of this <code>Dimension</code> object
+        ''' to the specified width and height.
+        ''' This method is included for completeness, to parallel the
+        ''' <code>setSize</code> method defined by <code>Component</code>.
+        ''' </summary>
+        ''' <param name="width">   the new width for this <code>Dimension</code> object </param>
+        ''' <param name="height">  the new height for this <code>Dimension</code> object </param>
+        ''' <seealso cref=      java.awt.Dimension#getSize </seealso>
+        ''' <seealso cref=      java.awt.Component#setSize
+        ''' @since    1.1 </seealso>
+        Public Sub setSize(ByVal width As Integer, ByVal height As Integer)
+            Me._width = width
+            Me._height = height
+        End Sub
 
-		''' <summary>
-		''' Checks whether two dimension objects have equal values.
-		''' </summary>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        ''' <summary>
+        ''' Checks whether two dimension objects have equal values.
+        ''' </summary>
+        Public Overrides Function Equals(ByVal obj As Object) As Boolean
 			If TypeOf obj Is Dimension Then
 				Dim d As Dimension = CType(obj, Dimension)
 				Return (width = d.width) AndAlso (height = d.height)

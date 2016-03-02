@@ -263,47 +263,47 @@ Namespace java.awt.geom
 				End Get
 			End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-            Public Overrides Function getAngleStart() As Double 'JavaToDotNetTempPropertyGetangleStart
-			Public Property Overrides angleStart As Double
-				Get
-					Return CDbl(start)
-				End Get
-				Set(ByVal angSt As Double)
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides Property angleStart As Double
+                Get
+                    Return CDbl(start)
+                End Get
+                Set(ByVal angSt As Double)
+                    Me.start = CSng(angSt)
+                End Set
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-            Public Overrides Function getAngleExtent() As Double 'JavaToDotNetTempPropertyGetangleExtent
-			Public Property Overrides angleExtent As Double
-				Get
-					Return CDbl(extent)
-				End Get
-				Set(ByVal angExt As Double)
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Property angleExtent As Double
+                Get
+                    Return CDbl(extent)
+                End Get
+                Set(ByVal angExt As Double)
+                    Me.extent = CSng(angExt)
+                End Set
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides empty As Boolean
-				Get
-					Return (width <= 0.0 OrElse height <= 0.0)
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides ReadOnly Property empty As Boolean
+                Get
+                    Return (width <= 0.0 OrElse height <= 0.0)
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Overrides Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
 				Me.arcType = closure
 				Me.x = CSng(x)
 				Me.y = CSng(y)
@@ -313,17 +313,11 @@ Namespace java.awt.geom
 				Me.extent = CSng(angExt)
 			End Sub
 
-				Me.start = CSng(angSt)
-			End Sub
-
-				Me.extent = CSng(angExt)
-			End Sub
-
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Protected Friend Overrides Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Protected Friend Overrides Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
 				Return New Rectangle2D.Float(CSng(x), CSng(y), CSng(w), CSng(h))
 			End Function
 
@@ -377,301 +371,301 @@ Namespace java.awt.geom
 			End Sub
 		End Class
 
-		''' <summary>
-		''' This class defines an arc specified in {@code double} precision.
-		''' @since 1.2
-		''' </summary>
-		<Serializable> _
-		Public Class Double?
-			Inherits Arc2D
+        ''' <summary>
+        ''' This class defines an arc specified in {@code double} precision.
+        ''' @since 1.2
+        ''' </summary>
+        <Serializable>
+        Public Class [Double]
+            Inherits Arc2D
 
-			''' <summary>
-			''' The X coordinate of the upper-left corner of the framing
-			''' rectangle of the arc.
-			''' @since 1.2
-			''' @serial
-			''' </summary>
-			Public x As Double
+            ''' <summary>
+            ''' The X coordinate of the upper-left corner of the framing
+            ''' rectangle of the arc.
+            ''' @since 1.2
+            ''' @serial
+            ''' </summary>
+            Public x As Double
 
-			''' <summary>
-			''' The Y coordinate of the upper-left corner of the framing
-			''' rectangle of the arc.
-			''' @since 1.2
-			''' @serial
-			''' </summary>
-			Public y As Double
+            ''' <summary>
+            ''' The Y coordinate of the upper-left corner of the framing
+            ''' rectangle of the arc.
+            ''' @since 1.2
+            ''' @serial
+            ''' </summary>
+            Public y As Double
 
-			''' <summary>
-			''' The overall width of the full ellipse of which this arc is
-			''' a partial section (not considering the angular extents).
-			''' @since 1.2
-			''' @serial
-			''' </summary>
-			Public width As Double
+            ''' <summary>
+            ''' The overall width of the full ellipse of which this arc is
+            ''' a partial section (not considering the angular extents).
+            ''' @since 1.2
+            ''' @serial
+            ''' </summary>
+            Public width As Double
 
-			''' <summary>
-			''' The overall height of the full ellipse of which this arc is
-			''' a partial section (not considering the angular extents).
-			''' @since 1.2
-			''' @serial
-			''' </summary>
-			Public height As Double
+            ''' <summary>
+            ''' The overall height of the full ellipse of which this arc is
+            ''' a partial section (not considering the angular extents).
+            ''' @since 1.2
+            ''' @serial
+            ''' </summary>
+            Public height As Double
 
-			''' <summary>
-			''' The starting angle of the arc in degrees.
-			''' @since 1.2
-			''' @serial
-			''' </summary>
-			Public start As Double
+            ''' <summary>
+            ''' The starting angle of the arc in degrees.
+            ''' @since 1.2
+            ''' @serial
+            ''' </summary>
+            Public start As Double
 
-			''' <summary>
-			''' The angular extent of the arc in degrees.
-			''' @since 1.2
-			''' @serial
-			''' </summary>
-			Public extent As Double
+            ''' <summary>
+            ''' The angular extent of the arc in degrees.
+            ''' @since 1.2
+            ''' @serial
+            ''' </summary>
+            Public extent As Double
 
-			''' <summary>
-			''' Constructs a new OPEN arc, initialized to location (0, 0),
-			''' size (0, 0), angular extents (start = 0, extent = 0).
-			''' @since 1.2
-			''' </summary>
-			Function java.lang.Double() As [Public] Overridable
-				MyBase(OPEN)
-			End Function
+            ''' <summary>
+            ''' Constructs a new OPEN arc, initialized to location (0, 0),
+            ''' size (0, 0), angular extents (start = 0, extent = 0).
+            ''' @since 1.2
+            ''' </summary>
+            Sub New()
+                MyBase.New(OPEN)
+            End Sub
 
-			''' <summary>
-			''' Constructs a new arc, initialized to location (0, 0),
-			''' size (0, 0), angular extents (start = 0, extent = 0), and
-			''' the specified closure type.
-			''' </summary>
-			''' <param name="type"> The closure type for the arc:
-			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
-			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal type As Integer) As [Public] Overridable
-				MyBase(type)
-			End Function
+            ''' <summary>
+            ''' Constructs a new arc, initialized to location (0, 0),
+            ''' size (0, 0), angular extents (start = 0, extent = 0), and
+            ''' the specified closure type.
+            ''' </summary>
+            ''' <param name="type"> The closure type for the arc:
+            ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
+            ''' @since 1.2 </param>
+            Sub New(ByVal type As Integer)
+                MyBase.New(type)
+            End Sub
 
-			''' <summary>
-			''' Constructs a new arc, initialized to the specified location,
-			''' size, angular extents, and closure type.
-			''' </summary>
-			''' <param name="x"> The X coordinate of the upper-left corner
-			'''          of the arc's framing rectangle. </param>
-			''' <param name="y"> The Y coordinate of the upper-left corner
-			'''          of the arc's framing rectangle. </param>
-			''' <param name="w"> The overall width of the full ellipse of which this
-			'''          arc is a partial section. </param>
-			''' <param name="h"> The overall height of the full ellipse of which this
-			'''          arc is a partial section. </param>
-			''' <param name="start"> The starting angle of the arc in degrees. </param>
-			''' <param name="extent"> The angular extent of the arc in degrees. </param>
-			''' <param name="type"> The closure type for the arc:
-			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
-			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal start As Double, ByVal extent As Double, ByVal type As Integer) As [Public] Overridable
-				MyBase(type)
-				Me.x = x
-				Me.y = y
-				Me.width = w
-				Me.height = h
-				Me.start = start
-				Me.extent = extent
-			End Function
+            ''' <summary>
+            ''' Constructs a new arc, initialized to the specified location,
+            ''' size, angular extents, and closure type.
+            ''' </summary>
+            ''' <param name="x"> The X coordinate of the upper-left corner
+            '''          of the arc's framing rectangle. </param>
+            ''' <param name="y"> The Y coordinate of the upper-left corner
+            '''          of the arc's framing rectangle. </param>
+            ''' <param name="w"> The overall width of the full ellipse of which this
+            '''          arc is a partial section. </param>
+            ''' <param name="h"> The overall height of the full ellipse of which this
+            '''          arc is a partial section. </param>
+            ''' <param name="start"> The starting angle of the arc in degrees. </param>
+            ''' <param name="extent"> The angular extent of the arc in degrees. </param>
+            ''' <param name="type"> The closure type for the arc:
+            ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
+            ''' @since 1.2 </param>
+            Sub New(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal start As Double, ByVal extent As Double, ByVal type As Integer)
+                MyBase.New(type)
+                Me.x = x
+                Me.y = y
+                Me.width = w
+                Me.height = h
+                Me.start = start
+                Me.extent = extent
+            End Sub
 
-			''' <summary>
-			''' Constructs a new arc, initialized to the specified location,
-			''' size, angular extents, and closure type.
-			''' </summary>
-			''' <param name="ellipseBounds"> The framing rectangle that defines the
-			''' outer boundary of the full ellipse of which this arc is a
-			''' partial section. </param>
-			''' <param name="start"> The starting angle of the arc in degrees. </param>
-			''' <param name="extent"> The angular extent of the arc in degrees. </param>
-			''' <param name="type"> The closure type for the arc:
-			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
-			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal ellipseBounds As Rectangle2D, ByVal start As Double, ByVal extent As Double, ByVal type As Integer) As [Public] Overridable
-				MyBase(type)
-				Me.x = ellipseBounds.x
-				Me.y = ellipseBounds.y
-				Me.width = ellipseBounds.width
-				Me.height = ellipseBounds.height
-				Me.start = start
-				Me.extent = extent
-			End Function
+            ''' <summary>
+            ''' Constructs a new arc, initialized to the specified location,
+            ''' size, angular extents, and closure type.
+            ''' </summary>
+            ''' <param name="ellipseBounds"> The framing rectangle that defines the
+            ''' outer boundary of the full ellipse of which this arc is a
+            ''' partial section. </param>
+            ''' <param name="start"> The starting angle of the arc in degrees. </param>
+            ''' <param name="extent"> The angular extent of the arc in degrees. </param>
+            ''' <param name="type"> The closure type for the arc:
+            ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
+            ''' @since 1.2 </param>
+            Sub New(ByVal ellipseBounds As Rectangle2D, ByVal start As Double, ByVal extent As Double, ByVal type As Integer)
+                MyBase.New(type)
+                Me.x = ellipseBounds.x
+                Me.y = ellipseBounds.y
+                Me.width = ellipseBounds.width
+                Me.height = ellipseBounds.height
+                Me.start = start
+                Me.extent = extent
+            End Sub
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' Note that the arc
-			''' <a href="Arc2D.html#inscribes">partially inscribes</a>
-			''' the framing rectangle of this {@code RectangularShape}.
-			''' 
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides x As Double
-				Get
-					Return x
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' Note that the arc
+            ''' <a href="Arc2D.html#inscribes">partially inscribes</a>
+            ''' the framing rectangle of this {@code RectangularShape}.
+            ''' 
+            ''' @since 1.2
+            ''' </summary>
+            Public Property Overrides x As Double
+                Get
+                    Return x
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' Note that the arc
-			''' <a href="Arc2D.html#inscribes">partially inscribes</a>
-			''' the framing rectangle of this {@code RectangularShape}.
-			''' 
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides y As Double
-				Get
-					Return y
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' Note that the arc
+            ''' <a href="Arc2D.html#inscribes">partially inscribes</a>
+            ''' the framing rectangle of this {@code RectangularShape}.
+            ''' 
+            ''' @since 1.2
+            ''' </summary>
+            Public Property Overrides y As Double
+                Get
+                    Return y
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' Note that the arc
-			''' <a href="Arc2D.html#inscribes">partially inscribes</a>
-			''' the framing rectangle of this {@code RectangularShape}.
-			''' 
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides width As Double
-				Get
-					Return width
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' Note that the arc
+            ''' <a href="Arc2D.html#inscribes">partially inscribes</a>
+            ''' the framing rectangle of this {@code RectangularShape}.
+            ''' 
+            ''' @since 1.2
+            ''' </summary>
+            Public Property Overrides width As Double
+                Get
+                    Return width
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' Note that the arc
-			''' <a href="Arc2D.html#inscribes">partially inscribes</a>
-			''' the framing rectangle of this {@code RectangularShape}.
-			''' 
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides height As Double
-				Get
-					Return height
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' Note that the arc
+            ''' <a href="Arc2D.html#inscribes">partially inscribes</a>
+            ''' the framing rectangle of this {@code RectangularShape}.
+            ''' 
+            ''' @since 1.2
+            ''' </summary>
+            Public Property Overrides height As Double
+                Get
+                    Return height
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
             Public Overrides Function getAngleStart() As Double 'JavaToDotNetTempPropertyGetangleStart
-			Public Property Overrides angleStart As Double
-				Get
-					Return start
-				End Get
-				Set(ByVal angSt As Double)
-			End Property
+            Public Property Overrides angleStart As Double
+                Get
+                    Return start
+                End Get
+                Set(ByVal angSt As Double)
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
             Public Overrides Function getAngleExtent() As Double 'JavaToDotNetTempPropertyGetangleExtent
-			Public Property Overrides angleExtent As Double
-				Get
-					Return extent
-				End Get
-				Set(ByVal angExt As Double)
-			End Property
+            Public Property Overrides angleExtent As Double
+                Get
+                    Return extent
+                End Get
+                Set(ByVal angExt As Double)
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides empty As Boolean
-				Get
-					Return (width <= 0.0 OrElse height <= 0.0)
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Property Overrides empty As Boolean
+                Get
+                    Return (width <= 0.0 OrElse height <= 0.0)
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Overrides Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
-				Me.arcType = closure
-				Me.x = x
-				Me.y = y
-				Me.width = w
-				Me.height = h
-				Me.start = angSt
-				Me.extent = angExt
-			End Sub
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides Sub setArc(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double, ByVal angSt As Double, ByVal angExt As Double, ByVal closure As Integer)
+                Me.arcType = closure
+                Me.x = x
+                Me.y = y
+                Me.width = w
+                Me.height = h
+                Me.start = angSt
+                Me.extent = angExt
+            End Sub
 
-				Me.start = angSt
-			End Sub
+            Me.start = angSt
+            End Sub
 
-				Me.extent = angExt
-			End Sub
+            Me.extent = angExt
+            End Sub
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Protected Friend Overrides Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
-				Return New Rectangle2D.Double(x, y, w, h)
-			End Function
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Protected Friend Overrides Function makeBounds(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As Rectangle2D
+                Return New Rectangle2D.Double(x, y, w, h)
+            End Function
 
-	'        
-	'         * JDK 1.6 serialVersionUID
-	'         
-			Private Const serialVersionUID As Long = 728264085846882001L
+            '        
+            '         * JDK 1.6 serialVersionUID
+            '         
+            Private Const serialVersionUID As Long = 728264085846882001L
 
-			''' <summary>
-			''' Writes the default serializable fields to the
-			''' <code>ObjectOutputStream</code> followed by a byte
-			''' indicating the arc type of this <code>Arc2D</code>
-			''' instance.
-			''' 
-			''' @serialData
-			''' <ol>
-			''' <li>The default serializable fields.
-			''' <li>
-			''' followed by a <code>byte</code> indicating the arc type
-			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
-			''' </ol>
-			''' </summary>
-			Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
-				s.defaultWriteObject()
+            ''' <summary>
+            ''' Writes the default serializable fields to the
+            ''' <code>ObjectOutputStream</code> followed by a byte
+            ''' indicating the arc type of this <code>Arc2D</code>
+            ''' instance.
+            ''' 
+            ''' @serialData
+            ''' <ol>
+            ''' <li>The default serializable fields.
+            ''' <li>
+            ''' followed by a <code>byte</code> indicating the arc type
+            ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
+            ''' </ol>
+            ''' </summary>
+            Private Sub writeObject(ByVal s As java.io.ObjectOutputStream)
+                s.defaultWriteObject()
 
-				s.writeByte(arcType)
-			End Sub
+                s.writeByte(arcType)
+            End Sub
 
-			''' <summary>
-			''' Reads the default serializable fields from the
-			''' <code>ObjectInputStream</code> followed by a byte
-			''' indicating the arc type of this <code>Arc2D</code>
-			''' instance.
-			''' 
-			''' @serialData
-			''' <ol>
-			''' <li>The default serializable fields.
-			''' <li>
-			''' followed by a <code>byte</code> indicating the arc type
-			''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
-			''' </ol>
-			''' </summary>
-			Private Sub readObject(ByVal s As java.io.ObjectInputStream)
-				s.defaultReadObject()
+            ''' <summary>
+            ''' Reads the default serializable fields from the
+            ''' <code>ObjectInputStream</code> followed by a byte
+            ''' indicating the arc type of this <code>Arc2D</code>
+            ''' instance.
+            ''' 
+            ''' @serialData
+            ''' <ol>
+            ''' <li>The default serializable fields.
+            ''' <li>
+            ''' followed by a <code>byte</code> indicating the arc type
+            ''' <seealso cref="#OPEN"/>, <seealso cref="#CHORD"/>, or <seealso cref="#PIE"/>.
+            ''' </ol>
+            ''' </summary>
+            Private Sub readObject(ByVal s As java.io.ObjectInputStream)
+                s.defaultReadObject()
 
-				Try
-					arcType = s.readByte()
-				Catch iae As IllegalArgumentException
-					Throw New java.io.InvalidObjectException(iae.Message)
-				End Try
-			End Sub
-		End Class
+                Try
+                    arcType = s.readByte()
+                Catch iae As IllegalArgumentException
+                    Throw New java.io.InvalidObjectException(iae.message)
+                End Try
+            End Sub
+        End Class
 
-		Private type As Integer
+        Private type As Integer
 
 		''' <summary>
 		''' This is an abstract class that cannot be instantiated directly.

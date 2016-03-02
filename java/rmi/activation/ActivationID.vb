@@ -107,7 +107,7 @@ Namespace java.rmi.activation
 				Throw e
 			Catch e As java.io.IOException
 				Throw New java.rmi.UnmarshalException("activation failed", e)
-			Catch e As  [Class]NotFoundException
+			Catch e As  ClassNotFoundException
 				Throw New java.rmi.UnmarshalException("activation failed", e)
 			End Try
 

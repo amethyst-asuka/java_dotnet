@@ -87,7 +87,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </returns>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		Function getSecurityContext(ByVal loader As  [Class]Loader) As Object
+		Function getSecurityContext(ByVal loader As  ClassLoader) As Object
 	End Interface
 
 End Namespace

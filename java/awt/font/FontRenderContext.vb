@@ -242,60 +242,60 @@ Namespace java.awt.font
 			Return Not(fmHintValue Is VALUE_FRACTIONALMETRICS_OFF OrElse fmHintValue Is VALUE_FRACTIONALMETRICS_DEFAULT)
 		End Function
 
-		''' <summary>
-		''' Return the text anti-aliasing rendering mode hint used in this
-		''' <code>FontRenderContext</code>.
-		''' This will be one of the text antialiasing rendering hint values
-		''' defined in <seealso cref="java.awt.RenderingHints java.awt.RenderingHints"/>. </summary>
-		''' <returns>  text anti-aliasing rendering mode hint used in this
-		''' <code>FontRenderContext</code>.
-		''' @since 1.6 </returns>
-		Public Overridable Property antiAliasingHint As Object
-			Get
-				If defaulting Then
-					If antiAliased Then
-						 Return VALUE_TEXT_ANTIALIAS_ON
-					Else
-						Return VALUE_TEXT_ANTIALIAS_OFF
-					End If
-				End If
-				Return aaHintValue
-			End Get
-		End Property
+        ''' <summary>
+        ''' Return the text anti-aliasing rendering mode hint used in this
+        ''' <code>FontRenderContext</code>.
+        ''' This will be one of the text antialiasing rendering hint values
+        ''' defined in <seealso cref="java.awt.RenderingHints java.awt.RenderingHints"/>. </summary>
+        ''' <returns>  text anti-aliasing rendering mode hint used in this
+        ''' <code>FontRenderContext</code>.
+        ''' @since 1.6 </returns>
+        Public Overridable ReadOnly Property antiAliasingHint As Object
+            Get
+                If defaulting Then
+                    If antiAliased Then
+                        Return VALUE_TEXT_ANTIALIAS_ON
+                    Else
+                        Return VALUE_TEXT_ANTIALIAS_OFF
+                    End If
+                End If
+                Return aaHintValue
+            End Get
+        End Property
 
-		''' <summary>
-		''' Return the text fractional metrics rendering mode hint used in this
-		''' <code>FontRenderContext</code>.
-		''' This will be one of the text fractional metrics rendering hint values
-		''' defined in <seealso cref="java.awt.RenderingHints java.awt.RenderingHints"/>. </summary>
-		''' <returns> the text fractional metrics rendering mode hint used in this
-		''' <code>FontRenderContext</code>.
-		''' @since 1.6 </returns>
-		Public Overridable Property fractionalMetricsHint As Object
-			Get
-				If defaulting Then
-					If usesFractionalMetrics() Then
-						 Return VALUE_FRACTIONALMETRICS_ON
-					Else
-						Return VALUE_FRACTIONALMETRICS_OFF
-					End If
-				End If
-				Return fmHintValue
-			End Get
-		End Property
+        ''' <summary>
+        ''' Return the text fractional metrics rendering mode hint used in this
+        ''' <code>FontRenderContext</code>.
+        ''' This will be one of the text fractional metrics rendering hint values
+        ''' defined in <seealso cref="java.awt.RenderingHints java.awt.RenderingHints"/>. </summary>
+        ''' <returns> the text fractional metrics rendering mode hint used in this
+        ''' <code>FontRenderContext</code>.
+        ''' @since 1.6 </returns>
+        Public Overridable ReadOnly Property fractionalMetricsHint As Object
+            Get
+                If defaulting Then
+                    If usesFractionalMetrics() Then
+                        Return VALUE_FRACTIONALMETRICS_ON
+                    Else
+                        Return VALUE_FRACTIONALMETRICS_OFF
+                    End If
+                End If
+                Return fmHintValue
+            End Get
+        End Property
 
-		''' <summary>
-		''' Return true if obj is an instance of FontRenderContext and has the same
-		''' transform, antialiasing, and fractional metrics values as this. </summary>
-		''' <param name="obj"> the object to test for equality </param>
-		''' <returns> <code>true</code> if the specified object is equal to
-		'''         this <code>FontRenderContext</code>; <code>false</code>
-		'''         otherwise. </returns>
-		Public Overrides Function Equals(ByVal obj As Object) As Boolean
-			Try
-				Return Equals(CType(obj, FontRenderContext))
-			Catch e As  [Class]CastException
-				Return False
+        ''' <summary>
+        ''' Return true if obj is an instance of FontRenderContext and has the same
+        ''' transform, antialiasing, and fractional metrics values as this. </summary>
+        ''' <param name="obj"> the object to test for equality </param>
+        ''' <returns> <code>true</code> if the specified object is equal to
+        '''         this <code>FontRenderContext</code>; <code>false</code>
+        '''         otherwise. </returns>
+        Public Overrides Function Equals(ByVal obj As Object) As Boolean
+            Try
+                Return Equals(CType(obj, FontRenderContext))
+            Catch e As classCastException
+                Return False
 			End Try
 		End Function
 

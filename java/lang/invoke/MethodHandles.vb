@@ -1624,9 +1624,9 @@ Namespace java.lang.invoke
             Private Function canBeCached(ByVal refKind As SByte, ByVal defc As [Class], ByVal member As MemberName) As Boolean
                 If refKind = REF_invokeSpecial Then Return False
                 If (Not Modifier.isPublic(defc.modifiers)) OrElse (Not Modifier.isPublic(member.declaringClass.modifiers)) OrElse (Not member.public) OrElse member.callerSensitive Then Return False
-                Dim loader As [Class]Loader = defc.classLoader
+                Dim loader As ClassLoader = defc.classLoader
                 If Not sun.misc.VM.isSystemDomainLoader(loader) Then
-                    Dim sysl As [Class]Loader = ClassLoader.systemClassLoader
+                    Dim sysl As ClassLoader = ClassLoader.systemClassLoader
                     Dim found As Boolean = False
                     Do While sysl IsNot Nothing
                         If loader Is sysl Then

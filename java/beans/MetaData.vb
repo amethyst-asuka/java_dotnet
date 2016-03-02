@@ -277,7 +277,7 @@ Namespace java.beans
                     Try
                         Dim c As [Class] = Type.GetType("java.sql.Timestamp", True, Nothing)
                         Return c.getMethod("getNanos")
-                    Catch e As [Class]NotFoundException
+                    Catch e As ClassNotFoundException
 					Return Nothing
                     Catch e As NoSuchMethodException
                         Throw New AssertionError(e)
@@ -1407,7 +1407,7 @@ Namespace java.beans
                     Dim c As [Class] = type.GetType("java.beans.MetaData$" & name.Replace("."c, "_"c) & "_PersistenceDelegate")
                     pd = CType(c.newInstance(), PersistenceDelegate)
                     internalPersistenceDelegates.put(typeName, pd)
-                Catch e As [Class]NotFoundException
+                Catch e As ClassNotFoundException
 					Dim properties As String() = getConstructorProperties(type)
                     If properties IsNot Nothing Then
                         pd = New DefaultPersistenceDelegate(properties)
@@ -1481,7 +1481,7 @@ Namespace java.beans
                     Dim field As Field = Type.GetType(className).getDeclaredField(fieldName)
                     field.accessible = True
                     Return field
-                Catch exception_Renamed As [Class]NotFoundException
+                Catch exception_Renamed As ClassNotFoundException
 					Throw New IllegalStateException("Could not find class", exception_Renamed)
                 Catch exception_Renamed As NoSuchFieldException
                     Throw New IllegalStateException("Could not find field", exception_Renamed)

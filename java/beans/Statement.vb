@@ -65,7 +65,7 @@ Namespace java.beans
 		Private ReadOnly target As Object
 		Private ReadOnly methodName As String
 		Private ReadOnly arguments As Object()
-		Friend loader As  [Class]Loader
+		Friend loader As  ClassLoader
 
 		''' <summary>
 		''' Creates a new <seealso cref="Statement"/> object

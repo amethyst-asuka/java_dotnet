@@ -102,7 +102,7 @@ Namespace java.security
 		Private codesource As CodeSource
 
 		' ClassLoader the protection domain was consed from 
-		Private classloader As  [Class]Loader
+		Private classloader As  ClassLoader
 
 		' Principals running-as within this protection domain 
 		Private principals As Principal()
@@ -173,7 +173,7 @@ Namespace java.security
 		''' <seealso cref= Policy#refresh </seealso>
 		''' <seealso cref= Policy#getPermissions(ProtectionDomain)
 		''' @since 1.4 </seealso>
-		Public Sub New(ByVal codesource As CodeSource, ByVal permissions As PermissionCollection, ByVal classloader As  [Class]Loader, ByVal principals As Principal())
+		Public Sub New(ByVal codesource As CodeSource, ByVal permissions As PermissionCollection, ByVal classloader As  ClassLoader, ByVal principals As Principal())
 			Me.codesource = codesource
 			If permissions IsNot Nothing Then
 				Me.permissions = permissions
@@ -201,7 +201,7 @@ Namespace java.security
 		''' <returns> the ClassLoader of this domain which may be null.
 		''' 
 		''' @since 1.4 </returns>
-		Public Property classLoader As  [Class]Loader
+		Public Property classLoader As  ClassLoader
 			Get
 				Return Me.classloader
 			End Get

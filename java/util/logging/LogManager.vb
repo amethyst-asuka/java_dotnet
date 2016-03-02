@@ -191,7 +191,7 @@ Namespace java.util.logging
 						Try
 							Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(cname)
 							mgr = CType(clz.newInstance(), LogManager)
-						Catch ex As  [Class]NotFoundException
+						Catch ex As  ClassNotFoundException
 							Dim clz As  [Class] = Thread.CurrentThread.contextClassLoader.loadClass(cname)
 							mgr = CType(clz.newInstance(), LogManager)
 						End Try
@@ -1248,7 +1248,7 @@ Namespace java.util.logging
 						Dim clz As  [Class] = ClassLoader.systemClassLoader.loadClass(cname)
 						clz.newInstance()
 						Return
-					Catch ex As  [Class]NotFoundException
+					Catch ex As  ClassNotFoundException
 						Dim clz As  [Class] = Thread.CurrentThread.contextClassLoader.loadClass(cname)
 						clz.newInstance()
 						Return
@@ -1687,7 +1687,7 @@ Namespace java.util.logging
 			Private Shared Function getClass(ByVal name As String) As  [Class]
 				Try
 					Return Type.GetType(name, True, GetType(Beans).classLoader)
-				Catch e As  [Class]NotFoundException
+				Catch e As  ClassNotFoundException
 					Return Nothing
 				End Try
 			End Function

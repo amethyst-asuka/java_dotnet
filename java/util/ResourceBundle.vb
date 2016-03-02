@@ -458,8 +458,8 @@ Namespace java.util
 	'     * Automatic determination of the ClassLoader to be used to load
 	'     * resources on behalf of the client.
 	'     
-		Private Shared Function getLoader(ByVal caller As [Class]) As  [Class]Loader
-			Dim cl As  [Class]Loader = If(caller Is Nothing, Nothing, caller.classLoader)
+		Private Shared Function getLoader(ByVal caller As [Class]) As  ClassLoader
+			Dim cl As  ClassLoader = If(caller Is Nothing, Nothing, caller.classLoader)
 			If cl Is Nothing Then cl = RBClassLoader.INSTANCE
 			Return cl
 		End Function
@@ -479,7 +479,7 @@ Namespace java.util
 					Return New RBClassLoader
 				End Function
 			End Class
-			Private Shared ReadOnly loader As  [Class]Loader = ClassLoader.systemClassLoader
+			Private Shared ReadOnly loader As  ClassLoader = ClassLoader.systemClassLoader
 
 			Private Sub New()
 			End Sub
@@ -548,7 +548,7 @@ Namespace java.util
 			' of this instance.
 			Private hashCodeCache As Integer
 
-			Friend Sub New(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  [Class]Loader)
+			Friend Sub New(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  ClassLoader)
 				Me.name = baseName
 				Me.locale_Renamed = locale_Renamed
 				If loader Is Nothing Then
@@ -587,7 +587,7 @@ Namespace java.util
 				Return Me
 			End Function
 
-			Friend Overridable Property loader As  [Class]Loader
+			Friend Overridable Property loader As  ClassLoader
 				Get
 					Return If(loaderRef IsNot Nothing, loaderRef.get(), Nothing)
 				End Get
@@ -605,7 +605,7 @@ Namespace java.util
 					If Not locale_Renamed.Equals(otherEntry.locale) Then Return False
 					'are refs (both non-null) or (both null)?
 					If loaderRef Is Nothing Then Return otherEntry.loaderRef Is Nothing
-					Dim loader_Renamed As  [Class]Loader = loaderRef.get()
+					Dim loader_Renamed As  ClassLoader = loaderRef.get()
 					Return (otherEntry.loaderRef IsNot Nothing) AndAlso (loader_Renamed IsNot Nothing) AndAlso (loader_Renamed Is otherEntry.loaderRef.get())
 							' with a null reference we can no longer find
 							' out which class loader was referenced; so
@@ -623,7 +623,7 @@ Namespace java.util
 			Private Sub calculateHashCode()
 				hashCodeCache = name.GetHashCode() << 3
 				hashCodeCache = hashCodeCache Xor locale_Renamed.GetHashCode()
-				Dim loader_Renamed As  [Class]Loader = loader
+				Dim loader_Renamed As  ClassLoader = loader
 				If loader_Renamed IsNot Nothing Then hashCodeCache = hashCodeCache Xor loader_Renamed.GetHashCode()
 			End Sub
 
@@ -698,7 +698,7 @@ Namespace java.util
 
 			Private cacheKey As CacheKey
 
-			Friend Sub New(ByVal referent As  [Class]Loader, ByVal q As ReferenceQueue(Of Object), ByVal key As CacheKey)
+			Friend Sub New(ByVal referent As  ClassLoader, ByVal q As ReferenceQueue(Of Object), ByVal key As CacheKey)
 				MyBase.New(referent, q)
 				cacheKey = key
 			End Sub
@@ -1038,7 +1038,7 @@ Namespace java.util
 		''' <exception cref="MissingResourceException">
 		'''        if no resource bundle for the specified base name can be found
 		''' @since 1.2 </exception>
-		Public Shared Function getBundle(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  [Class]Loader) As ResourceBundle
+		Public Shared Function getBundle(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  ClassLoader) As ResourceBundle
 			If loader Is Nothing Then Throw New NullPointerException
 			Return getBundleImpl(baseName, locale_Renamed, loader, getDefaultControl(baseName))
 		End Function
@@ -1251,7 +1251,7 @@ Namespace java.util
 		'''        Note that validation of <code>control</code> is performed as
 		'''        needed.
 		''' @since 1.6 </exception>
-		Public Shared Function getBundle(ByVal baseName As String, ByVal targetLocale As Locale, ByVal loader As  [Class]Loader, ByVal control_Renamed As Control) As ResourceBundle
+		Public Shared Function getBundle(ByVal baseName As String, ByVal targetLocale As Locale, ByVal loader As  ClassLoader, ByVal control_Renamed As Control) As ResourceBundle
 			If loader Is Nothing OrElse control_Renamed Is Nothing Then Throw New NullPointerException
 			Return getBundleImpl(baseName, targetLocale, loader, control_Renamed)
 		End Function
@@ -1266,7 +1266,7 @@ Namespace java.util
 			Return Control.INSTANCE
 		End Function
 
-		Private Shared Function getBundleImpl(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  [Class]Loader, ByVal control_Renamed As Control) As ResourceBundle
+		Private Shared Function getBundleImpl(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal loader As  ClassLoader, ByVal control_Renamed As Control) As ResourceBundle
 			If locale_Renamed Is Nothing OrElse control_Renamed Is Nothing Then Throw New NullPointerException
 
 			' We create a CacheKey here for use by this call. The base
@@ -1647,7 +1647,7 @@ Namespace java.util
 		''' <exception cref="NullPointerException"> if <code>loader</code> is null
 		''' @since 1.6 </exception>
 		''' <seealso cref= ResourceBundle.Control#getTimeToLive(String,Locale) </seealso>
-		Public Shared Sub clearCache(ByVal loader As  [Class]Loader)
+		Public Shared Sub clearCache(ByVal loader As  ClassLoader)
 			If loader Is Nothing Then Throw New NullPointerException
 			Dim [set] As java.util.concurrent.ConcurrentMap(Of CacheKey, BundleReference).KeyCollection = cacheList.Keys
 			For Each key As CacheKey In [set]
@@ -2465,7 +2465,7 @@ Namespace java.util
 			''' <exception cref="IOException">
 			'''        if an error occurred when reading resources using
 			'''        any I/O operations </exception>
-			Public Overridable Function newBundle(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal format As String, ByVal loader As  [Class]Loader, ByVal reload As Boolean) As ResourceBundle
+			Public Overridable Function newBundle(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal format As String, ByVal loader As  ClassLoader, ByVal reload As Boolean) As ResourceBundle
 				Dim bundleName As String = toBundleName(baseName, locale_Renamed)
 				Dim bundle As ResourceBundle = Nothing
 				If format.Equals("java.class") Then
@@ -2480,12 +2480,12 @@ Namespace java.util
 						Else
 							Throw New ClassCastException(bundleClass.name & " cannot be cast to ResourceBundle")
 						End If
-					Catch e As  [Class]NotFoundException
+					Catch e As  ClassNotFoundException
 					End Try
 				ElseIf format.Equals("java.properties") Then
 					Dim resourceName As String = toResourceName0(bundleName, "properties")
 					If resourceName Is Nothing Then Return bundle
-					Dim classLoader_Renamed As  [Class]Loader = loader
+					Dim classLoader_Renamed As  ClassLoader = loader
 					Dim reloadFlag As Boolean = reload
 					Dim stream As java.io.InputStream = Nothing
 					Try
@@ -2626,7 +2626,7 @@ Namespace java.util
 			'''        if <code>baseName</code>, <code>locale</code>,
 			'''        <code>format</code>, <code>loader</code>, or
 			'''        <code>bundle</code> is <code>null</code> </exception>
-			Public Overridable Function needsReload(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal format As String, ByVal loader As  [Class]Loader, ByVal bundle As ResourceBundle, ByVal loadTime As Long) As Boolean
+			Public Overridable Function needsReload(ByVal baseName As String, ByVal locale_Renamed As Locale, ByVal format As String, ByVal loader As  ClassLoader, ByVal bundle As ResourceBundle, ByVal loadTime As Long) As Boolean
 				If bundle Is Nothing Then Throw New NullPointerException
 				If format.Equals("java.class") OrElse format.Equals("java.properties") Then format = format.Substring(5)
 				Dim result As Boolean = False

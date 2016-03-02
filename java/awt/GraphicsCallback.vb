@@ -33,73 +33,73 @@ Namespace java.awt
 		Friend NotInheritable Class PaintCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PaintCallback
+            Private Shared _instance As New PaintCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				comp.paint(cg)
 			End Sub
-			Shared instance As PaintCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PaintCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PrintCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PrintCallback
+            Private Shared _instance As New PrintCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				comp.print(cg)
 			End Sub
-			Shared instance As PrintCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PrintCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PaintAllCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PaintAllCallback
+            Private Shared _instance As New PaintAllCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				comp.paintAll(cg)
 			End Sub
-			Shared instance As PaintAllCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PaintAllCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PrintAllCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PrintAllCallback
+            Private Shared _instance As New PrintAllCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				comp.printAll(cg)
 			End Sub
-			Shared instance As PrintAllCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PrintAllCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PeerPaintCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PeerPaintCallback
+            Private Shared _instance As New PeerPaintCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				comp.validate()
@@ -109,18 +109,18 @@ Namespace java.awt
 					comp.peer.paint(cg)
 				End If
 			End Sub
-			Shared instance As PeerPaintCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PeerPaintCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PeerPrintCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PeerPrintCallback
+            Private Shared _instance As New PeerPrintCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				comp.validate()
@@ -130,18 +130,18 @@ Namespace java.awt
 					comp.peer.print(cg)
 				End If
 			End Sub
-			Shared instance As PeerPrintCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PeerPrintCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PaintHeavyweightComponentsCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PaintHeavyweightComponentsCallback
+            Private Shared _instance As New PaintHeavyweightComponentsCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				If TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
@@ -150,18 +150,18 @@ Namespace java.awt
 					comp.paintAll(cg)
 				End If
 			End Sub
-			Shared instance As PaintHeavyweightComponentsCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PaintHeavyweightComponentsCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 		Friend NotInheritable Class PrintHeavyweightComponentsCallback
 			Inherits GraphicsCallback
 
-			Private Shared instance As New PrintHeavyweightComponentsCallback
+            Private Shared _instance As New PrintHeavyweightComponentsCallback
 
-			Private Sub New()
+            Private Sub New()
 			End Sub
 			Public Sub run(ByVal comp As Component, ByVal cg As Graphics)
 				If TypeOf comp.peer Is java.awt.peer.LightweightPeer Then
@@ -170,12 +170,12 @@ Namespace java.awt
 					comp.printAll(cg)
 				End If
 			End Sub
-			Shared instance As PrintHeavyweightComponentsCallback
-				Get
-					Return instance
-				End Get
-			End Property
-		End Class
+            Public Shared ReadOnly Property instance As PrintHeavyweightComponentsCallback
+                Get
+                    Return _instance
+                End Get
+            End Property
+        End Class
 	End Class
 
 End Namespace

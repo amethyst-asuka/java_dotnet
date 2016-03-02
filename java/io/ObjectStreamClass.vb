@@ -142,7 +142,7 @@ Namespace java.io
 
         ''' <summary>
         ''' exception (if any) thrown while attempting to resolve class </summary>
-        Private resolveEx As [Class]NotFoundException
+        Private resolveEx As ClassNotFoundException
 		''' <summary>
 		''' exception (if any) to throw if non-enum deserialization attempted </summary>
 		Private deserializeEx As ExceptionInfo
@@ -547,7 +547,7 @@ Namespace java.io
         ''' <summary>
         ''' Initializes class descriptor representing a proxy class.
         ''' </summary>
-        Friend Overridable Sub initProxy(ByVal cl As [Class], ByVal resolveEx As [Class]NotFoundException, ByVal superDesc As ObjectStreamClass)
+        Friend Overridable Sub initProxy(ByVal cl As [Class], ByVal resolveEx As ClassNotFoundException, ByVal superDesc As ObjectStreamClass)
             Dim osc As ObjectStreamClass = Nothing
             If cl IsNot Nothing Then
                 osc = lookup(cl, True)
@@ -576,7 +576,7 @@ Namespace java.io
         ''' <summary>
         ''' Initializes class descriptor representing a non-proxy class.
         ''' </summary>
-        Friend Overridable Sub initNonProxy(ByVal model As ObjectStreamClass, ByVal cl As [Class], ByVal resolveEx As [Class]NotFoundException, ByVal superDesc As ObjectStreamClass)
+        Friend Overridable Sub initNonProxy(ByVal model As ObjectStreamClass, ByVal cl As [Class], ByVal resolveEx As ClassNotFoundException, ByVal superDesc As ObjectStreamClass)
             Dim suid As Long = Convert.ToInt64(model.serialVersionUID)
             Dim osc As ObjectStreamClass = Nothing
             If cl IsNot Nothing Then
@@ -696,7 +696,7 @@ Namespace java.io
         ''' Returns ClassNotFoundException (if any) thrown while attempting to
         ''' resolve local class corresponding to this class descriptor.
         ''' </summary>
-        Friend Overridable Property resolveException As [Class]NotFoundException
+        Friend Overridable Property resolveException As ClassNotFoundException
 			Get
                 Return resolveEx
             End Get

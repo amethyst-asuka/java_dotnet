@@ -67,45 +67,45 @@ Namespace java.awt
 		Protected Friend Sub New()
 		End Sub
 
-		''' <summary>
-		''' Returns the local <code>GraphicsEnvironment</code>. </summary>
-		''' <returns> the local <code>GraphicsEnvironment</code> </returns>
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared localGraphicsEnvironment As GraphicsEnvironment
-			Get
-				If localEnv Is Nothing Then localEnv = createGE()
-    
-				Return localEnv
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the local <code>GraphicsEnvironment</code>. </summary>
+        ''' <returns> the local <code>GraphicsEnvironment</code> </returns>
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Shared ReadOnly Property localGraphicsEnvironment As GraphicsEnvironment
+            Get
+                If localEnv Is Nothing Then localEnv = createGE()
 
-		''' <summary>
-		''' Creates and returns the GraphicsEnvironment, according to the
-		''' system property 'java.awt.graphicsenv'.
-		''' </summary>
-		''' <returns> the graphics environment </returns>
-		Private Shared Function createGE() As GraphicsEnvironment
+                Return localEnv
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Creates and returns the GraphicsEnvironment, according to the
+        ''' system property 'java.awt.graphicsenv'.
+        ''' </summary>
+        ''' <returns> the graphics environment </returns>
+        Private Shared Function createGE() As GraphicsEnvironment
 			Dim ge As GraphicsEnvironment
 			Dim nm As String = java.security.AccessController.doPrivileged(New sun.security.action.GetPropertyAction("java.awt.graphicsenv", Nothing))
-			Try
-	'          long t0 = System.currentTimeMillis();
-				Dim geCls As  [Class]
-				Try
-					' First we try if the bootclassloader finds the requested
-					' class. This way we can avoid to run in a privileged block.
-					geCls = CType(Type.GetType(nm), [Class])
-				Catch ex As  [Class]NotFoundException
-					' If the bootclassloader fails, we try again with the
-					' application classloader.
-					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
-					geCls = CType(Type.GetType(nm, True, cl), [Class])
-				End Try
-				ge = geCls.newInstance()
-	'          long t1 = System.currentTimeMillis();
-	'          System.out.println("GE creation took " + (t1-t0)+ "ms.");
-				If headless Then ge = New sun.java2d.HeadlessGraphicsEnvironment(ge)
-			Catch e As  [Class]NotFoundException
-				Throw New [Error]("Could not find class: " & nm)
+            Try
+                '          long t0 = System.currentTimeMillis();
+                Dim geCls As [Class]
+                Try
+                    ' First we try if the bootclassloader finds the requested
+                    ' class. This way we can avoid to run in a privileged block.
+                    geCls = CType(Type.GetType(nm), [Class])
+                Catch ex As ClassNotFoundException
+                    ' If the bootclassloader fails, we try again with the
+                    ' application classloader.
+                    Dim cl As ClassLoader = ClassLoader.systemClassLoader
+                    geCls = CType(Type.GetType(nm, True, cl), [Class])
+                End Try
+                ge = geCls.newInstance()
+                '          long t1 = System.currentTimeMillis();
+                '          System.out.println("GE creation took " + (t1-t0)+ "ms.");
+                If headless Then ge = New sun.java2d.HeadlessGraphicsEnvironment(ge)
+            Catch e As ClassNotFoundException
+                Throw New [Error]("Could not find class: " & nm)
 			Catch e As InstantiationException
 				Throw New [Error]("Could not instantiate Graphics Environment: " & nm)
 			Catch e As IllegalAccessException
@@ -114,78 +114,78 @@ Namespace java.awt
 			Return ge
 		End Function
 
-		''' <summary>
-		''' Tests whether or not a display, keyboard, and mouse can be
-		''' supported in this environment.  If this method returns true,
-		''' a HeadlessException is thrown from areas of the Toolkit
-		''' and GraphicsEnvironment that are dependent on a display,
-		''' keyboard, or mouse. </summary>
-		''' <returns> <code>true</code> if this environment cannot support
-		''' a display, keyboard, and mouse; <code>false</code>
-		''' otherwise </returns>
-		''' <seealso cref= java.awt.HeadlessException
-		''' @since 1.4 </seealso>
-		Public Property Shared headless As Boolean
-			Get
-				Return headlessProperty
-			End Get
-		End Property
+        ''' <summary>
+        ''' Tests whether or not a display, keyboard, and mouse can be
+        ''' supported in this environment.  If this method returns true,
+        ''' a HeadlessException is thrown from areas of the Toolkit
+        ''' and GraphicsEnvironment that are dependent on a display,
+        ''' keyboard, or mouse. </summary>
+        ''' <returns> <code>true</code> if this environment cannot support
+        ''' a display, keyboard, and mouse; <code>false</code>
+        ''' otherwise </returns>
+        ''' <seealso cref= java.awt.HeadlessException
+        ''' @since 1.4 </seealso>
+        Public Shared ReadOnly Property headless As Boolean
+            Get
+                Return headlessProperty
+            End Get
+        End Property
 
-		''' <returns> warning message if headless state is assumed by default;
-		''' null otherwise
-		''' @since 1.5 </returns>
-		Friend Property Shared headlessMessage As String
-			Get
-				If headless Is Nothing Then headlessProperty ' initialize the values
-				Return If(defaultHeadless IsNot  java.lang.[Boolean].TRUE, Nothing, vbLf & "No X11 DISPLAY variable was set, " & "but this program performed an operation which requires it.")
-			End Get
-		End Property
+        ''' <returns> warning message if headless state is assumed by default;
+        ''' null otherwise
+        ''' @since 1.5 </returns>
+        Friend Shared ReadOnly Property headlessMessage As String
+            Get
+                If headless Is Nothing Then headlessProperty ' initialize the values
+                Return If(defaultHeadless IsNot java.lang.[Boolean].TRUE, Nothing, vbLf & "No X11 DISPLAY variable was set, " & "but this program performed an operation which requires it.")
+            End Get
+        End Property
 
-		''' <returns> the value of the property "java.awt.headless"
-		''' @since 1.4 </returns>
-		Private Property Shared headlessProperty As Boolean
-			Get
-				If headless Is Nothing Then java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedAction(Of Void)) -> { String nm = System.getProperty("java.awt.headless"); if(nm Is Nothing) { if(System.getProperty("javaplugin.version") IsNot Nothing) { headless = defaultHeadless =  java.lang.[Boolean].FALSE; } else { String osName = System.getProperty("os.name"); if(osName.contains("OS X") AndAlso "sun.awt.HToolkit".Equals(System.getProperty("awt.toolkit"))) { headless = defaultHeadless =  java.lang.[Boolean].TRUE; } else { final String display = System.getenv("DISPLAY"); headless = defaultHeadless = ("Linux".Equals(osName) OrElse "SunOS".Equals(osName) OrElse "FreeBSD".Equals(osName) OrElse "NetBSD".Equals(osName) OrElse "OpenBSD".Equals(osName) OrElse "AIX".Equals(osName)) AndAlso (display Is Nothing OrElse display.Trim().empty); } } } else { headless = Convert.ToBoolean(nm); } Return Nothing; })
+        ''' <returns> the value of the property "java.awt.headless"
+        ''' @since 1.4 </returns>
+        Private Shared ReadOnly Property headlessProperty As Boolean
+            Get
+                If headless Is Nothing Then java.security.AccessController.doPrivileged(CType(, java.security.PrivilegedAction(Of Void)) -> {String nm = System.getProperty("java.awt.headless"); If(nm Is Nothing) { If(System.getProperty("javaplugin.version") IsNot Nothing) { headless = defaultHeadless =  java.lang.[Boolean].False; } Else { String osName = System.getProperty("os.name"); if(osName.contains("OS X") AndAlso "sun.awt.HToolkit".Equals(System.getProperty("awt.toolkit"))) { headless = defaultHeadless =  java.lang.[Boolean].TRUE; } Else { final String display = System.getenv("DISPLAY"); headless = defaultHeadless = ("Linux".Equals(osName) OrElse "SunOS".Equals(osName) OrElse "FreeBSD".Equals(osName) OrElse "NetBSD".Equals(osName) OrElse "OpenBSD".Equals(osName) OrElse "AIX".Equals(osName)) AndAlso (display Is Nothing OrElse display.Trim().empty); } } } Else { headless = Convert.ToBoolean(nm); } Return Nothing; })
 				Return headless
-			End Get
-		End Property
+            End Get
+        End Property
 
-		''' <summary>
-		''' Check for headless state and throw HeadlessException if headless
-		''' @since 1.4
-		''' </summary>
-		Friend Shared Sub checkHeadless()
+        ''' <summary>
+        ''' Check for headless state and throw HeadlessException if headless
+        ''' @since 1.4
+        ''' </summary>
+        Friend Shared Sub checkHeadless()
 			If headless Then Throw New HeadlessException
 		End Sub
 
-		''' <summary>
-		''' Returns whether or not a display, keyboard, and mouse can be
-		''' supported in this graphics environment.  If this returns true,
-		''' <code>HeadlessException</code> will be thrown from areas of the
-		''' graphics environment that are dependent on a display, keyboard, or
-		''' mouse. </summary>
-		''' <returns> <code>true</code> if a display, keyboard, and mouse
-		''' can be supported in this environment; <code>false</code>
-		''' otherwise </returns>
-		''' <seealso cref= java.awt.HeadlessException </seealso>
-		''' <seealso cref= #isHeadless
-		''' @since 1.4 </seealso>
-		Public Overridable Property headlessInstance As Boolean
-			Get
-				' By default (local graphics environment), simply check the
-				' headless property.
-				Return headlessProperty
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns whether or not a display, keyboard, and mouse can be
+        ''' supported in this graphics environment.  If this returns true,
+        ''' <code>HeadlessException</code> will be thrown from areas of the
+        ''' graphics environment that are dependent on a display, keyboard, or
+        ''' mouse. </summary>
+        ''' <returns> <code>true</code> if a display, keyboard, and mouse
+        ''' can be supported in this environment; <code>false</code>
+        ''' otherwise </returns>
+        ''' <seealso cref= java.awt.HeadlessException </seealso>
+        ''' <seealso cref= #isHeadless
+        ''' @since 1.4 </seealso>
+        Public Overridable ReadOnly Property headlessInstance As Boolean
+            Get
+                ' By default (local graphics environment), simply check the
+                ' headless property.
+                Return headlessProperty
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns an array of all of the screen <code>GraphicsDevice</code>
-		''' objects. </summary>
-		''' <returns> an array containing all the <code>GraphicsDevice</code>
-		''' objects that represent screen devices </returns>
-		''' <exception cref="HeadlessException"> if isHeadless() returns true </exception>
-		''' <seealso cref= #isHeadless() </seealso>
-		Public MustOverride ReadOnly Property screenDevices As GraphicsDevice()
+        ''' <summary>
+        ''' Returns an array of all of the screen <code>GraphicsDevice</code>
+        ''' objects. </summary>
+        ''' <returns> an array containing all the <code>GraphicsDevice</code>
+        ''' objects that represent screen devices </returns>
+        ''' <exception cref="HeadlessException"> if isHeadless() returns true </exception>
+        ''' <seealso cref= #isHeadless() </seealso>
+        Public MustOverride ReadOnly Property screenDevices As GraphicsDevice()
 
 		''' <summary>
 		''' Returns the default screen <code>GraphicsDevice</code>. </summary>
@@ -356,49 +356,49 @@ Namespace java.awt
 			fm.preferProportionalFonts()
 		End Sub
 
-		''' <summary>
-		''' Returns the Point where Windows should be centered.
-		''' It is recommended that centered Windows be checked to ensure they fit
-		''' within the available display area using getMaximumWindowBounds(). </summary>
-		''' <returns> the point where Windows should be centered
-		''' </returns>
-		''' <exception cref="HeadlessException"> if isHeadless() returns true </exception>
-		''' <seealso cref= #getMaximumWindowBounds
-		''' @since 1.4 </seealso>
-		Public Overridable Property centerPoint As Point
-			Get
-			' Default implementation: return the center of the usable bounds of the
-			' default screen device.
-				Dim usableBounds As Rectangle = sun.java2d.SunGraphicsEnvironment.getUsableBounds(defaultScreenDevice)
-				Return New Point((usableBounds.width \ 2) + usableBounds.x, (usableBounds.height \ 2) + usableBounds.y)
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the Point where Windows should be centered.
+        ''' It is recommended that centered Windows be checked to ensure they fit
+        ''' within the available display area using getMaximumWindowBounds(). </summary>
+        ''' <returns> the point where Windows should be centered
+        ''' </returns>
+        ''' <exception cref="HeadlessException"> if isHeadless() returns true </exception>
+        ''' <seealso cref= #getMaximumWindowBounds
+        ''' @since 1.4 </seealso>
+        Public Overridable ReadOnly Property centerPoint As Point
+            Get
+                ' Default implementation: return the center of the usable bounds of the
+                ' default screen device.
+                Dim usableBounds As Rectangle = sun.java2d.SunGraphicsEnvironment.getUsableBounds(defaultScreenDevice)
+                Return New Point((usableBounds.width \ 2) + usableBounds.x, (usableBounds.height \ 2) + usableBounds.y)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the maximum bounds for centered Windows.
-		''' These bounds account for objects in the native windowing system such as
-		''' task bars and menu bars.  The returned bounds will reside on a single
-		''' display with one exception: on multi-screen systems where Windows should
-		''' be centered across all displays, this method returns the bounds of the
-		''' entire display area.
-		''' <p>
-		''' To get the usable bounds of a single display, use
-		''' <code>GraphicsConfiguration.getBounds()</code> and
-		''' <code>Toolkit.getScreenInsets()</code>. </summary>
-		''' <returns>  the maximum bounds for centered Windows
-		''' </returns>
-		''' <exception cref="HeadlessException"> if isHeadless() returns true </exception>
-		''' <seealso cref= #getCenterPoint </seealso>
-		''' <seealso cref= GraphicsConfiguration#getBounds </seealso>
-		''' <seealso cref= Toolkit#getScreenInsets
-		''' @since 1.4 </seealso>
-		Public Overridable Property maximumWindowBounds As Rectangle
-			Get
-			' Default implementation: return the usable bounds of the default screen
-			' device.  This is correct for Microsoft Windows and non-Xinerama X11.
-				Return sun.java2d.SunGraphicsEnvironment.getUsableBounds(defaultScreenDevice)
-			End Get
-		End Property
-	End Class
+        ''' <summary>
+        ''' Returns the maximum bounds for centered Windows.
+        ''' These bounds account for objects in the native windowing system such as
+        ''' task bars and menu bars.  The returned bounds will reside on a single
+        ''' display with one exception: on multi-screen systems where Windows should
+        ''' be centered across all displays, this method returns the bounds of the
+        ''' entire display area.
+        ''' <p>
+        ''' To get the usable bounds of a single display, use
+        ''' <code>GraphicsConfiguration.getBounds()</code> and
+        ''' <code>Toolkit.getScreenInsets()</code>. </summary>
+        ''' <returns>  the maximum bounds for centered Windows
+        ''' </returns>
+        ''' <exception cref="HeadlessException"> if isHeadless() returns true </exception>
+        ''' <seealso cref= #getCenterPoint </seealso>
+        ''' <seealso cref= GraphicsConfiguration#getBounds </seealso>
+        ''' <seealso cref= Toolkit#getScreenInsets
+        ''' @since 1.4 </seealso>
+        Public Overridable ReadOnly Property maximumWindowBounds As Rectangle
+            Get
+                ' Default implementation: return the usable bounds of the default screen
+                ' device.  This is correct for Microsoft Windows and non-Xinerama X11.
+                Return sun.java2d.SunGraphicsEnvironment.getUsableBounds(defaultScreenDevice)
+            End Get
+        End Property
+    End Class
 
 End Namespace

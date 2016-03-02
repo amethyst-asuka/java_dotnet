@@ -248,7 +248,7 @@ Namespace java.rmi.server
 		''' could not be found at the specified location
 		''' 
 		''' @since   1.4 </exception>
-		Public Shared Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  [Class]Loader) As  [Class]
+		Public Shared Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  ClassLoader) As  [Class]
 			Return provider.loadClass(codebase, name, defaultLoader)
 		End Function
 
@@ -291,7 +291,7 @@ Namespace java.rmi.server
 		''' interface list)
 		''' 
 		''' @since   1.4 </exception>
-		Public Shared Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  [Class]Loader) As  [Class]
+		Public Shared Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  ClassLoader) As  [Class]
 			Return provider.loadProxyClass(codebase, interfaces, defaultLoader)
 		End Function
 
@@ -332,7 +332,7 @@ Namespace java.rmi.server
 		''' URLs in the codebase URL path
 		''' 
 		''' @since   1.3 </exception>
-		Public Shared Function getClassLoader(ByVal codebase As String) As  [Class]Loader
+		Public Shared Function getClassLoader(ByVal codebase As String) As  ClassLoader
 			Return provider.getClassLoader(codebase)
 		End Function
 
@@ -598,7 +598,7 @@ Namespace java.rmi.server
 		''' longer uses this method to obtain a class loader's security context. 
 		''' <seealso cref= java.lang.SecurityManager#getSecurityContext() </seealso>
 		<Obsolete("no replacement.  As of the Java 2 platform v1.2, RMI no")> _
-		Public Shared Function getSecurityContext(ByVal loader As  [Class]Loader) As Object
+		Public Shared Function getSecurityContext(ByVal loader As  ClassLoader) As Object
 			Return sun.rmi.server.LoaderHandler.getSecurityContext(loader)
 		End Function
 
@@ -612,15 +612,15 @@ Namespace java.rmi.server
 		Private Class RMIClassLoaderSpiAnonymousInnerClassHelper
 			Inherits RMIClassLoaderSpi
 
-			Public Overrides Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  [Class]Loader) As  [Class]
+			Public Overrides Function loadClass(ByVal codebase As String, ByVal name As String, ByVal defaultLoader As  ClassLoader) As  [Class]
 				Return sun.rmi.server.LoaderHandler.loadClass(codebase, name, defaultLoader)
 			End Function
 
-			Public Overrides Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  [Class]Loader) As  [Class]
+			Public Overrides Function loadProxyClass(ByVal codebase As String, ByVal interfaces As String(), ByVal defaultLoader As  ClassLoader) As  [Class]
 				Return sun.rmi.server.LoaderHandler.loadProxyClass(codebase, interfaces, defaultLoader)
 			End Function
 
-			Public Overrides Function getClassLoader(ByVal codebase As String) As  [Class]Loader
+			Public Overrides Function getClassLoader(ByVal codebase As String) As  ClassLoader
 				Return sun.rmi.server.LoaderHandler.getClassLoader(codebase)
 			End Function
 
@@ -647,7 +647,7 @@ Namespace java.rmi.server
 					Dim providerClass As  [Class] = Type.GetType(providerClassName, False, ClassLoader.systemClassLoader).asSubclass(GetType(RMIClassLoaderSpi))
 					Return providerClass.newInstance()
 
-				Catch e As  [Class]NotFoundException
+				Catch e As  ClassNotFoundException
 					Throw New NoClassDefFoundError(e.Message)
 				Catch e As IllegalAccessException
 					Throw New IllegalAccessError(e.Message)

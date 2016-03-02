@@ -383,12 +383,12 @@ Namespace java.util.logging
 
 		Private Property callersClassLoaderRef As  [Class]
 			Set(ByVal caller As [Class])
-				Dim callersClassLoader_Renamed As  [Class]Loader = (If(caller IsNot Nothing, caller.classLoader, Nothing))
+				Dim callersClassLoader_Renamed As  ClassLoader = (If(caller IsNot Nothing, caller.classLoader, Nothing))
 				If callersClassLoader_Renamed IsNot Nothing Then Me.callersClassLoaderRef = New WeakReference(Of )(callersClassLoader_Renamed)
 			End Set
 		End Property
 
-		Private Property callersClassLoader As  [Class]Loader
+		Private Property callersClassLoader As  ClassLoader
 			Get
 				Return If(callersClassLoaderRef IsNot Nothing, callersClassLoaderRef.get(), Nothing)
 			End Get
@@ -1747,7 +1747,7 @@ Namespace java.util.logging
 
 			' Use the thread's context ClassLoader.  If there isn't one, use the
 			' {@linkplain java.lang.ClassLoader#getSystemClassLoader() system ClassLoader}.
-			Dim cl As  [Class]Loader = Thread.CurrentThread.contextClassLoader
+			Dim cl As  ClassLoader = Thread.CurrentThread.contextClassLoader
 			If cl Is Nothing Then cl = ClassLoader.systemClassLoader
 			Try
 				catalog = java.util.ResourceBundle.getBundle(name, currentLocale, cl)
@@ -1761,7 +1761,7 @@ Namespace java.util.logging
 
 			If useCallersClassLoader Then
 				' Try with the caller's ClassLoader
-				Dim callersClassLoader_Renamed As  [Class]Loader = callersClassLoader
+				Dim callersClassLoader_Renamed As  ClassLoader = callersClassLoader
 
 				If callersClassLoader_Renamed Is Nothing OrElse callersClassLoader_Renamed Is cl Then Return Nothing
 

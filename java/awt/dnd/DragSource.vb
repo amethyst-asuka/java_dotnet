@@ -784,39 +784,39 @@ Namespace java.awt.dnd
 			Loop
 		End Sub
 
-		''' <summary>
-		''' Returns the drag gesture motion threshold. The drag gesture motion threshold
-		''' defines the recommended behavior for <seealso cref="MouseDragGestureRecognizer"/>s.
-		''' <p>
-		''' If the system property <code>awt.dnd.drag.threshold</code> is set to
-		''' a positive integer, this method returns the value of the system property;
-		''' otherwise if a pertinent desktop property is available and supported by
-		''' the implementation of the Java platform, this method returns the value of
-		''' that property; otherwise this method returns some default value.
-		''' The pertinent desktop property can be queried using
-		''' <code>java.awt.Toolkit.getDesktopProperty("DnD.gestureMotionThreshold")</code>.
-		''' </summary>
-		''' <returns> the drag gesture motion threshold </returns>
-		''' <seealso cref= MouseDragGestureRecognizer
-		''' @since 1.5 </seealso>
-		Public Property Shared dragThreshold As Integer
-			Get
-				Dim ts As Integer = java.security.AccessController.doPrivileged(New sun.security.action.GetIntegerAction("awt.dnd.drag.threshold", 0))
-				If ts > 0 Then
-					Return ts
-				Else
-					Dim td As Integer? = CInt(Fix(java.awt.Toolkit.defaultToolkit.getDesktopProperty("DnD.gestureMotionThreshold")))
-					If td IsNot Nothing Then Return td
-				End If
-				Return 5
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the drag gesture motion threshold. The drag gesture motion threshold
+        ''' defines the recommended behavior for <seealso cref="MouseDragGestureRecognizer"/>s.
+        ''' <p>
+        ''' If the system property <code>awt.dnd.drag.threshold</code> is set to
+        ''' a positive integer, this method returns the value of the system property;
+        ''' otherwise if a pertinent desktop property is available and supported by
+        ''' the implementation of the Java platform, this method returns the value of
+        ''' that property; otherwise this method returns some default value.
+        ''' The pertinent desktop property can be queried using
+        ''' <code>java.awt.Toolkit.getDesktopProperty("DnD.gestureMotionThreshold")</code>.
+        ''' </summary>
+        ''' <returns> the drag gesture motion threshold </returns>
+        ''' <seealso cref= MouseDragGestureRecognizer
+        ''' @since 1.5 </seealso>
+        Public Shared ReadOnly Property dragThreshold As Integer
+            Get
+                Dim ts As Integer = java.security.AccessController.doPrivileged(New sun.security.action.GetIntegerAction("awt.dnd.drag.threshold", 0))
+                If ts > 0 Then
+                    Return ts
+                Else
+                    Dim td As Integer? = CInt(Fix(java.awt.Toolkit.defaultToolkit.getDesktopProperty("DnD.gestureMotionThreshold")))
+                    If td IsNot Nothing Then Return td
+                End If
+                Return 5
+            End Get
+        End Property
 
-	'    
-	'     * fields
-	'     
+        '    
+        '     * fields
+        '     
 
-		<NonSerialized> _
+        <NonSerialized> _
 		Private flavorMap As java.awt.datatransfer.FlavorMap = java.awt.datatransfer.SystemFlavorMap.defaultFlavorMap
 
 		<NonSerialized> _

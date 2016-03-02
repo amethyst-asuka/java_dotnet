@@ -48,10 +48,8 @@ Namespace java.awt.datatransfer
 	''' @author      Alexander Gerasimov </seealso>
 	Public Class Clipboard
 
-		Friend name As String
-
-		Protected Friend owner As ClipboardOwner
-		Protected Friend contents As Transferable
+        Protected Friend owner As ClipboardOwner
+        Protected Friend contents As Transferable
 
 		''' <summary>
 		''' An aggregate of flavor listeners registered on this local clipboard.
@@ -77,41 +75,37 @@ Namespace java.awt.datatransfer
 			Me.name = name
 		End Sub
 
-		''' <summary>
-		''' Returns the name of this clipboard object.
-		''' </summary>
-		''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
-		Public Overridable Property name As String
-			Get
-				Return name
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the name of this clipboard object.
+        ''' </summary>
+        ''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
+        Public Overridable ReadOnly Property name As String
 
-		''' <summary>
-		''' Sets the current contents of the clipboard to the specified
-		''' transferable object and registers the specified clipboard owner
-		''' as the owner of the new contents.
-		''' <p>
-		''' If there is an existing owner different from the argument
-		''' <code>owner</code>, that owner is notified that it no longer
-		''' holds ownership of the clipboard contents via an invocation
-		''' of <code>ClipboardOwner.lostOwnership()</code> on that owner.
-		''' An implementation of <code>setContents()</code> is free not
-		''' to invoke <code>lostOwnership()</code> directly from this method.
-		''' For example, <code>lostOwnership()</code> may be invoked later on
-		''' a different thread. The same applies to <code>FlavorListener</code>s
-		''' registered on this clipboard.
-		''' <p>
-		''' The method throws <code>IllegalStateException</code> if the clipboard
-		''' is currently unavailable. For example, on some platforms, the system
-		''' clipboard is unavailable while it is accessed by another application.
-		''' </summary>
-		''' <param name="contents"> the transferable object representing the
-		'''                 clipboard content </param>
-		''' <param name="owner"> the object which owns the clipboard content </param>
-		''' <exception cref="IllegalStateException"> if the clipboard is currently unavailable </exception>
-		''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
-		<MethodImpl(MethodImplOptions.Synchronized)> _
+        ''' <summary>
+        ''' Sets the current contents of the clipboard to the specified
+        ''' transferable object and registers the specified clipboard owner
+        ''' as the owner of the new contents.
+        ''' <p>
+        ''' If there is an existing owner different from the argument
+        ''' <code>owner</code>, that owner is notified that it no longer
+        ''' holds ownership of the clipboard contents via an invocation
+        ''' of <code>ClipboardOwner.lostOwnership()</code> on that owner.
+        ''' An implementation of <code>setContents()</code> is free not
+        ''' to invoke <code>lostOwnership()</code> directly from this method.
+        ''' For example, <code>lostOwnership()</code> may be invoked later on
+        ''' a different thread. The same applies to <code>FlavorListener</code>s
+        ''' registered on this clipboard.
+        ''' <p>
+        ''' The method throws <code>IllegalStateException</code> if the clipboard
+        ''' is currently unavailable. For example, on some platforms, the system
+        ''' clipboard is unavailable while it is accessed by another application.
+        ''' </summary>
+        ''' <param name="contents"> the transferable object representing the
+        '''                 clipboard content </param>
+        ''' <param name="owner"> the object which owns the clipboard content </param>
+        ''' <exception cref="IllegalStateException"> if the clipboard is currently unavailable </exception>
+        ''' <seealso cref= java.awt.Toolkit#getSystemClipboard </seealso>
+        <MethodImpl(MethodImplOptions.Synchronized)> _
 		Public Overridable Sub setContents(ByVal contents As Transferable, ByVal owner As ClipboardOwner)
 			Dim oldOwner As ClipboardOwner = Me.owner
 			Dim oldContents As Transferable = Me.contents
@@ -119,8 +113,8 @@ Namespace java.awt.datatransfer
 			Me.owner = owner
 			Me.contents = contents
 
-			If oldOwner IsNot Nothing AndAlso oldOwner IsNot owner Then java.awt.EventQueue.invokeLater(New RunnableAnonymousInnerClassHelper
-			fireFlavorsChanged()
+            If oldOwner IsNot Nothing AndAlso oldOwner IsNot owner Then java.awt.EventQueue.invokeLater(New RunnableAnonymousInnerClassHelper)
+            fireFlavorsChanged()
 		End Sub
 
 		Private Class RunnableAnonymousInnerClassHelper
@@ -267,32 +261,32 @@ Namespace java.awt.datatransfer
 			flavorListeners.remove(listener)
 		End Sub
 
-		''' <summary>
-		''' Returns an array of all the <code>FlavorListener</code>s currently
-		''' registered on this <code>Clipboard</code>.
-		''' </summary>
-		''' <returns> all of this clipboard's <code>FlavorListener</code>s or an empty
-		'''         array if no listeners are currently registered </returns>
-		''' <seealso cref= #addFlavorListener </seealso>
-		''' <seealso cref= #removeFlavorListener </seealso>
-		''' <seealso cref= FlavorListener </seealso>
-		''' <seealso cref= FlavorEvent
-		''' @since 1.5 </seealso>
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Overridable Property flavorListeners As FlavorListener()
-			Get
-				Return If(flavorListeners Is Nothing, New FlavorListener(){}, CType(flavorListeners.listenersCopy, FlavorListener()))
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns an array of all the <code>FlavorListener</code>s currently
+        ''' registered on this <code>Clipboard</code>.
+        ''' </summary>
+        ''' <returns> all of this clipboard's <code>FlavorListener</code>s or an empty
+        '''         array if no listeners are currently registered </returns>
+        ''' <seealso cref= #addFlavorListener </seealso>
+        ''' <seealso cref= #removeFlavorListener </seealso>
+        ''' <seealso cref= FlavorListener </seealso>
+        ''' <seealso cref= FlavorEvent
+        ''' @since 1.5 </seealso>
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Overridable ReadOnly Property flavorListeners As FlavorListener()
+            Get
+                Return If(flavorListeners Is Nothing, New FlavorListener() {}, CType(flavorListeners.listenersCopy, FlavorListener()))
+            End Get
+        End Property
 
-		''' <summary>
-		''' Checks change of the <code>DataFlavor</code>s and, if necessary,
-		''' notifies all listeners that have registered interest for notification
-		''' on <code>FlavorEvent</code>s.
-		''' 
-		''' @since 1.5
-		''' </summary>
-		Private Sub fireFlavorsChanged()
+        ''' <summary>
+        ''' Checks change of the <code>DataFlavor</code>s and, if necessary,
+        ''' notifies all listeners that have registered interest for notification
+        ''' on <code>FlavorEvent</code>s.
+        ''' 
+        ''' @since 1.5
+        ''' </summary>
+        Private Sub fireFlavorsChanged()
 			If flavorListeners Is Nothing Then Return
 			Dim prevDataFlavors As java.util.Set(Of DataFlavor) = currentDataFlavors
 			currentDataFlavors = availableDataFlavorSet
@@ -300,8 +294,8 @@ Namespace java.awt.datatransfer
 			Dim flavorListenerArray As FlavorListener() = CType(flavorListeners.listenersInternal, FlavorListener())
 			For i As Integer = 0 To flavorListenerArray.Length - 1
 				Dim listener As FlavorListener = flavorListenerArray(i)
-				java.awt.EventQueue.invokeLater(New RunnableAnonymousInnerClassHelper2
-			Next i
+                java.awt.EventQueue.invokeLater(New RunnableAnonymousInnerClassHelper2)
+            Next i
 		End Sub
 
 		Private Class RunnableAnonymousInnerClassHelper2

@@ -30,43 +30,43 @@ Imports System.Diagnostics
 Namespace java.awt.geom
 
 
-	''' <summary>
-	''' The {@code Path2D} class provides a simple, yet flexible
-	''' shape which represents an arbitrary geometric path.
-	''' It can fully represent any path which can be iterated by the
-	''' <seealso cref="PathIterator"/> interface including all of its segment
-	''' types and winding rules and it implements all of the
-	''' basic hit testing methods of the <seealso cref="Shape"/> interface.
-	''' <p>
-	''' Use <seealso cref="Path2D.Float"/> when dealing with data that can be represented
-	''' and used with floating point precision.  Use <seealso cref="Path2D.Double"/>
-	''' for data that requires the accuracy or range of double precision.
-	''' <p>
-	''' {@code Path2D} provides exactly those facilities required for
-	''' basic construction and management of a geometric path and
-	''' implementation of the above interfaces with little added
-	''' interpretation.
-	''' If it is useful to manipulate the interiors of closed
-	''' geometric shapes beyond simple hit testing then the
-	''' <seealso cref="Area"/> class provides additional capabilities
-	''' specifically targeted at closed figures.
-	''' While both classes nominally implement the {@code Shape}
-	''' interface, they differ in purpose and together they provide
-	''' two useful views of a geometric shape where {@code Path2D}
-	''' deals primarily with a trajectory formed by path segments
-	''' and {@code Area} deals more with interpretation and manipulation
-	''' of enclosed regions of 2D geometric space.
-	''' <p>
-	''' The <seealso cref="PathIterator"/> interface has more detailed descriptions
-	''' of the types of segments that make up a path and the winding rules
-	''' that control how to determine which regions are inside or outside
-	''' the path.
-	''' 
-	''' @author Jim Graham
-	''' @since 1.6
-	''' </summary>
-	Public MustInherit Class Path2D
-		Implements java.awt.Shape, Cloneable
+    ''' <summary>
+    ''' The {@code Path2D} class provides a simple, yet flexible
+    ''' shape which represents an arbitrary geometric path.
+    ''' It can fully represent any path which can be iterated by the
+    ''' <seealso cref="PathIterator"/> interface including all of its segment
+    ''' types and winding rules and it implements all of the
+    ''' basic hit testing methods of the <seealso cref="Shape"/> interface.
+    ''' <p>
+    ''' Use <seealso cref="Path2D.Float"/> when dealing with data that can be represented
+    ''' and used with floating point precision.  Use <seealso cref="Path2D.Double"/>
+    ''' for data that requires the accuracy or range of double precision.
+    ''' <p>
+    ''' {@code Path2D} provides exactly those facilities required for
+    ''' basic construction and management of a geometric path and
+    ''' implementation of the above interfaces with little added
+    ''' interpretation.
+    ''' If it is useful to manipulate the interiors of closed
+    ''' geometric shapes beyond simple hit testing then the
+    ''' <seealso cref="Area"/> class provides additional capabilities
+    ''' specifically targeted at closed figures.
+    ''' While both classes nominally implement the {@code Shape}
+    ''' interface, they differ in purpose and together they provide
+    ''' two useful views of a geometric shape where {@code Path2D}
+    ''' deals primarily with a trajectory formed by path segments
+    ''' and {@code Area} deals more with interpretation and manipulation
+    ''' of enclosed regions of 2D geometric space.
+    ''' <p>
+    ''' The <seealso cref="PathIterator"/> interface has more detailed descriptions
+    ''' of the types of segments that make up a path and the winding rules
+    ''' that control how to determine which regions are inside or outside
+    ''' the path.
+    ''' 
+    ''' @author Jim Graham
+    ''' @since 1.6
+    ''' </summary>
+    Public MustInherit Class Path2D : Inherits java.lang.Object
+        Implements java.awt.Shape, Cloneable
 
 		''' <summary>
 		''' An even-odd winding rule for determining the interior of

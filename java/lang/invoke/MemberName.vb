@@ -84,7 +84,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Utility method producing the class loader of the declaring class. </summary>
-        Public Property classLoader As [Class]Loader
+        Public Property classLoader As ClassLoader
 			Get
                 Return clazz.classLoader
             End Get

@@ -31,27 +31,27 @@ Namespace java.awt.datatransfer
 
 
 
-	''' <summary>
-	''' An object that encapsulates the parameter list of a MimeType
-	''' as defined in RFC 2045 and 2046.
-	''' 
-	''' @author jeff.dunn@eng.sun.com
-	''' </summary>
-	Friend Class MimeTypeParameterList
-		Implements Cloneable
+    ''' <summary>
+    ''' An object that encapsulates the parameter list of a MimeType
+    ''' as defined in RFC 2045 and 2046.
+    ''' 
+    ''' @author jeff.dunn@eng.sun.com
+    ''' </summary>
+    Friend Class MimeTypeParameterList : Inherits java.lang.Object
+        Implements Cloneable
 
 		''' <summary>
 		''' Default constructor.
 		''' </summary>
 		Public Sub New()
-			parameters = New Dictionary(Of )
-		End Sub
+            parameters = New Dictionary(Of String, String)
+        End Sub
 
 		Public Sub New(ByVal rawdata As String)
-			parameters = New Dictionary(Of )
+            parameters = New Dictionary(Of String, String)
 
-			'    now parse rawdata
-			parse(rawdata)
+            '    now parse rawdata
+            parse(rawdata)
 		End Sub
 
 		Public Overrides Function GetHashCode() As Integer
@@ -83,9 +83,8 @@ Namespace java.awt.datatransfer
 			Dim name As String = Nothing
 			Dim thisValue As String = Nothing
 			Dim thatValue As String = Nothing
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET Dictionary equivalent to the Java 'entrySet' method:
-			Dim entries As java.util.Set(Of KeyValuePair(Of String, String)) = parameters.entrySet()
-			Dim [iterator] As IEnumerator(Of KeyValuePair(Of String, String)) = parameters.GetEnumerator()
+            Dim entries As java.util.Set(Of KeyValuePair(Of String, String)) = parameters.entrySet()
+            Dim [iterator] As IEnumerator(Of KeyValuePair(Of String, String)) = parameters.GetEnumerator()
 			Dim entry As KeyValuePair(Of String, String) = Nothing
 			Do While [iterator].MoveNext()
 				entry = [iterator].Current
@@ -229,20 +228,20 @@ Namespace java.awt.datatransfer
 			Return parameters.Count
 		End Function
 
-		''' <summary>
-		''' Determine whether or not this list is empty.
-		''' </summary>
-		Public Overridable Property empty As Boolean
-			Get
-				Return parameters.Count = 0
-			End Get
-		End Property
+        ''' <summary>
+        ''' Determine whether or not this list is empty.
+        ''' </summary>
+        Public Overridable ReadOnly Property empty As Boolean
+            Get
+                Return parameters.Count = 0
+            End Get
+        End Property
 
-		''' <summary>
-		''' Retrieve the value associated with the given name, or null if there
-		''' is no current association.
-		''' </summary>
-		Public Overridable Function [get](ByVal name As String) As String
+        ''' <summary>
+        ''' Retrieve the value associated with the given name, or null if there
+        ''' is no current association.
+        ''' </summary>
+        Public Overridable Function [get](ByVal name As String) As String
 			Return parameters(name.Trim().ToLower())
 		End Function
 
@@ -261,22 +260,22 @@ Namespace java.awt.datatransfer
 			parameters.Remove(name.Trim().ToLower())
 		End Sub
 
-		''' <summary>
-		''' Retrieve an enumeration of all the names in this list.
-		''' </summary>
-		Public Overridable Property names As System.Collections.IEnumerator(Of String)
-			Get
-				Return parameters.Keys.GetEnumerator()
-			End Get
-		End Property
+        ''' <summary>
+        ''' Retrieve an enumeration of all the names in this list.
+        ''' </summary>
+        Public Overridable ReadOnly Property names As IEnumerator(Of String)
+            Get
+                Return parameters.Keys.GetEnumerator()
+            End Get
+        End Property
 
-		Public Overrides Function ToString() As String
+        Public Overrides Function ToString() As String
 			' Heuristic: 8 characters per field
 			Dim buffer As New StringBuilder(parameters.Count * 16)
 
-			Dim keys As System.Collections.IEnumerator(Of String) = parameters.Keys.GetEnumerator()
-'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
-			Do While keys.hasMoreElements()
+            Dim keys As IEnumerator(Of String) = parameters.Keys.GetEnumerator()
+            'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
+            Do While keys.hasMoreElements()
 				buffer.append("; ")
 
 'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:

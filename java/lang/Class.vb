@@ -101,7 +101,7 @@ Namespace java.lang
         '     * This constructor is not used and prevents the default constructor being
         '     * generated.
         '     
-        Private Sub New(ByVal loader As  [Class]Loader)
+        Private Sub New(ByVal loader As  ClassLoader)
             ' Initialize final field for classLoader.  The initialization value of non-null
             ' prevents future JIT optimizations from assuming this final field is null.
             classLoader = loader
@@ -288,7 +288,7 @@ Namespace java.lang
         ''' <seealso cref=       java.lang.ClassLoader
         ''' @since     1.2 </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Shared Function forName(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  [Class]Loader) As [Class]
+        Public Shared Function forName(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  ClassLoader) As [Class]
             Dim caller As [Class] = Nothing
             Dim sm As SecurityManager = System.securityManager
             If sm IsNot Nothing Then
@@ -296,7 +296,7 @@ Namespace java.lang
                 ' is present.  Avoid the overhead of making this call otherwise.
                 caller = sun.reflect.Reflection.callerClass
                 If sun.misc.VM.isSystemDomainLoader(loader) Then
-                    Dim ccl As  [Class]Loader = classLoader.getClassLoader(caller)
+                    Dim ccl As  ClassLoader = classLoader.getClassLoader(caller)
                     If Not sun.misc.VM.isSystemDomainLoader(ccl) Then sm.checkPermission(sun.security.util.SecurityConstants.GET_CLASSLOADER_PERMISSION)
                 End If
             End If
@@ -307,7 +307,7 @@ Namespace java.lang
         ''' Called after security check for system loader access checks have been made. </summary>
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Shared Function forName0(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  [Class]Loader, ByVal caller As [Class]) As  [Class]
+        Private Shared Function forName0(ByVal name As String, ByVal initialize As Boolean, ByVal loader As  ClassLoader, ByVal caller As [Class]) As  [Class]
 		End Function
 
         ''' <summary>
@@ -645,9 +645,9 @@ Namespace java.lang
         ''' <seealso cref= SecurityManager#checkPermission </seealso>
         ''' <seealso cref= java.lang.RuntimePermission </seealso>
         'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public ReadOnly Property classLoader As  [Class]Loader
+        Public ReadOnly Property classLoader As  ClassLoader
             Get
-                Dim cl As  [Class]Loader = classLoader0
+                Dim cl As  ClassLoader = classLoader0
                 If cl Is Nothing Then Return Nothing
                 Dim sm As SecurityManager = System.securityManager
                 If sm IsNot Nothing Then classLoader.checkClassLoaderPermission(cl, sun.reflect.Reflection.callerClass)
@@ -656,7 +656,7 @@ Namespace java.lang
         End Property
 
         ' Package-private to allow ClassLoader access
-        Friend ReadOnly Property classLoader0 As  [Class]Loader
+        Friend ReadOnly Property classLoader0 As  ClassLoader
             Get
                 Return classLoader
             End Get
@@ -665,7 +665,7 @@ Namespace java.lang
         ' Initialized in JVM not by private constructor
         ' This field is filtered from reflection access, i.e. getDeclaredField
         ' will throw NoSuchFieldException
-        Private ReadOnly classLoader As  [Class]Loader
+        Private ReadOnly classLoader As  ClassLoader
 
         ''' <summary>
         ''' Returns an array of {@code TypeVariable} objects that represent the
@@ -2227,7 +2227,7 @@ Namespace java.lang
         ''' @since  JDK1.1 </exception>
         Public Function getResourceAsStream(ByVal name As String) As java.io.InputStream
             name = resolveName(name)
-            Dim cl As  [Class]Loader = classLoader0
+            Dim cl As  ClassLoader = classLoader0
             If cl Is Nothing Then Return classLoader.getSystemResourceAsStream(name)
             Return cl.getResourceAsStream(name)
         End Function
@@ -2267,7 +2267,7 @@ Namespace java.lang
         ''' @since  JDK1.1 </returns>
         Public Function getResource(ByVal name As String) As java.net.URL
             name = resolveName(name)
-            Dim cl As  [Class]Loader = classLoader0
+            Dim cl As  ClassLoader = classLoader0
             If cl Is Nothing Then Return classLoader.getSystemResource(name)
             Return cl.getResource(name)
         End Function
@@ -2350,8 +2350,8 @@ Namespace java.lang
                 '             * In all other cases, it requires RuntimePermission("accessDeclaredMembers")
                 '             * permission.
                 '             
-                Dim ccl As  [Class]Loader = classLoader.getClassLoader(caller)
-                Dim cl As  [Class]Loader = classLoader0
+                Dim ccl As  ClassLoader = classLoader.getClassLoader(caller)
+                Dim cl As  ClassLoader = classLoader0
                 If which <> Member.PUBLIC Then
                     If ccl IsNot cl Then s.checkPermission(sun.security.util.SecurityConstants.CHECK_MEMBER_ACCESS_PERMISSION)
                 End If
@@ -2364,10 +2364,10 @@ Namespace java.lang
         '     * class under the current package access policy. If access is denied,
         '     * throw a SecurityException.
         '     
-        Private Sub checkPackageAccess(ByVal ccl As  [Class]Loader, ByVal checkProxyInterfaces As Boolean)
+        Private Sub checkPackageAccess(ByVal ccl As  ClassLoader, ByVal checkProxyInterfaces As Boolean)
             Dim s As SecurityManager = System.securityManager
             If s IsNot Nothing Then
-                Dim cl As  [Class]Loader = classLoader0
+                Dim cl As  ClassLoader = classLoader0
 
                 If sun.reflect.misc.ReflectUtil.needsPackageAccessCheck(ccl, cl) Then
                     Dim name_Renamed As String = Me.name
@@ -3153,7 +3153,7 @@ Namespace java.lang
         ''' <seealso cref=    java.lang.ClassLoader#setDefaultAssertionStatus
         ''' @since  1.4 </seealso>
         Public Function desiredAssertionStatus() As Boolean
-            Dim loader As  [Class]Loader = classLoader
+            Dim loader As  ClassLoader = classLoader
             ' If the loader is null this is a system [Class], so ask the VM
             If loader Is Nothing Then Return desiredAssertionStatus0(Me)
 

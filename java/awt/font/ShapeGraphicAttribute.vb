@@ -89,49 +89,49 @@ Namespace java.awt.font
 			fShapeBounds = fShape.bounds2D
 		End Sub
 
-		''' <summary>
-		''' Returns the ascent of this <code>ShapeGraphicAttribute</code>.  The
-		''' ascent of a <code>ShapeGraphicAttribute</code> is the positive
-		''' distance from the origin of its <code>Shape</code> to the top of
-		''' bounds of its <code>Shape</code>. </summary>
-		''' <returns> the ascent of this <code>ShapeGraphicAttribute</code>. </returns>
-		Public Property Overrides ascent As Single
-			Get
-    
-				Return CSng (System.Math.Max(0, -fShapeBounds.minY))
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the ascent of this <code>ShapeGraphicAttribute</code>.  The
+        ''' ascent of a <code>ShapeGraphicAttribute</code> is the positive
+        ''' distance from the origin of its <code>Shape</code> to the top of
+        ''' bounds of its <code>Shape</code>. </summary>
+        ''' <returns> the ascent of this <code>ShapeGraphicAttribute</code>. </returns>
+        Public Overrides ReadOnly Property ascent As Single
+            Get
 
-		''' <summary>
-		''' Returns the descent of this <code>ShapeGraphicAttribute</code>.
-		''' The descent of a <code>ShapeGraphicAttribute</code> is the distance
-		''' from the origin of its <code>Shape</code> to the bottom of the
-		''' bounds of its <code>Shape</code>. </summary>
-		''' <returns> the descent of this <code>ShapeGraphicAttribute</code>. </returns>
-		Public Property Overrides descent As Single
-			Get
-    
-				Return CSng (System.Math.Max(0, fShapeBounds.maxY))
-			End Get
-		End Property
+                Return CSng(System.Math.Max(0, -fShapeBounds.minY))
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the advance of this <code>ShapeGraphicAttribute</code>.
-		''' The advance of a <code>ShapeGraphicAttribute</code> is the distance
-		''' from the origin of its <code>Shape</code> to the right side of the
-		''' bounds of its <code>Shape</code>. </summary>
-		''' <returns> the advance of this <code>ShapeGraphicAttribute</code>. </returns>
-		Public Property Overrides advance As Single
-			Get
-    
-				Return CSng (System.Math.Max(0, fShapeBounds.maxX))
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the descent of this <code>ShapeGraphicAttribute</code>.
+        ''' The descent of a <code>ShapeGraphicAttribute</code> is the distance
+        ''' from the origin of its <code>Shape</code> to the bottom of the
+        ''' bounds of its <code>Shape</code>. </summary>
+        ''' <returns> the descent of this <code>ShapeGraphicAttribute</code>. </returns>
+        Public Overrides ReadOnly Property descent As Single
+            Get
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' </summary>
-		Public Overrides Sub draw(ByVal graphics As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
+                Return CSng(System.Math.Max(0, fShapeBounds.maxY))
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Returns the advance of this <code>ShapeGraphicAttribute</code>.
+        ''' The advance of a <code>ShapeGraphicAttribute</code> is the distance
+        ''' from the origin of its <code>Shape</code> to the right side of the
+        ''' bounds of its <code>Shape</code>. </summary>
+        ''' <returns> the advance of this <code>ShapeGraphicAttribute</code>. </returns>
+        Public Overrides ReadOnly Property advance As Single
+            Get
+
+                Return CSng(System.Math.Max(0, fShapeBounds.maxX))
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' </summary>
+        Public Overrides Sub draw(ByVal graphics As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
 
 			' translating graphics to draw Shape !!!
 			graphics.translate(CInt(Fix(x)), CInt(Fix(y)))
@@ -148,41 +148,41 @@ Namespace java.awt.font
 			End Try
 		End Sub
 
-		''' <summary>
-		''' Returns a <seealso cref="Rectangle2D"/> that encloses all of the
-		''' bits drawn by this <code>ShapeGraphicAttribute</code> relative to
-		''' the rendering position.  A graphic can be rendered beyond its
-		''' origin, ascent, descent, or advance;  but if it does, this method's
-		''' implementation should indicate where the graphic is rendered. </summary>
-		''' <returns> a <code>Rectangle2D</code> that encloses all of the bits
-		''' rendered by this <code>ShapeGraphicAttribute</code>. </returns>
-		Public Property Overrides bounds As java.awt.geom.Rectangle2D
-			Get
-    
-				Dim bounds_Renamed As New java.awt.geom.Rectangle2D.Float
-				bounds_Renamed.rect = fShapeBounds
-    
-				If fStroke = STROKE Then
-					bounds_Renamed.width += 1
-					bounds_Renamed.height += 1
-				End If
-    
-				Return bounds_Renamed
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns a <seealso cref="Rectangle2D"/> that encloses all of the
+        ''' bits drawn by this <code>ShapeGraphicAttribute</code> relative to
+        ''' the rendering position.  A graphic can be rendered beyond its
+        ''' origin, ascent, descent, or advance;  but if it does, this method's
+        ''' implementation should indicate where the graphic is rendered. </summary>
+        ''' <returns> a <code>Rectangle2D</code> that encloses all of the bits
+        ''' rendered by this <code>ShapeGraphicAttribute</code>. </returns>
+        Public Overrides ReadOnly Property bounds As java.awt.geom.Rectangle2D
+            Get
 
-		''' <summary>
-		''' Return a <seealso cref="java.awt.Shape"/> that represents the region that
-		''' this <code>ShapeGraphicAttribute</code> renders.  This is used when a
-		''' <seealso cref="TextLayout"/> is requested to return the outline of the text.
-		''' The (untransformed) shape must not extend outside the rectangular
-		''' bounds returned by <code>getBounds</code>. </summary>
-		''' <param name="tx"> an optional <seealso cref="AffineTransform"/> to apply to the
-		'''   this <code>ShapeGraphicAttribute</code>. This can be null. </param>
-		''' <returns> the <code>Shape</code> representing this graphic attribute,
-		'''   suitable for stroking or filling.
-		''' @since 1.6 </returns>
-		Public Overrides Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
+                Dim bounds_Renamed As New java.awt.geom.Rectangle2D.Float
+                bounds_Renamed.rect = fShapeBounds
+
+                If fStroke = STROKE Then
+                    bounds_Renamed.width += 1
+                    bounds_Renamed.height += 1
+                End If
+
+                Return bounds_Renamed
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Return a <seealso cref="java.awt.Shape"/> that represents the region that
+        ''' this <code>ShapeGraphicAttribute</code> renders.  This is used when a
+        ''' <seealso cref="TextLayout"/> is requested to return the outline of the text.
+        ''' The (untransformed) shape must not extend outside the rectangular
+        ''' bounds returned by <code>getBounds</code>. </summary>
+        ''' <param name="tx"> an optional <seealso cref="AffineTransform"/> to apply to the
+        '''   this <code>ShapeGraphicAttribute</code>. This can be null. </param>
+        ''' <returns> the <code>Shape</code> representing this graphic attribute,
+        '''   suitable for stroking or filling.
+        ''' @since 1.6 </returns>
+        Public Overrides Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
 			Return If(tx Is Nothing, fShape, tx.createTransformedShape(fShape))
 		End Function
 
@@ -204,10 +204,10 @@ Namespace java.awt.font
 		''' <code>false</code> otherwise. </returns>
 		Public Overrides Function Equals(ByVal rhs As Object) As Boolean
 
-			Try
-				Return Equals(CType(rhs, ShapeGraphicAttribute))
-			Catch e As  [Class]CastException
-				Return False
+            Try
+                Return Equals(CType(rhs, ShapeGraphicAttribute))
+            Catch e As ClassCastException
+                Return False
 			End Try
 		End Function
 

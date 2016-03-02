@@ -255,7 +255,7 @@ Namespace java.lang
 		'''          information is available from the archive or codebase. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Shared Function getPackage(ByVal name As String) As Package
-			Dim l As  [Class]Loader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
+			Dim l As  ClassLoader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
 			If l IsNot Nothing Then
 				Return l.getPackage(name)
 			Else
@@ -277,7 +277,7 @@ Namespace java.lang
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		Public Property Shared packages As Package()
 			Get
-				Dim l As  [Class]Loader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
+				Dim l As  ClassLoader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
 				If l IsNot Nothing Then
 					Return l.packages
 				Else
@@ -308,7 +308,7 @@ Namespace java.lang
 			Dim i As Integer = name_Renamed.LastIndexOf("."c)
 			If i <> -1 Then
 				name_Renamed = name_Renamed.Substring(0, i)
-				Dim cl As  [Class]Loader = c.classLoader
+				Dim cl As  ClassLoader = c.classLoader
 				If cl IsNot Nothing Then
 					Return cl.getPackage(name_Renamed)
 				Else
@@ -353,7 +353,7 @@ Namespace java.lang
 				If packageInfo Is Nothing Then
 					Try
 					packageInfo = Type.GetType(pkgName & ".package-info", False, loader)
-					Catch ex As  [Class]NotFoundException
+					Catch ex As  ClassNotFoundException
 						' store a proxy for the package info that has no annotations
 	'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 	'					class PackageInfoProxy
@@ -426,7 +426,7 @@ Namespace java.lang
 		''' <param name="impltitle"> the title of the implementation </param>
 		''' <param name="implversion"> the version of the implementation </param>
 		''' <param name="implvendor"> the organization that maintains the implementation </param>
-		Friend Sub New(ByVal name As String, ByVal spectitle As String, ByVal specversion As String, ByVal specvendor As String, ByVal impltitle As String, ByVal implversion As String, ByVal implvendor As String, ByVal sealbase As java.net.URL, ByVal loader As  [Class]Loader)
+		Friend Sub New(ByVal name As String, ByVal spectitle As String, ByVal specversion As String, ByVal specvendor As String, ByVal impltitle As String, ByVal implversion As String, ByVal implvendor As String, ByVal sealbase As java.net.URL, ByVal loader As  ClassLoader)
 			pkgName = name
 			Me.implTitle = impltitle
 			Me.implVersion = implversion
@@ -445,7 +445,7 @@ Namespace java.lang
 	'     * @param man the optional manifest for the package
 	'     * @param url the optional code source url for the package
 	'     
-		Private Sub New(ByVal name As String, ByVal man As java.util.jar.Manifest, ByVal url As java.net.URL, ByVal loader As  [Class]Loader)
+		Private Sub New(ByVal name As String, ByVal man As java.util.jar.Manifest, ByVal url As java.net.URL, ByVal loader As  ClassLoader)
 			Dim path As String = name.replace("."c, "/"c) & "/"
 			Dim sealed_Renamed As String = Nothing
 			Dim specTitle As String= Nothing
@@ -599,7 +599,7 @@ Namespace java.lang
 		Private ReadOnly implVendor As String
 		Private ReadOnly sealBase As java.net.URL
 		<NonSerialized> _
-		Private ReadOnly loader As  [Class]Loader
+		Private ReadOnly loader As  ClassLoader
 		<NonSerialized> _
 		Private packageInfo As  [Class]
 	End Class

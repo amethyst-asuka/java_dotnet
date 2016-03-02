@@ -74,25 +74,25 @@ Namespace java.awt.image
 			MyBase.New(width, height)
 		End Sub
 
-		''' <summary>
-		''' Detect if the data is being delivered with the necessary hints
-		''' to allow the averaging algorithm to do its work.
-		''' <p>
-		''' Note: This method is intended to be called by the
-		''' <code>ImageProducer</code> of the <code>Image</code> whose
-		''' pixels are being filtered.  Developers using
-		''' this class to filter pixels from an image should avoid calling
-		''' this method directly since that operation could interfere
-		''' with the filtering operation. </summary>
-		''' <seealso cref= ImageConsumer#setHints </seealso>
-		Public Overrides Property hints As Integer
-			Set(ByVal hints As Integer)
-				passthrough = ((hints And neededHints) <> neededHints)
-				MyBase.hints = hints
-			End Set
-		End Property
+        ''' <summary>
+        ''' Detect if the data is being delivered with the necessary hints
+        ''' to allow the averaging algorithm to do its work.
+        ''' <p>
+        ''' Note: This method is intended to be called by the
+        ''' <code>ImageProducer</code> of the <code>Image</code> whose
+        ''' pixels are being filtered.  Developers using
+        ''' this class to filter pixels from an image should avoid calling
+        ''' this method directly since that operation could interfere
+        ''' with the filtering operation. </summary>
+        ''' <seealso cref= ImageConsumer#setHints </seealso>
+        Public Overrides ReadOnly Property hints As Integer
+            Set(ByVal hints As Integer)
+                passthrough = ((hints And neededHints) <> neededHints)
+                MyBase.hints = hints
+            End Set
+        End Property
 
-		Private Sub makeAccumBuffers()
+        Private Sub makeAccumBuffers()
 			reds = New Single(destWidth - 1){}
 			greens = New Single(destWidth - 1){}
 			blues = New Single(destWidth - 1){}
@@ -235,50 +235,52 @@ Namespace java.awt.image
 			savedy = dy
 		End Sub
 
-		''' <summary>
-		''' Combine the components for the delivered byte pixels into the
-		''' accumulation arrays and send on any averaged data for rows of
-		''' pixels that are complete.  If the correct hints were not
-		''' specified in the setHints call then relay the work to our
-		''' superclass which is capable of scaling pixels regardless of
-		''' the delivery hints.
-		''' <p>
-		''' Note: This method is intended to be called by the
-		''' <code>ImageProducer</code> of the <code>Image</code>
-		''' whose pixels are being filtered.  Developers using
-		''' this class to filter pixels from an image should avoid calling
-		''' this method directly since that operation could interfere
-		''' with the filtering operation. </summary>
-		''' <seealso cref= ReplicateScaleFilter </seealso>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void setPixels(int x, int y, int w, int h, java.awt.image.ColorModel model, byte pixels() , int off, int scansize)
-			If passthrough Then
-				MyBase.pixelsels(x, y, w, h, model, pixels, off, scansize)
-			Else
-				accumPixels(x, y, w, h, model, pixels, off, scansize)
-			End If
+        ''' <summary>
+        ''' Combine the components for the delivered byte pixels into the
+        ''' accumulation arrays and send on any averaged data for rows of
+        ''' pixels that are complete.  If the correct hints were not
+        ''' specified in the setHints call then relay the work to our
+        ''' superclass which is capable of scaling pixels regardless of
+        ''' the delivery hints.
+        ''' <p>
+        ''' Note: This method is intended to be called by the
+        ''' <code>ImageProducer</code> of the <code>Image</code>
+        ''' whose pixels are being filtered.  Developers using
+        ''' this class to filter pixels from an image should avoid calling
+        ''' this method directly since that operation could interfere
+        ''' with the filtering operation. </summary>
+        ''' <seealso cref= ReplicateScaleFilter </seealso>
+        'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
+        Public Sub setPixels(x As Integer, y As Integer, w As Integer, h As Integer, model As java.awt.image.ColorModel, pixels() As Byte, off As Integer, scansize As Integer)
+            If passthrough Then
+                MyBase.pixelsels(x, y, w, h, model, pixels, off, scansize)
+            Else
+                accumPixels(x, y, w, h, model, pixels, off, scansize)
+            End If
+        End Sub
 
-		''' <summary>
-		''' Combine the components for the delivered int pixels into the
-		''' accumulation arrays and send on any averaged data for rows of
-		''' pixels that are complete.  If the correct hints were not
-		''' specified in the setHints call then relay the work to our
-		''' superclass which is capable of scaling pixels regardless of
-		''' the delivery hints.
-		''' <p>
-		''' Note: This method is intended to be called by the
-		''' <code>ImageProducer</code> of the <code>Image</code>
-		''' whose pixels are being filtered.  Developers using
-		''' this class to filter pixels from an image should avoid calling
-		''' this method directly since that operation could interfere
-		''' with the filtering operation. </summary>
-		''' <seealso cref= ReplicateScaleFilter </seealso>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, java.awt.image.ColorModel model, Integer pixels() , Integer off, Integer scansize)
-			If passthrough Then
-				MyBase.pixelsels(x, y, w, h, model, pixels, off, scansize)
-			Else
-				accumPixels(x, y, w, h, model, pixels, off, scansize)
-			End If
-	End Class
+        ''' <summary>
+        ''' Combine the components for the delivered int pixels into the
+        ''' accumulation arrays and send on any averaged data for rows of
+        ''' pixels that are complete.  If the correct hints were not
+        ''' specified in the setHints call then relay the work to our
+        ''' superclass which is capable of scaling pixels regardless of
+        ''' the delivery hints.
+        ''' <p>
+        ''' Note: This method is intended to be called by the
+        ''' <code>ImageProducer</code> of the <code>Image</code>
+        ''' whose pixels are being filtered.  Developers using
+        ''' this class to filter pixels from an image should avoid calling
+        ''' this method directly since that operation could interfere
+        ''' with the filtering operation. </summary>
+        ''' <seealso cref= ReplicateScaleFilter </seealso>
+        Public Sub pixelsels(x As Integer, y As Integer, w As Integer, h As Integer, model As java.awt.image.ColorModel, pixels() As Integer, off As Integer, scansize As Integer)
+            If passthrough Then
+                MyBase.pixelsels(x, y, w, h, model, pixels, off, scansize)
+            Else
+                accumPixels(x, y, w, h, model, pixels, off, scansize)
+            End If
+        End Sub
+    End Class
 
 End Namespace

@@ -72,7 +72,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader)
+		Public Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -81,7 +81,7 @@ Namespace java.net
 			Me.acc = java.security.AccessController.context
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader, ByVal acc As java.security.AccessControlContext)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -148,7 +148,7 @@ Namespace java.net
 		'''             creation of a class loader. </exception>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Public Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader, ByVal factory As URLStreamHandlerFactory)
+		Public Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader, ByVal factory As URLStreamHandlerFactory)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security As SecurityManager = System.securityManager
@@ -638,7 +638,7 @@ Namespace java.net
 		''' <param name="parent"> the parent class loader for delegation </param>
 		''' <exception cref="NullPointerException"> if {@code urls} is {@code null}. </exception>
 		''' <returns> the resulting class loader </returns>
-		Public Shared Function newInstance(ByVal urls As URL(), ByVal parent As  [Class]Loader) As URLClassLoader
+		Public Shared Function newInstance(ByVal urls As URL(), ByVal parent As  ClassLoader) As URLClassLoader
 			' Save the caller's context
 			Dim acc As java.security.AccessControlContext = java.security.AccessController.context
 			' Need a privileged block to create the class loader
@@ -707,7 +707,7 @@ Namespace java.net
 			ClassLoader.registerAsParallelCapable()
 		End Sub
 
-		Friend Sub New(ByVal urls As URL(), ByVal parent As  [Class]Loader, ByVal acc As java.security.AccessControlContext)
+		Friend Sub New(ByVal urls As URL(), ByVal parent As  ClassLoader, ByVal acc As java.security.AccessControlContext)
 			MyBase.New(urls, parent, acc)
 		End Sub
 

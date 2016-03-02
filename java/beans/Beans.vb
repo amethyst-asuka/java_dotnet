@@ -58,7 +58,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As  [Class]Loader, ByVal beanName As String) As Object
+		Public Shared Function instantiate(ByVal cls As  ClassLoader, ByVal beanName As String) As Object
 			Return Beans.instantiate(cls, beanName, Nothing, Nothing)
 		End Function
 
@@ -79,7 +79,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As  [Class]Loader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext) As Object
+		Public Shared Function instantiate(ByVal cls As  ClassLoader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext) As Object
 			Return Beans.instantiate(cls, beanName, beanContext, Nothing)
 		End Function
 
@@ -134,7 +134,7 @@ Namespace java.beans
 		'''              object could not be found. </exception>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
 
-		Public Shared Function instantiate(ByVal cls As  [Class]Loader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext, ByVal initializer As AppletInitializer) As Object
+		Public Shared Function instantiate(ByVal cls As  ClassLoader, ByVal beanName As String, ByVal beanContext As java.beans.beancontext.BeanContext, ByVal initializer As AppletInitializer) As Object
 
 			Dim ins As java.io.InputStream
 			Dim oins As java.io.ObjectInputStream = Nothing
@@ -178,7 +178,7 @@ Namespace java.beans
 					' Drop through and try opening the class.  But remember
 					' the exception in case we can't find the class either.
 					serex = ex
-				Catch ex As  [Class]NotFoundException
+				Catch ex As  ClassNotFoundException
 					ins.close()
 					Throw ex
 				End Try
@@ -190,7 +190,7 @@ Namespace java.beans
 
 				Try
 					cl = com.sun.beans.finder.ClassFinder.findClass(beanName, cls)
-				Catch ex As  [Class]NotFoundException
+				Catch ex As  ClassNotFoundException
 					' There is no appropriate class.  If we earlier tried to
 					' deserialize an object and got an IO exception, throw that,
 					' otherwise rethrow the ClassNotFoundException.
@@ -408,13 +408,13 @@ Namespace java.beans
 	Friend Class ObjectInputStreamWithLoader
 		Inherits java.io.ObjectInputStream
 
-		Private loader As  [Class]Loader
+		Private loader As  ClassLoader
 
 		''' <summary>
 		''' Loader must be non-null;
 		''' </summary>
 
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal loader As  [Class]Loader)
+		Public Sub New(ByVal [in] As java.io.InputStream, ByVal loader As  ClassLoader)
 
 			MyBase.New([in])
 			If loader Is Nothing Then Throw New IllegalArgumentException("Illegal null argument to ObjectInputStreamWithLoader")

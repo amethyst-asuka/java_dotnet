@@ -999,7 +999,7 @@ Namespace java.lang.invoke
 		''' <exception cref="NullPointerException"> if the string is null </exception>
 		''' <exception cref="IllegalArgumentException"> if the string is not well-formed </exception>
 		''' <exception cref="TypeNotPresentException"> if a named type cannot be found </exception>
-		Public Shared Function fromMethodDescriptorString(ByVal descriptor As String, ByVal loader As  [Class]Loader) As MethodType
+		Public Shared Function fromMethodDescriptorString(ByVal descriptor As String, ByVal loader As  ClassLoader) As MethodType
 			If (Not descriptor.StartsWith("(")) OrElse descriptor.IndexOf(")"c) < 0 OrElse descriptor.IndexOf("."c) >= 0 Then ' also generates NPE if needed Throw newIllegalArgumentException("not a method descriptor: " & descriptor)
 			Dim types As IList(Of [Class]) = sun.invoke.util.BytecodeDescriptor.parseMethod(descriptor, loader)
 			Dim rtype As  [Class] = types.Remove(types.Count - 1)

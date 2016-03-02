@@ -111,7 +111,7 @@ Namespace java.beans
 		'''        <code>null</code> indicates that the default class loader should
 		'''        be used
 		''' @since 1.5 </param>
-		Public Sub New(ByVal [in] As java.io.InputStream, ByVal owner As Object, ByVal exceptionListener As ExceptionListener, ByVal cl As  [Class]Loader)
+		Public Sub New(ByVal [in] As java.io.InputStream, ByVal owner As Object, ByVal exceptionListener As ExceptionListener, ByVal cl As  ClassLoader)
 			Me.New(New org.xml.sax.InputSource([in]), owner, exceptionListener, cl)
 		End Sub
 
@@ -143,7 +143,7 @@ Namespace java.beans
 		'''               or {@code null} to use the default class loader
 		''' 
 		''' @since 1.7 </param>
-		Private Sub New(ByVal [is] As org.xml.sax.InputSource, ByVal owner As Object, ByVal el As ExceptionListener, ByVal cl As  [Class]Loader)
+		Private Sub New(ByVal [is] As org.xml.sax.InputSource, ByVal owner As Object, ByVal el As ExceptionListener, ByVal cl As  ClassLoader)
 			Me.input = [is]
 			Me.owner = owner
 			exceptionListener = el
@@ -263,7 +263,7 @@ Namespace java.beans
 		''' <returns> an instance of {@code DefaultHandler} for SAX parser
 		''' 
 		''' @since 1.7 </returns>
-		Public Shared Function createHandler(ByVal owner As Object, ByVal el As ExceptionListener, ByVal cl As  [Class]Loader) As org.xml.sax.helpers.DefaultHandler
+		Public Shared Function createHandler(ByVal owner As Object, ByVal el As ExceptionListener, ByVal cl As  ClassLoader) As org.xml.sax.helpers.DefaultHandler
 			Dim handler As New com.sun.beans.decoder.DocumentHandler
 			handler.owner = owner
 			handler.exceptionListener = el

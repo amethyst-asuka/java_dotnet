@@ -614,110 +614,110 @@ Namespace java.awt.event
 		<NonSerialized> _
 		Private shouldExcludeButtonFromExtModifiers As Boolean = False
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' </summary>
-		Public Property Overrides modifiersEx As Integer
-			Get
-				Dim tmpModifiers As Integer = modifiers
-				If shouldExcludeButtonFromExtModifiers Then tmpModifiers = tmpModifiers And Not(InputEvent.getMaskForButton(button))
-				Return tmpModifiers And Not JDK_1_3_MODIFIERS
-			End Get
-		End Property
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' </summary>
+        Public Overrides ReadOnly Property modifiersEx As Integer
+            Get
+                Dim tmpModifiers As Integer = modifiers
+                If shouldExcludeButtonFromExtModifiers Then tmpModifiers = tmpModifiers And Not (InputEvent.getMaskForButton(button))
+                Return tmpModifiers And Not JDK_1_3_MODIFIERS
+            End Get
+        End Property
 
-		''' <summary>
-		''' Constructs a <code>MouseEvent</code> object with the
-		''' specified source component,
-		''' type, time, modifiers, coordinates, absolute coordinates, click count, popupTrigger flag,
-		''' and button number.
-		''' <p>
-		''' Creating an invalid event (such
-		''' as by using more than one of the old _MASKs, or modifier/button
-		''' values which don't match) results in unspecified behavior.
-		''' Even if inconsistent values for relative and absolute coordinates are
-		''' passed to the constructor, the mouse event instance is still
-		''' created and no exception is thrown.
-		''' This method throws an
-		''' <code>IllegalArgumentException</code> if <code>source</code>
-		''' is <code>null</code>.
-		''' </summary>
-		''' <param name="source">       The <code>Component</code> that originated the event </param>
-		''' <param name="id">              An integer indicating the type of event.
-		'''                     For information on allowable values, see
-		'''                     the class description for <seealso cref="MouseEvent"/> </param>
-		''' <param name="when">         A long integer that gives the time the event occurred.
-		'''                     Passing negative or zero value
-		'''                     is not recommended </param>
-		''' <param name="modifiers">    a modifier mask describing the modifier keys and mouse
-		'''                     buttons (for example, shift, ctrl, alt, and meta) that
-		'''                     are down during the event.
-		'''                     Only extended modifiers are allowed to be used as a
-		'''                     value for this parameter (see the <seealso cref="InputEvent#getModifiersEx"/>
-		'''                     class for the description of extended modifiers).
-		'''                     Passing negative parameter
-		'''                     is not recommended.
-		'''                     Zero value means that no modifiers were passed </param>
-		''' <param name="x">            The horizontal x coordinate for the mouse location.
-		'''                       It is allowed to pass negative values </param>
-		''' <param name="y">            The vertical y coordinate for the mouse location.
-		'''                       It is allowed to pass negative values </param>
-		''' <param name="xAbs">           The absolute horizontal x coordinate for the mouse location
-		'''                       It is allowed to pass negative values </param>
-		''' <param name="yAbs">           The absolute vertical y coordinate for the mouse location
-		'''                       It is allowed to pass negative values </param>
-		''' <param name="clickCount">   The number of mouse clicks associated with event.
-		'''                       Passing negative value
-		'''                       is not recommended </param>
-		''' <param name="popupTrigger"> A boolean that equals {@code true} if this event
-		'''                     is a trigger for a popup menu </param>
-		''' <param name="button">       An integer that indicates, which of the mouse buttons has
-		'''                     changed its state.
-		''' The following rules are applied to this parameter:
-		''' <ul>
-		''' <li>If support for the extended mouse buttons is
-		''' <seealso cref="Toolkit#areExtraMouseButtonsEnabled() disabled"/> by Java
-		''' then it is allowed to create {@code MouseEvent} objects only with the standard buttons:
-		''' {@code NOBUTTON}, {@code BUTTON1}, {@code BUTTON2}, and
-		''' {@code BUTTON3}.
-		''' <li> If support for the extended mouse buttons is
-		''' <seealso cref="Toolkit#areExtraMouseButtonsEnabled() enabled"/> by Java
-		''' then it is allowed to create {@code MouseEvent} objects with
-		''' the standard buttons.
-		''' In case the support for extended mouse buttons is
-		''' <seealso cref="Toolkit#areExtraMouseButtonsEnabled() enabled"/> by Java, then
-		''' in addition to the standard buttons, {@code MouseEvent} objects can be created
-		''' using buttons from the range starting from 4 to
-		''' <seealso cref="java.awt.MouseInfo#getNumberOfButtons() MouseInfo.getNumberOfButtons()"/>
-		''' if the mouse has more than three buttons.
-		''' </ul> </param>
-		''' <exception cref="IllegalArgumentException"> if {@code button} is less then zero </exception>
-		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
-		''' <exception cref="IllegalArgumentException"> if {@code button} is greater then BUTTON3 and the support for extended mouse buttons is
-		'''                                  <seealso cref="Toolkit#areExtraMouseButtonsEnabled() disabled"/> by Java </exception>
-		''' <exception cref="IllegalArgumentException"> if {@code button} is greater then the
-		'''                                  <seealso cref="java.awt.MouseInfo#getNumberOfButtons() current number of buttons"/> and the support
-		'''                                  for extended mouse buttons is <seealso cref="Toolkit#areExtraMouseButtonsEnabled() enabled"/>
-		'''                                  by Java </exception>
-		''' <exception cref="IllegalArgumentException"> if an invalid <code>button</code>
-		'''            value is passed in </exception>
-		''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
-		''' <seealso cref= #getSource() </seealso>
-		''' <seealso cref= #getID() </seealso>
-		''' <seealso cref= #getWhen() </seealso>
-		''' <seealso cref= #getModifiers() </seealso>
-		''' <seealso cref= #getX() </seealso>
-		''' <seealso cref= #getY() </seealso>
-		''' <seealso cref= #getXOnScreen() </seealso>
-		''' <seealso cref= #getYOnScreen() </seealso>
-		''' <seealso cref= #getClickCount() </seealso>
-		''' <seealso cref= #isPopupTrigger() </seealso>
-		''' <seealso cref= #getButton() </seealso>
-		''' <seealso cref= #button </seealso>
-		''' <seealso cref= Toolkit#areExtraMouseButtonsEnabled() </seealso>
-		''' <seealso cref= java.awt.MouseInfo#getNumberOfButtons() </seealso>
-		''' <seealso cref= InputEvent#getMaskForButton(int)
-		''' @since 1.6 </seealso>
-		Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal xAbs As Integer, ByVal yAbs As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal button_Renamed As Integer)
+        ''' <summary>
+        ''' Constructs a <code>MouseEvent</code> object with the
+        ''' specified source component,
+        ''' type, time, modifiers, coordinates, absolute coordinates, click count, popupTrigger flag,
+        ''' and button number.
+        ''' <p>
+        ''' Creating an invalid event (such
+        ''' as by using more than one of the old _MASKs, or modifier/button
+        ''' values which don't match) results in unspecified behavior.
+        ''' Even if inconsistent values for relative and absolute coordinates are
+        ''' passed to the constructor, the mouse event instance is still
+        ''' created and no exception is thrown.
+        ''' This method throws an
+        ''' <code>IllegalArgumentException</code> if <code>source</code>
+        ''' is <code>null</code>.
+        ''' </summary>
+        ''' <param name="source">       The <code>Component</code> that originated the event </param>
+        ''' <param name="id">              An integer indicating the type of event.
+        '''                     For information on allowable values, see
+        '''                     the class description for <seealso cref="MouseEvent"/> </param>
+        ''' <param name="when">         A long integer that gives the time the event occurred.
+        '''                     Passing negative or zero value
+        '''                     is not recommended </param>
+        ''' <param name="modifiers">    a modifier mask describing the modifier keys and mouse
+        '''                     buttons (for example, shift, ctrl, alt, and meta) that
+        '''                     are down during the event.
+        '''                     Only extended modifiers are allowed to be used as a
+        '''                     value for this parameter (see the <seealso cref="InputEvent#getModifiersEx"/>
+        '''                     class for the description of extended modifiers).
+        '''                     Passing negative parameter
+        '''                     is not recommended.
+        '''                     Zero value means that no modifiers were passed </param>
+        ''' <param name="x">            The horizontal x coordinate for the mouse location.
+        '''                       It is allowed to pass negative values </param>
+        ''' <param name="y">            The vertical y coordinate for the mouse location.
+        '''                       It is allowed to pass negative values </param>
+        ''' <param name="xAbs">           The absolute horizontal x coordinate for the mouse location
+        '''                       It is allowed to pass negative values </param>
+        ''' <param name="yAbs">           The absolute vertical y coordinate for the mouse location
+        '''                       It is allowed to pass negative values </param>
+        ''' <param name="clickCount">   The number of mouse clicks associated with event.
+        '''                       Passing negative value
+        '''                       is not recommended </param>
+        ''' <param name="popupTrigger"> A boolean that equals {@code true} if this event
+        '''                     is a trigger for a popup menu </param>
+        ''' <param name="button">       An integer that indicates, which of the mouse buttons has
+        '''                     changed its state.
+        ''' The following rules are applied to this parameter:
+        ''' <ul>
+        ''' <li>If support for the extended mouse buttons is
+        ''' <seealso cref="Toolkit#areExtraMouseButtonsEnabled() disabled"/> by Java
+        ''' then it is allowed to create {@code MouseEvent} objects only with the standard buttons:
+        ''' {@code NOBUTTON}, {@code BUTTON1}, {@code BUTTON2}, and
+        ''' {@code BUTTON3}.
+        ''' <li> If support for the extended mouse buttons is
+        ''' <seealso cref="Toolkit#areExtraMouseButtonsEnabled() enabled"/> by Java
+        ''' then it is allowed to create {@code MouseEvent} objects with
+        ''' the standard buttons.
+        ''' In case the support for extended mouse buttons is
+        ''' <seealso cref="Toolkit#areExtraMouseButtonsEnabled() enabled"/> by Java, then
+        ''' in addition to the standard buttons, {@code MouseEvent} objects can be created
+        ''' using buttons from the range starting from 4 to
+        ''' <seealso cref="java.awt.MouseInfo#getNumberOfButtons() MouseInfo.getNumberOfButtons()"/>
+        ''' if the mouse has more than three buttons.
+        ''' </ul> </param>
+        ''' <exception cref="IllegalArgumentException"> if {@code button} is less then zero </exception>
+        ''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
+        ''' <exception cref="IllegalArgumentException"> if {@code button} is greater then BUTTON3 and the support for extended mouse buttons is
+        '''                                  <seealso cref="Toolkit#areExtraMouseButtonsEnabled() disabled"/> by Java </exception>
+        ''' <exception cref="IllegalArgumentException"> if {@code button} is greater then the
+        '''                                  <seealso cref="java.awt.MouseInfo#getNumberOfButtons() current number of buttons"/> and the support
+        '''                                  for extended mouse buttons is <seealso cref="Toolkit#areExtraMouseButtonsEnabled() enabled"/>
+        '''                                  by Java </exception>
+        ''' <exception cref="IllegalArgumentException"> if an invalid <code>button</code>
+        '''            value is passed in </exception>
+        ''' <exception cref="IllegalArgumentException"> if <code>source</code> is null </exception>
+        ''' <seealso cref= #getSource() </seealso>
+        ''' <seealso cref= #getID() </seealso>
+        ''' <seealso cref= #getWhen() </seealso>
+        ''' <seealso cref= #getModifiers() </seealso>
+        ''' <seealso cref= #getX() </seealso>
+        ''' <seealso cref= #getY() </seealso>
+        ''' <seealso cref= #getXOnScreen() </seealso>
+        ''' <seealso cref= #getYOnScreen() </seealso>
+        ''' <seealso cref= #getClickCount() </seealso>
+        ''' <seealso cref= #isPopupTrigger() </seealso>
+        ''' <seealso cref= #getButton() </seealso>
+        ''' <seealso cref= #button </seealso>
+        ''' <seealso cref= Toolkit#areExtraMouseButtonsEnabled() </seealso>
+        ''' <seealso cref= java.awt.MouseInfo#getNumberOfButtons() </seealso>
+        ''' <seealso cref= InputEvent#getMaskForButton(int)
+        ''' @since 1.6 </seealso>
+        Public Sub New(ByVal source As java.awt.Component, ByVal id As Integer, ByVal [when] As Long, ByVal modifiers As Integer, ByVal x As Integer, ByVal y As Integer, ByVal xAbs As Integer, ByVal yAbs As Integer, ByVal clickCount As Integer, ByVal popupTrigger As Boolean, ByVal button_Renamed As Integer)
 			MyBase.New(source, id, [when], modifiers)
 			Me.x = x
 			Me.y = y

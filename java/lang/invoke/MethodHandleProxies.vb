@@ -145,15 +145,15 @@ Namespace java.lang.invoke
 			Dim mh As MethodHandle
 			If System.securityManager IsNot Nothing Then
 				Dim caller As  [Class] = sun.reflect.Reflection.callerClass
-				Dim ccl As  [Class]Loader = If(caller IsNot Nothing, caller.classLoader, Nothing)
+				Dim ccl As  ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 				sun.reflect.misc.ReflectUtil.checkProxyPackageAccess(ccl, intfc)
 				mh = If(ccl IsNot Nothing, bindCaller(target, caller), target)
 			Else
 				mh = target
 			End If
-			Dim proxyLoader As  [Class]Loader = intfc.classLoader
+			Dim proxyLoader As  ClassLoader = intfc.classLoader
 			If proxyLoader Is Nothing Then
-				Dim cl As  [Class]Loader = Thread.CurrentThread.contextClassLoader ' avoid use of BCP
+				Dim cl As  ClassLoader = Thread.CurrentThread.contextClassLoader ' avoid use of BCP
 				proxyLoader = If(cl IsNot Nothing, cl, ClassLoader.systemClassLoader)
 			End If
 			Dim methods As Method() = getSingleNameMethods(intfc)
@@ -172,7 +172,7 @@ Namespace java.lang.invoke
 			If System.securityManager IsNot Nothing Then
 				' sun.invoke.WrapperInstance is a restricted interface not accessible
 				' by any non-null class loader.
-				Dim loader As  [Class]Loader = proxyLoader
+				Dim loader As  ClassLoader = proxyLoader
 				proxy_Renamed = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Else
 				proxy_Renamed = Proxy.newProxyInstance(proxyLoader, New [Class](){ intfc, GetType(sun.invoke.WrapperInstance) }, ih)

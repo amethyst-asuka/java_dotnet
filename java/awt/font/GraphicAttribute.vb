@@ -122,38 +122,38 @@ Namespace java.awt.font
 		''' <seealso cref= #getBounds() </seealso>
 		Public MustOverride ReadOnly Property advance As Single
 
-		''' <summary>
-		''' Returns a <seealso cref="Rectangle2D"/> that encloses all of the
-		''' bits drawn by this <code>GraphicAttribute</code> relative to the
-		''' rendering position.
-		''' A graphic may be rendered beyond its origin, ascent, descent,
-		''' or advance;  but if it is, this method's implementation must
-		''' indicate where the graphic is rendered.
-		''' Default bounds is the rectangle (0, -ascent, advance, ascent+descent). </summary>
-		''' <returns> a <code>Rectangle2D</code> that encloses all of the bits
-		''' rendered by this <code>GraphicAttribute</code>. </returns>
-		Public Overridable Property bounds As java.awt.geom.Rectangle2D
-			Get
-				Dim ascent_Renamed As Single = ascent
-				Return New java.awt.geom.Rectangle2D.Float(0, -ascent_Renamed, advance, ascent_Renamed+descent)
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns a <seealso cref="Rectangle2D"/> that encloses all of the
+        ''' bits drawn by this <code>GraphicAttribute</code> relative to the
+        ''' rendering position.
+        ''' A graphic may be rendered beyond its origin, ascent, descent,
+        ''' or advance;  but if it is, this method's implementation must
+        ''' indicate where the graphic is rendered.
+        ''' Default bounds is the rectangle (0, -ascent, advance, ascent+descent). </summary>
+        ''' <returns> a <code>Rectangle2D</code> that encloses all of the bits
+        ''' rendered by this <code>GraphicAttribute</code>. </returns>
+        Public Overridable ReadOnly Property bounds As java.awt.geom.Rectangle2D
+            Get
+                Dim ascent_Renamed As Single = ascent
+                Return New java.awt.geom.Rectangle2D.Float(0, -ascent_Renamed, advance, ascent_Renamed + descent)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Return a <seealso cref="java.awt.Shape"/> that represents the region that
-		''' this <code>GraphicAttribute</code> renders.  This is used when a
-		''' <seealso cref="TextLayout"/> is requested to return the outline of the text.
-		''' The (untransformed) shape must not extend outside the rectangular
-		''' bounds returned by <code>getBounds</code>.
-		''' The default implementation returns the rectangle returned by
-		''' <seealso cref="#getBounds"/>, transformed by the provided <seealso cref="AffineTransform"/>
-		''' if present. </summary>
-		''' <param name="tx"> an optional <seealso cref="AffineTransform"/> to apply to the
-		'''   outline of this <code>GraphicAttribute</code>. This can be null. </param>
-		''' <returns> a <code>Shape</code> representing this graphic attribute,
-		'''   suitable for stroking or filling.
-		''' @since 1.6 </returns>
-		Public Overridable Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
+        ''' <summary>
+        ''' Return a <seealso cref="java.awt.Shape"/> that represents the region that
+        ''' this <code>GraphicAttribute</code> renders.  This is used when a
+        ''' <seealso cref="TextLayout"/> is requested to return the outline of the text.
+        ''' The (untransformed) shape must not extend outside the rectangular
+        ''' bounds returned by <code>getBounds</code>.
+        ''' The default implementation returns the rectangle returned by
+        ''' <seealso cref="#getBounds"/>, transformed by the provided <seealso cref="AffineTransform"/>
+        ''' if present. </summary>
+        ''' <param name="tx"> an optional <seealso cref="AffineTransform"/> to apply to the
+        '''   outline of this <code>GraphicAttribute</code>. This can be null. </param>
+        ''' <returns> a <code>Shape</code> representing this graphic attribute,
+        '''   suitable for stroking or filling.
+        ''' @since 1.6 </returns>
+        Public Overridable Function getOutline(ByVal tx As java.awt.geom.AffineTransform) As java.awt.Shape
 			Dim b As java.awt.Shape = bounds
 			If tx IsNot Nothing Then b = tx.createTransformedShape(b)
 			Return b
@@ -168,34 +168,34 @@ Namespace java.awt.font
 		''' <param name="y"> the user-space Y coordinate where the graphic is rendered </param>
 		Public MustOverride Sub draw(ByVal graphics As java.awt.Graphics2D, ByVal x As Single, ByVal y As Single)
 
-		''' <summary>
-		''' Returns the alignment of this <code>GraphicAttribute</code>.
-		''' Alignment can be to a particular baseline, or to the absolute top
-		''' or bottom of a line. </summary>
-		''' <returns> the alignment of this <code>GraphicAttribute</code>. </returns>
-		Public Property alignment As Integer
-			Get
-    
-				Return fAlignment
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the alignment of this <code>GraphicAttribute</code>.
+        ''' Alignment can be to a particular baseline, or to the absolute top
+        ''' or bottom of a line. </summary>
+        ''' <returns> the alignment of this <code>GraphicAttribute</code>. </returns>
+        Public ReadOnly Property alignment As Integer
+            Get
 
-		''' <summary>
-		''' Returns the justification information for this
-		''' <code>GraphicAttribute</code>.  Subclasses
-		''' can override this method to provide different justification
-		''' information. </summary>
-		''' <returns> a <seealso cref="GlyphJustificationInfo"/> object that contains the
-		''' justification information for this <code>GraphicAttribute</code>. </returns>
-		Public Overridable Property justificationInfo As GlyphJustificationInfo
-			Get
-    
-				' should we cache this?
-				Dim advance_Renamed As Single = advance
-    
-				Return New GlyphJustificationInfo(advance_Renamed, False, 2, advance_Renamed/3, advance_Renamed/3, False, 1, 0, 0) ' shrinkRightLimit -  shrinkLeftLimit -  shrinkPriority -  shrinkAbsorb -  growRightLimit -  growLeftLimit -  growPriority -  growAbsorb -  weight
-			End Get
-		End Property
-	End Class
+                Return fAlignment
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Returns the justification information for this
+        ''' <code>GraphicAttribute</code>.  Subclasses
+        ''' can override this method to provide different justification
+        ''' information. </summary>
+        ''' <returns> a <seealso cref="GlyphJustificationInfo"/> object that contains the
+        ''' justification information for this <code>GraphicAttribute</code>. </returns>
+        Public Overridable ReadOnly Property justificationInfo As GlyphJustificationInfo
+            Get
+
+                ' should we cache this?
+                Dim advance_Renamed As Single = advance
+
+                Return New GlyphJustificationInfo(advance_Renamed, False, 2, advance_Renamed / 3, advance_Renamed / 3, False, 1, 0, 0) ' shrinkRightLimit -  shrinkLeftLimit -  shrinkPriority -  shrinkAbsorb -  growRightLimit -  growLeftLimit -  growPriority -  growAbsorb -  weight
+            End Get
+        End Property
+    End Class
 
 End Namespace

@@ -40,7 +40,7 @@ Namespace java.util
     ''' </summary>
 
     <Serializable>
-    Public Class EventObject
+    Public Class EventObject : Inherits java.lang.Object
 
         Private Const serialVersionUID As Long = 5516075349620653480L
 

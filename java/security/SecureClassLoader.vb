@@ -70,7 +70,7 @@ Namespace java.security
 		'''             {@code checkCreateClassLoader} method doesn't allow
 		'''             creation of a class loader. </exception>
 		''' <seealso cref= SecurityManager#checkCreateClassLoader </seealso>
-		Protected Friend Sub New(ByVal parent As  [Class]Loader)
+		Protected Friend Sub New(ByVal parent As  ClassLoader)
 			MyBase.New(parent)
 			' this is to make the stack depth consistent with 1.1
 			Dim security_Renamed As SecurityManager = System.securityManager

@@ -2051,37 +2051,37 @@ Namespace java.awt.geom
 			End If
 		End Sub
 
-		''' <summary>
-		''' Sets this transform to a copy of the transform in the specified
-		''' <code>AffineTransform</code> object. </summary>
-		''' <param name="Tx"> the <code>AffineTransform</code> object from which to
-		''' copy the transform
-		''' @since 1.2 </param>
-		Public Overridable Property transform As AffineTransform
-			Set(ByVal Tx As AffineTransform)
-				Me.m00 = Tx.m00
-				Me.m10 = Tx.m10
-				Me.m01 = Tx.m01
-				Me.m11 = Tx.m11
-				Me.m02 = Tx.m02
-				Me.m12 = Tx.m12
-				Me.state = Tx.state
-				Me.type = Tx.type
-			End Set
-		End Property
+        ''' <summary>
+        ''' Sets this transform to a copy of the transform in the specified
+        ''' <code>AffineTransform</code> object. </summary>
+        ''' <param name="Tx"> the <code>AffineTransform</code> object from which to
+        ''' copy the transform
+        ''' @since 1.2 </param>
+        Public Overridable WriteOnly Property transform As AffineTransform
+            Set(ByVal Tx As AffineTransform)
+                Me.m00 = Tx.m00
+                Me.m10 = Tx.m10
+                Me.m01 = Tx.m01
+                Me.m11 = Tx.m11
+                Me.m02 = Tx.m02
+                Me.m12 = Tx.m12
+                Me.state = Tx.state
+                Me.type = Tx.type
+            End Set
+        End Property
 
-		''' <summary>
-		''' Sets this transform to the matrix specified by the 6
-		''' double precision values.
-		''' </summary>
-		''' <param name="m00"> the X coordinate scaling element of the 3x3 matrix </param>
-		''' <param name="m10"> the Y coordinate shearing element of the 3x3 matrix </param>
-		''' <param name="m01"> the X coordinate shearing element of the 3x3 matrix </param>
-		''' <param name="m11"> the Y coordinate scaling element of the 3x3 matrix </param>
-		''' <param name="m02"> the X coordinate translation element of the 3x3 matrix </param>
-		''' <param name="m12"> the Y coordinate translation element of the 3x3 matrix
-		''' @since 1.2 </param>
-		Public Overridable Sub setTransform(ByVal m00 As Double, ByVal m10 As Double, ByVal m01 As Double, ByVal m11 As Double, ByVal m02 As Double, ByVal m12 As Double)
+        ''' <summary>
+        ''' Sets this transform to the matrix specified by the 6
+        ''' double precision values.
+        ''' </summary>
+        ''' <param name="m00"> the X coordinate scaling element of the 3x3 matrix </param>
+        ''' <param name="m10"> the Y coordinate shearing element of the 3x3 matrix </param>
+        ''' <param name="m01"> the X coordinate shearing element of the 3x3 matrix </param>
+        ''' <param name="m11"> the Y coordinate scaling element of the 3x3 matrix </param>
+        ''' <param name="m02"> the X coordinate translation element of the 3x3 matrix </param>
+        ''' <param name="m12"> the Y coordinate translation element of the 3x3 matrix
+        ''' @since 1.2 </param>
+        Public Overridable Sub setTransform(ByVal m00 As Double, ByVal m10 As Double, ByVal m01 As Double, ByVal m11 As Double, ByVal m02 As Double, ByVal m12 As Double)
 			Me.m00 = m00
 			Me.m10 = m10
 			Me.m01 = m01

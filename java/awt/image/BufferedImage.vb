@@ -606,7 +606,7 @@ Namespace java.awt.image
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overrides Function run() As Boolean?
-				Dim std As  [Class]Loader = GetType(System).classLoader
+				Dim std As  ClassLoader = GetType(System).classLoader
 
 				Return (cmClass.classLoader Is std) AndAlso (smClass.classLoader Is std) AndAlso (wrClass.classLoader Is std)
 			End Function

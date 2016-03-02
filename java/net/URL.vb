@@ -1109,8 +1109,8 @@ Namespace java.net
 							Dim cls As  [Class] = Nothing
 							Try
 								cls = Type.GetType(clsName)
-							Catch e As  [Class]NotFoundException
-								Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
+							Catch e As  ClassNotFoundException
+								Dim cl As  ClassLoader = ClassLoader.systemClassLoader
 								If cl IsNot Nothing Then cls = cl.loadClass(clsName)
 							End Try
 							If cls IsNot Nothing Then handler = CType(cls.newInstance(), URLStreamHandler)

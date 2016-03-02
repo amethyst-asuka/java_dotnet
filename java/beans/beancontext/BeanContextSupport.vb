@@ -669,7 +669,7 @@ Namespace java.beans.beancontext
 			If bcc Is Nothing Then Throw New NullPointerException("bcc")
 
 			If containsKey(bcc) Then
-				Dim cl As  [Class]Loader = bcc.GetType().classLoader
+				Dim cl As  ClassLoader = bcc.GetType().classLoader
 
 				Return If(cl IsNot Nothing, cl.getResourceAsStream(name), ClassLoader.getSystemResourceAsStream(name))
 			Else
@@ -687,7 +687,7 @@ Namespace java.beans.beancontext
 			If bcc Is Nothing Then Throw New NullPointerException("bcc")
 
 			If containsKey(bcc) Then
-				Dim cl As  [Class]Loader = bcc.GetType().classLoader
+				Dim cl As  ClassLoader = bcc.GetType().classLoader
 
 				Return If(cl IsNot Nothing, cl.getResource(name), ClassLoader.getSystemResource(name))
 			Else
@@ -1041,7 +1041,7 @@ Namespace java.beans.beancontext
 					tempVar = count > 0
 				count -= 1
 					Continue Do
-				Catch cnfe As  [Class]NotFoundException
+				Catch cnfe As  ClassNotFoundException
 					tempVar = count > 0
 				count -= 1
 					Continue Do

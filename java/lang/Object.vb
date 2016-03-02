@@ -209,7 +209,7 @@ Namespace java.lang
         '''               throw this exception to indicate that an instance cannot
         '''               be cloned. </exception>
         ''' <seealso cref= java.lang.Cloneable </seealso>
-        Protected Friend Overridable Function clone() As Object
+        Public Overridable Function clone() As Object
             Return Me.MemberwiseClone
         End Function
 

@@ -182,7 +182,7 @@ Namespace java.util
 		Private ReadOnly service As  [Class]
 
 		' The class loader used to locate, load, and instantiate providers
-		Private ReadOnly loader As  [Class]Loader
+		Private ReadOnly loader As  ClassLoader
 
 		' The access control context taken when the ServiceLoader is created
 		Private ReadOnly acc As java.security.AccessControlContext
@@ -209,7 +209,7 @@ Namespace java.util
 			lookupIterator = New LazyIterator(Me, service, loader)
 		End Sub
 
-		Private Sub New(ByVal svc As [Class], ByVal cl As  [Class]Loader)
+		Private Sub New(ByVal svc As [Class], ByVal cl As  ClassLoader)
 			service = Objects.requireNonNull(svc, "Service interface cannot be null")
 			loader = If(cl Is Nothing, ClassLoader.systemClassLoader, cl)
 			acc = If(System.securityManager IsNot Nothing, java.security.AccessController.context, Nothing)
@@ -303,12 +303,12 @@ Namespace java.util
 
 
 			Friend service As  [Class]
-			Friend loader As  [Class]Loader
+			Friend loader As  ClassLoader
 			Friend configs As System.Collections.IEnumerator(Of java.net.URL) = Nothing
 			Friend pending As IEnumerator(Of String) = Nothing
 			Friend nextName As String = Nothing
 
-			Private Sub New(ByVal outerInstance As ServiceLoader, ByVal service As [Class], ByVal loader As  [Class]Loader)
+			Private Sub New(ByVal outerInstance As ServiceLoader, ByVal service As [Class], ByVal loader As  ClassLoader)
 					Me.outerInstance = outerInstance
 				Me.service = service
 				Me.loader = loader
@@ -346,7 +346,7 @@ Namespace java.util
 				Dim c As  [Class] = Nothing
 				Try
 					c = Type.GetType(cn, False, loader)
-				Catch x As  [Class]NotFoundException
+				Catch x As  ClassNotFoundException
 					fail(service, "Provider " & cn & " not found")
 				End Try
 				If Not c.IsSubclassOf(service) Then fail(service, "Provider " & cn & " not a subtype")
@@ -486,7 +486,7 @@ Namespace java.util
 		'''         used
 		''' </param>
 		''' <returns> A new service loader </returns>
-		Public Shared Function load(Of S)(ByVal service As [Class], ByVal loader As  [Class]Loader) As ServiceLoader(Of S)
+		Public Shared Function load(Of S)(ByVal service As [Class], ByVal loader As  ClassLoader) As ServiceLoader(Of S)
 			Return New ServiceLoader(Of )(service, loader)
 		End Function
 
@@ -513,7 +513,7 @@ Namespace java.util
 		''' </param>
 		''' <returns> A new service loader </returns>
 		Public Shared Function load(Of S)(ByVal service As [Class]) As ServiceLoader(Of S)
-			Dim cl As  [Class]Loader = Thread.CurrentThread.contextClassLoader
+			Dim cl As  ClassLoader = Thread.CurrentThread.contextClassLoader
 			Return ServiceLoader.load(service, cl)
 		End Function
 
@@ -543,8 +543,8 @@ Namespace java.util
 		''' </param>
 		''' <returns> A new service loader </returns>
 		Public Shared Function loadInstalled(Of S)(ByVal service As [Class]) As ServiceLoader(Of S)
-			Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
-			Dim prev As  [Class]Loader = Nothing
+			Dim cl As  ClassLoader = ClassLoader.systemClassLoader
+			Dim prev As  ClassLoader = Nothing
 			Do While cl IsNot Nothing
 				prev = cl
 				cl = cl.parent

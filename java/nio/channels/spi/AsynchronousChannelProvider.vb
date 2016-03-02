@@ -91,7 +91,7 @@ Namespace java.nio.channels.spi
 				Try
 					Dim c As  [Class] = Type.GetType(cn, True, ClassLoader.systemClassLoader)
 					Return CType(c.newInstance(), AsynchronousChannelProvider)
-				Catch x As  [Class]NotFoundException
+				Catch x As  ClassNotFoundException
 					Throw New java.util.ServiceConfigurationError(Nothing, x)
 				Catch x As IllegalAccessException
 					Throw New java.util.ServiceConfigurationError(Nothing, x)

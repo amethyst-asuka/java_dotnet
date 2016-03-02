@@ -810,7 +810,7 @@ Namespace java.util.jar
 				End If
 				' We have a class.  Now instantiate it.
 				Return impl.newInstance()
-			Catch e As  [Class]NotFoundException
+			Catch e As  ClassNotFoundException
 				Throw New [Error]("Class not found: " & implName & ":" & vbLf & "check property " & prop & " in your properties file.", e)
 			Catch e As InstantiationException
 				Throw New [Error]("Could not instantiate: " & implName & ":" & vbLf & "check property " & prop & " in your properties file.", e)

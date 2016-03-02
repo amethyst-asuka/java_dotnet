@@ -162,7 +162,7 @@ Namespace java.lang
 		' The parent class loader for delegation
 		' Note: VM hardcoded the offset of this field, thus all new fields
 		' must be added *after* it.
-		Private ReadOnly parent As  [Class]Loader
+		Private ReadOnly parent As  ClassLoader
 
 		''' <summary>
 		''' Encapsulates the set of parallel capable loader types.
@@ -245,7 +245,7 @@ Namespace java.lang
 			Return Nothing
 		End Function
 
-		Private Sub New(ByVal unused As Void, ByVal parent As  [Class]Loader)
+		Private Sub New(ByVal unused As Void, ByVal parent As  ClassLoader)
 			Me.parent = parent
 			If ParallelLoaders.isRegistered(Me.GetType()) Then
 				parallelLockMap = New ConcurrentDictionary(Of )
@@ -279,7 +279,7 @@ Namespace java.lang
 		'''          of a new class loader.
 		''' 
 		''' @since  1.2 </exception>
-		Protected Friend Sub New(ByVal parent As  [Class]Loader)
+		Protected Friend Sub New(ByVal parent As  ClassLoader)
 			Me.New(checkCreateClassLoader(), parent)
 		End Sub
 
@@ -374,7 +374,7 @@ Namespace java.lang
                         Else
                             c = findBootstrapClassOrNull(name)
                         End If
-                    Catch e As  [Class]NotFoundException
+                    Catch e As  ClassNotFoundException
                         ' ClassNotFoundException thrown if class not found
                         ' from the non-null parent class loader
                     End Try
@@ -902,7 +902,7 @@ Namespace java.lang
 		''' <seealso cref=  #ClassLoader(ClassLoader) </seealso>
 		''' <seealso cref=  #getParent() </seealso>
 		Protected Friend Function findSystemClass(ByVal name As String) As  [Class]
-			Dim system_Renamed As  [Class]Loader = systemClassLoader
+			Dim system_Renamed As  ClassLoader = systemClassLoader
 			If system_Renamed Is Nothing Then
 				If Not checkName(name) Then Throw New ClassNotFoundException(name)
 				Dim cls As  [Class] = findBootstrapClass(name)
@@ -1121,7 +1121,7 @@ Namespace java.lang
 		''' 
 		''' @since  1.1 </returns>
 		Public Shared Function getSystemResource(ByVal name As String) As java.net.URL
-			Dim system_Renamed As  [Class]Loader = systemClassLoader
+			Dim system_Renamed As  ClassLoader = systemClassLoader
 			If system_Renamed Is Nothing Then Return getBootstrapResource(name)
 			Return system_Renamed.getResource(name)
 		End Function
@@ -1146,7 +1146,7 @@ Namespace java.lang
 		''' 
 		''' @since  1.2 </exception>
 		Public Shared Function getSystemResources(ByVal name As String) As System.Collections.IEnumerator(Of java.net.URL)
-			Dim system_Renamed As  [Class]Loader = systemClassLoader
+			Dim system_Renamed As  ClassLoader = systemClassLoader
 			If system_Renamed Is Nothing Then Return getBootstrapResources(name)
 			Return system_Renamed.getResources(name)
 		End Function
@@ -1258,7 +1258,7 @@ Namespace java.lang
 		''' 
 		''' @since  1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property parent As  [Class]Loader
+		Public Property parent As  ClassLoader
 			Get
 				If parent Is Nothing Then Return Nothing
 				Dim sm As SecurityManager = System.securityManager
@@ -1322,7 +1322,7 @@ Namespace java.lang
 		''' 
 		''' @revised  1.4 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property Shared systemClassLoader As  [Class]Loader
+		Public Property Shared systemClassLoader As  ClassLoader
 			Get
 				initSystemClassLoader()
 				If scl Is Nothing Then Return Nothing
@@ -1361,8 +1361,8 @@ Namespace java.lang
 
 		' Returns true if the specified class loader can be found in this class
 		' loader's delegation chain.
-		Friend Overridable Function isAncestor(ByVal cl As  [Class]Loader) As Boolean
-			Dim acl As  [Class]Loader = Me
+		Friend Overridable Function isAncestor(ByVal cl As  ClassLoader) As Boolean
+			Dim acl As  ClassLoader = Me
 			Do
 				acl = acl.parent
 				If cl Is acl Then Return True
@@ -1375,7 +1375,7 @@ Namespace java.lang
 		' class loader 'from' is same As  [Class] loader 'to' or an ancestor
 		' of 'to'.  The class loader in a system domain can access
 		' any class loader.
-		Private Shared Function needsClassLoaderPermissionCheck(ByVal [from] As  [Class]Loader, ByVal [to] As  [Class]Loader) As Boolean
+		Private Shared Function needsClassLoaderPermissionCheck(ByVal [from] As  ClassLoader, ByVal [to] As  ClassLoader) As Boolean
 			If [from] Is [to] Then Return False
 
 			If [from] Is Nothing Then Return False
@@ -1384,7 +1384,7 @@ Namespace java.lang
 		End Function
 
 		' Returns the class's class loader, or null if none.
-		Shared Function getClassLoader(ByVal caller As [Class]) As  [Class]Loader
+		Shared Function getClassLoader(ByVal caller As [Class]) As  ClassLoader
 			' This can be null if the VM is requesting it
 			If caller Is Nothing Then Return Nothing
 			' Circumvent security check since this is package-private
@@ -1396,18 +1396,18 @@ Namespace java.lang
 	'     * if caller's class loader is not null and caller's class loader
 	'     * is not the same as or an ancestor of the given cl argument.
 	'     
-		Shared Sub checkClassLoaderPermission(ByVal cl As  [Class]Loader, ByVal caller As [Class])
+		Shared Sub checkClassLoaderPermission(ByVal cl As  ClassLoader, ByVal caller As [Class])
 			Dim sm As SecurityManager = System.securityManager
 			If sm IsNot Nothing Then
 				' caller can be null if the VM is requesting it
-				Dim ccl As  [Class]Loader = getClassLoader(caller)
+				Dim ccl As  ClassLoader = getClassLoader(caller)
 				If needsClassLoaderPermissionCheck(ccl, cl) Then sm.checkPermission(sun.security.util.SecurityConstants.GET_CLASSLOADER_PERMISSION)
 			End If
 		End Sub
 
 		' The class loader for the system
 		' @GuardedBy("ClassLoader.class")
-		Private Shared scl As  [Class]Loader
+		Private Shared scl As  ClassLoader
 
 		' Set to true once the system class loader has been set
 		' @GuardedBy("ClassLoader.class")
@@ -1687,7 +1687,7 @@ Namespace java.lang
 
 		' Invoked in the java.lang.Runtime class to implement load and loadLibrary.
 		Friend Shared Sub loadLibrary(ByVal fromClass As [Class], ByVal name As String, ByVal isAbsolute As Boolean)
-			Dim loader As  [Class]Loader = If(fromClass Is Nothing, Nothing, fromClass.classLoader)
+			Dim loader As  ClassLoader = If(fromClass Is Nothing, Nothing, fromClass.classLoader)
 			If sys_paths Is Nothing Then
 				usr_paths = initializePath("java.library.path")
 				sys_paths = initializePath("sun.boot.library.path")
@@ -1742,7 +1742,7 @@ Namespace java.lang
 					Return False
 				End Try
 			End If
-			Dim loader As  [Class]Loader = If(fromClass Is Nothing, Nothing, fromClass.classLoader)
+			Dim loader As  ClassLoader = If(fromClass Is Nothing, Nothing, fromClass.classLoader)
 			Dim libs As List(Of NativeLibrary) = If(loader IsNot Nothing, loader.nativeLibraries, systemNativeLibraries)
 			SyncLock libs
 				Dim size As Integer = libs.Count
@@ -1802,7 +1802,7 @@ Namespace java.lang
 		End Class
 
 		' Invoked in the VM class linking code.
-		Shared Function findNative(ByVal loader As  [Class]Loader, ByVal name As String) As Long
+		Shared Function findNative(ByVal loader As  ClassLoader, ByVal name As String) As Long
 			Dim libs As List(Of NativeLibrary) = If(loader IsNot Nothing, loader.nativeLibraries, systemNativeLibraries)
 			SyncLock libs
 				Dim size As Integer = libs.Count
@@ -2036,19 +2036,19 @@ Namespace java.lang
 	Friend Class SystemClassLoaderAction
 		Implements java.security.PrivilegedExceptionAction(Of ClassLoader)
 
-		Private parent As  [Class]Loader
+		Private parent As  ClassLoader
 
-		Friend Sub New(ByVal parent As  [Class]Loader)
+		Friend Sub New(ByVal parent As  ClassLoader)
 			Me.parent = parent
 		End Sub
 
-		Public Overridable Function run() As  [Class]Loader
+		Public Overridable Function run() As  ClassLoader
 			Dim cls As String = System.getProperty("java.system.class.loader")
 			If cls Is Nothing Then Return parent
 
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim ctor As Constructor(Of ?) = Type.GetType(cls, True, parent).getDeclaredConstructor(New [Class]() { GetType(ClassLoader) })
-			Dim sys As  [Class]Loader = CType(ctor.newInstance(New Object() { parent }), ClassLoader)
+			Dim sys As  ClassLoader = CType(ctor.newInstance(New Object() { parent }), ClassLoader)
 			Thread.CurrentThread.contextClassLoader = sys
 			Return sys
 		End Function

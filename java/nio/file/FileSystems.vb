@@ -306,7 +306,7 @@ Namespace java.nio.file
 		''' <exception cref="SecurityException">
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission required by the file system provider implementation </exception>
-		Public Shared Function newFileSystem(Of T1)(ByVal uri As java.net.URI, ByVal env As Map(Of T1), ByVal loader As  [Class]Loader) As FileSystem
+		Public Shared Function newFileSystem(Of T1)(ByVal uri As java.net.URI, ByVal env As Map(Of T1), ByVal loader As  ClassLoader) As FileSystem
 			Dim scheme As String = uri.scheme
 
 			' check installed providers
@@ -359,7 +359,7 @@ Namespace java.nio.file
 		''' <exception cref="SecurityException">
 		'''          if a security manager is installed and it denies an unspecified
 		'''          permission </exception>
-		Public Shared Function newFileSystem(ByVal path As Path, ByVal loader As  [Class]Loader) As FileSystem
+		Public Shared Function newFileSystem(ByVal path As Path, ByVal loader As  ClassLoader) As FileSystem
 			If path Is Nothing Then Throw New NullPointerException
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 			Dim env As Map(Of String, ?) = Collections.emptyMap()

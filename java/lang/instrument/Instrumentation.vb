@@ -372,7 +372,7 @@ Namespace java.lang.instrument
 		''' <returns> an array containing all the classes for which loader is an initiating loader,
 		'''          zero-length if there are none </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Function getInitiatedClasses(ByVal loader As  [Class]Loader) As  [Class]()
+		Function getInitiatedClasses(ByVal loader As  ClassLoader) As  [Class]()
 
 		''' <summary>
 		''' Returns an implementation-specific approximation of the amount of storage consumed by

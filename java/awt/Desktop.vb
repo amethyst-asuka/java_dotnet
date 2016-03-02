@@ -107,68 +107,68 @@ Namespace java.awt
 			peer = Toolkit.defaultToolkit.createDesktopPeer(Me)
 		End Sub
 
-		''' <summary>
-		''' Returns the <code>Desktop</code> instance of the current
-		''' browser context.  On some platforms the Desktop API may not be
-		''' supported; use the <seealso cref="#isDesktopSupported"/> method to
-		''' determine if the current desktop is supported. </summary>
-		''' <returns> the Desktop instance of the current browser context </returns>
-		''' <exception cref="HeadlessException"> if {@link
-		''' GraphicsEnvironment#isHeadless()} returns {@code true} </exception>
-		''' <exception cref="UnsupportedOperationException"> if this class is not
-		''' supported on the current platform </exception>
-		''' <seealso cref= #isDesktopSupported() </seealso>
-		''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared desktop As Desktop
-			Get
-				If java.awt.GraphicsEnvironment.headless Then Throw New java.awt.HeadlessException
-				If Not Desktop.desktopSupported Then Throw New UnsupportedOperationException("Desktop API is not " & "supported on the current platform")
-    
-				Dim context As sun.awt.AppContext = sun.awt.AppContext.appContext
-				Dim desktop_Renamed As Desktop = CType(context.get(GetType(Desktop)), Desktop)
-    
-				If desktop_Renamed Is Nothing Then
-					desktop_Renamed = New Desktop
-					context.put(GetType(Desktop), desktop_Renamed)
-				End If
-    
-				Return desktop_Renamed
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the <code>Desktop</code> instance of the current
+        ''' browser context.  On some platforms the Desktop API may not be
+        ''' supported; use the <seealso cref="#isDesktopSupported"/> method to
+        ''' determine if the current desktop is supported. </summary>
+        ''' <returns> the Desktop instance of the current browser context </returns>
+        ''' <exception cref="HeadlessException"> if {@link
+        ''' GraphicsEnvironment#isHeadless()} returns {@code true} </exception>
+        ''' <exception cref="UnsupportedOperationException"> if this class is not
+        ''' supported on the current platform </exception>
+        ''' <seealso cref= #isDesktopSupported() </seealso>
+        ''' <seealso cref= java.awt.GraphicsEnvironment#isHeadless </seealso>
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Public Shared ReadOnly Property desktop As Desktop
+            Get
+                If java.awt.GraphicsEnvironment.headless Then Throw New java.awt.HeadlessException
+                If Not Desktop.desktopSupported Then Throw New UnsupportedOperationException("Desktop API is not " & "supported on the current platform")
 
-		''' <summary>
-		''' Tests whether this class is supported on the current platform.
-		''' If it's supported, use <seealso cref="#getDesktop()"/> to retrieve an
-		''' instance.
-		''' </summary>
-		''' <returns> <code>true</code> if this class is supported on the
-		'''         current platform; <code>false</code> otherwise </returns>
-		''' <seealso cref= #getDesktop() </seealso>
-		Public Property Shared desktopSupported As Boolean
-			Get
-				Dim defaultToolkit As Toolkit = Toolkit.defaultToolkit
-				If TypeOf defaultToolkit Is sun.awt.SunToolkit Then Return CType(defaultToolkit, sun.awt.SunToolkit).desktopSupported
-				Return False
-			End Get
-		End Property
+                Dim context As sun.awt.AppContext = sun.awt.AppContext.appContext
+                Dim desktop_Renamed As Desktop = CType(context.get(GetType(Desktop)), Desktop)
 
-		''' <summary>
-		''' Tests whether an action is supported on the current platform.
-		''' 
-		''' <p>Even when the platform supports an action, a file or URI may
-		''' not have a registered application for the action.  For example,
-		''' most of the platforms support the <seealso cref="Desktop.Action#OPEN"/>
-		''' action.  But for a specific file, there may not be an
-		''' application registered to open it.  In this case, {@link
-		''' #isSupported} may return {@code true}, but the corresponding
-		''' action method will throw an <seealso cref="IOException"/>.
-		''' </summary>
-		''' <param name="action"> the specified <seealso cref="Action"/> </param>
-		''' <returns> <code>true</code> if the specified action is supported on
-		'''         the current platform; <code>false</code> otherwise </returns>
-		''' <seealso cref= Desktop.Action </seealso>
-		Public Overridable Function isSupported(ByVal action As Action) As Boolean
+                If desktop_Renamed Is Nothing Then
+                    desktop_Renamed = New Desktop
+                    context.put(GetType(Desktop), desktop_Renamed)
+                End If
+
+                Return desktop_Renamed
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Tests whether this class is supported on the current platform.
+        ''' If it's supported, use <seealso cref="#getDesktop()"/> to retrieve an
+        ''' instance.
+        ''' </summary>
+        ''' <returns> <code>true</code> if this class is supported on the
+        '''         current platform; <code>false</code> otherwise </returns>
+        ''' <seealso cref= #getDesktop() </seealso>
+        Public Shared ReadOnly Property desktopSupported As Boolean
+            Get
+                Dim defaultToolkit As Toolkit = Toolkit.defaultToolkit
+                If TypeOf defaultToolkit Is sun.awt.SunToolkit Then Return CType(defaultToolkit, sun.awt.SunToolkit).desktopSupported
+                Return False
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Tests whether an action is supported on the current platform.
+        ''' 
+        ''' <p>Even when the platform supports an action, a file or URI may
+        ''' not have a registered application for the action.  For example,
+        ''' most of the platforms support the <seealso cref="Desktop.Action#OPEN"/>
+        ''' action.  But for a specific file, there may not be an
+        ''' application registered to open it.  In this case, {@link
+        ''' #isSupported} may return {@code true}, but the corresponding
+        ''' action method will throw an <seealso cref="IOException"/>.
+        ''' </summary>
+        ''' <param name="action"> the specified <seealso cref="Action"/> </param>
+        ''' <returns> <code>true</code> if the specified action is supported on
+        '''         the current platform; <code>false</code> otherwise </returns>
+        ''' <seealso cref= Desktop.Action </seealso>
+        Public Overridable Function isSupported(ByVal action As Action) As Boolean
 			Return peer.isSupported(action)
 		End Function
 

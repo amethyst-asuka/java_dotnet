@@ -352,8 +352,8 @@ Namespace java.util.concurrent.atomic
 					field = java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 					modifiers = field.modifiers
 					sun.reflect.misc.ReflectUtil.ensureMemberAccess(caller, tclass, Nothing, modifiers)
-					Dim cl As  [Class]Loader = tclass.classLoader
-					Dim ccl As  [Class]Loader = caller.classLoader
+					Dim cl As  ClassLoader = tclass.classLoader
+					Dim ccl As  ClassLoader = caller.classLoader
 					If (ccl IsNot Nothing) AndAlso (ccl IsNot cl) AndAlso ((cl Is Nothing) OrElse (Not isAncestor(cl, ccl))) Then sun.reflect.misc.ReflectUtil.checkPackageAccess(tclass)
 				Catch pae As java.security.PrivilegedActionException
 					Throw New RuntimeException(pae.exception)
@@ -462,8 +462,8 @@ Namespace java.util.concurrent.atomic
 					field = java.security.AccessController.doPrivileged(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
 					modifiers = field.modifiers
 					sun.reflect.misc.ReflectUtil.ensureMemberAccess(caller, tclass, Nothing, modifiers)
-					Dim cl As  [Class]Loader = tclass.classLoader
-					Dim ccl As  [Class]Loader = caller.classLoader
+					Dim cl As  ClassLoader = tclass.classLoader
+					Dim ccl As  ClassLoader = caller.classLoader
 					If (ccl IsNot Nothing) AndAlso (ccl IsNot cl) AndAlso ((cl Is Nothing) OrElse (Not isAncestor(cl, ccl))) Then sun.reflect.misc.ReflectUtil.checkPackageAccess(tclass)
 				Catch pae As java.security.PrivilegedActionException
 					Throw New RuntimeException(pae.exception)
@@ -538,8 +538,8 @@ Namespace java.util.concurrent.atomic
 		''' classloader's delegation chain.
 		''' Equivalent to the inaccessible: first.isAncestor(second).
 		''' </summary>
-		Private Shared Function isAncestor(ByVal first As  [Class]Loader, ByVal second As  [Class]Loader) As Boolean
-			Dim acl As  [Class]Loader = first
+		Private Shared Function isAncestor(ByVal first As  ClassLoader, ByVal second As  ClassLoader) As Boolean
+			Dim acl As  ClassLoader = first
 			Do
 				acl = acl.parent
 				If second Is acl Then Return True

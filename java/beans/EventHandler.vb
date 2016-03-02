@@ -638,7 +638,7 @@ Namespace java.beans
 			' Create this first to verify target/action are non-null
 			Dim handler As New EventHandler(target, action, eventPropertyName, listenerMethodName)
 			If listenerInterface Is Nothing Then Throw New NullPointerException("listenerInterface must be non-null")
-			Dim loader As  [Class]Loader = getClassLoader(listenerInterface)
+			Dim loader As  ClassLoader = getClassLoader(listenerInterface)
 			Dim interfaces As  [Class]() = {listenerInterface}
 			Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T)
 		End Function
@@ -652,9 +652,9 @@ Namespace java.beans
 			End Function
 		End Class
 
-		Private Shared Function getClassLoader(ByVal type As [Class]) As  [Class]Loader
+		Private Shared Function getClassLoader(ByVal type As [Class]) As  ClassLoader
 			sun.reflect.misc.ReflectUtil.checkPackageAccess(type)
-			Dim loader As  [Class]Loader = type.classLoader
+			Dim loader As  ClassLoader = type.classLoader
 			If loader Is Nothing Then
 				loader = Thread.CurrentThread.contextClassLoader ' avoid use of BCP
 				If loader Is Nothing Then loader = ClassLoader.systemClassLoader

@@ -105,24 +105,24 @@ Namespace java.awt.dnd
 			origin = ori
 		End Sub
 
-		''' <summary>
-		''' Returns the source as a <code>DragGestureRecognizer</code>.
-		''' <P> </summary>
-		''' <returns> the source as a <code>DragGestureRecognizer</code> </returns>
+        ''' <summary>
+        ''' Returns the source as a <code>DragGestureRecognizer</code>.
+        ''' <P> </summary>
+        ''' <returns> the source as a <code>DragGestureRecognizer</code> </returns>
 
-		Public Overridable Property sourceAsDragGestureRecognizer As DragGestureRecognizer
-			Get
-				Return CType(source, DragGestureRecognizer)
-			End Get
-		End Property
+        Public Overridable ReadOnly Property sourceAsDragGestureRecognizer As DragGestureRecognizer
+            Get
+                Return CType(source, DragGestureRecognizer)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the <code>Component</code> associated
-		''' with this <code>DragGestureEvent</code>.
-		''' <P> </summary>
-		''' <returns> the Component </returns>
+        ''' <summary>
+        ''' Returns the <code>Component</code> associated
+        ''' with this <code>DragGestureEvent</code>.
+        ''' <P> </summary>
+        ''' <returns> the Component </returns>
 
-		Public Overridable Property component As java.awt.Component
+        Public Overridable Property component As java.awt.Component
 			Get
 				Return component_Renamed
 			End Get

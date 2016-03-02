@@ -243,7 +243,7 @@ Namespace java.awt
         ''' 
         ''' @serial </summary>
         ''' <seealso cref= #getName() </seealso>
-        Protected Friend name As String
+        Protected Friend _name As String
 
         ''' <summary>
         ''' Returns a cursor object with the specified predefined type.
@@ -381,10 +381,13 @@ Namespace java.awt
         ''' <summary>
         ''' Returns the type for this cursor.
         ''' </summary>
-        Public Overridable ReadOnly Property type As Integer
+        Public Overridable Property type As Integer
             Get
                 Return _type
             End Get
+            Protected Set(value As Integer)
+                _type = value
+            End Set
         End Property
 
         ''' <summary>
@@ -393,8 +396,11 @@ Namespace java.awt
         ''' @since     1.2 </returns>
         Public Overridable Property name As String
             Get
-                Return name
+                Return _name
             End Get
+            Protected Set(value As String)
+                _name = value
+            End Set
         End Property
 
         ''' <summary>

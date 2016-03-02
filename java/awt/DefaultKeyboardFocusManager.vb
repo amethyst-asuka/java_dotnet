@@ -213,8 +213,8 @@ Namespace java.awt
 				sun.awt.SunToolkit.postEvent(targetAppContext, se)
 				If EventQueue.dispatchThread Then
 					Dim edt As EventDispatchThread = CType(Thread.CurrentThread, EventDispatchThread)
-					edt.pumpEvents(SentEvent.ID, New ConditionalAnonymousInnerClassHelper
-				Else
+                    edt.pumpEvents(SentEvent.ID, New ConditionalAnonymousInnerClassHelper)
+                Else
 					SyncLock se
 						Do While (Not se.dispatched) AndAlso Not targetAppContext.disposed
 							Try

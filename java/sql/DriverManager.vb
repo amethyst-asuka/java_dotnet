@@ -475,11 +475,11 @@ Namespace java.sql
 		' Indicates whether the class object that would be created if the code calling
 		' DriverManager is accessible.
 		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal caller As [Class]) As Boolean
-			Dim callerCL As  [Class]Loader = If(caller IsNot Nothing, caller.classLoader, Nothing)
+			Dim callerCL As  ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 			Return isDriverAllowed(driver, callerCL)
 		End Function
 
-		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal classLoader_Renamed As  [Class]Loader) As Boolean
+		Private Shared Function isDriverAllowed(ByVal driver As Driver, ByVal classLoader_Renamed As  ClassLoader) As Boolean
 			Dim result As Boolean = False
 			If driver IsNot Nothing Then
 				Dim aClass As  [Class] = Nothing
@@ -572,7 +572,7 @@ Namespace java.sql
 	'         * classloader, so that the JDBC driver class outside rt.jar
 	'         * can be loaded from here.
 	'         
-			Dim callerCL As  [Class]Loader = If(caller IsNot Nothing, caller.classLoader, Nothing)
+			Dim callerCL As  ClassLoader = If(caller IsNot Nothing, caller.classLoader, Nothing)
 			SyncLock GetType(DriverManager)
 				' synchronize loading of the correct classloader.
 				If callerCL Is Nothing Then callerCL = Thread.CurrentThread.contextClassLoader

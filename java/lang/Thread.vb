@@ -162,7 +162,7 @@ Namespace java.lang
 		Private group As ThreadGroup
 
 		' The context ClassLoader for this thread 
-		Private contextClassLoader As  [Class]Loader
+		Private contextClassLoader As  ClassLoader
 
 		' The inherited AccessControlContext of this thread 
 		Private inheritedAccessControlContext As java.security.AccessControlContext
@@ -1353,14 +1353,14 @@ Namespace java.lang
 		''' 
 		''' @since 1.2 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Property contextClassLoader As  [Class]Loader
+		Public Overridable Property contextClassLoader As  ClassLoader
 			Get
 				If contextClassLoader Is Nothing Then Return Nothing
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then ClassLoader.checkClassLoaderPermission(contextClassLoader, sun.reflect.Reflection.callerClass)
 				Return contextClassLoader
 			End Get
-			Set(ByVal cl As  [Class]Loader)
+			Set(ByVal cl As  ClassLoader)
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("setContextClassLoader"))
 				contextClassLoader = cl

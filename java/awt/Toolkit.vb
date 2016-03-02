@@ -704,7 +704,7 @@ Namespace java.awt
 		Private Shared Sub loadAssistiveTechnologies()
 			' Load any assistive technologies
 			If atNames IsNot Nothing Then
-				Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
+				Dim cl As  ClassLoader = ClassLoader.systemClassLoader
 				Dim parser As New StringTokenizer(atNames," ,")
 				Dim atName As String
 				Do While parser.hasMoreTokens()
@@ -717,7 +717,7 @@ Namespace java.awt
 							clazz = Type.GetType(atName)
 						End If
 						clazz.newInstance()
-					Catch e As  [Class]NotFoundException
+					Catch e As  ClassNotFoundException
 						Throw New AWTError("Assistive Technology not found: " & atName)
 					Catch e As InstantiationException
 						Throw New AWTError("Could not instantiate Assistive" & " Technology: " & atName)
@@ -777,12 +777,12 @@ Namespace java.awt
 				Dim nm As String = System.getProperty("awt.toolkit")
 				Try
 					cls = Type.GetType(nm)
-				Catch e As  [Class]NotFoundException
-					Dim cl As  [Class]Loader = ClassLoader.systemClassLoader
+				Catch e As  ClassNotFoundException
+					Dim cl As  ClassLoader = ClassLoader.systemClassLoader
 					If cl IsNot Nothing Then
 						Try
 							cls = cl.loadClass(nm)
-						Catch ignored As  [Class]NotFoundException
+						Catch ignored As  ClassNotFoundException
 							Throw New AWTError("Toolkit not found: " & nm)
 						End Try
 					End If

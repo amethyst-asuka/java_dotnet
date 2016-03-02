@@ -635,7 +635,7 @@ Namespace java.security
 				clazz = Type.GetType("java.security." & type & "Spi")
 				spiMap.put(type, clazz)
 				Return clazz
-			Catch e As  [Class]NotFoundException
+			Catch e As  ClassNotFoundException
 				Throw New AssertionError("Spi class not found", e)
 			End Try
 		End Function

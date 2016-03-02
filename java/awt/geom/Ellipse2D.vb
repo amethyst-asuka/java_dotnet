@@ -240,74 +240,74 @@ Namespace java.awt.geom
 			''' </summary>
 			Public height As Double
 
-			''' <summary>
-			''' Constructs a new <code>Ellipse2D</code>, initialized to
-			''' location (0,&nbsp;0) and size (0,&nbsp;0).
-			''' @since 1.2
-			''' </summary>
-			Function java.lang.Double() As [Public] Overridable
-			End Function
+            ''' <summary>
+            ''' Constructs a new <code>Ellipse2D</code>, initialized to
+            ''' location (0,&nbsp;0) and size (0,&nbsp;0).
+            ''' @since 1.2
+            ''' </summary>
+            Sub New()
+            End Sub
 
-			''' <summary>
-			''' Constructs and initializes an <code>Ellipse2D</code> from the
-			''' specified coordinates.
-			''' </summary>
-			''' <param name="x"> the X coordinate of the upper-left corner
-			'''        of the framing rectangle </param>
-			''' <param name="y"> the Y coordinate of the upper-left corner
-			'''        of the framing rectangle </param>
-			''' <param name="w"> the width of the framing rectangle </param>
-			''' <param name="h"> the height of the framing rectangle
-			''' @since 1.2 </param>
-			Function java.lang.Double(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double) As [Public] Overridable
-				frameame(x, y, w, h)
-			End Function
+            ''' <summary>
+            ''' Constructs and initializes an <code>Ellipse2D</code> from the
+            ''' specified coordinates.
+            ''' </summary>
+            ''' <param name="x"> the X coordinate of the upper-left corner
+            '''        of the framing rectangle </param>
+            ''' <param name="y"> the Y coordinate of the upper-left corner
+            '''        of the framing rectangle </param>
+            ''' <param name="w"> the width of the framing rectangle </param>
+            ''' <param name="h"> the height of the framing rectangle
+            ''' @since 1.2 </param>
+            Sub New(ByVal x As Double, ByVal y As Double, ByVal w As Double, ByVal h As Double)
+                frameame(x, y, w, h)
+            End Sub
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides x As Double
-				Get
-					Return x
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides ReadOnly Property x As Double
+                Get
+                    Return x
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides y As Double
-				Get
-					Return y
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides ReadOnly Property y As Double
+                Get
+                    Return y
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides width As Double
-				Get
-					Return width
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides ReadOnly Property width As Double
+                Get
+                    Return width
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides height As Double
-				Get
-					Return height
-				End Get
-			End Property
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Overrides ReadOnly Property height As Double
+                Get
+                    Return height
+                End Get
+            End Property
 
-			''' <summary>
-			''' {@inheritDoc}
-			''' @since 1.2
-			''' </summary>
-			Public Property Overrides empty As Boolean
+            ''' <summary>
+            ''' {@inheritDoc}
+            ''' @since 1.2
+            ''' </summary>
+            Public Property Overrides empty As Boolean
 				Get
 					Return (width <= 0.0 OrElse height <= 0.0)
 				End Get

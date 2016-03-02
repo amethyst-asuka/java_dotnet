@@ -1311,7 +1311,7 @@ Namespace java.beans
 		''' </summary>
 		Friend Shared Function instantiate(ByVal sibling As [Class], ByVal className As String) As Object
 			' First check with sibling's classloader (if any).
-			Dim cl As  [Class]Loader = sibling.classLoader
+			Dim cl As  ClassLoader = sibling.classLoader
 			Dim cls As  [Class] = com.sun.beans.finder.ClassFinder.findClass(className, cl)
 			Return cls.newInstance()
 		End Function

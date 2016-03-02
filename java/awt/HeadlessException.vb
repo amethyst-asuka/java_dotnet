@@ -45,20 +45,20 @@ Namespace java.awt
 		Public Sub New(ByVal msg As String)
 			MyBase.New(msg)
 		End Sub
-		Public Property Overrides message As String
-			Get
-				Dim superMessage As String = MyBase.message
-				Dim headlessMessage As String = GraphicsEnvironment.headlessMessage
-    
-				If superMessage Is Nothing Then
-					Return headlessMessage
-				ElseIf headlessMessage Is Nothing Then
-					Return superMessage
-				Else
-					Return superMessage + headlessMessage
-				End If
-			End Get
-		End Property
-	End Class
+        Public Overrides ReadOnly Property message As String
+            Get
+                Dim superMessage As String = MyBase.message
+                Dim headlessMessage As String = GraphicsEnvironment.headlessMessage
+
+                If superMessage Is Nothing Then
+                    Return headlessMessage
+                ElseIf headlessMessage Is Nothing Then
+                    Return superMessage
+                Else
+                    Return superMessage + headlessMessage
+                End If
+            End Get
+        End Property
+    End Class
 
 End Namespace

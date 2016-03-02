@@ -333,15 +333,15 @@ Namespace java.lang
 		''' <seealso cref=  java.lang.ClassLoader#getSystemClassLoader() getSystemClassLoader </seealso>
 		''' <seealso cref=  #checkPermission(java.security.Permission) checkPermission </seealso>
 		<Obsolete("This type of security checking is not recommended.")> _
-		Protected Friend Overridable Function currentClassLoader() As  [Class]Loader
-			Dim cl As  [Class]Loader = currentClassLoader0()
+		Protected Friend Overridable Function currentClassLoader() As  ClassLoader
+			Dim cl As  ClassLoader = currentClassLoader0()
 			If (cl IsNot Nothing) AndAlso hasAllPermission() Then cl = Nothing
 			Return cl
 		End Function
 
 'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
 		<DllImport("unknown")> _
-		Private Function currentClassLoader0() As  [Class]Loader
+		Private Function currentClassLoader0() As  ClassLoader
 		End Function
 
 		''' <summary>

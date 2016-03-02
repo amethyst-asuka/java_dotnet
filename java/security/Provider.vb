@@ -1493,7 +1493,7 @@ Namespace java.security
 						Dim ref As Reference(Of [Class]) = classRef
 						Dim clazz As  [Class] = If(ref Is Nothing, Nothing, ref.get())
 						If clazz Is Nothing Then
-							Dim cl As  [Class]Loader = provider_Renamed.GetType().classLoader
+							Dim cl As  ClassLoader = provider_Renamed.GetType().classLoader
 							If cl Is Nothing Then
 								clazz = Type.GetType(className)
 							Else
@@ -1503,7 +1503,7 @@ Namespace java.security
 							classRef = New WeakReference(Of [Class])(clazz)
 						End If
 						Return clazz
-					Catch e As  [Class]NotFoundException
+					Catch e As  ClassNotFoundException
 						Throw New NoSuchAlgorithmException("class configured for " & type & " (provider: " & provider_Renamed.name & ") cannot be found.", e)
 					End Try
 				End Get
@@ -1614,13 +1614,13 @@ Namespace java.security
 			Private Function getKeyClass(ByVal name As String) As  [Class]
 				Try
 					Return Type.GetType(name)
-				Catch e As  [Class]NotFoundException
+				Catch e As  ClassNotFoundException
 					' ignore
 				End Try
 				Try
-					Dim cl As  [Class]Loader = provider_Renamed.GetType().classLoader
+					Dim cl As  ClassLoader = provider_Renamed.GetType().classLoader
 					If cl IsNot Nothing Then Return cl.loadClass(name)
-				Catch e As  [Class]NotFoundException
+				Catch e As  ClassNotFoundException
 					' ignore
 				End Try
 				Return Nothing

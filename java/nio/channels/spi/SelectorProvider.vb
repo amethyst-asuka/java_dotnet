@@ -83,7 +83,7 @@ Namespace java.nio.channels.spi
 				Dim c As  [Class] = Type.GetType(cn, True, ClassLoader.systemClassLoader)
 				provider_Renamed = CType(c.newInstance(), SelectorProvider)
 				Return True
-			Catch x As  [Class]NotFoundException
+			Catch x As  ClassNotFoundException
 				Throw New java.util.ServiceConfigurationError(Nothing, x)
 			Catch x As IllegalAccessException
 				Throw New java.util.ServiceConfigurationError(Nothing, x)

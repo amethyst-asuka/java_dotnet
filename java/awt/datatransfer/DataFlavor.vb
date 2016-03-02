@@ -114,22 +114,22 @@ Namespace java.awt.datatransfer
 		''' <param name="fallback"> the fallback loader </param>
 		''' <returns> the class loaded </returns>
 		''' <exception cref="ClassNotFoundException"> if class is not found </exception>
-		Protected Friend Shared Function tryToLoadClass(ByVal className As String, ByVal fallback As  [Class]Loader) As  [Class]
+		Protected Friend Shared Function tryToLoadClass(ByVal className As String, ByVal fallback As  ClassLoader) As  [Class]
 			sun.reflect.misc.ReflectUtil.checkPackageAccess(className)
 			Try
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(GET_CLASSLOADER_PERMISSION)
-				Dim loader As  [Class]Loader = ClassLoader.systemClassLoader
+				Dim loader As  ClassLoader = ClassLoader.systemClassLoader
 				Try
 					' bootstrap class loader and system class loader if present
 					Return Type.GetType(className, True, loader)
-				Catch exception_Renamed As  [Class]NotFoundException
+				Catch exception_Renamed As  ClassNotFoundException
 					' thread context class loader if and only if present
 					loader = Thread.CurrentThread.contextClassLoader
 					If loader IsNot Nothing Then
 						Try
 							Return Type.GetType(className, True, loader)
-						Catch e As  [Class]NotFoundException
+						Catch e As  ClassNotFoundException
 							' fallback to user's class loader
 						End Try
 					End If
@@ -394,7 +394,7 @@ Namespace java.awt.datatransfer
 				initialize(mimeType_Renamed, humanPresentableName, Me.GetType().classLoader)
 			Catch mtpe As MimeTypeParseException
 				Throw New IllegalArgumentException("failed to parse:" & mimeType_Renamed)
-			Catch cnfe As  [Class]NotFoundException
+			Catch cnfe As  ClassNotFoundException
 				Throw New IllegalArgumentException("can't find specified class: " & cnfe.Message)
 			End Try
 		End Sub
@@ -424,7 +424,7 @@ Namespace java.awt.datatransfer
 		''' <exception cref="IllegalArgumentException"> if <code>mimeType</code> is
 		'''                 invalid </exception>
 		''' <exception cref="NullPointerException"> if <code>mimeType</code> is null </exception>
-		Public Sub New(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  [Class]Loader)
+		Public Sub New(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  ClassLoader)
 			MyBase.New()
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 			Try
@@ -472,7 +472,7 @@ Namespace java.awt.datatransfer
 	   ''' <exception cref="NullPointerException"> if <code>mimeType</code> is null
 	   ''' </exception>
 	   ''' <seealso cref= #tryToLoadClass </seealso>
-		Private Sub initialize(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  [Class]Loader)
+		Private Sub initialize(ByVal mimeType_Renamed As String, ByVal humanPresentableName As String, ByVal classLoader_Renamed As  ClassLoader)
 			If mimeType_Renamed Is Nothing Then Throw New NullPointerException("mimeType")
 
 			Me.mimeType = New MimeType(mimeType_Renamed) ' throws
