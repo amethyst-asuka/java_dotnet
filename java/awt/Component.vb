@@ -136,7 +136,7 @@ Namespace java.awt
     ''' @author      Sami Shaio
     ''' </summary>
     <Serializable>
-    Public MustInherit Class Component
+    Public MustInherit Class Component : Inherits java.lang.Object
         Implements java.awt.image.ImageObserver, MenuContainer
 
         Private Shared ReadOnly log As sun.util.logging.PlatformLogger = sun.util.logging.PlatformLogger.getLogger("java.awt.Component")
@@ -1175,7 +1175,7 @@ Namespace java.awt
         ''' is moved from one frame to another, the toolkit it uses may change. </summary>
         ''' <returns>  the toolkit of this component
         ''' @since JDK1.0 </returns>
-        Public Overridable Property toolkit As Toolkit
+        Public Overridable ReadOnly Property toolkit As Toolkit
             Get
                 Return toolkitImpl
             End Get
@@ -1185,7 +1185,7 @@ Namespace java.awt
         '     * This is called by the native code, so client code can't
         '     * be called on the toolkit thread.
         '     
-        Friend Property toolkitImpl As Toolkit
+        Friend ReadOnly Property toolkitImpl As Toolkit
             Get
                 Dim parent_Renamed As Container = Me.parent
                 If parent_Renamed IsNot Nothing Then Return parent_Renamed.toolkitImpl
@@ -1205,7 +1205,7 @@ Namespace java.awt
         ''' <seealso cref= #validate </seealso>
         ''' <seealso cref= #invalidate
         ''' @since JDK1.0 </seealso>
-        Public Overridable Property valid As Boolean
+        Public Overridable ReadOnly Property valid As Boolean
             Get
                 Return (peer IsNot Nothing) AndAlso valid
             End Get
@@ -1234,7 +1234,7 @@ Namespace java.awt
         ''' <seealso cref= Container#remove(Component) </seealso>
         ''' <seealso cref= Window#dispose
         ''' @since 1.2 </seealso>
-        Public Overridable Property displayable As Boolean
+        Public Overridable ReadOnly Property displayable As Boolean
             Get
                 Return peer IsNot Nothing
             End Get
@@ -1249,13 +1249,13 @@ Namespace java.awt
         ''' <code>false</code> otherwise </returns>
         ''' <seealso cref= #setVisible
         ''' @since JDK1.0 </seealso>
-        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-        Public Overridable Property visible As Boolean
+        Public Overridable ReadOnly Property visible As Boolean
             Get
                 Return visible_NoClientCode
             End Get
         End Property
-        Friend Property visible_NoClientCode As Boolean
+
+        Friend ReadOnly Property visible_NoClientCode As Boolean
             Get
                 Return visible
             End Get
@@ -1266,7 +1266,7 @@ Namespace java.awt
         ''' <returns> <code>true</code> if the component and all of its ancestors
         '''          until a toplevel window or null parent are visible,
         '''          <code>false</code> otherwise </returns>
-        Friend Overridable Property recursivelyVisible As Boolean
+        Friend Overridable ReadOnly Property recursivelyVisible As Boolean
             Get
                 Return visible AndAlso (parent Is Nothing OrElse parent.recursivelyVisible)
             End Get
@@ -1277,7 +1277,7 @@ Namespace java.awt
         ''' parent.
         ''' </summary>
         ''' <returns> the visible part of bounds </returns>
-        Private Property recursivelyVisibleBounds As Rectangle
+        Private ReadOnly Property recursivelyVisibleBounds As Rectangle
             Get
                 Dim container_Renamed As Component = container
                 Dim bounds_Renamed As Rectangle = bounds
@@ -1422,7 +1422,7 @@ Namespace java.awt
         '     * This is called by the native code, so client code can't
         '     * be called on the toolkit thread.
         '     
-        Friend Property enabledImpl As Boolean
+        Friend ReadOnly Property enabledImpl As Boolean
             Get
                 Return enabled
             End Get

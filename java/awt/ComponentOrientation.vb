@@ -119,33 +119,33 @@ Namespace java.awt
 		''' </summary>
 		Public Shared ReadOnly UNKNOWN As New ComponentOrientation(HORIZ_BIT Or LTR_BIT Or UNK_BIT)
 
-		''' <summary>
-		''' Are lines horizontal?
-		''' This will return true for horizontal, left-to-right writing
-		''' systems such as Roman.
-		''' </summary>
-		Public Property horizontal As Boolean
-			Get
-				Return (orientation And HORIZ_BIT) <> 0
-			End Get
-		End Property
+        ''' <summary>
+        ''' Are lines horizontal?
+        ''' This will return true for horizontal, left-to-right writing
+        ''' systems such as Roman.
+        ''' </summary>
+        Public ReadOnly Property horizontal As Boolean
+            Get
+                Return (orientation And HORIZ_BIT) <> 0
+            End Get
+        End Property
 
-		''' <summary>
-		''' HorizontalLines: Do items run left-to-right?<br>
-		''' Vertical Lines:  Do lines run left-to-right?<br>
-		''' This will return true for horizontal, left-to-right writing
-		''' systems such as Roman.
-		''' </summary>
-		Public Property leftToRight As Boolean
-			Get
-				Return (orientation And LTR_BIT) <> 0
-			End Get
-		End Property
+        ''' <summary>
+        ''' HorizontalLines: Do items run left-to-right?<br>
+        ''' Vertical Lines:  Do lines run left-to-right?<br>
+        ''' This will return true for horizontal, left-to-right writing
+        ''' systems such as Roman.
+        ''' </summary>
+        Public ReadOnly Property leftToRight As Boolean
+            Get
+                Return (orientation And LTR_BIT) <> 0
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the orientation that is appropriate for the given locale. </summary>
-		''' <param name="locale"> the specified locale </param>
-		Public Shared Function getOrientation(ByVal locale As java.util.Locale) As ComponentOrientation
+        ''' <summary>
+        ''' Returns the orientation that is appropriate for the given locale. </summary>
+        ''' <param name="locale"> the specified locale </param>
+        Public Shared Function getOrientation(ByVal locale As java.util.Locale) As ComponentOrientation
 			' A more flexible implementation would consult a ResourceBundle
 			' to find the appropriate orientation.  Until pluggable locales
 			' are introduced however, the flexiblity isn't really needed.
@@ -158,20 +158,20 @@ Namespace java.awt
 			End If
 		End Function
 
-		''' <summary>
-		''' Returns the orientation appropriate for the given ResourceBundle's
-		''' localization.  Three approaches are tried, in the following order:
-		''' <ol>
-		''' <li>Retrieve a ComponentOrientation object from the ResourceBundle
-		'''      using the string "Orientation" as the key.
-		''' <li>Use the ResourceBundle.getLocale to determine the bundle's
-		'''      locale, then return the orientation for that locale.
-		''' <li>Return the default locale's orientation.
-		''' </ol>
-		''' </summary>
-		''' @deprecated As of J2SE 1.4, use <seealso cref="#getOrientation(java.util.Locale)"/>. 
-		<Obsolete("As of J2SE 1.4, use <seealso cref="#getOrientation(java.util.Locale)"/>.")> _
-		Public Shared Function getOrientation(ByVal bdl As java.util.ResourceBundle) As ComponentOrientation
+        ''' <summary>
+        ''' Returns the orientation appropriate for the given ResourceBundle's
+        ''' localization.  Three approaches are tried, in the following order:
+        ''' <ol>
+        ''' <li>Retrieve a ComponentOrientation object from the ResourceBundle
+        '''      using the string "Orientation" as the key.
+        ''' <li>Use the ResourceBundle.getLocale to determine the bundle's
+        '''      locale, then return the orientation for that locale.
+        ''' <li>Return the default locale's orientation.
+        ''' </ol>
+        ''' </summary>
+        ''' @deprecated As of J2SE 1.4, use <seealso cref="#getOrientation(java.util.Locale)"/>. 
+        <Obsolete("As of J2SE 1.4, use <seealso cref=""#getOrientation(java.util.Locale)""/>.")>
+        Public Shared Function getOrientation(ByVal bdl As java.util.ResourceBundle) As ComponentOrientation
 			Dim result As ComponentOrientation = Nothing
 
 			Try

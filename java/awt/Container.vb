@@ -606,9 +606,9 @@ Namespace java.awt
 		''' @since: 1.5
 		''' </summary>
 		Private Shared Function isRemoveNotifyNeeded(ByVal comp As Component, ByVal oldContainer As Container, ByVal newContainer As Container) As Boolean
-			If oldContainer Is Nothing Then ' Component didn't have parent - no removeNotify Return False
-			If comp.peer Is Nothing Then ' Component didn't have peer - no removeNotify Return False
-			If newContainer.peer Is Nothing Then Return True
+            If oldContainer Is Nothing Then Return False  ' Component didn't have parent - no removeNotify Return False
+            If comp.peer Is Nothing Then Return False ' Component didn't have peer - no removeNotify Return False
+            If newContainer.peer Is Nothing Then Return True
 
 			' If component is lightweight non-Container or lightweight Container with all but heavyweight
 			' children there is no need to call remove notify

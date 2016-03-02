@@ -34,56 +34,56 @@
 ' **********************************************************************
 ' *********************************************************************
 
-Namespace java.awt.color
+Namespace java.awt.Icolor
 
 
-	''' 
-	''' <summary>
-	''' A subclass of the ICC_Profile class which represents profiles
-	''' which meet the following criteria: the color space type of the
-	''' profile is TYPE_GRAY and the profile includes the grayTRCTag and
-	''' mediaWhitePointTag tags.  Examples of this kind of profile are
-	''' monochrome input profiles, monochrome display profiles, and
-	''' monochrome output profiles.  The getInstance methods in the
-	''' ICC_Profile class will
-	''' return an ICC_ProfileGray object when the above conditions are
-	''' met.  The advantage of this class is that it provides a lookup
-	''' table that Java or native methods may be able to use directly to
-	''' optimize color conversion in some cases.
-	''' <p>
-	''' To transform from a GRAY device profile color space to the CIEXYZ Profile
-	''' Connection Space, the device gray component is transformed by
-	''' a lookup through the tone reproduction curve (TRC).  The result is
-	''' treated as the achromatic component of the PCS.
-	''' <pre>
-	''' 
-	''' &nbsp;               PCSY = grayTRC[deviceGray]
-	''' 
-	''' </pre>
-	''' The inverse transform is done by converting the PCS Y components to
-	''' device Gray via the inverse of the grayTRC.
-	''' </summary>
+    ''' 
+    ''' <summary>
+    ''' A subclass of the ICC_Profile class which represents profiles
+    ''' which meet the following criteria: the color space type of the
+    ''' profile is TYPE_GRAY and the profile includes the grayTRCTag and
+    ''' mediaWhitePointTag tags.  Examples of this kind of profile are
+    ''' monochrome input profiles, monochrome display profiles, and
+    ''' monochrome output profiles.  The getInstance methods in the
+    ''' ICC_Profile class will
+    ''' return an ICC_ProfileGray object when the above conditions are
+    ''' met.  The advantage of this class is that it provides a lookup
+    ''' table that Java or native methods may be able to use directly to
+    ''' optimize color conversion in some cases.
+    ''' <p>
+    ''' To transform from a GRAY device profile color space to the CIEXYZ Profile
+    ''' Connection Space, the device gray component is transformed by
+    ''' a lookup through the tone reproduction curve (TRC).  The result is
+    ''' treated as the achromatic component of the PCS.
+    ''' <pre>
+    ''' 
+    ''' &nbsp;               PCSY = grayTRC[deviceGray]
+    ''' 
+    ''' </pre>
+    ''' The inverse transform is done by converting the PCS Y components to
+    ''' device Gray via the inverse of the grayTRC.
+    ''' </summary>
 
 
 
-	Public Class ICC_ProfileGray
-		Inherits ICC_Profile
+    Public Class ICC_ProfileGray
+        Inherits ICC_Profile
 
-		Friend Const serialVersionUID As Long = -1124721290732002649L
+        Friend Const serialVersionUID As Long = -1124721290732002649L
 
-		''' <summary>
-		''' Constructs a new ICC_ProfileGray from a CMM ID.
-		''' </summary>
-		Friend Sub New(ByVal p As sun.java2d.cmm.Profile)
-			MyBase.New(p)
-		End Sub
+        ''' <summary>
+        ''' Constructs a new ICC_ProfileGray from a CMM ID.
+        ''' </summary>
+        Friend Sub New(ByVal p As sun.java2d.cmm.Profile)
+            MyBase.New(p)
+        End Sub
 
-		''' <summary>
-		''' Constructs a new ICC_ProfileGray from a ProfileDeferralInfo object.
-		''' </summary>
-		Friend Sub New(ByVal pdi As sun.java2d.cmm.ProfileDeferralInfo)
-			MyBase.New(pdi)
-		End Sub
+        ''' <summary>
+        ''' Constructs a new ICC_ProfileGray from a ProfileDeferralInfo object.
+        ''' </summary>
+        Friend Sub New(ByVal pdi As sun.java2d.cmm.ProfileDeferralInfo)
+            MyBase.New(pdi)
+        End Sub
 
 
         ''' <summary>

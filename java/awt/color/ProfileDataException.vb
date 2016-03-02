@@ -25,22 +25,22 @@ Imports System
 ' *
 ' 
 
-Namespace java.awt.color
+Namespace java.awt.Icolor
 
-	''' <summary>
-	''' This exception is thrown when an error occurs in accessing or
-	''' processing an ICC_Profile object.
-	''' </summary>
+    ''' <summary>
+    ''' This exception is thrown when an error occurs in accessing or
+    ''' processing an ICC_Profile object.
+    ''' </summary>
 
-	Public Class ProfileDataException
-		Inherits Exception
+    Public Class ProfileDataException
+        Inherits Exception
 
-		''' <summary>
-		'''  Constructs a ProfileDataException with the specified detail message. </summary>
-		'''  <param name="s"> the specified detail message </param>
-		Public Sub New(ByVal s As String)
-			MyBase.New(s)
-		End Sub
-	End Class
+        ''' <summary>
+        '''  Constructs a ProfileDataException with the specified detail message. </summary>
+        '''  <param name="s"> the specified detail message </param>
+        Public Sub New(ByVal s As String)
+            MyBase.New(s)
+        End Sub
+    End Class
 
 End Namespace
