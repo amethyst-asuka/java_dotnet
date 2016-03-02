@@ -25,99 +25,93 @@
 
 Namespace java.awt.peer
 
+    Public Module ComponentPeerContanst
 
+        ''' <summary>
+        ''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
+        ''' a change in the component location only.
+        ''' </summary>
+        ''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
+        Public Const SET_LOCATION As Integer = 1
 
+        ''' <summary>
+        ''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
+        ''' a change in the component size only.
+        ''' </summary>
+        ''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
+        Public Const SET_SIZE As Integer = 2
 
-	''' <summary>
-	''' The peer interface for <seealso cref="Component"/>. This is the top level peer
-	''' interface for widgets and defines the bulk of methods for AWT component
-	''' peers. Most component peers have to implement this interface (via one
-	''' of the subinterfaces), except menu components, which implement
-	''' <seealso cref="MenuComponentPeer"/>.
-	''' 
-	''' The peer interfaces are intended only for use in porting
-	''' the AWT. They are not intended for use by application
-	''' developers, and developers should not implement peers
-	''' nor invoke any of the peer methods directly on the peer
-	''' instances.
-	''' </summary>
-	Public Interface ComponentPeer
+        ''' <summary>
+        ''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
+        ''' a change in the component size and location.
+        ''' </summary>
+        ''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
+        Public Const SET_BOUNDS As Integer = 3
 
-		''' <summary>
-		''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
-		''' a change in the component location only.
-		''' </summary>
-		''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SET_LOCATION = 1;
+        ''' <summary>
+        ''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
+        ''' a change in the component client size. This is used for setting
+        ''' the 'inside' size of windows, without the border insets.
+        ''' </summary>
+        ''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
+        Public Const SET_CLIENT_SIZE As Integer = 4
 
-		''' <summary>
-		''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
-		''' a change in the component size only.
-		''' </summary>
-		''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SET_SIZE = 2;
+        ''' <summary>
+        ''' Resets the setBounds() operation to DEFAULT_OPERATION. This is not
+        ''' passed into <seealso cref="#setBounds(int, int, int, int, int)"/>.
+        ''' 
+        ''' TODO: This is only used internally and should probably be moved outside
+        '''       the peer interface.
+        ''' </summary>
+        ''' <seealso cref= Component#setBoundsOp </seealso>
+        Public Const RESET_OPERATION As Integer = 5
 
-		''' <summary>
-		''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
-		''' a change in the component size and location.
-		''' </summary>
-		''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SET_BOUNDS = 3;
+        ''' <summary>
+        ''' A flag that is used to suppress checks for embedded frames.
+        ''' 
+        ''' TODO: This is only used internally and should probably be moved outside
+        '''       the peer interface.
+        ''' </summary>
+        Public Const NO_EMBEDDED_CHECK As Integer = (1 << 14)
 
-		''' <summary>
-		''' Operation for <seealso cref="#setBounds(int, int, int, int, int)"/>, indicating
-		''' a change in the component client size. This is used for setting
-		''' the 'inside' size of windows, without the border insets.
-		''' </summary>
-		''' <seealso cref= #setBounds(int, int, int, int, int) </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SET_CLIENT_SIZE = 4;
+        ''' <summary>
+        ''' The default operation, which is to set size and location.
+        ''' 
+        ''' TODO: This is only used internally and should probably be moved outside
+        '''       the peer interface.
+        ''' </summary>
+        ''' <seealso cref= Component#setBoundsOp </seealso>
 
-		''' <summary>
-		''' Resets the setBounds() operation to DEFAULT_OPERATION. This is not
-		''' passed into <seealso cref="#setBounds(int, int, int, int, int)"/>.
-		''' 
-		''' TODO: This is only used internally and should probably be moved outside
-		'''       the peer interface.
-		''' </summary>
-		''' <seealso cref= Component#setBoundsOp </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int RESET_OPERATION = 5;
+        Public Const DEFAULT_OPERATION As Integer = SET_BOUNDS
+    End Module
 
-		''' <summary>
-		''' A flag that is used to suppress checks for embedded frames.
-		''' 
-		''' TODO: This is only used internally and should probably be moved outside
-		'''       the peer interface.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int NO_EMBEDDED_CHECK = (1 << 14);
+    ''' <summary>
+    ''' The peer interface for <seealso cref="Component"/>. This is the top level peer
+    ''' interface for widgets and defines the bulk of methods for AWT component
+    ''' peers. Most component peers have to implement this interface (via one
+    ''' of the subinterfaces), except menu components, which implement
+    ''' <seealso cref="MenuComponentPeer"/>.
+    ''' 
+    ''' The peer interfaces are intended only for use in porting
+    ''' the AWT. They are not intended for use by application
+    ''' developers, and developers should not implement peers
+    ''' nor invoke any of the peer methods directly on the peer
+    ''' instances.
+    ''' </summary>
+    Public Interface ComponentPeer
 
-		''' <summary>
-		''' The default operation, which is to set size and location.
-		''' 
-		''' TODO: This is only used internally and should probably be moved outside
-		'''       the peer interface.
-		''' </summary>
-		''' <seealso cref= Component#setBoundsOp </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int DEFAULT_OPERATION = SET_BOUNDS;
-
-		''' <summary>
-		''' Determines if a component has been obscured, i.e. by an overlapping
-		''' window or similar. This is used by JViewport for optimizing performance.
-		''' This doesn't have to be implemented, when
-		''' <seealso cref="#canDetermineObscurity()"/> returns {@code false}.
-		''' </summary>
-		''' <returns> {@code true} when the component has been obscured,
-		'''         {@code false} otherwise
-		''' </returns>
-		''' <seealso cref= #canDetermineObscurity() </seealso>
-		''' <seealso cref= javax.swing.JViewport#needsRepaintAfterBlit </seealso>
-		ReadOnly Property obscured As Boolean
+        ''' <summary>
+        ''' Determines if a component has been obscured, i.e. by an overlapping
+        ''' window or similar. This is used by JViewport for optimizing performance.
+        ''' This doesn't have to be implemented, when
+        ''' <seealso cref="#canDetermineObscurity()"/> returns {@code false}.
+        ''' </summary>
+        ''' <returns> {@code true} when the component has been obscured,
+        '''         {@code false} otherwise
+        ''' </returns>
+        ''' <seealso cref= #canDetermineObscurity() </seealso>
+        ''' <seealso cref= javax.swing.JViewport#needsRepaintAfterBlit </seealso>
+        ReadOnly Property obscured As Boolean
 
 		''' <summary>
 		''' Returns {@code true} when the peer can determine if a component

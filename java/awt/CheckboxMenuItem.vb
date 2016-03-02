@@ -76,14 +76,14 @@ Namespace java.awt
 	'			});
 		End Sub
 
-	   ''' <summary>
-	   ''' The state of a checkbox menu item
-	   ''' @serial </summary>
-	   ''' <seealso cref= #getState() </seealso>
-	   ''' <seealso cref= #setState(boolean) </seealso>
-		Friend state As Boolean = False
+        ''' <summary>
+        ''' The state of a checkbox menu item
+        ''' @serial </summary>
+        ''' <seealso cref= #getState() </seealso>
+        ''' <seealso cref= #setState(boolean) </seealso>
+        Friend _state As Boolean = False
 
-		<NonSerialized> _
+        <NonSerialized> _
 		Friend itemListener As ItemListener
 
 		Private Const base As String = "chkmenuitem"
@@ -453,39 +453,39 @@ Namespace java.awt
 		End Sub
 
 
-	'///////////////
-	' Accessibility support
-	'//////////////
+        '///////////////
+        ' Accessibility support
+        '//////////////
 
-		''' <summary>
-		''' Gets the AccessibleContext associated with this CheckboxMenuItem.
-		''' For checkbox menu items, the AccessibleContext takes the
-		''' form of an AccessibleAWTCheckboxMenuItem.
-		''' A new AccessibleAWTCheckboxMenuItem is created if necessary.
-		''' </summary>
-		''' <returns> an AccessibleAWTCheckboxMenuItem that serves as the
-		'''         AccessibleContext of this CheckboxMenuItem
-		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
-			Get
-				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTCheckboxMenuItem(Me)
-				Return accessibleContext
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the AccessibleContext associated with this CheckboxMenuItem.
+        ''' For checkbox menu items, the AccessibleContext takes the
+        ''' form of an AccessibleAWTCheckboxMenuItem.
+        ''' A new AccessibleAWTCheckboxMenuItem is created if necessary.
+        ''' </summary>
+        ''' <returns> an AccessibleAWTCheckboxMenuItem that serves as the
+        '''         AccessibleContext of this CheckboxMenuItem
+        ''' @since 1.3 </returns>
+        Public ReadOnly Property accessibleContext As AccessibleContext
+            Get
+                If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTCheckboxMenuItem(Me)
+                Return accessibleContext
+            End Get
+        End Property
 
-		''' <summary>
-		''' Inner class of CheckboxMenuItem used to provide default support for
-		''' accessibility.  This class is not meant to be used directly by
-		''' application developers, but is instead meant only to be
-		''' subclassed by menu component developers.
-		''' <p>
-		''' This class implements accessibility support for the
-		''' <code>CheckboxMenuItem</code> class.  It provides an implementation
-		''' of the Java Accessibility API appropriate to checkbox menu item
-		''' user-interface elements.
-		''' @since 1.3
-		''' </summary>
-		Protected Friend Class AccessibleAWTCheckboxMenuItem
+        ''' <summary>
+        ''' Inner class of CheckboxMenuItem used to provide default support for
+        ''' accessibility.  This class is not meant to be used directly by
+        ''' application developers, but is instead meant only to be
+        ''' subclassed by menu component developers.
+        ''' <p>
+        ''' This class implements accessibility support for the
+        ''' <code>CheckboxMenuItem</code> class.  It provides an implementation
+        ''' of the Java Accessibility API appropriate to checkbox menu item
+        ''' user-interface elements.
+        ''' @since 1.3
+        ''' </summary>
+        Protected Friend Class AccessibleAWTCheckboxMenuItem
 			Inherits AccessibleAWTMenuItem
 			Implements AccessibleAction, AccessibleValue
 

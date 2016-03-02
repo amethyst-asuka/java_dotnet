@@ -215,8 +215,8 @@ Namespace java.awt
 
 			Public Overridable Function run() As Constructor
 				Try
-					Dim ctor As Constructor = clazz.getDeclaredConstructor(CType(Nothing, Class()))
-					If ctor IsNot Nothing Then ctor.accessible = True
+                    Dim ctor As Constructor = clazz.getDeclaredConstructor(CType(Nothing, [Class]()))
+                    If ctor IsNot Nothing Then ctor.accessible = True
 					Return ctor
 				Catch e As SecurityException
 				Catch e As NoSuchMethodException

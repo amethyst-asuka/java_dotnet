@@ -187,19 +187,19 @@ Namespace java.awt
 			MyBase.createBufferStrategy(numBuffers, caps)
 		End Sub
 
-		''' <summary>
-		''' Returns the <code>BufferStrategy</code> used by this component.  This
-		''' method will return null if a <code>BufferStrategy</code> has not yet
-		''' been created or has been disposed.
-		''' </summary>
-		''' <returns> the buffer strategy used by this component </returns>
-		''' <seealso cref= #createBufferStrategy
-		''' @since 1.4 </seealso>
-		Public Property Overrides bufferStrategy As java.awt.image.BufferStrategy
-			Get
-				Return MyBase.bufferStrategy
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the <code>BufferStrategy</code> used by this component.  This
+        ''' method will return null if a <code>BufferStrategy</code> has not yet
+        ''' been created or has been disposed.
+        ''' </summary>
+        ''' <returns> the buffer strategy used by this component </returns>
+        ''' <seealso cref= #createBufferStrategy
+        ''' @since 1.4 </seealso>
+        Public Overrides ReadOnly Property bufferStrategy As java.awt.image.BufferStrategy
+            Get
+                Return MyBase.bufferStrategy
+            End Get
+        End Property
 
         '    
         '     * --- Accessibility Support ---

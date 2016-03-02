@@ -6,6 +6,7 @@ Imports System.Runtime.InteropServices
 Imports javax.accessibility
 Imports sun.java2d.pipe.hw.ExtendedBufferCapabilities.VSyncType
 Imports [event]
+Imports [event]
 
 '
 ' * Copyright (c) 1995, 2015, Oracle and/or its affiliates. All rights reserved.
@@ -266,7 +267,7 @@ Namespace java.awt
         ''' <seealso cref= java.awt.image.BufferStrategy </seealso>
         ''' <seealso cref= #getBufferStrategy() </seealso>
         <NonSerialized>
-        Friend bufferStrategy As java.awt.image.BufferStrategy = Nothing
+        Friend _bufferStrategy As java.awt.image.BufferStrategy = Nothing
 
         ''' <summary>
         ''' True when the object should ignore all repaint events.
@@ -449,7 +450,7 @@ Namespace java.awt
         ''' <seealso cref= #getComponentOrientation </seealso>
         ''' <seealso cref= #setComponentOrientation </seealso>
         <NonSerialized>
-        Friend componentOrientation As ComponentOrientation = componentOrientation.UNKNOWN
+        Friend _componentOrientation As ComponentOrientation = ComponentOrientation.UNKNOWN
 
         ''' <summary>
         ''' <code>newEventsOnly</code> will be true if the event is
@@ -776,17 +777,17 @@ Namespace java.awt
         '     * initializing final fields.
         '     
         <NonSerialized>
-        Private objectLock As New Object
-        Friend Overridable Property objectLock As Object
+        Private _objectLock As New Object
+        Friend Overridable ReadOnly Property objectLock As Object
             Get
-                Return objectLock
+                Return _objectLock
             End Get
         End Property
 
         '    
         '     * Returns the acc this component was constructed with.
         '     
-        Friend Property accessControlContext As java.security.AccessControlContext
+        Friend ReadOnly Property accessControlContext As java.security.AccessControlContext
             Get
                 If acc Is Nothing Then Throw New SecurityException("Component is missing AccessControlContext")
                 Return acc
@@ -2503,7 +2504,7 @@ Namespace java.awt
         End Property
 
         If maximumSizeSet Then Return New Dimension(maxSize)
-			Return New Dimension( java.lang.[Short].Max_Value,  java.lang.[Short].Max_Value)
+			Return New Dimension(java.lang.[Short].Max_Value, java.lang.[Short].Max_Value)
         End Function
 
         ''' <summary>
@@ -4548,7 +4549,7 @@ Namespace java.awt
                 Else
                     windowClosingException.fillInStackTrace()
                     Console.WriteLine(windowClosingException.ToString())
-                    Console.Write(windowClosingException.StackTrace)
+                    Console.Write(windowClosingException.stackTrace)
                     windowClosingException = Nothing
                 End If
                 Return True
@@ -5484,7 +5485,7 @@ Namespace java.awt
         ''' </summary>
         Private Function checkCoalescing() As Boolean
             If Me.GetType().classLoader Is Nothing Then Return False
-            Dim clazz As  [Class] = Me.GetType()
+            Dim clazz As [Class] = Me.GetType()
             SyncLock coalesceMap
                 ' Check cache.
                 Dim value As Boolean? = coalesceMap(clazz)
@@ -5509,7 +5510,7 @@ Namespace java.awt
         ''' <summary>
         ''' Parameter types of coalesceEvents(AWTEvent,AWTEVent).
         ''' </summary>
-        Private Shared ReadOnly coalesceEventsParams As  [Class]() = {GetType(AWTEvent), GetType(AWTEvent)}
+        Private Shared ReadOnly coalesceEventsParams As [Class]() = {GetType(AWTEvent), GetType(AWTEvent)}
 
         ''' <summary>
         ''' Indicates whether a class or its superclasses override coalesceEvents.
@@ -5519,7 +5520,7 @@ Namespace java.awt
             Debug.Assert(Thread.holdsLock(coalesceMap))
 
             ' First check superclass - we may not need to bother ourselves.
-            Dim superclass As  [Class] = clazz.BaseType
+            Dim superclass As [Class] = clazz.BaseType
             If superclass Is Nothing Then Return False
             If superclass.classLoader IsNot Nothing Then
                 Dim value As Boolean? = coalesceMap(superclass)
@@ -7582,10 +7583,10 @@ Namespace java.awt
             '
             ' Swing classes MUST be loaded by the bootstrap class loader,
             ' otherwise we don't consider them.
-            Dim klass As  [Class] = outerInstance.GetType()
+            Dim klass As [Class] = outerInstance.GetType()
             Do While klass IsNot Nothing
                 If klass.Assembly Is swingPackage AndAlso klass.classLoader Is Nothing Then
-                    Dim swingClass As  [Class] = klass
+                    Dim swingClass As [Class] = klass
                     ' Find the first override of the compWriteObjectNotify method
                     Dim methods As Method() = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
                     For counter As Integer = methods.Length - 1 To 0 Step -1
@@ -7770,7 +7771,7 @@ Namespace java.awt
             If orient IsNot Nothing Then
                 componentOrientation = CType(orient, ComponentOrientation)
             Else
-                componentOrientation = componentOrientation.UNKNOWN
+                componentOrientation = ComponentOrientation.UNKNOWN
             End If
 
             Try
@@ -8611,7 +8612,7 @@ Namespace java.awt
             If obj Is Nothing Then Return False
             If className Is Nothing Then Return False
 
-            Dim cls As  [Class] = obj.GetType()
+            Dim cls As [Class] = obj.GetType()
             Do While cls IsNot Nothing
                 If cls.name.Equals(className) Then Return True
                 cls = cls.BaseType
