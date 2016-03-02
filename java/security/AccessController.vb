@@ -267,63 +267,60 @@ Namespace java.security
 		Private Sub New()
 		End Sub
 
-		''' <summary>
-		''' Performs the specified {@code PrivilegedAction} with privileges
-		''' enabled. The action is performed with <i>all</i> of the permissions
-		''' possessed by the caller's protection domain.
-		''' 
-		''' <p> If the action's {@code run} method throws an (unchecked)
-		''' exception, it will propagate through this method.
-		''' 
-		''' <p> Note that any DomainCombiner associated with the current
-		''' AccessControlContext will be ignored while the action is performed.
-		''' </summary>
-		''' @param <T> the type of the value returned by the PrivilegedAction's
-		'''                  {@code run} method.
-		''' </param>
-		''' <param name="action"> the action to be performed.
-		''' </param>
-		''' <returns> the value returned by the action's {@code run} method.
-		''' </returns>
-		''' <exception cref="NullPointerException"> if the action is {@code null}
-		''' </exception>
-		''' <seealso cref= #doPrivileged(PrivilegedAction,AccessControlContext) </seealso>
-		''' <seealso cref= #doPrivileged(PrivilegedExceptionAction) </seealso>
-		''' <seealso cref= #doPrivilegedWithCombiner(PrivilegedAction) </seealso>
-		''' <seealso cref= java.security.DomainCombiner </seealso>
+        ''' <summary>
+        ''' Performs the specified {@code PrivilegedAction} with privileges
+        ''' enabled. The action is performed with <i>all</i> of the permissions
+        ''' possessed by the caller's protection domain.
+        ''' 
+        ''' <p> If the action's {@code run} method throws an (unchecked)
+        ''' exception, it will propagate through this method.
+        ''' 
+        ''' <p> Note that any DomainCombiner associated with the current
+        ''' AccessControlContext will be ignored while the action is performed.
+        ''' </summary>
+        ''' @param <T> the type of the value returned by the PrivilegedAction's
+        '''                  {@code run} method.
+        ''' </param>
+        ''' <param name="action"> the action to be performed.
+        ''' </param>
+        ''' <returns> the value returned by the action's {@code run} method.
+        ''' </returns>
+        ''' <exception cref="NullPointerException"> if the action is {@code null}
+        ''' </exception>
+        ''' <seealso cref= #doPrivileged(PrivilegedAction,AccessControlContext) </seealso>
+        ''' <seealso cref= #doPrivileged(PrivilegedExceptionAction) </seealso>
+        ''' <seealso cref= #doPrivilegedWithCombiner(PrivilegedAction) </seealso>
+        ''' <seealso cref= java.security.DomainCombiner </seealso>
+        <DllImport("unknown")>
+        Public Shared Function doPrivileged(Of T)(ByVal action As PrivilegedAction(Of T)) As T
+        End Function
 
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
-		Public Shared Function doPrivileged(ByVal action As PrivilegedAction(Of T)) As T(Of T)
-		End Function
-
-		''' <summary>
-		''' Performs the specified {@code PrivilegedAction} with privileges
-		''' enabled. The action is performed with <i>all</i> of the permissions
-		''' possessed by the caller's protection domain.
-		''' 
-		''' <p> If the action's {@code run} method throws an (unchecked)
-		''' exception, it will propagate through this method.
-		''' 
-		''' <p> This method preserves the current AccessControlContext's
-		''' DomainCombiner (which may be null) while the action is performed.
-		''' </summary>
-		''' @param <T> the type of the value returned by the PrivilegedAction's
-		'''                  {@code run} method.
-		''' </param>
-		''' <param name="action"> the action to be performed.
-		''' </param>
-		''' <returns> the value returned by the action's {@code run} method.
-		''' </returns>
-		''' <exception cref="NullPointerException"> if the action is {@code null}
-		''' </exception>
-		''' <seealso cref= #doPrivileged(PrivilegedAction) </seealso>
-		''' <seealso cref= java.security.DomainCombiner
-		''' 
-		''' @since 1.6 </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedAction(Of T)) As T
+        ''' <summary>
+        ''' Performs the specified {@code PrivilegedAction} with privileges
+        ''' enabled. The action is performed with <i>all</i> of the permissions
+        ''' possessed by the caller's protection domain.
+        ''' 
+        ''' <p> If the action's {@code run} method throws an (unchecked)
+        ''' exception, it will propagate through this method.
+        ''' 
+        ''' <p> This method preserves the current AccessControlContext's
+        ''' DomainCombiner (which may be null) while the action is performed.
+        ''' </summary>
+        ''' @param <T> the type of the value returned by the PrivilegedAction's
+        '''                  {@code run} method.
+        ''' </param>
+        ''' <param name="action"> the action to be performed.
+        ''' </param>
+        ''' <returns> the value returned by the action's {@code run} method.
+        ''' </returns>
+        ''' <exception cref="NullPointerException"> if the action is {@code null}
+        ''' </exception>
+        ''' <seealso cref= #doPrivileged(PrivilegedAction) </seealso>
+        ''' <seealso cref= java.security.DomainCombiner
+        ''' 
+        ''' @since 1.6 </seealso>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Public Shared Function doPrivilegedWithCombiner(Of T)(ByVal action As PrivilegedAction(Of T)) As T
 			Dim acc As AccessControlContext = stackAccessControlContext
 			If acc Is Nothing Then Return AccessController.doPrivileged(action)
 			Dim dc As DomainCombiner = acc.assignedCombiner

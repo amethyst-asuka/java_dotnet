@@ -59,8 +59,8 @@ Namespace java.io
 		Private channel As java.nio.channels.FileChannel = Nothing
 
 		Private ReadOnly closeLock As New Object
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		Private closed As Boolean = False
+
+        Private closed As Boolean = False
 
 		''' <summary>
 		''' Creates a <code>FileInputStream</code> by
