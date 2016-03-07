@@ -33,167 +33,168 @@ Namespace java.awt
 
 
 
-	''' <summary>
-	''' The <code>Font</code> class represents fonts, which are used to
-	''' render text in a visible way.
-	''' A font provides the information needed to map sequences of
-	''' <em>characters</em> to sequences of <em>glyphs</em>
-	''' and to render sequences of glyphs on <code>Graphics</code> and
-	''' <code>Component</code> objects.
-	''' 
-	''' <h3>Characters and Glyphs</h3>
-	''' 
-	''' A <em>character</em> is a symbol that represents an item such as a letter,
-	''' a digit, or punctuation in an abstract way. For example, <code>'g'</code>,
-	''' LATIN SMALL LETTER G, is a character.
-	''' <p>
-	''' A <em>glyph</em> is a shape used to render a character or a sequence of
-	''' characters. In simple writing systems, such as Latin, typically one glyph
-	''' represents one character. In general, however, characters and glyphs do not
-	''' have one-to-one correspondence. For example, the character '&aacute;'
-	''' LATIN SMALL LETTER A WITH ACUTE, can be represented by
-	''' two glyphs: one for 'a' and one for '&acute;'. On the other hand, the
-	''' two-character string "fi" can be represented by a single glyph, an
-	''' "fi" ligature. In complex writing systems, such as Arabic or the South
-	''' and South-East Asian writing systems, the relationship between characters
-	''' and glyphs can be more complicated and involve context-dependent selection
-	''' of glyphs as well as glyph reordering.
-	''' 
-	''' A font encapsulates the collection of glyphs needed to render a selected set
-	''' of characters as well as the tables needed to map sequences of characters to
-	''' corresponding sequences of glyphs.
-	''' 
-	''' <h3>Physical and Logical Fonts</h3>
-	''' 
-	''' The Java Platform distinguishes between two kinds of fonts:
-	''' <em>physical</em> fonts and <em>logical</em> fonts.
-	''' <p>
-	''' <em>Physical</em> fonts are the actual font libraries containing glyph data
-	''' and tables to map from character sequences to glyph sequences, using a font
-	''' technology such as TrueType or PostScript Type 1.
-	''' All implementations of the Java Platform must support TrueType fonts;
-	''' support for other font technologies is implementation dependent.
-	''' Physical fonts may use names such as Helvetica, Palatino, HonMincho, or
-	''' any number of other font names.
-	''' Typically, each physical font supports only a limited set of writing
-	''' systems, for example, only Latin characters or only Japanese and Basic
-	''' Latin.
-	''' The set of available physical fonts varies between configurations.
-	''' Applications that require specific fonts can bundle them and instantiate
-	''' them using the <seealso cref="#createFont createFont"/> method.
-	''' <p>
-	''' <em>Logical</em> fonts are the five font families defined by the Java
-	''' platform which must be supported by any Java runtime environment:
-	''' Serif, SansSerif, Monospaced, Dialog, and DialogInput.
-	''' These logical fonts are not actual font libraries. Instead, the logical
-	''' font names are mapped to physical fonts by the Java runtime environment.
-	''' The mapping is implementation and usually locale dependent, so the look
-	''' and the metrics provided by them vary.
-	''' Typically, each logical font name maps to several physical fonts in order to
-	''' cover a large range of characters.
-	''' <p>
-	''' Peered AWT components, such as <seealso cref="Label Label"/> and
-	''' <seealso cref="TextField TextField"/>, can only use logical fonts.
-	''' <p>
-	''' For a discussion of the relative advantages and disadvantages of using
-	''' physical or logical fonts, see the
-	''' <a href="http://www.oracle.com/technetwork/java/javase/tech/faq-jsp-138165.html">Internationalization FAQ</a>
-	''' document.
-	''' 
-	''' <h3>Font Faces and Names</h3>
-	''' 
-	''' A <code>Font</code>
-	''' can have many faces, such as heavy, medium, oblique, gothic and
-	''' regular. All of these faces have similar typographic design.
-	''' <p>
-	''' There are three different names that you can get from a
-	''' <code>Font</code> object.  The <em>logical font name</em> is simply the
-	''' name that was used to construct the font.
-	''' The <em>font face name</em>, or just <em>font name</em> for
-	''' short, is the name of a particular font face, like Helvetica Bold. The
-	''' <em>family name</em> is the name of the font family that determines the
-	''' typographic design across several faces, like Helvetica.
-	''' <p>
-	''' The <code>Font</code> class represents an instance of a font face from
-	''' a collection of  font faces that are present in the system resources
-	''' of the host system.  As examples, Arial Bold and Courier Bold Italic
-	''' are font faces.  There can be several <code>Font</code> objects
-	''' associated with a font face, each differing in size, style, transform
-	''' and font features.
-	''' <p>
-	''' The <seealso cref="GraphicsEnvironment#getAllFonts() getAllFonts"/> method
-	''' of the <code>GraphicsEnvironment</code> class returns an
-	''' array of all font faces available in the system. These font faces are
-	''' returned as <code>Font</code> objects with a size of 1, identity
-	''' transform and default font features. These
-	''' base fonts can then be used to derive new <code>Font</code> objects
-	''' with varying sizes, styles, transforms and font features via the
-	''' <code>deriveFont</code> methods in this class.
-	''' 
-	''' <h3>Font and TextAttribute</h3>
-	''' 
-	''' <p><code>Font</code> supports most
-	''' <code>TextAttribute</code>s.  This makes some operations, such as
-	''' rendering underlined text, convenient since it is not
-	''' necessary to explicitly construct a <code>TextLayout</code> object.
-	''' Attributes can be set on a Font by constructing or deriving it
-	''' using a <code>Map</code> of <code>TextAttribute</code> values.
-	''' 
-	''' <p>The values of some <code>TextAttributes</code> are not
-	''' serializable, and therefore attempting to serialize an instance of
-	''' <code>Font</code> that has such values will not serialize them.
-	''' This means a Font deserialized from such a stream will not compare
-	''' equal to the original Font that contained the non-serializable
-	''' attributes.  This should very rarely pose a problem
-	''' since these attributes are typically used only in special
-	''' circumstances and are unlikely to be serialized.
-	''' 
-	''' <ul>
-	''' <li><code>FOREGROUND</code> and <code>BACKGROUND</code> use
-	''' <code>Paint</code> values. The subclass <code>Color</code> is
-	''' serializable, while <code>GradientPaint</code> and
-	''' <code>TexturePaint</code> are not.</li>
-	''' <li><code>CHAR_REPLACEMENT</code> uses
-	''' <code>GraphicAttribute</code> values.  The subclasses
-	''' <code>ShapeGraphicAttribute</code> and
-	''' <code>ImageGraphicAttribute</code> are not serializable.</li>
-	''' <li><code>INPUT_METHOD_HIGHLIGHT</code> uses
-	''' <code>InputMethodHighlight</code> values, which are
-	''' not serializable.  See <seealso cref="java.awt.im.InputMethodHighlight"/>.</li>
-	''' </ul>
-	''' 
-	''' <p>Clients who create custom subclasses of <code>Paint</code> and
-	''' <code>GraphicAttribute</code> can make them serializable and
-	''' avoid this problem.  Clients who use input method highlights can
-	''' convert these to the platform-specific attributes for that
-	''' highlight on the current platform and set them on the Font as
-	''' a workaround.
-	''' 
-	''' <p>The <code>Map</code>-based constructor and
-	''' <code>deriveFont</code> APIs ignore the FONT attribute, and it is
-	''' not retained by the Font; the static <seealso cref="#getFont"/> method should
-	''' be used if the FONT attribute might be present.  See {@link
-	''' java.awt.font.TextAttribute#FONT} for more information.</p>
-	''' 
-	''' <p>Several attributes will cause additional rendering overhead
-	''' and potentially invoke layout.  If a <code>Font</code> has such
-	''' attributes, the <code><seealso cref="#hasLayoutAttributes()"/></code> method
-	''' will return true.</p>
-	''' 
-	''' <p>Note: Font rotations can cause text baselines to be rotated.  In
-	''' order to account for this (rare) possibility, font APIs are
-	''' specified to return metrics and take parameters 'in
-	''' baseline-relative coordinates'.  This maps the 'x' coordinate to
-	''' the advance along the baseline, (positive x is forward along the
-	''' baseline), and the 'y' coordinate to a distance along the
-	''' perpendicular to the baseline at 'x' (positive y is 90 degrees
-	''' clockwise from the baseline vector).  APIs for which this is
-	''' especially important are called out as having 'baseline-relative
-	''' coordinates.'
-	''' </summary>
-	<Serializable> _
-	Public Class Font
-		Private Class FontAccessImpl
+    ''' <summary>
+    ''' The <code>Font</code> class represents fonts, which are used to
+    ''' render text in a visible way.
+    ''' A font provides the information needed to map sequences of
+    ''' <em>characters</em> to sequences of <em>glyphs</em>
+    ''' and to render sequences of glyphs on <code>Graphics</code> and
+    ''' <code>Component</code> objects.
+    ''' 
+    ''' <h3>Characters and Glyphs</h3>
+    ''' 
+    ''' A <em>character</em> is a symbol that represents an item such as a letter,
+    ''' a digit, or punctuation in an abstract way. For example, <code>'g'</code>,
+    ''' LATIN SMALL LETTER G, is a character.
+    ''' <p>
+    ''' A <em>glyph</em> is a shape used to render a character or a sequence of
+    ''' characters. In simple writing systems, such as Latin, typically one glyph
+    ''' represents one character. In general, however, characters and glyphs do not
+    ''' have one-to-one correspondence. For example, the character '&aacute;'
+    ''' LATIN SMALL LETTER A WITH ACUTE, can be represented by
+    ''' two glyphs: one for 'a' and one for '&acute;'. On the other hand, the
+    ''' two-character string "fi" can be represented by a single glyph, an
+    ''' "fi" ligature. In complex writing systems, such as Arabic or the South
+    ''' and South-East Asian writing systems, the relationship between characters
+    ''' and glyphs can be more complicated and involve context-dependent selection
+    ''' of glyphs as well as glyph reordering.
+    ''' 
+    ''' A font encapsulates the collection of glyphs needed to render a selected set
+    ''' of characters as well as the tables needed to map sequences of characters to
+    ''' corresponding sequences of glyphs.
+    ''' 
+    ''' <h3>Physical and Logical Fonts</h3>
+    ''' 
+    ''' The Java Platform distinguishes between two kinds of fonts:
+    ''' <em>physical</em> fonts and <em>logical</em> fonts.
+    ''' <p>
+    ''' <em>Physical</em> fonts are the actual font libraries containing glyph data
+    ''' and tables to map from character sequences to glyph sequences, using a font
+    ''' technology such as TrueType or PostScript Type 1.
+    ''' All implementations of the Java Platform must support TrueType fonts;
+    ''' support for other font technologies is implementation dependent.
+    ''' Physical fonts may use names such as Helvetica, Palatino, HonMincho, or
+    ''' any number of other font names.
+    ''' Typically, each physical font supports only a limited set of writing
+    ''' systems, for example, only Latin characters or only Japanese and Basic
+    ''' Latin.
+    ''' The set of available physical fonts varies between configurations.
+    ''' Applications that require specific fonts can bundle them and instantiate
+    ''' them using the <seealso cref="#createFont createFont"/> method.
+    ''' <p>
+    ''' <em>Logical</em> fonts are the five font families defined by the Java
+    ''' platform which must be supported by any Java runtime environment:
+    ''' Serif, SansSerif, Monospaced, Dialog, and DialogInput.
+    ''' These logical fonts are not actual font libraries. Instead, the logical
+    ''' font names are mapped to physical fonts by the Java runtime environment.
+    ''' The mapping is implementation and usually locale dependent, so the look
+    ''' and the metrics provided by them vary.
+    ''' Typically, each logical font name maps to several physical fonts in order to
+    ''' cover a large range of characters.
+    ''' <p>
+    ''' Peered AWT components, such as <seealso cref="Label Label"/> and
+    ''' <seealso cref="TextField TextField"/>, can only use logical fonts.
+    ''' <p>
+    ''' For a discussion of the relative advantages and disadvantages of using
+    ''' physical or logical fonts, see the
+    ''' <a href="http://www.oracle.com/technetwork/java/javase/tech/faq-jsp-138165.html">Internationalization FAQ</a>
+    ''' document.
+    ''' 
+    ''' <h3>Font Faces and Names</h3>
+    ''' 
+    ''' A <code>Font</code>
+    ''' can have many faces, such as heavy, medium, oblique, gothic and
+    ''' regular. All of these faces have similar typographic design.
+    ''' <p>
+    ''' There are three different names that you can get from a
+    ''' <code>Font</code> object.  The <em>logical font name</em> is simply the
+    ''' name that was used to construct the font.
+    ''' The <em>font face name</em>, or just <em>font name</em> for
+    ''' short, is the name of a particular font face, like Helvetica Bold. The
+    ''' <em>family name</em> is the name of the font family that determines the
+    ''' typographic design across several faces, like Helvetica.
+    ''' <p>
+    ''' The <code>Font</code> class represents an instance of a font face from
+    ''' a collection of  font faces that are present in the system resources
+    ''' of the host system.  As examples, Arial Bold and Courier Bold Italic
+    ''' are font faces.  There can be several <code>Font</code> objects
+    ''' associated with a font face, each differing in size, style, transform
+    ''' and font features.
+    ''' <p>
+    ''' The <seealso cref="GraphicsEnvironment#getAllFonts() getAllFonts"/> method
+    ''' of the <code>GraphicsEnvironment</code> class returns an
+    ''' array of all font faces available in the system. These font faces are
+    ''' returned as <code>Font</code> objects with a size of 1, identity
+    ''' transform and default font features. These
+    ''' base fonts can then be used to derive new <code>Font</code> objects
+    ''' with varying sizes, styles, transforms and font features via the
+    ''' <code>deriveFont</code> methods in this class.
+    ''' 
+    ''' <h3>Font and TextAttribute</h3>
+    ''' 
+    ''' <p><code>Font</code> supports most
+    ''' <code>TextAttribute</code>s.  This makes some operations, such as
+    ''' rendering underlined text, convenient since it is not
+    ''' necessary to explicitly construct a <code>TextLayout</code> object.
+    ''' Attributes can be set on a Font by constructing or deriving it
+    ''' using a <code>Map</code> of <code>TextAttribute</code> values.
+    ''' 
+    ''' <p>The values of some <code>TextAttributes</code> are not
+    ''' serializable, and therefore attempting to serialize an instance of
+    ''' <code>Font</code> that has such values will not serialize them.
+    ''' This means a Font deserialized from such a stream will not compare
+    ''' equal to the original Font that contained the non-serializable
+    ''' attributes.  This should very rarely pose a problem
+    ''' since these attributes are typically used only in special
+    ''' circumstances and are unlikely to be serialized.
+    ''' 
+    ''' <ul>
+    ''' <li><code>FOREGROUND</code> and <code>BACKGROUND</code> use
+    ''' <code>Paint</code> values. The subclass <code>Color</code> is
+    ''' serializable, while <code>GradientPaint</code> and
+    ''' <code>TexturePaint</code> are not.</li>
+    ''' <li><code>CHAR_REPLACEMENT</code> uses
+    ''' <code>GraphicAttribute</code> values.  The subclasses
+    ''' <code>ShapeGraphicAttribute</code> and
+    ''' <code>ImageGraphicAttribute</code> are not serializable.</li>
+    ''' <li><code>INPUT_METHOD_HIGHLIGHT</code> uses
+    ''' <code>InputMethodHighlight</code> values, which are
+    ''' not serializable.  See <seealso cref="java.awt.im.InputMethodHighlight"/>.</li>
+    ''' </ul>
+    ''' 
+    ''' <p>Clients who create custom subclasses of <code>Paint</code> and
+    ''' <code>GraphicAttribute</code> can make them serializable and
+    ''' avoid this problem.  Clients who use input method highlights can
+    ''' convert these to the platform-specific attributes for that
+    ''' highlight on the current platform and set them on the Font as
+    ''' a workaround.
+    ''' 
+    ''' <p>The <code>Map</code>-based constructor and
+    ''' <code>deriveFont</code> APIs ignore the FONT attribute, and it is
+    ''' not retained by the Font; the static <seealso cref="#getFont"/> method should
+    ''' be used if the FONT attribute might be present.  See {@link
+    ''' java.awt.font.TextAttribute#FONT} for more information.</p>
+    ''' 
+    ''' <p>Several attributes will cause additional rendering overhead
+    ''' and potentially invoke layout.  If a <code>Font</code> has such
+    ''' attributes, the <code><seealso cref="#hasLayoutAttributes()"/></code> method
+    ''' will return true.</p>
+    ''' 
+    ''' <p>Note: Font rotations can cause text baselines to be rotated.  In
+    ''' order to account for this (rare) possibility, font APIs are
+    ''' specified to return metrics and take parameters 'in
+    ''' baseline-relative coordinates'.  This maps the 'x' coordinate to
+    ''' the advance along the baseline, (positive x is forward along the
+    ''' baseline), and the 'y' coordinate to a distance along the
+    ''' perpendicular to the baseline at 'x' (positive y is 90 degrees
+    ''' clockwise from the baseline vector).  APIs for which this is
+    ''' especially important are called out as having 'baseline-relative
+    ''' coordinates.'
+    ''' </summary>
+    <Serializable>
+    Public Class Font : Inherits java.lang.Object
+
+        Private Class FontAccessImpl
 			Inherits sun.font.FontAccess
 
 			Public Overridable Function getFont2D(ByVal font_Renamed As Font) As sun.font.Font2D
@@ -409,134 +410,134 @@ Namespace java.awt
 	'     
 		Private Const serialVersionUID As Long = -4206021311591459213L
 
-		''' <summary>
-		''' Gets the peer of this <code>Font</code>. </summary>
-		''' <returns>  the peer of the <code>Font</code>.
-		''' @since JDK1.1 </returns>
-		''' @deprecated Font rendering is now platform independent. 
-		<Obsolete("Font rendering is now platform independent.")> _
-		Public Overridable Property peer As java.awt.peer.FontPeer
-			Get
-				Return peer_NoClientCode
-			End Get
-		End Property
-		' NOTE: This method is called by privileged threads.
-		'       We implement this functionality in a package-private method
-		'       to insure that it cannot be overridden by client subclasses.
-		'       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Property peer_NoClientCode As java.awt.peer.FontPeer
-			Get
-				If peer Is Nothing Then
-					Dim tk As Toolkit = Toolkit.defaultToolkit
-					Me.peer = tk.getFontPeer(name, style)
-				End If
-				Return peer
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the peer of this <code>Font</code>. </summary>
+        ''' <returns>  the peer of the <code>Font</code>.
+        ''' @since JDK1.1 </returns>
+        ''' @deprecated Font rendering is now platform independent. 
+        <Obsolete("Font rendering is now platform independent.")>
+        Public Overridable ReadOnly Property peer As java.awt.peer.FontPeer
+            Get
+                Return peer_NoClientCode
+            End Get
+        End Property
+        ' NOTE: This method is called by privileged threads.
+        '       We implement this functionality in a package-private method
+        '       to insure that it cannot be overridden by client subclasses.
+        '       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Friend ReadOnly Property peer_NoClientCode As java.awt.peer.FontPeer
+            Get
+                If peer Is Nothing Then
+                    Dim tk As Toolkit = Toolkit.defaultToolkit
+                    Me.peer = tk.getFontPeer(name, style)
+                End If
+                Return peer
+            End Get
+        End Property
 
-		''' <summary>
-		''' Return the AttributeValues object associated with this
-		''' font.  Most of the time, the internal object is null.
-		''' If required, it will be created from the 'standard'
-		''' state on the font.  Only non-default values will be
-		''' set in the AttributeValues object.
-		''' 
-		''' <p>Since the AttributeValues object is mutable, and it
-		''' is cached in the font, care must be taken to ensure that
-		''' it is not mutated.
-		''' </summary>
-		Private Property attributeValues As sun.font.AttributeValues
-			Get
-				If values Is Nothing Then
-					Dim valuesTmp As New sun.font.AttributeValues
-					valuesTmp.family = name
-					valuesTmp.size = pointSize ' expects the float value.
-    
-					If (style And BOLD) <> 0 Then valuesTmp.weight = 2 ' WEIGHT_BOLD
-    
-					If (style And ITALIC) <> 0 Then valuesTmp.posture = .2f ' POSTURE_OBLIQUE
-					valuesTmp.defineAll(PRIMARY_MASK) ' for streaming compatibility
-					values = valuesTmp
-				End If
-    
-				Return values
-			End Get
-		End Property
+        ''' <summary>
+        ''' Return the AttributeValues object associated with this
+        ''' font.  Most of the time, the internal object is null.
+        ''' If required, it will be created from the 'standard'
+        ''' state on the font.  Only non-default values will be
+        ''' set in the AttributeValues object.
+        ''' 
+        ''' <p>Since the AttributeValues object is mutable, and it
+        ''' is cached in the font, care must be taken to ensure that
+        ''' it is not mutated.
+        ''' </summary>
+        Private ReadOnly Property attributeValues As sun.font.AttributeValues
+            Get
+                If values Is Nothing Then
+                    Dim valuesTmp As New sun.font.AttributeValues
+                    valuesTmp.family = name
+                    valuesTmp.size = pointSize ' expects the float value.
 
-		Private Property font2D As sun.font.Font2D
-			Get
-				Dim fm As sun.font.FontManager = sun.font.FontManagerFactory.instance
-				If fm.usingPerAppContextComposites() AndAlso font2DHandle IsNot Nothing AndAlso TypeOf font2DHandle.font2D Is sun.font.CompositeFont AndAlso CType(font2DHandle.font2D, sun.font.CompositeFont).stdComposite Then
-					Return fm.findFont2D(name, style, sun.font.FontManager.LOGICAL_FALLBACK)
-				ElseIf font2DHandle Is Nothing Then
-					font2DHandle = fm.findFont2D(name, style, sun.font.FontManager.LOGICAL_FALLBACK).handle
-				End If
-		'         Do not cache the de-referenced font2D. It must be explicitly
-		'         * de-referenced to pick up a valid font in the event that the
-		'         * original one is marked invalid
-		'         
-				Return font2DHandle.font2D
-			End Get
-		End Property
+                    If (style And BOLD) <> 0 Then valuesTmp.weight = 2 ' WEIGHT_BOLD
 
-		''' <summary>
-		''' Creates a new <code>Font</code> from the specified name, style and
-		''' point size.
-		''' <p>
-		''' The font name can be a font face name or a font family name.
-		''' It is used together with the style to find an appropriate font face.
-		''' When a font family name is specified, the style argument is used to
-		''' select the most appropriate face from the family. When a font face
-		''' name is specified, the face's style and the style argument are
-		''' merged to locate the best matching font from the same family.
-		''' For example if face name "Arial Bold" is specified with style
-		''' <code>Font.ITALIC</code>, the font system looks for a face in the
-		''' "Arial" family that is bold and italic, and may associate the font
-		''' instance with the physical font face "Arial Bold Italic".
-		''' The style argument is merged with the specified face's style, not
-		''' added or subtracted.
-		''' This means, specifying a bold face and a bold style does not
-		''' double-embolden the font, and specifying a bold face and a plain
-		''' style does not lighten the font.
-		''' <p>
-		''' If no face for the requested style can be found, the font system
-		''' may apply algorithmic styling to achieve the desired style.
-		''' For example, if <code>ITALIC</code> is requested, but no italic
-		''' face is available, glyphs from the plain face may be algorithmically
-		''' obliqued (slanted).
-		''' <p>
-		''' Font name lookup is case insensitive, using the case folding
-		''' rules of the US locale.
-		''' <p>
-		''' If the <code>name</code> parameter represents something other than a
-		''' logical font, i.e. is interpreted as a physical font face or family, and
-		''' this cannot be mapped by the implementation to a physical font or a
-		''' compatible alternative, then the font system will map the Font
-		''' instance to "Dialog", such that for example, the family as reported
-		''' by <seealso cref="#getFamily() getFamily"/> will be "Dialog".
-		''' <p>
-		''' </summary>
-		''' <param name="name"> the font name.  This can be a font face name or a font
-		''' family name, and may represent either a logical font or a physical
-		''' font found in this {@code GraphicsEnvironment}.
-		''' The family names for logical fonts are: Dialog, DialogInput,
-		''' Monospaced, Serif, or SansSerif. Pre-defined String constants exist
-		''' for all of these names, for example, {@code DIALOG}. If {@code name} is
-		''' {@code null}, the <em>logical font name</em> of the new
-		''' {@code Font} as returned by {@code getName()} is set to
-		''' the name "Default". </param>
-		''' <param name="style"> the style constant for the {@code Font}
-		''' The style argument is an integer bitmask that may
-		''' be {@code PLAIN}, or a bitwise union of {@code BOLD} and/or
-		''' {@code ITALIC} (for example, {@code ITALIC} or {@code BOLD|ITALIC}).
-		''' If the style argument does not conform to one of the expected
-		''' integer bitmasks then the style is set to {@code PLAIN}. </param>
-		''' <param name="size"> the point size of the {@code Font} </param>
-		''' <seealso cref= GraphicsEnvironment#getAllFonts </seealso>
-		''' <seealso cref= GraphicsEnvironment#getAvailableFontFamilyNames
-		''' @since JDK1.0 </seealso>
-		Public Sub New(ByVal name As String, ByVal style As Integer, ByVal size As Integer)
+                    If (style And ITALIC) <> 0 Then valuesTmp.posture = 0.2F ' POSTURE_OBLIQUE
+                    valuesTmp.defineAll(PRIMARY_MASK) ' for streaming compatibility
+                    values = valuesTmp
+                End If
+
+                Return values
+            End Get
+        End Property
+
+        Private ReadOnly Property font2D As sun.font.Font2D
+            Get
+                Dim fm As sun.font.FontManager = sun.font.FontManagerFactory.instance
+                If fm.usingPerAppContextComposites() AndAlso font2DHandle IsNot Nothing AndAlso TypeOf font2DHandle.font2D Is sun.font.CompositeFont AndAlso CType(font2DHandle.font2D, sun.font.CompositeFont).stdComposite Then
+                    Return fm.findFont2D(name, style, sun.font.FontManager.LOGICAL_FALLBACK)
+                ElseIf font2DHandle Is Nothing Then
+                    font2DHandle = fm.findFont2D(name, style, sun.font.FontManager.LOGICAL_FALLBACK).handle
+                End If
+                '         Do not cache the de-referenced font2D. It must be explicitly
+                '         * de-referenced to pick up a valid font in the event that the
+                '         * original one is marked invalid
+                '         
+                Return font2DHandle.font2D
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Creates a new <code>Font</code> from the specified name, style and
+        ''' point size.
+        ''' <p>
+        ''' The font name can be a font face name or a font family name.
+        ''' It is used together with the style to find an appropriate font face.
+        ''' When a font family name is specified, the style argument is used to
+        ''' select the most appropriate face from the family. When a font face
+        ''' name is specified, the face's style and the style argument are
+        ''' merged to locate the best matching font from the same family.
+        ''' For example if face name "Arial Bold" is specified with style
+        ''' <code>Font.ITALIC</code>, the font system looks for a face in the
+        ''' "Arial" family that is bold and italic, and may associate the font
+        ''' instance with the physical font face "Arial Bold Italic".
+        ''' The style argument is merged with the specified face's style, not
+        ''' added or subtracted.
+        ''' This means, specifying a bold face and a bold style does not
+        ''' double-embolden the font, and specifying a bold face and a plain
+        ''' style does not lighten the font.
+        ''' <p>
+        ''' If no face for the requested style can be found, the font system
+        ''' may apply algorithmic styling to achieve the desired style.
+        ''' For example, if <code>ITALIC</code> is requested, but no italic
+        ''' face is available, glyphs from the plain face may be algorithmically
+        ''' obliqued (slanted).
+        ''' <p>
+        ''' Font name lookup is case insensitive, using the case folding
+        ''' rules of the US locale.
+        ''' <p>
+        ''' If the <code>name</code> parameter represents something other than a
+        ''' logical font, i.e. is interpreted as a physical font face or family, and
+        ''' this cannot be mapped by the implementation to a physical font or a
+        ''' compatible alternative, then the font system will map the Font
+        ''' instance to "Dialog", such that for example, the family as reported
+        ''' by <seealso cref="#getFamily() getFamily"/> will be "Dialog".
+        ''' <p>
+        ''' </summary>
+        ''' <param name="name"> the font name.  This can be a font face name or a font
+        ''' family name, and may represent either a logical font or a physical
+        ''' font found in this {@code GraphicsEnvironment}.
+        ''' The family names for logical fonts are: Dialog, DialogInput,
+        ''' Monospaced, Serif, or SansSerif. Pre-defined String constants exist
+        ''' for all of these names, for example, {@code DIALOG}. If {@code name} is
+        ''' {@code null}, the <em>logical font name</em> of the new
+        ''' {@code Font} as returned by {@code getName()} is set to
+        ''' the name "Default". </param>
+        ''' <param name="style"> the style constant for the {@code Font}
+        ''' The style argument is an integer bitmask that may
+        ''' be {@code PLAIN}, or a bitwise union of {@code BOLD} and/or
+        ''' {@code ITALIC} (for example, {@code ITALIC} or {@code BOLD|ITALIC}).
+        ''' If the style argument does not conform to one of the expected
+        ''' integer bitmasks then the style is set to {@code PLAIN}. </param>
+        ''' <param name="size"> the point size of the {@code Font} </param>
+        ''' <seealso cref= GraphicsEnvironment#getAllFonts </seealso>
+        ''' <seealso cref= GraphicsEnvironment#getAvailableFontFamilyNames
+        ''' @since JDK1.0 </seealso>
+        Public Sub New(ByVal name As String, ByVal style As Integer, ByVal size As Integer)
 			Me.name = If(name IsNot Nothing, name, "Default")
 			Me.style = If((style And (Not &H3)) = 0, style, 0)
 			Me.size = size

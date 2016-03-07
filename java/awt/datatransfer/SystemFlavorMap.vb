@@ -177,22 +177,22 @@ Namespace java.awt.datatransfer
 		''' </summary>
 		Private disabledMappingGenerationKeys As java.util.Set(Of Object) = New HashSet(Of Object)
 
-		''' <summary>
-		''' Returns the default FlavorMap for this thread's ClassLoader.
-		''' </summary>
-		Public Property Shared defaultFlavorMap As FlavorMap
-			Get
-				Dim context As sun.awt.AppContext = sun.awt.AppContext.appContext
-				Dim fm As FlavorMap = CType(context.get(FLAVOR_MAP_KEY), FlavorMap)
-				If fm Is Nothing Then
-					fm = New SystemFlavorMap
-					context.put(FLAVOR_MAP_KEY, fm)
-				End If
-				Return fm
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the default FlavorMap for this thread's ClassLoader.
+        ''' </summary>
+        Public Shared ReadOnly Property defaultFlavorMap As FlavorMap
+            Get
+                Dim context As sun.awt.AppContext = sun.awt.AppContext.appContext
+                Dim fm As FlavorMap = CType(context.get(FLAVOR_MAP_KEY), FlavorMap)
+                If fm Is Nothing Then
+                    fm = New SystemFlavorMap
+                    context.put(FLAVOR_MAP_KEY, fm)
+                End If
+                Return fm
+            End Get
+        End Property
 
-		Private Sub New()
+        Private Sub New()
 		End Sub
 
 		''' <summary>
@@ -204,11 +204,11 @@ Namespace java.awt.datatransfer
 			If isMapInitialized Then Return
 
 			isMapInitialized = True
-			Dim flavormapDotProperties As java.io.BufferedReader = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+            Dim flavormapDotProperties As java.io.BufferedReader = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T))
 
-			Dim url As String = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T)
+            Dim url As String = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T))
 
-			If flavormapDotProperties IsNot Nothing Then
+            If flavormapDotProperties IsNot Nothing Then
 				Try
 					parseAndStoreReader(flavormapDotProperties)
 				Catch e As java.io.IOException

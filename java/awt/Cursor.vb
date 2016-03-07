@@ -318,7 +318,7 @@ Namespace java.awt
                     Dim fy As Integer = y
                     Dim flocalized As String = localized
 
-                    cursor_Renamed = java.security.AccessController.doPrivileged(Of Cursor)(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T)
+                    cursor_Renamed = java.security.AccessController.doPrivileged(Of Cursor)(New PrivilegedExceptionActionAnonymousInnerClassHelper(Of T))
                 Catch e As Exception
                     Throw New AWTException("Exception: " & e.GetType() & " " & e.Message & " occurred while creating cursor " & name)
                 End Try
@@ -419,7 +419,7 @@ Namespace java.awt
                 systemCustomCursorProperties = New java.util.Properties
 
                 Try
-                    java.security.AccessController.doPrivileged(Of Object)(New PrivilegedExceptionActionAnonymousInnerClassHelper2(Of T)
+                    java.security.AccessController.doPrivileged(Of Object)(New PrivilegedExceptionActionAnonymousInnerClassHelper2(Of T))
                 Catch e As Exception
                     systemCustomCursorProperties = Nothing
                     Throw New AWTException("Exception: " & e.GetType() & " " & e.Message & " occurred while loading: " & systemCustomCursorPropertiesFile)

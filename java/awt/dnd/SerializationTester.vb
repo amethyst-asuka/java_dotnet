@@ -36,8 +36,8 @@ Namespace java.awt.dnd
 		Private Shared stream As java.io.ObjectOutputStream
 		Shared Sub New()
 			Try
-				stream = New java.io.ObjectOutputStream(New OutputStreamAnonymousInnerClassHelper
-			Catch cannotHappen As java.io.IOException
+                stream = New java.io.ObjectOutputStream(New OutputStreamAnonymousInnerClassHelper)
+            Catch cannotHappen As java.io.IOException
 			End Try
 		End Sub
 

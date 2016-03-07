@@ -159,33 +159,31 @@ Namespace java.awt
 		''' </summary>
 		Private currentEvent As WeakReference(Of AWTEvent)
 
-	'    
-	'     * Non-zero if a thread is waiting in getNextEvent(int) for an event of
-	'     * a particular ID to be posted to the queue.
-	'     
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		Private waitForID As Integer
+        '    
+        '     * Non-zero if a thread is waiting in getNextEvent(int) for an event of
+        '     * a particular ID to be posted to the queue.
+        '     
+        Private waitForID As Integer
 
-	'    
-	'     * AppContext corresponding to the queue.
-	'     
-		Private ReadOnly appContext As AppContext
+        '    
+        '     * AppContext corresponding to the queue.
+        '     
+        Private ReadOnly appContext As AppContext
 
 		Private ReadOnly name As String = "AWT-EventQueue-" & threadInitNumber.andIncrement
 
 		Private fwDispatcher As FwDispatcher
 
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		Private Shared eventLog As sun.util.logging.PlatformLogger
+        Private Shared eventLog As sun.util.logging.PlatformLogger
 
-		Private Property Shared eventLog As sun.util.logging.PlatformLogger
-			Get
-				If eventLog Is Nothing Then eventLog = sun.util.logging.PlatformLogger.getLogger("java.awt.event.EventQueue")
-				Return eventLog
-			End Get
-		End Property
+        Private Shared ReadOnly Property eventLog As sun.util.logging.PlatformLogger
+            Get
+                If eventLog Is Nothing Then eventLog = sun.util.logging.PlatformLogger.getLogger("java.awt.event.EventQueue")
+                Return eventLog
+            End Get
+        End Property
 
-		Shared Sub New()
+        Shared Sub New()
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			AWTAccessor.setEventQueueAccessor(New AWTAccessor.EventQueueAccessor()
 	'		{
@@ -648,8 +646,8 @@ Namespace java.awt
 			If srcAcc Is Nothing Then
 				javaSecurityAccess.doIntersectionPrivilege(action, stack, eventAcc)
 			Else
-				javaSecurityAccess.doIntersectionPrivilege(New PrivilegedActionAnonymousInnerClassHelper2(Of T)
-			End If
+                javaSecurityAccess.doIntersectionPrivilege(New PrivilegedActionAnonymousInnerClassHelper2(Of T))
+            End If
 		End Sub
 
 		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
@@ -660,10 +658,10 @@ Namespace java.awt
 				' dispatch thread (e.g. performing DefaultKeyboardFocusManager.sendMessage),
 				' dispatch the event straight away.
 				If outerInstance.fwDispatcher Is Nothing OrElse outerInstance.dispatchThreadImpl Then
-					outerInstance.dispatchEventImpl(event, src)
-				Else
-					outerInstance.fwDispatcher.scheduleDispatch(New RunnableAnonymousInnerClassHelper2
-				End If
+                    outerInstance.dispatchEventImpl([event], src)
+                Else
+                    outerInstance.fwDispatcher.scheduleDispatch(New RunnableAnonymousInnerClassHelper2)
+                End If
 				Return Nothing
 			End Function
 

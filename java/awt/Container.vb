@@ -2524,8 +2524,8 @@ Namespace java.awt
 
 			Public Overridable Sub run() Implements Runnable.run
 				Dim dispatchThread As EventDispatchThread = CType(Thread.CurrentThread, EventDispatchThread)
-				dispatchThread.pumpEventsForHierarchy(New ConditionalAnonymousInnerClassHelper
-			End Sub
+                dispatchThread.pumpEventsForHierarchy(New ConditionalAnonymousInnerClassHelper)
+            End Sub
 
 			Private Class ConditionalAnonymousInnerClassHelper
 				Implements Conditional

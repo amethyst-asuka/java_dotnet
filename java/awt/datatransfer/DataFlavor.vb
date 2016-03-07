@@ -2,7 +2,7 @@ Imports System
 Imports System.Runtime.CompilerServices
 Imports System.Collections
 Imports System.Threading
-import static sun.security.util.SecurityConstants.GET_CLASSLOADER_PERMISSION
+Imports sun.security.util.SecurityConstants.GET_CLASSLOADER_PERMISSION
 
 '
 ' * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
@@ -537,146 +537,146 @@ Namespace java.awt.datatransfer
 			Return params
 		End Function
 
-		''' <summary>
-		''' Returns a <code>DataFlavor</code> representing plain text with Unicode
-		''' encoding, where:
-		''' <pre>
-		'''     representationClass = java.io.InputStream
-		'''     mimeType            = "text/plain;
-		'''                            charset=&lt;platform default Unicode encoding&gt;"
-		''' </pre>
-		''' Sun's implementation for Microsoft Windows uses the encoding <code>utf-16le</code>.
-		''' Sun's implementation for Solaris and Linux uses the encoding
-		''' <code>iso-10646-ucs-2</code>.
-		''' </summary>
-		''' <returns> a <code>DataFlavor</code> representing plain text
-		'''    with Unicode encoding
-		''' @since 1.3 </returns>
-		Public Property Shared textPlainUnicodeFlavor As DataFlavor
-			Get
-				Dim encoding As String = Nothing
-				Dim transferer As sun.awt.datatransfer.DataTransferer = sun.awt.datatransfer.DataTransferer.instance
-				If transferer IsNot Nothing Then encoding = transferer.defaultUnicodeEncoding
-				Return New DataFlavor("text/plain;charset=" & encoding & ";class=java.io.InputStream", "Plain Text")
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns a <code>DataFlavor</code> representing plain text with Unicode
+        ''' encoding, where:
+        ''' <pre>
+        '''     representationClass = java.io.InputStream
+        '''     mimeType            = "text/plain;
+        '''                            charset=&lt;platform default Unicode encoding&gt;"
+        ''' </pre>
+        ''' Sun's implementation for Microsoft Windows uses the encoding <code>utf-16le</code>.
+        ''' Sun's implementation for Solaris and Linux uses the encoding
+        ''' <code>iso-10646-ucs-2</code>.
+        ''' </summary>
+        ''' <returns> a <code>DataFlavor</code> representing plain text
+        '''    with Unicode encoding
+        ''' @since 1.3 </returns>
+        Public Shared ReadOnly Property textPlainUnicodeFlavor As DataFlavor
+            Get
+                Dim encoding As String = Nothing
+                Dim transferer As sun.awt.datatransfer.DataTransferer = sun.awt.datatransfer.DataTransferer.instance
+                If transferer IsNot Nothing Then encoding = transferer.defaultUnicodeEncoding
+                Return New DataFlavor("text/plain;charset=" & encoding & ";class=java.io.InputStream", "Plain Text")
+            End Get
+        End Property
 
-		''' <summary>
-		''' Selects the best text <code>DataFlavor</code> from an array of <code>
-		''' DataFlavor</code>s. Only <code>DataFlavor.stringFlavor</code>, and
-		''' equivalent flavors, and flavors that have a primary MIME type of "text",
-		''' are considered for selection.
-		''' <p>
-		''' Flavors are first sorted by their MIME types in the following order:
-		''' <ul>
-		''' <li>"text/sgml"
-		''' <li>"text/xml"
-		''' <li>"text/html"
-		''' <li>"text/rtf"
-		''' <li>"text/enriched"
-		''' <li>"text/richtext"
-		''' <li>"text/uri-list"
-		''' <li>"text/tab-separated-values"
-		''' <li>"text/t140"
-		''' <li>"text/rfc822-headers"
-		''' <li>"text/parityfec"
-		''' <li>"text/directory"
-		''' <li>"text/css"
-		''' <li>"text/calendar"
-		''' <li>"application/x-java-serialized-object"
-		''' <li>"text/plain"
-		''' <li>"text/&lt;other&gt;"
-		''' </ul>
-		''' <p>For example, "text/sgml" will be selected over
-		''' "text/html", and <code>DataFlavor.stringFlavor</code> will be chosen
-		''' over <code>DataFlavor.plainTextFlavor</code>.
-		''' <p>
-		''' If two or more flavors share the best MIME type in the array, then that
-		''' MIME type will be checked to see if it supports the charset parameter.
-		''' <p>
-		''' The following MIME types support, or are treated as though they support,
-		''' the charset parameter:
-		''' <ul>
-		''' <li>"text/sgml"
-		''' <li>"text/xml"
-		''' <li>"text/html"
-		''' <li>"text/enriched"
-		''' <li>"text/richtext"
-		''' <li>"text/uri-list"
-		''' <li>"text/directory"
-		''' <li>"text/css"
-		''' <li>"text/calendar"
-		''' <li>"application/x-java-serialized-object"
-		''' <li>"text/plain"
-		''' </ul>
-		''' The following MIME types do not support, or are treated as though they
-		''' do not support, the charset parameter:
-		''' <ul>
-		''' <li>"text/rtf"
-		''' <li>"text/tab-separated-values"
-		''' <li>"text/t140"
-		''' <li>"text/rfc822-headers"
-		''' <li>"text/parityfec"
-		''' </ul>
-		''' For "text/&lt;other&gt;" MIME types, the first time the JRE needs to
-		''' determine whether the MIME type supports the charset parameter, it will
-		''' check whether the parameter is explicitly listed in an arbitrarily
-		''' chosen <code>DataFlavor</code> which uses that MIME type. If so, the JRE
-		''' will assume from that point on that the MIME type supports the charset
-		''' parameter and will not check again. If the parameter is not explicitly
-		''' listed, the JRE will assume from that point on that the MIME type does
-		''' not support the charset parameter and will not check again. Because
-		''' this check is performed on an arbitrarily chosen
-		''' <code>DataFlavor</code>, developers must ensure that all
-		''' <code>DataFlavor</code>s with a "text/&lt;other&gt;" MIME type specify
-		''' the charset parameter if it is supported by that MIME type. Developers
-		''' should never rely on the JRE to substitute the platform's default
-		''' charset for a "text/&lt;other&gt;" DataFlavor. Failure to adhere to this
-		''' restriction will lead to undefined behavior.
-		''' <p>
-		''' If the best MIME type in the array does not support the charset
-		''' parameter, the flavors which share that MIME type will then be sorted by
-		''' their representation classes in the following order:
-		''' <code>java.io.InputStream</code>, <code>java.nio.ByteBuffer</code>,
-		''' <code>[B</code>, &lt;all others&gt;.
-		''' <p>
-		''' If two or more flavors share the best representation [Class], or if no
-		''' flavor has one of the three specified representations, then one of those
-		''' flavors will be chosen non-deterministically.
-		''' <p>
-		''' If the best MIME type in the array does support the charset parameter,
-		''' the flavors which share that MIME type will then be sorted by their
-		''' representation classes in the following order:
-		''' <code>java.io.Reader</code>, <code>java.lang.String</code>,
-		''' <code>java.nio.CharBuffer</code>, <code>[C</code>, &lt;all others&gt;.
-		''' <p>
-		''' If two or more flavors share the best representation [Class], and that
-		''' representation is one of the four explicitly listed, then one of those
-		''' flavors will be chosen non-deterministically. If, however, no flavor has
-		''' one of the four specified representations, the flavors will then be
-		''' sorted by their charsets. Unicode charsets, such as "UTF-16", "UTF-8",
-		''' "UTF-16BE", "UTF-16LE", and their aliases, are considered best. After
-		''' them, the platform default charset and its aliases are selected.
-		''' "US-ASCII" and its aliases are worst. All other charsets are chosen in
-		''' alphabetical order, but only charsets supported by this implementation
-		''' of the Java platform will be considered.
-		''' <p>
-		''' If two or more flavors share the best charset, the flavors will then
-		''' again be sorted by their representation classes in the following order:
-		''' <code>java.io.InputStream</code>, <code>java.nio.ByteBuffer</code>,
-		''' <code>[B</code>, &lt;all others&gt;.
-		''' <p>
-		''' If two or more flavors share the best representation [Class], or if no
-		''' flavor has one of the three specified representations, then one of those
-		''' flavors will be chosen non-deterministically.
-		''' </summary>
-		''' <param name="availableFlavors"> an array of available <code>DataFlavor</code>s </param>
-		''' <returns> the best (highest fidelity) flavor according to the rules
-		'''         specified above, or <code>null</code>,
-		'''         if <code>availableFlavors</code> is <code>null</code>,
-		'''         has zero length, or contains no text flavors
-		''' @since 1.3 </returns>
-		Public Shared Function selectBestTextFlavor(ByVal availableFlavors As DataFlavor()) As DataFlavor
+        ''' <summary>
+        ''' Selects the best text <code>DataFlavor</code> from an array of <code>
+        ''' DataFlavor</code>s. Only <code>DataFlavor.stringFlavor</code>, and
+        ''' equivalent flavors, and flavors that have a primary MIME type of "text",
+        ''' are considered for selection.
+        ''' <p>
+        ''' Flavors are first sorted by their MIME types in the following order:
+        ''' <ul>
+        ''' <li>"text/sgml"
+        ''' <li>"text/xml"
+        ''' <li>"text/html"
+        ''' <li>"text/rtf"
+        ''' <li>"text/enriched"
+        ''' <li>"text/richtext"
+        ''' <li>"text/uri-list"
+        ''' <li>"text/tab-separated-values"
+        ''' <li>"text/t140"
+        ''' <li>"text/rfc822-headers"
+        ''' <li>"text/parityfec"
+        ''' <li>"text/directory"
+        ''' <li>"text/css"
+        ''' <li>"text/calendar"
+        ''' <li>"application/x-java-serialized-object"
+        ''' <li>"text/plain"
+        ''' <li>"text/&lt;other&gt;"
+        ''' </ul>
+        ''' <p>For example, "text/sgml" will be selected over
+        ''' "text/html", and <code>DataFlavor.stringFlavor</code> will be chosen
+        ''' over <code>DataFlavor.plainTextFlavor</code>.
+        ''' <p>
+        ''' If two or more flavors share the best MIME type in the array, then that
+        ''' MIME type will be checked to see if it supports the charset parameter.
+        ''' <p>
+        ''' The following MIME types support, or are treated as though they support,
+        ''' the charset parameter:
+        ''' <ul>
+        ''' <li>"text/sgml"
+        ''' <li>"text/xml"
+        ''' <li>"text/html"
+        ''' <li>"text/enriched"
+        ''' <li>"text/richtext"
+        ''' <li>"text/uri-list"
+        ''' <li>"text/directory"
+        ''' <li>"text/css"
+        ''' <li>"text/calendar"
+        ''' <li>"application/x-java-serialized-object"
+        ''' <li>"text/plain"
+        ''' </ul>
+        ''' The following MIME types do not support, or are treated as though they
+        ''' do not support, the charset parameter:
+        ''' <ul>
+        ''' <li>"text/rtf"
+        ''' <li>"text/tab-separated-values"
+        ''' <li>"text/t140"
+        ''' <li>"text/rfc822-headers"
+        ''' <li>"text/parityfec"
+        ''' </ul>
+        ''' For "text/&lt;other&gt;" MIME types, the first time the JRE needs to
+        ''' determine whether the MIME type supports the charset parameter, it will
+        ''' check whether the parameter is explicitly listed in an arbitrarily
+        ''' chosen <code>DataFlavor</code> which uses that MIME type. If so, the JRE
+        ''' will assume from that point on that the MIME type supports the charset
+        ''' parameter and will not check again. If the parameter is not explicitly
+        ''' listed, the JRE will assume from that point on that the MIME type does
+        ''' not support the charset parameter and will not check again. Because
+        ''' this check is performed on an arbitrarily chosen
+        ''' <code>DataFlavor</code>, developers must ensure that all
+        ''' <code>DataFlavor</code>s with a "text/&lt;other&gt;" MIME type specify
+        ''' the charset parameter if it is supported by that MIME type. Developers
+        ''' should never rely on the JRE to substitute the platform's default
+        ''' charset for a "text/&lt;other&gt;" DataFlavor. Failure to adhere to this
+        ''' restriction will lead to undefined behavior.
+        ''' <p>
+        ''' If the best MIME type in the array does not support the charset
+        ''' parameter, the flavors which share that MIME type will then be sorted by
+        ''' their representation classes in the following order:
+        ''' <code>java.io.InputStream</code>, <code>java.nio.ByteBuffer</code>,
+        ''' <code>[B</code>, &lt;all others&gt;.
+        ''' <p>
+        ''' If two or more flavors share the best representation [Class], or if no
+        ''' flavor has one of the three specified representations, then one of those
+        ''' flavors will be chosen non-deterministically.
+        ''' <p>
+        ''' If the best MIME type in the array does support the charset parameter,
+        ''' the flavors which share that MIME type will then be sorted by their
+        ''' representation classes in the following order:
+        ''' <code>java.io.Reader</code>, <code>java.lang.String</code>,
+        ''' <code>java.nio.CharBuffer</code>, <code>[C</code>, &lt;all others&gt;.
+        ''' <p>
+        ''' If two or more flavors share the best representation [Class], and that
+        ''' representation is one of the four explicitly listed, then one of those
+        ''' flavors will be chosen non-deterministically. If, however, no flavor has
+        ''' one of the four specified representations, the flavors will then be
+        ''' sorted by their charsets. Unicode charsets, such as "UTF-16", "UTF-8",
+        ''' "UTF-16BE", "UTF-16LE", and their aliases, are considered best. After
+        ''' them, the platform default charset and its aliases are selected.
+        ''' "US-ASCII" and its aliases are worst. All other charsets are chosen in
+        ''' alphabetical order, but only charsets supported by this implementation
+        ''' of the Java platform will be considered.
+        ''' <p>
+        ''' If two or more flavors share the best charset, the flavors will then
+        ''' again be sorted by their representation classes in the following order:
+        ''' <code>java.io.InputStream</code>, <code>java.nio.ByteBuffer</code>,
+        ''' <code>[B</code>, &lt;all others&gt;.
+        ''' <p>
+        ''' If two or more flavors share the best representation [Class], or if no
+        ''' flavor has one of the three specified representations, then one of those
+        ''' flavors will be chosen non-deterministically.
+        ''' </summary>
+        ''' <param name="availableFlavors"> an array of available <code>DataFlavor</code>s </param>
+        ''' <returns> the best (highest fidelity) flavor according to the rules
+        '''         specified above, or <code>null</code>,
+        '''         if <code>availableFlavors</code> is <code>null</code>,
+        '''         has zero length, or contains no text flavors
+        ''' @since 1.3 </returns>
+        Public Shared Function selectBestTextFlavor(ByVal availableFlavors As DataFlavor()) As DataFlavor
 			If availableFlavors Is Nothing OrElse availableFlavors.Length = 0 Then Return Nothing
 
 			If textFlavorComparator Is Nothing Then textFlavorComparator = New TextFlavorComparator
