@@ -301,8 +301,8 @@ Namespace java.lang
         ''' </summary>
         Private Shared Function toUnsignedString0(ByVal val As Integer, ByVal shift As Integer) As String
             ' assert shift > 0 && shift <=5 : "Illegal shift value";
-            Dim mag As Integer =  java.lang.[Integer].SIZE -  java.lang.[Integer].numberOfLeadingZeros(val)
-            Dim chars_Renamed As Integer = System.Math.max(((mag + (shift - 1)) \ shift), 1)
+            Dim mag As Integer = java.lang.[Integer].SIZE - java.lang.[Integer].numberOfLeadingZeros(val)
+            Dim chars_Renamed As Integer = Global.System.Math.Max(((mag + (shift - 1)) \ shift), 1)
             Dim buf As Char() = New Char(chars_Renamed - 1) {}
 
             formatUnsignedInt(val, shift, buf, 0, chars_Renamed)
@@ -325,7 +325,7 @@ Namespace java.lang
             Dim mask As Integer = radix - 1
             Do
                 charPos -= 1
-                buf(offset + charPos) =  java.lang.[Integer].digits(val And mask)
+                buf(offset + charPos) = java.lang.[Integer].digits(val And mask)
                 val >>>= shift
             Loop While val <> 0 AndAlso charPos > 0
 
@@ -364,12 +364,12 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="i">   an integer to be converted. </param>
         ''' <returns>  a string representation of the argument in base&nbsp;10. </returns>
-        Public Shared Function ToString(ByVal i As Integer) As String
-            If i =  java.lang.[Integer].MIN_VALUE Then Return "-2147483648"
+        Public Overloads Shared Function ToString(ByVal i As Integer) As String
+            If i = java.lang.[Integer].MIN_VALUE Then Return "-2147483648"
             Dim size_Renamed As Integer = If(i < 0, stringSize(-i) + 1, stringSize(i))
             Dim buf As Char() = New Char(size_Renamed - 1) {}
             getChars(i, size_Renamed, buf)
-            Return New String(buf, True)
+            Return New [String](buf, True)
         End Function
 
         ''' <summary>
@@ -401,7 +401,7 @@ Namespace java.lang
         Friend Shared Sub getChars(ByVal i As Integer, ByVal index As Integer, ByVal buf As Char())
             Dim q, r As Integer
             Dim charPos As Integer = index
-            Dim sign As Char = 0
+            Dim sign As Char = Chr(0)
 
             If i < 0 Then
                 sign = "-"c
@@ -436,7 +436,7 @@ Namespace java.lang
             End If
         End Sub
 
-        Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999,  java.lang.[Integer].MAX_VALUE}
+        Friend Shared ReadOnly sizeTable As Integer() = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999, java.lang.[Integer].MAX_VALUE}
 
         ' Requires positive x
         Friend Shared Function stringSize(ByVal x As Integer) As Integer
@@ -517,7 +517,7 @@ Namespace java.lang
             Dim result As Integer = 0
             Dim negative As Boolean = False
             Dim i As Integer = 0, len As Integer = s.Length()
-            Dim limit As Integer = - java.lang.[Integer].Max_Value
+            Dim limit As Integer = -java.lang.[Integer].Max_Value
             Dim multmin As Integer
             Dim digit As Integer
 
@@ -526,7 +526,7 @@ Namespace java.lang
                 If firstChar < "0"c Then ' Possible leading "+" or "-"
                     If firstChar = "-"c Then
                         negative = True
-                        limit =  java.lang.[Integer].MIN_VALUE
+                        limit = java.lang.[Integer].MIN_VALUE
                     ElseIf firstChar <> "+"c Then
                         Throw NumberFormatException.forInputString(s)
                     End If
@@ -724,7 +724,7 @@ Namespace java.lang
         Private Class IntegerCache
             Friend Const low As Integer = -128
             Friend Shared ReadOnly high As Integer
-            Friend Shared ReadOnly cache As Integer?()
+            Friend Shared ReadOnly cache As [Integer]()
 
             Shared Sub New()
                 ' high value may be configured by property
@@ -733,19 +733,19 @@ Namespace java.lang
                 If integerCacheHighPropValue IsNot Nothing Then
                     Try
                         Dim i As Integer = parseInt(integerCacheHighPropValue)
-                        i = System.Math.max(i, 127)
+                        i = Global.System.Math.Max(i, 127)
                         ' Maximum array size is  java.lang.[Integer].MAX_VALUE
-                        h = System.Math.min(i,  java.lang.[Integer].Max_Value - (-low) - 1)
+                        h = Global.System.Math.Min(i, java.lang.[Integer].MAX_VALUE - (-low) - 1)
                     Catch nfe As NumberFormatException
                         ' If the property cannot be parsed into an int, ignore it.
                     End Try
                 End If
                 high = h
 
-                cache = New Integer?((high - low) + 1)
+                cache = New [Integer]((high - low) + 1) {}
                 Dim j As Integer = low
                 For k As Integer = 0 To cache.Length - 1
-                    cache(k) = New Integer?(j)
+                    cache(k) = New [Integer](j)
                     j += 1
                 Next k
 
@@ -771,7 +771,7 @@ Namespace java.lang
         ''' <param name="i"> an {@code int} value. </param>
         ''' <returns> an {@code Integer} instance representing {@code i}.
         ''' @since  1.5 </returns>
-        Public Shared Function valueOf(ByVal i As Integer) As Integer?
+        Public Shared Function valueOf(ByVal i As Integer) As [Integer]
             If i >= IntegerCache.low AndAlso i <= IntegerCache.high Then Return IntegerCache.cache(i + (-IntegerCache.low))
             Return New Integer?(i)
         End Function
@@ -789,9 +789,9 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="value">   the value to be represented by the
         '''                  {@code Integer} object. </param>
-        Function java.lang.Integer(ByVal value As Integer) As [Public]
-			Me.value = value
-        End Function
+        Sub New(ByVal value As Integer)
+            Me.value = value
+        End Sub
 
         ''' <summary>
         ''' Constructs a newly allocated {@code Integer} object that
@@ -805,9 +805,9 @@ Namespace java.lang
         ''' <exception cref="NumberFormatException">  if the {@code String} does not
         '''               contain a parsable  java.lang.[Integer]. </exception>
         ''' <seealso cref=        java.lang.Integer#parseInt(java.lang.String, int) </seealso>
-        Function java.lang.Integer(ByVal s As String) As [Public]
-			Me.value = parseInt(s, 10)
-        End Function
+        Sub New(ByVal s As String)
+            Me.value = parseInt(s, 10)
+        End Sub
 
         ''' <summary>
         ''' Returns the value of this {@code Integer} as a {@code byte}
@@ -882,7 +882,7 @@ Namespace java.lang
         '''          primitive {@code int} value represented by this
         '''          {@code Integer} object. </returns>
         Public Overrides Function GetHashCode() As Integer
-            Return  java.lang.[Integer].hashCode(value)
+            Return java.lang.[Integer].GetHashCode(value)
         End Function
 
         ''' <summary>
@@ -893,7 +893,7 @@ Namespace java.lang
         ''' @since 1.8
         ''' </param>
         ''' <returns> a hash code value for a {@code int} value. </returns>
-        Public Shared Function GetHashCode(ByVal value As Integer) As Integer
+        Public Overloads Shared Function GetHashCode(ByVal value As Integer) As Integer
             Return value
         End Function
 
@@ -1030,12 +1030,11 @@ Namespace java.lang
             Dim v As String = Nothing
             Try
                 v = System.getProperty(nm)
-                'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
-            Catch IllegalArgumentException Or NullPointerException e
-			End Try
+            Catch e As Exception
+            End Try
             If v IsNot Nothing Then
                 Try
-                    Return  java.lang.[Integer].decode(v)
+                    Return java.lang.[Integer].decode(v)
                 Catch e As NumberFormatException
                 End Try
             End If
@@ -1138,7 +1137,7 @@ Namespace java.lang
         '''           greater than the argument {@code Integer} (signed
         '''           comparison).
         ''' @since   1.2 </returns>
-        Public Function compareTo(ByVal anotherInteger As Integer?) As Integer
+        Public Function compareTo(ByVal anotherInteger As [Integer]) As Integer Implements Comparable(Of [Integer])
             Return compare(Me.value, another java.lang.[Integer].Value)
         End Function
 
@@ -1155,7 +1154,7 @@ Namespace java.lang
         '''         a value less than {@code 0} if {@code x < y}; and
         '''         a value greater than {@code 0} if {@code x > y}
         ''' @since 1.7 </returns>
-        Public Shared Function compare(ByVal x As Integer, ByVal y As Integer) As Integer
+        Public Shared Function compare(ByVal x As [Integer], ByVal y As [Integer]) As Integer
             Return If(x < y, -1, (If(x = y, 0, 1)))
         End Function
 
@@ -1170,7 +1169,7 @@ Namespace java.lang
         '''         a value greater than {@code 0} if {@code x > y} as
         '''         unsigned values
         ''' @since 1.8 </returns>
-        Public Shared Function compareUnsigned(ByVal x As Integer, ByVal y As Integer) As Integer
+        Public Shared Function compareUnsigned(ByVal x As [Integer], ByVal y As [Integer]) As Integer
             Return compare(x + MIN_VALUE, y + MIN_VALUE)
         End Function
 
@@ -1506,7 +1505,7 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function max(ByVal a As Integer, ByVal b As Integer) As Integer
-            Return System.Math.max(a, b)
+            Return Global.System.Math.Max(a, b)
         End Function
 
         ''' <summary>
@@ -1519,13 +1518,11 @@ Namespace java.lang
         ''' <seealso cref= java.util.function.BinaryOperator
         ''' @since 1.8 </seealso>
         Public Shared Function min(ByVal a As Integer, ByVal b As Integer) As Integer
-            Return System.Math.min(a, b)
+            Return Global.System.Math.Min(a, b)
         End Function
 
         ''' <summary>
         ''' use serialVersionUID from JDK 1.0.2 for interoperability </summary>
-        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         Private Const serialVersionUID As Long = 1360826667806852920L
     End Class
-
 End Namespace

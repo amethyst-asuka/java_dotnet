@@ -63,23 +63,23 @@ Namespace java.lang.ref
 			Return Nothing
 		End Function
 
-		''' <summary>
-		''' Creates a new phantom reference that refers to the given object and
-		''' is registered with the given queue.
-		''' 
-		''' <p> It is possible to create a phantom reference with a <tt>null</tt>
-		''' queue, but such a reference is completely useless: Its <tt>get</tt>
-		''' method will always return null and, since it does not have a queue, it
-		''' will never be enqueued.
-		''' </summary>
-		''' <param name="referent"> the object the new phantom reference will refer to </param>
-		''' <param name="q"> the queue with which the reference is to be registered,
-		'''          or <tt>null</tt> if registration is not required </param>
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal referent As T, ByVal q As ReferenceQueue(Of T1))
-			MyBase.New(referent, q)
-		End Sub
+        ''' <summary>
+        ''' Creates a new phantom reference that refers to the given object and
+        ''' is registered with the given queue.
+        ''' 
+        ''' <p> It is possible to create a phantom reference with a <tt>null</tt>
+        ''' queue, but such a reference is completely useless: Its <tt>get</tt>
+        ''' method will always return null and, since it does not have a queue, it
+        ''' will never be enqueued.
+        ''' </summary>
+        ''' <param name="referent"> the object the new phantom reference will refer to </param>
+        ''' <param name="q"> the queue with which the reference is to be registered,
+        '''          or <tt>null</tt> if registration is not required </param>
+        'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
+        Public Sub New(ByVal referent As T, ByVal q As ReferenceQueue(Of T))
+            MyBase.New(referent, q)
+        End Sub
 
-	End Class
+    End Class
 
 End Namespace

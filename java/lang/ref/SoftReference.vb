@@ -86,28 +86,27 @@ Namespace java.lang.ref
 			Me.timestamp = clock
 		End Sub
 
-		''' <summary>
-		''' Creates a new soft reference that refers to the given object and is
-		''' registered with the given queue.
-		''' </summary>
-		''' <param name="referent"> object the new soft reference will refer to </param>
-		''' <param name="q"> the queue with which the reference is to be registered,
-		'''          or <tt>null</tt> if registration is not required
-		'''  </param>
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
-		Public Sub New(Of T1)(ByVal referent As T, ByVal q As ReferenceQueue(Of T1))
-			MyBase.New(referent, q)
-			Me.timestamp = clock
-		End Sub
+        ''' <summary>
+        ''' Creates a new soft reference that refers to the given object and is
+        ''' registered with the given queue.
+        ''' </summary>
+        ''' <param name="referent"> object the new soft reference will refer to </param>
+        ''' <param name="q"> the queue with which the reference is to be registered,
+        '''          or <tt>null</tt> if registration is not required
+        '''  </param>
+        Public Sub New(ByVal referent As T, ByVal q As ReferenceQueue(Of T))
+            MyBase.New(referent, q)
+            Me.timestamp = clock
+        End Sub
 
-		''' <summary>
-		''' Returns this reference object's referent.  If this reference object has
-		''' been cleared, either by the program or by the garbage collector, then
-		''' this method returns <code>null</code>.
-		''' </summary>
-		''' <returns>   The object to which this reference refers, or
-		'''           <code>null</code> if this reference object has been cleared </returns>
-		Public Overridable Function [get]() As T
+        ''' <summary>
+        ''' Returns this reference object's referent.  If this reference object has
+        ''' been cleared, either by the program or by the garbage collector, then
+        ''' this method returns <code>null</code>.
+        ''' </summary>
+        ''' <returns>   The object to which this reference refers, or
+        '''           <code>null</code> if this reference object has been cleared </returns>
+        Public Overridable Function [get]() As T
 			Dim o As T = MyBase.get()
 			If o IsNot Nothing AndAlso Me.timestamp <> clock Then Me.timestamp = clock
 			Return o
