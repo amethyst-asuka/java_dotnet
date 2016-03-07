@@ -181,7 +181,7 @@ Namespace java.awt.font
 
 			Try
 				Return Equals(CType(rhs, ImageGraphicAttribute))
-			Catch e As  [Class]CastException
+			Catch e As  ClassCastException
 				Return False
 			End Try
 		End Function

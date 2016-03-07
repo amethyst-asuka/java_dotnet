@@ -75,41 +75,41 @@ Namespace java.util
 		Protected Friend Sub New()
 		End Sub
 
-		''' <summary>
-		''' Returns the element at the specified position in this list.
-		''' 
-		''' <p>This implementation first gets a list iterator pointing to the
-		''' indexed element (with <tt>listIterator(index)</tt>).  Then, it gets
-		''' the element using <tt>ListIterator.next</tt> and returns it.
-		''' </summary>
-		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function [get](ByVal index As Integer) As E
-			Try
-				Return listIterator(index).next()
-			Catch exc As NoSuchElementException
-				Throw New IndexOutOfBoundsException("Index: " & index)
-			End Try
-		End Function
+        ''' <summary>
+        ''' Returns the element at the specified position in this list.
+        ''' 
+        ''' <p>This implementation first gets a list iterator pointing to the
+        ''' indexed element (with <tt>listIterator(index)</tt>).  Then, it gets
+        ''' the element using <tt>ListIterator.next</tt> and returns it.
+        ''' </summary>
+        ''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
+        Public Overrides Function [get](ByVal index As Integer) As E
+            Try
+                Return listIterator(index).next()
+            Catch exc As NoSuchElementException
+                Throw New IndexOutOfBoundsException("Index: " & index)
+            End Try
+        End Function
 
-		''' <summary>
-		''' Replaces the element at the specified position in this list with the
-		''' specified element (optional operation).
-		''' 
-		''' <p>This implementation first gets a list iterator pointing to the
-		''' indexed element (with <tt>listIterator(index)</tt>).  Then, it gets
-		''' the current element using <tt>ListIterator.next</tt> and replaces it
-		''' with <tt>ListIterator.set</tt>.
-		''' 
-		''' <p>Note that this implementation will throw an
-		''' <tt>UnsupportedOperationException</tt> if the list iterator does not
-		''' implement the <tt>set</tt> operation.
-		''' </summary>
-		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
-		''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
-		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
-		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
-		''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
-		Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
+        ''' <summary>
+        ''' Replaces the element at the specified position in this list with the
+        ''' specified element (optional operation).
+        ''' 
+        ''' <p>This implementation first gets a list iterator pointing to the
+        ''' indexed element (with <tt>listIterator(index)</tt>).  Then, it gets
+        ''' the current element using <tt>ListIterator.next</tt> and replaces it
+        ''' with <tt>ListIterator.set</tt>.
+        ''' 
+        ''' <p>Note that this implementation will throw an
+        ''' <tt>UnsupportedOperationException</tt> if the list iterator does not
+        ''' implement the <tt>set</tt> operation.
+        ''' </summary>
+        ''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
+        ''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
+        ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
+        ''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
+        ''' <exception cref="IndexOutOfBoundsException">     {@inheritDoc} </exception>
+        Public Overridable Function [set](ByVal index As Integer, ByVal element As E) As E
 			Try
 				Dim e As ListIterator(Of E) = listIterator(index)
 				Dim oldVal As E = e.next()
@@ -209,9 +209,9 @@ Namespace java.util
 			Try
 				Dim modified As Boolean = False
 				Dim e1 As ListIterator(Of E) = listIterator(index)
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Dim e2 As [Iterator](Of ? As E) = c.GetEnumerator()
-				Do While e2.MoveNext()
+                'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+                Dim e2 As [Iterator](Of E) = c.GetEnumerator()
+                Do While e2.MoveNext()
 					e1.add(e2.Current)
 					modified = True
 				Loop

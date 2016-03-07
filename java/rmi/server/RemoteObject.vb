@@ -438,7 +438,7 @@ Namespace java.rmi.server
 					Throw New ClassNotFoundException(internalRefClassName, e)
 				Catch e As IllegalAccessException
 					Throw New ClassNotFoundException(internalRefClassName, e)
-				Catch e As  [Class]CastException
+				Catch e As  ClassCastException
 					Throw New ClassNotFoundException(internalRefClassName, e)
 				End Try
 				ref.readExternal([in])

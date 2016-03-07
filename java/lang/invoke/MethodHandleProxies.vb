@@ -227,7 +227,7 @@ Namespace java.lang.invoke
 		Private Shared Function asWrapperInstance(ByVal x As Object) As sun.invoke.WrapperInstance
 			Try
 				If x IsNot Nothing Then Return CType(x, sun.invoke.WrapperInstance)
-			Catch ex As  [Class]CastException
+			Catch ex As  ClassCastException
 			End Try
 			Throw newIllegalArgumentException("not a wrapper instance")
 		End Function

@@ -873,7 +873,7 @@ Namespace java.util
 						If Not value.Equals(t.get(key)) Then Return False
 					End If
 				Loop
-			Catch unused As  [Class]CastException
+			Catch unused As  ClassCastException
 				Return False
 			Catch unused As NullPointerException
 				Return False

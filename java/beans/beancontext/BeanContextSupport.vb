@@ -767,7 +767,7 @@ Namespace java.beans.beancontext
 
 					Try
 							Return CType(c, java.beans.Visibility).needsGui()
-						Catch cce As  [Class]CastException
+						Catch cce As  ClassCastException
 							' do nothing ...
 						End Try
 
@@ -1053,7 +1053,7 @@ Namespace java.beans.beancontext
 
 					Try
 						bcc = CType(child, BeanContextChild)
-					Catch cce As  [Class]CastException
+					Catch cce As  ClassCastException
 						' do nothing;
 					End Try
 
@@ -1196,7 +1196,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildVisibility(ByVal child As Object) As java.beans.Visibility
 			Try
 				Return CType(child, java.beans.Visibility)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Return Nothing
 			End Try
 		End Function
@@ -1208,7 +1208,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildSerializable(ByVal child As Object) As java.io.Serializable
 			Try
 				Return CType(child, java.io.Serializable)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Return Nothing
 			End Try
 		End Function
@@ -1221,7 +1221,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildPropertyChangeListener(ByVal child As Object) As java.beans.PropertyChangeListener
 			Try
 				Return CType(child, java.beans.PropertyChangeListener)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Return Nothing
 			End Try
 		End Function
@@ -1234,7 +1234,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildVetoableChangeListener(ByVal child As Object) As java.beans.VetoableChangeListener
 			Try
 				Return CType(child, java.beans.VetoableChangeListener)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Return Nothing
 			End Try
 		End Function
@@ -1247,7 +1247,7 @@ Namespace java.beans.beancontext
 		Protected Friend Shared Function getChildBeanContextMembershipListener(ByVal child As Object) As BeanContextMembershipListener
 			Try
 				Return CType(child, BeanContextMembershipListener)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Return Nothing
 			End Try
 		End Function
@@ -1266,10 +1266,10 @@ Namespace java.beans.beancontext
 				Else
 					Return bcc
 				End If
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Try
 					Return CType(child, BeanContextProxy).beanContextProxy
-				Catch cce1 As  [Class]CastException
+				Catch cce1 As  ClassCastException
 					Return Nothing
 				End Try
 			End Try

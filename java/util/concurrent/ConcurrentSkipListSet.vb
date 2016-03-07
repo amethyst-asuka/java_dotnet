@@ -290,7 +290,7 @@ Namespace java.util.concurrent
 			Try
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the java.util.Collection 'containsAll' method:
 				Return containsAll(c) AndAlso c.containsAll(Me)
-			Catch unused As  [Class]CastException
+			Catch unused As  ClassCastException
 				Return False
 			Catch unused As NullPointerException
 				Return False

@@ -443,7 +443,7 @@ Namespace java.lang.invoke
 			Return CType(x, T)
 		End Function
 
-		Private Shared Function newClassCastException(ByVal t As [Class], ByVal obj As Object) As  [Class]CastException
+		Private Shared Function newClassCastException(ByVal t As [Class], ByVal obj As Object) As  ClassCastException
 			Return New ClassCastException("Cannot cast " & obj.GetType().name & " to " & t.name)
 		End Function
 

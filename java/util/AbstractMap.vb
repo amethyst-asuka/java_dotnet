@@ -89,31 +89,31 @@ Namespace java.util
 			Return entrySet().size()
 		End Function
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' 
-		''' @implSpec
-		''' This implementation returns <tt>size() == 0</tt>.
-		''' </summary>
-		Public Overridable Property empty As Boolean Implements Map(Of K, V).isEmpty
-			Get
-				Return size() = 0
-			End Get
-		End Property
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' 
+        ''' @implSpec
+        ''' This implementation returns <tt>size() == 0</tt>.
+        ''' </summary>
+        Public Overridable ReadOnly Property empty As Boolean Implements Map(Of K, V).empty
+            Get
+                Return size() = 0
+            End Get
+        End Property
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' 
-		''' @implSpec
-		''' This implementation iterates over <tt>entrySet()</tt> searching
-		''' for an entry with the specified value.  If such an entry is found,
-		''' <tt>true</tt> is returned.  If the iteration terminates without
-		''' finding such an entry, <tt>false</tt> is returned.  Note that this
-		''' implementation requires linear time in the size of the map.
-		''' </summary>
-		''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
-		''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' 
+        ''' @implSpec
+        ''' This implementation iterates over <tt>entrySet()</tt> searching
+        ''' for an entry with the specified value.  If such an entry is found,
+        ''' <tt>true</tt> is returned.  If the iteration terminates without
+        ''' finding such an entry, <tt>false</tt> is returned.  Note that this
+        ''' implementation requires linear time in the size of the map.
+        ''' </summary>
+        ''' <exception cref="ClassCastException">   {@inheritDoc} </exception>
+        ''' <exception cref="NullPointerException"> {@inheritDoc} </exception>
+        Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
 			Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
 			If value Is Nothing Then
 				Do While i.MoveNext()
@@ -250,79 +250,75 @@ Namespace java.util
 		End Function
 
 
-		' Bulk Operations
+        ' Bulk Operations
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' 
-		''' @implSpec
-		''' This implementation iterates over the specified map's
-		''' <tt>entrySet()</tt> collection, and calls this map's <tt>put</tt>
-		''' operation once for each entry returned by the iteration.
-		''' 
-		''' <p>Note that this implementation throws an
-		''' <tt>UnsupportedOperationException</tt> if this map does not support
-		''' the <tt>put</tt> operation and the specified map is nonempty.
-		''' </summary>
-		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
-		''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
-		''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
-		''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal m As Map(Of T1)) Implements Map(Of K, V).putAll
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			For Each e As KeyValuePair(Of ? As K, ? As V) In m.entrySet()
-				put(e.Key, e.Value)
-			Next e
-		End Sub
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' 
+        ''' @implSpec
+        ''' This implementation iterates over the specified map's
+        ''' <tt>entrySet()</tt> collection, and calls this map's <tt>put</tt>
+        ''' operation once for each entry returned by the iteration.
+        ''' 
+        ''' <p>Note that this implementation throws an
+        ''' <tt>UnsupportedOperationException</tt> if this map does not support
+        ''' the <tt>put</tt> operation and the specified map is nonempty.
+        ''' </summary>
+        ''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
+        ''' <exception cref="ClassCastException">            {@inheritDoc} </exception>
+        ''' <exception cref="NullPointerException">          {@inheritDoc} </exception>
+        ''' <exception cref="IllegalArgumentException">      {@inheritDoc} </exception>
+        Public Overridable Sub putAll(ByVal m As Map(Of K, V)) Implements Map(Of K, V).putAll
+            For Each e As KeyValuePair(Of K, V) In m.entrySet()
+                put(e.Key, e.Value)
+            Next e
+        End Sub
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' 
-		''' @implSpec
-		''' This implementation calls <tt>entrySet().clear()</tt>.
-		''' 
-		''' <p>Note that this implementation throws an
-		''' <tt>UnsupportedOperationException</tt> if the <tt>entrySet</tt>
-		''' does not support the <tt>clear</tt> operation.
-		''' </summary>
-		''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
-		Public Overridable Sub clear() Implements Map(Of K, V).clear
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' 
+        ''' @implSpec
+        ''' This implementation calls <tt>entrySet().clear()</tt>.
+        ''' 
+        ''' <p>Note that this implementation throws an
+        ''' <tt>UnsupportedOperationException</tt> if the <tt>entrySet</tt>
+        ''' does not support the <tt>clear</tt> operation.
+        ''' </summary>
+        ''' <exception cref="UnsupportedOperationException"> {@inheritDoc} </exception>
+        Public Overridable Sub clear() Implements Map(Of K, V).clear
 			entrySet().clear()
 		End Sub
 
 
-		' Views
+        ' Views
 
-		''' <summary>
-		''' Each of these fields are initialized to contain an instance of the
-		''' appropriate view the first time this view is requested.  The views are
-		''' stateless, so there's no reason to create more than one of each.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		<NonSerialized> _
-		Friend keySet_Renamed As [Set](Of K)
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		<NonSerialized> _
-		Friend values_Renamed As Collection(Of V)
+        ''' <summary>
+        ''' Each of these fields are initialized to contain an instance of the
+        ''' appropriate view the first time this view is requested.  The views are
+        ''' stateless, so there's no reason to create more than one of each.
+        ''' </summary>
+        <NonSerialized>
+        Friend keySet_Renamed As [Set](Of K)
+        <NonSerialized>
+        Friend values_Renamed As Collection(Of V)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' 
-		''' @implSpec
-		''' This implementation returns a set that subclasses <seealso cref="AbstractSet"/>.
-		''' The subclass's iterator method returns a "wrapper object" over this
-		''' map's <tt>entrySet()</tt> iterator.  The <tt>size</tt> method
-		''' delegates to this map's <tt>size</tt> method and the
-		''' <tt>contains</tt> method delegates to this map's
-		''' <tt>containsKey</tt> method.
-		''' 
-		''' <p>The set is created the first time this method is called,
-		''' and returned in response to all subsequent calls.  No synchronization
-		''' is performed, so there is a slight chance that multiple calls to this
-		''' method will not all return the same set.
-		''' </summary>
-		Public Overridable Function keySet() As [Set](Of K) Implements Map(Of K, V).keySet
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' 
+        ''' @implSpec
+        ''' This implementation returns a set that subclasses <seealso cref="AbstractSet"/>.
+        ''' The subclass's iterator method returns a "wrapper object" over this
+        ''' map's <tt>entrySet()</tt> iterator.  The <tt>size</tt> method
+        ''' delegates to this map's <tt>size</tt> method and the
+        ''' <tt>contains</tt> method delegates to this map's
+        ''' <tt>containsKey</tt> method.
+        ''' 
+        ''' <p>The set is created the first time this method is called,
+        ''' and returned in response to all subsequent calls.  No synchronization
+        ''' is performed, so there is a slight chance that multiple calls to this
+        ''' method will not all return the same set.
+        ''' </summary>
+        Public Overridable Function keySet() As [Set](Of K) Implements Map(Of K, V).keySet
 			If keySet_Renamed Is Nothing Then keySet_Renamed = New AbstractSetAnonymousInnerClassHelper(Of E)
 			Return keySet_Renamed
 		End Function
@@ -356,13 +352,13 @@ Namespace java.util
 				Return outerInstance.size()
 			End Function
 
-			Public Overridable Property empty As Boolean
-				Get
-					Return outerInstance.empty
-				End Get
-			End Property
+            Public Overridable ReadOnly Property empty As Boolean
+                Get
+                    Return outerInstance.empty
+                End Get
+            End Property
 
-			Public Overridable Sub clear()
+            Public Overridable Sub clear()
 				outerInstance.clear()
 			End Sub
 
@@ -421,13 +417,13 @@ Namespace java.util
 				Return outerInstance.size()
 			End Function
 
-			Public Overridable Property empty As Boolean
-				Get
-					Return outerInstance.empty
-				End Get
-			End Property
+            Public Overridable ReadOnly Property empty As Boolean
+                Get
+                    Return outerInstance.empty
+                End Get
+            End Property
 
-			Public Overridable Sub clear()
+            Public Overridable Sub clear()
 				outerInstance.clear()
 			End Sub
 
@@ -465,25 +461,24 @@ Namespace java.util
 		Public Overrides Function Equals(ByVal o As Object) As Boolean
 			If o Is Me Then Return True
 
-			If Not(TypeOf o Is Map) Then Return False
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Dim m As Map(Of ?, ?) = CType(o, Map(Of ?, ?))
-			If m.size() <> size() Then Return False
+            If Not (TypeOf o Is Map(Of K, V)) Then Return False
+            Dim m As Map(Of K, V) = CType(o, Map(Of K, V))
+            If m.size() <> size() Then Return False
 
-			Try
-				Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
-				Do While i.MoveNext()
-					Dim e As KeyValuePair(Of K, V) = i.Current
-					Dim key As K = e.Key
-					Dim value As V = e.Value
-					If value Is Nothing Then
-						If Not(m.get(key) Is Nothing AndAlso m.containsKey(key)) Then Return False
-					Else
-						If Not value.Equals(m.get(key)) Then Return False
-					End If
-				Loop
-			Catch unused As  [Class]CastException
-				Return False
+            Try
+                Dim i As [Iterator](Of KeyValuePair(Of K, V)) = entrySet().GetEnumerator()
+                Do While i.MoveNext()
+                    Dim e As KeyValuePair(Of K, V) = i.Current
+                    Dim key As K = e.Key
+                    Dim value As V = e.Value
+                    If value Is Nothing Then
+                        If Not (m.get(key) Is Nothing AndAlso m.containsKey(key)) Then Return False
+                    Else
+                        If Not value.Equals(m.get(key)) Then Return False
+                    End If
+                Loop
+            Catch unused As ClassCastException
+                Return False
 			Catch unused As NullPointerException
 				Return False
 			End Try
@@ -593,58 +588,46 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = -8499721149061103585L
 
-			Private ReadOnly key As K
-			Private value As V
-
-			''' <summary>
-			''' Creates an entry representing a mapping from the specified
-			''' key to the specified value.
-			''' </summary>
-			''' <param name="key"> the key represented by this entry </param>
-			''' <param name="value"> the value represented by this entry </param>
-			Public Sub New(ByVal key As K, ByVal value As V)
+            ''' <summary>
+            ''' Creates an entry representing a mapping from the specified
+            ''' key to the specified value.
+            ''' </summary>
+            ''' <param name="key"> the key represented by this entry </param>
+            ''' <param name="value"> the value represented by this entry </param>
+            Public Sub New(ByVal key As K, ByVal value As V)
 				Me.key = key
 				Me.value = value
 			End Sub
 
-			''' <summary>
-			''' Creates an entry representing the same mapping as the
-			''' specified entry.
-			''' </summary>
-			''' <param name="entry"> the entry to copy </param>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Sub New(Of T1 As K, ? As V)(ByVal entry As KeyValuePair(Of T1))
-				Me.key = entry.Key
-				Me.value = entry.Value
-			End Sub
+            ''' <summary>
+            ''' Creates an entry representing the same mapping as the
+            ''' specified entry.
+            ''' </summary>
+            ''' <param name="entry"> the entry to copy </param>
+            Public Sub New(ByVal entry As KeyValuePair(Of K, V))
+                Me.key = entry.Key
+                Me.value = entry.Value
+            End Sub
 
-			''' <summary>
-			''' Returns the key corresponding to this entry.
-			''' </summary>
-			''' <returns> the key corresponding to this entry </returns>
-			Public Overridable Property key As K
-				Get
-					Return key
-				End Get
-			End Property
+            ''' <summary>
+            ''' Returns the key corresponding to this entry.
+            ''' </summary>
+            ''' <returns> the key corresponding to this entry </returns>
+            Public Overridable Property key As K
 
-			''' <summary>
-			''' Returns the value corresponding to this entry.
-			''' </summary>
-			''' <returns> the value corresponding to this entry </returns>
-			Public Overridable Property value As V
-				Get
-					Return value
-				End Get
-			End Property
+            ''' <summary>
+            ''' Returns the value corresponding to this entry.
+            ''' </summary>
+            ''' <returns> the value corresponding to this entry </returns>
+            Public Overridable Property value As V
 
-			''' <summary>
-			''' Replaces the value corresponding to this entry with the specified
-			''' value.
-			''' </summary>
-			''' <param name="value"> new value to be stored in this entry </param>
-			''' <returns> the old value corresponding to the entry </returns>
-			Public Overridable Function setValue(ByVal value As V) As V
+            ''' <summary>
+            ''' Replaces the value corresponding to this entry with the specified
+            ''' value.
+            ''' </summary>
+            ''' <param name="value"> new value to be stored in this entry </param>
+            ''' <returns> the old value corresponding to the entry </returns>
+            Public Overridable Function setValue(ByVal value As V) As V
 				Dim oldValue As V = Me.value
 				Me.value = value
 				Return oldValue
@@ -672,9 +655,8 @@ Namespace java.util
 			''' <seealso cref=    #hashCode </seealso>
 			Public Overrides Function Equals(ByVal o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
-				Return eq(key, e.Key) AndAlso eq(value, e.Value)
+                Dim e As KeyValuePair(Of K, V) = CType(o, KeyValuePair(Of K, V))
+                Return eq(key, e.Key) AndAlso eq(value, e.Value)
 			End Function
 
 			''' <summary>
@@ -701,8 +683,8 @@ Namespace java.util
 			''' </summary>
 			''' <returns> a String representation of this map entry </returns>
 			Public Overrides Function ToString() As String
-				Return key & "=" & value
-			End Function
+                Return key.ToString & "=" & value.ToString
+            End Function
 
 		End Class
 
@@ -720,61 +702,49 @@ Namespace java.util
 
 			Private Const serialVersionUID As Long = 7138329143949025153L
 
-			Private ReadOnly key As K
-			Private ReadOnly value As V
-
-			''' <summary>
-			''' Creates an entry representing a mapping from the specified
-			''' key to the specified value.
-			''' </summary>
-			''' <param name="key"> the key represented by this entry </param>
-			''' <param name="value"> the value represented by this entry </param>
-			Public Sub New(ByVal key As K, ByVal value As V)
+            ''' <summary>
+            ''' Creates an entry representing a mapping from the specified
+            ''' key to the specified value.
+            ''' </summary>
+            ''' <param name="key"> the key represented by this entry </param>
+            ''' <param name="value"> the value represented by this entry </param>
+            Public Sub New(ByVal key As K, ByVal value As V)
 				Me.key = key
 				Me.value = value
 			End Sub
 
-			''' <summary>
-			''' Creates an entry representing the same mapping as the
-			''' specified entry.
-			''' </summary>
-			''' <param name="entry"> the entry to copy </param>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Sub New(Of T1 As K, ? As V)(ByVal entry As KeyValuePair(Of T1))
-				Me.key = entry.Key
-				Me.value = entry.Value
-			End Sub
+            ''' <summary>
+            ''' Creates an entry representing the same mapping as the
+            ''' specified entry.
+            ''' </summary>
+            ''' <param name="entry"> the entry to copy </param>
+            Public Sub New(ByVal entry As KeyValuePair(Of T1))
+                Me.key = entry.Key
+                Me.value = entry.Value
+            End Sub
 
-			''' <summary>
-			''' Returns the key corresponding to this entry.
-			''' </summary>
-			''' <returns> the key corresponding to this entry </returns>
-			Public Overridable Property key As K
-				Get
-					Return key
-				End Get
-			End Property
+            ''' <summary>
+            ''' Returns the key corresponding to this entry.
+            ''' </summary>
+            ''' <returns> the key corresponding to this entry </returns>
+            Public Overridable Property key As K
 
-			''' <summary>
-			''' Returns the value corresponding to this entry.
-			''' </summary>
-			''' <returns> the value corresponding to this entry </returns>
-			Public Overridable Property value As V
-				Get
-					Return value
-				End Get
-			End Property
+            ''' <summary>
+            ''' Returns the value corresponding to this entry.
+            ''' </summary>
+            ''' <returns> the value corresponding to this entry </returns>
+            Public Overridable Property value As V
 
-			''' <summary>
-			''' Replaces the value corresponding to this entry with the specified
-			''' value (optional operation).  This implementation simply throws
-			''' <tt>UnsupportedOperationException</tt>, as this class implements
-			''' an <i>immutable</i> map entry.
-			''' </summary>
-			''' <param name="value"> new value to be stored in this entry </param>
-			''' <returns> (Does not return) </returns>
-			''' <exception cref="UnsupportedOperationException"> always </exception>
-			Public Overridable Function setValue(ByVal value As V) As V
+            ''' <summary>
+            ''' Replaces the value corresponding to this entry with the specified
+            ''' value (optional operation).  This implementation simply throws
+            ''' <tt>UnsupportedOperationException</tt>, as this class implements
+            ''' an <i>immutable</i> map entry.
+            ''' </summary>
+            ''' <param name="value"> new value to be stored in this entry </param>
+            ''' <returns> (Does not return) </returns>
+            ''' <exception cref="UnsupportedOperationException"> always </exception>
+            Public Overridable Function setValue(ByVal value As V) As V
 				Throw New UnsupportedOperationException
 			End Function
 
@@ -800,9 +770,8 @@ Namespace java.util
 			''' <seealso cref=    #hashCode </seealso>
 			Public Overrides Function Equals(ByVal o As Object) As Boolean
 				If Not(TypeOf o Is DictionaryEntry) Then Return False
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Dim e As KeyValuePair(Of ?, ?) = CType(o, KeyValuePair(Of ?, ?))
-				Return eq(key, e.Key) AndAlso eq(value, e.Value)
+                Dim e As KeyValuePair(Of K, V) = CType(o, KeyValuePair(Of K, V))
+                Return eq(key, e.Key) AndAlso eq(value, e.Value)
 			End Function
 
 			''' <summary>
@@ -829,8 +798,8 @@ Namespace java.util
 			''' </summary>
 			''' <returns> a String representation of this map entry </returns>
 			Public Overrides Function ToString() As String
-				Return key & "=" & value
-			End Function
+                Return key.ToString & "=" & value.ToString
+            End Function
 
 		End Class
 

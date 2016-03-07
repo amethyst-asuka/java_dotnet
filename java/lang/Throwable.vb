@@ -5,6 +5,7 @@ Imports System.Diagnostics
 Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
 Imports java.io
+Imports java.util
 
 '
 ' * Copyright (c) 1994, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -836,12 +837,12 @@ Namespace java.lang
         End Property
 
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Private Property ourStackTrace As StackTraceElement()
+        Private ReadOnly Property ourStackTrace As StackTraceElement()
             Get
                 ' Initialize stack trace field with information from
                 ' backtrace if this is the first call to this method
-                If stackTrace = UNASSIGNED_STACK OrElse (stackTrace Is Nothing AndAlso backtrace IsNot Nothing) Then ' Out of protocol state
-                    Dim depth As Integer = stackTraceDepth
+                If _stackTrace = UNASSIGNED_STACK OrElse (_stackTrace Is Nothing AndAlso backtrace IsNot Nothing) Then ' Out of protocol state
+                    Dim depth As Integer = getStackTraceDepth()
                     stackTrace = New StackTraceElement(depth - 1) {}
                     For i As Integer = 0 To depth - 1
                         stackTrace(i) = getStackTraceElement(i)
@@ -860,9 +861,8 @@ Namespace java.lang
         ''' 
         ''' package-protection for use by SharedSecrets.
         ''' </summary>
-        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Friend Function getStackTraceDepth() As Integer
+        Friend Shared Function getStackTraceDepth() As Integer
         End Function
 
         ''' <summary>
@@ -901,7 +901,7 @@ Namespace java.lang
                     ' Use the sentinel for a zero-length list
                     suppressed_Renamed = SUPPRESSED_SENTINEL ' Copy Throwables to new list
                 Else
-                    suppressed_Renamed = New List(Of )(1)
+                    suppressed_Renamed = New List(Of Throwable)(1)
                     For Each t As Throwable In suppressedExceptions
                         ' Enforce constraints on suppressed exceptions in
                         ' case of corrupt or malicious stream.
@@ -955,7 +955,6 @@ Namespace java.lang
             ' non-null value, if appropriate.  As of JDK 7, a null stack
             ' trace field is a valid value indicating the stack trace
             ' should not be set.
-            ourStackTrace
 
             Dim oldStackTrace As StackTraceElement() = stackTrace
             Try
@@ -1022,10 +1021,9 @@ Namespace java.lang
             If exception_Renamed Is Nothing Then Throw New NullPointerException(NULL_CAUSE_MESSAGE)
 
             If suppressedExceptions Is Nothing Then ' Suppressed exceptions not recorded Return
-
-                If suppressedExceptions Is SUPPRESSED_SENTINEL Then suppressedExceptions = New List(Of )(1)
-
+                If suppressedExceptions Is SUPPRESSED_SENTINEL Then suppressedExceptions = New List(Of Throwable)(1)
                 suppressedExceptions.Add(exception_Renamed)
+            End If
         End Sub
 
         Private Shared ReadOnly EMPTY_THROWABLE_ARRAY As Throwable() = New Throwable() {}
@@ -1045,7 +1043,7 @@ Namespace java.lang
         '''         suppressed to deliver this exception.
         ''' @since 1.7 </returns>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Property suppressed As Throwable()
+        Public ReadOnly Property suppressed As Throwable()
             Get
                 If suppressedExceptions Is SUPPRESSED_SENTINEL OrElse suppressedExceptions Is Nothing Then
                     Return EMPTY_THROWABLE_ARRAY

@@ -653,7 +653,7 @@ Namespace java.rmi.server
 					Throw New IllegalAccessError(e.Message)
 				Catch e As InstantiationException
 					Throw New InstantiationError(e.Message)
-				Catch e As  [Class]CastException
+				Catch e As  ClassCastException
 					Dim error_Renamed As [Error] = New LinkageError("provider class not assignable to RMIClassLoaderSpi")
 					error_Renamed.initCause(e)
 					Throw error_Renamed
@@ -669,7 +669,7 @@ Namespace java.rmi.server
 				Try
 'JAVA TO VB CONVERTER TODO TASK: Java iterators are only converted within the context of 'while' and 'for' loops:
 					Return iter.next()
-				Catch e As  [Class]CastException
+				Catch e As  ClassCastException
 					Dim error_Renamed As [Error] = New LinkageError("provider class not assignable to RMIClassLoaderSpi")
 					error_Renamed.initCause(e)
 					Throw error_Renamed

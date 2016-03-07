@@ -1093,7 +1093,7 @@ Namespace java.lang
                     ' descriptor (null iff name is).
                     descriptor = CStr(enclosingInfo(2))
                     Assert((name IsNot Nothing AndAlso descriptor IsNot Nothing) OrElse name = descriptor)
-                Catch cce As  [Class]CastException
+                Catch cce As  ClassCastException
                     Throw New InternalError("Invalid type in enclosing method information", cce)
                 End Try
             End Sub

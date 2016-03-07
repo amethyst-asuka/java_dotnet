@@ -92,7 +92,7 @@ Namespace java.util
 			If c.size() <> size() Then Return False
 			Try
 				Return containsAll(c)
-			Catch unused As  [Class]CastException
+			Catch unused As  ClassCastException
 				Return False
 			Catch unused As NullPointerException
 				Return False

@@ -777,7 +777,7 @@ Namespace java.beans.beancontext
 
 				Try
 					bcs = CType(beanContext, BeanContextServices)
-				Catch cce As  [Class]CastException
+				Catch cce As  ClassCastException
 					Return False
 				End Try
 
@@ -1002,7 +1002,7 @@ Namespace java.beans.beancontext
 		protected static final BeanContextServicesListener getChildBeanContextServicesListener(Object child)
 			Try
 				Return CType(child, BeanContextServicesListener)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				Return Nothing
 			End Try
 
@@ -1067,7 +1067,7 @@ Namespace java.beans.beancontext
 				Dim bcs As BeanContextServices = CType(nbc, BeanContextServices)
 
 				proxy = New BCSSProxyServiceProvider(Me, bcs)
-			Catch cce As  [Class]CastException
+			Catch cce As  ClassCastException
 				' do nothing ...
 			End Try
 
@@ -1155,7 +1155,7 @@ Namespace java.beans.beancontext
 
 				 Try
 					bcsp = CType(entry.Value, BCSSServiceProvider)
-				 Catch cce As  [Class]CastException
+				 Catch cce As  ClassCastException
 					Continue Do
 				 End Try
 

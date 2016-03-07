@@ -1954,7 +1954,7 @@ Namespace java.util.concurrent
 					If k Is Nothing OrElse v Is Nothing OrElse (Not v.Equals([get](k))) Then Return False
 				Next e
 				Return True
-			Catch unused As  [Class]CastException
+			Catch unused As  ClassCastException
 				Return False
 			Catch unused As NullPointerException
 				Return False
@@ -2457,7 +2457,7 @@ Namespace java.util.concurrent
 				Try
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the java.util.Collection 'containsAll' method:
 					Return containsAll(c) AndAlso c.containsAll(Me)
-				Catch unused As  [Class]CastException
+				Catch unused As  ClassCastException
 					Return False
 				Catch unused As NullPointerException
 					Return False
@@ -2603,7 +2603,7 @@ Namespace java.util.concurrent
 				Try
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the java.util.Collection 'containsAll' method:
 					Return containsAll(c) AndAlso c.containsAll(Me)
-				Catch unused As  [Class]CastException
+				Catch unused As  ClassCastException
 					Return False
 				Catch unused As NullPointerException
 					Return False

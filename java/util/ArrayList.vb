@@ -106,9 +106,9 @@ Namespace java.util
 	<Serializable> _
 	Public Class List(Of E)
 		Inherits AbstractList(Of E)
-		Implements List(Of E), RandomAccess, Cloneable
+        Implements IList(Of E), RandomAccess, Cloneable
 
-		Private Const serialVersionUID As Long = 8683452581122892189L
+        Private Const serialVersionUID As Long = 8683452581122892189L
 
 		''' <summary>
 		''' Default initial capacity.
@@ -166,31 +166,31 @@ Namespace java.util
 			Me.elementData_Renamed = DEFAULTCAPACITY_EMPTY_ELEMENTDATA
 		End Sub
 
-		''' <summary>
-		''' Constructs a list containing the elements of the specified
-		''' collection, in the order they are returned by the collection's
-		''' iterator.
-		''' </summary>
-		''' <param name="c"> the collection whose elements are to be placed into this list </param>
-		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-		Public Sub New(Of T1 As E)(ByVal c As Collection(Of T1))
-			elementData_Renamed = c.ToArray()
-			size_Renamed = elementData_Renamed.Length
-			If size_Renamed <> 0 Then
-				' c.toArray might (incorrectly) not return Object[] (see 6260652)
-				If elementData_Renamed.GetType() IsNot GetType(Object()) Then elementData_Renamed = Arrays.copyOf(elementData_Renamed, size_Renamed, GetType(Object()))
-			Else
-				' replace with empty array.
-				Me.elementData_Renamed = EMPTY_ELEMENTDATA
-			End If
-		End Sub
+        ''' <summary>
+        ''' Constructs a list containing the elements of the specified
+        ''' collection, in the order they are returned by the collection's
+        ''' iterator.
+        ''' </summary>
+        ''' <param name="c"> the collection whose elements are to be placed into this list </param>
+        ''' <exception cref="NullPointerException"> if the specified collection is null </exception>
+        Public Sub New(ByVal c As Collection(Of E))
+            elementData_Renamed = c.toArray()
+            size_Renamed = elementData_Renamed.Length
+            If size_Renamed <> 0 Then
+                ' c.toArray might (incorrectly) not return Object[] (see 6260652)
+                If elementData_Renamed.GetType() IsNot GetType(Object()) Then elementData_Renamed = Arrays.copyOf(elementData_Renamed, size_Renamed, GetType(Object()))
+            Else
+                ' replace with empty array.
+                Me.elementData_Renamed = EMPTY_ELEMENTDATA
+            End If
+        End Sub
 
-		''' <summary>
-		''' Trims the capacity of this <tt>ArrayList</tt> instance to be the
-		''' list's current size.  An application can use this operation to minimize
-		''' the storage of an <tt>ArrayList</tt> instance.
-		''' </summary>
-		Public Overridable Sub trimToSize()
+        ''' <summary>
+        ''' Trims the capacity of this <tt>ArrayList</tt> instance to be the
+        ''' list's current size.  An application can use this operation to minimize
+        ''' the storage of an <tt>ArrayList</tt> instance.
+        ''' </summary>
+        Public Overridable Sub trimToSize()
 			modCount += 1
 			If size_Renamed < elementData_Renamed.Length Then elementData_Renamed = If(size_Renamed = 0, EMPTY_ELEMENTDATA, Arrays.copyOf(elementData_Renamed, size_Renamed))
 		End Sub
@@ -260,25 +260,25 @@ Namespace java.util
 			Return size_Renamed
 		End Function
 
-		''' <summary>
-		''' Returns <tt>true</tt> if this list contains no elements.
-		''' </summary>
-		''' <returns> <tt>true</tt> if this list contains no elements </returns>
-		Public Overridable Property empty As Boolean Implements List(Of E).isEmpty
-			Get
-				Return size_Renamed = 0
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns <tt>true</tt> if this list contains no elements.
+        ''' </summary>
+        ''' <returns> <tt>true</tt> if this list contains no elements </returns>
+        Public Overridable ReadOnly Property empty As Boolean Implements List(Of E).isEmpty
+            Get
+                Return size_Renamed = 0
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns <tt>true</tt> if this list contains the specified element.
-		''' More formally, returns <tt>true</tt> if and only if this list contains
-		''' at least one element <tt>e</tt> such that
-		''' <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>.
-		''' </summary>
-		''' <param name="o"> element whose presence in this list is to be tested </param>
-		''' <returns> <tt>true</tt> if this list contains the specified element </returns>
-		Public Overridable Function contains(ByVal o As Object) As Boolean Implements List(Of E).contains
+        ''' <summary>
+        ''' Returns <tt>true</tt> if this list contains the specified element.
+        ''' More formally, returns <tt>true</tt> if and only if this list contains
+        ''' at least one element <tt>e</tt> such that
+        ''' <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>.
+        ''' </summary>
+        ''' <param name="o"> element whose presence in this list is to be tested </param>
+        ''' <returns> <tt>true</tt> if this list contains the specified element </returns>
+        Public Overridable Function contains(ByVal o As Object) As Boolean Implements List(Of E).contains
 			Return IndexOf(o) >= 0
 		End Function
 
@@ -329,9 +329,8 @@ Namespace java.util
 		''' <returns> a clone of this <tt>ArrayList</tt> instance </returns>
 		Public Overridable Function clone() As Object
 			Try
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Dim v As List(Of ?) = CType(MyBase.clone(), List(Of ?))
-				v.elementData = New java.lang.Object(size - 1){}
+                Dim v As List(Of E) = CType(MyBase.clone(), List(Of E))
+                v.elementData = New java.lang.Object(size - 1){}
 				Array.Copy(elementData_Renamed, v.elementData_Renamed, size_Renamed)
 				v.modCount = 0
 				Return v
@@ -358,51 +357,48 @@ Namespace java.util
 			Return Arrays.copyOf(elementData_Renamed, size_Renamed)
 		End Function
 
-		''' <summary>
-		''' Returns an array containing all of the elements in this list in proper
-		''' sequence (from first to last element); the runtime type of the returned
-		''' array is that of the specified array.  If the list fits in the
-		''' specified array, it is returned therein.  Otherwise, a new array is
-		''' allocated with the runtime type of the specified array and the size of
-		''' this list.
-		''' 
-		''' <p>If the list fits in the specified array with room to spare
-		''' (i.e., the array has more elements than the list), the element in
-		''' the array immediately following the end of the collection is set to
-		''' <tt>null</tt>.  (This is useful in determining the length of the
-		''' list <i>only</i> if the caller knows that the list does not contain
-		''' any null elements.)
-		''' </summary>
-		''' <param name="a"> the array into which the elements of the list are to
-		'''          be stored, if it is big enough; otherwise, a new array of the
-		'''          same runtime type is allocated for this purpose. </param>
-		''' <returns> an array containing the elements of the list </returns>
-		''' <exception cref="ArrayStoreException"> if the runtime type of the specified array
-		'''         is not a supertype of the runtime type of every element in
-		'''         this list </exception>
-		''' <exception cref="NullPointerException"> if the specified array is null </exception>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements List(Of E).toArray
-			If a.Length < size_Renamed Then Return CType(Arrays.copyOf(elementData_Renamed, size_Renamed, a.GetType()), T())
-			Array.Copy(elementData_Renamed, 0, a, 0, size_Renamed)
-			If a.Length > size_Renamed Then a(size_Renamed) = Nothing
-			Return a
-		End Function
+        ''' <summary>
+        ''' Returns an array containing all of the elements in this list in proper
+        ''' sequence (from first to last element); the runtime type of the returned
+        ''' array is that of the specified array.  If the list fits in the
+        ''' specified array, it is returned therein.  Otherwise, a new array is
+        ''' allocated with the runtime type of the specified array and the size of
+        ''' this list.
+        ''' 
+        ''' <p>If the list fits in the specified array with room to spare
+        ''' (i.e., the array has more elements than the list), the element in
+        ''' the array immediately following the end of the collection is set to
+        ''' <tt>null</tt>.  (This is useful in determining the length of the
+        ''' list <i>only</i> if the caller knows that the list does not contain
+        ''' any null elements.)
+        ''' </summary>
+        ''' <param name="a"> the array into which the elements of the list are to
+        '''          be stored, if it is big enough; otherwise, a new array of the
+        '''          same runtime type is allocated for this purpose. </param>
+        ''' <returns> an array containing the elements of the list </returns>
+        ''' <exception cref="ArrayStoreException"> if the runtime type of the specified array
+        '''         is not a supertype of the runtime type of every element in
+        '''         this list </exception>
+        ''' <exception cref="NullPointerException"> if the specified array is null </exception>
+        Public Overridable Function toArray(Of T)(ByVal a As T()) As T() Implements List(Of E).toArray
+            If a.Length < size_Renamed Then Return CType(Arrays.copyOf(elementData_Renamed, size_Renamed, a.GetType()), T())
+            Array.Copy(elementData_Renamed, 0, a, 0, size_Renamed)
+            If a.Length > size_Renamed Then a(size_Renamed) = Nothing
+            Return a
+        End Function
 
-		' Positional Access Operations
+        ' Positional Access Operations
+        Friend Overridable Function elementData(ByVal index As Integer) As E
+            Return CType(elementData_Renamed(index), E)
+        End Function
 
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Friend Overridable Function elementData(ByVal index As Integer) As E
-			Return CType(elementData_Renamed(index), E)
-		End Function
-
-		''' <summary>
-		''' Returns the element at the specified position in this list.
-		''' </summary>
-		''' <param name="index"> index of the element to return </param>
-		''' <returns> the element at the specified position in this list </returns>
-		''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
-		Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
+        ''' <summary>
+        ''' Returns the element at the specified position in this list.
+        ''' </summary>
+        ''' <param name="index"> index of the element to return </param>
+        ''' <returns> the element at the specified position in this list </returns>
+        ''' <exception cref="IndexOutOfBoundsException"> {@inheritDoc} </exception>
+        Public Overridable Function [get](ByVal index As Integer) As E Implements List(Of E).get
 			rangeCheck(index)
 
 			Return elementData(index)
@@ -876,10 +872,10 @@ Namespace java.util
 			Private ReadOnly outerInstance As ArrayList
 
 			Friend Sub New(ByVal outerInstance As ArrayList, ByVal index As Integer)
-					Me.outerInstance = outerInstance
-				MyBase.New()
-				cursor = index
-			End Sub
+                MyBase.New(outerInstance)
+                Me.outerInstance = outerInstance
+                Me.cursor = index
+            End Sub
 
 			Public Overridable Function hasPrevious() As Boolean Implements ListIterator(Of E).hasPrevious
 				Return cursor <> 0
