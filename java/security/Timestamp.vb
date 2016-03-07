@@ -29,20 +29,20 @@ Imports System.Collections.Generic
 Namespace java.security
 
 
-	''' <summary>
-	''' This class encapsulates information about a signed timestamp.
-	''' It is immutable.
-	''' It includes the timestamp's date and time as well as information about the
-	''' Timestamping Authority (TSA) which generated and signed the timestamp.
-	''' 
-	''' @since 1.5
-	''' @author Vincent Ryan
-	''' </summary>
+    ''' <summary>
+    ''' This class encapsulates information about a signed timestamp.
+    ''' It is immutable.
+    ''' It includes the timestamp's date and time as well as information about the
+    ''' Timestamping Authority (TSA) which generated and signed the timestamp.
+    ''' 
+    ''' @since 1.5
+    ''' @author Vincent Ryan
+    ''' </summary>
 
-	<Serializable> _
-	Public NotInheritable Class Timestamp
+    <Serializable>
+    Public NotInheritable Class Timestamp : Inherits java.lang.Object
 
-		Private Const serialVersionUID As Long = -5502683707821851294L
+        Private Const serialVersionUID As Long = -5502683707821851294L
 
 		''' <summary>
 		''' The timestamp's date and time

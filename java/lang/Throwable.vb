@@ -192,18 +192,6 @@ Namespace java.lang
         '     
 
         ''' <summary>
-        ''' The throwable that caused this throwable to get thrown, or null if this
-        ''' throwable was not caused by another throwable, or if the causative
-        ''' throwable is unknown.  If this field is equal to this throwable itself,
-        ''' it indicates that the cause of this throwable has not yet been
-        ''' initialized.
-        ''' 
-        ''' @serial
-        ''' @since 1.4
-        ''' </summary>
-        Private cause As Throwable = Me
-
-        ''' <summary>
         ''' The stack trace, as returned by <seealso cref="#getStackTrace()"/>.
         ''' 
         ''' The field is initialized to a zero-length array.  A {@code
@@ -214,7 +202,7 @@ Namespace java.lang
         ''' @serial
         ''' @since 1.4
         ''' </summary>
-        Private stackTrace As StackTraceElement() = UNASSIGNED_STACK
+        Private _stackTrace As StackTraceElement() = UNASSIGNED_STACK
 
         ' Setting this static field introduces an acceptable
         ' initialization dependency on a few java.util classes.
@@ -294,7 +282,7 @@ Namespace java.lang
         Public Sub New(ByVal message As String, ByVal cause As Throwable)
             fillInStackTrace()
             detailMessage = message
-            Me.cause = cause
+            Me._cause = cause
         End Sub
 
         ''' <summary>
@@ -316,7 +304,7 @@ Namespace java.lang
         Public Sub New(ByVal cause As Throwable)
             fillInStackTrace()
             detailMessage = (If(cause Is Nothing, Nothing, cause.ToString()))
-            Me.cause = cause
+            Me._cause = cause
         End Sub
 
         ''' <summary>
@@ -366,7 +354,7 @@ Namespace java.lang
                 stackTrace = Nothing
             End If
             detailMessage = message
-            Me.cause = cause
+            Me._cause = cause
             If Not enableSuppression Then suppressedExceptions = Nothing
         End Sub
 
@@ -375,7 +363,7 @@ Namespace java.lang
         ''' </summary>
         ''' <returns>  the detail message string of this {@code Throwable} instance
         '''          (which may be {@code null}). </returns>
-        Public Overridable ReadOnly Property message As String
+        Public Overrides ReadOnly Property message As String
             Get
                 Return detailMessage
             End Get
@@ -418,9 +406,21 @@ Namespace java.lang
         <MethodImpl(MethodImplOptions.Synchronized)>
         Public Overridable ReadOnly Property cause As Throwable
             Get
-                Return (If(cause Is Me, Nothing, cause))
+                Return (If(_cause Is Me, Nothing, _cause))
             End Get
         End Property
+
+        ''' <summary>
+        ''' The throwable that caused this throwable to get thrown, or null if this
+        ''' throwable was not caused by another throwable, or if the causative
+        ''' throwable is unknown.  If this field is equal to this throwable itself,
+        ''' it indicates that the cause of this throwable has not yet been
+        ''' initialized.
+        ''' 
+        ''' @serial
+        ''' @since 1.4
+        ''' </summary>
+        Private _cause As Throwable = Me
 
         ''' <summary>
         ''' Initializes the <i>cause</i> of this throwable to the specified value.
@@ -790,7 +790,7 @@ Namespace java.lang
 
         'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
         <DllImport("unknown")>
-        Private Function fillInStackTrace(ByVal dummy As Integer) As Throwable
+        Private Shared Function fillInStackTrace(ByVal dummy As Integer) As Throwable
         End Function
 
         ''' <summary>
@@ -816,7 +816,7 @@ Namespace java.lang
         ''' <returns> an array of stack trace elements representing the stack trace
         '''         pertaining to this throwable.
         ''' @since  1.4 </returns>
-        Public Overridable Property stackTrace As StackTraceElement()
+        Public Shadows Property stackTrace As StackTraceElement()
             Get
                 Return ourStackTrace.Clone()
             End Get
@@ -828,8 +828,9 @@ Namespace java.lang
                 Next i
 
                 SyncLock Me
-                    If Me.stackTrace Is Nothing AndAlso backtrace Is Nothing Then ' Test for out of protocol state -  Immutable stack Return
-                        Me.stackTrace = defensiveCopy
+                    If Me._stackTrace Is Nothing AndAlso backtrace Is Nothing Then ' Test for out of protocol state -  Immutable stack Return
+                        Me._stackTrace = defensiveCopy
+                    End If
                 End SyncLock
             End Set
         End Property

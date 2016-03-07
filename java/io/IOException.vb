@@ -37,9 +37,9 @@ Namespace java.io
 	''' <seealso cref=     java.io.OutputStream
 	''' @since   JDK1.0 </seealso>
 	Public Class IOException
-		Inherits Exception
+        Inherits java.lang.Exception
 
-		Friend Shadows Const serialVersionUID As Long = 7818375828146090155L
+        Friend Shadows Const serialVersionUID As Long = 7818375828146090155L
 
 		''' <summary>
 		''' Constructs an {@code IOException} with {@code null}
