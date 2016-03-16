@@ -41,35 +41,35 @@ Namespace java.awt.image
 
 
 
-	''' <summary>
-	''' This class exists to wrap one or more data arrays.  Each data array in
-	''' the DataBuffer is referred to as a bank.  Accessor methods for getting
-	''' and setting elements of the DataBuffer's banks exist with and without
-	''' a bank specifier.  The methods without a bank specifier use the default 0th
-	''' bank.  The DataBuffer can optionally take an offset per bank, so that
-	''' data in an existing array can be used even if the interesting data
-	''' doesn't start at array location zero.  Getting or setting the 0th
-	''' element of a bank, uses the (0+offset)th element of the array.  The
-	''' size field specifies how much of the data array is available for
-	''' use.  Size + offset for a given bank should never be greater
-	''' than the length of the associated data array.  The data type of
-	''' a data buffer indicates the type of the data array(s) and may also
-	''' indicate additional semantics, e.g. storing unsigned 8-bit data
-	''' in elements of a byte array.  The data type may be TYPE_UNDEFINED
-	''' or one of the types defined below.  Other types may be added in
-	''' the future.  Generally, an object of class DataBuffer will be cast down
-	''' to one of its data type specific subclasses to access data type specific
-	''' methods for improved performance.  Currently, the Java 2D(tm) API
-	''' image classes use TYPE_BYTE, TYPE_USHORT, TYPE_INT, TYPE_SHORT,
-	''' TYPE_FLOAT, and TYPE_DOUBLE DataBuffers to store image data. </summary>
-	''' <seealso cref= java.awt.image.Raster </seealso>
-	''' <seealso cref= java.awt.image.SampleModel </seealso>
-	Public MustInherit Class DataBuffer
+    ''' <summary>
+    ''' This class exists to wrap one or more data arrays.  Each data array in
+    ''' the DataBuffer is referred to as a bank.  Accessor methods for getting
+    ''' and setting elements of the DataBuffer's banks exist with and without
+    ''' a bank specifier.  The methods without a bank specifier use the default 0th
+    ''' bank.  The DataBuffer can optionally take an offset per bank, so that
+    ''' data in an existing array can be used even if the interesting data
+    ''' doesn't start at array location zero.  Getting or setting the 0th
+    ''' element of a bank, uses the (0+offset)th element of the array.  The
+    ''' size field specifies how much of the data array is available for
+    ''' use.  Size + offset for a given bank should never be greater
+    ''' than the length of the associated data array.  The data type of
+    ''' a data buffer indicates the type of the data array(s) and may also
+    ''' indicate additional semantics, e.g. storing unsigned 8-bit data
+    ''' in elements of a byte array.  The data type may be TYPE_UNDEFINED
+    ''' or one of the types defined below.  Other types may be added in
+    ''' the future.  Generally, an object of class DataBuffer will be cast down
+    ''' to one of its data type specific subclasses to access data type specific
+    ''' methods for improved performance.  Currently, the Java 2D(tm) API
+    ''' image classes use TYPE_BYTE, TYPE_USHORT, TYPE_INT, TYPE_SHORT,
+    ''' TYPE_FLOAT, and TYPE_DOUBLE DataBuffers to store image data. </summary>
+    ''' <seealso cref= java.awt.image.Raster </seealso>
+    ''' <seealso cref= java.awt.image.SampleModel </seealso>
+    Public MustInherit Class DataBuffer : Inherits java.lang.Object
 
-		''' <summary>
-		''' Tag for unsigned byte data. </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Const TYPE_BYTE As Integer = 0
+        ''' <summary>
+        ''' Tag for unsigned byte data. </summary>
+        'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        Public Const TYPE_BYTE As Integer = 0
 
 		''' <summary>
 		''' Tag for unsigned short data. </summary>
@@ -278,59 +278,59 @@ Namespace java.awt.image
 			Me.offsets = CType(offsets.clone(), Integer())
 		End Sub
 
-		''' <summary>
-		'''  Returns the data type of this DataBuffer. </summary>
-		'''   <returns> the data type of this <code>DataBuffer</code>. </returns>
-		Public Overridable Property dataType As Integer
-			Get
-				Return dataType
-			End Get
-		End Property
+        ''' <summary>
+        '''  Returns the data type of this DataBuffer. </summary>
+        '''   <returns> the data type of this <code>DataBuffer</code>. </returns>
+        Public Overridable ReadOnly Property dataType As Integer
+            Get
+                Return dataType
+            End Get
+        End Property
 
-		''' <summary>
-		'''  Returns the size (in array elements) of all banks. </summary>
-		'''   <returns> the size of all banks. </returns>
-		Public Overridable Property size As Integer
-			Get
-				Return size
-			End Get
-		End Property
+        ''' <summary>
+        '''  Returns the size (in array elements) of all banks. </summary>
+        '''   <returns> the size of all banks. </returns>
+        Public Overridable ReadOnly Property size As Integer
+            Get
+                Return size
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the offset of the default bank in array elements. </summary>
-		'''  <returns> the offset of the default bank. </returns>
-		Public Overridable Property offset As Integer
-			Get
-				Return offset
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the offset of the default bank in array elements. </summary>
+        '''  <returns> the offset of the default bank. </returns>
+        Public Overridable ReadOnly Property offset As Integer
+            Get
+                Return offset
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the offsets (in array elements) of all the banks. </summary>
-		'''  <returns> the offsets of all banks. </returns>
-		Public Overridable Property offsets As Integer()
-			Get
-				Return CType(offsets.clone(), Integer())
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the offsets (in array elements) of all the banks. </summary>
+        '''  <returns> the offsets of all banks. </returns>
+        Public Overridable ReadOnly Property offsets As Integer()
+            Get
+                Return CType(offsets.Clone(), Integer())
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the number of banks in this DataBuffer. </summary>
-		'''  <returns> the number of banks. </returns>
-		Public Overridable Property numBanks As Integer
-			Get
-				Return banks
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the number of banks in this DataBuffer. </summary>
+        '''  <returns> the number of banks. </returns>
+        Public Overridable ReadOnly Property numBanks As Integer
+            Get
+                Return banks
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the requested data array element from the first (default) bank
-		''' as an  java.lang.[Integer]. </summary>
-		''' <param name="i"> the index of the requested data array element </param>
-		''' <returns> the data array element at the specified index. </returns>
-		''' <seealso cref= #setElem(int, int) </seealso>
-		''' <seealso cref= #setElem(int, int, int) </seealso>
-		Public Overridable Function getElem(ByVal i As Integer) As Integer
+        ''' <summary>
+        ''' Returns the requested data array element from the first (default) bank
+        ''' as an  java.lang.[Integer]. </summary>
+        ''' <param name="i"> the index of the requested data array element </param>
+        ''' <returns> the data array element at the specified index. </returns>
+        ''' <seealso cref= #setElem(int, int) </seealso>
+        ''' <seealso cref= #setElem(int, int, int) </seealso>
+        Public Overridable Function getElem(ByVal i As Integer) As Integer
 			Return getElem(0,i)
 		End Function
 
