@@ -5,6 +5,7 @@ Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
 Imports java.util
 Imports [event]
+Imports java.awt.peer
 
 '
 ' * Copyright (c) 1995, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -453,7 +454,7 @@ Namespace java.awt
         ''' <seealso cref=       #getDesktopProperty(String propertyName) </seealso>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.4 </seealso>
-        Protected Friend Overridable Property dynamicLayoutSet As Boolean
+        Protected Friend Overridable ReadOnly Property dynamicLayoutSet As Boolean
             Get
                 GraphicsEnvironment.checkHeadless()
 
@@ -490,7 +491,7 @@ Namespace java.awt
         ''' <seealso cref=       #getDesktopProperty(String propertyName) </seealso>
         ''' <seealso cref=       java.awt.GraphicsEnvironment#isHeadless
         ''' @since     1.4 </seealso>
-        Public Overridable Property dynamicLayoutActive As Boolean
+        Public Overridable ReadOnly Property dynamicLayoutActive As Boolean
             Get
                 GraphicsEnvironment.checkHeadless()
 
@@ -761,10 +762,10 @@ Namespace java.awt
         ''' <exception cref="AWTError">  if a toolkit could not be found, or
         '''                 if one could not be accessed or instantiated. </exception>
         <MethodImpl(MethodImplOptions.Synchronized)>
-        Public Property Shared defaultToolkit As Toolkit
+        Public Shared ReadOnly Property defaultToolkit As Toolkit
             Get
                 If toolkit_Renamed Is Nothing Then
-                    java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T)
+                    java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper2(Of T))
                     loadAssistiveTechnologies()
                 End If
                 Return toolkit_Renamed
