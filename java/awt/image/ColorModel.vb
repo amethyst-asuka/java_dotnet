@@ -157,8 +157,8 @@ Namespace java.awt.image
 		''' </summary>
 		Protected Friend pixel_bits As Integer
 		Friend nBits As Integer()
-		Friend transparency As Integer = java.awt.Transparency.TRANSLUCENT
-		Friend supportsAlpha As Boolean = True
+        Friend transparency As Integer = java.awt.ITransparency.TRANSLUCENT
+        Friend supportsAlpha As Boolean = True
 		Friend isAlphaPremultiplied_Renamed As Boolean = False
 		Friend numComponents As Integer = -1
 		Friend numColorComponents As Integer = -1
@@ -224,48 +224,48 @@ Namespace java.awt.image
 		End Sub
 		Private Shared RGBdefault As ColorModel
 
-		''' <summary>
-		''' Returns a <code>DirectColorModel</code> that describes the default
-		''' format for integer RGB values used in many of the methods in the
-		''' AWT image interfaces for the convenience of the programmer.
-		''' The color space is the default <seealso cref="ColorSpace"/>, sRGB.
-		''' The format for the RGB values is an integer with 8 bits
-		''' each of alpha, red, green, and blue color components ordered
-		''' correspondingly from the most significant byte to the least
-		''' significant byte, as in:  0xAARRGGBB.  Color components are
-		''' not premultiplied by the alpha component.  This format does not
-		''' necessarily represent the native or the most efficient
-		''' <code>ColorModel</code> for a particular device or for all images.
-		''' It is merely used as a common color model format. </summary>
-		''' <returns> a <code>DirectColorModel</code>object describing default
-		'''          RGB values. </returns>
-		Public Property Shared rGBdefault As ColorModel
-			Get
-				If RGBdefault Is Nothing Then RGBdefault = New DirectColorModel(32, &Hff0000, &Hff00, &Hff, &Hff000000L) ' Alpha -  Blue -  Green -  Red
-				Return RGBdefault
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns a <code>DirectColorModel</code> that describes the default
+        ''' format for integer RGB values used in many of the methods in the
+        ''' AWT image interfaces for the convenience of the programmer.
+        ''' The color space is the default <seealso cref="ColorSpace"/>, sRGB.
+        ''' The format for the RGB values is an integer with 8 bits
+        ''' each of alpha, red, green, and blue color components ordered
+        ''' correspondingly from the most significant byte to the least
+        ''' significant byte, as in:  0xAARRGGBB.  Color components are
+        ''' not premultiplied by the alpha component.  This format does not
+        ''' necessarily represent the native or the most efficient
+        ''' <code>ColorModel</code> for a particular device or for all images.
+        ''' It is merely used as a common color model format. </summary>
+        ''' <returns> a <code>DirectColorModel</code>object describing default
+        '''          RGB values. </returns>
+        Public Shared ReadOnly Property rGBdefault As ColorModel
+            Get
+                If rGBdefault Is Nothing Then rGBdefault = New DirectColorModel(32, &HFF0000, &HFF00, &HFF, &HFF000000L) ' Alpha -  Blue -  Green -  Red
+                Return rGBdefault
+            End Get
+        End Property
 
-		''' <summary>
-		''' Constructs a <code>ColorModel</code> that translates pixels of the
-		''' specified number of bits to color/alpha components.  The color
-		''' space is the default RGB <code>ColorSpace</code>, which is sRGB.
-		''' Pixel values are assumed to include alpha information.  If color
-		''' and alpha information are represented in the pixel value as
-		''' separate spatial bands, the color bands are assumed not to be
-		''' premultiplied with the alpha value. The transparency type is
-		''' java.awt.Transparency.TRANSLUCENT.  The transfer type will be the
-		''' smallest of DataBuffer.TYPE_BYTE, DataBuffer.TYPE_USHORT,
-		''' or DataBuffer.TYPE_INT that can hold a single pixel
-		''' (or DataBuffer.TYPE_UNDEFINED if bits is greater
-		''' than 32).  Since this constructor has no information about the
-		''' number of bits per color and alpha component, any subclass calling
-		''' this constructor should override any method that requires this
-		''' information. </summary>
-		''' <param name="bits"> the number of bits of a pixel </param>
-		''' <exception cref="IllegalArgumentException"> if the number
-		'''          of bits in <code>bits</code> is less than 1 </exception>
-		Public Sub New(ByVal bits As Integer)
+        ''' <summary>
+        ''' Constructs a <code>ColorModel</code> that translates pixels of the
+        ''' specified number of bits to color/alpha components.  The color
+        ''' space is the default RGB <code>ColorSpace</code>, which is sRGB.
+        ''' Pixel values are assumed to include alpha information.  If color
+        ''' and alpha information are represented in the pixel value as
+        ''' separate spatial bands, the color bands are assumed not to be
+        ''' premultiplied with the alpha value. The transparency type is
+        ''' java.awt.Transparency.TRANSLUCENT.  The transfer type will be the
+        ''' smallest of DataBuffer.TYPE_BYTE, DataBuffer.TYPE_USHORT,
+        ''' or DataBuffer.TYPE_INT that can hold a single pixel
+        ''' (or DataBuffer.TYPE_UNDEFINED if bits is greater
+        ''' than 32).  Since this constructor has no information about the
+        ''' number of bits per color and alpha component, any subclass calling
+        ''' this constructor should override any method that requires this
+        ''' information. </summary>
+        ''' <param name="bits"> the number of bits of a pixel </param>
+        ''' <exception cref="IllegalArgumentException"> if the number
+        '''          of bits in <code>bits</code> is less than 1 </exception>
+        Public Sub New(ByVal bits As Integer)
 			pixel_bits = bits
 			If bits < 1 Then Throw New IllegalArgumentException("Number of bits must be > 0")
 			numComponents = 4
@@ -369,134 +369,134 @@ Namespace java.awt.image
 			Return supportsAlpha
 		End Function
 
-		''' <summary>
-		''' Returns whether or not the alpha has been premultiplied in the
-		''' pixel values to be translated by this <code>ColorModel</code>.
-		''' If the boolean is <code>true</code>, this <code>ColorModel</code>
-		''' is to be used to interpret pixel values in which color and alpha
-		''' information are represented as separate spatial bands, and color
-		''' samples are assumed to have been multiplied by the
-		''' alpha sample. </summary>
-		''' <returns> <code>true</code> if the alpha values are premultiplied
-		'''          in the pixel values to be translated by this
-		'''          <code>ColorModel</code>; <code>false</code> otherwise. </returns>
-		Public Property alphaPremultiplied As Boolean
-			Get
-				Return isAlphaPremultiplied_Renamed
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns whether or not the alpha has been premultiplied in the
+        ''' pixel values to be translated by this <code>ColorModel</code>.
+        ''' If the boolean is <code>true</code>, this <code>ColorModel</code>
+        ''' is to be used to interpret pixel values in which color and alpha
+        ''' information are represented as separate spatial bands, and color
+        ''' samples are assumed to have been multiplied by the
+        ''' alpha sample. </summary>
+        ''' <returns> <code>true</code> if the alpha values are premultiplied
+        '''          in the pixel values to be translated by this
+        '''          <code>ColorModel</code>; <code>false</code> otherwise. </returns>
+        Public ReadOnly Property alphaPremultiplied As Boolean
+            Get
+                Return isAlphaPremultiplied_Renamed
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the transfer type of this <code>ColorModel</code>.
-		''' The transfer type is the type of primitive array used to represent
-		''' pixel values as arrays. </summary>
-		''' <returns> the transfer type.
-		''' @since 1.3 </returns>
-		Public Property transferType As Integer
-			Get
-				Return transferType
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the transfer type of this <code>ColorModel</code>.
+        ''' The transfer type is the type of primitive array used to represent
+        ''' pixel values as arrays. </summary>
+        ''' <returns> the transfer type.
+        ''' @since 1.3 </returns>
+        Public ReadOnly Property transferType As Integer
+            Get
+                Return transferType
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the number of bits per pixel described by this
-		''' <code>ColorModel</code>. </summary>
-		''' <returns> the number of bits per pixel. </returns>
-		Public Overridable Property pixelSize As Integer
-			Get
-				Return pixel_bits
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the number of bits per pixel described by this
+        ''' <code>ColorModel</code>. </summary>
+        ''' <returns> the number of bits per pixel. </returns>
+        Public Overridable ReadOnly Property pixelSize As Integer
+            Get
+                Return pixel_bits
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the number of bits for the specified color/alpha component.
-		''' Color components are indexed in the order specified by the
-		''' <code>ColorSpace</code>.  Typically, this order reflects the name
-		''' of the color space type. For example, for TYPE_RGB, index 0
-		''' corresponds to red, index 1 to green, and index 2
-		''' to blue.  If this <code>ColorModel</code> supports alpha, the alpha
-		''' component corresponds to the index following the last color
-		''' component. </summary>
-		''' <param name="componentIdx"> the index of the color/alpha component </param>
-		''' <returns> the number of bits for the color/alpha component at the
-		'''          specified index. </returns>
-		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>componentIdx</code>
-		'''         is greater than the number of components or
-		'''         less than zero </exception>
-		''' <exception cref="NullPointerException"> if the number of bits array is
-		'''         <code>null</code> </exception>
-		Public Overridable Function getComponentSize(ByVal componentIdx As Integer) As Integer
+        ''' <summary>
+        ''' Returns the number of bits for the specified color/alpha component.
+        ''' Color components are indexed in the order specified by the
+        ''' <code>ColorSpace</code>.  Typically, this order reflects the name
+        ''' of the color space type. For example, for TYPE_RGB, index 0
+        ''' corresponds to red, index 1 to green, and index 2
+        ''' to blue.  If this <code>ColorModel</code> supports alpha, the alpha
+        ''' component corresponds to the index following the last color
+        ''' component. </summary>
+        ''' <param name="componentIdx"> the index of the color/alpha component </param>
+        ''' <returns> the number of bits for the color/alpha component at the
+        '''          specified index. </returns>
+        ''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>componentIdx</code>
+        '''         is greater than the number of components or
+        '''         less than zero </exception>
+        ''' <exception cref="NullPointerException"> if the number of bits array is
+        '''         <code>null</code> </exception>
+        Public Overridable Function getComponentSize(ByVal componentIdx As Integer) As Integer
 			' REMIND:
 			If nBits Is Nothing Then Throw New NullPointerException("Number of bits array is null.")
 
 			Return nBits(componentIdx)
 		End Function
 
-		''' <summary>
-		''' Returns an array of the number of bits per color/alpha component.
-		''' The array contains the color components in the order specified by the
-		''' <code>ColorSpace</code>, followed by the alpha component, if
-		''' present. </summary>
-		''' <returns> an array of the number of bits per color/alpha component </returns>
-		Public Overridable Property componentSize As Integer()
-			Get
-				If nBits IsNot Nothing Then Return nBits.clone()
-    
-				Return Nothing
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns an array of the number of bits per color/alpha component.
+        ''' The array contains the color components in the order specified by the
+        ''' <code>ColorSpace</code>, followed by the alpha component, if
+        ''' present. </summary>
+        ''' <returns> an array of the number of bits per color/alpha component </returns>
+        Public Overridable ReadOnly Property componentSize As Integer()
+            Get
+                If nBits IsNot Nothing Then Return nBits.Clone()
 
-		''' <summary>
-		''' Returns the transparency.  Returns either OPAQUE, BITMASK,
-		''' or TRANSLUCENT. </summary>
-		''' <returns> the transparency of this <code>ColorModel</code>. </returns>
-		''' <seealso cref= Transparency#OPAQUE </seealso>
-		''' <seealso cref= Transparency#BITMASK </seealso>
-		''' <seealso cref= Transparency#TRANSLUCENT </seealso>
-		Public Overridable Property transparency As Integer
-			Get
-				Return transparency
-			End Get
-		End Property
+                Return Nothing
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the number of components, including alpha, in this
-		''' <code>ColorModel</code>.  This is equal to the number of color
-		''' components, optionally plus one, if there is an alpha component. </summary>
-		''' <returns> the number of components in this <code>ColorModel</code> </returns>
-		Public Overridable Property numComponents As Integer
-			Get
-				Return numComponents
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the transparency.  Returns either OPAQUE, BITMASK,
+        ''' or TRANSLUCENT. </summary>
+        ''' <returns> the transparency of this <code>ColorModel</code>. </returns>
+        ''' <seealso cref= Transparency#OPAQUE </seealso>
+        ''' <seealso cref= Transparency#BITMASK </seealso>
+        ''' <seealso cref= Transparency#TRANSLUCENT </seealso>
+        Public Overridable ReadOnly Property transparency As Integer
+            Get
+                Return transparency
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the number of color components in this
-		''' <code>ColorModel</code>.
-		''' This is the number of components returned by
-		''' <seealso cref="ColorSpace#getNumComponents"/>. </summary>
-		''' <returns> the number of color components in this
-		''' <code>ColorModel</code>. </returns>
-		''' <seealso cref= ColorSpace#getNumComponents </seealso>
-		Public Overridable Property numColorComponents As Integer
-			Get
-				Return numColorComponents
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the number of components, including alpha, in this
+        ''' <code>ColorModel</code>.  This is equal to the number of color
+        ''' components, optionally plus one, if there is an alpha component. </summary>
+        ''' <returns> the number of components in this <code>ColorModel</code> </returns>
+        Public Overridable ReadOnly Property numComponents As Integer
+            Get
+                Return numComponents
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns the red color component for the specified pixel, scaled
-		''' from 0 to 255 in the default RGB ColorSpace, sRGB.  A color conversion
-		''' is done if necessary.  The pixel value is specified as an int.
-		''' An <code>IllegalArgumentException</code> is thrown if pixel
-		''' values for this <code>ColorModel</code> are not conveniently
-		''' representable as a single int.  The returned value is not a
-		''' pre-multiplied value.  For example, if the
-		''' alpha is premultiplied, this method divides it out before returning
-		''' the value.  If the alpha value is 0, the red value is 0. </summary>
-		''' <param name="pixel"> a specified pixel </param>
-		''' <returns> the value of the red component of the specified pixel. </returns>
-		Public MustOverride Function getRed(ByVal pixel As Integer) As Integer
+        ''' <summary>
+        ''' Returns the number of color components in this
+        ''' <code>ColorModel</code>.
+        ''' This is the number of components returned by
+        ''' <seealso cref="ColorSpace#getNumComponents"/>. </summary>
+        ''' <returns> the number of color components in this
+        ''' <code>ColorModel</code>. </returns>
+        ''' <seealso cref= ColorSpace#getNumComponents </seealso>
+        Public Overridable ReadOnly Property numColorComponents As Integer
+            Get
+                Return numColorComponents
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Returns the red color component for the specified pixel, scaled
+        ''' from 0 to 255 in the default RGB ColorSpace, sRGB.  A color conversion
+        ''' is done if necessary.  The pixel value is specified as an int.
+        ''' An <code>IllegalArgumentException</code> is thrown if pixel
+        ''' values for this <code>ColorModel</code> are not conveniently
+        ''' representable as a single int.  The returned value is not a
+        ''' pre-multiplied value.  For example, if the
+        ''' alpha is premultiplied, this method divides it out before returning
+        ''' the value.  If the alpha value is 0, the red value is 0. </summary>
+        ''' <param name="pixel"> a specified pixel </param>
+        ''' <returns> the value of the red component of the specified pixel. </returns>
+        Public MustOverride Function getRed(ByVal pixel As Integer) As Integer
 
 		''' <summary>
 		''' Returns the green color component for the specified pixel, scaled
