@@ -599,7 +599,7 @@ Namespace java.awt.image
 		''' <param name="data">      The DataBuffer containing the image data. </param>
 		''' <seealso cref= #getPixel(int, int, int[], DataBuffer) </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void setPixel(int x, int y, int iArray() , DataBuffer data)
+		public  Sub  setPixel(int x, int y, int iArray() , DataBuffer data)
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim lineOffset As Integer = y * scanlineStride + x
 			Dim value As Integer = data.getElem(lineOffset)
@@ -621,7 +621,7 @@ Namespace java.awt.image
 		''' <param name="iArray">    The input samples in an int array. </param>
 		''' <param name="data">      The DataBuffer containing the image data. </param>
 		''' <seealso cref= #getPixels(int, int, int, int, int[], DataBuffer) </seealso>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, Integer iArray() , DataBuffer data)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, Integer iArray() , DataBuffer data)
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h
 
@@ -655,7 +655,7 @@ Namespace java.awt.image
 		''' <param name="s">         The input sample as an int. </param>
 		''' <param name="data">      The DataBuffer containing the image data. </param>
 		''' <seealso cref= #getSample(int, int, int, DataBuffer) </seealso>
-		public void sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
+		public  Sub  sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
 			' Bounds check for 'b' will be performed automatically
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim value As Integer = data.getElem(y*scanlineStride + x)
@@ -676,7 +676,7 @@ Namespace java.awt.image
 		''' <param name="iArray">    The input samples in an int array. </param>
 		''' <param name="data">      The DataBuffer containing the image data. </param>
 		''' <seealso cref= #getSamples(int, int, int, int, int, int[], DataBuffer) </seealso>
-		public void samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Integer iArray() , DataBuffer data)
+		public  Sub  samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Integer iArray() , DataBuffer data)
 			' Bounds check for 'b' will be performed automatically
 			If (x < 0) OrElse (y < 0) OrElse (x + w > width) OrElse (y + h > height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim lineOffset As Integer = y*scanlineStride + x

@@ -156,7 +156,7 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setScrollPaneAdjustableAccessor(New sun.awt.AWTAccessor.ScrollPaneAdjustableAccessor()
 	'		{
-	'			public void setTypedValue(final ScrollPaneAdjustable adj, final int v, final int type)
+	'			public  Sub  setTypedValue(final ScrollPaneAdjustable adj, final int v, final int type)
 	'			{
 	'				adj.setTypedValue(v, type);
 	'			}

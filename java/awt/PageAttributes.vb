@@ -44,7 +44,7 @@ Namespace java.awt
 	''' import java.awt.PageAttributes;
 	''' 
 	''' public class MonochromeExample {
-	'''     public void setMonochrome(PageAttributes pageAttributes) {
+	'''     public  Sub  setMonochrome(PageAttributes pageAttributes) {
 	'''         pageAttributes.setColor(PageAttributes.ColorType.MONOCHROME);
 	'''     }
 	''' }

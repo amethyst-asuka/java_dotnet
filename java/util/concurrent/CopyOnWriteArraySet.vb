@@ -62,17 +62,17 @@ Namespace java.util.concurrent
 	''' perform some action upon state updates.
 	''' 
 	'''  <pre> {@code
-	''' class Handler { void handle(); ... }
+	''' class Handler {  Sub  handle(); ... }
 	''' 
 	''' class X {
 	'''   private final CopyOnWriteArraySet<Handler> handlers
 	'''     = new CopyOnWriteArraySet<Handler>();
-	'''   public void addHandler(Handler h) { handlers.add(h); }
+	'''   public  Sub  addHandler(Handler h) { handlers.add(h); }
 	''' 
 	'''   private long internalState;
-	'''   private synchronized void changeState() { internalState = ...; }
+	'''   private synchronized  Sub  changeState() { internalState = ...; }
 	''' 
-	'''   public void update() {
+	'''   public  Sub  update() {
 	'''     changeState();
 	'''     for (Handler handler : handlers)
 	'''       handler.handle();

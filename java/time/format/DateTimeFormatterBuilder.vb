@@ -1411,7 +1411,7 @@ Namespace java.time.format
 			parsePattern(pattern)
 			Return Me
 
-		private void parsePattern(String pattern)
+		private  Sub  parsePattern(String pattern)
 			For pos As Integer = 0 To pattern.length() - 1
 				Dim cur As Char = pattern.Chars(pos)
 				If (cur >= "A"c AndAlso cur <= "Z"c) OrElse (cur >= "a"c AndAlso cur <= "z"c) Then
@@ -1534,7 +1534,7 @@ Namespace java.time.format
 			Next pos
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		private void parseField(Char cur, Integer count, java.time.temporal.TemporalField field)
+		private  Sub  parseField(Char cur, Integer count, java.time.temporal.TemporalField field)
 			Dim standalone As Boolean = False
 			Select Case cur
 				Case "u"c, "y"c

@@ -112,7 +112,7 @@ Namespace java.beans
 	''' <pre>
 	''' //Equivalent code using an inner class instead of EventHandler.
 	''' myButton.addActionListener(new ActionListener() {
-	'''    public void actionPerformed(ActionEvent e) {
+	'''    public  Sub  actionPerformed(ActionEvent e) {
 	'''        frame.toFront();
 	'''    }
 	''' });
@@ -139,7 +139,7 @@ Namespace java.beans
 	''' <pre>
 	''' //Equivalent code using an inner class instead of EventHandler.
 	''' new ActionListener() {
-	'''    public void actionPerformed(ActionEvent e) {
+	'''    public  Sub  actionPerformed(ActionEvent e) {
 	'''        myButton.setNextFocusableComponent((Component)e.getSource());
 	'''    }
 	''' }
@@ -163,7 +163,7 @@ Namespace java.beans
 	''' <pre>
 	''' //Equivalent code using an inner class instead of EventHandler.
 	''' new ActionListener() {
-	'''    public void actionPerformed(ActionEvent e) {
+	'''    public  Sub  actionPerformed(ActionEvent e) {
 	'''        target.doActionEvent(e);
 	'''    }
 	''' }
@@ -191,7 +191,7 @@ Namespace java.beans
 	''' <pre>
 	''' //Equivalent code using an inner class instead of EventHandler.
 	''' new ActionListener {
-	'''    public void actionPerformed(ActionEvent e) {
+	'''    public  Sub  actionPerformed(ActionEvent e) {
 	'''        myButton.setLabel(((JTextField)e.getSource()).getText());
 	'''    }
 	''' }
@@ -220,7 +220,7 @@ Namespace java.beans
 	''' <pre>
 	''' //Equivalent code using an inner class instead of EventHandler.
 	''' new ActionListener {
-	'''    public void actionPerformed(ActionEvent e) {
+	'''    public  Sub  actionPerformed(ActionEvent e) {
 	'''        target.setA(e.getB().getC().isD());
 	'''    }
 	''' }
@@ -238,7 +238,7 @@ Namespace java.beans
 	''' <pre>
 	'''   //Equivalent code using an inner class instead of EventHandler.
 	'''   new ActionListener {
-	'''     public void actionPerformed(ActionEvent e) {
+	'''     public  Sub  actionPerformed(ActionEvent e) {
 	'''         target.getA().setB(e.getC().isD());
 	'''    }
 	''' }
@@ -250,8 +250,8 @@ Namespace java.beans
 	''' defined as:
 	''' <pre>
 	'''   public class MyTarget {
-	'''     public void doIt(String);
-	'''     public void doIt(Object);
+	'''     public  Sub  doIt(String);
+	'''     public  Sub  doIt(Object);
 	'''   }
 	''' </pre>
 	''' Then the method <code>doIt</code> is overloaded.  EventHandler will invoke
@@ -526,7 +526,7 @@ Namespace java.beans
 		''' <pre>
 		''' //Equivalent code using an inner class instead of EventHandler.
 		''' new ActionListener() {
-		'''    public void actionPerformed(ActionEvent event) {
+		'''    public  Sub  actionPerformed(ActionEvent event) {
 		'''        label.setText(((JTextField)(event.getSource())).getText());
 		'''     }
 		''' };
@@ -612,7 +612,7 @@ Namespace java.beans
 		''' <pre>
 		''' //Equivalent code using an inner class instead of EventHandler.
 		''' new MouseAdapter() {
-		'''    public void mousePressed(MouseEvent e) {
+		'''    public  Sub  mousePressed(MouseEvent e) {
 		'''        target.setOrigin(e.getPoint());
 		'''    }
 		''' };

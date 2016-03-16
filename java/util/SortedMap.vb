@@ -64,7 +64,7 @@ Namespace java.util
 	''' though as required constructors cannot be specified by interfaces. The
 	''' expected "standard" constructors for all sorted map implementations are:
 	''' <ol>
-	'''   <li>A void (no arguments) constructor, which creates an empty sorted map
+	'''   <li>A  Sub  (no arguments) constructor, which creates an empty sorted map
 	'''   sorted according to the natural ordering of its keys.</li>
 	'''   <li>A constructor with a single argument of type {@code Comparator}, which
 	'''   creates an empty sorted map sorted according to the specified comparator.</li>

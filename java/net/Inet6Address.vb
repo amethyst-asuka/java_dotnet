@@ -427,7 +427,7 @@ Namespace java.net
 			End If
 			Throw New UnknownHostException("addr is of illegal length")
 
-		private void initstr(String hostName, SByte addr() , String ifname) throws UnknownHostException
+		private  Sub  initstr(String hostName, SByte addr() , String ifname) throws UnknownHostException
 			Try
 				Dim nif As NetworkInterface = NetworkInterface.getByName(ifname)
 				If nif Is Nothing Then Throw New UnknownHostException("no such interface " & ifname)
@@ -436,7 +436,7 @@ Namespace java.net
 				Throw New UnknownHostException("SocketException thrown" & ifname)
 			End Try
 
-		private void initif(String hostName, SByte addr() , NetworkInterface nif) throws UnknownHostException
+		private  Sub  initif(String hostName, SByte addr() , NetworkInterface nif) throws UnknownHostException
 			Dim family As Integer = -1
 			holder6.init(addr, nif)
 
@@ -504,7 +504,7 @@ Namespace java.net
 		''' including the scope information, only if the
 		''' scoped interface name is valid on this system
 		''' </summary>
-		private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException
+		private  Sub  readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException
 			Dim scope_ifname As NetworkInterface = Nothing
 
 			If Me.GetType().classLoader IsNot Nothing Then Throw New SecurityException("invalid address type")
@@ -557,7 +557,7 @@ Namespace java.net
 		''' scope_ifname field as a String, rather than a NetworkInterface
 		''' which is not serializable
 		''' </summary>
-		private synchronized void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException
+		private synchronized  Sub  writeObject(java.io.ObjectOutputStream s) throws java.io.IOException
 				Dim ifname As String = Nothing
 
 			If holder6.scope_ifname IsNot Nothing Then
@@ -787,7 +787,7 @@ Namespace java.net
 		''' <summary>
 		''' Perform class load-time initializations.
 		''' </summary>
-		private static native void init()
+		private static native  Sub  init()
 	End Class
 
 End Namespace

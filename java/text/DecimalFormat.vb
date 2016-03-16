@@ -1214,7 +1214,7 @@ Namespace java.text
 		''' <param name="prefix">     Char sequence to prepend as a prefix. </param>
 		''' <param name="suffix">     Char sequence to append as a suffix.
 		'''  </param>
-		'    private void addAffixes(boolean isNegative, char[] container) {
+		'    private  Sub  addAffixes(boolean isNegative, char[] container) {
 		Private Sub addAffixes(ByVal container As Char(), ByVal prefix As Char(), ByVal suffix As Char())
 
 			' We add affixes only if needed (affix length > 0).

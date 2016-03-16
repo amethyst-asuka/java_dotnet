@@ -68,7 +68,7 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setDefaultKeyboardFocusManagerAccessor(New sun.awt.AWTAccessor.DefaultKeyboardFocusManagerAccessor()
 	'		{
-	'				public void consumeNextKeyTyped(DefaultKeyboardFocusManager dkfm, KeyEvent e)
+	'				public  Sub  consumeNextKeyTyped(DefaultKeyboardFocusManager dkfm, KeyEvent e)
 	'				{
 	'					dkfm.consumeNextKeyTyped(e);
 	'				}

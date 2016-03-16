@@ -246,7 +246,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IOException">
 		'''          If an I/O error occurs </exception>
-		public void mark(Integer readAheadLimit) throws IOException
+		public  Sub  mark(Integer readAheadLimit) throws IOException
 			SyncLock lock
 				MyBase.mark(readAheadLimit)
 				markedLineNumber = lineNumber
@@ -259,7 +259,7 @@ Namespace java.io
 		''' <exception cref="IOException">
 		'''          If the stream has not been marked, or if the mark has been
 		'''          invalidated </exception>
-		public void reset() throws IOException
+		public  Sub  reset() throws IOException
 			SyncLock lock
 				MyBase.reset()
 				lineNumber = markedLineNumber

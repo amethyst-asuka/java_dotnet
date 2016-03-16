@@ -295,7 +295,7 @@ Namespace java.awt
 	''' 
 	''' public class GridBagEx1 extends Applet {
 	''' 
-	'''     protected void makebutton(String name,
+	'''     protected  Sub  makebutton(String name,
 	'''                               GridBagLayout gridbag,
 	'''                               GridBagConstraints c) {
 	'''         Button button = new Button(name);
@@ -303,7 +303,7 @@ Namespace java.awt
 	'''         add(button);
 	'''     }
 	''' 
-	'''     public void init() {
+	'''     public  Sub  init() {
 	'''         GridBagLayout gridbag = new GridBagLayout();
 	'''         GridBagConstraints c = new GridBagConstraints();
 	''' 
@@ -342,7 +342,7 @@ Namespace java.awt
 	'''         setSize(300, 100);
 	'''     }
 	''' 
-	'''     public static void main(String args[]) {
+	'''     public static  Sub  main(String args[]) {
 	'''         Frame f = new Frame("GridBag Layout Example");
 	'''         GridBagEx1 ex1 = new GridBagEx1();
 	''' 
@@ -806,7 +806,7 @@ Namespace java.awt
 
 	'     DEBUG
 	'     *
-	'     *  protected void dumpLayoutInfo(GridBagLayoutInfo s) {
+	'     *  protected  Sub  dumpLayoutInfo(GridBagLayoutInfo s) {
 	'     *    int x;
 	'     *
 	'     *    System.out.println("Col\tWidth\tWeight");
@@ -830,7 +830,7 @@ Namespace java.awt
 
 	'     DEBUG
 	'     *
-	'     *  protected void dumpConstraints(GridBagConstraints constraints) {
+	'     *  protected  Sub  dumpConstraints(GridBagConstraints constraints) {
 	'     *    System.out.println(
 	'     *                 "wt " +
 	'     *                 constraints.weightx +

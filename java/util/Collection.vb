@@ -43,7 +43,7 @@ Namespace java.util
     ''' 
     ''' <p>All general-purpose <tt>Collection</tt> implementation classes (which
     ''' typically implement <tt>Collection</tt> indirectly through one of its
-    ''' subinterfaces) should provide two "standard" constructors: a void (no
+    ''' subinterfaces) should provide two "standard" constructors: a  Sub  (no
     ''' arguments) constructor, which creates an empty collection, and a
     ''' constructor with a single argument of type <tt>Collection</tt>, which
     ''' creates a new collection with the same elements as its argument.  In

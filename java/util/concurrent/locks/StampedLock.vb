@@ -135,7 +135,7 @@ Namespace java.util.concurrent.locks
 	'''   private double x, y;
 	'''   private final StampedLock sl = new StampedLock();
 	''' 
-	'''   void move(double deltaX, double deltaY) { // an exclusively locked method
+	'''    Sub  move(double deltaX, double deltaY) { // an exclusively locked method
 	'''     long stamp = sl.writeLock();
 	'''     try {
 	'''       x += deltaX;
@@ -160,7 +160,7 @@ Namespace java.util.concurrent.locks
 	'''     return System.Math.sqrt(currentX * currentX + currentY * currentY);
 	'''   }
 	''' 
-	'''   void moveIfAtOrigin(double newX, double newY) { // upgrade
+	'''    Sub  moveIfAtOrigin(double newX, double newY) { // upgrade
 	'''     // Could instead start with optimistic, not read mode
 	'''     long stamp = sl.readLock();
 	'''     try {

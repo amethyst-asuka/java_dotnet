@@ -330,7 +330,7 @@ Namespace java.util.stream
 	'				Return False;
 	'			}
 	'
-	'			@Override public void forEachRemaining(Consumer<? MyBase E> consumer)
+	'			@Override public  Sub  forEachRemaining(Consumer<? MyBase E> consumer)
 	'			{
 	'				Objects.requireNonNull(consumer);
 	'
@@ -773,7 +773,7 @@ Namespace java.util.stream
 	'					Return New Splitr(firstSpineIndex, lastSpineIndex, firstSpineElementIndex, lastSpineElementFence);
 	'				}
 	'
-	'				@Override void arrayForOne(int[] array, int index, IntConsumer consumer)
+	'				@Override  Sub  arrayForOne(int[] array, int index, IntConsumer consumer)
 	'				{
 	'					consumer.accept(array[index]);
 	'				}
@@ -875,7 +875,7 @@ Namespace java.util.stream
 	'					Return New Splitr(firstSpineIndex, lastSpineIndex, firstSpineElementIndex, lastSpineElementFence);
 	'				}
 	'
-	'				@Override void arrayForOne(long[] array, int index, LongConsumer consumer)
+	'				@Override  Sub  arrayForOne(long[] array, int index, LongConsumer consumer)
 	'				{
 	'					consumer.accept(array[index]);
 	'				}
@@ -976,7 +976,7 @@ Namespace java.util.stream
 	'					Return New Splitr(firstSpineIndex, lastSpineIndex, firstSpineElementIndex, lastSpineElementFence);
 	'				}
 	'
-	'				@Override void arrayForOne(double[] array, int index, DoubleConsumer consumer)
+	'				@Override  Sub  arrayForOne(double[] array, int index, DoubleConsumer consumer)
 	'				{
 	'					consumer.accept(array[index]);
 	'				}

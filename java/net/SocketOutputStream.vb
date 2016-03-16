@@ -95,7 +95,7 @@ Namespace java.net
 		''' <param name="len"> the number of bytes that are written </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		private void socketWrite(byte b() , int off, int len) throws java.io.IOException
+		private  Sub  socketWrite(byte b() , int off, int len) throws java.io.IOException
 
 			If len <= 0 OrElse off < 0 OrElse off + len > b.length Then
 				If len = 0 Then Return
@@ -123,7 +123,7 @@ Namespace java.net
 		''' Writes a byte to the socket. </summary>
 		''' <param name="b"> the data to be written </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		public void write(Integer b) throws java.io.IOException
+		public  Sub  write(Integer b) throws java.io.IOException
 			temp(0) = CByte(b)
 			socketWrite(temp, 0, 1)
 
@@ -131,7 +131,7 @@ Namespace java.net
 		''' Writes the contents of the buffer <i>b</i> to the socket. </summary>
 		''' <param name="b"> the data to be written </param>
 		''' <exception cref="SocketException"> If an I/O error has occurred. </exception>
-		public void write(SByte b()) throws java.io.IOException
+		public  Sub  write(SByte b()) throws java.io.IOException
 			socketWrite(b, 0, b.length)
 
 		''' <summary>
@@ -141,14 +141,14 @@ Namespace java.net
 		''' <param name="off"> the start offset in the data </param>
 		''' <param name="len"> the number of bytes that are written </param>
 		''' <exception cref="SocketException"> If an I/O error has occurred. </exception>
-		public void write(SByte b() , Integer off, Integer len) throws java.io.IOException
+		public  Sub  write(SByte b() , Integer off, Integer len) throws java.io.IOException
 			socketWrite(b, off, len)
 
 		''' <summary>
 		''' Closes the stream.
 		''' </summary>
 		private Boolean closing = False
-		public void close() throws java.io.IOException
+		public  Sub  close() throws java.io.IOException
 			' Prevent recursion. See BugId 4484411
 			If closing Then Return
 			closing = True
@@ -162,12 +162,12 @@ Namespace java.net
 		''' <summary>
 		''' Overrides finalize, the fd is closed by the Socket.
 		''' </summary>
-		protected void Finalize()
+		protected  Sub  Finalize()
 
 		''' <summary>
 		''' Perform class load-time initializations.
 		''' </summary>
-		private native static void init()
+		private native static  Sub  init()
 
 	End Class
 

@@ -62,7 +62,7 @@ Namespace java.awt.event
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setInvocationEventAccessor(New sun.awt.AWTAccessor.InvocationEventAccessor()
 	'		{
-	'			@Override public void dispose(InvocationEvent invocationEvent)
+	'			@Override public  Sub  dispose(InvocationEvent invocationEvent)
 	'			{
 	'				invocationEvent.finishedDispatching(False);
 	'			}

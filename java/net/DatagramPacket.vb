@@ -263,7 +263,7 @@ Namespace java.net
 		''' <seealso cref= #getLength
 		''' 
 		''' @since 1.2 </seealso>
-		public synchronized void dataata(SByte() buf, Integer offset, Integer length)
+		public synchronized  Sub  dataata(SByte() buf, Integer offset, Integer length)
 			' this will check to see if buf is null 
 			If length < 0 OrElse offset < 0 OrElse (length + offset) < 0 OrElse ((length + offset) > buf.Length) Then Throw New IllegalArgumentException("illegal length or offset")
 			Me.buf = buf
@@ -277,7 +277,7 @@ Namespace java.net
 		''' <param name="iaddr"> the {@code InetAddress}
 		''' @since   JDK1.1 </param>
 		''' <seealso cref= #getAddress() </seealso>
-		public synchronized void addressess(InetAddress iaddr)
+		public synchronized  Sub  addressess(InetAddress iaddr)
 			address = iaddr
 
 		''' <summary>
@@ -286,7 +286,7 @@ Namespace java.net
 		''' <param name="iport"> the port number
 		''' @since   JDK1.1 </param>
 		''' <seealso cref= #getPort() </seealso>
-		public synchronized void portort(Integer iport)
+		public synchronized  Sub  portort(Integer iport)
 			If iport < 0 OrElse iport > &HFFFF Then Throw New IllegalArgumentException("Port out of range:" & iport)
 			port = iport
 
@@ -300,7 +300,7 @@ Namespace java.net
 		''' 
 		''' @since 1.4 </exception>
 		''' <seealso cref= #getSocketAddress </seealso>
-		public synchronized void socketAddressess(SocketAddress address)
+		public synchronized  Sub  socketAddressess(SocketAddress address)
 			If address Is Nothing OrElse Not(TypeOf address Is InetSocketAddress) Then Throw New IllegalArgumentException("unsupported address type")
 			Dim addr As InetSocketAddress = CType(address, InetSocketAddress)
 			If addr.unresolved Then Throw New IllegalArgumentException("unresolved address")
@@ -330,7 +330,7 @@ Namespace java.net
 		''' <seealso cref= #getData
 		''' 
 		''' @since JDK1.1 </seealso>
-		public synchronized void dataata(SByte() buf)
+		public synchronized  Sub  dataata(SByte() buf)
 			If buf Is Nothing Then Throw New NullPointerException("null packet buffer")
 			Me.buf = buf
 			Me.offset = 0
@@ -354,7 +354,7 @@ Namespace java.net
 		''' <seealso cref= #setData
 		''' 
 		''' @since JDK1.1 </seealso>
-		public synchronized void lengthgth(Integer length)
+		public synchronized  Sub  lengthgth(Integer length)
 			If (length + offset) > buf.Length OrElse length < 0 OrElse (length + offset) < 0 Then Throw New IllegalArgumentException("illegal length")
 			Me.length = length
 			Me.bufLength = Me.length
@@ -362,7 +362,7 @@ Namespace java.net
 		''' <summary>
 		''' Perform class load-time initializations.
 		''' </summary>
-		private native static void init()
+		private native static  Sub  init()
 	End Class
 
 End Namespace

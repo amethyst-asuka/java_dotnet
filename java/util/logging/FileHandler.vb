@@ -174,18 +174,18 @@ Namespace java.util.logging
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public void write(byte buff() , int off, int len) throws java.io.IOException
+			public  Sub  write(byte buff() , int off, int len) throws java.io.IOException
 				out.write(buff,off,len)
 				written += len
 
-			public void flush() throws java.io.IOException
+			public  Sub  flush() throws java.io.IOException
 				out.flush()
 
-			public void close() throws java.io.IOException
+			public  Sub  close() throws java.io.IOException
 				out.close()
 		End Class
 
-		private void open(File fname, Boolean append) throws java.io.IOException
+		private  Sub  open(File fname, Boolean append) throws java.io.IOException
 			Dim len As Integer = 0
 			If append Then len = CInt(fname.length())
 			Dim fout As New java.io.FileOutputStream(fname.ToString(), append)
@@ -197,7 +197,7 @@ Namespace java.util.logging
 		''' Configure a FileHandler from LogManager properties and/or default values
 		''' as specified in the class javadoc.
 		''' </summary>
-		private void configure()
+		private  Sub  configure()
 			Dim manager As LogManager = LogManager.logManager
 
 			Dim cname As String = Me.GetType().name
@@ -365,7 +365,7 @@ Namespace java.util.logging
 		''' Open the set of output files, based on the configured
 		''' instance variables.
 		''' </summary>
-		private void openFiles() throws java.io.IOException
+		private  Sub  openFiles() throws java.io.IOException
 			Dim manager As LogManager = LogManager.logManager
 			manager.checkPermission()
 			If count < 1 Then Throw New IllegalArgumentException("file count = " & count)
@@ -570,7 +570,7 @@ Namespace java.util.logging
 		''' <summary>
 		''' Rotate the set of output files
 		''' </summary>
-		private synchronized void rotate()
+		private synchronized  Sub  rotate()
 			Dim oldLevel As Level = level
 			level = Level.OFF
 
@@ -598,7 +598,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
-		public synchronized void publish(LogRecord record)
+		public synchronized  Sub  publish(LogRecord record)
 			If Not isLoggable(record) Then Return
 			MyBase.publish(record)
 			flush()
@@ -609,7 +609,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <exception cref="SecurityException">  if a security manager exists and if
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
-		public synchronized void close() throws SecurityException
+		public synchronized  Sub  close() throws SecurityException
 			MyBase.close()
 			' Unlock any lock file.
 			If lockFileName Is Nothing Then Return
@@ -628,7 +628,7 @@ Namespace java.util.logging
 
 		private static class InitializationErrorManager extends ErrorManager
 			Dim lastException As Exception
-			public void error(String msg, Exception ex, Integer code)
+			public  Sub  error(String msg, Exception ex, Integer code)
 				lastException = ex
 
 		''' <summary>

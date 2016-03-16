@@ -88,7 +88,7 @@ Namespace java.io
 		''' <param name="off">       the start offset in the data </param>
 		''' <param name="len">       the number of chars that are written </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(char c() , int off, int len)
+		public  Sub  write(char c() , int off, int len)
 			If (off < 0) OrElse (off > c.length) OrElse (len < 0) OrElse ((off + len) > c.length) OrElse ((off + len) < 0) Then
 				Throw New IndexOutOfBoundsException
 			ElseIf len = 0 Then
@@ -106,7 +106,7 @@ Namespace java.io
 		''' <param name="str">  String to be written from </param>
 		''' <param name="off">  Offset from which to start reading characters </param>
 		''' <param name="len">  Number of characters to be written </param>
-		public void write(String str, Integer off, Integer len)
+		public  Sub  write(String str, Integer off, Integer len)
 			SyncLock lock
 				Dim newcount As Integer = count + len
 				If newcount > buf.Length Then buf = java.util.Arrays.copyOf(buf, System.Math.Max(buf.Length << 1, newcount))
@@ -119,7 +119,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="out">       the output stream to write to </param>
 		''' <exception cref="IOException"> If an I/O error occurs. </exception>
-		public void writeTo(Writer out) throws IOException
+		public  Sub  writeTo(Writer out) throws IOException
 			SyncLock lock
 				out.write(buf, 0, count)
 			End SyncLock
@@ -211,7 +211,7 @@ Namespace java.io
 		''' Resets the buffer so that you can use it again without
 		''' throwing away the already allocated buffer.
 		''' </summary>
-		public void reset()
+		public  Sub  reset()
 			count = 0
 
 		''' <summary>
@@ -236,14 +236,14 @@ Namespace java.io
 		''' <summary>
 		''' Flush the stream.
 		''' </summary>
-		public void flush()
+		public  Sub  flush()
 
 		''' <summary>
 		''' Close the stream.  This method does not release the buffer, since its
 		''' contents might still be required. Note: Invoking this method in this class
 		''' will have no effect.
 		''' </summary>
-		public void close()
+		public  Sub  close()
 
 	End Class
 

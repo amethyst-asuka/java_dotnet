@@ -620,7 +620,7 @@ Namespace java.util.concurrent
 		''' or equal to zero, do not wait at all. </param>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public void timedWait(Object obj, long timeout) throws InterruptedException
+'		public  Sub  timedWait(Object obj, long timeout) throws InterruptedException
 	'	{
 	'		if (timeout > 0)
 	'		{
@@ -641,7 +641,7 @@ Namespace java.util.concurrent
 		''' or equal to zero, do not wait at all. </param>
 		''' <exception cref="InterruptedException"> if interrupted while waiting </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public void timedJoin(Thread thread, long timeout) throws InterruptedException
+'		public  Sub  timedJoin(Thread thread, long timeout) throws InterruptedException
 	'	{
 	'		if (timeout > 0)
 	'		{
@@ -661,7 +661,7 @@ Namespace java.util.concurrent
 		''' or equal to zero, do not sleep at all. </param>
 		''' <exception cref="InterruptedException"> if interrupted while sleeping </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public void sleep(long timeout) throws InterruptedException
+'		public  Sub  sleep(long timeout) throws InterruptedException
 	'	{
 	'		if (timeout > 0)
 	'		{

@@ -731,7 +731,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Graphics#drawBytes </seealso>
 		''' <seealso cref=         java.awt.Graphics#drawString </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void drawChars(char data() , int offset, int length, int x, int y)
+		public  Sub  drawChars(char data() , int offset, int length, int x, int y)
 			drawString(New String(data, offset, length), x, y)
 
 		''' <summary>
@@ -754,7 +754,7 @@ Namespace java.awt
 		''' is greater than the length of the <code>data</code> array. </exception>
 		''' <seealso cref=         java.awt.Graphics#drawChars </seealso>
 		''' <seealso cref=         java.awt.Graphics#drawString </seealso>
-		public void drawBytes(SByte data() , Integer offset, Integer length, Integer x, Integer y)
+		public  Sub  drawBytes(SByte data() , Integer offset, Integer length, Integer x, Integer y)
 			drawString(New String(data, 0, offset, length), x, y)
 
 		''' <summary>
@@ -1042,12 +1042,12 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Component#update </seealso>
 		''' <seealso cref=         java.awt.Component#getGraphics </seealso>
 		''' <seealso cref=         java.awt.Graphics#create </seealso>
-		public abstract void Dispose()
+		public abstract  Sub  Dispose()
 
 		''' <summary>
 		''' Disposes of this graphics context once it is no longer referenced. </summary>
 		''' <seealso cref= #dispose </seealso>
-		public void Finalize()
+		public  Sub  Finalize()
 			Dispose()
 
 		''' <summary>

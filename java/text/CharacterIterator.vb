@@ -63,7 +63,7 @@ Namespace java.text
 	''' 
 	''' Traverse the text from start to finish
 	''' <pre>{@code
-	''' public void traverseForward(CharacterIterator iter) {
+	''' public  Sub  traverseForward(CharacterIterator iter) {
 	'''     for(char c = iter.first(); c != CharacterIterator.DONE; c = iter.next()) {
 	'''         processChar(c);
 	'''     }
@@ -72,7 +72,7 @@ Namespace java.text
 	''' 
 	''' Traverse the text backwards, from end to start
 	''' <pre>{@code
-	''' public void traverseBackward(CharacterIterator iter) {
+	''' public  Sub  traverseBackward(CharacterIterator iter) {
 	'''     for(char c = iter.last(); c != CharacterIterator.DONE; c = iter.previous()) {
 	'''         processChar(c);
 	'''     }
@@ -83,7 +83,7 @@ Namespace java.text
 	''' Calls to notBoundary() in this example represents some
 	''' additional stopping criteria.
 	''' <pre>{@code
-	''' public void traverseOut(CharacterIterator iter, int pos) {
+	''' public  Sub  traverseOut(CharacterIterator iter, int pos) {
 	'''     for (char c = iter.setIndex(pos);
 	'''              c != CharacterIterator.DONE && notBoundary(c);
 	'''              c = iter.next()) {

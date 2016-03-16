@@ -82,7 +82,7 @@ Namespace java.awt
     '''            aButton.addActionListener(this);
     '''        }
     ''' 
-    '''        public void actionPerformed(ActionEvent e)
+    '''        public  Sub  actionPerformed(ActionEvent e)
     '''        {
     '''            System.out.println("Hello There");
     '''        }
@@ -107,7 +107,7 @@ Namespace java.awt
     ''' 
     '''         static class MyActionListener implements ActionListener
     '''         {
-    '''             public void actionPerformed(ActionEvent e)
+    '''             public  Sub  actionPerformed(ActionEvent e)
     '''             {
     '''                 System.out.println("Hello There");
     '''             }
@@ -540,7 +540,7 @@ Namespace java.awt
             'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
             '			sun.awt.AWTAccessor.setComponentAccessor(New sun.awt.AWTAccessor.ComponentAccessor()
             '		{
-            '			public void setBackgroundEraseDisabled(Component comp, boolean disabled)
+            '			public  Sub  setBackgroundEraseDisabled(Component comp, boolean disabled)
             '			{
             '				comp.backgroundEraseDisabled = disabled;
             '			}
@@ -552,7 +552,7 @@ Namespace java.awt
             '			{
             '				Return New Rectangle(comp.x, comp.y, comp.width, comp.height);
             '			}
-            '			public void setMixingCutoutShape(Component comp, Shape shape)
+            '			public  Sub  setMixingCutoutShape(Component comp, Shape shape)
             '			{
             '				Region region = shape == Nothing ? Nothing : Region.getInstance(shape, Nothing);
             '
@@ -587,7 +587,7 @@ Namespace java.awt
             '				}
             '			}
             '
-            '			public void setGraphicsConfiguration(Component comp, GraphicsConfiguration gc)
+            '			public  Sub  setGraphicsConfiguration(Component comp, GraphicsConfiguration gc)
             '			{
             '				comp.setGraphicsConfiguration(gc);
             '			}
@@ -604,7 +604,7 @@ Namespace java.awt
             '			{
             '				Return comp.isVisible_NoClientCode();
             '			}
-            '			public void setRequestFocusController(RequestFocusController requestController)
+            '			public  Sub  setRequestFocusController(RequestFocusController requestController)
             '			{
             '				 Component.setRequestFocusController(requestController);
             '			}
@@ -612,7 +612,7 @@ Namespace java.awt
             '			{
             '				 Return comp.appContext;
             '			}
-            '			public void setAppContext(Component comp, AppContext appContext)
+            '			public  Sub  setAppContext(Component comp, AppContext appContext)
             '			{
             '				 comp.appContext = appContext;
             '			}
@@ -620,11 +620,11 @@ Namespace java.awt
             '			{
             '				Return comp.getParent_NoClientCode();
             '			}
-            '			public void setParent(Component comp, Container parent)
+            '			public  Sub  setParent(Component comp, Container parent)
             '			{
             '				comp.parent = parent;
             '			}
-            '			public void setSize(Component comp, int width, int height)
+            '			public  Sub  setSize(Component comp, int width, int height)
             '			{
             '				comp.width = width;
             '				comp.height = height;
@@ -633,7 +633,7 @@ Namespace java.awt
             '			{
             '				Return comp.location_NoClientCode();
             '			}
-            '			public void setLocation(Component comp, int x, int y)
+            '			public  Sub  setLocation(Component comp, int x, int y)
             '			{
             '				comp.x = x;
             '				comp.y = y;
@@ -654,7 +654,7 @@ Namespace java.awt
             '			{
             '				Return comp.peer;
             '			}
-            '			public void setPeer(Component comp, ComponentPeer peer)
+            '			public  Sub  setPeer(Component comp, ComponentPeer peer)
             '			{
             '				comp.peer = peer;
             '			}
@@ -690,7 +690,7 @@ Namespace java.awt
             '			{
             '				Return comp.background;
             '			}
-            '			public void setBackground(Component comp, Color background)
+            '			public  Sub  setBackground(Component comp, Color background)
             '			{
             '				comp.background = background;
             '			}
@@ -698,7 +698,7 @@ Namespace java.awt
             '			{
             '				Return comp.getFont_NoClientCode();
             '			}
-            '			public void processEvent(Component comp, AWTEvent e)
+            '			public  Sub  processEvent(Component comp, AWTEvent e)
             '			{
             '				comp.processEvent(e);
             '			}
@@ -708,7 +708,7 @@ Namespace java.awt
             '				Return comp.getAccessControlContext();
             '			}
             '
-            '			public void revalidateSynchronously(Component comp)
+            '			public  Sub  revalidateSynchronously(Component comp)
             '			{
             '				comp.revalidateSynchronously();
             '			}

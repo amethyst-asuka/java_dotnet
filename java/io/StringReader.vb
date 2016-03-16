@@ -159,7 +159,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IllegalArgumentException">  If {@code readAheadLimit < 0} </exception>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void mark(Integer readAheadLimit) throws IOException
+		public  Sub  mark(Integer readAheadLimit) throws IOException
 			If readAheadLimit < 0 Then Throw New IllegalArgumentException("Read-ahead limit < 0")
 			SyncLock lock
 				ensureOpen()
@@ -171,7 +171,7 @@ Namespace java.io
 		''' string if it has never been marked.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void reset() throws IOException
+		public  Sub  reset() throws IOException
 			SyncLock lock
 				ensureOpen()
 				[next] = mark_Renamed
@@ -183,7 +183,7 @@ Namespace java.io
 		''' ready(), mark(), or reset() invocations will throw an IOException.
 		''' Closing a previously closed stream has no effect.
 		''' </summary>
-		public void close()
+		public  Sub  close()
 			str = Nothing
 	End Class
 

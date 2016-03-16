@@ -545,7 +545,7 @@ Namespace java.lang.invoke
 		''' Type mismatches will not throw {@code WrongMethodTypeException}, but could crash the JVM.
 		''' <p>
 		''' The caller signature is restricted to the following basic types:
-		''' Object, int, long, float, double, and void return.
+		''' Object, int, long, float, double, and  Sub  return.
 		''' <p>
 		''' The caller is responsible for maintaining type correctness by ensuring
 		''' that the each outgoing argument value is a member of the range of the corresponding
@@ -754,8 +754,8 @@ Namespace java.lang.invoke
 		'''     wrapper class <em>TW</em> which is a subtype of <em>T0</em> and whose unboxed
 		'''     primitive value can be widened to <em>T1</em>.
 		''' <li>If the return type <em>T1</em> is marked as void, any returned value is discarded
-		''' <li>If the return type <em>T0</em> is void and <em>T1</em> a reference, a null value is introduced.
-		''' <li>If the return type <em>T0</em> is void and <em>T1</em> a primitive,
+		''' <li>If the return type <em>T0</em> is  Sub  and <em>T1</em> a reference, a null value is introduced.
+		''' <li>If the return type <em>T0</em> is  Sub  and <em>T1</em> a primitive,
 		'''     a zero value is introduced.
 		''' </ul>
 		''' (<em>Note:</em> Both <em>T0</em> and <em>T1</em> may be regarded as static types,

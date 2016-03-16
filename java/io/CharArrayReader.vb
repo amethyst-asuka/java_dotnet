@@ -182,7 +182,7 @@ Namespace java.io
 		'''                         ignored.
 		''' </param>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void mark(Integer readAheadLimit) throws IOException
+		public  Sub  mark(Integer readAheadLimit) throws IOException
 			SyncLock lock
 				ensureOpen()
 				markedPos = pos
@@ -193,7 +193,7 @@ Namespace java.io
 		''' never been marked.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void reset() throws IOException
+		public  Sub  reset() throws IOException
 			SyncLock lock
 				ensureOpen()
 				pos = markedPos
@@ -205,7 +205,7 @@ Namespace java.io
 		''' mark(), reset(), or skip() invocations will throw an IOException.
 		''' Closing a previously closed stream has no effect.
 		''' </summary>
-		public void close()
+		public  Sub  close()
 			buf = Nothing
 	End Class
 

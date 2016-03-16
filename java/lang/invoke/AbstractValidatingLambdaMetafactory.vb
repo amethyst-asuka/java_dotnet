@@ -44,7 +44,7 @@ Namespace java.lang.invoke
 	'     * interface JJ<R extends Number> extends II<R> { }
 	'     * class CC {  String impl(int i) { return "impl:"+i; }}
 	'     * class X {
-	'     *     public static void main(String[] args) {
+	'     *     public static  Sub  main(String[] args) {
 	'     *         JJ<Integer> iii = (new CC())::impl;
 	'     *         System.out.printf(">>> %s\n", iii.foo(44));
 	'     * }}
@@ -256,7 +256,7 @@ Namespace java.lang.invoke
 
 		''' <summary>
 		''' Check type adaptability for return types --
-		''' special handling of void type) and parameterized fromType </summary>
+		''' special handling of  Sub  type) and parameterized fromType </summary>
 		''' <returns> True if 'fromType' can be converted to 'toType' </returns>
 		Private Function isAdaptableToAsReturn(ByVal fromType As [Class], ByVal toType As [Class]) As Boolean
 			Return toType.Equals(GetType(void)) OrElse (Not fromType.Equals(GetType(void))) AndAlso isAdaptableTo(fromType, toType, False)
@@ -270,19 +270,19 @@ Namespace java.lang.invoke
 		''' <summary>
 		'''********* Logging support -- for debugging only, uncomment as needed
 		''' static final Executor logPool = Executors.newSingleThreadExecutor();
-		''' protected static void log(final String s) {
+		''' protected static  Sub  log(final String s) {
 		'''    MethodHandleProxyLambdaMetafactory.logPool.execute(new Runnable() {
 		'''        @Override
-		'''        public void run() {
+		'''        public  Sub  run() {
 		'''            System.out.println(s);
 		'''        }
 		'''    });
 		''' }
 		''' 
-		''' protected static void log(final String s, final Throwable e) {
+		''' protected static  Sub  log(final String s, final Throwable e) {
 		'''    MethodHandleProxyLambdaMetafactory.logPool.execute(new Runnable() {
 		'''        @Override
-		'''        public void run() {
+		'''        public  Sub  run() {
 		'''            System.out.println(s);
 		'''            e.printStackTrace(System.out);
 		'''        }

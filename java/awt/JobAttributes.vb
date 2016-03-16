@@ -44,7 +44,7 @@ Namespace java.awt
 	''' import java.awt.JobAttributes;
 	''' 
 	''' public class PureJavaPrintDialogExample {
-	'''     public void setPureJavaPrintDialog(JobAttributes jobAttributes) {
+	'''     public  Sub  setPureJavaPrintDialog(JobAttributes jobAttributes) {
 	'''         jobAttributes.setDialog(JobAttributes.DialogType.COMMON);
 	'''     }
 	''' }

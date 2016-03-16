@@ -700,7 +700,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <param name="s"> the stream to read </param>
 		''' <exception cref="java.io.InvalidObjectException"> always </exception>
-		private void readObject(java.io.ObjectInputStream s) throws java.io.ObjectStreamException
+		private  Sub  readObject(java.io.ObjectInputStream s) throws java.io.ObjectStreamException
 			Throw New java.io.InvalidObjectException("Deserialization via serialization delegate")
 
 		void writeExternal(java.io.DataOutput out) throws java.io.IOException

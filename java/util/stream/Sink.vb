@@ -93,7 +93,7 @@ Namespace java.util.stream
 	''' 
 	''' <pre>{@code
 	'''     IntSink is = new Sink.ChainedReference<U>(sink) {
-	'''         public void accept(U u) {
+	'''         public  Sub  accept(U u) {
 	'''             downstream.accept(mapper.applyAsInt(u));
 	'''         }
 	'''     };
@@ -177,9 +177,9 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
 '		interface OfInt extends Sink(Of java.lang.Integer), java.util.function.IntConsumer
 	'	{
-	'		@Override void accept(int value);
+	'		@Override  Sub  accept(int value);
 	'
-	'		@Override default void accept(java.lang.Integer i)
+	'		@Override default  Sub  accept(java.lang.Integer i)
 	'		{
 	'			if (Tripwire.ENABLED)
 	'				Tripwire.trip(getClass(), "{0} calling Sink.OfInt.accept(Integer)");
@@ -195,9 +195,9 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
 '		interface OfLong extends Sink(Of java.lang.Long), java.util.function.LongConsumer
 	'	{
-	'		@Override void accept(long value);
+	'		@Override  Sub  accept(long value);
 	'
-	'		@Override default void accept(java.lang.Long i)
+	'		@Override default  Sub  accept(java.lang.Long i)
 	'		{
 	'			if (Tripwire.ENABLED)
 	'				Tripwire.trip(getClass(), "{0} calling Sink.OfLong.accept(Long)");
@@ -213,9 +213,9 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
 '		interface OfDouble extends Sink(Of java.lang.Double), java.util.function.DoubleConsumer
 	'	{
-	'		@Override void accept(double value);
+	'		@Override  Sub  accept(double value);
 	'
-	'		@Override default void accept(java.lang.Double i)
+	'		@Override default  Sub  accept(java.lang.Double i)
 	'		{
 	'			if (Tripwire.ENABLED)
 	'				Tripwire.trip(getClass(), "{0} calling Sink.OfDouble.accept(Double)");
@@ -242,12 +242,12 @@ Namespace java.util.stream
 	'			Me.downstream = Objects.requireNonNull(downstream);
 	'		}
 	'
-	'		@Override public void begin(long size)
+	'		@Override public  Sub  begin(long size)
 	'		{
 	'			downstream.begin(size);
 	'		}
 	'
-	'		@Override public void end()
+	'		@Override public  Sub  end()
 	'		{
 	'			downstream.end();
 	'		}
@@ -277,12 +277,12 @@ Namespace java.util.stream
 	'			Me.downstream = Objects.requireNonNull(downstream);
 	'		}
 	'
-	'		@Override public void begin(long size)
+	'		@Override public  Sub  begin(long size)
 	'		{
 	'			downstream.begin(size);
 	'		}
 	'
-	'		@Override public void end()
+	'		@Override public  Sub  end()
 	'		{
 	'			downstream.end();
 	'		}
@@ -312,12 +312,12 @@ Namespace java.util.stream
 	'			Me.downstream = Objects.requireNonNull(downstream);
 	'		}
 	'
-	'		@Override public void begin(long size)
+	'		@Override public  Sub  begin(long size)
 	'		{
 	'			downstream.begin(size);
 	'		}
 	'
-	'		@Override public void end()
+	'		@Override public  Sub  end()
 	'		{
 	'			downstream.end();
 	'		}
@@ -347,12 +347,12 @@ Namespace java.util.stream
 	'			Me.downstream = Objects.requireNonNull(downstream);
 	'		}
 	'
-	'		@Override public void begin(long size)
+	'		@Override public  Sub  begin(long size)
 	'		{
 	'			downstream.begin(size);
 	'		}
 	'
-	'		@Override public void end()
+	'		@Override public  Sub  end()
 	'		{
 	'			downstream.end();
 	'		}

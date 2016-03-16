@@ -39,13 +39,13 @@ Namespace java.awt
 	''' public myComponent extends Component {
 	'''     ActionListener actionListener = null;
 	''' 
-	'''     public synchronized void addActionListener(ActionListener l) {
+	'''     public synchronized  Sub  addActionListener(ActionListener l) {
 	'''         actionListener = AWTEventMulticaster.add(actionListener, l);
 	'''     }
-	'''     public synchronized void removeActionListener(ActionListener l) {
+	'''     public synchronized  Sub  removeActionListener(ActionListener l) {
 	'''         actionListener = AWTEventMulticaster.remove(actionListener, l);
 	'''     }
-	'''     public void processEvent(AWTEvent e) {
+	'''     public  Sub  processEvent(AWTEvent e) {
 	'''         // when event occurs which causes "action" semantic
 	'''         ActionListener listener = actionListener;
 	'''         if (listener != null) {

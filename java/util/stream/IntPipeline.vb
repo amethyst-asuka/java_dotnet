@@ -156,7 +156,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Long>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					downstream.accept((long) t);
 	'				}
@@ -175,7 +175,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Double>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					downstream.accept((double) t);
 	'				}
@@ -199,7 +199,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Integer>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					downstream.accept(mapper.applyAsInt(t));
 	'				}
@@ -219,7 +219,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<U>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					downstream.accept(mapper.apply(t));
 	'				}
@@ -239,7 +239,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Long>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					downstream.accept(mapper.applyAsLong(t));
 	'				}
@@ -259,7 +259,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Double>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					downstream.accept(mapper.applyAsDouble(t));
 	'				}
@@ -278,12 +278,12 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Integer>(sink)
 	'			{
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					try (IntStream result = mapper.apply(t))
 	'					{
@@ -321,12 +321,12 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Integer>(sink)
 	'			{
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					if (predicate.test(t))
 	'						downstream.accept(t);
@@ -347,7 +347,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedInt<java.lang.Integer>(sink)
 	'			{
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					action.accept(t);
 	'					downstream.accept(t);

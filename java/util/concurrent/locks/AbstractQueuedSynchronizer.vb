@@ -227,7 +227,7 @@ Namespace java.util.concurrent.locks
 	'''     Condition newCondition() { return new ConditionObject(); }
 	''' 
 	'''     // Deserializes properly
-	'''     private void readObject(ObjectInputStream s)
+	'''     private  Sub  readObject(ObjectInputStream s)
 	'''         throws IOException, ClassNotFoundException {
 	'''       s.defaultReadObject();
 	'''       setState(0); // reset to unlocked state
@@ -237,13 +237,13 @@ Namespace java.util.concurrent.locks
 	'''   // The sync object does all the hard work. We just forward to it.
 	'''   private final Sync sync = new Sync();
 	''' 
-	'''   public void lock()                { sync.acquire(1); }
+	'''   public  Sub  lock()                { sync.acquire(1); }
 	'''   public boolean tryLock()          { return sync.tryAcquire(1); }
-	'''   public void unlock()              { sync.release(1); }
+	'''   public  Sub  unlock()              { sync.release(1); }
 	'''   public Condition newCondition()   { return sync.newCondition(); }
 	'''   public boolean isLocked()         { return sync.isHeldExclusively(); }
 	'''   public boolean hasQueuedThreads() { return sync.hasQueuedThreads(); }
-	'''   public void lockInterruptibly() throws InterruptedException {
+	'''   public  Sub  lockInterruptibly() throws InterruptedException {
 	'''     sync.acquireInterruptibly(1);
 	'''   }
 	'''   public boolean tryLock(long timeout, TimeUnit unit)
@@ -276,8 +276,8 @@ Namespace java.util.concurrent.locks
 	''' 
 	'''   private final Sync sync = new Sync();
 	'''   public boolean isSignalled() { return sync.isSignalled(); }
-	'''   public void signal()         { sync.releaseShared(1); }
-	'''   public void await() throws InterruptedException {
+	'''   public  Sub  signal()         { sync.releaseShared(1); }
+	'''   public  Sub  await() throws InterruptedException {
 	'''     sync.acquireSharedInterruptibly(1);
 	'''   }
 	''' }}</pre>

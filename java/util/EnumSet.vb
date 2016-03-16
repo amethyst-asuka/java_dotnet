@@ -138,7 +138,7 @@ Namespace java.util
 		''' Adds all of the elements from the appropriate enum type to this enum
 		''' set, which is empty prior to the call.
 		''' </summary>
-		abstract void addAll()
+		abstract  Sub  addAll()
 
 		''' <summary>
 		''' Creates an enum set with the same element type as the specified enum
@@ -347,7 +347,7 @@ Namespace java.util
 		''' Adds the specified range to this enum set, which is empty prior
 		''' to the call.
 		''' </summary>
-		abstract void addRange(E from, E to)
+		abstract  Sub  addRange(E from, E to)
 
 		''' <summary>
 		''' Returns a copy of this set.
@@ -364,12 +364,12 @@ Namespace java.util
 		''' <summary>
 		''' Complements the contents of this enum set.
 		''' </summary>
-		abstract void complement()
+		abstract  Sub  complement()
 
 		''' <summary>
 		''' Throws an exception if e is not of the correct type for this enum set.
 		''' </summary>
-		final void typeCheck(E e)
+		final  Sub  typeCheck(E e)
 			Dim eClass As  [Class] = e.GetType()
 			If eClass IsNot elementType AndAlso eClass.BaseType IsNot elementType Then Throw New ClassCastException(eClass & " != " & elementType)
 
@@ -427,7 +427,7 @@ Namespace java.util
 
 		' readObject method for the serialization proxy pattern
 		' See Effective Java, Second Ed., Item 78.
-		private void readObject(java.io.ObjectInputStream stream) throws java.io.InvalidObjectException
+		private  Sub  readObject(java.io.ObjectInputStream stream) throws java.io.InvalidObjectException
 			Throw New java.io.InvalidObjectException("Proxy required")
 	End Class
 

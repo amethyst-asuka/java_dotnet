@@ -251,7 +251,7 @@ Namespace java.io
 		''' this class can be called after the stream has been closed without
 		''' generating an <tt>IOException</tt>.
 		''' </summary>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 
 	End Class
 

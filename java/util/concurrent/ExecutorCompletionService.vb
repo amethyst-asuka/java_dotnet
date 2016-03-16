@@ -53,7 +53,7 @@ Namespace java.util.concurrent
 	''' could write this as:
 	''' 
 	''' <pre> {@code
-	''' void solve(Executor e,
+	'''  Sub  solve(Executor e,
 	'''            Collection<Callable<Result>> solvers)
 	'''     throws InterruptedException, ExecutionException {
 	'''     CompletionService<Result> ecs
@@ -73,7 +73,7 @@ Namespace java.util.concurrent
 	''' and cancelling all other tasks when the first one is ready:
 	''' 
 	''' <pre> {@code
-	''' void solve(Executor e,
+	'''  Sub  solve(Executor e,
 	'''            Collection<Callable<Result>> solvers)
 	'''     throws InterruptedException {
 	'''     CompletionService<Result> ecs

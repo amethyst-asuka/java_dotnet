@@ -1073,7 +1073,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if iArray is too small to hold the input. </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void setPixel(int x, int y, int iArray() , DataBuffer data)
+		public  Sub  setPixel(int x, int y, int iArray() , DataBuffer data)
 
 			For i As Integer = 0 To numBands - 1
 				sampleple(x, y, i, iArray(i), data)
@@ -1092,7 +1092,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if fArray or data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if fArray is too small to hold the input. </exception>
-		public void pixelxel(Integer x, Integer y, Single fArray() , DataBuffer data)
+		public  Sub  pixelxel(Integer x, Integer y, Single fArray() , DataBuffer data)
 
 			For i As Integer = 0 To numBands - 1
 				sampleple(x, y, i, fArray(i), data)
@@ -1110,7 +1110,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if dArray or data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if fArray is too small to hold the input. </exception>
-		public void pixelxel(Integer x, Integer y, Double dArray() , DataBuffer data)
+		public  Sub  pixelxel(Integer x, Integer y, Double dArray() , DataBuffer data)
 
 			For i As Integer = 0 To numBands - 1
 				sampleple(x, y, i, dArray(i), data)
@@ -1132,7 +1132,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if iArray or data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if iArray is too small to hold the input. </exception>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, Integer iArray() , DataBuffer data)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, Integer iArray() , DataBuffer data)
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h
@@ -1164,7 +1164,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if fArray or data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if fArray is too small to hold the input. </exception>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, Single fArray() , DataBuffer data)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, Single fArray() , DataBuffer data)
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h
@@ -1196,7 +1196,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if dArray or data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates are
 		''' not in bounds, or if dArray is too small to hold the input. </exception>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, Double dArray() , DataBuffer data)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, Double dArray() , DataBuffer data)
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h
@@ -1227,7 +1227,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		public abstract void sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
+		public abstract  Sub  sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
 
 		''' <summary>
 		''' Sets a sample in the specified band for the pixel located at (x,y)
@@ -1248,7 +1248,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		public void sampleple(Integer x, Integer y, Integer b, Single s, DataBuffer data)
+		public  Sub  sampleple(Integer x, Integer y, Integer b, Single s, DataBuffer data)
 			Dim sample_Renamed As Integer = CInt(Fix(s))
 
 			sampleple(x, y, b, sample_Renamed, data)
@@ -1272,7 +1272,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		public void sampleple(Integer x, Integer y, Integer b, Double s, DataBuffer data)
+		public  Sub  sampleple(Integer x, Integer y, Integer b, Double s, DataBuffer data)
 			Dim sample_Renamed As Integer = CInt(Fix(s))
 
 			sampleple(x, y, b, sample_Renamed, data)
@@ -1295,7 +1295,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if iArray is too small to
 		''' hold the input. </exception>
-		public void samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Integer iArray() , DataBuffer data)
+		public  Sub  samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Integer iArray() , DataBuffer data)
 
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
@@ -1327,7 +1327,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if fArray is too small to
 		''' hold the input. </exception>
-		public void samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Single fArray() , DataBuffer data)
+		public  Sub  samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Single fArray() , DataBuffer data)
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h
@@ -1359,7 +1359,7 @@ Namespace java.awt.image
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds, or if dArray is too small to
 		''' hold the input. </exception>
-		public void samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Double dArray() , DataBuffer data)
+		public  Sub  samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Double dArray() , DataBuffer data)
 			Dim Offset As Integer=0
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h

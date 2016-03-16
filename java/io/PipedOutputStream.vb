@@ -130,7 +130,7 @@ Namespace java.io
 		'''          <seealso cref="#connect(java.io.PipedInputStream) unconnected"/>,
 		'''          closed, or if an I/O error occurs. </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(byte b() , int off, int len) throws IOException
+		public  Sub  write(byte b() , int off, int len) throws IOException
 			If sink Is Nothing Then
 				Throw New IOException("Pipe not connected")
 			ElseIf b Is Nothing Then
@@ -148,7 +148,7 @@ Namespace java.io
 		''' This will notify any readers that bytes are waiting in the pipe.
 		''' </summary>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
-		public synchronized void flush() throws IOException
+		public synchronized  Sub  flush() throws IOException
 			If sink IsNot Nothing Then
 				SyncLock sink
 					sink.notifyAll()
@@ -161,7 +161,7 @@ Namespace java.io
 		''' writing bytes.
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			If sink IsNot Nothing Then sink.receivedLast()
 	End Class
 

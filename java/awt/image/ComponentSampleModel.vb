@@ -221,7 +221,7 @@ Namespace java.awt.image
 			If Me.bandOffsets.Length <> Me.bankIndices.Length Then Throw New IllegalArgumentException("Length of bandOffsets must " & "equal length of bankIndices.")
 			verify()
 
-		private void verify()
+		private  Sub  verify()
 			Dim requiredSize As Integer = bufferSize
 
 		''' <summary>
@@ -838,7 +838,7 @@ Namespace java.awt.image
 		''' <param name="obj">       a primitive array containing pixel data </param>
 		''' <param name="data">      the DataBuffer containing the image data </param>
 		''' <seealso cref= #getDataElements(int, int, Object, DataBuffer) </seealso>
-		public void dataElementsnts(Integer x, Integer y, Object obj, DataBuffer data)
+		public  Sub  dataElementsnts(Integer x, Integer y, Object obj, DataBuffer data)
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 
 			Dim type As Integer = transferType
@@ -899,7 +899,7 @@ Namespace java.awt.image
 		''' <param name="iArray">    The input samples in an int array </param>
 		''' <param name="data">      The DataBuffer containing the image data </param>
 		''' <seealso cref= #getPixel(int, int, int[], DataBuffer) </seealso>
-		public void pixelxel(Integer x, Integer y, Integer iArray() , DataBuffer data)
+		public  Sub  pixelxel(Integer x, Integer y, Integer iArray() , DataBuffer data)
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 		   Dim pixelOffset As Integer = y*scanlineStride + x*pixelStride
 		   For i As Integer = 0 To numBands - 1
@@ -918,7 +918,7 @@ Namespace java.awt.image
 		''' <param name="iArray">    The input samples in an int array </param>
 		''' <param name="data">      The DataBuffer containing the image data </param>
 		''' <seealso cref= #getPixels(int, int, int, int, int[], DataBuffer) </seealso>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, Integer iArray() , DataBuffer data)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, Integer iArray() , DataBuffer data)
 			Dim x1 As Integer = x + w
 			Dim y1 As Integer = y + h
 
@@ -950,7 +950,7 @@ Namespace java.awt.image
 		''' <param name="s">         the input sample as an int </param>
 		''' <param name="data">      the DataBuffer containing the image data </param>
 		''' <seealso cref= #getSample(int, int, int, DataBuffer) </seealso>
-		public void sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
+		public  Sub  sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
 			' Bounds check for 'b' will be performed automatically
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			data.elemlem(bankIndices(b), y*scanlineStride + x*pixelStride + bandOffsets(b), s)
@@ -966,7 +966,7 @@ Namespace java.awt.image
 		''' <param name="s">         The input sample as a float </param>
 		''' <param name="data">      The DataBuffer containing the image data </param>
 		''' <seealso cref= #getSample(int, int, int, DataBuffer) </seealso>
-		public void sampleple(Integer x, Integer y, Integer b, Single s, DataBuffer data)
+		public  Sub  sampleple(Integer x, Integer y, Integer b, Single s, DataBuffer data)
 			' Bounds check for 'b' will be performed automatically
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			data.elemFloatoat(bankIndices(b), y*scanlineStride + x*pixelStride + bandOffsets(b), s)
@@ -982,7 +982,7 @@ Namespace java.awt.image
 		''' <param name="s">         The input sample as a double </param>
 		''' <param name="data">      The DataBuffer containing the image data </param>
 		''' <seealso cref= #getSample(int, int, int, DataBuffer) </seealso>
-		public void sampleple(Integer x, Integer y, Integer b, Double s, DataBuffer data)
+		public  Sub  sampleple(Integer x, Integer y, Integer b, Double s, DataBuffer data)
 			' Bounds check for 'b' will be performed automatically
 			If (x < 0) OrElse (y < 0) OrElse (x >= width) OrElse (y >= height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			data.elemDoubleble(bankIndices(b), y*scanlineStride + x*pixelStride + bandOffsets(b), s)
@@ -1000,7 +1000,7 @@ Namespace java.awt.image
 		''' <param name="iArray">    The input samples in an int array </param>
 		''' <param name="data">      The DataBuffer containing the image data </param>
 		''' <seealso cref= #getSamples(int, int, int, int, int, int[], DataBuffer) </seealso>
-		public void samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Integer iArray() , DataBuffer data)
+		public  Sub  samplesles(Integer x, Integer y, Integer w, Integer h, Integer b, Integer iArray() , DataBuffer data)
 			' Bounds check for 'b' will be performed automatically
 			If (x < 0) OrElse (y < 0) OrElse (x + w > width) OrElse (y + h > height) Then Throw New ArrayIndexOutOfBoundsException("Coordinate out of bounds!")
 			Dim lineOffset As Integer = y*scanlineStride + x*pixelStride + bandOffsets(b)

@@ -36,7 +36,7 @@ Namespace java.awt.image
 	''' in that image.  Here is an example:
 	''' <pre>{@code
 	''' 
-	''' public void handlesinglepixel(int x, int y, int pixel) {
+	''' public  Sub  handlesinglepixel(int x, int y, int pixel) {
 	'''      int alpha = (pixel >> 24) & 0xff;
 	'''      int red   = (pixel >> 16) & 0xff;
 	'''      int green = (pixel >>  8) & 0xff;
@@ -44,7 +44,7 @@ Namespace java.awt.image
 	'''      // Deal with the pixel as necessary...
 	''' }
 	''' 
-	''' public void handlepixels(Image img, int x, int y, int w, int h) {
+	''' public  Sub  handlepixels(Image img, int x, int y, int w, int h) {
 	'''      int[] pixels = new int[w * h];
 	'''      PixelGrabber pg = new PixelGrabber(img, x, y, w, h, pixels, 0, w);
 	'''      try {
@@ -444,7 +444,7 @@ Namespace java.awt.image
 		'''        in the pixels array </param>
 		''' <seealso cref= #getPixels </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void setPixels(int srcX, int srcY, int srcW, int srcH, java.awt.image.ColorModel model, byte pixels() , int srcOff, int srcScan)
+		public  Sub  setPixels(int srcX, int srcY, int srcW, int srcH, java.awt.image.ColorModel model, byte pixels() , int srcOff, int srcScan)
 			If srcY < dstY Then
 				Dim diff As Integer = dstY - srcY
 				If diff >= srcH Then Return
@@ -521,7 +521,7 @@ Namespace java.awt.image
 		''' <param name="srcScan"> the distance from one row of pixels to the next
 		'''        in the pixels array </param>
 		''' <seealso cref= #getPixels </seealso>
-		public void pixelsels(Integer srcX, Integer srcY, Integer srcW, Integer srcH, java.awt.image.ColorModel model, Integer pixels() , Integer srcOff, Integer srcScan)
+		public  Sub  pixelsels(Integer srcX, Integer srcY, Integer srcW, Integer srcH, java.awt.image.ColorModel model, Integer pixels() , Integer srcOff, Integer srcScan)
 			If srcY < dstY Then
 				Dim diff As Integer = dstY - srcY
 				If diff >= srcH Then Return
@@ -587,7 +587,7 @@ Namespace java.awt.image
 		''' this method directly since that operation could result in problems
 		''' with retrieving the requested pixels. </summary>
 		''' <param name="status"> the status of image loading </param>
-		public synchronized void imageComplete(Integer status)
+		public synchronized  Sub  imageComplete(Integer status)
 			grabbing = False
 			Select Case status
 			Case Else

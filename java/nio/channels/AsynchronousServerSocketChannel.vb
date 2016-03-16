@@ -70,14 +70,14 @@ Namespace java.nio.channels
 	'''      AsynchronousServerSocketChannel.open().bind(new InetSocketAddress(5000));
 	''' 
 	'''  listener.accept(null, new CompletionHandler&lt;AsynchronousSocketChannel,Void&gt;() {
-	'''      public void completed(AsynchronousSocketChannel ch, Void att) {
+	'''      public  Sub  completed(AsynchronousSocketChannel ch,  Sub  att) {
 	'''          // accept the next connection
 	'''          listener.accept(null, this);
 	''' 
 	'''          // handle this connection
 	'''          handle(ch);
 	'''      }
-	'''      public void failed(Throwable exc, Void att) {
+	'''      public  Sub  failed(Throwable exc,  Sub  att) {
 	'''          ...
 	'''      }
 	'''  });

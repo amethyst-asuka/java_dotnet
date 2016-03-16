@@ -96,17 +96,17 @@ Namespace java.io
 		''' Marks the present position in the stream.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void mark(Integer readAheadLimit) throws IOException
+		public  Sub  mark(Integer readAheadLimit) throws IOException
 			[in].mark(readAheadLimit)
 
 		''' <summary>
 		''' Resets the stream.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void reset() throws IOException
+		public  Sub  reset() throws IOException
 			[in].reset()
 
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			[in].close()
 
 	End Class

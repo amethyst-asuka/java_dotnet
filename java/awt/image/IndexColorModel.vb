@@ -433,7 +433,7 @@ Namespace java.awt.image
 			rGBsGBs(size, cmap, start, True)
 			calculatePixelMask()
 
-		private void rGBsGBs(Integer size, SByte r() , SByte g(), SByte b(), SByte a())
+		private  Sub  rGBsGBs(Integer size, SByte r() , SByte g(), SByte b(), SByte a())
 			If size < 1 Then Throw New IllegalArgumentException("Map size (" & size & ") must be >= 1")
 			map_size = size
 			rgb = New Integer(calcRealMapSize(pixel_bits, size) - 1){}
@@ -462,7 +462,7 @@ Namespace java.awt.image
 			Me.allgrayopaque = allgray
 			transparency = transparency_Renamed
 
-		private void rGBsGBs(Integer size, Integer cmap() , Integer start, Boolean hasalpha)
+		private  Sub  rGBsGBs(Integer size, Integer cmap() , Integer start, Boolean hasalpha)
 			map_size = size
 			rgb = New Integer(calcRealMapSize(pixel_bits, size) - 1){}
 			Dim j As Integer = start
@@ -571,7 +571,7 @@ Namespace java.awt.image
 		''' <seealso cref="#getMapSize() getMapSize"/> are written. </summary>
 		''' <param name="r"> the specified array into which the elements of the
 		'''      array of red color components are copied </param>
-		public final void getReds(SByte r())
+		public final  Sub  getReds(SByte r())
 			For i As Integer = 0 To map_size - 1
 				r(i) = CByte(rgb(i) >> 16)
 			Next i
@@ -582,7 +582,7 @@ Namespace java.awt.image
 		''' <code>getMapSize</code> are written. </summary>
 		''' <param name="g"> the specified array into which the elements of the
 		'''      array of green color components are copied </param>
-		public final void getGreens(SByte g())
+		public final  Sub  getGreens(SByte g())
 			For i As Integer = 0 To map_size - 1
 				g(i) = CByte(rgb(i) >> 8)
 			Next i
@@ -593,7 +593,7 @@ Namespace java.awt.image
 		''' <code>getMapSize</code> are written. </summary>
 		''' <param name="b"> the specified array into which the elements of the
 		'''      array of blue color components are copied </param>
-		public final void getBlues(SByte b())
+		public final  Sub  getBlues(SByte b())
 			For i As Integer = 0 To map_size - 1
 				b(i) = CByte(rgb(i))
 			Next i
@@ -604,7 +604,7 @@ Namespace java.awt.image
 		''' by <code>getMapSize</code> are written. </summary>
 		''' <param name="a"> the specified array into which the elements of the
 		'''      array of alpha components are copied </param>
-		public final void getAlphas(SByte a())
+		public final  Sub  getAlphas(SByte a())
 			For i As Integer = 0 To map_size - 1
 				a(i) = CByte(rgb(i) >> 24)
 			Next i
@@ -619,10 +619,10 @@ Namespace java.awt.image
 		''' <param name="rgb"> the specified array into which the converted ARGB
 		'''        values from this array of color and alpha components
 		'''        are copied. </param>
-		public final void getRGBs(Integer rgb())
+		public final  Sub  getRGBs(Integer rgb())
 			Array.Copy(Me.rgb, 0, rgb, 0, map_size)
 
-		private void transparentPixelxel(Integer trans)
+		private  Sub  transparentPixelxel(Integer trans)
 			If trans >= 0 AndAlso trans < map_size Then
 				rgb(trans) = rgb(trans) And &Hffffff
 				transparent_index = trans
@@ -630,7 +630,7 @@ Namespace java.awt.image
 				If Me.transparency = OPAQUE Then transparency = BITMASK
 			End If
 
-		private void transparencyncy(Integer transparency)
+		private  Sub  transparencyncy(Integer transparency)
 			If Me.transparency <> transparency Then
 				Me.transparency = transparency
 				If transparency = OPAQUE Then
@@ -650,7 +650,7 @@ Namespace java.awt.image
 		''' value is used to mask off the pixel parameters for methods such
 		''' as getRed(), getGreen(), getBlue(), getAlpha(), and getRGB().
 		''' </summary>
-		private final void calculatePixelMask()
+		private final  Sub  calculatePixelMask()
 			' Note that we adjust the mask so that our masking behavior here
 			' is consistent with that of our native rendering loops.
 			Dim maskbits As Integer = pixel_bits

@@ -317,7 +317,7 @@ Namespace java.awt
 	'			{
 	'				Return img.surfaceManager;
 	'			}
-	'			public void setSurfaceManager(Image img, SurfaceManager mgr)
+	'			public  Sub  setSurfaceManager(Image img, SurfaceManager mgr)
 	'			{
 	'				img.surfaceManager = mgr;
 	'			}

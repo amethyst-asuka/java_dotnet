@@ -139,15 +139,15 @@ Namespace java.awt
             'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
             '			sun.awt.AWTAccessor.setFileDialogAccessor(New sun.awt.AWTAccessor.FileDialogAccessor()
             '		{
-            '				public void setFiles(FileDialog fileDialog, File files[])
+            '				public  Sub  setFiles(FileDialog fileDialog, File files[])
             '				{
             '					fileDialog.setFiles(files);
             '				}
-            '				public void setFile(FileDialog fileDialog, String file)
+            '				public  Sub  setFile(FileDialog fileDialog, String file)
             '				{
             '					fileDialog.file = ("".equals(file)) ? Nothing : file;
             '				}
-            '				public void setDirectory(FileDialog fileDialog, String directory)
+            '				public  Sub  setDirectory(FileDialog fileDialog, String directory)
             '				{
             '					fileDialog.dir = ("".equals(directory)) ? Nothing : directory;
             '				}

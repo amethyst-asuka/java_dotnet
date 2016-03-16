@@ -539,7 +539,7 @@ Namespace java.lang
 		''' @deprecated    This method is inherently unsafe.  See
 		'''     <seealso cref="Thread#stop"/> for details. 
 		<Obsolete("   This method is inherently unsafe.  See")> _
-		public final void stop()
+		public final  Sub  stop()
 			If stopOrSuspend(False) Then Thread.CurrentThread.Abort()
 
 		''' <summary>
@@ -558,7 +558,7 @@ Namespace java.lang
 		''' <seealso cref=        java.lang.SecurityException </seealso>
 		''' <seealso cref=        java.lang.ThreadGroup#checkAccess()
 		''' @since      1.2 </seealso>
-		public final void interrupt()
+		public final  Sub  interrupt()
 			Dim ngroupsSnapshot As Integer
 			Dim groupsSnapshot As ThreadGroup()
 			SyncLock Me
@@ -597,7 +597,7 @@ Namespace java.lang
 		'''     <seealso cref="Thread#suspend"/> for details. 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<Obsolete("   This method is inherently deadlock-prone.  See")> _
-		public final void suspend()
+		public final  Sub  suspend()
 			If stopOrSuspend(True) Then Thread.CurrentThread.Suspend()
 
 		''' <summary>
@@ -658,7 +658,7 @@ Namespace java.lang
 		'''       deadlock-prone.  See <seealso cref="Thread#suspend"/> for details. 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 		<Obsolete("   This method is used solely in conjunction with")> _
-		public final void resume()
+		public final  Sub  resume()
 			Dim ngroupsSnapshot As Integer
 			Dim groupsSnapshot As ThreadGroup()
 			SyncLock Me
@@ -691,7 +691,7 @@ Namespace java.lang
 		'''               thread group. </exception>
 		''' <seealso cref=        java.lang.ThreadGroup#checkAccess()
 		''' @since      JDK1.0 </seealso>
-		public final void destroy()
+		public final  Sub  destroy()
 			Dim ngroupsSnapshot As Integer
 			Dim groupsSnapshot As ThreadGroup()
 			SyncLock Me
@@ -720,7 +720,7 @@ Namespace java.lang
 		''' Adds the specified Thread group to this group. </summary>
 		''' <param name="g"> the specified Thread group to be added </param>
 		''' <exception cref="IllegalThreadStateException"> If the Thread group has been destroyed. </exception>
-		private final void add(ThreadGroup g)
+		private final  Sub  add(ThreadGroup g)
 			SyncLock Me
 				If destroyed Then Throw New IllegalThreadStateException
 				If groups Is Nothing Then
@@ -739,7 +739,7 @@ Namespace java.lang
 		''' Removes the specified Thread group from this group. </summary>
 		''' <param name="g"> the Thread group to be removed </param>
 		''' <returns> if this Thread has already been destroyed. </returns>
-		private void remove(ThreadGroup g)
+		private  Sub  remove(ThreadGroup g)
 			SyncLock Me
 				If destroyed Then Return
 				Dim i As Integer = 0
@@ -846,7 +846,7 @@ Namespace java.lang
 		''' </summary>
 		''' <param name="t">
 		'''         the Thread to be removed </param>
-		private void remove(Thread t)
+		private  Sub  remove(Thread t)
 			SyncLock Me
 				If destroyed Then Return
 				Dim i As Integer = 0
@@ -869,7 +869,7 @@ Namespace java.lang
 		''' 
 		''' @since   JDK1.0
 		''' </summary>
-		public void list()
+		public  Sub  list()
 			list(System.out, 0)
 		void list(java.io.PrintStream out, Integer indent)
 			Dim ngroupsSnapshot As Integer
@@ -931,7 +931,7 @@ Namespace java.lang
 		''' <param name="t">   the thread that is about to exit. </param>
 		''' <param name="e">   the uncaught exception.
 		''' @since   JDK1.0 </param>
-		public void uncaughtException(Thread t, Throwable e)
+		public  Sub  uncaughtException(Thread t, Throwable e)
 			If parent IsNot Nothing Then
 				parent.uncaughtException(t, e)
 			Else

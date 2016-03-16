@@ -27,32 +27,32 @@ Imports System.Collections.Generic
 
 Namespace java.util
 
-	''' <summary>
-	''' The <code>Dictionary</code> class is the abstract parent of any
-	''' [Class], such as <code>Hashtable</code>, which maps keys to values.
-	''' Every key and every value is an object. In any one <tt>Dictionary</tt>
-	''' object, every key is associated with at most one value. Given a
-	''' <tt>Dictionary</tt> and a key, the associated element can be looked up.
-	''' Any non-<code>null</code> object can be used as a key and as a value.
-	''' <p>
-	''' As a rule, the <code>equals</code> method should be used by
-	''' implementations of this class to decide if two keys are the same.
-	''' <p>
-	''' <strong>NOTE: This class is obsolete.  New implementations should
-	''' implement the Map interface, rather than extending this class.</strong>
-	''' 
-	''' @author  unascribed </summary>
-	''' <seealso cref=     java.util.Map </seealso>
-	''' <seealso cref=     java.lang.Object#equals(java.lang.Object) </seealso>
-	''' <seealso cref=     java.lang.Object#hashCode() </seealso>
-	''' <seealso cref=     java.util.Hashtable
-	''' @since   JDK1.0 </seealso>
-	Public MustInherit Class Dictionary(Of K, V)
-		''' <summary>
-		''' Sole constructor.  (For invocation by subclass constructors, typically
-		''' implicit.)
-		''' </summary>
-		Public Sub New()
+    ''' <summary>
+    ''' The <code>Dictionary</code> class is the abstract parent of any
+    ''' [Class], such as <code>Hashtable</code>, which maps keys to values.
+    ''' Every key and every value is an object. In any one <tt>Dictionary</tt>
+    ''' object, every key is associated with at most one value. Given a
+    ''' <tt>Dictionary</tt> and a key, the associated element can be looked up.
+    ''' Any non-<code>null</code> object can be used as a key and as a value.
+    ''' <p>
+    ''' As a rule, the <code>equals</code> method should be used by
+    ''' implementations of this class to decide if two keys are the same.
+    ''' <p>
+    ''' <strong>NOTE: This class is obsolete.  New implementations should
+    ''' implement the Map interface, rather than extending this class.</strong>
+    ''' 
+    ''' @author  unascribed </summary>
+    ''' <seealso cref=     java.util.Map </seealso>
+    ''' <seealso cref=     java.lang.Object#equals(java.lang.Object) </seealso>
+    ''' <seealso cref=     java.lang.Object#hashCode() </seealso>
+    ''' <seealso cref=     java.util.Hashtable
+    ''' @since   JDK1.0 </seealso>
+    Public MustInherit Class Dictionary(Of K, V) : Inherits java.lang.Object
+        ''' <summary>
+        ''' Sole constructor.  (For invocation by subclass constructors, typically
+        ''' implicit.)
+        ''' </summary>
+        Public Sub New()
 		End Sub
 
 		''' <summary>
@@ -134,17 +134,17 @@ Namespace java.util
 		''' <seealso cref=        java.util.Dictionary#get(java.lang.Object) </seealso>
 		Public MustOverride Function put(ByVal key As K, ByVal value As V) As V
 
-		''' <summary>
-		''' Removes the <code>key</code> (and its corresponding
-		''' <code>value</code>) from this dictionary. This method does nothing
-		''' if the <code>key</code> is not in this dictionary.
-		''' </summary>
-		''' <param name="key">   the key that needs to be removed. </param>
-		''' <returns>  the value to which the <code>key</code> had been mapped in this
-		'''          dictionary, or <code>null</code> if the key did not have a
-		'''          mapping. </returns>
-		''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
-		Public MustOverride Function remove(ByVal key As Object) As V
-	End Class
+        ''' <summary>
+        ''' Removes the <code>key</code> (and its corresponding
+        ''' <code>value</code>) from this dictionary. This method does nothing
+        ''' if the <code>key</code> is not in this dictionary.
+        ''' </summary>
+        ''' <param name="key">   the key that needs to be removed. </param>
+        ''' <returns>  the value to which the <code>key</code> had been mapped in this
+        '''          dictionary, or <code>null</code> if the key did not have a
+        '''          mapping. </returns>
+        ''' <exception cref="NullPointerException"> if <tt>key</tt> is <tt>null</tt>. </exception>
+        Public MustOverride Overloads Function remove(ByVal key As Object) As V
+    End Class
 
 End Namespace

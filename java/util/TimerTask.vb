@@ -131,7 +131,7 @@ Namespace java.util
 		''' determine whether the current execution of the task is sufficiently
 		''' timely to warrant performing the scheduled activity:
 		''' <pre>{@code
-		'''   public void run() {
+		'''   public  Sub  run() {
 		'''       if (System.currentTimeMillis() - scheduledExecutionTime() >=
 		'''           MAX_TARDINESS)
 		'''               return;  // Too late; skip this execution.

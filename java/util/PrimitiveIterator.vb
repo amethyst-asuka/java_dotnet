@@ -104,7 +104,7 @@ Namespace java.util
 	'		''' </summary>
 	'		''' <param name="action"> The action to be performed for each element </param>
 	'		''' <exception cref="NullPointerException"> if the specified action is null </exception>
-	'		default void forEachRemaining(IntConsumer action)
+	'		default  Sub  forEachRemaining(IntConsumer action)
 	'		{
 	'			Objects.requireNonNull(action);
 	'			while (hasNext())
@@ -133,7 +133,7 @@ Namespace java.util
 	'		''' {@code IntConsumer}, by boxing the argument of {@code IntConsumer},
 	'		''' and then passed to <seealso cref="#forEachRemaining"/>.
 	'		''' </summary>
-	'		@Override default void forEachRemaining(Consumer<? MyBase java.lang.Integer> action)
+	'		@Override default  Sub  forEachRemaining(Consumer<? MyBase java.lang.Integer> action)
 	'		{
 	'			if (action instanceof IntConsumer)
 	'			{
@@ -181,7 +181,7 @@ Namespace java.util
 	'		''' </summary>
 	'		''' <param name="action"> The action to be performed for each element </param>
 	'		''' <exception cref="NullPointerException"> if the specified action is null </exception>
-	'		default void forEachRemaining(LongConsumer action)
+	'		default  Sub  forEachRemaining(LongConsumer action)
 	'		{
 	'			Objects.requireNonNull(action);
 	'			while (hasNext())
@@ -210,7 +210,7 @@ Namespace java.util
 	'		''' {@code LongConsumer}, by boxing the argument of {@code LongConsumer},
 	'		''' and then passed to <seealso cref="#forEachRemaining"/>.
 	'		''' </summary>
-	'		@Override default void forEachRemaining(Consumer<? MyBase java.lang.Long> action)
+	'		@Override default  Sub  forEachRemaining(Consumer<? MyBase java.lang.Long> action)
 	'		{
 	'			if (action instanceof LongConsumer)
 	'			{
@@ -257,7 +257,7 @@ Namespace java.util
 	'		''' </summary>
 	'		''' <param name="action"> The action to be performed for each element </param>
 	'		''' <exception cref="NullPointerException"> if the specified action is null </exception>
-	'		default void forEachRemaining(DoubleConsumer action)
+	'		default  Sub  forEachRemaining(DoubleConsumer action)
 	'		{
 	'			Objects.requireNonNull(action);
 	'			while (hasNext())
@@ -287,7 +287,7 @@ Namespace java.util
 	'		''' {@code DoubleConsumer}, and then passed to
 	'		''' <seealso cref="#forEachRemaining"/>.
 	'		''' </summary>
-	'		@Override default void forEachRemaining(Consumer<? MyBase java.lang.Double> action)
+	'		@Override default  Sub  forEachRemaining(Consumer<? MyBase java.lang.Double> action)
 	'		{
 	'			if (action instanceof DoubleConsumer)
 	'			{

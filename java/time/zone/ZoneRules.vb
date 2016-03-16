@@ -321,7 +321,7 @@ Namespace java.time.zone
 		''' length form to make the common cases put fewer bytes in the stream.
 		''' <pre style="font-size:1.0em">{@code
 		''' 
-		'''  static void writeEpochSec(long epochSec, DataOutput out) throws IOException {
+		'''  static  Sub  writeEpochSec(long epochSec, DataOutput out) throws IOException {
 		'''     if (epochSec >= -4575744000L && epochSec < 10413792000L && epochSec % 900 == 0) {  // quarter hours between 1825 and 2300
 		'''         int store = (int) ((epochSec + 4575744000L) / 900);
 		'''         out.writeByte((store >>> 16) & 255);
@@ -339,7 +339,7 @@ Namespace java.time.zone
 		''' common cases put fewer bytes in the stream.
 		''' <pre style="font-size:1.0em">{@code
 		''' 
-		'''  static void writeOffset(ZoneOffset offset, DataOutput out) throws IOException {
+		'''  static  Sub  writeOffset(ZoneOffset offset, DataOutput out) throws IOException {
 		'''     final int offsetSecs = offset.getTotalSeconds();
 		'''     int offsetByte = offsetSecs % 900 == 0 ? offsetSecs / 900 : 127;  // compress to -72 to +72
 		'''     out.writeByte(offsetByte);

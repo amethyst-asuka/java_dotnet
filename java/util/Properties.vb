@@ -782,9 +782,9 @@ Namespace java.util
 			bw.write("#" & DateTime.Now.ToString())
 			bw.newLine()
 			SyncLock Me
-				Dim e As Enumeration(Of ?) = keys()
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-				Do While e.hasMoreElements()
+                Dim e As Enumeration(Of Object) = keys()
+
+                Do While e.hasMoreElements()
 					Dim key As String = CStr(e.nextElement())
 					Dim val As String = CStr([get](key))
 					key = saveConvert(key, True, escUnicode)
@@ -933,44 +933,43 @@ Namespace java.util
 			Return If(val Is Nothing, defaultValue, val)
 		End Function
 
-		''' <summary>
-		''' Returns an enumeration of all the keys in this property list,
-		''' including distinct keys in the default property list if a key
-		''' of the same name has not already been found from the main
-		''' properties list.
-		''' </summary>
-		''' <returns>  an enumeration of all the keys in this property list, including
-		'''          the keys in the default property list. </returns>
-		''' <exception cref="ClassCastException"> if any key in this property list
-		'''          is not a string. </exception>
-		''' <seealso cref=     java.util.Enumeration </seealso>
-		''' <seealso cref=     java.util.Properties#defaults </seealso>
-		''' <seealso cref=     #stringPropertyNames </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Function propertyNames() As Enumeration(Of ?)
-			Dim h As New Dictionary(Of String, Object)
-			enumerate(h)
-			Return h.keys()
-		End Function
+        ''' <summary>
+        ''' Returns an enumeration of all the keys in this property list,
+        ''' including distinct keys in the default property list if a key
+        ''' of the same name has not already been found from the main
+        ''' properties list.
+        ''' </summary>
+        ''' <returns>  an enumeration of all the keys in this property list, including
+        '''          the keys in the default property list. </returns>
+        ''' <exception cref="ClassCastException"> if any key in this property list
+        '''          is not a string. </exception>
+        ''' <seealso cref=     java.util.Enumeration </seealso>
+        ''' <seealso cref=     java.util.Properties#defaults </seealso>
+        ''' <seealso cref=     #stringPropertyNames </seealso>
+        Public Overridable Function propertyNames() As Enumeration(Of String)
+            Dim h As New Dictionary(Of String, Object)
+            enumerate(h)
+            Return h.keys()
+        End Function
 
-		''' <summary>
-		''' Returns a set of keys in this property list where
-		''' the key and its corresponding value are strings,
-		''' including distinct keys in the default property list if a key
-		''' of the same name has not already been found from the main
-		''' properties list.  Properties whose key or value is not
-		''' of type <tt>String</tt> are omitted.
-		''' <p>
-		''' The returned set is not backed by the <tt>Properties</tt> object.
-		''' Changes to this <tt>Properties</tt> are not reflected in the set,
-		''' or vice versa.
-		''' </summary>
-		''' <returns>  a set of keys in this property list where
-		'''          the key and its corresponding value are strings,
-		'''          including the keys in the default property list. </returns>
-		''' <seealso cref=     java.util.Properties#defaults
-		''' @since   1.6 </seealso>
-		Public Overridable Function stringPropertyNames() As [Set](Of String)
+        ''' <summary>
+        ''' Returns a set of keys in this property list where
+        ''' the key and its corresponding value are strings,
+        ''' including distinct keys in the default property list if a key
+        ''' of the same name has not already been found from the main
+        ''' properties list.  Properties whose key or value is not
+        ''' of type <tt>String</tt> are omitted.
+        ''' <p>
+        ''' The returned set is not backed by the <tt>Properties</tt> object.
+        ''' Changes to this <tt>Properties</tt> are not reflected in the set,
+        ''' or vice versa.
+        ''' </summary>
+        ''' <returns>  a set of keys in this property list where
+        '''          the key and its corresponding value are strings,
+        '''          including the keys in the default property list. </returns>
+        ''' <seealso cref=     java.util.Properties#defaults
+        ''' @since   1.6 </seealso>
+        Public Overridable Function stringPropertyNames() As [Set](Of String)
 			Dim h As New Dictionary(Of String, String)
 			enumerateStringProperties(h)
 			Return h.Keys
@@ -1030,13 +1029,12 @@ Namespace java.util
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Private Sub enumerate(ByVal h As Dictionary(Of String, Object))
 			If defaults IsNot Nothing Then defaults.enumerate(h)
-			Dim e As Enumeration(Of ?) = keys()
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Do While e.hasMoreElements()
-				Dim key As String = CStr(e.nextElement())
-				h.put(key, [get](key))
-			Loop
-		End Sub
+            Dim e As Enumeration(Of String) = keys()
+            Do While e.hasMoreElements()
+                Dim key As String = CStr(e.nextElement())
+                h.put(key, [get](key))
+            Loop
+        End Sub
 
 		''' <summary>
 		''' Enumerates all key/value pairs in the specified hashtable
@@ -1045,14 +1043,13 @@ Namespace java.util
 		<MethodImpl(MethodImplOptions.Synchronized)> _
 		Private Sub enumerateStringProperties(ByVal h As Dictionary(Of String, String))
 			If defaults IsNot Nothing Then defaults.enumerateStringProperties(h)
-			Dim e As Enumeration(Of ?) = keys()
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Do While e.hasMoreElements()
-				Dim k As Object = e.nextElement()
-				Dim v As Object = [get](k)
-				If TypeOf k Is String AndAlso TypeOf v Is String Then h.put(CStr(k), CStr(v))
-			Loop
-		End Sub
+            Dim e As Enumeration(Of String) = keys()
+            Do While e.hasMoreElements()
+                Dim k As Object = e.nextElement()
+                Dim v As Object = [get](k)
+                If TypeOf k Is String AndAlso TypeOf v Is String Then h.put(CStr(k), CStr(v))
+            Loop
+        End Sub
 
 		''' <summary>
 		''' Convert a nibble to a hex character </summary>
@@ -1094,15 +1091,18 @@ Namespace java.util
 		Private Class XmlSupport
 
 			Private Shared Function loadProviderFromProperty(ByVal cl As  ClassLoader) As sun.util.spi.XmlPropertiesProvider
-				Dim cn As String = System.getProperty("sun.util.spi.XmlPropertiesProvider")
-				If cn Is Nothing Then Return Nothing
-				Try
-					Dim c As  [Class] = Type.GetType(cn, True, cl)
-					Return CType(c.newInstance(), sun.util.spi.XmlPropertiesProvider)
-'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
-				Catch ClassNotFoundException Or IllegalAccessException Or InstantiationException x
-					Throw New ServiceConfigurationError(Nothing, x)
-				End Try
+                Dim cn As String = java.lang.System.getProperty("sun.util.spi.XmlPropertiesProvider")
+                If cn Is Nothing Then Return Nothing
+                Try
+                    Dim c As [Class] = Type.GetType(cn, True, cl)
+                    Return CType(c.newInstance(), sun.util.spi.XmlPropertiesProvider)
+                Catch ex As Exception
+                    If TypeOf ex Is ClassNotFoundException OrElse
+                        TypeOf ex Is IllegalAccessException OrElse
+                        TypeOf ex Is InstantiationException Then
+                        Throw New ServiceConfigurationError(Nothing, ex)
+                    End If
+                End Try
 			End Function
 
 			Private Shared Function loadProviderAsService(ByVal cl As  ClassLoader) As sun.util.spi.XmlPropertiesProvider

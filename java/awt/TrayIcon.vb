@@ -121,11 +121,11 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setTrayIconAccessor(New sun.awt.AWTAccessor.TrayIconAccessor()
 	'		{
-	'				public void addNotify(TrayIcon trayIcon) throws AWTException
+	'				public  Sub  addNotify(TrayIcon trayIcon) throws AWTException
 	'				{
 	'					trayIcon.addNotify();
 	'				}
-	'				public void removeNotify(TrayIcon trayIcon)
+	'				public  Sub  removeNotify(TrayIcon trayIcon)
 	'				{
 	'					trayIcon.removeNotify();
 	'				}

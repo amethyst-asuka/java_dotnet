@@ -48,7 +48,7 @@ Namespace java.util
 	''' can be used to produce a copy of a map that has the same order as the
 	''' original, regardless of the original map's implementation:
 	''' <pre>
-	'''     void foo(Map m) {
+	'''      Sub  foo(Map m) {
 	'''         Map copy = new LinkedHashMap(m);
 	'''         ...
 	'''     }

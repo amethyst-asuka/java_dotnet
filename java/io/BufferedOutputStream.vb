@@ -97,44 +97,46 @@ Namespace java.io
 			count += 1
 		End Sub
 
-		''' <summary>
-		''' Writes <code>len</code> bytes from the specified byte array
-		''' starting at offset <code>off</code> to this buffered output stream.
-		''' 
-		''' <p> Ordinarily this method stores bytes from the given array into this
-		''' stream's buffer, flushing the buffer to the underlying output stream as
-		''' needed.  If the requested length is at least as large as this stream's
-		''' buffer, however, then this method will flush the buffer and write the
-		''' bytes directly to the underlying output stream.  Thus redundant
-		''' <code>BufferedOutputStream</code>s will not copy data unnecessarily.
-		''' </summary>
-		''' <param name="b">     the data. </param>
-		''' <param name="off">   the start offset in the data. </param>
-		''' <param name="len">   the number of bytes to write. </param>
-		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public synchronized void write(byte b() , int off, int len) throws IOException
-			If len >= buf.Length Then
-	'             If the request length exceeds the size of the output buffer,
-	'               flush the output buffer and then write the data directly.
-	'               In this way buffered streams will cascade harmlessly. 
-				flushBuffer()
-				out.write(b, off, len)
-				Return
-			End If
-			If len > buf.Length - count Then flushBuffer()
-			Array.Copy(b, off, buf, count, len)
-			count += len
+        ''' <summary>
+        ''' Writes <code>len</code> bytes from the specified byte array
+        ''' starting at offset <code>off</code> to this buffered output stream.
+        ''' 
+        ''' <p> Ordinarily this method stores bytes from the given array into this
+        ''' stream's buffer, flushing the buffer to the underlying output stream as
+        ''' needed.  If the requested length is at least as large as this stream's
+        ''' buffer, however, then this method will flush the buffer and write the
+        ''' bytes directly to the underlying output stream.  Thus redundant
+        ''' <code>BufferedOutputStream</code>s will not copy data unnecessarily.
+        ''' </summary>
+        ''' <param name="b">     the data. </param>
+        ''' <param name="off">   the start offset in the data. </param>
+        ''' <param name="len">   the number of bytes to write. </param>
+        ''' <exception cref="IOException">  if an I/O error occurs. </exception>
+        Public Overloads Sub write(b() As Byte, off As Integer, len As Integer) 'throws IOException
+            If len >= buf.Length Then
+                '             If the request length exceeds the size of the output buffer,
+                '               flush the output buffer and then write the data directly.
+                '               In this way buffered streams will cascade harmlessly. 
+                flushBuffer()
+                out.write(b, off, len)
+                Return
+            End If
+            If len > buf.Length - count Then flushBuffer()
+            Array.Copy(b, off, buf, count, len)
+            count += len
+        End Sub
 
-		''' <summary>
-		''' Flushes this buffered output stream. This forces any buffered
-		''' output bytes to be written out to the underlying output stream.
-		''' </summary>
-		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public synchronized void flush() throws IOException
-			flushBuffer()
-			out.flush()
-	End Class
+        ''' <summary>
+        ''' Flushes this buffered output stream. This forces any buffered
+        ''' output bytes to be written out to the underlying output stream.
+        ''' </summary>
+        ''' <exception cref="IOException">  if an I/O error occurs. </exception>
+        ''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
+        Public Sub flush() ' throws IOException
+            flushBuffer()
+            out.flush()
+        End Sub
+
+    End Class
 
 End Namespace

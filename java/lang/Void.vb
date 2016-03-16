@@ -43,7 +43,7 @@ Namespace java.lang
 		Public Shared ReadOnly TYPE As  [Class] = CType(Class.getPrimitiveClass("void"), [Class])
 
 	'    
-	'     * The Void class cannot be instantiated.
+	'     * The  Sub  class cannot be instantiated.
 	'     
 		Private Sub New()
 		End Sub

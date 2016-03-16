@@ -891,7 +891,7 @@ Namespace java.awt.geom
 		''' <param name="right"> the cubic curve object for storing for the right or
 		''' second half of the subdivided curve
 		''' @since 1.2 </param>
-		public void subdivide(CubicCurve2D left, CubicCurve2D right)
+		public  Sub  subdivide(CubicCurve2D left, CubicCurve2D right)
 			subdivide(Me, left, right)
 
 		''' <summary>
@@ -906,7 +906,7 @@ Namespace java.awt.geom
 		''' <param name="right"> the cubic curve object for storing the right or
 		''' second half of the subdivided curve
 		''' @since 1.2 </param>
-		public static void subdivide(CubicCurve2D src, CubicCurve2D left, CubicCurve2D right)
+		public static  Sub  subdivide(CubicCurve2D src, CubicCurve2D left, CubicCurve2D right)
 			Dim x1_Renamed As Double = src.x1
 			Dim y1_Renamed As Double = src.y1
 			Dim ctrlx1_Renamed As Double = src.ctrlX1
@@ -957,7 +957,7 @@ Namespace java.awt.geom
 		''' <param name="rightoff"> the offset into the array of the beginning of the
 		''' the 6 right coordinates
 		''' @since 1.2 </param>
-		public static void subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
+		public static  Sub  subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
 			Dim x1_Renamed As Double = src(srcoff + 0)
 			Dim y1_Renamed As Double = src(srcoff + 1)
 			Dim ctrlx1_Renamed As Double = src(srcoff + 2)

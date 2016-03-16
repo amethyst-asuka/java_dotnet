@@ -393,7 +393,7 @@ Namespace java.awt
 	'			{
 	'				Return window.opacity;
 	'			}
-	'			public void setOpacity(Window window, float opacity)
+	'			public  Sub  setOpacity(Window window, float opacity)
 	'			{
 	'				window.setOpacity(opacity);
 	'			}
@@ -401,11 +401,11 @@ Namespace java.awt
 	'			{
 	'				Return window.getShape();
 	'			}
-	'			public void setShape(Window window, Shape shape)
+	'			public  Sub  setShape(Window window, Shape shape)
 	'			{
 	'				window.setShape(shape);
 	'			}
-	'			public void setOpaque(Window window, boolean opaque)
+	'			public  Sub  setOpaque(Window window, boolean opaque)
 	'			{
 	'				Color bg = window.getBackground();
 	'				if (bg == Nothing)
@@ -414,7 +414,7 @@ Namespace java.awt
 	'				}
 	'				window.setBackground(New Color(bg.getRed(), bg.getGreen(), bg.getBlue(), opaque ? 255 : 0));
 	'			}
-	'			public void updateWindow(Window window)
+	'			public  Sub  updateWindow(Window window)
 	'			{
 	'				window.updateWindow();
 	'			}
@@ -424,13 +424,13 @@ Namespace java.awt
 	'				Return New Dimension(window.securityWarningWidth, window.securityWarningHeight);
 	'			}
 	'
-	'			public void setSecurityWarningSize(Window window, int width, int height)
+	'			public  Sub  setSecurityWarningSize(Window window, int width, int height)
 	'			{
 	'				window.securityWarningWidth = width;
 	'				window.securityWarningHeight = height;
 	'			}
 	'
-	'			public void setSecurityWarningPosition(Window window, Point2D point, float alignmentX, float alignmentY)
+	'			public  Sub  setSecurityWarningPosition(Window window, Point2D point, float alignmentX, float alignmentY)
 	'			{
 	'				window.securityWarningPointX = point.getX();
 	'				window.securityWarningPointY = point.getY();
@@ -452,7 +452,7 @@ Namespace java.awt
 	'				Return window.calculateSecurityWarningPosition(x, y, w, h);
 	'			}
 	'
-	'			public void setLWRequestStatus(Window changed, boolean status)
+	'			public  Sub  setLWRequestStatus(Window changed, boolean status)
 	'			{
 	'				changed.syncLWRequests = status;
 	'			}
@@ -467,7 +467,7 @@ Namespace java.awt
 	'				Return w.isTrayIconWindow;
 	'			}
 	'
-	'			public void setTrayIconWindow(Window w, boolean isTrayIconWindow)
+	'			public  Sub  setTrayIconWindow(Window w, boolean isTrayIconWindow)
 	'			{
 	'				w.isTrayIconWindow = isTrayIconWindow;
 	'			}
@@ -1152,7 +1152,7 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '		class DisposeAction implements Runnable
 	'	{
-	'		public void run()
+	'		public  Sub  run()
 	'		{
 	'			disposing = True;
 	'			try

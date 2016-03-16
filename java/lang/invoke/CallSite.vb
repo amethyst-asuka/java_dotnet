@@ -61,11 +61,11 @@ Namespace java.lang.invoke
 	''' Here is a sample use of call sites and bootstrap methods which links every
 	''' dynamic call site to print its arguments:
 	''' <blockquote><pre>{@code
-	''' static void test() throws Throwable {
+	''' static  Sub  test() throws Throwable {
 	'''    // THE FOLLOWING LINE IS PSEUDOCODE FOR A JVM INSTRUCTION
 	'''    InvokeDynamic[#bootstrapDynamic].baz("baz arg", 2, 3.14);
 	''' }
-	''' private static void printArgs(Object... args) {
+	''' private static  Sub  printArgs(Object... args) {
 	'''  System.out.println(java.util.Arrays.deepToString(args));
 	''' }
 	''' private static final MethodHandle printArgs;

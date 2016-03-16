@@ -55,7 +55,7 @@ Namespace java.awt
 	'				{
 	'					Return menuComp.appContext;
 	'				}
-	'				public void setAppContext(MenuComponent menuComp, AppContext appContext)
+	'				public  Sub  setAppContext(MenuComponent menuComp, AppContext appContext)
 	'				{
 	'					menuComp.appContext = appContext;
 	'				}

@@ -59,7 +59,7 @@ Namespace java.util
 	''' contract of the <tt>Set</tt> interface.
 	''' 
 	''' <p>All general-purpose sorted set implementation classes should
-	''' provide four "standard" constructors: 1) A void (no arguments)
+	''' provide four "standard" constructors: 1) A  Sub  (no arguments)
 	''' constructor, which creates an empty sorted set sorted according to
 	''' the natural ordering of its elements.  2) A constructor with a
 	''' single argument of type <tt>Comparator</tt>, which creates an empty

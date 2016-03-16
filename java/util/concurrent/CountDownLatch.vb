@@ -73,7 +73,7 @@ Namespace java.util.concurrent
 	''' 
 	'''  <pre> {@code
 	''' class Driver { // ...
-	'''   void main() throws InterruptedException {
+	'''    Sub  main() throws InterruptedException {
 	'''     CountDownLatch startSignal = new CountDownLatch(1);
 	'''     CountDownLatch doneSignal = new CountDownLatch(N);
 	''' 
@@ -94,7 +94,7 @@ Namespace java.util.concurrent
 	'''     this.startSignal = startSignal;
 	'''     this.doneSignal = doneSignal;
 	'''   }
-	'''   public void run() {
+	'''   public  Sub  run() {
 	'''     try {
 	'''       startSignal.await();
 	'''       doWork();
@@ -102,7 +102,7 @@ Namespace java.util.concurrent
 	'''     } catch (InterruptedException ex) {} // return;
 	'''   }
 	''' 
-	'''   void doWork() { ... }
+	'''    Sub  doWork() { ... }
 	''' }}</pre>
 	''' 
 	''' <p>Another typical usage would be to divide a problem into N parts,
@@ -114,7 +114,7 @@ Namespace java.util.concurrent
 	''' 
 	'''  <pre> {@code
 	''' class Driver2 { // ...
-	'''   void main() throws InterruptedException {
+	'''    Sub  main() throws InterruptedException {
 	'''     CountDownLatch doneSignal = new CountDownLatch(N);
 	'''     Executor e = ...
 	''' 
@@ -132,14 +132,14 @@ Namespace java.util.concurrent
 	'''     this.doneSignal = doneSignal;
 	'''     this.i = i;
 	'''   }
-	'''   public void run() {
+	'''   public  Sub  run() {
 	'''     try {
 	'''       doWork(i);
 	'''       doneSignal.countDown();
 	'''     } catch (InterruptedException ex) {} // return;
 	'''   }
 	''' 
-	'''   void doWork() { ... }
+	'''    Sub  doWork() { ... }
 	''' }}</pre>
 	''' 
 	''' <p>Memory consistency effects: Until the count reaches

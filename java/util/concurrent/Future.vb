@@ -58,7 +58,7 @@ Namespace java.util.concurrent
 	''' class App {
 	'''   ExecutorService executor = ...
 	'''   ArchiveSearcher searcher = ...
-	'''   void showSearch(final String target)
+	'''    Sub  showSearch(final String target)
 	'''       throws InterruptedException {
 	'''     Future<String> future
 	'''       = executor.submit(new Callable<String>() {

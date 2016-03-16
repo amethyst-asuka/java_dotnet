@@ -106,39 +106,39 @@ Namespace java.io
 			Me.count = buf.Length
 		End Sub
 
-		''' <summary>
-		''' Creates <code>ByteArrayInputStream</code>
-		''' that uses <code>buf</code> as its
-		''' buffer array. The initial value of <code>pos</code>
-		''' is <code>offset</code> and the initial value
-		''' of <code>count</code> is the minimum of <code>offset+length</code>
-		''' and <code>buf.length</code>.
-		''' The buffer array is not copied. The buffer's mark is
-		''' set to the specified offset.
-		''' </summary>
-		''' <param name="buf">      the input buffer. </param>
-		''' <param name="offset">   the offset in the buffer of the first byte to read. </param>
-		''' <param name="length">   the maximum number of bytes to read from the buffer. </param>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public ByteArrayInputStream(byte buf() , int offset, int length)
-			Me.buf = buf
-			Me.pos = offset
-			Me.count = System.Math.Min(offset + length, buf.Length)
-			Me.mark_Renamed = offset
+        ''' <summary>
+        ''' Creates <code>ByteArrayInputStream</code>
+        ''' that uses <code>buf</code> as its
+        ''' buffer array. The initial value of <code>pos</code>
+        ''' is <code>offset</code> and the initial value
+        ''' of <code>count</code> is the minimum of <code>offset+length</code>
+        ''' and <code>buf.length</code>.
+        ''' The buffer array is not copied. The buffer's mark is
+        ''' set to the specified offset.
+        ''' </summary>
+        ''' <param name="buf">      the input buffer. </param>
+        ''' <param name="offset">   the offset in the buffer of the first byte to read. </param>
+        ''' <param name="length">   the maximum number of bytes to read from the buffer. </param>
+        Public Sub New(buf() As Byte, offset As Integer, length As Integer)
+            Me.buf = buf
+            Me.pos = offset
+            Me.count = System.Math.Min(offset + length, buf.Length)
+            Me.mark_Renamed = offset
+        End Sub
 
-		''' <summary>
-		''' Reads the next byte of data from this input stream. The value
-		''' byte is returned as an <code>int</code> in the range
-		''' <code>0</code> to <code>255</code>. If no byte is available
-		''' because the end of the stream has been reached, the value
-		''' <code>-1</code> is returned.
-		''' <p>
-		''' This <code>read</code> method
-		''' cannot block.
-		''' </summary>
-		''' <returns>  the next byte of data, or <code>-1</code> if the end of the
-		'''          stream has been reached. </returns>
-		public synchronized Integer read()
+        ''' <summary>
+        ''' Reads the next byte of data from this input stream. The value
+        ''' byte is returned as an <code>int</code> in the range
+        ''' <code>0</code> to <code>255</code>. If no byte is available
+        ''' because the end of the stream has been reached, the value
+        ''' <code>-1</code> is returned.
+        ''' <p>
+        ''' This <code>read</code> method
+        ''' cannot block.
+        ''' </summary>
+        ''' <returns>  the next byte of data, or <code>-1</code> if the end of the
+        '''          stream has been reached. </returns>
+        Public synchronized Integer read()
 				Dim tempVar As Integer = pos
 				pos += 1
 				Return If(pos < count, (buf(tempVar) And &Hff), -1)
@@ -242,7 +242,7 @@ Namespace java.io
 		''' 
 		''' @since   JDK1.1
 		''' </summary>
-		public void mark(Integer readAheadLimit)
+		public  Sub  mark(Integer readAheadLimit)
 			mark_Renamed = pos
 
 		''' <summary>
@@ -250,7 +250,7 @@ Namespace java.io
 		''' is 0 unless another position was marked or an offset was specified
 		''' in the constructor.
 		''' </summary>
-		public synchronized void reset()
+		public synchronized  Sub  reset()
 			pos = mark_Renamed
 
 		''' <summary>
@@ -258,7 +258,7 @@ Namespace java.io
 		''' this class can be called after the stream has been closed without
 		''' generating an <tt>IOException</tt>.
 		''' </summary>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 
 	End Class
 

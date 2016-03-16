@@ -150,8 +150,8 @@ Namespace java.nio
 	''' <blockquote><pre>
 	''' float  <seealso cref="#getFloat()"/>
 	''' float  <seealso cref="#getFloat(int) getFloat(int index)"/>
-	'''  void  <seealso cref="#putFloat(float) putFloat(float f)"/>
-	'''  void  <seealso cref="#putFloat(int,float) putFloat(int index, float f)"/></pre></blockquote>
+	'''   Sub   <seealso cref="#putFloat(float) putFloat(float f)"/>
+	'''   Sub   <seealso cref="#putFloat(int,float) putFloat(int index, float f)"/></pre></blockquote>
 	''' 
 	''' <p> Corresponding methods are defined for the types <tt>char</tt>,
 	''' <tt>short</tt>, <tt>int</tt>, <tt>long</tt>, and <tt>double</tt>.  The index

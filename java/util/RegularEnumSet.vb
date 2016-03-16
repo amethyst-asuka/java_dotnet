@@ -98,7 +98,7 @@ Namespace java.util
 				unseen -= lastReturned
 				Return CType(universe(Long.numberOfTrailingZeros(lastReturned)), E)
 
-			public void remove()
+			public  Sub  remove()
 				If lastReturned = 0 Then Throw New IllegalStateException
 				elements = elements And Not lastReturned
 				lastReturned = 0
@@ -252,7 +252,7 @@ Namespace java.util
 		''' <summary>
 		''' Removes all of the elements from this set.
 		''' </summary>
-		public void clear()
+		public  Sub  clear()
 			elements = 0
 
 		''' <summary>

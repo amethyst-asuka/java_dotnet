@@ -303,7 +303,7 @@ Namespace java.io
 		''' <param name="len">   the number of bytes to write. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(byte b() , int off, int len) throws IOException
+		public  Sub  write(byte b() , int off, int len) throws IOException
 			writeBytes(b, off, len, append)
 
 		''' <summary>
@@ -318,7 +318,7 @@ Namespace java.io
 		''' 
 		''' @revised 1.4
 		''' @spec JSR-51 </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			SyncLock closeLock
 				If closed Then Return
 				closed = True
@@ -370,7 +370,7 @@ Namespace java.io
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FileInputStream#close() </seealso>
-		protected void Finalize() throws IOException
+		protected  Sub  Finalize() throws IOException
 			If fd IsNot Nothing Then
 				If fd Is FileDescriptor.out OrElse fd Is FileDescriptor.err Then
 					flush()
@@ -384,9 +384,9 @@ Namespace java.io
 				End If
 			End If
 
-		private native void close0() throws IOException
+		private native  Sub  close0() throws IOException
 
-		private static native void initIDs()
+		private static native  Sub  initIDs()
 
 		static FileOutputStream()
 			initIDs()

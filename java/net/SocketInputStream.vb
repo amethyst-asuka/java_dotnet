@@ -223,7 +223,7 @@ Namespace java.net
 		''' Closes the stream.
 		''' </summary>
 		private Boolean closing = False
-		public void close() throws java.io.IOException
+		public  Sub  close() throws java.io.IOException
 			' Prevent recursion. See BugId 4484411
 			If closing Then Return
 			closing = True
@@ -240,12 +240,12 @@ Namespace java.net
 		''' <summary>
 		''' Overrides finalize, the fd is closed by the Socket.
 		''' </summary>
-		protected void Finalize()
+		protected  Sub  Finalize()
 
 		''' <summary>
 		''' Perform class load-time initializations.
 		''' </summary>
-		private native static void init()
+		private native static  Sub  init()
 	End Class
 
 End Namespace

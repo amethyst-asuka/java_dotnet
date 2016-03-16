@@ -260,7 +260,7 @@ Namespace java.lang.management
 	''' 
 	'''       <pre>
 	'''       class MyListener implements javax.management.NotificationListener {
-	'''            public void handleNotification(Notification notification, Object handback)  {
+	'''            public  Sub  handleNotification(Notification notification, Object handback)  {
 	'''                String notifType = notification.getType();
 	'''                if (notifType.equals(MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
 	'''                    // potential low memory, notify another thread

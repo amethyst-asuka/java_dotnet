@@ -204,7 +204,7 @@ Namespace java.lang.invoke
 				Throw New InternalError("which=" & which)
 			End Select
 			Dim mtypeWithArg As MethodType = mtype.appendParameterTypes(GetType(MemberName))
-			If doesAlloc Then mtypeWithArg = mtypeWithArg.insertParameterTypes(0, GetType(Object)).changeReturnType(GetType(void)) ' <init> returns void -  insert newly allocated obj
+			If doesAlloc Then mtypeWithArg = mtypeWithArg.insertParameterTypes(0, GetType(Object)).changeReturnType(GetType(void)) ' <init> returns  Sub  -  insert newly allocated obj
 			Dim linker As New MemberName(GetType(MethodHandle), linkerName, mtypeWithArg, REF_invokeStatic)
 			Try
 				linker = IMPL_NAMES.resolveOrFail(REF_invokeStatic, linker, Nothing, GetType(NoSuchMethodException))

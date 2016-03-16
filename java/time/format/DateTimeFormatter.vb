@@ -1504,7 +1504,7 @@ Namespace java.time.format
 		''' <param name="temporal">  the temporal object to format, not null </param>
 		''' <param name="appendable">  the appendable to format to, not null </param>
 		''' <exception cref="DateTimeException"> if an error occurs during formatting </exception>
-		public void formatTo(java.time.temporal.TemporalAccessor temporal, Appendable appendable)
+		public  Sub  formatTo(java.time.temporal.TemporalAccessor temporal, Appendable appendable)
 			java.util.Objects.requireNonNull(temporal, "temporal")
 			java.util.Objects.requireNonNull(appendable, "appendable")
 			Try

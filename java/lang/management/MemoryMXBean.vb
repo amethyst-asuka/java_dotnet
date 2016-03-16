@@ -180,7 +180,7 @@ Namespace java.lang.management
 	''' 
 	''' <blockquote><pre>
 	''' class MyListener implements javax.management.NotificationListener {
-	'''     public void handleNotification(Notification notif, Object handback) {
+	'''     public  Sub  handleNotification(Notification notif, Object handback) {
 	'''         // handle notification
 	'''         ....
 	'''     }

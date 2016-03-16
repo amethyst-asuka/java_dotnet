@@ -111,7 +111,7 @@ Namespace java.awt.font
 	''' Rendering a paragraph in a component
 	''' <blockquote>
 	''' <pre>{@code
-	''' public void paint(Graphics graphics) {
+	''' public  Sub  paint(Graphics graphics) {
 	''' 
 	'''     Point2D pen = new Point2D(10, 20);
 	'''     Graphics2D g2d = (Graphics2D)graphics;
@@ -142,7 +142,7 @@ Namespace java.awt.font
 	''' direction is assumed to be left-to-right
 	''' <blockquote>
 	''' <pre>{@code
-	''' public void paint(Graphics graphics) {
+	''' public  Sub  paint(Graphics graphics) {
 	''' 
 	'''     float leftMargin = 10, rightMargin = 310;
 	'''     float[] tabStops = { 100, 250 };

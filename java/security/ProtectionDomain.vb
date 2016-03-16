@@ -85,7 +85,7 @@ Namespace java.security
 	'					Return New ProtectionDomainCache()
 	'					{
 	'						private final Map<Key, PermissionCollection> map = Collections.synchronizedMap(New WeakHashMap<Key, PermissionCollection>());
-	'						public void put(ProtectionDomain pd, PermissionCollection pc)
+	'						public  Sub  put(ProtectionDomain pd, PermissionCollection pc)
 	'						{
 	'							map.put((pd == Nothing ? Nothing : pd.key), pc);
 	'						}

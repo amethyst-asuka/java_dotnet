@@ -43,8 +43,8 @@ Namespace java.io
 		End Function
 
 		Friend Shared Function getChar(ByVal b As SByte(), ByVal [off] As Integer) As Char
-			Return CChar((b([off] + 1) And &HFF) + (b([off]) << 8))
-		End Function
+            Return Chr((b([off] + 1) And &HFF) + (b([off]) << 8))
+        End Function
 
 		Friend Shared Function getShort(ByVal b As SByte(), ByVal [off] As Integer) As Short
 			Return CShort(Fix((b([off] + 1) And &HFF) + (b([off]) << 8)))
@@ -75,12 +75,14 @@ Namespace java.io
 			b([off]) = CByte(If(val, 1, 0))
 		End Sub
 
-		Friend Shared Sub putChar(ByVal b As SByte(), ByVal [off] As Integer, ByVal val As Char)
-			b([off] + 1) = AscW(val)
-			b([off]) = CByte(CInt(CUInt(val) >> 8))
-		End Sub
+        Friend Shared Sub putChar(ByVal b As SByte(), ByVal [off] As Integer, ByVal val As Char)
+            Dim ascii As Integer = AscW(val)
 
-		Friend Shared Sub putShort(ByVal b As SByte(), ByVal [off] As Integer, ByVal val As Short)
+            b([off] + 1) = ascii
+            b([off]) = CByte(CInt(CUInt(ascii) >> 8))
+        End Sub
+
+        Friend Shared Sub putShort(ByVal b As SByte(), ByVal [off] As Integer, ByVal val As Short)
 			b([off] + 1) = CByte(val)
 			b([off]) = CByte(CShort(CUShort(val) >> 8))
 		End Sub

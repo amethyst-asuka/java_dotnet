@@ -84,13 +84,15 @@ Namespace java.io
 		''' <exception cref="UnsupportedEncodingException">  if the charset is not supported </exception>
 		Private Shared Function toCharset(ByVal csn As String) As java.nio.charset.Charset
 			requireNonNull(csn, "charsetName")
-			Try
-				Return java.nio.charset.Charset.forName(csn)
-'JAVA TO VB CONVERTER TODO TASK: There is no equivalent in VB to Java 'multi-catch' syntax:
-			Catch java.nio.charset.IllegalCharsetNameException Or java.nio.charset.UnsupportedCharsetException unused
-				' UnsupportedEncodingException should be thrown
-				Throw New UnsupportedEncodingException(csn)
-			End Try
+            Try
+                Return java.nio.charset.Charset.forName(csn)
+            Catch ex As Exception
+                If TypeOf ex Is java.nio.charset.IllegalCharsetNameException OrElse
+                    TypeOf ex Is java.nio.charset.UnsupportedCharsetException Then
+                    ' UnsupportedEncodingException should be thrown
+                    Throw New UnsupportedEncodingException(csn)
+                End If
+            End Try
 		End Function
 
 		' Private constructors 
@@ -419,8 +421,8 @@ Namespace java.io
 				SyncLock Me
 					ensureOpen()
 					out.write(b)
-					If (b = ControlChars.Lf) AndAlso autoFlush Then out.flush()
-				End SyncLock
+                    If (b = Asc(ControlChars.Lf)) AndAlso autoFlush Then out.flush()
+                End SyncLock
 			Catch x As InterruptedIOException
 				Thread.CurrentThread.Interrupt()
 			Catch x As IOException
@@ -428,602 +430,640 @@ Namespace java.io
 			End Try
 		End Sub
 
-		''' <summary>
-		''' Writes <code>len</code> bytes from the specified byte array starting at
-		''' offset <code>off</code> to this stream.  If automatic flushing is
-		''' enabled then the <code>flush</code> method will be invoked.
-		''' 
-		''' <p> Note that the bytes will be written as given; to write characters
-		''' that will be translated according to the platform's default character
-		''' encoding, use the <code>print(char)</code> or <code>println(char)</code>
-		''' methods.
-		''' </summary>
-		''' <param name="buf">   A byte array </param>
-		''' <param name="off">   Offset from which to start taking bytes </param>
-		''' <param name="len">   Number of bytes to write </param>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(byte buf() , int off, int len)
-			Try
-				SyncLock Me
-					ensureOpen()
-					out.write(buf, off, len)
-					If autoFlush Then out.flush()
-				End SyncLock
-			Catch x As InterruptedIOException
-				Thread.CurrentThread.Interrupt()
-			Catch x As IOException
-				trouble = True
-			End Try
+        ''' <summary>
+        ''' Writes <code>len</code> bytes from the specified byte array starting at
+        ''' offset <code>off</code> to this stream.  If automatic flushing is
+        ''' enabled then the <code>flush</code> method will be invoked.
+        ''' 
+        ''' <p> Note that the bytes will be written as given; to write characters
+        ''' that will be translated according to the platform's default character
+        ''' encoding, use the <code>print(char)</code> or <code>println(char)</code>
+        ''' methods.
+        ''' </summary>
+        ''' <param name="buf">   A byte array </param>
+        ''' <param name="off">   Offset from which to start taking bytes </param>
+        ''' <param name="len">   Number of bytes to write </param>
+        Public Overloads Sub write(buf() As Byte, off As Integer, len As Integer)
+            Try
+                SyncLock Me
+                    ensureOpen()
+                    out.write(buf, off, len)
+                    If autoFlush Then out.flush()
+                End SyncLock
+            Catch x As InterruptedIOException
+                Thread.CurrentThread.Interrupt()
+            Catch x As IOException
+                trouble = True
+            End Try
+        End Sub
 
-	'    
-	'     * The following private methods on the text- and character-output streams
-	'     * always flush the stream buffers, so that writes to the underlying byte
-	'     * stream occur as promptly as with the original PrintStream.
-	'     
+        '    
+        '     * The following private methods on the text- and character-output streams
+        '     * always flush the stream buffers, so that writes to the underlying byte
+        '     * stream occur as promptly as with the original PrintStream.
+        '     
 
-		private void write(Char buf())
-			Try
-				SyncLock Me
-					ensureOpen()
-					textOut.write(buf)
-					textOut.flushBuffer()
-					charOut.flushBuffer()
-					If autoFlush Then
-						For i As Integer = 0 To buf.length - 1
-							If buf(i) = ControlChars.Lf Then out.flush()
-						Next i
-					End If
-				End SyncLock
-			Catch x As InterruptedIOException
-				Thread.CurrentThread.Interrupt()
-			Catch x As IOException
-				trouble = True
-			End Try
+        Private Overloads Sub write(buf() As Char)
+            Try
+                SyncLock Me
+                    ensureOpen()
+                    textOut.write(buf)
+                    textOut.flushBuffer()
+                    charOut.flushBuffer()
+                    If autoFlush Then
+                        For i As Integer = 0 To buf.Length - 1
+                            If buf(i) = ControlChars.Lf Then out.flush()
+                        Next i
+                    End If
+                End SyncLock
+            Catch x As InterruptedIOException
+                Thread.CurrentThread.Interrupt()
+            Catch x As IOException
+                trouble = True
+            End Try
+        End Sub
 
-		private void write(String s)
-			Try
-				SyncLock Me
-					ensureOpen()
-					textOut.write(s)
-					textOut.flushBuffer()
-					charOut.flushBuffer()
-					If autoFlush AndAlso (s.IndexOf(ControlChars.Lf) >= 0) Then out.flush()
-				End SyncLock
-			Catch x As InterruptedIOException
-				Thread.CurrentThread.Interrupt()
-			Catch x As IOException
-				trouble = True
-			End Try
+        Private Overloads Sub write(s As String)
+            Try
+                SyncLock Me
+                    ensureOpen()
+                    textOut.write(s)
+                    textOut.flushBuffer()
+                    charOut.flushBuffer()
+                    If autoFlush AndAlso (s.IndexOf(ControlChars.Lf) >= 0) Then out.flush()
+                End SyncLock
+            Catch x As InterruptedIOException
+                Thread.CurrentThread.Interrupt()
+            Catch x As IOException
+                trouble = True
+            End Try
+        End Sub
 
-		private void newLine()
-			Try
-				SyncLock Me
-					ensureOpen()
-					textOut.newLine()
-					textOut.flushBuffer()
-					charOut.flushBuffer()
-					If autoFlush Then out.flush()
-				End SyncLock
-			Catch x As InterruptedIOException
-				Thread.CurrentThread.Interrupt()
-			Catch x As IOException
-				trouble = True
-			End Try
+        Private Sub newLine()
+            Try
+                SyncLock Me
+                    ensureOpen()
+                    textOut.newLine()
+                    textOut.flushBuffer()
+                    charOut.flushBuffer()
+                    If autoFlush Then out.flush()
+                End SyncLock
+            Catch x As InterruptedIOException
+                Thread.CurrentThread.Interrupt()
+            Catch x As IOException
+                trouble = True
+            End Try
+        End Sub
 
-		' Methods that do not terminate lines 
+        ' Methods that do not terminate lines 
 
-		''' <summary>
-		''' Prints a boolean value.  The string produced by <code>{@link
-		''' java.lang.String#valueOf(boolean)}</code> is translated into bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="b">   The <code>boolean</code> to be printed </param>
-		public void print(Boolean b)
-			write(If(b, "true", "false"))
+        ''' <summary>
+        ''' Prints a boolean value.  The string produced by <code>{@link
+        ''' java.lang.String#valueOf(boolean)}</code> is translated into bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="b">   The <code>boolean</code> to be printed </param>
+        Public Sub print(b As Boolean)
+            write(If(b, "true", "false"))
+        End Sub
 
-		''' <summary>
-		''' Prints a character.  The character is translated into one or more bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="c">   The <code>char</code> to be printed </param>
-		public void print(Char c)
-			write(Convert.ToString(c))
+        ''' <summary>
+        ''' Prints a character.  The character is translated into one or more bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="c">   The <code>char</code> to be printed </param>
+        Public Sub print(c As Char)
+            write(Convert.ToString(c))
+        End Sub
 
-		''' <summary>
-		''' Prints an  java.lang.[Integer].  The string produced by <code>{@link
-		''' java.lang.String#valueOf(int)}</code> is translated into bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="i">   The <code>int</code> to be printed </param>
-		''' <seealso cref=        java.lang.Integer#toString(int) </seealso>
-		public void print(Integer i)
-			write(Convert.ToString(i))
+        ''' <summary>
+        ''' Prints an  java.lang.[Integer].  The string produced by <code>{@link
+        ''' java.lang.String#valueOf(int)}</code> is translated into bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="i">   The <code>int</code> to be printed </param>
+        ''' <seealso cref=        java.lang.Integer#toString(int) </seealso>
+        Public Sub print(i As Integer)
+            write(Convert.ToString(i))
+        End Sub
 
-		''' <summary>
-		''' Prints a long  java.lang.[Integer].  The string produced by <code>{@link
-		''' java.lang.String#valueOf(long)}</code> is translated into bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="l">   The <code>long</code> to be printed </param>
-		''' <seealso cref=        java.lang.Long#toString(long) </seealso>
-		public void print(Long l)
-			write(Convert.ToString(l))
+        ''' <summary>
+        ''' Prints a long  java.lang.[Integer].  The string produced by <code>{@link
+        ''' java.lang.String#valueOf(long)}</code> is translated into bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="l">   The <code>long</code> to be printed </param>
+        ''' <seealso cref=        java.lang.Long#toString(long) </seealso>
+        Public Sub print(l As Long)
+            write(Convert.ToString(l))
+        End Sub
 
-		''' <summary>
-		''' Prints a floating-point number.  The string produced by <code>{@link
-		''' java.lang.String#valueOf(float)}</code> is translated into bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="f">   The <code>float</code> to be printed </param>
-		''' <seealso cref=        java.lang.Float#toString(float) </seealso>
-		public void print(Single f)
-			write(Convert.ToString(f))
+        ''' <summary>
+        ''' Prints a floating-point number.  The string produced by <code>{@link
+        ''' java.lang.String#valueOf(float)}</code> is translated into bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="f">   The <code>float</code> to be printed </param>
+        ''' <seealso cref=        java.lang.Float#toString(float) </seealso>
+        Public Sub print(f As Single)
+            write(Convert.ToString(f))
+        End Sub
 
-		''' <summary>
-		''' Prints a double-precision floating-point number.  The string produced by
-		''' <code><seealso cref="java.lang.String#valueOf(double)"/></code> is translated into
-		''' bytes according to the platform's default character encoding, and these
-		''' bytes are written in exactly the manner of the <code>{@link
-		''' #write(int)}</code> method.
-		''' </summary>
-		''' <param name="d">   The <code>double</code> to be printed </param>
-		''' <seealso cref=        java.lang.Double#toString(double) </seealso>
-		public void print(Double d)
-			write(Convert.ToString(d))
+        ''' <summary>
+        ''' Prints a double-precision floating-point number.  The string produced by
+        ''' <code><seealso cref="java.lang.String#valueOf(double)"/></code> is translated into
+        ''' bytes according to the platform's default character encoding, and these
+        ''' bytes are written in exactly the manner of the <code>{@link
+        ''' #write(int)}</code> method.
+        ''' </summary>
+        ''' <param name="d">   The <code>double</code> to be printed </param>
+        ''' <seealso cref=        java.lang.Double#toString(double) </seealso>
+        Public Sub print(d As Double)
+            write(Convert.ToString(d))
+        End Sub
 
-		''' <summary>
-		''' Prints an array of characters.  The characters are converted into bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="s">   The array of chars to be printed
-		''' </param>
-		''' <exception cref="NullPointerException">  If <code>s</code> is <code>null</code> </exception>
-		public void print(Char s())
-			write(s)
+        ''' <summary>
+        ''' Prints an array of characters.  The characters are converted into bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="s">   The array of chars to be printed
+        ''' </param>
+        ''' <exception cref="NullPointerException">  If <code>s</code> is <code>null</code> </exception>
+        Public Sub print(s() As Char)
+            write(s)
+        End Sub
 
-		''' <summary>
-		''' Prints a string.  If the argument is <code>null</code> then the string
-		''' <code>"null"</code> is printed.  Otherwise, the string's characters are
-		''' converted into bytes according to the platform's default character
-		''' encoding, and these bytes are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="s">   The <code>String</code> to be printed </param>
-		public void print(String s)
-			If s Is Nothing Then s = "null"
-			write(s)
+        ''' <summary>
+        ''' Prints a string.  If the argument is <code>null</code> then the string
+        ''' <code>"null"</code> is printed.  Otherwise, the string's characters are
+        ''' converted into bytes according to the platform's default character
+        ''' encoding, and these bytes are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="s">   The <code>String</code> to be printed </param>
+        Public Sub print(s As String)
+            If s Is Nothing Then s = "null"
+            write(s)
+        End Sub
 
-		''' <summary>
-		''' Prints an object.  The string produced by the <code>{@link
-		''' java.lang.String#valueOf(Object)}</code> method is translated into bytes
-		''' according to the platform's default character encoding, and these bytes
-		''' are written in exactly the manner of the
-		''' <code><seealso cref="#write(int)"/></code> method.
-		''' </summary>
-		''' <param name="obj">   The <code>Object</code> to be printed </param>
-		''' <seealso cref=        java.lang.Object#toString() </seealso>
-		public void print(Object obj)
-			write(Convert.ToString(obj))
+        ''' <summary>
+        ''' Prints an object.  The string produced by the <code>{@link
+        ''' java.lang.String#valueOf(Object)}</code> method is translated into bytes
+        ''' according to the platform's default character encoding, and these bytes
+        ''' are written in exactly the manner of the
+        ''' <code><seealso cref="#write(int)"/></code> method.
+        ''' </summary>
+        ''' <param name="obj">   The <code>Object</code> to be printed </param>
+        ''' <seealso cref=        java.lang.Object#toString() </seealso>
+        Public Sub print(obj As Object)
+            write(Convert.ToString(obj))
+        End Sub
 
+        ' Methods that do terminate lines 
 
-		' Methods that do terminate lines 
+        ''' <summary>
+        ''' Terminates the current line by writing the line separator string.  The
+        ''' line separator string is defined by the system property
+        ''' <code>line.separator</code>, and is not necessarily a single newline
+        ''' character (<code>'\n'</code>).
+        ''' </summary>
+        Public Sub println()
+            newLine()
+        End Sub
 
-		''' <summary>
-		''' Terminates the current line by writing the line separator string.  The
-		''' line separator string is defined by the system property
-		''' <code>line.separator</code>, and is not necessarily a single newline
-		''' character (<code>'\n'</code>).
-		''' </summary>
-		public void println()
-			newLine()
+        ''' <summary>
+        ''' Prints a boolean and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(boolean)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>boolean</code> to be printed </param>
+        Public Sub println(x As Boolean)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints a boolean and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(boolean)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>boolean</code> to be printed </param>
-		public void println(Boolean x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints a character and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(char)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>char</code> to be printed. </param>
+        Public Sub println(x As Char)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints a character and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(char)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>char</code> to be printed. </param>
-		public void println(Char x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints an integer and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(int)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>int</code> to be printed. </param>
+        Public Sub println(x As Integer)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints an integer and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(int)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>int</code> to be printed. </param>
-		public void println(Integer x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints a long and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(long)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  a The <code>long</code> to be printed. </param>
+        Public Sub println(x As Long)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints a long and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(long)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  a The <code>long</code> to be printed. </param>
-		public void println(Long x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints a float and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(float)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>float</code> to be printed. </param>
+        Public Sub println(x As Single)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints a float and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(float)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>float</code> to be printed. </param>
-		public void println(Single x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints a double and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(double)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>double</code> to be printed. </param>
+        Public Sub println(x As Double)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints a double and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(double)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>double</code> to be printed. </param>
-		public void println(Double x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints an array of characters and then terminate the line.  This method
+        ''' behaves as though it invokes <code><seealso cref="#print(char[])"/></code> and
+        ''' then <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  an array of chars to print. </param>
+        Public Sub println(x() As Char)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints an array of characters and then terminate the line.  This method
-		''' behaves as though it invokes <code><seealso cref="#print(char[])"/></code> and
-		''' then <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  an array of chars to print. </param>
-		public void println(Char x())
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints a String and then terminate the line.  This method behaves as
+        ''' though it invokes <code><seealso cref="#print(String)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>String</code> to be printed. </param>
+        Public Sub println(x As String)
+            SyncLock Me
+                print(x)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints a String and then terminate the line.  This method behaves as
-		''' though it invokes <code><seealso cref="#print(String)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>String</code> to be printed. </param>
-		public void println(String x)
-			SyncLock Me
-				print(x)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' Prints an Object and then terminate the line.  This method calls
+        ''' at first String.valueOf(x) to get the printed object's string value,
+        ''' then behaves as
+        ''' though it invokes <code><seealso cref="#print(String)"/></code> and then
+        ''' <code><seealso cref="#println()"/></code>.
+        ''' </summary>
+        ''' <param name="x">  The <code>Object</code> to be printed. </param>
+        Public Sub println(x As Object)
+            Dim s As String = Convert.ToString(x)
+            SyncLock Me
+                print(s)
+                newLine()
+            End SyncLock
+        End Sub
 
-		''' <summary>
-		''' Prints an Object and then terminate the line.  This method calls
-		''' at first String.valueOf(x) to get the printed object's string value,
-		''' then behaves as
-		''' though it invokes <code><seealso cref="#print(String)"/></code> and then
-		''' <code><seealso cref="#println()"/></code>.
-		''' </summary>
-		''' <param name="x">  The <code>Object</code> to be printed. </param>
-		public void println(Object x)
-			Dim s As String = Convert.ToString(x)
-			SyncLock Me
-				print(s)
-				newLine()
-			End SyncLock
+        ''' <summary>
+        ''' A convenience method to write a formatted string to this output stream
+        ''' using the specified format string and arguments.
+        ''' 
+        ''' <p> An invocation of this method of the form <tt>out.printf(format,
+        ''' args)</tt> behaves in exactly the same way as the invocation
+        ''' 
+        ''' <pre>
+        '''     out.format(format, args) </pre>
+        ''' </summary>
+        ''' <param name="format">
+        '''         A format string as described in <a
+        '''         href="../util/Formatter.html#syntax">Format string syntax</a>
+        ''' </param>
+        ''' <param name="args">
+        '''         Arguments referenced by the format specifiers in the format
+        '''         string.  If there are more arguments than format specifiers, the
+        '''         extra arguments are ignored.  The number of arguments is
+        '''         variable and may be zero.  The maximum number of arguments is
+        '''         limited by the maximum dimension of a Java array as defined by
+        '''         <cite>The Java&trade; Virtual Machine Specification</cite>.
+        '''         The behaviour on a
+        '''         <tt>null</tt> argument depends on the <a
+        '''         href="../util/Formatter.html#syntax">conversion</a>.
+        ''' </param>
+        ''' <exception cref="java.util.IllegalFormatException">
+        '''          If a format string contains an illegal syntax, a format
+        '''          specifier that is incompatible with the given arguments,
+        '''          insufficient arguments given the format string, or other
+        '''          illegal conditions.  For specification of all possible
+        '''          formatting errors, see the <a
+        '''          href="../util/Formatter.html#detail">Details</a> section of the
+        '''          formatter class specification.
+        ''' </exception>
+        ''' <exception cref="NullPointerException">
+        '''          If the <tt>format</tt> is <tt>null</tt>
+        ''' </exception>
+        ''' <returns>  This output stream
+        ''' 
+        ''' @since  1.5 </returns>
+        Public Function printf(format As String, ParamArray args As Object()) As PrintStream
+            Return Me.format(format, args)
+        End Function
 
+        ''' <summary>
+        ''' A convenience method to write a formatted string to this output stream
+        ''' using the specified format string and arguments.
+        ''' 
+        ''' <p> An invocation of this method of the form <tt>out.printf(l, format,
+        ''' args)</tt> behaves in exactly the same way as the invocation
+        ''' 
+        ''' <pre>
+        '''     out.format(l, format, args) </pre>
+        ''' </summary>
+        ''' <param name="l">
+        '''         The <seealso cref="java.util.Locale locale"/> to apply during
+        '''         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+        '''         is applied.
+        ''' </param>
+        ''' <param name="format">
+        '''         A format string as described in <a
+        '''         href="../util/Formatter.html#syntax">Format string syntax</a>
+        ''' </param>
+        ''' <param name="args">
+        '''         Arguments referenced by the format specifiers in the format
+        '''         string.  If there are more arguments than format specifiers, the
+        '''         extra arguments are ignored.  The number of arguments is
+        '''         variable and may be zero.  The maximum number of arguments is
+        '''         limited by the maximum dimension of a Java array as defined by
+        '''         <cite>The Java&trade; Virtual Machine Specification</cite>.
+        '''         The behaviour on a
+        '''         <tt>null</tt> argument depends on the <a
+        '''         href="../util/Formatter.html#syntax">conversion</a>.
+        ''' </param>
+        ''' <exception cref="java.util.IllegalFormatException">
+        '''          If a format string contains an illegal syntax, a format
+        '''          specifier that is incompatible with the given arguments,
+        '''          insufficient arguments given the format string, or other
+        '''          illegal conditions.  For specification of all possible
+        '''          formatting errors, see the <a
+        '''          href="../util/Formatter.html#detail">Details</a> section of the
+        '''          formatter class specification.
+        ''' </exception>
+        ''' <exception cref="NullPointerException">
+        '''          If the <tt>format</tt> is <tt>null</tt>
+        ''' </exception>
+        ''' <returns>  This output stream
+        ''' 
+        ''' @since  1.5 </returns>
+        Public Function printf(l As java.util.Locale, format As String, ParamArray args As Object()) As PrintStream
+            Return Me.format(l, format, args)
+        End Function
 
-		''' <summary>
-		''' A convenience method to write a formatted string to this output stream
-		''' using the specified format string and arguments.
-		''' 
-		''' <p> An invocation of this method of the form <tt>out.printf(format,
-		''' args)</tt> behaves in exactly the same way as the invocation
-		''' 
-		''' <pre>
-		'''     out.format(format, args) </pre>
-		''' </summary>
-		''' <param name="format">
-		'''         A format string as described in <a
-		'''         href="../util/Formatter.html#syntax">Format string syntax</a>
-		''' </param>
-		''' <param name="args">
-		'''         Arguments referenced by the format specifiers in the format
-		'''         string.  If there are more arguments than format specifiers, the
-		'''         extra arguments are ignored.  The number of arguments is
-		'''         variable and may be zero.  The maximum number of arguments is
-		'''         limited by the maximum dimension of a Java array as defined by
-		'''         <cite>The Java&trade; Virtual Machine Specification</cite>.
-		'''         The behaviour on a
-		'''         <tt>null</tt> argument depends on the <a
-		'''         href="../util/Formatter.html#syntax">conversion</a>.
-		''' </param>
-		''' <exception cref="java.util.IllegalFormatException">
-		'''          If a format string contains an illegal syntax, a format
-		'''          specifier that is incompatible with the given arguments,
-		'''          insufficient arguments given the format string, or other
-		'''          illegal conditions.  For specification of all possible
-		'''          formatting errors, see the <a
-		'''          href="../util/Formatter.html#detail">Details</a> section of the
-		'''          formatter class specification.
-		''' </exception>
-		''' <exception cref="NullPointerException">
-		'''          If the <tt>format</tt> is <tt>null</tt>
-		''' </exception>
-		''' <returns>  This output stream
-		''' 
-		''' @since  1.5 </returns>
-		public PrintStream printf(String format, Object... args)
-			Return format(format, args)
+        ''' <summary>
+        ''' Writes a formatted string to this output stream using the specified
+        ''' format string and arguments.
+        ''' 
+        ''' <p> The locale always used is the one returned by {@link
+        ''' java.util.Locale#getDefault() Locale.getDefault()}, regardless of any
+        ''' previous invocations of other formatting methods on this object.
+        ''' </summary>
+        ''' <param name="format">
+        '''         A format string as described in <a
+        '''         href="../util/Formatter.html#syntax">Format string syntax</a>
+        ''' </param>
+        ''' <param name="args">
+        '''         Arguments referenced by the format specifiers in the format
+        '''         string.  If there are more arguments than format specifiers, the
+        '''         extra arguments are ignored.  The number of arguments is
+        '''         variable and may be zero.  The maximum number of arguments is
+        '''         limited by the maximum dimension of a Java array as defined by
+        '''         <cite>The Java&trade; Virtual Machine Specification</cite>.
+        '''         The behaviour on a
+        '''         <tt>null</tt> argument depends on the <a
+        '''         href="../util/Formatter.html#syntax">conversion</a>.
+        ''' </param>
+        ''' <exception cref="java.util.IllegalFormatException">
+        '''          If a format string contains an illegal syntax, a format
+        '''          specifier that is incompatible with the given arguments,
+        '''          insufficient arguments given the format string, or other
+        '''          illegal conditions.  For specification of all possible
+        '''          formatting errors, see the <a
+        '''          href="../util/Formatter.html#detail">Details</a> section of the
+        '''          formatter class specification.
+        ''' </exception>
+        ''' <exception cref="NullPointerException">
+        '''          If the <tt>format</tt> is <tt>null</tt>
+        ''' </exception>
+        ''' <returns>  This output stream
+        ''' 
+        ''' @since  1.5 </returns> 
+        Public Function format(formats As String, ParamArray args As Object()) As PrintStream
+            Try
+                SyncLock Me
+                    ensureOpen()
+                    If (formatter Is Nothing) OrElse (formatter.locale() IsNot java.util.Locale.default) Then formatter = New java.util.Formatter(CType(Me, Appendable))
+                    formatter.format(java.util.Locale.default, formats, args)
+                End SyncLock
+            Catch x As InterruptedIOException
+                Thread.CurrentThread.Interrupt()
+            Catch x As IOException
+                trouble = True
+            End Try
+            Return Me
+        End Function
 
-		''' <summary>
-		''' A convenience method to write a formatted string to this output stream
-		''' using the specified format string and arguments.
-		''' 
-		''' <p> An invocation of this method of the form <tt>out.printf(l, format,
-		''' args)</tt> behaves in exactly the same way as the invocation
-		''' 
-		''' <pre>
-		'''     out.format(l, format, args) </pre>
-		''' </summary>
-		''' <param name="l">
-		'''         The <seealso cref="java.util.Locale locale"/> to apply during
-		'''         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-		'''         is applied.
-		''' </param>
-		''' <param name="format">
-		'''         A format string as described in <a
-		'''         href="../util/Formatter.html#syntax">Format string syntax</a>
-		''' </param>
-		''' <param name="args">
-		'''         Arguments referenced by the format specifiers in the format
-		'''         string.  If there are more arguments than format specifiers, the
-		'''         extra arguments are ignored.  The number of arguments is
-		'''         variable and may be zero.  The maximum number of arguments is
-		'''         limited by the maximum dimension of a Java array as defined by
-		'''         <cite>The Java&trade; Virtual Machine Specification</cite>.
-		'''         The behaviour on a
-		'''         <tt>null</tt> argument depends on the <a
-		'''         href="../util/Formatter.html#syntax">conversion</a>.
-		''' </param>
-		''' <exception cref="java.util.IllegalFormatException">
-		'''          If a format string contains an illegal syntax, a format
-		'''          specifier that is incompatible with the given arguments,
-		'''          insufficient arguments given the format string, or other
-		'''          illegal conditions.  For specification of all possible
-		'''          formatting errors, see the <a
-		'''          href="../util/Formatter.html#detail">Details</a> section of the
-		'''          formatter class specification.
-		''' </exception>
-		''' <exception cref="NullPointerException">
-		'''          If the <tt>format</tt> is <tt>null</tt>
-		''' </exception>
-		''' <returns>  This output stream
-		''' 
-		''' @since  1.5 </returns>
-		public PrintStream printf(java.util.Locale l, String format, Object... args)
-			Return format(l, format, args)
+        ''' <summary>
+        ''' Writes a formatted string to this output stream using the specified
+        ''' format string and arguments.
+        ''' </summary>
+        ''' <param name="l">
+        '''         The <seealso cref="java.util.Locale locale"/> to apply during
+        '''         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+        '''         is applied.
+        ''' </param>
+        ''' <param name="format">
+        '''         A format string as described in <a
+        '''         href="../util/Formatter.html#syntax">Format string syntax</a>
+        ''' </param>
+        ''' <param name="args">
+        '''         Arguments referenced by the format specifiers in the format
+        '''         string.  If there are more arguments than format specifiers, the
+        '''         extra arguments are ignored.  The number of arguments is
+        '''         variable and may be zero.  The maximum number of arguments is
+        '''         limited by the maximum dimension of a Java array as defined by
+        '''         <cite>The Java&trade; Virtual Machine Specification</cite>.
+        '''         The behaviour on a
+        '''         <tt>null</tt> argument depends on the <a
+        '''         href="../util/Formatter.html#syntax">conversion</a>.
+        ''' </param>
+        ''' <exception cref="java.util.IllegalFormatException">
+        '''          If a format string contains an illegal syntax, a format
+        '''          specifier that is incompatible with the given arguments,
+        '''          insufficient arguments given the format string, or other
+        '''          illegal conditions.  For specification of all possible
+        '''          formatting errors, see the <a
+        '''          href="../util/Formatter.html#detail">Details</a> section of the
+        '''          formatter class specification.
+        ''' </exception>
+        ''' <exception cref="NullPointerException">
+        '''          If the <tt>format</tt> is <tt>null</tt>
+        ''' </exception>
+        ''' <returns>  This output stream
+        ''' 
+        ''' @since  1.5 </returns>
+        Public Function format(l As java.util.Locale, formats As String, ParamArray args As Object()) As PrintStream
+            Try
+                SyncLock Me
+                    ensureOpen()
+                    If (formatter Is Nothing) OrElse (formatter.locale() IsNot l) Then formatter = New java.util.Formatter(Me, l)
+                    formatter.format(l, formats, args)
+                End SyncLock
+            Catch x As InterruptedIOException
+                Thread.CurrentThread.Interrupt()
+            Catch x As IOException
+                trouble = True
+            End Try
+            Return Me
+        End Function
 
-		''' <summary>
-		''' Writes a formatted string to this output stream using the specified
-		''' format string and arguments.
-		''' 
-		''' <p> The locale always used is the one returned by {@link
-		''' java.util.Locale#getDefault() Locale.getDefault()}, regardless of any
-		''' previous invocations of other formatting methods on this object.
-		''' </summary>
-		''' <param name="format">
-		'''         A format string as described in <a
-		'''         href="../util/Formatter.html#syntax">Format string syntax</a>
-		''' </param>
-		''' <param name="args">
-		'''         Arguments referenced by the format specifiers in the format
-		'''         string.  If there are more arguments than format specifiers, the
-		'''         extra arguments are ignored.  The number of arguments is
-		'''         variable and may be zero.  The maximum number of arguments is
-		'''         limited by the maximum dimension of a Java array as defined by
-		'''         <cite>The Java&trade; Virtual Machine Specification</cite>.
-		'''         The behaviour on a
-		'''         <tt>null</tt> argument depends on the <a
-		'''         href="../util/Formatter.html#syntax">conversion</a>.
-		''' </param>
-		''' <exception cref="java.util.IllegalFormatException">
-		'''          If a format string contains an illegal syntax, a format
-		'''          specifier that is incompatible with the given arguments,
-		'''          insufficient arguments given the format string, or other
-		'''          illegal conditions.  For specification of all possible
-		'''          formatting errors, see the <a
-		'''          href="../util/Formatter.html#detail">Details</a> section of the
-		'''          formatter class specification.
-		''' </exception>
-		''' <exception cref="NullPointerException">
-		'''          If the <tt>format</tt> is <tt>null</tt>
-		''' </exception>
-		''' <returns>  This output stream
-		''' 
-		''' @since  1.5 </returns>
-		public PrintStream format(String format, Object... args)
-			Try
-				SyncLock Me
-					ensureOpen()
-					If (formatter Is Nothing) OrElse (formatter.locale() IsNot java.util.Locale.default) Then formatter = New java.util.Formatter(CType(Me, Appendable))
-					formatter.format(java.util.Locale.default, format, args)
-				End SyncLock
-			Catch x As InterruptedIOException
-				Thread.CurrentThread.Interrupt()
-			Catch x As IOException
-				trouble = True
-			End Try
-			Return Me
+        ''' <summary>
+        ''' Appends the specified character sequence to this output stream.
+        ''' 
+        ''' <p> An invocation of this method of the form <tt>out.append(csq)</tt>
+        ''' behaves in exactly the same way as the invocation
+        ''' 
+        ''' <pre>
+        '''     out.print(csq.toString()) </pre>
+        ''' 
+        ''' <p> Depending on the specification of <tt>toString</tt> for the
+        ''' character sequence <tt>csq</tt>, the entire sequence may not be
+        ''' appended.  For instance, invoking then <tt>toString</tt> method of a
+        ''' character buffer will return a subsequence whose content depends upon
+        ''' the buffer's position and limit.
+        ''' </summary>
+        ''' <param name="csq">
+        '''         The character sequence to append.  If <tt>csq</tt> is
+        '''         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+        '''         appended to this output stream.
+        ''' </param>
+        ''' <returns>  This output stream
+        ''' 
+        ''' @since  1.5 </returns>
+        Public Function append(csq As CharSequence) As PrintStream
+            If csq Is Nothing Then
+                print("null")
+            Else
+                print(csq.ToString())
+            End If
+            Return Me
+        End Function
 
-		''' <summary>
-		''' Writes a formatted string to this output stream using the specified
-		''' format string and arguments.
-		''' </summary>
-		''' <param name="l">
-		'''         The <seealso cref="java.util.Locale locale"/> to apply during
-		'''         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-		'''         is applied.
-		''' </param>
-		''' <param name="format">
-		'''         A format string as described in <a
-		'''         href="../util/Formatter.html#syntax">Format string syntax</a>
-		''' </param>
-		''' <param name="args">
-		'''         Arguments referenced by the format specifiers in the format
-		'''         string.  If there are more arguments than format specifiers, the
-		'''         extra arguments are ignored.  The number of arguments is
-		'''         variable and may be zero.  The maximum number of arguments is
-		'''         limited by the maximum dimension of a Java array as defined by
-		'''         <cite>The Java&trade; Virtual Machine Specification</cite>.
-		'''         The behaviour on a
-		'''         <tt>null</tt> argument depends on the <a
-		'''         href="../util/Formatter.html#syntax">conversion</a>.
-		''' </param>
-		''' <exception cref="java.util.IllegalFormatException">
-		'''          If a format string contains an illegal syntax, a format
-		'''          specifier that is incompatible with the given arguments,
-		'''          insufficient arguments given the format string, or other
-		'''          illegal conditions.  For specification of all possible
-		'''          formatting errors, see the <a
-		'''          href="../util/Formatter.html#detail">Details</a> section of the
-		'''          formatter class specification.
-		''' </exception>
-		''' <exception cref="NullPointerException">
-		'''          If the <tt>format</tt> is <tt>null</tt>
-		''' </exception>
-		''' <returns>  This output stream
-		''' 
-		''' @since  1.5 </returns>
-		public PrintStream format(java.util.Locale l, String format, Object... args)
-			Try
-				SyncLock Me
-					ensureOpen()
-					If (formatter Is Nothing) OrElse (formatter.locale() IsNot l) Then formatter = New java.util.Formatter(Me, l)
-					formatter.format(l, format, args)
-				End SyncLock
-			Catch x As InterruptedIOException
-				Thread.CurrentThread.Interrupt()
-			Catch x As IOException
-				trouble = True
-			End Try
-			Return Me
+        ''' <summary>
+        ''' Appends a subsequence of the specified character sequence to this output
+        ''' stream.
+        ''' 
+        ''' <p> An invocation of this method of the form <tt>out.append(csq, start,
+        ''' end)</tt> when <tt>csq</tt> is not <tt>null</tt>, behaves in
+        ''' exactly the same way as the invocation
+        ''' 
+        ''' <pre>
+        '''     out.print(csq.subSequence(start, end).toString()) </pre>
+        ''' </summary>
+        ''' <param name="csq">
+        '''         The character sequence from which a subsequence will be
+        '''         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
+        '''         will be appended as if <tt>csq</tt> contained the four
+        '''         characters <tt>"null"</tt>.
+        ''' </param>
+        ''' <param name="start">
+        '''         The index of the first character in the subsequence
+        ''' </param>
+        ''' <param name="end">
+        '''         The index of the character following the last character in the
+        '''         subsequence
+        ''' </param>
+        ''' <returns>  This output stream
+        ''' </returns>
+        ''' <exception cref="IndexOutOfBoundsException">
+        '''          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
+        '''          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
+        '''          <tt>csq.length()</tt>
+        ''' 
+        ''' @since  1.5 </exception>
+        Public Function append(csq As CharSequence, start As Integer, [end] As Integer) As PrintStream
+            Dim cs As CharSequence = (If(csq Is Nothing, "null", csq))
+            write(cs.subSequence(start, [end]).ToString())
+            Return Me
+        End Function
 
-		''' <summary>
-		''' Appends the specified character sequence to this output stream.
-		''' 
-		''' <p> An invocation of this method of the form <tt>out.append(csq)</tt>
-		''' behaves in exactly the same way as the invocation
-		''' 
-		''' <pre>
-		'''     out.print(csq.toString()) </pre>
-		''' 
-		''' <p> Depending on the specification of <tt>toString</tt> for the
-		''' character sequence <tt>csq</tt>, the entire sequence may not be
-		''' appended.  For instance, invoking then <tt>toString</tt> method of a
-		''' character buffer will return a subsequence whose content depends upon
-		''' the buffer's position and limit.
-		''' </summary>
-		''' <param name="csq">
-		'''         The character sequence to append.  If <tt>csq</tt> is
-		'''         <tt>null</tt>, then the four characters <tt>"null"</tt> are
-		'''         appended to this output stream.
-		''' </param>
-		''' <returns>  This output stream
-		''' 
-		''' @since  1.5 </returns>
-		public PrintStream append(CharSequence csq)
-			If csq Is Nothing Then
-				print("null")
-			Else
-				print(csq.ToString())
-			End If
-			Return Me
+        ''' <summary>
+        ''' Appends the specified character to this output stream.
+        ''' 
+        ''' <p> An invocation of this method of the form <tt>out.append(c)</tt>
+        ''' behaves in exactly the same way as the invocation
+        ''' 
+        ''' <pre>
+        '''     out.print(c) </pre>
+        ''' </summary>
+        ''' <param name="c">
+        '''         The 16-bit character to append
+        ''' </param>
+        ''' <returns>  This output stream
+        ''' 
+        ''' @since  1.5 </returns>
+        Public Function append(c As Char) As PrintStream
+            print(c)
+            Return Me
+        End Function
 
-		''' <summary>
-		''' Appends a subsequence of the specified character sequence to this output
-		''' stream.
-		''' 
-		''' <p> An invocation of this method of the form <tt>out.append(csq, start,
-		''' end)</tt> when <tt>csq</tt> is not <tt>null</tt>, behaves in
-		''' exactly the same way as the invocation
-		''' 
-		''' <pre>
-		'''     out.print(csq.subSequence(start, end).toString()) </pre>
-		''' </summary>
-		''' <param name="csq">
-		'''         The character sequence from which a subsequence will be
-		'''         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
-		'''         will be appended as if <tt>csq</tt> contained the four
-		'''         characters <tt>"null"</tt>.
-		''' </param>
-		''' <param name="start">
-		'''         The index of the first character in the subsequence
-		''' </param>
-		''' <param name="end">
-		'''         The index of the character following the last character in the
-		'''         subsequence
-		''' </param>
-		''' <returns>  This output stream
-		''' </returns>
-		''' <exception cref="IndexOutOfBoundsException">
-		'''          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
-		'''          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
-		'''          <tt>csq.length()</tt>
-		''' 
-		''' @since  1.5 </exception>
-		public PrintStream append(CharSequence csq, Integer start, Integer end)
-			Dim cs As CharSequence = (If(csq Is Nothing, "null", csq))
-			write(cs.subSequence(start, end).ToString())
-			Return Me
+        Private Function _append(csq As CharSequence) As Appendable Implements Appendable.append
+            Return append(csq)
+        End Function
 
-		''' <summary>
-		''' Appends the specified character to this output stream.
-		''' 
-		''' <p> An invocation of this method of the form <tt>out.append(c)</tt>
-		''' behaves in exactly the same way as the invocation
-		''' 
-		''' <pre>
-		'''     out.print(c) </pre>
-		''' </summary>
-		''' <param name="c">
-		'''         The 16-bit character to append
-		''' </param>
-		''' <returns>  This output stream
-		''' 
-		''' @since  1.5 </returns>
-		public PrintStream append(Char c)
-			print(c)
-			Return Me
+        Private Function _append1(csq As CharSequence, start As Integer, [end] As Integer) As Appendable Implements Appendable.append
+            Return append(csq, start, [end])
+        End Function
 
-	End Class
+        Private Function _append2(c As Char) As Appendable Implements Appendable.append
+            Return append(c)
+        End Function
+    End Class
 
 End Namespace

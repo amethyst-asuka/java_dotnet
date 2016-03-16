@@ -953,17 +953,17 @@ Namespace java.awt.event
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setKeyEventAccessor(New sun.awt.AWTAccessor.KeyEventAccessor()
 	'		{
-	'				public void setRawCode(KeyEvent ev, long rawCode)
+	'				public  Sub  setRawCode(KeyEvent ev, long rawCode)
 	'				{
 	'					ev.rawCode = rawCode;
 	'				}
 	'
-	'				public void setPrimaryLevelUnicode(KeyEvent ev, long primaryLevelUnicode)
+	'				public  Sub  setPrimaryLevelUnicode(KeyEvent ev, long primaryLevelUnicode)
 	'				{
 	'					ev.primaryLevelUnicode = primaryLevelUnicode;
 	'				}
 	'
-	'				public void setExtendedKeyCode(KeyEvent ev, long extendedKeyCode)
+	'				public  Sub  setExtendedKeyCode(KeyEvent ev, long extendedKeyCode)
 	'				{
 	'					ev.extendedKeyCode = extendedKeyCode;
 	'				}

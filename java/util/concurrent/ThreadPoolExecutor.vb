@@ -280,7 +280,7 @@ Namespace java.util.concurrent
 	''' 
 	'''   public PausableThreadPoolExecutor(...) { super(...); }
 	''' 
-	'''   protected void beforeExecute(Thread t, Runnable r) {
+	'''   protected  Sub  beforeExecute(Thread t, Runnable r) {
 	'''     super.beforeExecute(t, r);
 	'''     pauseLock.lock();
 	'''     try {
@@ -292,7 +292,7 @@ Namespace java.util.concurrent
 	'''     }
 	'''   }
 	''' 
-	'''   public void pause() {
+	'''   public  Sub  pause() {
 	'''     pauseLock.lock();
 	'''     try {
 	'''       isPaused = true;
@@ -301,7 +301,7 @@ Namespace java.util.concurrent
 	'''     }
 	'''   }
 	''' 
-	'''   public void resume() {
+	'''   public  Sub  resume() {
 	'''     pauseLock.lock();
 	'''     try {
 	'''       isPaused = false;
@@ -1895,7 +1895,7 @@ Namespace java.util.concurrent
 		'''  <pre> {@code
 		''' class ExtendedExecutor extends ThreadPoolExecutor {
 		'''   // ...
-		'''   protected void afterExecute(Runnable r, Throwable t) {
+		'''   protected  Sub  afterExecute(Runnable r, Throwable t) {
 		'''     super.afterExecute(r, t);
 		'''     if (t == null && r instanceof Future<?>) {
 		'''       try {

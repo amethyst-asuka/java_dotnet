@@ -79,7 +79,7 @@ Namespace java.util.concurrent.locks
 	'''   private final ReentrantLock lock = new ReentrantLock();
 	'''   // ...
 	''' 
-	'''   public void m() {
+	'''   public  Sub  m() {
 	'''     lock.lock();  // block until condition holds
 	'''     try {
 	'''       // ... method body
@@ -522,7 +522,7 @@ Namespace java.util.concurrent.locks
 		''' class X {
 		'''   ReentrantLock lock = new ReentrantLock();
 		'''   // ...
-		'''   public void m() {
+		'''   public  Sub  m() {
 		'''     assert lock.getHoldCount() == 0;
 		'''     lock.lock();
 		'''     try {
@@ -554,7 +554,7 @@ Namespace java.util.concurrent.locks
 		'''   ReentrantLock lock = new ReentrantLock();
 		'''   // ...
 		''' 
-		'''   public void m() {
+		'''   public  Sub  m() {
 		'''       assert lock.isHeldByCurrentThread();
 		'''       // ... method body
 		'''   }
@@ -568,7 +568,7 @@ Namespace java.util.concurrent.locks
 		'''   ReentrantLock lock = new ReentrantLock();
 		'''   // ...
 		''' 
-		'''   public void m() {
+		'''   public  Sub  m() {
 		'''       assert !lock.isHeldByCurrentThread();
 		'''       lock.lock();
 		'''       try {

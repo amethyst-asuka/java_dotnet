@@ -136,7 +136,7 @@ Namespace java.util
 				unseen -= lastReturned
 				Return CType(universe((lastReturnedIndex << 6) + java.lang.[Long].numberOfTrailingZeros(lastReturned)), E)
 
-			public void remove()
+			public  Sub  remove()
 				If lastReturned = 0 Then Throw New IllegalStateException
 				Dim oldElements As Long = elements(lastReturnedIndex)
 				elements(lastReturnedIndex) = elements(lastReturnedIndex) And Not lastReturned
@@ -307,7 +307,7 @@ Namespace java.util
 		''' <summary>
 		''' Removes all of the elements from this set.
 		''' </summary>
-		public void clear()
+		public  Sub  clear()
 			Arrays.fill(elements, 0)
 			size_Renamed = 0
 

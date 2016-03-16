@@ -481,7 +481,7 @@ Namespace java.lang.invoke
 		End Function
 
 		Friend Shared Function getLoadOpcode(ByVal c As [Class]) As Integer
-			If c Is Void.TYPE Then Throw New InternalError("Unexpected void type of load opcode")
+			If c Is Void.TYPE Then Throw New InternalError("Unexpected  Sub  type of load opcode")
 			Return ILOAD + getOpcodeOffset(c)
 		End Function
 

@@ -711,7 +711,7 @@ Namespace java.util.zip
 			public Long size()
 				Return size_Renamed
 
-			public void close()
+			public  Sub  close()
 				If closeRequested Then Return
 				closeRequested = True
 
@@ -726,7 +726,7 @@ Namespace java.util.zip
 					outerInstance.streams.Remove(Me)
 				End SyncLock
 
-			protected void Finalize()
+			protected  Sub  Finalize()
 				close()
 	   End Class
 

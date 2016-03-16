@@ -73,7 +73,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(char cbuf() , int off, int len) throws IOException
+		public  Sub  write(char cbuf() , int off, int len) throws IOException
 			out.write(cbuf, off, len)
 
 		''' <summary>
@@ -84,17 +84,17 @@ Namespace java.io
 		''' <param name="len">  Number of characters to be written
 		''' </param>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void write(String str, Integer off, Integer len) throws IOException
+		public  Sub  write(String str, Integer off, Integer len) throws IOException
 			out.write(str, off, len)
 
 		''' <summary>
 		''' Flushes the stream.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void flush() throws IOException
+		public  Sub  flush() throws IOException
 			out.flush()
 
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			out.close()
 
 	End Class

@@ -75,7 +75,7 @@ Namespace java.awt.image
 	''' 
 	''' 
 	''' // rendering to the image
-	''' void renderOffscreen() {
+	'''  Sub  renderOffscreen() {
 	'''      do {
 	'''          if (vImg.validate(getGraphicsConfiguration()) ==
 	'''              VolatileImage.IMAGE_INCOMPATIBLE)

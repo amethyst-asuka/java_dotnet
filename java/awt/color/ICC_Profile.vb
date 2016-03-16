@@ -729,7 +729,7 @@ Namespace java.awt.Icolor
             'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
             '			Me.profileActivator = New sun.java2d.cmm.ProfileActivator()
             '		{
-            '			public void activate() throws ProfileDataException
+            '			public  Sub  activate() throws ProfileDataException
             '			{
             '				activateDeferredProfile();
             '			}

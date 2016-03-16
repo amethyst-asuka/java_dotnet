@@ -604,7 +604,7 @@ Namespace java.nio
 	'				{
 	'					Return New DirectByteBuffer(addr, cap, ob);
 	'				}
-	'				@Override public void truncate(Buffer buf)
+	'				@Override public  Sub  truncate(Buffer buf)
 	'				{
 	'					buf.truncate();
 	'				}

@@ -170,7 +170,7 @@ Namespace java.io
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			[in].close()
 
 		''' <summary>
@@ -188,7 +188,7 @@ Namespace java.io
 		'''                      the mark position becomes invalid. </param>
 		''' <seealso cref=     java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=     java.io.FilterInputStream#reset() </seealso>
-		public synchronized void mark(Integer readlimit)
+		public synchronized  Sub  mark(Integer readlimit)
 			[in].mark(readlimit)
 
 		''' <summary>
@@ -211,7 +211,7 @@ Namespace java.io
 		'''               mark has been invalidated. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=        java.io.FilterInputStream#mark(int) </seealso>
-		public synchronized void reset() throws IOException
+		public synchronized  Sub  reset() throws IOException
 			[in].reset()
 
 		''' <summary>

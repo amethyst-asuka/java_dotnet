@@ -267,7 +267,7 @@ Namespace java.lang.invoke
         End Sub
 
         ''' <summary>
-        ''' Change the result name.  Null means a void result. </summary>
+        ''' Change the result name.  Null means a  Sub  result. </summary>
         Friend Property result As Name
             Set(ByVal name As Name)
                 Assert(name Is Nothing OrElse lastIndexOf(name) >= 0)

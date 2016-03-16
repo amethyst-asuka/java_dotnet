@@ -66,7 +66,7 @@ Namespace java.io
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.misc.SharedSecrets.setJavaIOFileDescriptorAccess(New sun.misc.JavaIOFileDescriptorAccess()
 	'		{
-	'				public void set(FileDescriptor obj, int fd)
+	'				public  Sub  set(FileDescriptor obj, int fd)
 	'				{
 	'					obj.fd = fd;
 	'				}
@@ -76,7 +76,7 @@ Namespace java.io
 	'					Return obj.fd;
 	'				}
 	'
-	'				public void setHandle(FileDescriptor obj, long handle)
+	'				public  Sub  setHandle(FileDescriptor obj, long handle)
 	'				{
 	'					obj.handle = handle;
 	'				}

@@ -313,7 +313,7 @@ Namespace java.lang.management
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain fields in .NET:
 '		private static java.util.Map(Of String, PlatformComponent) enumMap;
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		private static synchronized void ensureInitialized()
+'		private static synchronized  Sub  ensureInitialized()
 	'	{
 	'		if (enumMap == Nothing)
 	'		{

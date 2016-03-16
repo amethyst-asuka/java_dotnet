@@ -40,7 +40,7 @@ Namespace java.awt
 	''' import java.awt.*;
 	''' import java.applet.Applet;
 	''' public class ButtonGrid extends Applet {
-	'''     public void init() {
+	'''     public  Sub  init() {
 	'''         setLayout(new GridLayout(3,2));
 	'''         add(new Button("1"));
 	'''         add(new Button("2"));

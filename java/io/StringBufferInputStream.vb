@@ -156,7 +156,7 @@ Namespace java.io
 		''' Resets the input stream to begin reading from the first character
 		''' of this input stream's underlying buffer.
 		''' </summary>
-		public synchronized void reset()
+		public synchronized  Sub  reset()
 			pos = 0
 	End Class
 

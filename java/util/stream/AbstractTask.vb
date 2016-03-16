@@ -58,7 +58,7 @@ Namespace java.util.stream
 	'''         return localReductionResult;
 	'''     }
 	''' 
-	'''     public void onCompletion(CountedCompleter caller) {
+	'''     public  Sub  onCompletion(CountedCompleter caller) {
 	'''         if (!isLeaf()) {
 	'''             ReduceTask<P_IN, P_OUT, T, R> child = children;
 	'''             R result = child.getLocalResult();

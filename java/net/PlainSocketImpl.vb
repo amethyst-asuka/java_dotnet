@@ -195,15 +195,15 @@ Namespace java.net
 			Return impl.getOption(opt)
 		End Function
 
-		SyncLock void doConnect InetAddress address, Integer port, Integer timeout
+		SyncLock  Sub  doConnect InetAddress address, Integer port, Integer timeout
 			Dim IOException As throws
 			impl.doConnect(address, port, timeout)
 		End SyncLock
 
-		protected synchronized void bind(InetAddress address, Integer lport) throws IOException
+		protected synchronized  Sub  bind(InetAddress address, Integer lport) throws IOException
 			impl.bind(address, lport)
 
-		protected synchronized void accept(SocketImpl s) throws IOException
+		protected synchronized  Sub  accept(SocketImpl s) throws IOException
 			If TypeOf s Is PlainSocketImpl Then
 				' pass in the real impl not the wrapper.
 				Dim [delegate] As SocketImpl = CType(s, PlainSocketImpl).impl
@@ -237,7 +237,7 @@ Namespace java.net
 		protected synchronized OutputStream outputStream throws IOException
 			Return impl.outputStream
 
-		protected void close() throws IOException
+		protected  Sub  close() throws IOException
 			Try
 				impl.close()
 			Finally
@@ -253,13 +253,13 @@ Namespace java.net
 				Me.fd = Nothing
 			End Try
 
-		protected void shutdownInput() throws IOException
+		protected  Sub  shutdownInput() throws IOException
 			impl.shutdownInput()
 
-		protected void shutdownOutput() throws IOException
+		protected  Sub  shutdownOutput() throws IOException
 			impl.shutdownOutput()
 
-		protected void sendUrgentData(Integer data) throws IOException
+		protected  Sub  sendUrgentData(Integer data) throws IOException
 			impl.sendUrgentData(data)
 
 		FileDescriptor acquireFD()
@@ -274,10 +274,10 @@ Namespace java.net
 		public Boolean connectionResetPending
 			Return impl.connectionResetPending
 
-		public void connectionResetset()
+		public  Sub  connectionResetset()
 			impl.connectionResetset()
 
-		public void connectionResetPendinging()
+		public  Sub  connectionResetPendinging()
 			impl.connectionResetPendinging()
 
 		public Boolean closedOrPending

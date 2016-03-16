@@ -252,7 +252,7 @@ Namespace java.awt.image
 		''' <param name="val"> The value to be set. </param>
 		''' <seealso cref= #getElem(int) </seealso>
 		''' <seealso cref= #getElem(int, int) </seealso>
-		public void elemlem(Integer i, Integer val)
+		public  Sub  elemlem(Integer i, Integer val)
 			data(i+offset) = CSng(val)
 			theTrackable.markDirty()
 
@@ -265,7 +265,7 @@ Namespace java.awt.image
 		''' <param name="val"> The value to be set. </param>
 		''' <seealso cref= #getElem(int) </seealso>
 		''' <seealso cref= #getElem(int, int) </seealso>
-		public void elemlem(Integer bank, Integer i, Integer val)
+		public  Sub  elemlem(Integer bank, Integer i, Integer val)
 			bankdata(bank)(i+offsets(bank)) = CSng(val)
 			theTrackable.markDirty()
 
@@ -302,7 +302,7 @@ Namespace java.awt.image
 		''' <param name="val"> The value to be set. </param>
 		''' <seealso cref= #getElemFloat(int) </seealso>
 		''' <seealso cref= #getElemFloat(int, int) </seealso>
-		public void elemFloatoat(Integer i, Single val)
+		public  Sub  elemFloatoat(Integer i, Single val)
 			data(i+offset) = val
 			theTrackable.markDirty()
 
@@ -315,7 +315,7 @@ Namespace java.awt.image
 		''' <param name="val"> The value to be set. </param>
 		''' <seealso cref= #getElemFloat(int) </seealso>
 		''' <seealso cref= #getElemFloat(int, int) </seealso>
-		public void elemFloatoat(Integer bank, Integer i, Single val)
+		public  Sub  elemFloatoat(Integer bank, Integer i, Single val)
 			bankdata(bank)(i+offsets(bank)) = val
 			theTrackable.markDirty()
 
@@ -352,7 +352,7 @@ Namespace java.awt.image
 		''' <param name="val"> The value to be set. </param>
 		''' <seealso cref= #getElemDouble(int) </seealso>
 		''' <seealso cref= #getElemDouble(int, int) </seealso>
-		public void elemDoubleble(Integer i, Double val)
+		public  Sub  elemDoubleble(Integer i, Double val)
 			data(i+offset) = CSng(val)
 			theTrackable.markDirty()
 
@@ -365,7 +365,7 @@ Namespace java.awt.image
 		''' <param name="val"> The value to be set. </param>
 		''' <seealso cref= #getElemDouble(int) </seealso>
 		''' <seealso cref= #getElemDouble(int, int) </seealso>
-		public void elemDoubleble(Integer bank, Integer i, Double val)
+		public  Sub  elemDoubleble(Integer bank, Integer i, Double val)
 			bankdata(bank)(i+offsets(bank)) = CSng(val)
 			theTrackable.markDirty()
 	End Class

@@ -125,7 +125,7 @@ Namespace java.security
 	''' somemethod() {
 	'''     ...normal code here...
 	'''     AccessController.doPrivileged(new PrivilegedAction<Void>() {
-	'''         public Void run() {
+	'''         public  Sub  run() {
 	'''             // privileged code goes here, for example:
 	'''             System.loadLibrary("awt");
 	'''             return null; // nothing to return

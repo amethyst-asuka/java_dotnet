@@ -54,7 +54,7 @@ Namespace java.util
 	''' well defined on such a map.
 	''' 
 	''' <p>All general-purpose map implementation classes should provide two
-	''' "standard" constructors: a void (no arguments) constructor which creates an
+	''' "standard" constructors: a  Sub  (no arguments) constructor which creates an
 	''' empty map, and a constructor with a single argument of type <tt>Map</tt>,
 	''' which creates a new map with the same key-value mappings as its argument.
 	''' In effect, the latter constructor allows the user to copy any map,

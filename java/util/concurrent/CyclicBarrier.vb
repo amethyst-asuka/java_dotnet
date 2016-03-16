@@ -63,7 +63,7 @@ Namespace java.util.concurrent
 	'''   class Worker implements Runnable {
 	'''     int myRow;
 	'''     Worker(int row) { myRow = row; }
-	'''     public void run() {
+	'''     public  Sub  run() {
 	'''       while (!done()) {
 	'''         processRow(myRow);
 	''' 
@@ -82,7 +82,7 @@ Namespace java.util.concurrent
 	'''     data = matrix;
 	'''     N = matrix.length;
 	'''     Runnable barrierAction =
-	'''       new Runnable() { public void run() { mergeRows(...); }};
+	'''       new Runnable() { public  Sub  run() { mergeRows(...); }};
 	'''     barrier = new CyclicBarrier(N, barrierAction);
 	''' 
 	'''     List<Thread> threads = new ArrayList<Thread>(N);

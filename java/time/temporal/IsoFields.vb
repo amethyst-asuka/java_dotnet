@@ -625,7 +625,7 @@ Namespace java.time.temporal
 	'		}
 
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'			private static void ensureIso(TemporalAccessor temporal)
+'			private static  Sub  ensureIso(TemporalAccessor temporal)
 	'		{
 	'			if (isIso(temporal) == False)
 	'			{

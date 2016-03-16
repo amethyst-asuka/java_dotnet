@@ -335,7 +335,7 @@ Namespace java.awt
 				outOff = iiRas.getDataOffset(0)
 				Return ras
 
-			public void rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
+			public  Sub  rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
 				Dim inData As Integer() = Me.inData
 				Dim outData As Integer() = Me.outData
 				Dim out As Integer = outOff
@@ -448,10 +448,10 @@ Namespace java.awt
 				outOff = biRas.getDataOffset(0)
 				Return ras
 
-			public void Dispose()
+			public  Sub  Dispose()
 				dropByteRaster(outRas)
 
-			public void rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
+			public  Sub  rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
 				Dim inData As SByte() = Me.inData
 				Dim outData As SByte() = Me.outData
 				Dim out As Integer = outOff
@@ -554,7 +554,7 @@ Namespace java.awt
 				outOff = iiRas.getDataOffset(0)
 				Return ras
 
-			public void rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
+			public  Sub  rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
 				Dim inData As SByte() = Me.inData
 				Dim outData As Integer() = Me.outData
 				Dim out As Integer = outOff
@@ -626,7 +626,7 @@ Namespace java.awt
 			public java.awt.image.WritableRaster makeRaster(Integer w, Integer h)
 				Return makeRaster(colorModel, srcRas, w, h)
 
-			public void rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
+			public  Sub  rasterter(Integer x, Integer y, Integer xerr, Integer yerr, Integer w, Integer h, Integer bWidth, Integer bHeight, Integer colincx, Integer colincxerr, Integer colincy, Integer colincyerr, Integer rowincx, Integer rowincxerr, Integer rowincy, Integer rowincyerr)
 				Dim data As Object = Nothing
 				Dim rowx As Integer = x
 				Dim rowy As Integer = y

@@ -1414,7 +1414,7 @@ Namespace java.lang.invoke
                 emitBoxing(dstWrapper)
             End If
 
-            ' If the return type is void we return a null reference.
+            ' If the return type is  Sub  we return a null reference.
             If rtype Is GetType(Void) Then mv.visitInsn(Opcodes.ACONST_NULL)
             emitReturnInsn(L_TYPE) ' NOTE: NamedFunction invokers always return a reference value.
 

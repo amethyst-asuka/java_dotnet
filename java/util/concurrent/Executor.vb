@@ -58,7 +58,7 @@ Namespace java.util.concurrent
 	''' 
 	'''  <pre> {@code
 	''' class DirectExecutor implements Executor {
-	'''   public void execute(Runnable r) {
+	'''   public  Sub  execute(Runnable r) {
 	'''     r.run();
 	'''   }
 	''' }}</pre>
@@ -69,7 +69,7 @@ Namespace java.util.concurrent
 	''' 
 	'''  <pre> {@code
 	''' class ThreadPerTaskExecutor implements Executor {
-	'''   public void execute(Runnable r) {
+	'''   public  Sub  execute(Runnable r) {
 	'''     new Thread(r).start();
 	'''   }
 	''' }}</pre>
@@ -89,9 +89,9 @@ Namespace java.util.concurrent
 	'''     this.executor = executor;
 	'''   }
 	''' 
-	'''   public synchronized void execute(final Runnable r) {
+	'''   public synchronized  Sub  execute(final Runnable r) {
 	'''     tasks.offer(new Runnable() {
-	'''       public void run() {
+	'''       public  Sub  run() {
 	'''         try {
 	'''           r.run();
 	'''         } finally {
@@ -104,7 +104,7 @@ Namespace java.util.concurrent
 	'''     }
 	'''   }
 	''' 
-	'''   protected synchronized void scheduleNext() {
+	'''   protected synchronized  Sub  scheduleNext() {
 	'''     if ((active = tasks.poll()) != null) {
 	'''       executor.execute(active);
 	'''     }

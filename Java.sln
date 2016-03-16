@@ -1,20 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-# SharpDevelop 4.4
-VisualStudioVersion = 14.0.25008.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "runtime", "runtime", "{4F8E8A03-0794-4553-923A-C4719B208850}"
-	ProjectSection(SolutionItems) = postProject
-	EndProjectSection
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "+Microsoft.VisualBasic.Architecture.Framework", "..\Microsoft.VisualBasic_Framework\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj", "{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Java", "Java.vbproj", "{8E1DA001-2334-4E18-A06C-20AEB9931B78}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "+Microsoft.VisualBasic.Architecture.Framework", "..\VisualBasic_AppFramework\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj", "{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "sourceUtils", "sourceUtils\sourceUtils.vbproj", "{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\Microsoft.VisualBasic_Framework\SharedProject.VB_FrameworkExtensions\SharedProject.VB_FrameworkExtensions.projitems*{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}*SharedItemsImports = 4
+		..\VisualBasic_AppFramework\SharedProject.VB_FrameworkExtensions\SharedProject.VB_FrameworkExtensions.projitems*{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +48,18 @@ Global
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Release|x64.Build.0 = Release|x64
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Release|x86.ActiveCfg = Release|x86
 		{FECCE1FD-E1D4-49E3-A668-60BB5E7AED99}.Release|x86.Build.0 = Release|x86
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Debug|x64.Build.0 = Debug|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Debug|x86.Build.0 = Debug|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Release|x64.ActiveCfg = Release|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Release|x64.Build.0 = Release|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Release|x86.ActiveCfg = Release|Any CPU
+		{B48BC1B9-234E-4EFB-9B5E-23978CA7359D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

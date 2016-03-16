@@ -99,7 +99,7 @@ Namespace java.lang.invoke
 	'''    // Target and fallback may take any arguments, but must have the same type.
 	'''    return MethodHandles.guardWithTest(this.mcsInvoker, target, fallback);
 	'''  }
-	'''  public static void invalidateAll(SwitchPoint[] spts) {
+	'''  public static  Sub  invalidateAll(SwitchPoint[] spts) {
 	'''    List&lt;MutableCallSite&gt; mcss = new ArrayList&lt;&gt;();
 	'''    for (SwitchPoint spt : spts)  mcss.add(spt.mcs);
 	'''    for (MutableCallSite mcs : mcss)  mcs.setTarget(K_false);

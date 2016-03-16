@@ -53,7 +53,7 @@ Namespace java.util
 	''' 
 	'''       ...
 	''' 
-	'''       public void formatTo(Formatter fmt, int f, int width, int precision) {
+	'''       public  Sub  formatTo(Formatter fmt, int f, int width, int precision) {
 	'''           StringBuilder sb = new StringBuilder();
 	''' 
 	'''           // decide form of name

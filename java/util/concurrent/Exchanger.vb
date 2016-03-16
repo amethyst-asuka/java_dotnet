@@ -60,7 +60,7 @@ Namespace java.util.concurrent
 	'''   DataBuffer initialFullBuffer = ...
 	''' 
 	'''   class FillingLoop implements Runnable {
-	'''     public void run() {
+	'''     public  Sub  run() {
 	'''       DataBuffer currentBuffer = initialEmptyBuffer;
 	'''       try {
 	'''         while (currentBuffer != null) {
@@ -73,7 +73,7 @@ Namespace java.util.concurrent
 	'''   }
 	''' 
 	'''   class EmptyingLoop implements Runnable {
-	'''     public void run() {
+	'''     public  Sub  run() {
 	'''       DataBuffer currentBuffer = initialFullBuffer;
 	'''       try {
 	'''         while (currentBuffer != null) {
@@ -85,7 +85,7 @@ Namespace java.util.concurrent
 	'''     }
 	'''   }
 	''' 
-	'''   void start() {
+	'''    Sub  start() {
 	'''     new Thread(new FillingLoop()).start();
 	'''     new Thread(new EmptyingLoop()).start();
 	'''   }

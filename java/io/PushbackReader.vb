@@ -145,7 +145,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IOException">  If the pushback buffer is full,
 		'''                          or if some other I/O error occurs </exception>
-		public void unread(Integer c) throws IOException
+		public  Sub  unread(Integer c) throws IOException
 			SyncLock lock
 				ensureOpen()
 				If pos = 0 Then Throw New IOException("Pushback buffer overflow")
@@ -166,7 +166,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IOException">  If there is insufficient room in the pushback
 		'''                          buffer, or if some other I/O error occurs </exception>
-		public void unread(Char cbuf() , Integer off, Integer len) throws IOException
+		public  Sub  unread(Char cbuf() , Integer off, Integer len) throws IOException
 			SyncLock lock
 				ensureOpen()
 				If len > pos Then Throw New IOException("Pushback buffer overflow")
@@ -184,7 +184,7 @@ Namespace java.io
 		''' </param>
 		''' <exception cref="IOException">  If there is insufficient room in the pushback
 		'''                          buffer, or if some other I/O error occurs </exception>
-		public void unread(Char cbuf()) throws IOException
+		public  Sub  unread(Char cbuf()) throws IOException
 			unread(cbuf, 0, cbuf.length)
 
 		''' <summary>
@@ -202,7 +202,7 @@ Namespace java.io
 		''' for class <code>PushbackReader</code> always throws an exception.
 		''' </summary>
 		''' <exception cref="IOException">  Always, since mark is not supported </exception>
-		public void mark(Integer readAheadLimit) throws IOException
+		public  Sub  mark(Integer readAheadLimit) throws IOException
 			Throw New IOException("mark/reset not supported")
 
 		''' <summary>
@@ -210,7 +210,7 @@ Namespace java.io
 		''' <code>PushbackReader</code> always throws an exception.
 		''' </summary>
 		''' <exception cref="IOException">  Always, since reset is not supported </exception>
-		public void reset() throws IOException
+		public  Sub  reset() throws IOException
 			Throw New IOException("mark/reset not supported")
 
 		''' <summary>
@@ -227,7 +227,7 @@ Namespace java.io
 		''' Closing a previously closed stream has no effect.
 		''' </summary>
 		''' <exception cref="IOException">  If an I/O error occurs </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			MyBase.close()
 			buf = Nothing
 

@@ -43,11 +43,11 @@ Namespace java.beans
 	''' public class MyBean {
 	'''     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	''' 
-	'''     public void addPropertyChangeListener(PropertyChangeListener listener) {
+	'''     public  Sub  addPropertyChangeListener(PropertyChangeListener listener) {
 	'''         this.pcs.addPropertyChangeListener(listener);
 	'''     }
 	''' 
-	'''     public void removePropertyChangeListener(PropertyChangeListener listener) {
+	'''     public  Sub  removePropertyChangeListener(PropertyChangeListener listener) {
 	'''         this.pcs.removePropertyChangeListener(listener);
 	'''     }
 	''' 
@@ -57,7 +57,7 @@ Namespace java.beans
 	'''         return this.value;
 	'''     }
 	''' 
-	'''     public void setValue(String newValue) {
+	'''     public  Sub  setValue(String newValue) {
 	'''         String oldValue = this.value;
 	'''         this.value = newValue;
 	'''         this.pcs.firePropertyChange("value", oldValue, newValue);

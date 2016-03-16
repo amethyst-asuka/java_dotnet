@@ -199,7 +199,7 @@ Namespace java.nio.channels.spi
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				interruptor = New sun.nio.ch.Interruptible()
 	'			{
-	'					public void interrupt(Thread ignore)
+	'					public  Sub  interrupt(Thread ignore)
 	'					{
 	'						outerInstance.wakeup();
 	'					}

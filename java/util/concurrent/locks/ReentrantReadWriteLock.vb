@@ -140,7 +140,7 @@ Namespace java.util.concurrent.locks
 	'''   volatile boolean cacheValid;
 	'''   final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
 	''' 
-	'''   void processCachedData() {
+	'''    Sub  processCachedData() {
 	'''     rwl.readLock().lock();
 	'''     if (!cacheValid) {
 	'''       // Must release read lock before acquiring write lock
@@ -198,7 +198,7 @@ Namespace java.util.concurrent.locks
 	'''     try { return m.put(key, value); }
 	'''     finally { w.unlock(); }
 	'''   }
-	'''   public void clear() {
+	'''   public  Sub  clear() {
 	'''     w.lock();
 	'''     try { m.clear(); }
 	'''     finally { w.unlock(); }

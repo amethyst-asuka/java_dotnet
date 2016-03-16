@@ -68,7 +68,7 @@ Namespace java.awt
 	'''         <seealso cref="java.awt.Image"/> image = <seealso cref="java.awt.Toolkit#getImage(String) Toolkit.getDefaultToolkit().getImage"/>(...);
 	'''         // create a action listener to listen for default action executed on the tray icon
 	'''         <seealso cref="java.awt.event.ActionListener"/> listener = new <seealso cref="java.awt.event.ActionListener ActionListener"/>() {
-	'''             public void <seealso cref="java.awt.event.ActionListener#actionPerformed actionPerformed"/>(<seealso cref="java.awt.event.ActionEvent"/> e) {
+	'''             public  Sub  <seealso cref="java.awt.event.ActionListener#actionPerformed actionPerformed"/>(<seealso cref="java.awt.event.ActionEvent"/> e) {
 	'''                 // execute default action of the application
 	'''                 // ...
 	'''             }
@@ -127,7 +127,7 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setSystemTrayAccessor(New sun.awt.AWTAccessor.SystemTrayAccessor()
 	'		{
-	'				public void firePropertyChange(SystemTray tray, String propertyName, Object oldValue, Object newValue)
+	'				public  Sub  firePropertyChange(SystemTray tray, String propertyName, Object oldValue, Object newValue)
 	'				{
 	'					tray.firePropertyChange(propertyName, oldValue, newValue);
 	'				}

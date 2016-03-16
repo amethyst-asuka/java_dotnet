@@ -62,7 +62,7 @@ Namespace java.lang.invoke
     ''' Thus, the first temporary (if any) is always numbered N (where N=arity).
     ''' Every occurrence of a name reference in an argument list must refer to
     ''' a name previously defined within the same lambda.
-    ''' A lambda has a void result if and only if its result index is -1.
+    ''' A lambda has a  Sub  result if and only if its result index is -1.
     ''' If a temporary has the type "V", it cannot be the subject of a NameRef,
     ''' even though possesses a number.
     ''' Note that all reference types are erased to "L", which stands for {@code Object}.
@@ -79,7 +79,7 @@ Namespace java.lang.invoke
     ''' <li>J = long: no implicit conversions
     ''' <li>F = float: no implicit conversions
     ''' <li>D = double: no implicit conversions
-    ''' <li>V = void: a function result may be void if and only if its Name is of type "V"
+    ''' <li>V = void: a function result may be  Sub  if and only if its Name is of type "V"
     ''' </ul>
     ''' Although implicit conversions are not allowed, explicit ones can easily be
     ''' encoded by using temporary expressions which call type-transformed identity functions.
@@ -88,7 +88,7 @@ Namespace java.lang.invoke
     ''' <blockquote><pre>{@code
     ''' (a0:J)=>{ a0 }
     '''     == identity(long)
-    ''' (a0:I)=>{ t1:V = System.out#println(a0); void }
+    ''' (a0:I)=>{ t1:V = System.out#println(a0);  Sub  }
     '''     == System.out#println(int)
     ''' (a0:L)=>{ t1:V = System.out#println(a0); a0 }
     '''     == identity, with printing side-effect
@@ -1175,7 +1175,7 @@ Namespace java.lang.invoke
             ' The following are predefined NamedFunction invokers.  The system must build
             ' a separate invoker for each distinct signature.
             ''' <summary>
-            ''' void return type invokers. </summary>
+            '''  Sub  return type invokers. </summary>
             'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
             Friend Shared Function invoke__V(ByVal mh As MethodHandle, ByVal a As Object()) As Object
                 Assert(arityCheck(0, GetType(Void), mh, a))

@@ -533,7 +533,7 @@ Namespace java.awt.image
 	'				Return db.theTrackable;
 	'			}
 	'
-	'			public void setTrackable(DataBuffer db, StateTrackableDelegate trackable)
+	'			public  Sub  setTrackable(DataBuffer db, StateTrackableDelegate trackable)
 	'			{
 	'				db.theTrackable = trackable;
 	'			}

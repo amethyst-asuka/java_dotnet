@@ -363,7 +363,7 @@ Namespace java.beans.beancontext
 
 			' note usage of service per requestor, per service
 
-			SyncLock void usingService Object requestor, Object service, Class serviceClass, BeanContextServiceProvider bcsp, Boolean isDelegated, BeanContextServiceRevokedListener bcsrl
+			SyncLock  Sub  usingService Object requestor, Object service, Class serviceClass, BeanContextServiceProvider bcsp, Boolean isDelegated, BeanContextServiceRevokedListener bcsrl
 				throws java.util.TooManyListenersException, UnsupportedOperationException
 
 				' first, process mapping from serviceClass to requestor(s)
@@ -418,7 +418,7 @@ Namespace java.beans.beancontext
 
 			' release a service reference
 
-			SyncLock void releaseService Object requestor, Object service
+			SyncLock  Sub  releaseService Object requestor, Object service
 				If serviceRequestors Is Nothing Then Return
 
 				Dim services As IDictionary = CType(serviceRequestors(requestor), IDictionary)
@@ -457,7 +457,7 @@ Namespace java.beans.beancontext
 
 			' revoke a service
 
-			SyncLock void revokeService Class serviceClass, Boolean isDelegated, Boolean revokeNow
+			SyncLock  Sub  revokeService Class serviceClass, Boolean isDelegated, Boolean revokeNow
 				If serviceClasses Is Nothing Then Return
 
 				Dim serviceClassRef As BCSSCServiceClassRef = CType(serviceClasses(serviceClass), BCSSCServiceClassRef)
@@ -657,7 +657,7 @@ Namespace java.beans.beancontext
 		''' </summary>
 		''' <exception cref="NullPointerException"> if the argument is null </exception>
 
-		public void addBeanContextServicesListener(BeanContextServicesListener bcsl)
+		public  Sub  addBeanContextServicesListener(BeanContextServicesListener bcsl)
 			If bcsl Is Nothing Then Throw New NullPointerException("bcsl")
 
 			SyncLock bcsListeners
@@ -672,7 +672,7 @@ Namespace java.beans.beancontext
 		''' remove a BeanContextServicesListener
 		''' </summary>
 
-		public void removeBeanContextServicesListener(BeanContextServicesListener bcsl)
+		public  Sub  removeBeanContextServicesListener(BeanContextServicesListener bcsl)
 			If bcsl Is Nothing Then Throw New NullPointerException("bcsl")
 
 			SyncLock bcsListeners
@@ -738,7 +738,7 @@ Namespace java.beans.beancontext
 		''' <param name="bcsp"> the service provider </param>
 		''' <param name="revokeCurrentServicesNow"> whether or not to revoke the service </param>
 
-		public void revokeService(Class serviceClass, BeanContextServiceProvider bcsp, Boolean revokeCurrentServicesNow)
+		public  Sub  revokeService(Class serviceClass, BeanContextServiceProvider bcsp, Boolean revokeCurrentServicesNow)
 
 			If serviceClass Is Nothing Then Throw New NullPointerException("serviceClass")
 			If bcsp Is Nothing Then Throw New NullPointerException("bcsp")
@@ -810,13 +810,13 @@ Namespace java.beans.beancontext
 
 				Return service_Renamed
 
-			public void releaseService(BeanContextServices bcs, Object requestor, Object service)
+			public  Sub  releaseService(BeanContextServices bcs, Object requestor, Object service)
 				nestingCtxt.releaseService(bcs, requestor, service)
 
 			public IEnumerator getCurrentServiceSelectors(BeanContextServices bcs, Class serviceClass)
 				Return nestingCtxt.getCurrentServiceSelectors(serviceClass)
 
-			public void serviceRevoked(BeanContextServiceRevokedEvent bcsre)
+			public  Sub  serviceRevoked(BeanContextServiceRevokedEvent bcsre)
 				Dim i As IEnumerator = bcsChildren() ' get the BCSChild values.
 
 				Do While i.hasNext()
@@ -902,7 +902,7 @@ Namespace java.beans.beancontext
 		''' release a service
 		''' </summary>
 
-		public void releaseService(BeanContextChild child, Object requestor, Object service)
+		public  Sub  releaseService(BeanContextChild child, Object requestor, Object service)
 			If child Is Nothing Then Throw New NullPointerException("child")
 			If requestor Is Nothing Then Throw New NullPointerException("requestor")
 			If service Is Nothing Then Throw New NullPointerException("service")
@@ -945,7 +945,7 @@ Namespace java.beans.beancontext
 		''' own propagation semantics.
 		''' </summary>
 
-		 public void serviceAvailable(BeanContextServiceAvailableEvent bcssae)
+		 public  Sub  serviceAvailable(BeanContextServiceAvailableEvent bcssae)
 			SyncLock BeanContext.globalHierarchyLock
 				If services.ContainsKey(bcssae.serviceClass) Then Return
 
@@ -974,7 +974,7 @@ Namespace java.beans.beancontext
 		''' own propagation semantics.
 		''' </summary>
 
-		public void serviceRevoked(BeanContextServiceRevokedEvent bcssre)
+		public  Sub  serviceRevoked(BeanContextServiceRevokedEvent bcssre)
 			SyncLock BeanContext.globalHierarchyLock
 				If services.ContainsKey(bcssre.serviceClass) Then Return
 
@@ -1017,7 +1017,7 @@ Namespace java.beans.beancontext
 		''' own child removal side-effects.
 		''' </summary>
 
-		protected void childJustRemovedHook(Object child, BCSChild bcsc)
+		protected  Sub  childJustRemovedHook(Object child, BCSChild bcsc)
 			Dim bcssc As BCSSChild = CType(bcsc, BCSSChild)
 
 			bcssc.cleanupReferences()
@@ -1031,7 +1031,7 @@ Namespace java.beans.beancontext
 		''' subclasses may envelope this method to implement their own semantics.
 		''' </summary>
 
-		protected synchronized void releaseBeanContextResources()
+		protected synchronized  Sub  releaseBeanContextResources()
 			Dim bcssc As Object()
 
 			MyBase.releaseBeanContextResources()
@@ -1056,7 +1056,7 @@ Namespace java.beans.beancontext
 		''' subclasses may envelope this method to implement their own semantics.
 		''' </summary>
 
-		protected synchronized void initializeBeanContextResources()
+		protected synchronized  Sub  initializeBeanContextResources()
 			MyBase.initializeBeanContextResources()
 
 			Dim nbc As BeanContext = beanContext
@@ -1074,7 +1074,7 @@ Namespace java.beans.beancontext
 		''' <summary>
 		''' Fires a <tt>BeanContextServiceEvent</tt> notifying of a new service. </summary>
 		''' <param name="serviceClass"> the service class </param>
-		protected final void fireServiceAdded(Class serviceClass)
+		protected final  Sub  fireServiceAdded(Class serviceClass)
 			Dim bcssae As New BeanContextServiceAvailableEvent(beanContextServicesPeer, serviceClass)
 
 			fireServiceAdded(bcssae)
@@ -1084,7 +1084,7 @@ Namespace java.beans.beancontext
 		''' service has become available.
 		''' </summary>
 		''' <param name="bcssae"> the <tt>BeanContextServiceAvailableEvent</tt> </param>
-		protected final void fireServiceAdded(BeanContextServiceAvailableEvent bcssae)
+		protected final  Sub  fireServiceAdded(BeanContextServiceAvailableEvent bcssae)
 			Dim copy As Object()
 
 			SyncLock bcsListeners
@@ -1099,7 +1099,7 @@ Namespace java.beans.beancontext
 		''' Fires a <tt>BeanContextServiceEvent</tt> notifying of a service being revoked.
 		''' </summary>
 		''' <param name="bcsre"> the <tt>BeanContextServiceRevokedEvent</tt> </param>
-		protected final void fireServiceRevoked(BeanContextServiceRevokedEvent bcsre)
+		protected final  Sub  fireServiceRevoked(BeanContextServiceRevokedEvent bcsre)
 			Dim copy As Object()
 
 			SyncLock bcsListeners
@@ -1116,7 +1116,7 @@ Namespace java.beans.beancontext
 		''' no longer available. </summary>
 		''' <param name="serviceClass"> the service class </param>
 		''' <param name="revokeNow"> whether or not the event should be revoked now </param>
-		protected final void fireServiceRevoked(Class serviceClass, Boolean revokeNow)
+		protected final  Sub  fireServiceRevoked(Class serviceClass, Boolean revokeNow)
 			Dim copy As Object()
 			Dim bcsre As New BeanContextServiceRevokedEvent(beanContextServicesPeer, serviceClass, revokeNow)
 
@@ -1139,7 +1139,7 @@ Namespace java.beans.beancontext
 		''' processing that has to occur prior to serialization of the children
 		''' </summary>
 
-		protected synchronized void bcsPreSerializationHook(java.io.ObjectOutputStream oos) throws java.io.IOException
+		protected synchronized  Sub  bcsPreSerializationHook(java.io.ObjectOutputStream oos) throws java.io.IOException
 
 			oos.writeInt(serializable)
 
@@ -1180,7 +1180,7 @@ Namespace java.beans.beancontext
 		''' processing that has to occur prior to serialization of the children
 		''' </summary>
 
-		protected synchronized void bcsPreDeserializationHook(java.io.ObjectInputStream ois) throws java.io.IOException, ClassNotFoundException
+		protected synchronized  Sub  bcsPreDeserializationHook(java.io.ObjectInputStream ois) throws java.io.IOException, ClassNotFoundException
 
 			serializable = ois.readInt()
 
@@ -1195,7 +1195,7 @@ Namespace java.beans.beancontext
 		''' serialize the instance
 		''' </summary>
 
-		private synchronized void writeObject(java.io.ObjectOutputStream oos) throws java.io.IOException
+		private synchronized  Sub  writeObject(java.io.ObjectOutputStream oos) throws java.io.IOException
 			oos.defaultWriteObject()
 
 			serialize(oos, CType(bcsListeners, ICollection))
@@ -1204,7 +1204,7 @@ Namespace java.beans.beancontext
 		''' deserialize the instance
 		''' </summary>
 
-		private synchronized void readObject(java.io.ObjectInputStream ois) throws java.io.IOException, ClassNotFoundException
+		private synchronized  Sub  readObject(java.io.ObjectInputStream ois) throws java.io.IOException, ClassNotFoundException
 
 			ois.defaultReadObject()
 

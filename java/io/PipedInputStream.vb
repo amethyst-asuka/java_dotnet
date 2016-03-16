@@ -218,7 +218,7 @@ Namespace java.io
 		''' <exception cref="IOException"> If the pipe is <a href="#BROKEN"> broken</a>,
 		'''           <seealso cref="#connect(java.io.PipedOutputStream) unconnected"/>,
 		'''           closed,or if an I/O error occurs. </exception>
-		SyncLock void receive SByte b() , Integer off, Integer len
+		SyncLock  Sub  receive SByte b() , Integer off, Integer len
 			Dim IOException As throws
 			checkStateForReceive()
 			writeSide = Thread.CurrentThread
@@ -248,7 +248,7 @@ Namespace java.io
 			Loop
 		End SyncLock
 
-		private void checkStateForReceive() throws IOException
+		private  Sub  checkStateForReceive() throws IOException
 			If Not connected Then
 				Throw New IOException("Pipe not connected")
 			ElseIf closedByWriter OrElse closedByReader Then
@@ -257,7 +257,7 @@ Namespace java.io
 				Throw New IOException("Read end dead")
 			End If
 
-		private void awaitSpace() throws IOException
+		private  Sub  awaitSpace() throws IOException
 			Do While [in] = out
 				checkStateForReceive()
 
@@ -274,7 +274,7 @@ Namespace java.io
 		''' Notifies all waiting threads that the last byte of data has been
 		''' received.
 		''' </summary>
-		SyncLock void receivedLast
+		SyncLock  Sub  receivedLast
 			closedByWriter = True
 			notifyAll()
 		End SyncLock
@@ -409,7 +409,7 @@ Namespace java.io
 		''' associated with the stream.
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			closedByReader = True
 			SyncLock Me
 				[in] = -1

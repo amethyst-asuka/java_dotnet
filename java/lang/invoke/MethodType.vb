@@ -869,8 +869,8 @@ Namespace java.lang.invoke
 			If src Is dst OrElse src Is GetType(Object) OrElse dst Is GetType(Object) Then Return True
 			' the remainder of this logic is documented in MethodHandle.asType
 			If src.primitive Then
-				' can force void to an explicit null, a la reflect.Method.invoke
-				' can also force void to a primitive zero, by analogy
+				' can force  Sub  to an explicit null, a la reflect.Method.invoke
+				' can also force  Sub  to a primitive zero, by analogy
 				If src Is GetType(void) Then 'or !dst.isPrimitive()? Return True
 				Dim sw As sun.invoke.util.Wrapper = sun.invoke.util.Wrapper.forPrimitiveType(src)
 				If dst.primitive Then

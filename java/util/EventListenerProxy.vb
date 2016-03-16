@@ -35,7 +35,7 @@ Namespace java.util
 	''' would have a two argument method signature for adding
 	''' a {@code PropertyChangeListener} for a property:
 	''' <pre>
-	''' public void addPropertyChangeListener(String propertyName,
+	''' public  Sub  addPropertyChangeListener(String propertyName,
 	'''                                       PropertyChangeListener listener)
 	''' </pre>
 	''' If the bean also implemented the zero argument get listener method:

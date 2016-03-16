@@ -45,7 +45,7 @@ Namespace java.util
 	''' produce a copy of a set that has the same order as the original, regardless
 	''' of the original set's implementation:
 	''' <pre>
-	'''     void foo(Set s) {
+	'''      Sub  foo(Set s) {
 	'''         Set copy = new LinkedHashSet(s);
 	'''         ...
 	'''     }

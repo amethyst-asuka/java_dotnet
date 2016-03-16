@@ -299,7 +299,7 @@ Namespace java.io
 		''' 
 		''' @revised 1.4
 		''' @spec JSR-51 </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			SyncLock closeLock
 				If closed Then Return
 				closed = True
@@ -342,9 +342,9 @@ Namespace java.io
 				Return channel
 			End SyncLock
 
-		private static native void initIDs()
+		private static native  Sub  initIDs()
 
-		private native void close0() throws IOException
+		private native  Sub  close0() throws IOException
 
 		static FileInputStream()
 			initIDs()
@@ -355,7 +355,7 @@ Namespace java.io
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FileInputStream#close() </seealso>
-		protected void Finalize() throws IOException
+		protected  Sub  Finalize() throws IOException
 			If (fd IsNot Nothing) AndAlso (fd IsNot FileDescriptor.in) Then close()
 	End Class
 

@@ -46,7 +46,7 @@ Namespace java.util
     ''' <tt>entrySet().iterator()</tt> must additionally implement its
     ''' <tt>remove</tt> method.
     ''' 
-    ''' <p>The programmer should generally provide a void (no argument) and map
+    ''' <p>The programmer should generally provide a  Sub  (no argument) and map
     ''' constructor, as per the recommendation in the <tt>Map</tt> interface
     ''' specification.
     ''' 

@@ -49,7 +49,7 @@ Namespace java.util
 	''' should additionally implement the list iterator's <tt>remove</tt> and
 	''' <tt>add</tt> methods.<p>
 	''' 
-	''' The programmer should generally provide a void (no argument) and collection
+	''' The programmer should generally provide a  Sub  (no argument) and collection
 	''' constructor, as per the recommendation in the <tt>Collection</tt> interface
 	''' specification.<p>
 	''' 

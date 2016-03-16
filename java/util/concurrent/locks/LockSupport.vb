@@ -95,7 +95,7 @@ Namespace java.util.concurrent.locks
 	'''   private final Queue<Thread> waiters
 	'''     = new ConcurrentLinkedQueue<Thread>();
 	''' 
-	'''   public void lock() {
+	'''   public  Sub  lock() {
 	'''     boolean wasInterrupted = false;
 	'''     Thread current = Thread.currentThread();
 	'''     waiters.add(current);
@@ -113,7 +113,7 @@ Namespace java.util.concurrent.locks
 	'''       current.interrupt();
 	'''   }
 	''' 
-	'''   public void unlock() {
+	'''   public  Sub  unlock() {
 	'''     locked.set(false);
 	'''     LockSupport.unpark(waiters.peek());
 	'''   }

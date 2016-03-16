@@ -89,7 +89,7 @@ Namespace java.util.stream
 	'				MyBase(matchKind);
 	'			}
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				if (!stop && predicate.test(t) == matchKind.stopOnPredicateMatches)
 	'				{
@@ -120,7 +120,7 @@ Namespace java.util.stream
 	'				MyBase(matchKind);
 	'			}
 	'
-	'			@Override public void accept(int t)
+	'			@Override public  Sub  accept(int t)
 	'			{
 	'				if (!stop && predicate.test(t) == matchKind.stopOnPredicateMatches)
 	'				{
@@ -152,7 +152,7 @@ Namespace java.util.stream
 	'				MyBase(matchKind);
 	'			}
 	'
-	'			@Override public void accept(long t)
+	'			@Override public  Sub  accept(long t)
 	'			{
 	'				if (!stop && predicate.test(t) == matchKind.stopOnPredicateMatches)
 	'				{
@@ -184,7 +184,7 @@ Namespace java.util.stream
 	'				MyBase(matchKind);
 	'			}
 	'
-	'			@Override public void accept(double t)
+	'			@Override public  Sub  accept(double t)
 	'			{
 	'				if (!stop && predicate.test(t) == matchKind.stopOnPredicateMatches)
 	'				{

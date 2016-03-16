@@ -164,7 +164,7 @@ Namespace java.io
 		'''             input stream does not support reading after close, or
 		'''             another I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
-		public final void readFully(SByte b()) throws IOException
+		public final  Sub  readFully(SByte b()) throws IOException
 			readFully(b, 0, b.length)
 
 		''' <summary>
@@ -184,7 +184,7 @@ Namespace java.io
 		'''             input stream does not support reading after close, or
 		'''             another I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
-		public final void readFully(SByte b() , Integer off, Integer len) throws IOException
+		public final  Sub  readFully(SByte b() , Integer off, Integer len) throws IOException
 			If len < 0 Then Throw New IndexOutOfBoundsException
 			Dim n As Integer = 0
 			Do While n < len

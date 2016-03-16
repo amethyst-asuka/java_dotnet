@@ -436,7 +436,7 @@ Namespace java.util.jar
 					Return -1
 				End If
 
-			public void close() throws IOException
+			public  Sub  close() throws IOException
 				If [is] IsNot Nothing Then [is].close()
 				[is] = Nothing
 				mev = Nothing
@@ -669,7 +669,7 @@ Namespace java.util.jar
 
 			Return mapSignersToCodeSource(url, getCodeSigners(jar, je))
 
-		public void eagerValidationion(Boolean eager)
+		public  Sub  eagerValidationion(Boolean eager)
 			eagerValidation = eager
 
 		public synchronized  ArrayList manifestDigests

@@ -107,7 +107,7 @@ Namespace java.text
 	''' Creating and using text boundaries:
 	''' <blockquote>
 	''' <pre>
-	''' public static void main(String args[]) {
+	''' public static  Sub  main(String args[]) {
 	'''      if (args.length == 1) {
 	'''          String stringToExamine = args[0];
 	'''          //print each word in order
@@ -128,7 +128,7 @@ Namespace java.text
 	''' Print each element in order:
 	''' <blockquote>
 	''' <pre>
-	''' public static void printEachForward(BreakIterator boundary, String source) {
+	''' public static  Sub  printEachForward(BreakIterator boundary, String source) {
 	'''     int start = boundary.first();
 	'''     for (int end = boundary.next();
 	'''          end != BreakIterator.DONE;
@@ -142,7 +142,7 @@ Namespace java.text
 	''' Print each element in reverse order:
 	''' <blockquote>
 	''' <pre>
-	''' public static void printEachBackward(BreakIterator boundary, String source) {
+	''' public static  Sub  printEachBackward(BreakIterator boundary, String source) {
 	'''     int end = boundary.last();
 	'''     for (int start = boundary.previous();
 	'''          start != BreakIterator.DONE;
@@ -156,7 +156,7 @@ Namespace java.text
 	''' Print first element:
 	''' <blockquote>
 	''' <pre>
-	''' public static void printFirst(BreakIterator boundary, String source) {
+	''' public static  Sub  printFirst(BreakIterator boundary, String source) {
 	'''     int start = boundary.first();
 	'''     int end = boundary.next();
 	'''     System.out.println(source.substring(start,end));
@@ -167,7 +167,7 @@ Namespace java.text
 	''' Print last element:
 	''' <blockquote>
 	''' <pre>
-	''' public static void printLast(BreakIterator boundary, String source) {
+	''' public static  Sub  printLast(BreakIterator boundary, String source) {
 	'''     int end = boundary.last();
 	'''     int start = boundary.previous();
 	'''     System.out.println(source.substring(start,end));
@@ -178,7 +178,7 @@ Namespace java.text
 	''' Print the element at a specified position:
 	''' <blockquote>
 	''' <pre>
-	''' public static void printAt(BreakIterator boundary, int pos, String source) {
+	''' public static  Sub  printAt(BreakIterator boundary, int pos, String source) {
 	'''     int end = boundary.following(pos);
 	'''     int start = boundary.previous();
 	'''     System.out.println(source.substring(start,end));

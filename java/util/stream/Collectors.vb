@@ -596,7 +596,7 @@ Namespace java.util.stream
 	'			T value = Nothing;
 	'			boolean present = False;
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				if (present)
 	'				{

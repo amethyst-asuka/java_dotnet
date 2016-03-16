@@ -1309,7 +1309,7 @@ Namespace java.beans
 
         ' XXX - doens't seem to work. Debug later.
         'static final class javax_swing_JMenu_PersistenceDelegate extends DefaultPersistenceDelegate {
-        '    protected void initialize(Class<?> type, Object oldInstance, Object newInstance, Encoder out) {
+        '    protected  Sub  initialize(Class<?> type, Object oldInstance, Object newInstance, Encoder out) {
         '        super.initialize(type, oldInstance, newInstance, out);
         '        javax.swing.JMenu m = (javax.swing.JMenu)oldInstance;
         '        javax.swing.JMenu n = (javax.swing.JMenu)newInstance;

@@ -397,7 +397,7 @@ Namespace java.io
 		''' <exception cref="EOFException">  if this file reaches the end before reading
 		'''               all the bytes. </exception>
 		''' <exception cref="IOException">   if an I/O error occurs. </exception>
-		public final void readFully(SByte b()) throws IOException
+		public final  Sub  readFully(SByte b()) throws IOException
 			readFully(b, 0, b.length)
 
 		''' <summary>
@@ -413,7 +413,7 @@ Namespace java.io
 		''' <exception cref="EOFException">  if this file reaches the end before reading
 		'''               all the bytes. </exception>
 		''' <exception cref="IOException">   if an I/O error occurs. </exception>
-		public final void readFully(SByte b() , Integer off, Integer len) throws IOException
+		public final  Sub  readFully(SByte b() , Integer off, Integer len) throws IOException
 			Dim n As Integer = 0
 			Do
 				Dim count As Integer = Me.read(b, off + n, len - n)
@@ -459,10 +459,10 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the {@code byte} to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void write(Integer b) throws IOException
+		public  Sub  write(Integer b) throws IOException
 			write0(b)
 
-		private native void write0(Integer b) throws IOException
+		private native  Sub  write0(Integer b) throws IOException
 
 		''' <summary>
 		''' Writes a sub array as a sequence of bytes. </summary>
@@ -471,7 +471,7 @@ Namespace java.io
 		''' <param name="off"> the start offset in the data </param>
 		''' <param name="len"> the number of bytes that are written </param>
 		''' <exception cref="IOException"> If an I/O error has occurred. </exception>
-		private native void writeBytes(SByte b() , Integer off, Integer len) throws IOException
+		private native  Sub  writeBytes(SByte b() , Integer off, Integer len) throws IOException
 
 		''' <summary>
 		''' Writes {@code b.length} bytes from the specified byte array
@@ -479,7 +479,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="b">   the data. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void write(SByte b()) throws IOException
+		public  Sub  write(SByte b()) throws IOException
 			writeBytes(b, 0, b.length)
 
 		''' <summary>
@@ -490,7 +490,7 @@ Namespace java.io
 		''' <param name="off">   the start offset in the data. </param>
 		''' <param name="len">   the number of bytes to write. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void write(SByte b() , Integer off, Integer len) throws IOException
+		public  Sub  write(SByte b() , Integer off, Integer len) throws IOException
 			writeBytes(b, off, len)
 
 		' 'Random access' stuff
@@ -516,14 +516,14 @@ Namespace java.io
 		'''                   pointer. </param>
 		''' <exception cref="IOException">  if {@code pos} is less than
 		'''                          {@code 0} or if an I/O error occurs. </exception>
-		public void seek(Long pos) throws IOException
+		public  Sub  seek(Long pos) throws IOException
 			If pos < 0 Then
 				Throw New IOException("Negative seek offset")
 			Else
 				seek0(pos)
 			End If
 
-		private native void seek0(Long pos) throws IOException
+		private native  Sub  seek0(Long pos) throws IOException
 
 		''' <summary>
 		''' Returns the length of this file.
@@ -550,7 +550,7 @@ Namespace java.io
 		''' <param name="newLength">    The desired length of the file </param>
 		''' <exception cref="IOException">  If an I/O error occurs
 		''' @since      1.2 </exception>
-		public native void lengthgth(Long newLength) throws IOException
+		public native  Sub  lengthgth(Long newLength) throws IOException
 
 		''' <summary>
 		''' Closes this random access file stream and releases any system
@@ -565,7 +565,7 @@ Namespace java.io
 		''' 
 		''' @revised 1.4
 		''' @spec JSR-51 </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			SyncLock closeLock
 				If closed Then Return
 				closed = True
@@ -889,7 +889,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   a {@code boolean} value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeBoolean(Boolean v) throws IOException
+		public final  Sub  writeBoolean(Boolean v) throws IOException
 			write(If(v, 1, 0))
 			'written++;
 
@@ -899,7 +899,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   a {@code byte} value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeByte(Integer v) throws IOException
+		public final  Sub  writeByte(Integer v) throws IOException
 			write(v)
 			'written++;
 
@@ -909,7 +909,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   a {@code short} to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeShort(Integer v) throws IOException
+		public final  Sub  writeShort(Integer v) throws IOException
 			write((CInt(CUInt(v) >> 8)) And &HFF)
 			write((CInt(CUInt(v) >> 0)) And &HFF)
 			'written += 2;
@@ -921,7 +921,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   a {@code char} value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeChar(Integer v) throws IOException
+		public final  Sub  writeChar(Integer v) throws IOException
 			write((CInt(CUInt(v) >> 8)) And &HFF)
 			write((CInt(CUInt(v) >> 0)) And &HFF)
 			'written += 2;
@@ -932,7 +932,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   an {@code int} to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeInt(Integer v) throws IOException
+		public final  Sub  writeInt(Integer v) throws IOException
 			write((CInt(CUInt(v) >> 24)) And &HFF)
 			write((CInt(CUInt(v) >> 16)) And &HFF)
 			write((CInt(CUInt(v) >> 8)) And &HFF)
@@ -945,7 +945,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="v">   a {@code long} to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeLong(Long v) throws IOException
+		public final  Sub  writeLong(Long v) throws IOException
 			write(CInt(CInt(CUInt(v) >> 56)) And &HFF)
 			write(CInt(CInt(CUInt(v) >> 48)) And &HFF)
 			write(CInt(CInt(CUInt(v) >> 40)) And &HFF)
@@ -966,7 +966,7 @@ Namespace java.io
 		''' <param name="v">   a {@code float} value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.lang.Float#floatToIntBits(float) </seealso>
-		public final void writeFloat(Single v) throws IOException
+		public final  Sub  writeFloat(Single v) throws IOException
 			writeInt(Float.floatToIntBits(v))
 
 		''' <summary>
@@ -979,7 +979,7 @@ Namespace java.io
 		''' <param name="v">   a {@code double} value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.lang.Double#doubleToLongBits(double) </seealso>
-		public final void writeDouble(Double v) throws IOException
+		public final  Sub  writeDouble(Double v) throws IOException
 			writeLong(Double.doubleToLongBits(v))
 
 		''' <summary>
@@ -991,7 +991,7 @@ Namespace java.io
 		''' <param name="s">   a string of bytes to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		public final void writeBytes(String s) throws IOException
+		public final  Sub  writeBytes(String s) throws IOException
 			Dim len As Integer = s.length()
 			Dim b As SByte() = New SByte(len - 1){}
 			s.getBytes(0, len, b, 0)
@@ -1006,7 +1006,7 @@ Namespace java.io
 		''' <param name="s">   a {@code String} value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.RandomAccessFile#writeChar(int) </seealso>
-		public final void writeChars(String s) throws IOException
+		public final  Sub  writeChars(String s) throws IOException
 			Dim clen As Integer = s.length()
 			Dim blen As Integer = 2*clen
 			Dim b As SByte() = New SByte(blen - 1){}
@@ -1038,12 +1038,12 @@ Namespace java.io
 		''' </summary>
 		''' <param name="str">   a string to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeUTF(String str) throws IOException
+		public final  Sub  writeUTF(String str) throws IOException
 			DataOutputStream.writeUTF(str, Me)
 
-		private static native void initIDs()
+		private static native  Sub  initIDs()
 
-		private native void close0() throws IOException
+		private native  Sub  close0() throws IOException
 
 		static RandomAccessFile()
 			initIDs()

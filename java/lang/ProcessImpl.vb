@@ -327,7 +327,7 @@ Namespace java.lang
 		public java.io.InputStream errorStream
 			Return stderr_stream
 
-		protected void Finalize()
+		protected  Sub  Finalize()
 			closeHandle(handle)
 
 		private static final Integer STILL_ACTIVE = stillActive
@@ -344,7 +344,7 @@ Namespace java.lang
 			If Thread.interrupted() Then Throw New InterruptedException
 			Return exitValue()
 
-		private static native void waitForInterruptibly(Long handle)
+		private static native  Sub  waitForInterruptibly(Long handle)
 
 		public Boolean waitFor(Long timeout, java.util.concurrent.TimeUnit unit) throws InterruptedException
 			If getExitCodeProcess(handle) <> STILL_ACTIVE Then Return True
@@ -364,16 +364,16 @@ Namespace java.lang
 
 			Return (getExitCodeProcess(handle) <> STILL_ACTIVE)
 
-		private static native void waitForTimeoutInterruptibly(Long handle, Long timeout)
+		private static native  Sub  waitForTimeoutInterruptibly(Long handle, Long timeout)
 
-		public void destroy()
+		public  Sub  destroy()
 			terminateProcess(handle)
 
 		public Process destroyForcibly()
 			destroy()
 			Return Me
 
-		private static native void terminateProcess(Long handle)
+		private static native  Sub  terminateProcess(Long handle)
 
 		public Boolean alive
 			Return isProcessAlive(handle)

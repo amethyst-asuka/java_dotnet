@@ -254,12 +254,12 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setAWTEventAccessor(New sun.awt.AWTAccessor.AWTEventAccessor()
 	'		{
-	'				public void setPosted(AWTEvent ev)
+	'				public  Sub  setPosted(AWTEvent ev)
 	'				{
 	'					ev.isPosted = True;
 	'				}
 	'
-	'				public void setSystemGenerated(AWTEvent ev)
+	'				public  Sub  setSystemGenerated(AWTEvent ev)
 	'				{
 	'					ev.isSystemGenerated = True;
 	'				}
@@ -279,7 +279,7 @@ Namespace java.awt
 	'					Return ev.bdata;
 	'				}
 	'
-	'				public void setBData(AWTEvent ev, byte[] bdata)
+	'				public  Sub  setBData(AWTEvent ev, byte[] bdata)
 	'				{
 	'					ev.bdata = bdata;
 	'				}

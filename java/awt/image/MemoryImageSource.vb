@@ -60,7 +60,7 @@ Namespace java.awt.image
 	'''      int pixels[];
 	'''      MemoryImageSource source;
 	''' 
-	'''      public void init() {
+	'''      public  Sub  init() {
 	'''          int width = 50;
 	'''          int height = 50;
 	'''          int size = width * height;
@@ -76,7 +76,7 @@ Namespace java.awt.image
 	'''          image = createImage(source);
 	'''      }
 	''' 
-	'''      public void run() {
+	'''      public  Sub  run() {
 	'''          Thread me = Thread.currentThread( );
 	'''          me.setPriority(Thread.MIN_PRIORITY);
 	''' 
@@ -235,7 +235,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if the specified
 		'''           <code>ImageConsumer</code> is null </exception>
 		''' <seealso cref= ImageConsumer </seealso>
-		public synchronized void addConsumer(java.awt.image.ImageConsumer ic)
+		public synchronized  Sub  addConsumer(java.awt.image.ImageConsumer ic)
 			If theConsumers.Contains(ic) Then Return
 			theConsumers.Add(ic)
 			Try
@@ -267,7 +267,7 @@ Namespace java.awt.image
 		''' data for this image. </summary>
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
 		''' <seealso cref= ImageConsumer </seealso>
-		public synchronized void removeConsumer(java.awt.image.ImageConsumer ic)
+		public synchronized  Sub  removeConsumer(java.awt.image.ImageConsumer ic)
 			theConsumers.Remove(ic)
 
 		''' <summary>
@@ -277,7 +277,7 @@ Namespace java.awt.image
 		''' <param name="ic"> the specified <code>ImageConsumer</code>
 		''' image data through the ImageConsumer interface. </param>
 		''' <seealso cref= ImageConsumer </seealso>
-		public void startProduction(java.awt.image.ImageConsumer ic)
+		public  Sub  startProduction(java.awt.image.ImageConsumer ic)
 			addConsumer(ic)
 
 		''' <summary>
@@ -285,7 +285,7 @@ Namespace java.awt.image
 		''' one more time in top-down, left-right order. </summary>
 		''' <param name="ic"> the specified <code>ImageConsumer</code> </param>
 		''' <seealso cref= ImageConsumer </seealso>
-		public void requestTopDownLeftRightResend(java.awt.image.ImageConsumer ic)
+		public  Sub  requestTopDownLeftRightResend(java.awt.image.ImageConsumer ic)
 			' Ignored.  The data is either single frame and already in TDLR
 			' format or it is multi-frame and TDLR resends aren't critical.
 
@@ -301,7 +301,7 @@ Namespace java.awt.image
 		''' data that was available when it connected. </summary>
 		''' <param name="animated"> <code>true</code> if the image is a
 		'''       multi-frame animation </param>
-		public synchronized void animatedted(Boolean animated)
+		public synchronized  Sub  animatedted(Boolean animated)
 			Me.animating = animated
 			If Not animating Then
 				Dim enum_ As System.Collections.IEnumerator = theConsumers.elements()
@@ -327,7 +327,7 @@ Namespace java.awt.image
 		'''             buffer should always
 		''' be sent </param>
 		''' <seealso cref= #setAnimated </seealso>
-		public synchronized void fullBufferUpdatestes(Boolean fullbuffers)
+		public synchronized  Sub  fullBufferUpdatestes(Boolean fullbuffers)
 			If Me.fullbuffers = fullbuffers Then Return
 			Me.fullbuffers = fullbuffers
 			If animating Then
@@ -347,7 +347,7 @@ Namespace java.awt.image
 		''' <seealso cref= #newPixels(int, int, int, int, boolean) </seealso>
 		''' <seealso cref= ImageConsumer </seealso>
 		''' <seealso cref= #setAnimated </seealso>
-		public void newPixels()
+		public  Sub  newPixels()
 			newPixels(0, 0, width, height, True)
 
 		''' <summary>
@@ -369,7 +369,7 @@ Namespace java.awt.image
 		''' <seealso cref= ImageConsumer </seealso>
 		''' <seealso cref= #setAnimated </seealso>
 		''' <seealso cref= #setFullBufferUpdates </seealso>
-		public synchronized void newPixels(Integer x, Integer y, Integer w, Integer h)
+		public synchronized  Sub  newPixels(Integer x, Integer y, Integer w, Integer h)
 			newPixels(x, y, w, h, True)
 
 		''' <summary>
@@ -394,7 +394,7 @@ Namespace java.awt.image
 		''' <seealso cref= ImageConsumer </seealso>
 		''' <seealso cref= #setAnimated </seealso>
 		''' <seealso cref= #setFullBufferUpdates </seealso>
-		public synchronized void newPixels(Integer x, Integer y, Integer w, Integer h, Boolean framenotify)
+		public synchronized  Sub  newPixels(Integer x, Integer y, Integer w, Integer h, Boolean framenotify)
 			If animating Then
 				If fullbuffers Then
 						y = 0
@@ -435,7 +435,7 @@ Namespace java.awt.image
 		''' the array </param>
 		''' <seealso cref= #newPixels(int, int, int, int, boolean) </seealso>
 		''' <seealso cref= #setAnimated </seealso>
-		public synchronized void newPixels(SByte() newpix, java.awt.image.ColorModel newmodel, Integer offset, Integer scansize)
+		public synchronized  Sub  newPixels(SByte() newpix, java.awt.image.ColorModel newmodel, Integer offset, Integer scansize)
 			Me.pixels = newpix
 			Me.model = newmodel
 			Me.pixeloffset = offset
@@ -455,20 +455,20 @@ Namespace java.awt.image
 		''' the array </param>
 		''' <seealso cref= #newPixels(int, int, int, int, boolean) </seealso>
 		''' <seealso cref= #setAnimated </seealso>
-		public synchronized void newPixels(Integer() newpix, java.awt.image.ColorModel newmodel, Integer offset, Integer scansize)
+		public synchronized  Sub  newPixels(Integer() newpix, java.awt.image.ColorModel newmodel, Integer offset, Integer scansize)
 			Me.pixels = newpix
 			Me.model = newmodel
 			Me.pixeloffset = offset
 			Me.pixelscan = scansize
 			newPixels()
 
-		private void initConsumer(java.awt.image.ImageConsumer ic)
+		private  Sub  initConsumer(java.awt.image.ImageConsumer ic)
 			If isConsumer(ic) Then ic.dimensionsons(width, height)
 			If isConsumer(ic) Then ic.properties = properties
 			If isConsumer(ic) Then ic.colorModel = model
 			If isConsumer(ic) Then ic.hints = If(animating, (If(fullbuffers, (java.awt.image.ImageConsumer.TOPDOWNLEFTRIGHT Or java.awt.image.ImageConsumer.COMPLETESCANLINES), java.awt.image.ImageConsumer.RANDOMPIXELORDER)), (java.awt.image.ImageConsumer.TOPDOWNLEFTRIGHT Or java.awt.image.ImageConsumer.COMPLETESCANLINES Or java.awt.image.ImageConsumer.SINGLEPASS Or java.awt.image.ImageConsumer.SINGLEFRAME))
 
-		private void sendPixels(java.awt.image.ImageConsumer ic, Integer x, Integer y, Integer w, Integer h)
+		private  Sub  sendPixels(java.awt.image.ImageConsumer ic, Integer x, Integer y, Integer w, Integer h)
 			Dim [off] As Integer = pixeloffset + pixelscan * y + x
 			If isConsumer(ic) Then
 				If TypeOf pixels Is SByte() Then

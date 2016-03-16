@@ -455,7 +455,7 @@ Namespace java.beans
 							' This happens if a PropertyDescriptor or IndexedPropertyDescriptor
 							' constructor fins that the method violates details of the deisgn
 							' pattern, e.g. by having an empty name, or a getter returning
-							' void , or whatever.
+							'  Sub  , or whatever.
 							pd = Nothing
 						End Try
     

@@ -229,7 +229,7 @@ Namespace java.awt
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '			sun.awt.AWTAccessor.setContainerAccessor(New sun.awt.AWTAccessor.ContainerAccessor()
 	'		{
-	'			@Override public void validateUnconditionally(Container cont)
+	'			@Override public  Sub  validateUnconditionally(Container cont)
 	'			{
 	'				cont.validateUnconditionally();
 	'			}

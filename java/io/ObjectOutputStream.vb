@@ -83,11 +83,11 @@ Namespace java.io
 	''' signatures:
 	''' <br>
 	''' <pre>
-	''' private void readObject(java.io.ObjectInputStream stream)
+	''' private  Sub  readObject(java.io.ObjectInputStream stream)
 	'''     throws IOException, ClassNotFoundException;
-	''' private void writeObject(java.io.ObjectOutputStream stream)
+	''' private  Sub  writeObject(java.io.ObjectOutputStream stream)
 	'''     throws IOException
-	''' private void readObjectNoData()
+	''' private  Sub  readObjectNoData()
 	'''     throws ObjectStreamException;
 	''' </pre>
 	''' 

@@ -101,11 +101,11 @@ Namespace java.io
 	''' methods:
 	''' 
 	''' <pre>
-	''' private void writeObject(java.io.ObjectOutputStream stream)
+	''' private  Sub  writeObject(java.io.ObjectOutputStream stream)
 	'''     throws IOException;
-	''' private void readObject(java.io.ObjectInputStream stream)
+	''' private  Sub  readObject(java.io.ObjectInputStream stream)
 	'''     throws IOException, ClassNotFoundException;
-	''' private void readObjectNoData()
+	''' private  Sub  readObjectNoData()
 	'''     throws ObjectStreamException;
 	''' </pre>
 	''' 
@@ -551,7 +551,7 @@ Namespace java.io
 		''' <code>ClassNotFoundException</code> and the name of the passed
 		''' <code>ObjectStreamClass</code> instance is the Java language keyword
 		''' for a primitive type or void, then the <code>Class</code> object
-		''' representing that primitive type or void will be returned
+		''' representing that primitive type or  Sub  will be returned
 		''' (e.g., an <code>ObjectStreamClass</code> with the name
 		''' <code>"int"</code> will be resolved to <code> java.lang.[Integer].TYPE</code>).
 		''' Otherwise, the <code>ClassNotFoundException</code> will be thrown to

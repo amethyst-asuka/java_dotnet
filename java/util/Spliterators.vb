@@ -606,7 +606,7 @@ Namespace java.util
 	'			boolean valueReady = False;
 	'			T nextElement;
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				valueReady = True;
 	'				nextElement = t;
@@ -653,7 +653,7 @@ Namespace java.util
 	'			boolean valueReady = False;
 	'			int nextElement;
 	'
-	'			@Override public void accept(int t)
+	'			@Override public  Sub  accept(int t)
 	'			{
 	'				valueReady = True;
 	'				nextElement = t;
@@ -700,7 +700,7 @@ Namespace java.util
 	'			boolean valueReady = False;
 	'			long nextElement;
 	'
-	'			@Override public void accept(long t)
+	'			@Override public  Sub  accept(long t)
 	'			{
 	'				valueReady = True;
 	'				nextElement = t;
@@ -747,7 +747,7 @@ Namespace java.util
 	'			boolean valueReady = False;
 	'			double nextElement;
 	'
-	'			@Override public void accept(double t)
+	'			@Override public  Sub  accept(double t)
 	'			{
 	'				valueReady = True;
 	'				nextElement = t;

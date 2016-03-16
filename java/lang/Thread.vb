@@ -75,7 +75,7 @@ Namespace java.lang
 	'''             this.minPrime = minPrime;
 	'''         }
 	''' 
-	'''         public void run() {
+	'''         public  Sub  run() {
 	'''             // compute primes larger than minPrime
 	'''             &nbsp;.&nbsp;.&nbsp;.
 	'''         }
@@ -101,7 +101,7 @@ Namespace java.lang
 	'''             this.minPrime = minPrime;
 	'''         }
 	''' 
-	'''         public void run() {
+	'''         public  Sub  run() {
 	'''             // compute primes larger than minPrime
 	'''             &nbsp;.&nbsp;.&nbsp;.
 	'''         }

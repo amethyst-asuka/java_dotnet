@@ -162,7 +162,7 @@ Namespace java.awt
 		''' <param name="x">,y,w,h the area in device space for which colors are
 		''' generated. </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		protected void fillRaster(int pixels() , int off, int adjust, int x, int y, int w, int h)
+		protected  Sub  fillRaster(int pixels() , int off, int adjust, int x, int y, int w, int h)
 			If isSimpleFocus AndAlso isNonCyclic AndAlso isSimpleLookup Then
 				simpleNonCyclicFillRaster(pixels, off, adjust, x, y, w, h)
 			Else
@@ -174,7 +174,7 @@ Namespace java.awt
 		''' point, the gradient is noncyclic, and the gradient lookup method is
 		''' fast (single array index, no conversion necessary).
 		''' </summary>
-		private void simpleNonCyclicFillRaster(Integer pixels() , Integer off, Integer adjust, Integer x, Integer y, Integer w, Integer h)
+		private  Sub  simpleNonCyclicFillRaster(Integer pixels() , Integer off, Integer adjust, Integer x, Integer y, Integer w, Integer h)
 	'         We calculate sqrt(X^2 + Y^2) relative to the radius
 	'         * size to get the fraction for the color to use.
 	'         *
@@ -311,7 +311,7 @@ Namespace java.awt
 		''' formula produces the following set of equations.  Constant factors have
 		''' been extracted out of the inner loop.
 		''' </summary>
-		private void cyclicCircularGradientFillRaster(Integer pixels() , Integer off, Integer adjust, Integer x, Integer y, Integer w, Integer h)
+		private  Sub  cyclicCircularGradientFillRaster(Integer pixels() , Integer off, Integer adjust, Integer x, Integer y, Integer w, Integer h)
 			' constant part of the C factor of the quadratic equation
 			Dim constC As Double = -radiusSq + (centerX * centerX) + (centerY * centerY)
 

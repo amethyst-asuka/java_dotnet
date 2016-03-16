@@ -80,7 +80,7 @@ Namespace java.util.concurrent.locks
 	'''   final Object[] items = new Object[100];
 	'''   int putptr, takeptr, count;
 	''' 
-	'''   public void put(Object x) throws InterruptedException {
+	'''   public  Sub  put(Object x) throws InterruptedException {
 	'''     <b>lock.lock();
 	'''     try {</b>
 	'''       while (count == items.length)

@@ -102,11 +102,11 @@ Namespace java.awt
 	'				{
 	'					Return KeyboardFocusManager.processSynchronousLightweightTransfer(heavyweight, descendant, temporary, focusedWindowChangeAllowed, time);
 	'				}
-	'				public void removeLastFocusRequest(Component heavyweight)
+	'				public  Sub  removeLastFocusRequest(Component heavyweight)
 	'				{
 	'					KeyboardFocusManager.removeLastFocusRequest(heavyweight);
 	'				}
-	'				public void setMostRecentFocusOwner(Window window, Component component)
+	'				public  Sub  setMostRecentFocusOwner(Window window, Component component)
 	'				{
 	'					KeyboardFocusManager.setMostRecentFocusOwner(window, component);
 	'				}

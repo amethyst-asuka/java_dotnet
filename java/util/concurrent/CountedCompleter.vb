@@ -135,11 +135,11 @@ Namespace java.util.concurrent
 	''' (here, implicitly using the <seealso cref="ForkJoinPool#commonPool()"/>).
 	''' 
 	''' <pre> {@code
-	''' class MyOperation<E> { void apply(E e) { ... }  }
+	''' class MyOperation<E> {  Sub  apply(E e) { ... }  }
 	''' 
 	''' class ForEach<E> extends CountedCompleter<Void> {
 	''' 
-	'''   public static <E> void forEach(E[] array, MyOperation<E> op) {
+	'''   public static <E>  Sub  forEach(E[] array, MyOperation<E> op) {
 	'''     new ForEach<E>(null, array, op, 0, array.length).invoke();
 	'''   }
 	''' 
@@ -149,7 +149,7 @@ Namespace java.util.concurrent
 	'''     this.array = array; this.op = op; this.lo = lo; this.hi = hi;
 	'''   }
 	''' 
-	'''   public void compute() { // version 1
+	'''   public  Sub  compute() { // version 1
 	'''     if (hi - lo >= 2) {
 	'''       int mid = (lo + hi) >>> 1;
 	'''       setPendingCount(2); // must set pending count before fork
@@ -171,7 +171,7 @@ Namespace java.util.concurrent
 	''' 
 	''' <pre> {@code
 	''' class ForEach<E> ...
-	'''   public void compute() { // version 2
+	'''   public  Sub  compute() { // version 2
 	'''     if (hi - lo >= 2) {
 	'''       int mid = (lo + hi) >>> 1;
 	'''       setPendingCount(1); // only one pending
@@ -194,7 +194,7 @@ Namespace java.util.concurrent
 	''' 
 	''' <pre> {@code
 	''' class ForEach<E> ...
-	'''   public void compute() { // version 3
+	'''   public  Sub  compute() { // version 3
 	'''     int l = lo,  h = hi;
 	'''     while (h - l >= 2) {
 	'''       int mid = (l + h) >>> 1;
@@ -234,7 +234,7 @@ Namespace java.util.concurrent
 	'''     this.array = array; this.result = result; this.lo = lo; this.hi = hi;
 	'''   }
 	'''   public E getRawResult() { return result.get(); }
-	'''   public void compute() { // similar to ForEach version 3
+	'''   public  Sub  compute() { // similar to ForEach version 3
 	'''     int l = lo,  h = hi;
 	'''     while (result.get() == null && h >= l) {
 	'''       if (h - l >= 2) {
@@ -292,7 +292,7 @@ Namespace java.util.concurrent
 	'''     this.array = array; this.mapper = mapper;
 	'''     this.reducer = reducer; this.lo = lo; this.hi = hi;
 	'''   }
-	'''   public void compute() {
+	'''   public  Sub  compute() {
 	'''     if (hi - lo >= 2) {
 	'''       int mid = (lo + hi) >>> 1;
 	'''       MapReducer<E> left = new MapReducer(this, array, mapper, reducer, lo, mid);
@@ -309,7 +309,7 @@ Namespace java.util.concurrent
 	'''       tryComplete();
 	'''     }
 	'''   }
-	'''   public void onCompletion(CountedCompleter<?> caller) {
+	'''   public  Sub  onCompletion(CountedCompleter<?> caller) {
 	'''     if (caller != this) {
 	'''       MapReducer<E> child = (MapReducer<E>)caller;
 	'''       MapReducer<E> sib = child.sibling;
@@ -364,7 +364,7 @@ Namespace java.util.concurrent
 	'''     this.reducer = reducer; this.lo = lo; this.hi = hi;
 	'''     this.next = next;
 	'''   }
-	'''   public void compute() {
+	'''   public  Sub  compute() {
 	'''     int l = lo,  h = hi;
 	'''     while (h - l >= 2) {
 	'''       int mid = (l + h) >>> 1;
@@ -398,8 +398,8 @@ Namespace java.util.concurrent
 	''' class BodyBuilder extends CountedCompleter<...> { ... }
 	''' class PacketSender extends CountedCompleter<...> {
 	'''   PacketSender(...) { super(null, 1); ... } // trigger on second completion
-	'''   public void compute() { } // never called
-	'''   public void onCompletion(CountedCompleter<?> caller) { sendPacket(); }
+	'''   public  Sub  compute() { } // never called
+	'''   public  Sub  onCompletion(CountedCompleter<?> caller) { sendPacket(); }
 	''' }
 	''' // sample use:
 	''' PacketSender p = new PacketSender();

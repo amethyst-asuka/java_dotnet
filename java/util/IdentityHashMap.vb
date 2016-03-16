@@ -251,43 +251,43 @@ Namespace java.util
 			table = New Object(2 * initCapacity - 1){}
 		End Sub
 
-		''' <summary>
-		''' Constructs a new identity hash map containing the keys-value mappings
-		''' in the specified map.
-		''' </summary>
-		''' <param name="m"> the map whose mappings are to be placed into this map </param>
-		''' <exception cref="NullPointerException"> if the specified map is null </exception>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Sub New(Of T1 As K, ? As V)(ByVal m As Map(Of T1))
-			' Allow for a bit of growth
-			Me.New(CInt(Fix((1 + m.size()) * 1.1)))
-			putAll(m)
-		End Sub
+        ''' <summary>
+        ''' Constructs a new identity hash map containing the keys-value mappings
+        ''' in the specified map.
+        ''' </summary>
+        ''' <param name="m"> the map whose mappings are to be placed into this map </param>
+        ''' <exception cref="NullPointerException"> if the specified map is null </exception>
+        'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+        Public Sub New(ByVal m As Map(Of K, V))
+            ' Allow for a bit of growth
+            Me.New(CInt(Fix((1 + m.size()) * 1.1)))
+            putAll(m)
+        End Sub
 
-		''' <summary>
-		''' Returns the number of key-value mappings in this identity hash map.
-		''' </summary>
-		''' <returns> the number of key-value mappings in this map </returns>
-		Public Overridable Function size() As Integer Implements Map(Of K, V).size
-			Return size_Renamed
-		End Function
+        ''' <summary>
+        ''' Returns the number of key-value mappings in this identity hash map.
+        ''' </summary>
+        ''' <returns> the number of key-value mappings in this map </returns>
+        Public Overrides Function size() As Integer Implements Map(Of K, V).size
+            Return size_Renamed
+        End Function
 
-		''' <summary>
-		''' Returns <tt>true</tt> if this identity hash map contains no key-value
-		''' mappings.
-		''' </summary>
-		''' <returns> <tt>true</tt> if this identity hash map contains no key-value
-		'''         mappings </returns>
-		Public Overridable Property empty As Boolean Implements Map(Of K, V).isEmpty
-			Get
-				Return size_Renamed = 0
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns <tt>true</tt> if this identity hash map contains no key-value
+        ''' mappings.
+        ''' </summary>
+        ''' <returns> <tt>true</tt> if this identity hash map contains no key-value
+        '''         mappings </returns>
+        Public Overridable ReadOnly Property empty As Boolean Implements Map(Of K, V).empty
+            Get
+                Return size_Renamed = 0
+            End Get
+        End Property
 
-		''' <summary>
-		''' Returns index for Object x.
-		''' </summary>
-		Private Shared Function hash(ByVal x As Object, ByVal length As Integer) As Integer
+        ''' <summary>
+        ''' Returns index for Object x.
+        ''' </summary>
+        Private Shared Function hash(ByVal x As Object, ByVal length As Integer) As Integer
 			Dim h As Integer = System.identityHashCode(x)
 			' Multiply by -127, and left-shift to use least bit as part of hash
 			Return ((h << 1) - (h << 8)) And (length - 1)
@@ -300,82 +300,81 @@ Namespace java.util
 			Return (If(i + 2 < len, i + 2, 0))
 		End Function
 
-		''' <summary>
-		''' Returns the value to which the specified key is mapped,
-		''' or {@code null} if this map contains no mapping for the key.
-		''' 
-		''' <p>More formally, if this map contains a mapping from a key
-		''' {@code k} to a value {@code v} such that {@code (key == k)},
-		''' then this method returns {@code v}; otherwise it returns
-		''' {@code null}.  (There can be at most one such mapping.)
-		''' 
-		''' <p>A return value of {@code null} does not <i>necessarily</i>
-		''' indicate that the map contains no mapping for the key; it's also
-		''' possible that the map explicitly maps the key to {@code null}.
-		''' The <seealso cref="#containsKey containsKey"/> operation may be used to
-		''' distinguish these two cases.
-		''' </summary>
-		''' <seealso cref= #put(Object, Object) </seealso>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Overridable Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
-			Dim k As Object = maskNull(key)
-			Dim tab As Object() = table
-			Dim len As Integer = tab.Length
-			Dim i As Integer = hash(k, len)
-			Do
-				Dim item As Object = tab(i)
-				If item Is k Then Return CType(tab(i + 1), V)
-				If item Is Nothing Then Return Nothing
-				i = nextKeyIndex(i, len)
-			Loop
-		End Function
+        ''' <summary>
+        ''' Returns the value to which the specified key is mapped,
+        ''' or {@code null} if this map contains no mapping for the key.
+        ''' 
+        ''' <p>More formally, if this map contains a mapping from a key
+        ''' {@code k} to a value {@code v} such that {@code (key == k)},
+        ''' then this method returns {@code v}; otherwise it returns
+        ''' {@code null}.  (There can be at most one such mapping.)
+        ''' 
+        ''' <p>A return value of {@code null} does not <i>necessarily</i>
+        ''' indicate that the map contains no mapping for the key; it's also
+        ''' possible that the map explicitly maps the key to {@code null}.
+        ''' The <seealso cref="#containsKey containsKey"/> operation may be used to
+        ''' distinguish these two cases.
+        ''' </summary>
+        ''' <seealso cref= #put(Object, Object) </seealso>
+        Public Overrides Function [get](ByVal key As Object) As V Implements Map(Of K, V).get
+            Dim k As Object = maskNull(key)
+            Dim tab As Object() = table
+            Dim len As Integer = tab.Length
+            Dim i As Integer = hash(k, len)
+            Do
+                Dim item As Object = tab(i)
+                If item Is k Then Return CType(tab(i + 1), V)
+                If item Is Nothing Then Return Nothing
+                i = nextKeyIndex(i, len)
+            Loop
+        End Function
 
-		''' <summary>
-		''' Tests whether the specified object reference is a key in this identity
-		''' hash map.
-		''' </summary>
-		''' <param name="key">   possible key </param>
-		''' <returns>  <code>true</code> if the specified object reference is a key
-		'''          in this map </returns>
-		''' <seealso cref=     #containsValue(Object) </seealso>
-		Public Overridable Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
-			Dim k As Object = maskNull(key)
-			Dim tab As Object() = table
-			Dim len As Integer = tab.Length
-			Dim i As Integer = hash(k, len)
-			Do
-				Dim item As Object = tab(i)
-				If item Is k Then Return True
-				If item Is Nothing Then Return False
-				i = nextKeyIndex(i, len)
-			Loop
-		End Function
+        ''' <summary>
+        ''' Tests whether the specified object reference is a key in this identity
+        ''' hash map.
+        ''' </summary>
+        ''' <param name="key">   possible key </param>
+        ''' <returns>  <code>true</code> if the specified object reference is a key
+        '''          in this map </returns>
+        ''' <seealso cref=     #containsValue(Object) </seealso>
+        Public Overrides Function containsKey(ByVal key As Object) As Boolean Implements Map(Of K, V).containsKey
+            Dim k As Object = maskNull(key)
+            Dim tab As Object() = table
+            Dim len As Integer = tab.Length
+            Dim i As Integer = hash(k, len)
+            Do
+                Dim item As Object = tab(i)
+                If item Is k Then Return True
+                If item Is Nothing Then Return False
+                i = nextKeyIndex(i, len)
+            Loop
+        End Function
 
-		''' <summary>
-		''' Tests whether the specified object reference is a value in this identity
-		''' hash map.
-		''' </summary>
-		''' <param name="value"> value whose presence in this map is to be tested </param>
-		''' <returns> <tt>true</tt> if this map maps one or more keys to the
-		'''         specified object reference </returns>
-		''' <seealso cref=     #containsKey(Object) </seealso>
-		Public Overridable Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
-			Dim tab As Object() = table
-			For i As Integer = 1 To tab.Length - 1 Step 2
-				If tab(i) Is value AndAlso tab(i - 1) IsNot Nothing Then Return True
-			Next i
+        ''' <summary>
+        ''' Tests whether the specified object reference is a value in this identity
+        ''' hash map.
+        ''' </summary>
+        ''' <param name="value"> value whose presence in this map is to be tested </param>
+        ''' <returns> <tt>true</tt> if this map maps one or more keys to the
+        '''         specified object reference </returns>
+        ''' <seealso cref=     #containsKey(Object) </seealso>
+        Public Overrides Function containsValue(ByVal value As Object) As Boolean Implements Map(Of K, V).containsValue
+            Dim tab As Object() = table
+            For i As Integer = 1 To tab.Length - 1 Step 2
+                If tab(i) Is value AndAlso tab(i - 1) IsNot Nothing Then Return True
+            Next i
 
-			Return False
-		End Function
+            Return False
+        End Function
 
-		''' <summary>
-		''' Tests if the specified key-value mapping is in the map.
-		''' </summary>
-		''' <param name="key">   possible key </param>
-		''' <param name="value"> possible value </param>
-		''' <returns>  <code>true</code> if and only if the specified key-value
-		'''          mapping is in the map </returns>
-		Private Function containsMapping(ByVal key As Object, ByVal value As Object) As Boolean
+        ''' <summary>
+        ''' Tests if the specified key-value mapping is in the map.
+        ''' </summary>
+        ''' <param name="key">   possible key </param>
+        ''' <param name="value"> possible value </param>
+        ''' <returns>  <code>true</code> if and only if the specified key-value
+        '''          mapping is in the map </returns>
+        Private Function containsMapping(ByVal key As Object, ByVal value As Object) As Boolean
 			Dim k As Object = maskNull(key)
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -410,14 +409,12 @@ Namespace java.util
 				Dim tab As Object() = table
 				Dim len As Integer = tab.Length
 				Dim i As Integer = hash(k, len)
+                Dim item As Object
 
-				Dim item As Object
-'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
-				Do While (item = tab(i)) IsNot Nothing
+                Do While (item = tab(i)) IsNot Nothing
 					If item Is k Then
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-						Dim oldValue As V = CType(tab(i + 1), V)
-						tab(i + 1) = value
+                        Dim oldValue As V = CType(tab(i + 1), V)
+                        tab(i + 1) = value
 						Return oldValue
 					End If
 					i = nextKeyIndex(i, len)
@@ -473,34 +470,33 @@ Namespace java.util
 			Return True
 		End Function
 
-		''' <summary>
-		''' Copies all of the mappings from the specified map to this map.
-		''' These mappings will replace any mappings that this map had for
-		''' any of the keys currently in the specified map.
-		''' </summary>
-		''' <param name="m"> mappings to be stored in this map </param>
-		''' <exception cref="NullPointerException"> if the specified map is null </exception>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Public Overridable Sub putAll(Of T1 As K, ? As V)(ByVal m As Map(Of T1)) Implements Map(Of K, V).putAll
-			Dim n As Integer = m.size()
-			If n = 0 Then Return
-			If n > size_Renamed Then resize(capacity(n)) ' conservatively pre-expand
+        ''' <summary>
+        ''' Copies all of the mappings from the specified map to this map.
+        ''' These mappings will replace any mappings that this map had for
+        ''' any of the keys currently in the specified map.
+        ''' </summary>
+        ''' <param name="m"> mappings to be stored in this map </param>
+        ''' <exception cref="NullPointerException"> if the specified map is null </exception>
+        Public Overrides Sub putAll(ByVal m As Map(Of K, V)) Implements Map(Of K, V).putAll
+            Dim n As Integer = m.size()
+            If n = 0 Then Return
+            If n > size_Renamed Then resize(capacity(n)) ' conservatively pre-expand
 
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			For Each e As Entry(Of ? As K, ? As V) In m.entrySet()
-				put(e.key, e.value)
-			Next e
-		End Sub
+            'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
+            For Each e As Entry(Of K, V) In m.entrySet()
+                put(e.key, e.value)
+            Next e
+        End Sub
 
-		''' <summary>
-		''' Removes the mapping for this key from this map if present.
-		''' </summary>
-		''' <param name="key"> key whose mapping is to be removed from the map </param>
-		''' <returns> the previous value associated with <tt>key</tt>, or
-		'''         <tt>null</tt> if there was no mapping for <tt>key</tt>.
-		'''         (A <tt>null</tt> return can also indicate that the map
-		'''         previously associated <tt>null</tt> with <tt>key</tt>.) </returns>
-		Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
+        ''' <summary>
+        ''' Removes the mapping for this key from this map if present.
+        ''' </summary>
+        ''' <param name="key"> key whose mapping is to be removed from the map </param>
+        ''' <returns> the previous value associated with <tt>key</tt>, or
+        '''         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+        '''         (A <tt>null</tt> return can also indicate that the map
+        '''         previously associated <tt>null</tt> with <tt>key</tt>.) </returns>
+        Public Overridable Function remove(ByVal key As Object) As V Implements Map(Of K, V).remove
 			Dim k As Object = maskNull(key)
 			Dim tab As Object() = table
 			Dim len As Integer = tab.Length
@@ -511,9 +507,8 @@ Namespace java.util
 				If item Is k Then
 					modCount += 1
 					size_Renamed -= 1
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-					Dim oldValue As V = CType(tab(i + 1), V)
-					tab(i + 1) = Nothing
+                    Dim oldValue As V = CType(tab(i + 1), V)
+                    tab(i + 1) = Nothing
 					tab(i) = Nothing
 					closeDeletion(i)
 					Return oldValue

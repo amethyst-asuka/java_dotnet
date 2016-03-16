@@ -504,13 +504,13 @@ Namespace java.lang
         ''' This example was produced by running the program:
         ''' <pre>
         ''' class MyClass {
-        '''     public static void main(String[] args) {
+        '''     public static  Sub  main(String[] args) {
         '''         crunch(null);
         '''     }
-        '''     static void crunch(int[] a) {
+        '''     static  Sub  crunch(int[] a) {
         '''         mash(a);
         '''     }
-        '''     static void mash(int[] b) {
+        '''     static  Sub  mash(int[] b) {
         '''         System.out.println(b[0]);
         '''     }
         ''' }
@@ -544,34 +544,34 @@ Namespace java.lang
         ''' example was produced by running the program:
         ''' <pre>
         ''' public class Junk {
-        '''     public static void main(String args[]) {
+        '''     public static  Sub  main(String args[]) {
         '''         try {
         '''             a();
         '''         } catch(HighLevelException e) {
         '''             e.printStackTrace();
         '''         }
         '''     }
-        '''     static void a() throws HighLevelException {
+        '''     static  Sub  a() throws HighLevelException {
         '''         try {
         '''             b();
         '''         } catch(MidLevelException e) {
         '''             throw new HighLevelException(e);
         '''         }
         '''     }
-        '''     static void b() throws MidLevelException {
+        '''     static  Sub  b() throws MidLevelException {
         '''         c();
         '''     }
-        '''     static void c() throws MidLevelException {
+        '''     static  Sub  c() throws MidLevelException {
         '''         try {
         '''             d();
         '''         } catch(LowLevelException e) {
         '''             throw new MidLevelException(e);
         '''         }
         '''     }
-        '''     static void d() throws LowLevelException {
+        '''     static  Sub  d() throws LowLevelException {
         '''        e();
         '''     }
-        '''     static void e() throws LowLevelException {
+        '''     static  Sub  e() throws LowLevelException {
         '''         throw new LowLevelException();
         '''     }
         ''' }

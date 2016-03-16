@@ -141,7 +141,7 @@ Namespace java.lang.invoke
 	'''     <li>K + N = M</li>
 	'''     <li>For i=1..K, Di = Ai</li>
 	'''     <li>For i=1..N, Ti is adaptable to Aj, where j=i+k</li>
-	'''     <li>The return type Rt is void, or the return type Ra is not void and is
+	'''     <li>The return type Rt is void, or the return type Ra is not  Sub  and is
 	'''     adaptable to Rt</li>
 	''' </ul>
 	''' 

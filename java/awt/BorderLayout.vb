@@ -106,7 +106,7 @@ Namespace java.awt
 	''' import java.applet.Applet;
 	''' 
 	''' public class buttonDir extends Applet {
-	'''   public void init() {
+	'''   public  Sub  init() {
 	'''     setLayout(new BorderLayout());
 	'''     add(new Button("North"), BorderLayout.NORTH);
 	'''     add(new Button("South"), BorderLayout.SOUTH);

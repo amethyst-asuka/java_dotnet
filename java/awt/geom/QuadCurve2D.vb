@@ -708,7 +708,7 @@ Namespace java.awt.geom
 		''' <param name="right"> the <code>QuadCurve2D</code> object for storing the
 		''' right or second half of the subdivided curve
 		''' @since 1.2 </param>
-		public void subdivide(QuadCurve2D left, QuadCurve2D right)
+		public  Sub  subdivide(QuadCurve2D left, QuadCurve2D right)
 			subdivide(Me, left, right)
 
 		''' <summary>
@@ -724,7 +724,7 @@ Namespace java.awt.geom
 		''' <param name="right"> the <code>QuadCurve2D</code> object for storing the
 		'''          right or second half of the subdivided curve
 		''' @since 1.2 </param>
-		public static void subdivide(QuadCurve2D src, QuadCurve2D left, QuadCurve2D right)
+		public static  Sub  subdivide(QuadCurve2D src, QuadCurve2D left, QuadCurve2D right)
 			Dim x1_Renamed As Double = src.x1
 			Dim y1_Renamed As Double = src.y1
 			Dim ctrlx_Renamed As Double = src.ctrlX
@@ -767,7 +767,7 @@ Namespace java.awt.geom
 		''' <param name="rightoff"> the offset into the array of the beginning of the
 		''' the 6 right coordinates
 		''' @since 1.2 </param>
-		public static void subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
+		public static  Sub  subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
 			Dim x1_Renamed As Double = src(srcoff + 0)
 			Dim y1_Renamed As Double = src(srcoff + 1)
 			Dim ctrlx_Renamed As Double = src(srcoff + 2)
@@ -987,7 +987,7 @@ Namespace java.awt.geom
 		'''     B = 2*CP - 2*C1
 		'''     A = C1 - 2*CP + C2
 		''' </summary>
-		private static void fillEqn(Double eqn() , Double val, Double c1, Double cp, Double c2)
+		private static  Sub  fillEqn(Double eqn() , Double val, Double c1, Double cp, Double c2)
 			eqn(0) = c1 - val
 			eqn(1) = cp + cp - c1 - c1
 			eqn(2) = c1 - cp - cp + c2

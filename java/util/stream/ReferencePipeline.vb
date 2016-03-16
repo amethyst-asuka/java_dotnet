@@ -140,12 +140,12 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, P_OUT>(sink)
 	'			{
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					if (predicate.test(u))
 	'						downstream.accept(u);
@@ -168,7 +168,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, R>(sink)
 	'			{
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					downstream.accept(mapper.apply(u));
 	'				}
@@ -189,7 +189,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Integer>(sink)
 	'			{
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					downstream.accept(mapper.applyAsInt(u));
 	'				}
@@ -210,7 +210,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Long>(sink)
 	'			{
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					downstream.accept(mapper.applyAsLong(u));
 	'				}
@@ -231,7 +231,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Double>(sink)
 	'			{
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					downstream.accept(mapper.applyAsDouble(u));
 	'				}
@@ -254,12 +254,12 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, R>(sink)
 	'			{
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					try (Stream<? extends R> result = mapper.apply(u))
 	'					{
@@ -287,12 +287,12 @@ Namespace java.util.stream
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Integer>(sink)
 	'			{
 	'				IntConsumer downstreamAsInt = downstream::accept;
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					try (IntStream result = mapper.apply(u))
 	'					{
@@ -320,12 +320,12 @@ Namespace java.util.stream
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Double>(sink)
 	'			{
 	'				DoubleConsumer downstreamAsDouble = downstream::accept;
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					try (DoubleStream result = mapper.apply(u))
 	'					{
@@ -353,12 +353,12 @@ Namespace java.util.stream
 '				Return New Sink.ChainedReference<P_OUT, java.lang.Long>(sink)
 	'			{
 	'				LongConsumer downstreamAsLong = downstream::accept;
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(-1);
 	'				}
 	'
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					try (LongStream result = mapper.apply(u))
 	'					{
@@ -384,7 +384,7 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
 '				Return New Sink.ChainedReference<P_OUT, P_OUT>(sink)
 	'			{
-	'				@Override public void accept(P_OUT u)
+	'				@Override public  Sub  accept(P_OUT u)
 	'				{
 	'					action.accept(u);
 	'					downstream.accept(u);

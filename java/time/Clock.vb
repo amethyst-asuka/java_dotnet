@@ -87,7 +87,7 @@ Namespace java.time
 	'''  public class MyBean {
 	'''    private Clock clock;  // dependency inject
 	'''    ...
-	'''    public void process(LocalDate eventDate) {
+	'''    public  Sub  process(LocalDate eventDate) {
 	'''      if (eventDate.isBefore(LocalDate.now(clock)) {
 	'''        ...
 	'''      }

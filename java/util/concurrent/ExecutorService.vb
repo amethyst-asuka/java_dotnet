@@ -82,7 +82,7 @@ Namespace java.util.concurrent
 	'''     pool = Executors.newFixedThreadPool(poolSize);
 	'''   }
 	''' 
-	'''   public void run() { // run the service
+	'''   public  Sub  run() { // run the service
 	'''     try {
 	'''       for (;;) {
 	'''         pool.execute(new Handler(serverSocket.accept()));
@@ -96,7 +96,7 @@ Namespace java.util.concurrent
 	''' class Handler implements Runnable {
 	'''   private final Socket socket;
 	'''   Handler(Socket socket) { this.socket = socket; }
-	'''   public void run() {
+	'''   public  Sub  run() {
 	'''     // read and service request on socket
 	'''   }
 	''' }}</pre>
@@ -106,7 +106,7 @@ Namespace java.util.concurrent
 	''' calling {@code shutdownNow}, if necessary, to cancel any lingering tasks:
 	''' 
 	'''  <pre> {@code
-	''' void shutdownAndAwaitTermination(ExecutorService pool) {
+	'''  Sub  shutdownAndAwaitTermination(ExecutorService pool) {
 	'''   pool.shutdown(); // Disable new tasks from being submitted
 	'''   try {
 	'''     // Wait a while for existing tasks to terminate

@@ -163,7 +163,7 @@ Namespace java.io
 		''' Receives a char of data. This method will block if no input is
 		''' available.
 		''' </summary>
-		SyncLock void receive Integer c
+		SyncLock  Sub  receive Integer c
 			Dim IOException As throws
 			If Not connected Then
 				Throw New IOException("Pipe not connected")
@@ -197,7 +197,7 @@ Namespace java.io
 		''' Receives data into an array of characters.  This method will
 		''' block until some input is available.
 		''' </summary>
-		SyncLock void receive Char c() , Integer off, Integer len
+		SyncLock  Sub  receive Char c() , Integer off, Integer len
 			Dim IOException As throws
 			len -= 1
 			Do While len >= 0
@@ -211,7 +211,7 @@ Namespace java.io
 		''' Notifies all waiting threads that the last character of data has been
 		''' received.
 		''' </summary>
-		SyncLock void receivedLast
+		SyncLock  Sub  receivedLast
 			closedByWriter = True
 			notifyAll()
 		End SyncLock
@@ -332,7 +332,7 @@ Namespace java.io
 		''' associated with the stream.
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			[in] = -1
 			closedByReader = True
 	End Class

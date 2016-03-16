@@ -139,7 +139,7 @@ Namespace java.io
 		'''          <seealso cref="#connect(java.io.PipedReader) unconnected"/>, closed
 		'''          or an I/O error occurs. </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(char cbuf() , int off, int len) throws IOException
+		public  Sub  write(char cbuf() , int off, int len) throws IOException
 			If sink Is Nothing Then
 				Throw New IOException("Pipe not connected")
 			ElseIf (off Or len Or (off + len) Or (cbuf.length - (off + len))) < 0 Then
@@ -153,7 +153,7 @@ Namespace java.io
 		''' This will notify any readers that characters are waiting in the pipe.
 		''' </summary>
 		''' <exception cref="IOException">  if the pipe is closed, or an I/O error occurs. </exception>
-		public synchronized void flush() throws IOException
+		public synchronized  Sub  flush() throws IOException
 			If sink IsNot Nothing Then
 				If sink.closedByReader OrElse closed Then Throw New IOException("Pipe closed")
 				SyncLock sink
@@ -167,7 +167,7 @@ Namespace java.io
 		''' writing characters.
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			closed = True
 			If sink IsNot Nothing Then sink.receivedLast()
 	End Class

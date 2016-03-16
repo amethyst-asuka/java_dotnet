@@ -82,7 +82,7 @@ Namespace java.io
 		''' <param name="off">   Offset from which to start writing characters </param>
 		''' <param name="len">   Number of characters to write </param>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(char cbuf() , int off, int len)
+		public  Sub  write(char cbuf() , int off, int len)
 			If (off < 0) OrElse (off > cbuf.length) OrElse (len < 0) OrElse ((off + len) > cbuf.length) OrElse ((off + len) < 0) Then
 				Throw New IndexOutOfBoundsException
 			ElseIf len = 0 Then
@@ -93,7 +93,7 @@ Namespace java.io
 		''' <summary>
 		''' Write a string.
 		''' </summary>
-		public void write(String str)
+		public  Sub  write(String str)
 			buf.append(str)
 
 		''' <summary>
@@ -102,7 +102,7 @@ Namespace java.io
 		''' <param name="str">  String to be written </param>
 		''' <param name="off">  Offset from which to start writing characters </param>
 		''' <param name="len">  Number of characters to write </param>
-		public void write(String str, Integer off, Integer len)
+		public  Sub  write(String str, Integer off, Integer len)
 			buf.append(str.Substring(off, len))
 
 		''' <summary>
@@ -207,14 +207,14 @@ Namespace java.io
 		''' <summary>
 		''' Flush the stream.
 		''' </summary>
-		public void flush()
+		public  Sub  flush()
 
 		''' <summary>
 		''' Closing a <tt>StringWriter</tt> has no effect. The methods in this
 		''' class can be called after the stream has been closed without generating
 		''' an <tt>IOException</tt>.
 		''' </summary>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 
 	End Class
 

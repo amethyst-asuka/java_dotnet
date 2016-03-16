@@ -62,32 +62,32 @@ Namespace java.io
 		''' </summary>
 		Private Shared MAX_BUFFER_SIZE As Integer =  java.lang.[Integer].MAX_VALUE - 8
 
-		''' <summary>
-		''' The internal buffer array where the data is stored. When necessary,
-		''' it may be replaced by another array of
-		''' a different size.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		Protected Friend buf As SByte()
+        ''' <summary>
+        ''' The internal buffer array where the data is stored. When necessary,
+        ''' it may be replaced by another array of
+        ''' a different size.
+        ''' </summary>
+        Protected Friend buf As SByte()
 
-		''' <summary>
-		''' Atomic updater to provide compareAndSet for buf. This is
-		''' necessary because closes can be asynchronous. We use nullness
-		''' of buf[] as primary indicator that this stream is closed. (The
-		''' "in" field is also nulled out on close.)
-		''' </summary>
-		Private Shared ReadOnly bufUpdater As java.util.concurrent.atomic.AtomicReferenceFieldUpdater(Of BufferedInputStream, SByte()) = java.util.concurrent.atomic.AtomicReferenceFieldUpdater.newUpdater(GetType(BufferedInputStream), GetType(SByte()), "buf")
+        ''' <summary>
+        ''' Atomic updater to provide compareAndSet for buf. This is
+        ''' necessary because closes can be asynchronous. We use nullness
+        ''' of buf[] as primary indicator that this stream is closed. (The
+        ''' "in" field is also nulled out on close.)
+        ''' </summary>
+        Private Shared ReadOnly bufUpdater As java.util.concurrent.atomic.AtomicReferenceFieldUpdater(Of BufferedInputStream, SByte()) =
+            java.util.concurrent.atomic.AtomicReferenceFieldUpdater(Of BufferedInputStream, SByte()).newUpdater(GetType(BufferedInputStream), GetType(SByte()), "buf")
 
-		''' <summary>
-		''' The index one greater than the index of the last valid byte in
-		''' the buffer.
-		''' This value is always
-		''' in the range <code>0</code> through <code>buf.length</code>;
-		''' elements <code>buf[0]</code>  through <code>buf[count-1]
-		''' </code>contain buffered input data obtained
-		''' from the underlying  input stream.
-		''' </summary>
-		Protected Friend count As Integer
+        ''' <summary>
+        ''' The index one greater than the index of the last valid byte in
+        ''' the buffer.
+        ''' This value is always
+        ''' in the range <code>0</code> through <code>buf.length</code>;
+        ''' elements <code>buf[0]</code>  through <code>buf[count-1]
+        ''' </code>contain buffered input data obtained
+        ''' from the underlying  input stream.
+        ''' </summary>
+        Protected Friend count As Integer
 
 		''' <summary>
 		''' The current position in the buffer. This is the index of the next
@@ -146,38 +146,38 @@ Namespace java.io
 		''' <seealso cref=     java.io.BufferedInputStream#reset() </seealso>
 		Protected Friend marklimit As Integer
 
-		''' <summary>
-		''' Check to make sure that underlying input stream has not been
-		''' nulled out due to close; if not return it;
-		''' </summary>
-		Private Property inIfOpen As InputStream
-			Get
-				Dim input As InputStream = [in]
-				If input Is Nothing Then Throw New IOException("Stream closed")
-				Return input
-			End Get
-		End Property
+        ''' <summary>
+        ''' Check to make sure that underlying input stream has not been
+        ''' nulled out due to close; if not return it;
+        ''' </summary>
+        Private ReadOnly Property inIfOpen As InputStream
+            Get
+                Dim input As InputStream = [in]
+                If input Is Nothing Then Throw New IOException("Stream closed")
+                Return input
+            End Get
+        End Property
 
-		''' <summary>
-		''' Check to make sure that buffer has not been nulled out due to
-		''' close; if not return it;
-		''' </summary>
-		Private Property bufIfOpen As SByte()
-			Get
-				Dim buffer As SByte() = buf
-				If buffer Is Nothing Then Throw New IOException("Stream closed")
-				Return buffer
-			End Get
-		End Property
+        ''' <summary>
+        ''' Check to make sure that buffer has not been nulled out due to
+        ''' close; if not return it;
+        ''' </summary>
+        Private ReadOnly Property bufIfOpen As SByte()
+            Get
+                Dim buffer As SByte() = buf
+                If buffer Is Nothing Then Throw New IOException("Stream closed")
+                Return buffer
+            End Get
+        End Property
 
-		''' <summary>
-		''' Creates a <code>BufferedInputStream</code>
-		''' and saves its  argument, the input stream
-		''' <code>in</code>, for later use. An internal
-		''' buffer array is created and  stored in <code>buf</code>.
-		''' </summary>
-		''' <param name="in">   the underlying input stream. </param>
-		Public Sub New(ByVal [in] As InputStream)
+        ''' <summary>
+        ''' Creates a <code>BufferedInputStream</code>
+        ''' and saves its  argument, the input stream
+        ''' <code>in</code>, for later use. An internal
+        ''' buffer array is created and  stored in <code>buf</code>.
+        ''' </summary>
+        ''' <param name="in">   the underlying input stream. </param>
+        Public Sub New(ByVal [in] As InputStream)
 			Me.New([in], DEFAULT_BUFFER_SIZE)
 		End Sub
 
@@ -278,175 +278,181 @@ Namespace java.io
 			Return cnt
 		End Function
 
-		''' <summary>
-		''' Reads bytes from this byte-input stream into the specified byte array,
-		''' starting at the given offset.
-		''' 
-		''' <p> This method implements the general contract of the corresponding
-		''' <code><seealso cref="InputStream#read(byte[], int, int) read"/></code> method of
-		''' the <code><seealso cref="InputStream"/></code> class.  As an additional
-		''' convenience, it attempts to read as many bytes as possible by repeatedly
-		''' invoking the <code>read</code> method of the underlying stream.  This
-		''' iterated <code>read</code> continues until one of the following
-		''' conditions becomes true: <ul>
-		''' 
-		'''   <li> The specified number of bytes have been read,
-		''' 
-		'''   <li> The <code>read</code> method of the underlying stream returns
-		'''   <code>-1</code>, indicating end-of-file, or
-		''' 
-		'''   <li> The <code>available</code> method of the underlying stream
-		'''   returns zero, indicating that further input requests would block.
-		''' 
-		''' </ul> If the first <code>read</code> on the underlying stream returns
-		''' <code>-1</code> to indicate end-of-file then this method returns
-		''' <code>-1</code>.  Otherwise this method returns the number of bytes
-		''' actually read.
-		''' 
-		''' <p> Subclasses of this class are encouraged, but not required, to
-		''' attempt to read as many bytes as possible in the same fashion.
-		''' </summary>
-		''' <param name="b">     destination buffer. </param>
-		''' <param name="off">   offset at which to start storing bytes. </param>
-		''' <param name="len">   maximum number of bytes to read. </param>
-		''' <returns>     the number of bytes read, or <code>-1</code> if the end of
-		'''             the stream has been reached. </returns>
-		''' <exception cref="IOException">  if this input stream has been closed by
-		'''                          invoking its <seealso cref="#close()"/> method,
-		'''                          or an I/O error occurs. </exception>
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public synchronized int read(byte b() , int off, int len) throws IOException
-			bufIfOpen ' Check for closed stream
-			If (off Or len Or (off + len) Or (b.length - (off + len))) < 0 Then
-				Throw New IndexOutOfBoundsException
-			ElseIf len = 0 Then
-				Return 0
-			End If
+        ''' <summary>
+        ''' Reads bytes from this byte-input stream into the specified byte array,
+        ''' starting at the given offset.
+        ''' 
+        ''' <p> This method implements the general contract of the corresponding
+        ''' <code><seealso cref="InputStream#read(byte[], int, int) read"/></code> method of
+        ''' the <code><seealso cref="InputStream"/></code> class.  As an additional
+        ''' convenience, it attempts to read as many bytes as possible by repeatedly
+        ''' invoking the <code>read</code> method of the underlying stream.  This
+        ''' iterated <code>read</code> continues until one of the following
+        ''' conditions becomes true: <ul>
+        ''' 
+        '''   <li> The specified number of bytes have been read,
+        ''' 
+        '''   <li> The <code>read</code> method of the underlying stream returns
+        '''   <code>-1</code>, indicating end-of-file, or
+        ''' 
+        '''   <li> The <code>available</code> method of the underlying stream
+        '''   returns zero, indicating that further input requests would block.
+        ''' 
+        ''' </ul> If the first <code>read</code> on the underlying stream returns
+        ''' <code>-1</code> to indicate end-of-file then this method returns
+        ''' <code>-1</code>.  Otherwise this method returns the number of bytes
+        ''' actually read.
+        ''' 
+        ''' <p> Subclasses of this class are encouraged, but not required, to
+        ''' attempt to read as many bytes as possible in the same fashion.
+        ''' </summary>
+        ''' <param name="b">     destination buffer. </param>
+        ''' <param name="off">   offset at which to start storing bytes. </param>
+        ''' <param name="len">   maximum number of bytes to read. </param>
+        ''' <returns>     the number of bytes read, or <code>-1</code> if the end of
+        '''             the stream has been reached. </returns>
+        ''' <exception cref="IOException">  if this input stream has been closed by
+        '''                          invoking its <seealso cref="#close()"/> method,
+        '''                          or an I/O error occurs. </exception>
+        Public Function read(b() As Byte, off As Integer, len As Integer) As Integer ' throws IOException
+            bufIfOpen ' Check for closed stream
+            If (off Or len Or (off + len) Or (b.Length - (off + len))) < 0 Then
+                Throw New IndexOutOfBoundsException
+            ElseIf len = 0 Then
+                Return 0
+            End If
 
-			Dim n As Integer = 0
-			Do
-				Dim nread As Integer = read1(b, off + n, len - n)
-				If nread <= 0 Then Return If(n = 0, nread, n)
-				n += nread
-				If n >= len Then Return n
-				' if not closed but no bytes available, return
-				Dim input As InputStream = [in]
-				If input IsNot Nothing AndAlso input.available() <= 0 Then Return n
-			Loop
+            Dim n As Integer = 0
+            Do
+                Dim nread As Integer = read1(b, off + n, len - n)
+                If nread <= 0 Then Return If(n = 0, nread, n)
+                n += nread
+                If n >= len Then Return n
+                ' if not closed but no bytes available, return
+                Dim input As InputStream = [in]
+                If input IsNot Nothing AndAlso input.available() <= 0 Then Return n
+            Loop
+        End Function
 
-		''' <summary>
-		''' See the general contract of the <code>skip</code>
-		''' method of <code>InputStream</code>.
-		''' </summary>
-		''' <exception cref="IOException">  if the stream does not support seek,
-		'''                          or if this input stream has been closed by
-		'''                          invoking its <seealso cref="#close()"/> method, or an
-		'''                          I/O error occurs. </exception>
-		public synchronized Long skip(Long n) throws IOException
-			bufIfOpen ' Check for closed stream
-			If n <= 0 Then Return 0
-			Dim avail As Long = count - pos
+        ''' <summary>
+        ''' See the general contract of the <code>skip</code>
+        ''' method of <code>InputStream</code>.
+        ''' </summary>
+        ''' <exception cref="IOException">  if the stream does not support seek,
+        '''                          or if this input stream has been closed by
+        '''                          invoking its <seealso cref="#close()"/> method, or an
+        '''                          I/O error occurs. </exception>
+        Public Function skip(n As Long) As Long ' throws IOException
+            bufIfOpen ' Check for closed stream
+            If n <= 0 Then Return 0
+            Dim avail As Long = count - pos
 
-			If avail <= 0 Then
-				' If no mark position set then don't keep in buffer
-				If markpos <0 Then Return inIfOpen.skip(n)
+            If avail <= 0 Then
+                ' If no mark position set then don't keep in buffer
+                If markpos < 0 Then Return inIfOpen.skip(n)
 
-				' Fill in buffer to save bytes for reset
-				fill()
-				avail = count - pos
-				If avail <= 0 Then Return 0
-			End If
+                ' Fill in buffer to save bytes for reset
+                fill()
+                avail = count - pos
+                If avail <= 0 Then Return 0
+            End If
 
-			Dim skipped As Long = If(avail < n, avail, n)
-			pos += skipped
-			Return skipped
+            Dim skipped As Long = If(avail < n, avail, n)
+            pos += skipped
+            Return skipped
+        End Function
+        ''' <summary>
+        ''' Returns an estimate of the number of bytes that can be read (or
+        ''' skipped over) from this input stream without blocking by the next
+        ''' invocation of a method for this input stream. The next invocation might be
+        ''' the same thread or another thread.  A single read or skip of this
+        ''' many bytes will not block, but may read or skip fewer bytes.
+        ''' <p>
+        ''' This method returns the sum of the number of bytes remaining to be read in
+        ''' the buffer (<code>count&nbsp;- pos</code>) and the result of calling the
+        ''' <seealso cref="java.io.FilterInputStream#in in"/>.available().
+        ''' </summary>
+        ''' <returns>     an estimate of the number of bytes that can be read (or skipped
+        '''             over) from this input stream without blocking. </returns>
+        ''' <exception cref="IOException">  if this input stream has been closed by
+        '''                          invoking its <seealso cref="#close()"/> method,
+        '''                          or an I/O error occurs. </exception>
+        Public Function available() As Integer ' throws IOException
+            Dim n As Integer = count - pos
+            Dim avail As Integer = inIfOpen.available()
+            Return If(n > (java.lang.[Integer].Max_Value - avail), java.lang.[Integer].Max_Value, n + avail)
+        End Function
 
-		''' <summary>
-		''' Returns an estimate of the number of bytes that can be read (or
-		''' skipped over) from this input stream without blocking by the next
-		''' invocation of a method for this input stream. The next invocation might be
-		''' the same thread or another thread.  A single read or skip of this
-		''' many bytes will not block, but may read or skip fewer bytes.
-		''' <p>
-		''' This method returns the sum of the number of bytes remaining to be read in
-		''' the buffer (<code>count&nbsp;- pos</code>) and the result of calling the
-		''' <seealso cref="java.io.FilterInputStream#in in"/>.available().
-		''' </summary>
-		''' <returns>     an estimate of the number of bytes that can be read (or skipped
-		'''             over) from this input stream without blocking. </returns>
-		''' <exception cref="IOException">  if this input stream has been closed by
-		'''                          invoking its <seealso cref="#close()"/> method,
-		'''                          or an I/O error occurs. </exception>
-		public synchronized Integer available() throws IOException
-			Dim n As Integer = count - pos
-			Dim avail As Integer = inIfOpen.available()
-			Return If(n > ( java.lang.[Integer].Max_Value - avail),  java.lang.[Integer].Max_Value, n + avail)
+        ''' <summary>
+        ''' See the general contract of the <code>mark</code>
+        ''' method of <code>InputStream</code>.
+        ''' </summary>
+        ''' <param name="readlimit">   the maximum limit of bytes that can be read before
+        '''                      the mark position becomes invalid. </param>
+        ''' <seealso cref=     java.io.BufferedInputStream#reset() </seealso>
+        Public Sub mark(readlimit As Integer)
+            marklimit = readlimit
+            markpos = pos
+        End Sub
 
-		''' <summary>
-		''' See the general contract of the <code>mark</code>
-		''' method of <code>InputStream</code>.
-		''' </summary>
-		''' <param name="readlimit">   the maximum limit of bytes that can be read before
-		'''                      the mark position becomes invalid. </param>
-		''' <seealso cref=     java.io.BufferedInputStream#reset() </seealso>
-		public synchronized void mark(Integer readlimit)
-			marklimit = readlimit
-			markpos = pos
+        ''' <summary>
+        ''' See the general contract of the <code>reset</code>
+        ''' method of <code>InputStream</code>.
+        ''' <p>
+        ''' If <code>markpos</code> is <code>-1</code>
+        ''' (no mark has been set or the mark has been
+        ''' invalidated), an <code>IOException</code>
+        ''' is thrown. Otherwise, <code>pos</code> is
+        ''' set equal to <code>markpos</code>.
+        ''' </summary>
+        ''' <exception cref="IOException">  if this stream has not been marked or,
+        '''                  if the mark has been invalidated, or the stream
+        '''                  has been closed by invoking its <seealso cref="#close()"/>
+        '''                  method, or an I/O error occurs. </exception>
+        ''' <seealso cref=        java.io.BufferedInputStream#mark(int) </seealso>
+        Public Sub reset() 'throws IOException
+            bufIfOpen ' Cause exception if closed
+            If markpos < 0 Then Throw New IOException("Resetting to invalid mark")
+            pos = markpos
+        End Sub
 
-		''' <summary>
-		''' See the general contract of the <code>reset</code>
-		''' method of <code>InputStream</code>.
-		''' <p>
-		''' If <code>markpos</code> is <code>-1</code>
-		''' (no mark has been set or the mark has been
-		''' invalidated), an <code>IOException</code>
-		''' is thrown. Otherwise, <code>pos</code> is
-		''' set equal to <code>markpos</code>.
-		''' </summary>
-		''' <exception cref="IOException">  if this stream has not been marked or,
-		'''                  if the mark has been invalidated, or the stream
-		'''                  has been closed by invoking its <seealso cref="#close()"/>
-		'''                  method, or an I/O error occurs. </exception>
-		''' <seealso cref=        java.io.BufferedInputStream#mark(int) </seealso>
-		public synchronized void reset() throws IOException
-			bufIfOpen ' Cause exception if closed
-			If markpos < 0 Then Throw New IOException("Resetting to invalid mark")
-			pos = markpos
+        ''' <summary>
+        ''' Tests if this input stream supports the <code>mark</code>
+        ''' and <code>reset</code> methods. The <code>markSupported</code>
+        ''' method of <code>BufferedInputStream</code> returns
+        ''' <code>true</code>.
+        ''' </summary>
+        ''' <returns>  a <code>boolean</code> indicating if this stream type supports
+        '''          the <code>mark</code> and <code>reset</code> methods. </returns>
+        ''' <seealso cref=     java.io.InputStream#mark(int) </seealso>
+        ''' <seealso cref=     java.io.InputStream#reset() </seealso>
+        Public Function markSupported() As Boolean
+            Return True
+        End Function
 
-		''' <summary>
-		''' Tests if this input stream supports the <code>mark</code>
-		''' and <code>reset</code> methods. The <code>markSupported</code>
-		''' method of <code>BufferedInputStream</code> returns
-		''' <code>true</code>.
-		''' </summary>
-		''' <returns>  a <code>boolean</code> indicating if this stream type supports
-		'''          the <code>mark</code> and <code>reset</code> methods. </returns>
-		''' <seealso cref=     java.io.InputStream#mark(int) </seealso>
-		''' <seealso cref=     java.io.InputStream#reset() </seealso>
-		public Boolean markSupported()
-			Return True
+        ''' <summary>
+        ''' Closes this input stream and releases any system resources
+        ''' associated with the stream.
+        ''' Once the stream has been closed, further read(), available(), reset(),
+        ''' or skip() invocations will throw an IOException.
+        ''' Closing a previously closed stream has no effect.
+        ''' </summary>
+        ''' <exception cref="IOException">  if an I/O error occurs. </exception>
+        Public Sub close() 'throws IOException
+            Dim buffer As SByte()
+            buffer = buf
+            Do While buffer IsNot Nothing
+                If bufUpdater.compareAndSet(Me, buffer, Nothing) Then
+                    Dim input As InputStream = [in]
+                    [in] = Nothing
+                    If input IsNot Nothing Then input.close()
+                    Return
+                End If
+                ' Else retry in case a new buf was CASed in fill()
+                buffer = buf
+            Loop
+        End Sub
 
-		''' <summary>
-		''' Closes this input stream and releases any system resources
-		''' associated with the stream.
-		''' Once the stream has been closed, further read(), available(), reset(),
-		''' or skip() invocations will throw an IOException.
-		''' Closing a previously closed stream has no effect.
-		''' </summary>
-		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void close() throws IOException
-			Dim buffer As SByte()
-			buffer = buf
-			Do While buffer IsNot Nothing
-				If bufUpdater.compareAndSet(Me, buffer, Nothing) Then
-					Dim input As InputStream = [in]
-					[in] = Nothing
-					If input IsNot Nothing Then input.close()
-					Return
-				End If
-				' Else retry in case a new buf was CASed in fill()
-				buffer = buf
-			Loop
-	End Class
+    End Class
 
 End Namespace

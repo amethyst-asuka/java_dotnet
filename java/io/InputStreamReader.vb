@@ -180,7 +180,7 @@ Namespace java.io
 		public Boolean ready() throws IOException
 			Return sd.ready()
 
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			sd.close()
 	End Class
 

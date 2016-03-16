@@ -878,7 +878,7 @@ Namespace java.lang.invoke
             ''' assertEquals("[x, y, z]", pb.command().toString());
             ''' }</pre></blockquote> </summary>
             ''' <param name="refc"> the class or interface from which the method is accessed </param>
-            ''' <param name="type"> the type of the method, with the receiver argument omitted, and a void return type </param>
+            ''' <param name="type"> the type of the method, with the receiver argument omitted, and a  Sub  return type </param>
             ''' <returns> the desired method handle </returns>
             ''' <exception cref="NoSuchMethodException"> if the constructor does not exist </exception>
             ''' <exception cref="IllegalAccessException"> if access checking fails
@@ -994,7 +994,7 @@ Namespace java.lang.invoke
 
             ''' <summary>
             ''' Produces a method handle giving write access to a non-static field.
-            ''' The type of the method handle will have a void return type.
+            ''' The type of the method handle will have a  Sub  return type.
             ''' The method handle will take two arguments, the instance containing
             ''' the field, and the value to be stored.
             ''' The second argument will be of the field's value type.
@@ -1038,7 +1038,7 @@ Namespace java.lang.invoke
 
             ''' <summary>
             ''' Produces a method handle giving write access to a static field.
-            ''' The type of the method handle will have a void return type.
+            ''' The type of the method handle will have a  Sub  return type.
             ''' The method handle will take a single
             ''' argument, of the field's value type, the value to be stored.
             ''' Access checking is performed immediately on behalf of the lookup class.
@@ -1252,7 +1252,7 @@ Namespace java.lang.invoke
 
             ''' <summary>
             ''' Produces a method handle giving write access to a reflected field.
-            ''' The type of the method handle will have a void return type.
+            ''' The type of the method handle will have a  Sub  return type.
             ''' If the field is static, the method handle will take a single
             ''' argument, of the field's value type, the value to be stored.
             ''' Otherwise, the two arguments will be the instance containing
@@ -1676,7 +1676,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Produces a method handle giving write access to elements of an array.
-        ''' The type of the method handle will have a void return type.
+        ''' The type of the method handle will have a  Sub  return type.
         ''' Its last argument will be the array's element type.
         ''' The first and second arguments will be the array type and int. </summary>
         ''' <param name="arrayClass"> the class of an array </param>
@@ -2499,10 +2499,10 @@ Namespace java.lang.invoke
         '''   V v = filter2();
         '''   return target2(a...,v,c...);
         ''' }
-        ''' // and if the filter has a void return:
+        ''' // and if the filter has a  Sub  return:
         ''' T target3(A...,C...);
-        ''' void filter3(B...);
-        ''' void adapter3(A... a,B... b,C... c) {
+        '''  Sub  filter3(B...);
+        '''  Sub  adapter3(A... a,B... b,C... c) {
         '''   filter3(b...);
         '''   return target3(a...,c...);
         ''' }
@@ -2595,17 +2595,17 @@ Namespace java.lang.invoke
         '''   V v = target(a...);
         '''   return filter(v);
         ''' }
-        ''' // and if the target has a void return:
-        ''' void target2(A...);
+        ''' // and if the target has a  Sub  return:
+        '''  Sub  target2(A...);
         ''' T filter2();
         ''' T adapter2(A... a) {
         '''   target2(a...);
         '''   return filter2();
         ''' }
-        ''' // and if the filter has a void return:
+        ''' // and if the filter has a  Sub  return:
         ''' V target3(A...);
-        ''' void filter3(V);
-        ''' void adapter3(A... a) {
+        '''  Sub  filter3(V);
+        '''  Sub  adapter3(A... a) {
         '''   V v = target3(a...);
         '''   filter3(v);
         ''' }
@@ -2653,7 +2653,7 @@ Namespace java.lang.invoke
         ''' {@code N} parameter types of the target must exactly match the parameters
         ''' of the combiner.
         ''' <p>
-        ''' If the combiner has a void return, no result will be inserted,
+        ''' If the combiner has a  Sub  return, no result will be inserted,
         ''' and the first {@code N} parameter types of the target
         ''' must exactly match the parameters of the combiner.
         ''' <p>
@@ -2691,9 +2691,9 @@ Namespace java.lang.invoke
         '''   V v = combiner(a...);
         '''   return target(v, a..., b...);
         ''' }
-        ''' // and if the combiner has a void return:
+        ''' // and if the combiner has a  Sub  return:
         ''' T target2(A[N]..., B...);
-        ''' void combiner2(A...);
+        '''  Sub  combiner2(A...);
         ''' T adapter2(A... a, B... b) {
         '''   combiner2(a...);
         '''   return target2(a..., b...);

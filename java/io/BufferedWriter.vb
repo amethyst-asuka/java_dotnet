@@ -165,7 +165,7 @@ Namespace java.io
         ''' <param name="len">   Number of characters to write
         ''' </param>
         ''' <exception cref="IOException">  If an I/O error occurs </exception>
-        Public Sub write(cbuf() As Char, off As Integer, len As Integer) ' throws IOException
+        Public Overloads Sub write(cbuf() As Char, off As Integer, len As Integer) ' throws IOException
             SyncLock lock
                 ensureOpen()
                 If (off < 0) OrElse (off > cbuf.Length) OrElse (len < 0) OrElse ((off + len) > cbuf.Length) OrElse ((off + len) < 0) Then
@@ -207,7 +207,7 @@ Namespace java.io
         ''' <param name="len">   Number of characters to be written
         ''' </param>
         ''' <exception cref="IOException">  If an I/O error occurs </exception>
-        Public Sub write(s As String, off As Integer, len As Integer) 'throws IOException
+        Public Overloads Sub write(s As String, off As Integer, len As Integer) 'throws IOException
             SyncLock lock
                 ensureOpen()
 

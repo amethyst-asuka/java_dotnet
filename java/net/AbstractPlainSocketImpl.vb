@@ -298,7 +298,7 @@ Namespace java.net
         ''' throws an IOException indicating what went wrong.
         ''' </summary>
 
-        SyncLock void doConnect InetAddress address, Integer port, Integer timeout
+        SyncLock  Sub  doConnect InetAddress address, Integer port, Integer timeout
 			throws java.io.IOException
 			SyncLock fdLock
         If (Not closePending) AndAlso (socket_Renamed Is Nothing OrElse (Not socket_Renamed.bound)) Then sun.net.NetHooks.beforeTcpConnect(fd, address, port)
@@ -332,7 +332,7 @@ Namespace java.net
         ''' Binds the socket to the specified address of the specified local port. </summary>
         ''' <param name="address"> the address </param>
         ''' <param name="lport"> the port </param>
-        Protected synchronized void bind(InetAddress address, Integer lport) throws java.io.IOException
+        Protected synchronized  Sub  bind(InetAddress address, Integer lport) throws java.io.IOException
 		   SyncLock fdLock
         If (Not closePending) AndAlso (socket_Renamed Is Nothing OrElse (Not socket_Renamed.bound)) Then sun.net.NetHooks.beforeTcpBind(fd, address, lport)
 		   End SyncLock
@@ -343,13 +343,13 @@ Namespace java.net
 		''' <summary>
 		''' Listens, for a specified amount of time, for connections. </summary>
 		''' <param name="count"> the amount of time to listen for connections </param>
-		Protected synchronized void listen(Integer count) throws java.io.IOException
+		Protected synchronized  Sub  listen(Integer count) throws java.io.IOException
 			socketListen(count)
 
 		''' <summary>
 		''' Accepts connections. </summary>
 		''' <param name="s"> the connection </param>
-		Protected void accept(SocketImpl s) throws java.io.IOException
+		Protected  Sub  accept(SocketImpl s) throws java.io.IOException
 			acquireFD()
 			Try
 				socketAccept(s)
@@ -430,7 +430,7 @@ Namespace java.net
         ''' <summary>
         ''' Closes the socket.
         ''' </summary>
-        Protected void close() throws java.io.IOException
+        Protected  Sub  close() throws java.io.IOException
 			SyncLock fdLock
         If fd IsNot Nothing Then
         If Not stream Then sun.net.ResourceManager.afterUdpClose()
@@ -477,7 +477,7 @@ Namespace java.net
         ''' <summary>
         ''' Shutdown read-half of the socket connection;
         ''' </summary>
-        Protected void shutdownInput() throws java.io.IOException
+        Protected  Sub  shutdownInput() throws java.io.IOException
 		  If fd IsNot Nothing Then
 			  socketShutdown(SHUT_RD)
 			  If socketInputStream IsNot Nothing Then socketInputStream.eOF = True
@@ -487,7 +487,7 @@ Namespace java.net
         ''' <summary>
         ''' Shutdown write-half of the socket connection;
         ''' </summary>
-        Protected void shutdownOutput() throws java.io.IOException
+        Protected  Sub  shutdownOutput() throws java.io.IOException
 		  If fd IsNot Nothing Then
 			  socketShutdown(SHUT_WR)
 			  shut_wr = True
@@ -496,14 +496,14 @@ Namespace java.net
         Protected Boolean supportsUrgentData()
 			Return True
 
-        Protected void sendUrgentData(Integer data) throws java.io.IOException
+        Protected  Sub  sendUrgentData(Integer data) throws java.io.IOException
 			If fd Is Nothing Then Throw New java.io.IOException("Socket Closed")
 			socketSendUrgentData(data)
 
 		''' <summary>
 		''' Cleans up if the user forgets to close it.
 		''' </summary>
-		Protected void Finalize() throws java.io.IOException
+		Protected  Sub  Finalize() throws java.io.IOException
 			close()
 
 	'    
@@ -548,12 +548,12 @@ Namespace java.net
         Return (resetState = CONNECTION_RESET_PENDING)
         End SyncLock
 
-        Public void connectionResetset()
+        Public  Sub  connectionResetset()
 			SyncLock resetLock
 				resetState = CONNECTION_RESET
 			End SyncLock
 
-        Public void connectionResetPendinging()
+        Public  Sub  connectionResetPendinging()
 			SyncLock resetLock
         If resetState = CONNECTION_NOT_RESET Then resetState = CONNECTION_RESET_PENDING
 			End SyncLock
@@ -585,26 +585,26 @@ Namespace java.net
         '     * "Pre-close" a socket by dup'ing the file descriptor - this enables
         '     * the socket to be closed without releasing the file descriptor.
         '     
-        Private void socketPreClose() throws java.io.IOException
+        Private  Sub  socketPreClose() throws java.io.IOException
 			socketClose0(True)
 
 	'    
 	'     * Close the socket (and release the file descriptor).
 	'     
-		Protected void socketClose() throws java.io.IOException
+		Protected  Sub  socketClose() throws java.io.IOException
 			socketClose0(False)
 
-		abstract void socketCreate(Boolean isServer) throws java.io.IOException
-		abstract void socketConnect(InetAddress address, Integer port, Integer timeout) throws java.io.IOException
-		abstract void socketBind(InetAddress address, Integer port) throws java.io.IOException
-		abstract void socketListen(Integer count) throws java.io.IOException
-		abstract void socketAccept(SocketImpl s) throws java.io.IOException
+		abstract  Sub  socketCreate(Boolean isServer) throws java.io.IOException
+		abstract  Sub  socketConnect(InetAddress address, Integer port, Integer timeout) throws java.io.IOException
+		abstract  Sub  socketBind(InetAddress address, Integer port) throws java.io.IOException
+		abstract  Sub  socketListen(Integer count) throws java.io.IOException
+		abstract  Sub  socketAccept(SocketImpl s) throws java.io.IOException
 		abstract Integer socketAvailable() throws java.io.IOException
-		abstract void socketClose0(Boolean useDeferredClose) throws java.io.IOException
-		abstract void socketShutdown(Integer howto) throws java.io.IOException
-		abstract void socketSetOption(Integer cmd, Boolean On, Object value) throws SocketException
+		abstract  Sub  socketClose0(Boolean useDeferredClose) throws java.io.IOException
+		abstract  Sub  socketShutdown(Integer howto) throws java.io.IOException
+		abstract  Sub  socketSetOption(Integer cmd, Boolean On, Object value) throws SocketException
 		abstract Integer socketGetOption(Integer opt, Object iaContainerObj) throws SocketException
-		abstract void socketSendUrgentData(Integer data) throws java.io.IOException
+		abstract  Sub  socketSendUrgentData(Integer data) throws java.io.IOException
 
 		Public final Static Integer SHUT_RD = 0
 		Public final Static Integer SHUT_WR = 1

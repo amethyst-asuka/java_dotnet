@@ -201,7 +201,7 @@ Namespace java.util
 	'''       this.array = array; this.origin = origin; this.fence = fence;
 	'''     }
 	''' 
-	'''     public void forEachRemaining(Consumer<? super T> action) {
+	'''     public  Sub  forEachRemaining(Consumer<? super T> action) {
 	'''       for (; origin < fence; origin += 2)
 	'''         action.accept((T) array[origin]);
 	'''     }
@@ -249,7 +249,7 @@ Namespace java.util
 	''' similar usages apply to other parallel task constructions.
 	''' 
 	''' <pre>{@code
-	''' static <T> void parEach(TaggedArray<T> a, Consumer<T> action) {
+	''' static <T>  Sub  parEach(TaggedArray<T> a, Consumer<T> action) {
 	'''   Spliterator<T> s = a.spliterator();
 	'''   long targetBatchSize = s.estimateSize() / (ForkJoinPool.getCommonPoolParallelism() * 8);
 	'''   new ParEach(null, s, action, targetBatchSize).invoke();
@@ -267,7 +267,7 @@ Namespace java.util
 	'''     this.targetBatchSize = targetBatchSize;
 	'''   }
 	''' 
-	'''   public void compute() {
+	'''   public  Sub  compute() {
 	'''     Spliterator<T> sub;
 	'''     while (spliterator.estimateSize() > targetBatchSize &&
 	'''            (sub = spliterator.trySplit()) != null) {
@@ -623,7 +623,7 @@ Namespace java.util
 	'		''' </summary>
 	'		''' <param name="action"> The action </param>
 	'		''' <exception cref="NullPointerException"> if the specified action is null </exception>
-	'		@SuppressWarnings("overloads") default void forEachRemaining(T_CONS action)
+	'		@SuppressWarnings("overloads") default  Sub  forEachRemaining(T_CONS action)
 	'		{
 	'			do
 	'			{
@@ -643,7 +643,7 @@ Namespace java.util
 	'
 	'		@Override boolean tryAdvance(IntConsumer action);
 	'
-	'		@Override default void forEachRemaining(IntConsumer action)
+	'		@Override default  Sub  forEachRemaining(IntConsumer action)
 	'		{
 	'			do
 	'			{
@@ -684,7 +684,7 @@ Namespace java.util
 	'		''' boxing the argument of {@code IntConsumer}, and then passed to
 	'		''' <seealso cref="#forEachRemaining(java.util.function.IntConsumer)"/>.
 	'		''' </summary>
-	'		@Override default void forEachRemaining(Consumer<? MyBase java.lang.Integer> action)
+	'		@Override default  Sub  forEachRemaining(Consumer<? MyBase java.lang.Integer> action)
 	'		{
 	'			if (action instanceof IntConsumer)
 	'			{
@@ -711,7 +711,7 @@ Namespace java.util
 	'
 	'		@Override boolean tryAdvance(LongConsumer action);
 	'
-	'		@Override default void forEachRemaining(LongConsumer action)
+	'		@Override default  Sub  forEachRemaining(LongConsumer action)
 	'		{
 	'			do
 	'			{
@@ -752,7 +752,7 @@ Namespace java.util
 	'		''' boxing the argument of {@code LongConsumer}, and then passed to
 	'		''' <seealso cref="#forEachRemaining(java.util.function.LongConsumer)"/>.
 	'		''' </summary>
-	'		@Override default void forEachRemaining(Consumer<? MyBase java.lang.Long> action)
+	'		@Override default  Sub  forEachRemaining(Consumer<? MyBase java.lang.Long> action)
 	'		{
 	'			if (action instanceof LongConsumer)
 	'			{
@@ -779,7 +779,7 @@ Namespace java.util
 	'
 	'		@Override boolean tryAdvance(DoubleConsumer action);
 	'
-	'		@Override default void forEachRemaining(DoubleConsumer action)
+	'		@Override default  Sub  forEachRemaining(DoubleConsumer action)
 	'		{
 	'			do
 	'			{
@@ -821,7 +821,7 @@ Namespace java.util
 	'		''' {@code DoubleConsumer}, and then passed to
 	'		''' <seealso cref="#forEachRemaining(java.util.function.DoubleConsumer)"/>.
 	'		''' </summary>
-	'		@Override default void forEachRemaining(Consumer<? MyBase java.lang.Double> action)
+	'		@Override default  Sub  forEachRemaining(Consumer<? MyBase java.lang.Double> action)
 	'		{
 	'			if (action instanceof DoubleConsumer)
 	'			{

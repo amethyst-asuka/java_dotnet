@@ -129,14 +129,14 @@ Namespace java.lang
 		''' actual capacity below that requested here.
 		''' </summary>
 		''' <param name="minimumCapacity">   the minimum desired capacity. </param>
-		public void ensureCapacity(Integer minimumCapacity)
+		public  Sub  ensureCapacity(Integer minimumCapacity)
 			If minimumCapacity > 0 Then ensureCapacityInternal(minimumCapacity)
 
 		''' <summary>
 		''' This method has the same contract as ensureCapacity, but is
 		''' never synchronized.
 		''' </summary>
-		private void ensureCapacityInternal(Integer minimumCapacity)
+		private  Sub  ensureCapacityInternal(Integer minimumCapacity)
 			' overflow-conscious code
 			If minimumCapacity - value_Renamed.Length > 0 Then expandCapacity(minimumCapacity)
 
@@ -160,7 +160,7 @@ Namespace java.lang
 		''' Calling this method may, but is not required to, affect the value
 		''' returned by a subsequent call to the <seealso cref="#capacity()"/> method.
 		''' </summary>
-		public void trimToSize()
+		public  Sub  trimToSize()
 			If count < value_Renamed.Length Then value_Renamed = java.util.Arrays.copyOf(value_Renamed, count)
 
 		''' <summary>
@@ -187,7 +187,7 @@ Namespace java.lang
 		''' <param name="newLength">   the new length </param>
 		''' <exception cref="IndexOutOfBoundsException">  if the
 		'''               {@code newLength} argument is negative. </exception>
-		public void lengthgth(Integer newLength)
+		public  Sub  lengthgth(Integer newLength)
 			If newLength < 0 Then Throw New StringIndexOutOfBoundsException(newLength)
 			ensureCapacityInternal(newLength)
 
@@ -336,7 +336,7 @@ Namespace java.lang
 		'''             <li>{@code dstBegin+srcEnd-srcBegin} is greater than
 		'''             {@code dst.length}
 		'''             </ul> </exception>
-		public void getChars(Integer srcBegin, Integer srcEnd, Char() dst, Integer dstBegin)
+		public  Sub  getChars(Integer srcBegin, Integer srcEnd, Char() dst, Integer dstBegin)
 			If srcBegin < 0 Then Throw New StringIndexOutOfBoundsException(srcBegin)
 			If (srcEnd < 0) OrElse (srcEnd > count) Then Throw New StringIndexOutOfBoundsException(srcEnd)
 			If srcBegin > srcEnd Then Throw New StringIndexOutOfBoundsException("srcBegin > srcEnd")
@@ -355,7 +355,7 @@ Namespace java.lang
 		''' <param name="ch">      the new character. </param>
 		''' <exception cref="IndexOutOfBoundsException">  if {@code index} is
 		'''             negative or greater than or equal to {@code length()}. </exception>
-		public void charAtrAt(Integer index, Char ch)
+		public  Sub  charAtrAt(Integer index, Char ch)
 			If (index < 0) OrElse (index >= count) Then Throw New StringIndexOutOfBoundsException(index)
 			value_Renamed(index) = ch
 
@@ -1278,7 +1278,7 @@ Namespace java.lang
 
 		''' <summary>
 		''' Outlined helper method for reverse() </summary>
-		private void reverseAllValidSurrogatePairs()
+		private  Sub  reverseAllValidSurrogatePairs()
 			For i As Integer = 0 To count - 2
 				Dim c2 As Char = value_Renamed(i)
 				If Char.IsLowSurrogate(c2) Then

@@ -183,7 +183,7 @@ Namespace java.awt.image
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
 		''' <seealso cref= #filterRGB </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void filterRGBPixels(int x, int y, int w, int h, int pixels() , int off, int scansize)
+		public  Sub  filterRGBPixels(int x, int y, int w, int h, int pixels() , int off, int scansize)
 			Dim index As Integer = off
 			For cy As Integer = 0 To h - 1
 				For cx As Integer = 0 To w - 1
@@ -209,7 +209,7 @@ Namespace java.awt.image
 		''' with the filtering operation. </summary>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
 		''' <seealso cref= #filterRGBPixels </seealso>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, java.awt.image.ColorModel model, SByte pixels() , Integer off, Integer scansize)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, java.awt.image.ColorModel model, SByte pixels() , Integer off, Integer scansize)
 			If model Is origmodel Then
 				consumer.pixelsels(x, y, w, h, newmodel, pixels, off, scansize)
 			Else
@@ -242,7 +242,7 @@ Namespace java.awt.image
 		''' with the filtering operation. </summary>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
 		''' <seealso cref= #filterRGBPixels </seealso>
-		public void pixelsels(Integer x, Integer y, Integer w, Integer h, java.awt.image.ColorModel model, Integer pixels() , Integer off, Integer scansize)
+		public  Sub  pixelsels(Integer x, Integer y, Integer w, Integer h, java.awt.image.ColorModel model, Integer pixels() , Integer off, Integer scansize)
 			If model Is origmodel Then
 				consumer.pixelsels(x, y, w, h, newmodel, pixels, off, scansize)
 			Else

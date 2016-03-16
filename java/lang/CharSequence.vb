@@ -138,7 +138,7 @@ Namespace java.lang
 	'				}
 	'			}
 	'
-	'			@Override public void forEachRemaining(IntConsumer block)
+	'			@Override public  Sub  forEachRemaining(IntConsumer block)
 	'			{
 	'				for (; cur < length(); cur += 1)
 	'				{
@@ -169,7 +169,7 @@ Namespace java.lang
 	'		{
 	'			int cur = 0;
 	'
-	'			@Override public void forEachRemaining(IntConsumer block)
+	'			@Override public  Sub  forEachRemaining(IntConsumer block)
 	'			{
 	'				final int length = length();
 	'				int i = cur;

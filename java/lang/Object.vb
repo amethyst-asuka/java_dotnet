@@ -36,6 +36,7 @@ Namespace java.lang
     ''' <seealso cref=     java.lang.Class
     ''' @since   JDK1.0 </seealso>
     Public Class [Object]
+        Implements IDisposable
 
         ''' <summary>
         ''' Returns the runtime class of this {@code Object}. The returned
@@ -234,7 +235,7 @@ Namespace java.lang
         ''' </summary>
         ''' <returns>  a string representation of the object. </returns>
         Public Overrides Function ToString() As String
-            Return Me.GetType().name & "@" & java.lang.[Integer].toHexString(GetHashCode())
+            Return Me.GetType().Name & "@" & java.lang.[Integer].toHexString(GetHashCode())
         End Function
 
         ''' <summary>
@@ -551,5 +552,37 @@ Namespace java.lang
         Public Shared Operator &(s As String, x As [Object]) As String
             Return x.ToString & s
         End Operator
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' To detect redundant calls
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(disposing As Boolean)
+            If Not disposedValue Then
+                If disposing Then
+                    ' TODO: dispose managed state (managed objects).
+                End If
+
+                ' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
+                ' TODO: set large fields to null.
+            End If
+            disposedValue = True
+        End Sub
+
+        ' TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
+        'Protected Overrides Sub Finalize()
+        '    ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
+        '    Dispose(False)
+        '    MyBase.Finalize()
+        'End Sub
+
+        ' This code added by Visual Basic to correctly implement the disposable pattern.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
+            Dispose(True)
+            ' TODO: uncomment the following line if Finalize() is overridden above.
+            ' GC.SuppressFinalize(Me)
+        End Sub
+#End Region
     End Class
 End Namespace

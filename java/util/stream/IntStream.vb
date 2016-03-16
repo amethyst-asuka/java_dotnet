@@ -809,7 +809,7 @@ Namespace java.util.stream
 	'		''' </summary>
 	'		''' <exception cref="IllegalStateException"> if the builder has already transitioned
 	'		''' to the built state </exception>
-	'		@Override void accept(int t);
+	'		@Override  Sub  accept(int t);
 	'
 	'		''' <summary>
 	'		''' Adds an element to the stream being built.

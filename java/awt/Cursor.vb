@@ -179,7 +179,7 @@ Namespace java.awt
             '					Return cursor.pData;
             '				}
             '
-            '				public void setPData(Cursor cursor, long pData)
+            '				public  Sub  setPData(Cursor cursor, long pData)
             '				{
             '					cursor.pData = pData;
             '				}

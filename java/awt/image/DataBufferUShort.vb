@@ -262,7 +262,7 @@ Namespace java.awt.image
 		''' <param name="val"> The integer value to which you want to set the data array element. </param>
 		''' <seealso cref= #getElem(int) </seealso>
 		''' <seealso cref= #getElem(int, int) </seealso>
-		public void elemlem(Integer i, Integer val)
+		public  Sub  elemlem(Integer i, Integer val)
 			data(i+offset) = CShort(Fix(val And &Hffff))
 			theTrackable.markDirty()
 
@@ -274,7 +274,7 @@ Namespace java.awt.image
 		''' <param name="val"> The integer value to which you want to set the specified data array element. </param>
 		''' <seealso cref= #getElem(int) </seealso>
 		''' <seealso cref= #getElem(int, int) </seealso>
-		public void elemlem(Integer bank, Integer i, Integer val)
+		public  Sub  elemlem(Integer bank, Integer i, Integer val)
 			bankdata(bank)(i+offsets(bank)) = CShort(Fix(val And &Hffff))
 			theTrackable.markDirty()
 	End Class

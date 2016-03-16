@@ -55,17 +55,17 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink extends Box(Of U) implements AccumulatingSink(Of T, U, ReducingSink)
 	'		{
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = seed;
 	'			}
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				state = reducer.apply(state, t);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				state = combiner.apply(state, other.state);
 	'			}
@@ -96,13 +96,13 @@ Namespace java.util.stream
 	'			private boolean empty;
 	'			private T state;
 	'
-	'			public void begin(long size)
+	'			public  Sub  begin(long size)
 	'			{
 	'				empty = True;
 	'				state = Nothing;
 	'			}
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				if (empty)
 	'				{
@@ -120,7 +120,7 @@ Namespace java.util.stream
 	'				Return empty ? Optional.empty() : Optional.of(state);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				if (!other.empty)
 	'					accept(other.state);
@@ -155,17 +155,17 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink extends Box(Of I) implements AccumulatingSink(Of T, I, ReducingSink)
 	'		{
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = supplier.get();
 	'			}
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				accumulator.accept(state, t);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				state = combiner.apply(state, other.state);
 	'			}
@@ -206,17 +206,17 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink extends Box(Of R) implements AccumulatingSink(Of T, R, ReducingSink)
 	'		{
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = seedFactory.get();
 	'			}
 	'
-	'			@Override public void accept(T t)
+	'			@Override public  Sub  accept(T t)
 	'			{
 	'				accumulator.accept(state, t);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				reducer.accept(state, other.state);
 	'			}
@@ -246,12 +246,12 @@ Namespace java.util.stream
 	'		{
 	'			private int state;
 	'
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = identity;
 	'			}
 	'
-	'			@Override public void accept(int t)
+	'			@Override public  Sub  accept(int t)
 	'			{
 	'				state = operator.applyAsInt(state, t);
 	'			}
@@ -261,7 +261,7 @@ Namespace java.util.stream
 	'				Return state;
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				accept(other.state);
 	'			}
@@ -291,13 +291,13 @@ Namespace java.util.stream
 	'			private boolean empty;
 	'			private int state;
 	'
-	'			public void begin(long size)
+	'			public  Sub  begin(long size)
 	'			{
 	'				empty = True;
 	'				state = 0;
 	'			}
 	'
-	'			@Override public void accept(int t)
+	'			@Override public  Sub  accept(int t)
 	'			{
 	'				if (empty)
 	'				{
@@ -315,7 +315,7 @@ Namespace java.util.stream
 	'				Return empty ? OptionalInt.empty() : OptionalInt.of(state);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				if (!other.empty)
 	'					accept(other.state);
@@ -349,17 +349,17 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink extends Box(Of R) implements AccumulatingSink(Of java.lang.Integer, R, ReducingSink), Sink.OfInt
 	'		{
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = supplier.get();
 	'			}
 	'
-	'			@Override public void accept(int t)
+	'			@Override public  Sub  accept(int t)
 	'			{
 	'				accumulator.accept(state, t);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				state = combiner.apply(state, other.state);
 	'			}
@@ -389,12 +389,12 @@ Namespace java.util.stream
 	'		{
 	'			private long state;
 	'
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = identity;
 	'			}
 	'
-	'			@Override public void accept(long t)
+	'			@Override public  Sub  accept(long t)
 	'			{
 	'				state = operator.applyAsLong(state, t);
 	'			}
@@ -404,7 +404,7 @@ Namespace java.util.stream
 	'				Return state;
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				accept(other.state);
 	'			}
@@ -434,13 +434,13 @@ Namespace java.util.stream
 	'			private boolean empty;
 	'			private long state;
 	'
-	'			public void begin(long size)
+	'			public  Sub  begin(long size)
 	'			{
 	'				empty = True;
 	'				state = 0;
 	'			}
 	'
-	'			@Override public void accept(long t)
+	'			@Override public  Sub  accept(long t)
 	'			{
 	'				if (empty)
 	'				{
@@ -458,7 +458,7 @@ Namespace java.util.stream
 	'				Return empty ? OptionalLong.empty() : OptionalLong.of(state);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				if (!other.empty)
 	'					accept(other.state);
@@ -492,17 +492,17 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink extends Box(Of R) implements AccumulatingSink(Of java.lang.Long, R, ReducingSink), Sink.OfLong
 	'		{
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = supplier.get();
 	'			}
 	'
-	'			@Override public void accept(long t)
+	'			@Override public  Sub  accept(long t)
 	'			{
 	'				accumulator.accept(state, t);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				state = combiner.apply(state, other.state);
 	'			}
@@ -532,12 +532,12 @@ Namespace java.util.stream
 	'		{
 	'			private double state;
 	'
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = identity;
 	'			}
 	'
-	'			@Override public void accept(double t)
+	'			@Override public  Sub  accept(double t)
 	'			{
 	'				state = operator.applyAsDouble(state, t);
 	'			}
@@ -547,7 +547,7 @@ Namespace java.util.stream
 	'				Return state;
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				accept(other.state);
 	'			}
@@ -577,13 +577,13 @@ Namespace java.util.stream
 	'			private boolean empty;
 	'			private double state;
 	'
-	'			public void begin(long size)
+	'			public  Sub  begin(long size)
 	'			{
 	'				empty = True;
 	'				state = 0;
 	'			}
 	'
-	'			@Override public void accept(double t)
+	'			@Override public  Sub  accept(double t)
 	'			{
 	'				if (empty)
 	'				{
@@ -601,7 +601,7 @@ Namespace java.util.stream
 	'				Return empty ? OptionalDouble.empty() : OptionalDouble.of(state);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				if (!other.empty)
 	'					accept(other.state);
@@ -635,17 +635,17 @@ Namespace java.util.stream
 'JAVA TO VB CONVERTER TODO TASK: Local classes are not converted by Java to VB Converter:
 '			class ReducingSink extends Box(Of R) implements AccumulatingSink(Of java.lang.Double, R, ReducingSink), Sink.OfDouble
 	'		{
-	'			@Override public void begin(long size)
+	'			@Override public  Sub  begin(long size)
 	'			{
 	'				state = supplier.get();
 	'			}
 	'
-	'			@Override public void accept(double t)
+	'			@Override public  Sub  accept(double t)
 	'			{
 	'				accumulator.accept(state, t);
 	'			}
 	'
-	'			@Override public void combine(ReducingSink other)
+	'			@Override public  Sub  combine(ReducingSink other)
 	'			{
 	'				state = combiner.apply(state, other.state);
 	'			}

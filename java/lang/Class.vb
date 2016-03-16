@@ -53,7 +53,7 @@ Namespace java.lang
     ''' class name of an object:
     ''' 
     ''' <blockquote><pre>
-    '''     void printClassName(Object obj) {
+    '''      Sub  printClassName(Object obj) {
     '''         System.out.println("The class of " + obj +
     '''                            " is " + obj.getClass().getName());
     '''     }
@@ -113,7 +113,7 @@ Namespace java.lang
         ''' fully qualified name of the class in the format returned by
         ''' {@code getName}.  If this {@code Class} object represents a
         ''' primitive type, this method returns the name of the primitive type.  If
-        ''' this {@code Class} object represents void this method returns
+        ''' this {@code Class} object represents  Sub  this method returns
         ''' "void".
         ''' </summary>
         ''' <returns> a string representation of this class object. </returns>

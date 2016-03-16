@@ -417,7 +417,7 @@ Namespace java.lang.invoke
 				Else
 					Dim fn As MethodHandle = CType(convSpec, MethodHandle)
 					If fn.type().parameterCount() = 0 Then
-						conv = New Name(fn) ' don't pass retval to void conversion
+						conv = New Name(fn) ' don't pass retval to  Sub  conversion
 					Else
 						conv = New Name(fn, names(OUT_CALL))
 					End If
@@ -466,7 +466,7 @@ Namespace java.lang.invoke
 		''' Find a conversion function from the given source to the given destination.
 		''' This conversion function will be used as a LF NamedFunction.
 		''' Return a Class object if a simple cast is needed.
-		''' Return void.class if void is involved.
+		''' Return void.class if  Sub  is involved.
 		''' </summary>
 		Friend Shared Function valueConversion(ByVal src As [Class], ByVal dst As [Class], ByVal [strict] As Boolean, ByVal monobox As Boolean) As Object
 			assert((Not sun.invoke.util.VerifyType.isNullConversion(src, dst, [strict]))) ' caller responsibility - keepInterfaces=

@@ -52,7 +52,7 @@ Namespace java.util.concurrent
 	'''     this.array = array; this.lo = lo; this.hi = hi;
 	'''   }
 	'''   SortTask(long[] array) { this(array, 0, array.length); }
-	'''   protected void compute() {
+	'''   protected  Sub  compute() {
 	'''     if (hi - lo < THRESHOLD)
 	'''       sortSequentially(lo, hi);
 	'''     else {
@@ -64,10 +64,10 @@ Namespace java.util.concurrent
 	'''   }
 	'''   // implementation details follow:
 	'''   static final int THRESHOLD = 1000;
-	'''   void sortSequentially(int lo, int hi) {
+	'''    Sub  sortSequentially(int lo, int hi) {
 	'''     Arrays.sort(array, lo, hi);
 	'''   }
-	'''   void merge(int lo, int mid, int hi) {
+	'''    Sub  merge(int lo, int mid, int hi) {
 	'''     long[] buf = Arrays.copyOfRange(array, lo, mid);
 	'''     for (int i = 0, j = lo, k = mid; i < buf.length; j++)
 	'''       array[j] = (k == hi || buf[i] < array[k]) ?
@@ -85,7 +85,7 @@ Namespace java.util.concurrent
 	'''   IncrementTask(long[] array, int lo, int hi) {
 	'''     this.array = array; this.lo = lo; this.hi = hi;
 	'''   }
-	'''   protected void compute() {
+	'''   protected  Sub  compute() {
 	'''     if (hi - lo < THRESHOLD) {
 	'''       for (int i = lo; i < hi; ++i)
 	'''         array[i]++;
@@ -135,7 +135,7 @@ Namespace java.util.concurrent
 	'''     return sum;
 	'''   }
 	''' 
-	'''   protected void compute() {
+	'''   protected  Sub  compute() {
 	'''     int l = lo;
 	'''     int h = hi;
 	'''     Applyer right = null;

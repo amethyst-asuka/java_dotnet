@@ -225,7 +225,7 @@ Namespace java.beans
 		public Class listenerType
 			Return If(Me.listenerTypeRef IsNot Nothing, Me.listenerTypeRef.get(), Nothing)
 
-		private void listenerTypeype(Class cls)
+		private  Sub  listenerTypeype(Class cls)
 			Me.listenerTypeRef = getWeakReference(cls)
 
 		''' <summary>
@@ -247,7 +247,7 @@ Namespace java.beans
 			End If
 			Return methods
 
-		private void listenerMethodsods(Method() methods)
+		private  Sub  listenerMethodsods(Method() methods)
 			If methods Is Nothing Then Return
 			If listenerMethodDescriptors Is Nothing Then
 				listenerMethodDescriptors = New MethodDescriptor(methods.length - 1){}
@@ -276,7 +276,7 @@ Namespace java.beans
 		public synchronized Method addListenerMethod
 			Return getMethod(Me.addMethodDescriptor)
 
-		private synchronized void addListenerMethodhod(Method method)
+		private synchronized  Sub  addListenerMethodhod(Method method)
 			If method Is Nothing Then Return
 			If class0 Is Nothing Then class0 = method.declaringClass
 			addMethodDescriptor = New MethodDescriptor(method)
@@ -289,7 +289,7 @@ Namespace java.beans
 		public synchronized Method removeListenerMethod
 			Return getMethod(Me.removeMethodDescriptor)
 
-		private synchronized void removeListenerMethodhod(Method method)
+		private synchronized  Sub  removeListenerMethodhod(Method method)
 			If method Is Nothing Then Return
 			If class0 Is Nothing Then class0 = method.declaringClass
 			removeMethodDescriptor = New MethodDescriptor(method)
@@ -304,7 +304,7 @@ Namespace java.beans
 		public synchronized Method getListenerMethod
 			Return getMethod(Me.getMethodDescriptor)
 
-		private synchronized void getListenerMethodhod(Method method)
+		private synchronized  Sub  getListenerMethodhod(Method method)
 			If method Is Nothing Then Return
 			If class0 Is Nothing Then class0 = method.declaringClass
 			getMethodDescriptor = New MethodDescriptor(method)
@@ -314,7 +314,7 @@ Namespace java.beans
 		''' Mark an event set as unicast (or not).
 		''' </summary>
 		''' <param name="unicast">  True if the event set is unicast. </param>
-		public void unicastast(Boolean unicast)
+		public  Sub  unicastast(Boolean unicast)
 			Me.unicast = unicast
 
 		''' <summary>
@@ -333,7 +333,7 @@ Namespace java.beans
 		''' <param name="inDefaultEventSet"> <code>true</code> if the event set is in
 		'''                          the &quot;default&quot; set,
 		'''                          <code>false</code> if not </param>
-		public void inDefaultEventSetSet(Boolean inDefaultEventSet)
+		public  Sub  inDefaultEventSetSet(Boolean inDefaultEventSet)
 			Me.inDefaultEventSet = inDefaultEventSet
 
 		''' <summary>

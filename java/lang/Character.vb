@@ -3453,7 +3453,7 @@ Namespace java.lang
         Throw New IllegalArgumentException
         End If
 
-        Static void toSurrogates(Integer codePoint, Char() dst, Integer index)
+        Static  Sub  toSurrogates(Integer codePoint, Char() dst, Integer index)
 			' We write elements "backwards" to guarantee all-or-nothing
 			dst(index+1) = lowSurrogate(codePoint)
 			dst(index) = highSurrogate(codePoint)

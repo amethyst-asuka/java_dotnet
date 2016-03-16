@@ -195,7 +195,7 @@ Namespace java.awt
 	'				{
 	'					Return eventQueue.isDispatchThreadImpl();
 	'				}
-	'				public void removeSourceEvents(EventQueue eventQueue, Object source, boolean removeAllEvents)
+	'				public  Sub  removeSourceEvents(EventQueue eventQueue, Object source, boolean removeAllEvents)
 	'				{
 	'					eventQueue.removeSourceEvents(source, removeAllEvents);
 	'				}
@@ -203,15 +203,15 @@ Namespace java.awt
 	'				{
 	'					Return eventQueue.noEvents();
 	'				}
-	'				public void wakeup(EventQueue eventQueue, boolean isShutdown)
+	'				public  Sub  wakeup(EventQueue eventQueue, boolean isShutdown)
 	'				{
 	'					eventQueue.wakeup(isShutdown);
 	'				}
-	'				public void invokeAndWait(Object source, Runnable r) throws InterruptedException, InvocationTargetException
+	'				public  Sub  invokeAndWait(Object source, Runnable r) throws InterruptedException, InvocationTargetException
 	'				{
 	'					EventQueue.invokeAndWait(source, r);
 	'				}
-	'				public void setFwDispatcher(EventQueue eventQueue, FwDispatcher dispatcher)
+	'				public  Sub  setFwDispatcher(EventQueue eventQueue, FwDispatcher dispatcher)
 	'				{
 	'					eventQueue.setFwDispatcher(dispatcher);
 	'				}

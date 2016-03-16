@@ -110,21 +110,21 @@ Namespace java.util.stream
 	'					boolean seenNull;
 	'					T lastSeen;
 	'
-	'					@Override public void begin(long size)
+	'					@Override public  Sub  begin(long size)
 	'					{
 	'						seenNull = False;
 	'						lastSeen = Nothing;
 	'						downstream.begin(-1);
 	'					}
 	'
-	'					@Override public void end()
+	'					@Override public  Sub  end()
 	'					{
 	'						seenNull = False;
 	'						lastSeen = Nothing;
 	'						downstream.end();
 	'					}
 	'
-	'					@Override public void accept(T t)
+	'					@Override public  Sub  accept(T t)
 	'					{
 	'						if (t == Nothing)
 	'						{
@@ -146,19 +146,19 @@ Namespace java.util.stream
 	'				{
 	'					Set<T> seen;
 	'
-	'					@Override public void begin(long size)
+	'					@Override public  Sub  begin(long size)
 	'					{
 	'						seen = New HashSet<>();
 	'						downstream.begin(-1);
 	'					}
 	'
-	'					@Override public void end()
+	'					@Override public  Sub  end()
 	'					{
 	'						seen = Nothing;
 	'						downstream.end();
 	'					}
 	'
-	'					@Override public void accept(T t)
+	'					@Override public  Sub  accept(T t)
 	'					{
 	'						if (!seen.contains(t))
 	'						{

@@ -226,7 +226,7 @@ Namespace java.util.stream
 	'		''' </summary>
 	'		''' <param name="action"> a consumer that is to be invoked with each
 	'		'''        element in this {@code Node.OfPrimitive} </param>
-	'		@SuppressWarnings("overloads") void forEach(T_CONS action);
+	'		@SuppressWarnings("overloads")  Sub  forEach(T_CONS action);
 	'
 	'		@Override default T_NODE getChild(int i)
 	'		{
@@ -302,7 +302,7 @@ Namespace java.util.stream
 	'		'''        element in this {@code Node}.  If this is an
 	'		'''        {@code IntConsumer}, it is cast to {@code IntConsumer} so the
 	'		'''        elements may be processed without boxing. </param>
-	'		@Override default void forEach(Consumer<? MyBase java.lang.Integer> consumer)
+	'		@Override default  Sub  forEach(Consumer<? MyBase java.lang.Integer> consumer)
 	'		{
 	'			if (consumer instanceof IntConsumer)
 	'			{
@@ -324,7 +324,7 @@ Namespace java.util.stream
 	'		''' array into the boxed Integer[] array.  This is not efficient and it
 	'		''' is recommended to invoke <seealso cref="#copyInto(Object, int)"/>.
 	'		''' </summary>
-	'		@Override default void copyInto(java.lang.Integer[] boxed, int offset)
+	'		@Override default  Sub  copyInto(java.lang.Integer[] boxed, int offset)
 	'		{
 	'			if (Tripwire.ENABLED)
 	'				Tripwire.trip(getClass(), "{0} calling Node.OfInt.copyInto(Integer[], int)");
@@ -384,7 +384,7 @@ Namespace java.util.stream
 	'		'''        element in this {@code Node}.  If this is an
 	'		'''        {@code LongConsumer}, it is cast to {@code LongConsumer} so
 	'		'''        the elements may be processed without boxing. </param>
-	'		@Override default void forEach(Consumer<? MyBase java.lang.Long> consumer)
+	'		@Override default  Sub  forEach(Consumer<? MyBase java.lang.Long> consumer)
 	'		{
 	'			if (consumer instanceof LongConsumer)
 	'			{
@@ -406,7 +406,7 @@ Namespace java.util.stream
 	'		''' long[] array into the boxed Long[] array.  This is not efficient and
 	'		''' it is recommended to invoke <seealso cref="#copyInto(Object, int)"/>.
 	'		''' </summary>
-	'		@Override default void copyInto(java.lang.Long[] boxed, int offset)
+	'		@Override default  Sub  copyInto(java.lang.Long[] boxed, int offset)
 	'		{
 	'			if (Tripwire.ENABLED)
 	'				Tripwire.trip(getClass(), "{0} calling Node.OfInt.copyInto(Long[], int)");
@@ -466,7 +466,7 @@ Namespace java.util.stream
 	'		'''        element in this {@code Node}.  If this is an
 	'		'''        {@code DoubleConsumer}, it is cast to {@code DoubleConsumer}
 	'		'''        so the elements may be processed without boxing. </param>
-	'		@Override default void forEach(Consumer<? MyBase java.lang.Double> consumer)
+	'		@Override default  Sub  forEach(Consumer<? MyBase java.lang.Double> consumer)
 	'		{
 	'			if (consumer instanceof DoubleConsumer)
 	'			{
@@ -490,7 +490,7 @@ Namespace java.util.stream
 	'		''' double[] array into the boxed Double[] array.  This is not efficient
 	'		''' and it is recommended to invoke <seealso cref="#copyInto(Object, int)"/>.
 	'		''' </summary>
-	'		@Override default void copyInto(java.lang.Double[] boxed, int offset)
+	'		@Override default  Sub  copyInto(java.lang.Double[] boxed, int offset)
 	'		{
 	'			if (Tripwire.ENABLED)
 	'				Tripwire.trip(getClass(), "{0} calling Node.OfDouble.copyInto(Double[], int)");

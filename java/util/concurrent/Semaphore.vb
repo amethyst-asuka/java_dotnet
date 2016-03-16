@@ -59,7 +59,7 @@ Namespace java.util.concurrent
 	'''     return getNextAvailableItem();
 	'''   }
 	''' 
-	'''   public void putItem(Object x) {
+	'''   public  Sub  putItem(Object x) {
 	'''     if (markAsUnused(x))
 	'''       available.release();
 	'''   }

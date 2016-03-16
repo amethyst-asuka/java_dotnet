@@ -101,7 +101,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public synchronized void write(byte b() , int off, int len) throws IOException
+		public synchronized  Sub  write(byte b() , int off, int len) throws IOException
 			out.write(b, off, len)
 			incCount(len)
 
@@ -115,7 +115,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
 		''' <seealso cref=        java.io.OutputStream#flush() </seealso>
-		public void flush() throws IOException
+		public  Sub  flush() throws IOException
 			out.flush()
 
 		''' <summary>
@@ -129,7 +129,7 @@ Namespace java.io
 		''' <param name="v">   a <code>boolean</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeBoolean(Boolean v) throws IOException
+		public final  Sub  writeBoolean(Boolean v) throws IOException
 			out.write(If(v, 1, 0))
 			incCount(1)
 
@@ -141,7 +141,7 @@ Namespace java.io
 		''' <param name="v">   a <code>byte</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeByte(Integer v) throws IOException
+		public final  Sub  writeByte(Integer v) throws IOException
 			out.write(v)
 			incCount(1)
 
@@ -153,7 +153,7 @@ Namespace java.io
 		''' <param name="v">   a <code>short</code> to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeShort(Integer v) throws IOException
+		public final  Sub  writeShort(Integer v) throws IOException
 			out.write((CInt(CUInt(v) >> 8)) And &HFF)
 			out.write((CInt(CUInt(v) >> 0)) And &HFF)
 			incCount(2)
@@ -166,7 +166,7 @@ Namespace java.io
 		''' <param name="v">   a <code>char</code> value to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeChar(Integer v) throws IOException
+		public final  Sub  writeChar(Integer v) throws IOException
 			out.write((CInt(CUInt(v) >> 8)) And &HFF)
 			out.write((CInt(CUInt(v) >> 0)) And &HFF)
 			incCount(2)
@@ -179,7 +179,7 @@ Namespace java.io
 		''' <param name="v">   an <code>int</code> to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeInt(Integer v) throws IOException
+		public final  Sub  writeInt(Integer v) throws IOException
 			out.write((CInt(CUInt(v) >> 24)) And &HFF)
 			out.write((CInt(CUInt(v) >> 16)) And &HFF)
 			out.write((CInt(CUInt(v) >> 8)) And &HFF)
@@ -196,7 +196,7 @@ Namespace java.io
 		''' <param name="v">   a <code>long</code> to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeLong(Long v) throws IOException
+		public final  Sub  writeLong(Long v) throws IOException
 			writeBuffer(0) = CByte(CInt(CUInt(v) >> 56))
 			writeBuffer(1) = CByte(CInt(CUInt(v) >> 48))
 			writeBuffer(2) = CByte(CInt(CUInt(v) >> 40))
@@ -220,7 +220,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
 		''' <seealso cref=        java.lang.Float#floatToIntBits(float) </seealso>
-		public final void writeFloat(Single v) throws IOException
+		public final  Sub  writeFloat(Single v) throws IOException
 			writeInt(Float.floatToIntBits(v))
 
 		''' <summary>
@@ -235,7 +235,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
 		''' <seealso cref=        java.lang.Double#doubleToLongBits(double) </seealso>
-		public final void writeDouble(Double v) throws IOException
+		public final  Sub  writeDouble(Double v) throws IOException
 			writeLong(Double.doubleToLongBits(v))
 
 		''' <summary>
@@ -248,7 +248,7 @@ Namespace java.io
 		''' <param name="s">   a string of bytes to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeBytes(String s) throws IOException
+		public final  Sub  writeBytes(String s) throws IOException
 			Dim len As Integer = s.length()
 			For i As Integer = 0 To len - 1
 				out.write(AscW(s.Chars(i)))
@@ -266,7 +266,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.DataOutputStream#writeChar(int) </seealso>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
-		public final void writeChars(String s) throws IOException
+		public final  Sub  writeChars(String s) throws IOException
 			Dim len As Integer = s.length()
 			For i As Integer = 0 To len - 1
 				Dim v As Integer = AscW(s.Chars(i))
@@ -293,7 +293,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="str">   a string to be written. </param>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public final void writeUTF(String str) throws IOException
+		public final  Sub  writeUTF(String str) throws IOException
 			writeUTF(str, Me)
 
 		''' <summary>

@@ -166,7 +166,7 @@ Namespace java.awt
 		''' reset. </summary>
 		''' <seealso cref=         java.awt.Polygon#invalidate
 		''' @since 1.4 </seealso>
-		public void reset()
+		public  Sub  reset()
 			npoints = 0
 			bounds = Nothing
 
@@ -181,7 +181,7 @@ Namespace java.awt
 		''' the vertex coordinates. </summary>
 		''' <seealso cref=         java.awt.Polygon#getBounds
 		''' @since 1.4 </seealso>
-		public void invalidate()
+		public  Sub  invalidate()
 			bounds = Nothing
 
 		''' <summary>
@@ -191,7 +191,7 @@ Namespace java.awt
 		''' <param name="deltaX"> the amount to translate along the X axis </param>
 		''' <param name="deltaY"> the amount to translate along the Y axis
 		''' @since 1.1 </param>
-		public void translate(Integer deltaX, Integer deltaY)
+		public  Sub  translate(Integer deltaX, Integer deltaY)
 			For i As Integer = 0 To npoints - 1
 				xpoints(i) += deltaX
 				ypoints(i) += deltaY
@@ -254,7 +254,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Polygon#getBounds </seealso>
 		''' <seealso cref=         java.awt.Polygon#contains
 		''' @since 1.0 </seealso>
-		public void addPoint(Integer x, Integer y)
+		public  Sub  addPoint(Integer x, Integer y)
 			If npoints >= xpoints.Length OrElse npoints >= ypoints.Length Then
 				Dim newLength As Integer = npoints * 2
 				' Make sure that newLength will be greater than MIN_LENGTH and
@@ -569,7 +569,7 @@ Namespace java.awt
 	'		''' traversal, to the next segment of the path when there are
 	'		''' more points in that direction.
 	'		''' </summary>
-	'		public void next()
+	'		public  Sub  next()
 	'		{
 	'			index += 1;
 	'		}

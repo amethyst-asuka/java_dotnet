@@ -216,7 +216,7 @@ Namespace java.io
 		''' before the <code>close</code> method returns.
 		''' </summary>
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
-		public void close() throws IOException
+		public  Sub  close() throws IOException
 			Do
 				nextStream()
 			Loop While [in] IsNot Nothing

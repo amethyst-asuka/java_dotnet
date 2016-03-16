@@ -66,7 +66,7 @@ Namespace java.lang
 	''' 
 	''' <blockquote><pre>
 	''' &#64;SafeVarargs // Not actually safe!
-	''' static void m(List&lt;String&gt;... stringLists) {
+	''' static  Sub  m(List&lt;String&gt;... stringLists) {
 	'''   Object[] array = stringLists;
 	'''   List&lt;Integer&gt; tmpList = Arrays.asList(42);
 	'''   array[0] = tmpList; // Semantically invalid, but compiles without warnings

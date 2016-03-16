@@ -43,7 +43,7 @@ Namespace java.util
     ''' <tt>iterator</tt> method must additionally implement its <tt>remove</tt>
     ''' method.<p>
     ''' 
-    ''' The programmer should generally provide a void (no argument) and
+    ''' The programmer should generally provide a  Sub  (no argument) and
     ''' <tt>Collection</tt> constructor, as per the recommendation in the
     ''' <tt>Collection</tt> interface specification.<p>
     ''' 

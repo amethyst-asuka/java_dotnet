@@ -206,7 +206,7 @@ Namespace java.util
 		''' <p>The method {@code nextBytes} is implemented by class {@code Random}
 		''' as if by:
 		'''  <pre> {@code
-		''' public void nextBytes(byte[] bytes) {
+		''' public  Sub  nextBytes(byte[] bytes) {
 		'''   for (int i = 0; i < bytes.length; )
 		'''     for (int rnd = nextInt(), n = System.Math.min(bytes.length - i, 4);
 		'''          n-- > 0; rnd >>= 8)
@@ -1129,7 +1129,7 @@ Namespace java.util
 		''' <summary>
 		''' Save the {@code Random} instance to a stream.
 		''' </summary>
-		SyncLock private void writeObject ObjectOutputStream s
+		SyncLock private  Sub  writeObject ObjectOutputStream s
 			Dim IOException As throws
 
 			' set the values of the Serializable fields
@@ -1153,7 +1153,7 @@ Namespace java.util
 			Catch ex As Exception
 				Throw New [Error](ex)
 			End Try
-		private void resetSeed(Long seedVal)
+		private  Sub  resetSeed(Long seedVal)
 			unsafe.putObjectVolatile(Me, seedOffset, New java.util.concurrent.atomic.AtomicLong(seedVal))
 	End Class
 

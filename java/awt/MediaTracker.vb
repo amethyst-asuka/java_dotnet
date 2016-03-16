@@ -83,7 +83,7 @@ Namespace java.awt
 	'''      // Get the images for the background (id == 0)
 	'''      // and the animation frames (id == 1)
 	'''      // and add them to the MediaTracker
-	'''      public void init() {
+	'''      public  Sub  init() {
 	'''          tracker = new MediaTracker(this);
 	'''          bg = getImage(getDocumentBase(),
 	'''                  "images/background.gif");
@@ -96,13 +96,13 @@ Namespace java.awt
 	'''      }
 	''' 
 	'''      // Start the animation thread.
-	'''      public void start() {
+	'''      public  Sub  start() {
 	'''          animator = new Thread(this);
 	'''          animator.start();
 	'''      }
 	''' 
 	'''      // Stop the animation thread.
-	'''      public void stop() {
+	'''      public  Sub  stop() {
 	'''          animator = null;
 	'''      }
 	''' 
@@ -111,7 +111,7 @@ Namespace java.awt
 	'''      // and paint.  Then wait for all of the animation
 	'''      // frames to finish loading. Finally, loop and
 	'''      // increment the animation frame index.
-	'''      public void run() {
+	'''      public  Sub  run() {
 	'''          try {
 	'''              tracker.waitForID(0);
 	'''              tracker.waitForID(1);
@@ -138,7 +138,7 @@ Namespace java.awt
 	'''      // The background image fills the frame so we
 	'''      // don't need to clear the applet on repaints.
 	'''      // Just call the paint method.
-	'''      public void update(Graphics g) {
+	'''      public  Sub  update(Graphics g) {
 	'''          paint(g);
 	'''      }
 	''' 
@@ -148,7 +148,7 @@ Namespace java.awt
 	'''      // is loading.  Finally, only paint the current animation
 	'''      // frame if all of the frames (id == 1) are done loading,
 	'''      // so that we don't get partial animations.
-	'''      public void paint(Graphics g) {
+	'''      public  Sub  paint(Graphics g) {
 	'''          if ((tracker.statusAll(false) & MediaTracker.ERRORED) != 0) {
 	'''              g.setColor(Color.red);
 	'''              g.fillRect(0, 0, size().width, size().height);

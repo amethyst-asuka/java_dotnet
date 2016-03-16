@@ -57,7 +57,7 @@ Namespace java.awt
 	'''   JButton jButton = new JButton("Button");
 	'''   jButton.addActionListener(new ActionListener() {
 	'''       {@code @Override}
-	'''       public void actionPerformed(ActionEvent e) {
+	'''       public  Sub  actionPerformed(ActionEvent e) {
 	'''           Toolkit tk = Toolkit.getDefaultToolkit();
 	'''           EventQueue eq = tk.getSystemEventQueue();
 	'''           loop = eq.createSecondaryLoop();
@@ -76,7 +76,7 @@ Namespace java.awt
 	''' 
 	'''   class WorkerThread extends Thread {
 	'''       {@code @Override}
-	'''       public void run() {
+	'''       public  Sub  run() {
 	'''           // Perform calculations
 	'''           doSomethingUseful();
 	''' 

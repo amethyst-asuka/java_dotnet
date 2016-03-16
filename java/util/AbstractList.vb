@@ -45,7 +45,7 @@ Namespace java.util
 	''' variable-size the programmer must additionally override the
 	''' <seealso cref="#add(int, Object) add(int, E)"/> and <seealso cref="#remove(int)"/> methods.
 	''' 
-	''' <p>The programmer should generally provide a void (no argument) and collection
+	''' <p>The programmer should generally provide a  Sub  (no argument) and collection
 	''' constructor, as per the recommendation in the <seealso cref="Collection"/> interface
 	''' specification.
 	''' 

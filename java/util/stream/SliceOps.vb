@@ -170,12 +170,12 @@ Namespace java.util.stream
 	'				long n = skip;
 	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(calcSize(size, skip, m));
 	'				}
 	'
-	'				@Override public void accept(T t)
+	'				@Override public  Sub  accept(T t)
 	'				{
 	'					if (n == 0)
 	'					{
@@ -266,12 +266,12 @@ Namespace java.util.stream
 	'				long n = skip;
 	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(calcSize(size, skip, m));
 	'				}
 	'
-	'				@Override public void accept(int t)
+	'				@Override public  Sub  accept(int t)
 	'				{
 	'					if (n == 0)
 	'					{
@@ -362,12 +362,12 @@ Namespace java.util.stream
 	'				long n = skip;
 	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(calcSize(size, skip, m));
 	'				}
 	'
-	'				@Override public void accept(long t)
+	'				@Override public  Sub  accept(long t)
 	'				{
 	'					if (n == 0)
 	'					{
@@ -458,12 +458,12 @@ Namespace java.util.stream
 	'				long n = skip;
 	'				long m = limit >= 0 ? limit : java.lang.[Long].MAX_VALUE;
 	'
-	'				@Override public void begin(long size)
+	'				@Override public  Sub  begin(long size)
 	'				{
 	'					downstream.begin(calcSize(size, skip, m));
 	'				}
 	'
-	'				@Override public void accept(double t)
+	'				@Override public  Sub  accept(double t)
 	'				{
 	'					if (n == 0)
 	'					{

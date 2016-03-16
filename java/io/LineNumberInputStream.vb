@@ -190,7 +190,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="lineNumber">   the new line number. </param>
 		''' <seealso cref= #getLineNumber </seealso>
-		public void lineNumberber(Integer lineNumber)
+		public  Sub  lineNumberber(Integer lineNumber)
 			Me.lineNumber = lineNumber
 
 		''' <summary>
@@ -236,7 +236,7 @@ Namespace java.io
 		'''                      the mark position becomes invalid. </param>
 		''' <seealso cref=     java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=     java.io.LineNumberInputStream#reset() </seealso>
-		public void mark(Integer readlimit)
+		public  Sub  mark(Integer readlimit)
 			markLineNumber = lineNumber
 			markPushBack = pushBack
 			[in].mark(readlimit)
@@ -263,7 +263,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=        java.io.LineNumberInputStream#mark(int) </seealso>
-		public void reset() throws IOException
+		public  Sub  reset() throws IOException
 			lineNumber = markLineNumber
 			pushBack = markPushBack
 			[in].reset()

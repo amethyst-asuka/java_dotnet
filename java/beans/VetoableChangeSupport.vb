@@ -43,11 +43,11 @@ Namespace java.beans
 	''' public class MyBean {
 	'''     private final VetoableChangeSupport vcs = new VetoableChangeSupport(this);
 	''' 
-	'''     public void addVetoableChangeListener(VetoableChangeListener listener) {
+	'''     public  Sub  addVetoableChangeListener(VetoableChangeListener listener) {
 	'''         this.vcs.addVetoableChangeListener(listener);
 	'''     }
 	''' 
-	'''     public void removeVetoableChangeListener(VetoableChangeListener listener) {
+	'''     public  Sub  removeVetoableChangeListener(VetoableChangeListener listener) {
 	'''         this.vcs.removeVetoableChangeListener(listener);
 	'''     }
 	''' 
@@ -57,7 +57,7 @@ Namespace java.beans
 	'''         return this.value;
 	'''     }
 	''' 
-	'''     public void setValue(String newValue) throws PropertyVetoException {
+	'''     public  Sub  setValue(String newValue) throws PropertyVetoException {
 	'''         String oldValue = this.value;
 	'''         this.vcs.fireVetoableChange("value", oldValue, newValue);
 	'''         this.value = newValue;

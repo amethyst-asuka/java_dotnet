@@ -380,7 +380,7 @@ Namespace java.lang.invoke
 			Dim i As Integer = 0
 			Do While i < imax
 				Dim c As  [Class] = canonicalize(ts(i), how)
-				If c Is GetType(void) Then c = Nothing ' a Void parameter was unwrapped to void; ignore
+				If c Is GetType(void) Then c = Nothing ' a  Sub  parameter was unwrapped to void; ignore
 				If c IsNot Nothing Then
 					If cs Is Nothing Then cs = ts.clone()
 					cs(i) = c

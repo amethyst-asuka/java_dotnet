@@ -194,7 +194,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </summary>
 		''' @deprecated no replacement 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public void write(byte b() , int off, int len)
+		public  Sub  write(byte b() , int off, int len)
 			If len < 0 Then Throw New ArrayIndexOutOfBoundsException(len)
 			For i As Integer = 0 To len - 1
 				write(b(off + i))
