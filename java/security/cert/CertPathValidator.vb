@@ -265,32 +265,32 @@ Namespace java.security.cert
 			Return validatorSpi.engineValidate(certPath, params)
 		End Function
 
-		''' <summary>
-		''' Returns the default {@code CertPathValidator} type as specified by
-		''' the {@code certpathvalidator.type} security property, or the string
-		''' {@literal "PKIX"} if no such property exists.
-		''' 
-		''' <p>The default {@code CertPathValidator} type can be used by
-		''' applications that do not want to use a hard-coded type when calling one
-		''' of the {@code getInstance} methods, and want to provide a default
-		''' type in case a user does not specify its own.
-		''' 
-		''' <p>The default {@code CertPathValidator} type can be changed by
-		''' setting the value of the {@code certpathvalidator.type} security
-		''' property to the desired type.
-		''' </summary>
-		''' <seealso cref= java.security.Security security properties </seealso>
-		''' <returns> the default {@code CertPathValidator} type as specified
-		''' by the {@code certpathvalidator.type} security property, or the string
-		''' {@literal "PKIX"} if no such property exists. </returns>
-		Public Property Shared defaultType As String
-			Get
-				Dim cpvtype As String = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
-				Return If(cpvtype Is Nothing, "PKIX", cpvtype)
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns the default {@code CertPathValidator} type as specified by
+        ''' the {@code certpathvalidator.type} security property, or the string
+        ''' {@literal "PKIX"} if no such property exists.
+        ''' 
+        ''' <p>The default {@code CertPathValidator} type can be used by
+        ''' applications that do not want to use a hard-coded type when calling one
+        ''' of the {@code getInstance} methods, and want to provide a default
+        ''' type in case a user does not specify its own.
+        ''' 
+        ''' <p>The default {@code CertPathValidator} type can be changed by
+        ''' setting the value of the {@code certpathvalidator.type} security
+        ''' property to the desired type.
+        ''' </summary>
+        ''' <seealso cref= java.security.Security security properties </seealso>
+        ''' <returns> the default {@code CertPathValidator} type as specified
+        ''' by the {@code certpathvalidator.type} security property, or the string
+        ''' {@literal "PKIX"} if no such property exists. </returns>
+        Public Shared ReadOnly Property defaultType As String
+            Get
+                Dim cpvtype As String = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T))
+                Return If(cpvtype Is Nothing, "PKIX", cpvtype)
+            End Get
+        End Property
 
-		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
+        Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Implements java.security.PrivilegedAction(Of T)
 
 			Public Overridable Function run() As String

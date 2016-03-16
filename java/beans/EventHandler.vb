@@ -399,8 +399,8 @@ Namespace java.beans
 		Public Overridable Function invoke(ByVal proxy As Object, ByVal method As Method, ByVal arguments As Object()) As Object Implements InvocationHandler.invoke
 			Dim acc As java.security.AccessControlContext = Me.acc
 			If (acc Is Nothing) AndAlso (System.securityManager IsNot Nothing) Then Throw New SecurityException("AccessControlContext is not set")
-			Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
-		End Function
+            Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T))
+        End Function
 
 		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
 			Implements java.security.PrivilegedAction(Of T)
