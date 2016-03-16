@@ -35,17 +35,16 @@ Namespace java.lang
 	''' </summary>
 	Public NotInheritable Class Void
 
-		''' <summary>
-		''' The {@code Class} object representing the pseudo-type corresponding to
-		''' the keyword {@code void}.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Shared ReadOnly TYPE As  [Class] = CType(Class.getPrimitiveClass("void"), [Class])
+        ''' <summary>
+        ''' The {@code Class} object representing the pseudo-type corresponding to
+        ''' the keyword {@code void}.
+        ''' </summary>
+        Public Shared ReadOnly TYPE As [Class] = CType([Class].getPrimitiveClass("void"), [Class])
 
-	'    
-	'     * The  Sub  class cannot be instantiated.
-	'     
-		Private Sub New()
+        '    
+        '     * The  Sub  class cannot be instantiated.
+        '     
+        Private Sub New()
 		End Sub
 	End Class
 
