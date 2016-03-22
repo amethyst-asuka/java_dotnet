@@ -79,9 +79,9 @@ Namespace java.util
     ''' <seealso cref= EnumMap
     ''' @serial exclude </seealso>
     <Serializable>
-    Public MustInherit Class EnumSet(Of E As [Enum](Of E))
-        Inherits AbstractSet(Of E)
-		Implements Cloneable
+    Public MustInherit Class EnumSet(Of T)
+        Inherits AbstractSet(Of [Enum](Of T))
+        Implements Cloneable
 
 		''' <summary>
 		''' The class of all the elements of this set.
@@ -91,45 +91,44 @@ Namespace java.util
         ''' <summary>
         ''' All of the values comprising T.  (Cached for performance.)
         ''' </summary>
-        Friend ReadOnly universe As [Enum](Of ?)()
+        Friend ReadOnly universe As [Enum](Of T)()
 
-        'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-        Private Shared ZERO_LENGTH_ENUM_ARRAY As System.Enum(Of ?)() = New [Enum](Of ?)(){}
+        Private Shared ZERO_LENGTH_ENUM_ARRAY As [Enum](Of T)() = New [Enum](Of T)() {}
 
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		EnumSet(ClasselementType, Enum<?>() universe)
-			Me.elementType = elementType
-			Me.universe = universe
+        Sub New(universe As [Enum](Of T)())
+            Me.elementType = elementType
+            Me.universe = universe
+        End Sub
 
-		''' <summary>
-		''' Creates an empty enum set with the specified element type.
-		''' </summary>
-		''' @param <E> The class of the elements in the set </param>
-		''' <param name="elementType"> the class object of the element type for this enum
-		'''     set </param>
-		''' <returns> An empty enum set of the specified type. </returns>
-		''' <exception cref="NullPointerException"> if <tt>elementType</tt> is null </exception>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) noneOf(Class elementType)
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Dim universe_Renamed As System.Enum(Of ?)() = getUniverse(elementType)
-			If universe_Renamed Is Nothing Then Throw New ClassCastException(elementType & " not an enum")
+        ''' <summary>
+        ''' Creates an empty enum set with the specified element type.
+        ''' </summary>
+        ''' @param <E> The class of the elements in the set </param>
+        ''' <param name="elementType"> the class object of the element type for this enum
+        '''     set </param>
+        ''' <returns> An empty enum set of the specified type. </returns>
+        ''' <exception cref="NullPointerException"> if <tt>elementType</tt> is null </exception>
+        Public Shared Function noneOf(elementType As [Class]) As EnumSet(Of T)
+            Dim universe_Renamed As [Enum](Of T)() = getUniverse(elementType)
+            If universe_Renamed Is Nothing Then Throw New ClassCastException(elementType & " not an enum")
 
-			If universe_Renamed.Length <= 64 Then
-				Return New RegularEnumSet(Of )(elementType, universe_Renamed)
-			Else
-				Return New JumboEnumSet(Of )(elementType, universe_Renamed)
-			End If
+            If universe_Renamed.Length <= 64 Then
+                Return New RegularEnumSet(Of T)(elementType, universe_Renamed)
+            Else
+                Return New JumboEnumSet(Of T)(elementType, universe_Renamed)
+            End If
+        End Function
 
-		''' <summary>
-		''' Creates an enum set containing all of the elements in the specified
-		''' element type.
-		''' </summary>
-		''' @param <E> The class of the elements in the set </param>
-		''' <param name="elementType"> the class object of the element type for this enum
-		'''     set </param>
-		''' <returns> An enum set containing all the elements in the specified type. </returns>
-		''' <exception cref="NullPointerException"> if <tt>elementType</tt> is null </exception>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) allOf(Class elementType)
+        ''' <summary>
+        ''' Creates an enum set containing all of the elements in the specified
+        ''' element type.
+        ''' </summary>
+        ''' @param <E> The class of the elements in the set </param>
+        ''' <param name="elementType"> the class object of the element type for this enum
+        '''     set </param>
+        ''' <returns> An enum set containing all the elements in the specified type. </returns>
+        ''' <exception cref="NullPointerException"> if <tt>elementType</tt> is null </exception>
+        Public static (Of E As System.Enum(Of E)) EnumSet(Of E) allOf(Class elementType)
 			Dim result As EnumSet(Of E) = noneOf(elementType)
 			result.addAll()
 			Return result

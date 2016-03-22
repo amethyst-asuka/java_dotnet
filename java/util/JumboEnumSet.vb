@@ -27,18 +27,18 @@ Imports System
 
 Namespace java.util
 
-	''' <summary>
-	''' Private implementation class for EnumSet, for "jumbo" enum types
-	''' (i.e., those with more than 64 elements).
-	''' 
-	''' @author Josh Bloch
-	''' @since 1.5
-	''' @serial exclude
-	''' </summary>
-	Friend Class JumboEnumSet(Of E As System.Enum(Of E))
-		Inherits EnumSet(Of E)
+    ''' <summary>
+    ''' Private implementation class for EnumSet, for "jumbo" enum types
+    ''' (i.e., those with more than 64 elements).
+    ''' 
+    ''' @author Josh Bloch
+    ''' @since 1.5
+    ''' @serial exclude
+    ''' </summary>
+    Friend Class JumboEnumSet(Of E)
+        Inherits EnumSet(Of [Enum](Of E))
 
-		Private Const serialVersionUID As Long = 334349849919042784L
+        Private Const serialVersionUID As Long = 334349849919042784L
 
 		''' <summary>
 		''' Bit vector representation of this set.  The ith bit of the jth
@@ -50,57 +50,61 @@ Namespace java.util
 		' Redundant - maintained for performance
 		Private size_Renamed As Integer = 0
 
-'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		JumboEnumSet(ClasselementType, Enum<?>() universe)
-			MyBase(elementType, universe)
-			elements = New Long(CInt(CUInt((universe.length + 63)) >> 6) - 1){}
+        Sub New(elementType As [Class], universe As [Enum](Of E))
+            MyBase.New(elementType, universe)
+            elements = New Long(CInt(CUInt((universe.length + 63)) >> 6) - 1) {}
+        End Sub
 
-		void addRange(E from, E to)
-			Dim fromIndex As Integer = CInt(CUInt(from.ordinal()) >> 6)
-			Dim toIndex As Integer = CInt(CUInt(to.ordinal()) >> 6)
+        Public Sub addRange(from As E, [To] As E)
+            Dim fromIndex As Integer = CInt(CUInt(from.ordinal()) >> 6)
+            Dim toIndex As Integer = CInt(CUInt(to.ordinal()) >> 6)
 
 			If fromIndex = toIndex Then
-				elements(fromIndex) = (-CInt(CUInt(1L) >> (from.ordinal() - to.ordinal() - 1))) << from.ordinal()
+                elements(fromIndex) = (-CInt(CUInt(1L) >> (from.ordinal() - to.ordinal() - 1))) << from.ordinal()
 			Else
-				elements(fromIndex) = (-1L << from.ordinal())
-				For i As Integer = fromIndex + 1 To toIndex - 1
-					elements(i) = -1
-				Next i
-				elements(toIndex) = -CInt(CUInt(1L) >> (63 - to.ordinal()))
-			End If
-			size_Renamed = to.ordinal() - from.ordinal() + 1
+                elements(fromIndex) = (-1L << from.ordinal())
+                For i As Integer = fromIndex + 1 To toIndex - 1
+                    elements(i) = -1
+                Next i
+                elements(toIndex) = -CInt(CUInt(1L) >> (63 - [To].ordinal()))
+            End If
+            size_Renamed = [To].ordinal() - from.ordinal() + 1
+        End Sub
 
-		void addAll()
-			For i As Integer = 0 To elements.Length - 1
-				elements(i) = -1
-			Next i
-			elements(elements.Length - 1) >>>= -universe.length
+        Public Sub addAll()
+            For i As Integer = 0 To elements.Length - 1
+                elements(i) = -1
+            Next i
+            elements(elements.Length - 1) >>>= -universe.length
 			size_Renamed = universe.length
+        End Sub
 
-		void complement()
-			For i As Integer = 0 To elements.Length - 1
-				elements(i) = Not elements(i)
-			Next i
-			elements(elements.Length - 1) = elements(elements.Length - 1) And (-CInt(CUInt(1L) >> -universe.length))
-			size_Renamed = universe.length - size_Renamed
+        Public Sub complement()
+            For i As Integer = 0 To elements.Length - 1
+                elements(i) = Not elements(i)
+            Next i
+            elements(elements.Length - 1) = elements(elements.Length - 1) And (-CInt(CUInt(1L) >> -universe.length))
+            size_Renamed = universe.length - size_Renamed
+        End Sub
 
-		''' <summary>
-		''' Returns an iterator over the elements contained in this set.  The
-		''' iterator traverses the elements in their <i>natural order</i> (which is
-		''' the order in which the enum constants are declared). The returned
-		''' Iterator is a "weakly consistent" iterator that will never throw {@link
-		''' ConcurrentModificationException}.
-		''' </summary>
-		''' <returns> an iterator over the elements contained in this set </returns>
-		public Iterator(Of E) [iterator]()
-			Return New EnumSetIterator(Me, Of )()
+        ''' <summary>
+        ''' Returns an iterator over the elements contained in this set.  The
+        ''' iterator traverses the elements in their <i>natural order</i> (which is
+        ''' the order in which the enum constants are declared). The returned
+        ''' Iterator is a "weakly consistent" iterator that will never throw {@link
+        ''' ConcurrentModificationException}.
+        ''' </summary>
+        ''' <returns> an iterator over the elements contained in this set </returns>
+        Public Function [iterator]() As Iterator(Of E)
+            Return New EnumSetIterator(Me, Of )()
+                End Function
 
-		private class EnumSetIterator(Of E As System.Enum(Of E)) implements Iterator(Of E)
-			''' <summary>
-			''' A bit vector representing the elements in the current "word"
-			''' of the set not yet returned by this iterator.
-			''' </summary>
-			Dim unseen As Long
+        Private Class EnumSetIterator(Of E As System.Enum(Of E)) : Implements Iterator(Of E)
+            ''' <summary>
+            ''' A bit vector representing the elements in the current "word"
+            ''' of the set not yet returned by this iterator.
+            ''' </summary>
+            Dim unseen As Long
 
 			''' <summary>
 			''' The index corresponding to unseen in the elements array.
@@ -280,70 +284,72 @@ Namespace java.util
 			Next i
 			Return recalculateSize()
 
-		''' <summary>
-		''' Retains only the elements in this set that are contained in the
-		''' specified collection.
-		''' </summary>
-		''' <param name="c"> elements to be retained in this set </param>
-		''' <returns> <tt>true</tt> if this set changed as a result of the call </returns>
-		''' <exception cref="NullPointerException"> if the specified collection is null </exception>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		public Boolean retainAll(Collection(Of ?) c)
-			If Not(TypeOf c Is JumboEnumSet) Then Return MyBase.retainAll(c)
+        ''' <summary>
+            ''' Retains only the elements in this set that are contained in the
+            ''' specified collection.
+            ''' </summary>
+            ''' <param name="c"> elements to be retained in this set </param>
+            ''' <returns> <tt>true</tt> if this set changed as a result of the call </returns>
+            ''' <exception cref="NullPointerException"> if the specified collection is null </exception>
+            Public Function retainAll(c As Collection(Of E)) As Boolean
+                If Not (TypeOf c Is JumboEnumSet) Then Return MyBase.retainAll(c)
 
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Dim es As JumboEnumSet(Of ?) = CType(c, JumboEnumSet(Of ?))
-			If es.elementType <> elementType Then
-				Dim changed As Boolean = (size_Renamed <> 0)
-				clear()
-				Return changed
-			End If
+                Dim es As JumboEnumSet(Of ?) = CType(c, JumboEnumSet(Of ?))
+                If es.elementType <> elementType Then
+                    Dim changed As Boolean = (size_Renamed <> 0)
+                    clear()
+                    Return changed
+                End If
 
-			For i As Integer = 0 To elements.Length - 1
-				elements(i) = elements(i) And es.elements(i)
-			Next i
-			Return recalculateSize()
+                For i As Integer = 0 To elements.Length - 1
+                    elements(i) = elements(i) And es.elements(i)
+                Next i
+                Return recalculateSize()
+            End Function
 
-		''' <summary>
-		''' Removes all of the elements from this set.
-		''' </summary>
-		public  Sub  clear()
-			Arrays.fill(elements, 0)
-			size_Renamed = 0
+            ''' <summary>
+            ''' Removes all of the elements from this set.
+            ''' </summary>
+            Public Sub clear()
+                Arrays.fill(elements, 0)
+                size_Renamed = 0
+            End Sub
 
-		''' <summary>
-		''' Compares the specified object with this set for equality.  Returns
-		''' <tt>true</tt> if the given object is also a set, the two sets have
-		''' the same size, and every member of the given set is contained in
-		''' this set.
-		''' </summary>
-		''' <param name="o"> object to be compared for equality with this set </param>
-		''' <returns> <tt>true</tt> if the specified object is equal to this set </returns>
-		public Boolean Equals(Object o)
-			If Not(TypeOf o Is JumboEnumSet) Then Return MyBase.Equals(o)
+            ''' <summary>
+            ''' Compares the specified object with this set for equality.  Returns
+            ''' <tt>true</tt> if the given object is also a set, the two sets have
+            ''' the same size, and every member of the given set is contained in
+            ''' this set.
+            ''' </summary>
+            ''' <param name="o"> object to be compared for equality with this set </param>
+            ''' <returns> <tt>true</tt> if the specified object is equal to this set </returns>
+            Public Function Equals(o As Object) As Boolean
+                If Not (TypeOf o Is JumboEnumSet) Then Return MyBase.Equals(o)
 
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Dim es As JumboEnumSet(Of ?) = CType(o, JumboEnumSet(Of ?))
-			If es.elementType <> elementType Then Return size_Renamed = 0 AndAlso es.size_Renamed = 0
+                Dim es As JumboEnumSet(Of ?) = CType(o, JumboEnumSet(Of ?))
+                If es.elementType <> elementType Then Return size_Renamed = 0 AndAlso es.size_Renamed = 0
 
-			Return Array.Equals(es.elements, elements)
+                Return Array.Equals(es.elements, elements)
+            End Function
 
-		''' <summary>
-		''' Recalculates the size of the set.  Returns true if it's changed.
-		''' </summary>
-		private Boolean recalculateSize()
-			Dim oldSize As Integer = size_Renamed
-			size_Renamed = 0
-			For Each elt As Long In elements
-				size_Renamed += java.lang.[Long].bitCount(elt)
-			Next elt
+            ''' <summary>
+            ''' Recalculates the size of the set.  Returns true if it's changed.
+            ''' </summary>
+            Private Function recalculateSize() As Boolean
+                Dim oldSize As Integer = size_Renamed
+                size_Renamed = 0
+                For Each elt As Long In elements
+                    size_Renamed += java.lang.[Long].bitCount(elt)
+                Next elt
 
-			Return size_Renamed <> oldSize
+                Return size_Renamed <> oldSize
+            End Function
 
-		public EnumSet(Of E) clone()
-			Dim result As JumboEnumSet(Of E) = CType(MyBase.clone(), JumboEnumSet(Of E))
-			result.elements = result.elements.clone()
-			Return result
-	End Class
+            Public Function clone() As EnumSet(Of E)
+                Dim result As JumboEnumSet(Of E) = CType(MyBase.clone(), JumboEnumSet(Of E))
+                result.elements = result.elements.clone()
+                Return result
+            End Function
+        End Class
 
 End Namespace

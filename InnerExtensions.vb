@@ -27,4 +27,8 @@ Module InnerExtensions
                 Return False
         End Select
     End Function
+
+    Public Function Values(Of T)() As T()
+        Return Enums(Of T)()
+    End Function
 End Module

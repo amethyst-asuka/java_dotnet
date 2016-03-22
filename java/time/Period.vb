@@ -397,58 +397,58 @@ Namespace java.time
 			End If
 		End Function
 
-		''' <summary>
-		''' Gets the set of units supported by this period.
-		''' <p>
-		''' The supported units are <seealso cref="ChronoUnit#YEARS YEARS"/>,
-		''' <seealso cref="ChronoUnit#MONTHS MONTHS"/> and <seealso cref="ChronoUnit#DAYS DAYS"/>.
-		''' They are returned in the order years, months, days.
-		''' <p>
-		''' This set can be used in conjunction with <seealso cref="#get(TemporalUnit)"/>
-		''' to access the entire state of the period.
-		''' </summary>
-		''' <returns> a list containing the years, months and days units, not null </returns>
-		Public Property Overrides units As IList(Of java.time.temporal.TemporalUnit)
-			Get
-				Return SUPPORTED_UNITS
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the set of units supported by this period.
+        ''' <p>
+        ''' The supported units are <seealso cref="ChronoUnit#YEARS YEARS"/>,
+        ''' <seealso cref="ChronoUnit#MONTHS MONTHS"/> and <seealso cref="ChronoUnit#DAYS DAYS"/>.
+        ''' They are returned in the order years, months, days.
+        ''' <p>
+        ''' This set can be used in conjunction with <seealso cref="#get(TemporalUnit)"/>
+        ''' to access the entire state of the period.
+        ''' </summary>
+        ''' <returns> a list containing the years, months and days units, not null </returns>
+        Public Overrides Property units As IList(Of java.time.temporal.TemporalUnit)
+            Get
+                Return SUPPORTED_UNITS
+            End Get
+        End Property
 
-		''' <summary>
-		''' Gets the chronology of this period, which is the ISO calendar system.
-		''' <p>
-		''' The {@code Chronology} represents the calendar system in use.
-		''' The ISO-8601 calendar system is the modern civil calendar system used today
-		''' in most of the world. It is equivalent to the proleptic Gregorian calendar
-		''' system, in which today's rules for leap years are applied for all time.
-		''' </summary>
-		''' <returns> the ISO chronology, not null </returns>
-		Public Property Overrides chronology As java.time.chrono.IsoChronology
-			Get
-				Return java.time.chrono.IsoChronology.INSTANCE
-			End Get
-		End Property
+        ''' <summary>
+        ''' Gets the chronology of this period, which is the ISO calendar system.
+        ''' <p>
+        ''' The {@code Chronology} represents the calendar system in use.
+        ''' The ISO-8601 calendar system is the modern civil calendar system used today
+        ''' in most of the world. It is equivalent to the proleptic Gregorian calendar
+        ''' system, in which today's rules for leap years are applied for all time.
+        ''' </summary>
+        ''' <returns> the ISO chronology, not null </returns>
+        Public Overrides Property chronology As java.time.chrono.IsoChronology
+            Get
+                Return java.time.chrono.IsoChronology.INSTANCE
+            End Get
+        End Property
 
-		'-----------------------------------------------------------------------
-		''' <summary>
-		''' Checks if all three units of this period are zero.
-		''' <p>
-		''' A zero period has the value zero for the years, months and days units.
-		''' </summary>
-		''' <returns> true if this period is zero-length </returns>
-		Public Property zero As Boolean
-			Get
-				Return (Me Is ZERO)
-			End Get
-		End Property
+        '-----------------------------------------------------------------------
+        ''' <summary>
+        ''' Checks if all three units of this period are zero.
+        ''' <p>
+        ''' A zero period has the value zero for the years, months and days units.
+        ''' </summary>
+        ''' <returns> true if this period is zero-length </returns>
+        Public ReadOnly Property zero As Boolean
+            Get
+                Return (Me Is zero)
+            End Get
+        End Property
 
-		''' <summary>
-		''' Checks if any of the three units of this period are negative.
-		''' <p>
-		''' This checks whether the years, months or days units are less than zero.
-		''' </summary>
-		''' <returns> true if any unit of this period is negative </returns>
-		Public Property negative As Boolean
+        ''' <summary>
+        ''' Checks if any of the three units of this period are negative.
+        ''' <p>
+        ''' This checks whether the years, months or days units are less than zero.
+        ''' </summary>
+        ''' <returns> true if any unit of this period is negative </returns>
+        Public Property negative As Boolean
 			Get
 				Return years < 0 OrElse months < 0 OrElse days < 0
 			End Get

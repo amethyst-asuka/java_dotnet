@@ -65,32 +65,32 @@ Namespace java.time
 
 
 
-	''' <summary>
-	''' A time with an offset from UTC/Greenwich in the ISO-8601 calendar system,
-	''' such as {@code 10:15:30+01:00}.
-	''' <p>
-	''' {@code OffsetTime} is an immutable date-time object that represents a time, often
-	''' viewed as hour-minute-second-offset.
-	''' This class stores all time fields, to a precision of nanoseconds,
-	''' as well as a zone offset.
-	''' For example, the value "13:45.30.123456789+02:00" can be stored
-	''' in an {@code OffsetTime}.
-	''' 
-	''' <p>
-	''' This is a <a href="{@docRoot}/java/lang/doc-files/ValueBased.html">value-based</a>
-	''' class; use of identity-sensitive operations (including reference equality
-	''' ({@code ==}), identity hash code, or synchronization) on instances of
-	''' {@code OffsetTime} may have unpredictable results and should be avoided.
-	''' The {@code equals} method should be used for comparisons.
-	''' 
-	''' @implSpec
-	''' This class is immutable and thread-safe.
-	''' 
-	''' @since 1.8
-	''' </summary>
-	<Serializable> _
-	Public NotInheritable Class OffsetTime
-		Implements java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, Comparable(Of OffsetTime)
+    ''' <summary>
+    ''' A time with an offset from UTC/Greenwich in the ISO-8601 calendar system,
+    ''' such as {@code 10:15:30+01:00}.
+    ''' <p>
+    ''' {@code OffsetTime} is an immutable date-time object that represents a time, often
+    ''' viewed as hour-minute-second-offset.
+    ''' This class stores all time fields, to a precision of nanoseconds,
+    ''' as well as a zone offset.
+    ''' For example, the value "13:45.30.123456789+02:00" can be stored
+    ''' in an {@code OffsetTime}.
+    ''' 
+    ''' <p>
+    ''' This is a <a href="{@docRoot}/java/lang/doc-files/ValueBased.html">value-based</a>
+    ''' class; use of identity-sensitive operations (including reference equality
+    ''' ({@code ==}), identity hash code, or synchronization) on instances of
+    ''' {@code OffsetTime} may have unpredictable results and should be avoided.
+    ''' The {@code equals} method should be used for comparisons.
+    ''' 
+    ''' @implSpec
+    ''' This class is immutable and thread-safe.
+    ''' 
+    ''' @since 1.8
+    ''' </summary>
+    <Serializable>
+    Public NotInheritable Class OffsetTime : Inherits java.lang.Object
+        Implements java.time.temporal.Temporal, java.time.temporal.TemporalAdjuster, Comparable(Of OffsetTime)
 
 		''' <summary>
 		''' The minimum supported {@code OffsetTime}, '00:00:00+18:00'.
@@ -118,24 +118,20 @@ Namespace java.time
 		''' The local date-time.
 		''' </summary>
 		Private ReadOnly time As LocalTime
-		''' <summary>
-		''' The offset from UTC/Greenwich.
-		''' </summary>
-		Private ReadOnly offset As ZoneOffset
 
-		'-----------------------------------------------------------------------
-		''' <summary>
-		''' Obtains the current time from the system clock in the default time-zone.
-		''' <p>
-		''' This will query the <seealso cref="Clock#systemDefaultZone() system clock"/> in the default
-		''' time-zone to obtain the current time.
-		''' The offset will be calculated from the time-zone in the clock.
-		''' <p>
-		''' Using this method will prevent the ability to use an alternate clock for testing
-		''' because the clock is hard-coded.
-		''' </summary>
-		''' <returns> the current time using the system clock and default time-zone, not null </returns>
-		Public Shared Function now() As OffsetTime
+        '-----------------------------------------------------------------------
+        ''' <summary>
+        ''' Obtains the current time from the system clock in the default time-zone.
+        ''' <p>
+        ''' This will query the <seealso cref="Clock#systemDefaultZone() system clock"/> in the default
+        ''' time-zone to obtain the current time.
+        ''' The offset will be calculated from the time-zone in the clock.
+        ''' <p>
+        ''' Using this method will prevent the ability to use an alternate clock for testing
+        ''' because the clock is hard-coded.
+        ''' </summary>
+        ''' <returns> the current time using the system clock and default time-zone, not null </returns>
+        Public Shared Function now() As OffsetTime
 			Return now(Clock.systemDefaultZone())
 		End Function
 
@@ -257,8 +253,8 @@ Namespace java.time
 				Dim offset_Renamed As ZoneOffset = ZoneOffset.from(temporal)
 				Return New OffsetTime(time, offset_Renamed)
 			Catch ex As DateTimeException
-				Throw New DateTimeException("Unable to obtain OffsetTime from TemporalAccessor: " & temporal & " of type " & temporal.GetType().name, ex)
-			End Try
+                Throw New DateTimeException("Unable to obtain OffsetTime from TemporalAccessor: " & temporal.ToString & " of type " & temporal.GetType().Name, ex)
+            End Try
 		End Function
 
 		'-----------------------------------------------------------------------
@@ -476,36 +472,32 @@ Namespace java.time
 			Return field.getFrom(Me)
 		End Function
 
-		'-----------------------------------------------------------------------
-		''' <summary>
-		''' Gets the zone offset, such as '+01:00'.
-		''' <p>
-		''' This is the offset of the local time from UTC/Greenwich.
-		''' </summary>
-		''' <returns> the zone offset, not null </returns>
-		Public Property offset As ZoneOffset
-			Get
-				Return offset
-			End Get
-		End Property
+        '-----------------------------------------------------------------------
+        ''' <summary>
+        ''' Gets the zone offset, such as '+01:00'.
+        ''' <p>
+        ''' This is the offset of the local time from UTC/Greenwich.
+        ''' </summary>
+        ''' <returns> the zone offset, not null </returns>
+        Public ReadOnly Property offset As ZoneOffset
 
-		''' <summary>
-		''' Returns a copy of this {@code OffsetTime} with the specified offset ensuring
-		''' that the result has the same local time.
-		''' <p>
-		''' This method returns an object with the same {@code LocalTime} and the specified {@code ZoneOffset}.
-		''' No calculation is needed or performed.
-		''' For example, if this time represents {@code 10:30+02:00} and the offset specified is
-		''' {@code +03:00}, then this method will return {@code 10:30+03:00}.
-		''' <p>
-		''' To take into account the difference between the offsets, and adjust the time fields,
-		''' use <seealso cref="#withOffsetSameInstant"/>.
-		''' <p>
-		''' This instance is immutable and unaffected by this method call.
-		''' </summary>
-		''' <param name="offset">  the zone offset to change to, not null </param>
-		''' <returns> an {@code OffsetTime} based on this time with the requested offset, not null </returns>
-		Public Function withOffsetSameLocal(ByVal offset As ZoneOffset) As OffsetTime
+        ''' <summary>
+        ''' Returns a copy of this {@code OffsetTime} with the specified offset ensuring
+        ''' that the result has the same local time.
+        ''' <p>
+        ''' This method returns an object with the same {@code LocalTime} and the specified {@code ZoneOffset}.
+        ''' No calculation is needed or performed.
+        ''' For example, if this time represents {@code 10:30+02:00} and the offset specified is
+        ''' {@code +03:00}, then this method will return {@code 10:30+03:00}.
+        ''' <p>
+        ''' To take into account the difference between the offsets, and adjust the time fields,
+        ''' use <seealso cref="#withOffsetSameInstant"/>.
+        ''' <p>
+        ''' This instance is immutable and unaffected by this method call.
+        ''' </summary>
+        ''' <param name="offset">  the zone offset to change to, not null </param>
+        ''' <returns> an {@code OffsetTime} based on this time with the requested offset, not null </returns>
+        Public Function withOffsetSameLocal(ByVal offset As ZoneOffset) As OffsetTime
 			Return If(offset IsNot Nothing AndAlso offset.Equals(Me.offset), Me, New OffsetTime(time, offset))
 		End Function
 
