@@ -1142,7 +1142,7 @@ Namespace java.net
 	'        return s.toString();
 	'    }
 	'
-	'    public static  Sub  main(String args[]) throws Exception {
+	'    Public Shared  Sub  main(String args[]) throws Exception {
 	'        SocketPermission this_ = new SocketPermission(args[0], "connect");
 	'        SocketPermission that_ = new SocketPermission(args[1], "connect");
 	'        System.out.println("-----\n");

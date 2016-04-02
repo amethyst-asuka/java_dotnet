@@ -2941,7 +2941,7 @@ Namespace java.lang
         ''' </summary>
         ''' <param name="value"> The {@code char} for which to return a hash code. </param>
         ''' <returns> a hash code value for a {@code char} value. </returns>
-        Public Static Integer hashCode(Char value)
+        Public Shared Integer hashCode(Char value)
 			Return AscW(value)
 
         ''' <summary>
@@ -2977,7 +2977,7 @@ Namespace java.lang
         ''' <param name="c"> the {@code char} to be converted </param>
         ''' <returns> the string representation of the specified {@code char}
         ''' @since 1.4 </returns>
-        Public Static String ToString(Char c)
+        Public Shared String ToString(Char c)
 			Return Convert.ToString(c)
 
         ''' <summary>
@@ -2991,7 +2991,7 @@ Namespace java.lang
         '''         <seealso cref="#MAX_CODE_POINT"/> inclusive;
         '''         {@code false} otherwise.
         ''' @since  1.5 </returns>
-        Public Static Boolean isValidCodePoint(Integer codePoint)
+        Public Shared Boolean isValidCodePoint(Integer codePoint)
 			' Optimized form of:
 			'     codePoint >= MIN_CODE_POINT && codePoint <= MAX_CODE_POINT
 			Dim plane As Integer = CInt(CUInt(codePoint) >> 16)
@@ -3007,7 +3007,7 @@ Namespace java.lang
         '''         <seealso cref="#MIN_VALUE"/> and <seealso cref="#MAX_VALUE"/> inclusive;
         '''         {@code false} otherwise.
         ''' @since  1.7 </returns>
-        Public Static Boolean isBmpCodePoint(Integer codePoint)
+        Public Shared Boolean isBmpCodePoint(Integer codePoint)
 			Return CInt(CUInt(codePoint) >> 16 = 0)
         ' Optimized form of:
         '     codePoint >= MIN_VALUE && codePoint <= MAX_VALUE
@@ -3024,7 +3024,7 @@ Namespace java.lang
         '''         <seealso cref="#MAX_CODE_POINT"/> inclusive;
         '''         {@code false} otherwise.
         ''' @since  1.5 </returns>
-        Public Static Boolean isSupplementaryCodePoint(Integer codePoint)
+        Public Shared Boolean isSupplementaryCodePoint(Integer codePoint)
 			Return codePoint >= MIN_SUPPLEMENTARY_CODE_POINT AndAlso codePoint < MAX_CODE_POINT + 1
 
         ''' <summary>
@@ -3046,7 +3046,7 @@ Namespace java.lang
         ''' <seealso cref=    Character#isLowSurrogate(char) </seealso>
         ''' <seealso cref=    Character.UnicodeBlock#of(int)
         ''' @since  1.5 </seealso>
-        Public Static Boolean isHighSurrogate(Char ch)
+        Public Shared Boolean isHighSurrogate(Char ch)
 			' Help VM constant-fold; MAX_HIGH_SURROGATE + 1 == MIN_LOW_SURROGATE
 			Return ch >= MIN_HIGH_SURROGATE AndAlso ch < (MAX_HIGH_SURROGATE + 1)
 
@@ -3068,7 +3068,7 @@ Namespace java.lang
         '''         {@code false} otherwise. </returns>
         ''' <seealso cref=    Character#isHighSurrogate(char)
         ''' @since  1.5 </seealso>
-        Public Static Boolean isLowSurrogate(Char ch)
+        Public Shared Boolean isLowSurrogate(Char ch)
 			Return ch >= MIN_LOW_SURROGATE AndAlso ch < (MAX_LOW_SURROGATE + 1)
 
         ''' <summary>
@@ -3090,7 +3090,7 @@ Namespace java.lang
         '''         <seealso cref="#MAX_SURROGATE"/> inclusive;
         '''         {@code false} otherwise.
         ''' @since  1.7 </returns>
-        Public Static Boolean isSurrogate(Char ch)
+        Public Shared Boolean isSurrogate(Char ch)
 			Return ch >= MIN_SURROGATE AndAlso ch < (MAX_SURROGATE + 1)
 
         ''' <summary>
@@ -3110,7 +3110,7 @@ Namespace java.lang
         ''' low-surrogate code values represent a valid surrogate pair;
         ''' {@code false} otherwise.
         ''' @since  1.5 </returns>
-        Public Static Boolean isSurrogatePair(Char high, Char low)
+        Public Shared Boolean isSurrogatePair(Char high, Char low)
 			Return isHighSurrogate(high) AndAlso isLowSurrogate(low)
 
         ''' <summary>
@@ -3128,7 +3128,7 @@ Namespace java.lang
         ''' <returns>  2 if the character is a valid supplementary character; 1 otherwise. </returns>
         ''' <seealso cref=     Character#isSupplementaryCodePoint(int)
         ''' @since   1.5 </seealso>
-        Public Static Integer charCount(Integer codePoint)
+        Public Shared Integer charCount(Integer codePoint)
 			Return If(codePoint >= MIN_SUPPLEMENTARY_CODE_POINT, 2, 1)
 
         ''' <summary>
@@ -3142,7 +3142,7 @@ Namespace java.lang
         ''' <returns> the supplementary code point composed from the
         '''         specified surrogate pair.
         ''' @since  1.5 </returns>
-        Public Static Integer toCodePoint(Char high, Char low)
+        Public Shared Integer toCodePoint(Char high, Char low)
 			' Optimized form of:
 			' return ((high - MIN_HIGH_SURROGATE) << 10)
 			'         + (low - MIN_LOW_SURROGATE)
@@ -3170,7 +3170,7 @@ Namespace java.lang
         ''' {@code index} is negative or not less than
         ''' <seealso cref="CharSequence#length() seq.length()"/>.
         ''' @since  1.5 </exception>
-        Public Static Integer codePointAt(CharSequence seq, Integer index)
+        Public Shared Integer codePointAt(CharSequence seq, Integer index)
 			Dim c1 As Char = seq.Chars(Index)
 			index += 1
 			If isHighSurrogate(c1) AndAlso index < seq.length() Then
@@ -3199,7 +3199,7 @@ Namespace java.lang
         ''' {@code index} is negative or not less than
         ''' the length of the {@code char} array.
         ''' @since  1.5 </exception>
-        Public Static Integer codePointAt(Char() a, Integer index)
+        Public Shared Integer codePointAt(Char() a, Integer index)
 			Return codePointAtImpl(a, index, a.length)
 
         ''' <summary>
@@ -3226,7 +3226,7 @@ Namespace java.lang
         ''' argument, or if the {@code limit} argument is negative or
         ''' greater than the length of the {@code char} array.
         ''' @since  1.5 </exception>
-        Public Static Integer codePointAt(Char() a, Integer index, Integer limit)
+        Public Shared Integer codePointAt(Char() a, Integer index, Integer limit)
 			If index >= limit OrElse limit < 0 OrElse limit > a.length Then Throw New IndexOutOfBoundsException
 			Return codePointAtImpl(a, index, limit)
 
@@ -3260,7 +3260,7 @@ Namespace java.lang
         ''' argument is less than 1 or greater than {@link
         ''' CharSequence#length() seq.length()}.
         ''' @since  1.5 </exception>
-        Public Static Integer codePointBefore(CharSequence seq, Integer index)
+        Public Shared Integer codePointBefore(CharSequence seq, Integer index)
 			index -= 1
 			Dim c2 As Char = seq.Chars(Index)
         If isLowSurrogate(c2) AndAlso index > 0 Then
@@ -3290,7 +3290,7 @@ Namespace java.lang
         ''' argument is less than 1 or greater than the length of the
         ''' {@code char} array
         ''' @since  1.5 </exception>
-        Public Static Integer codePointBefore(Char() a, Integer index)
+        Public Shared Integer codePointBefore(Char() a, Integer index)
 			Return codePointBeforeImpl(a, index, 0)
 
         ''' <summary>
@@ -3319,7 +3319,7 @@ Namespace java.lang
         ''' if the {@code start} argument is negative or not less than
         ''' the length of the {@code char} array.
         ''' @since  1.5 </exception>
-        Public Static Integer codePointBefore(Char() a, Integer index, Integer start)
+        Public Shared Integer codePointBefore(Char() a, Integer index, Integer start)
 			If index <= start OrElse start < 0 OrElse start >= a.length Then Throw New IndexOutOfBoundsException
 			Return codePointBeforeImpl(a, index, start)
 
@@ -3357,7 +3357,7 @@ Namespace java.lang
         ''' <returns>  the leading surrogate code unit used to represent the
         '''          character in the UTF-16 encoding
         ''' @since   1.7 </returns>
-        Public Static Char highSurrogate(Integer codePoint)
+        Public Shared Char highSurrogate(Integer codePoint)
 			Return CChar((CInt(CUInt(codePoint) >> 10)) + (MIN_HIGH_SURROGATE - (CInt(CUInt(MIN_SUPPLEMENTARY_CODE_POINT) >> 10))))
 
         ''' <summary>
@@ -3383,7 +3383,7 @@ Namespace java.lang
         ''' <returns>  the trailing surrogate code unit used to represent the
         '''          character in the UTF-16 encoding
         ''' @since   1.7 </returns>
-        Public Static Char lowSurrogate(Integer codePoint)
+        Public Shared Char lowSurrogate(Integer codePoint)
 			Return CChar((codePoint And &H3FF) + MIN_LOW_SURROGATE)
 
         ''' <summary>
@@ -3416,7 +3416,7 @@ Namespace java.lang
         ''' high-surrogate value is not stored in
         ''' {@code dst[dstIndex]}.)
         ''' @since  1.5 </exception>
-        Public Static Integer toChars(Integer codePoint, Char() dst, Integer dstIndex)
+        Public Shared Integer toChars(Integer codePoint, Char() dst, Integer dstIndex)
 			If isBmpCodePoint(codePoint) Then
 				dst(dstIndex) = CChar(codePoint)
 				Return 1
@@ -3442,7 +3442,7 @@ Namespace java.lang
         ''' <exception cref="IllegalArgumentException"> if the specified
         ''' {@code codePoint} is not a valid Unicode code point.
         ''' @since  1.5 </exception>
-        Public Static Char() toChars(Integer codePoint)
+        Public Shared Char() toChars(Integer codePoint)
 			If isBmpCodePoint(codePoint) Then
         Return New Char() {CChar(codePoint)}
         ElseIf isValidCodePoint(codePoint) Then
@@ -3480,7 +3480,7 @@ Namespace java.lang
 		''' is larger than the length of the given sequence, or
 		''' {@code beginIndex} is larger than {@code endIndex}.
 		''' @since  1.5 </exception>
-		Public Static Integer codePointCount(CharSequence seq, Integer beginIndex, Integer endIndex)
+		Public Shared Integer codePointCount(CharSequence seq, Integer beginIndex, Integer endIndex)
 			Dim length As Integer = seq.length()
         If beginIndex < 0 OrElse endIndex > length OrElse beginIndex > endIndex Then Throw New IndexOutOfBoundsException
 			Dim n As Integer = endIndex - beginIndex
@@ -3513,7 +3513,7 @@ Namespace java.lang
         ''' {@code count} is negative, or if {@code offset +
         ''' count} is larger than the length of the given array.
         ''' @since  1.5 </exception>
-        Public Static Integer codePointCount(Char() a, Integer offset, Integer count)
+        Public Shared Integer codePointCount(Char() a, Integer offset, Integer count)
 			If count > a.length - offset OrElse offset < 0 OrElse count < 0 Then Throw New IndexOutOfBoundsException
 			Return codePointCountImpl(a, offset, count)
 
@@ -3552,7 +3552,7 @@ Namespace java.lang
         '''   before {@code index} has fewer than the absolute value
         '''   of {@code codePointOffset} code points.
         ''' @since 1.5 </exception>
-        Public Static Integer offsetByCodePoints(CharSequence seq, Integer index, Integer codePointOffset)
+        Public Shared Integer offsetByCodePoints(CharSequence seq, Integer index, Integer codePointOffset)
 			Dim length As Integer = seq.length()
         If index < 0 OrElse index > length Then Throw New IndexOutOfBoundsException
 
@@ -3611,7 +3611,7 @@ Namespace java.lang
         '''   has fewer than the absolute value of
         '''   {@code codePointOffset} code points.
         ''' @since 1.5 </exception>
-        Public Static Integer offsetByCodePoints(Char() a, Integer start, Integer count, Integer index, Integer codePointOffset)
+        Public Shared Integer offsetByCodePoints(Char() a, Integer start, Integer count, Integer index, Integer codePointOffset)
 			If count > a.length - start OrElse start < 0 OrElse count < 0 OrElse index < start OrElse index > start + count Then Throw New IndexOutOfBoundsException
 			Return offsetByCodePointsImpl(a, start, count, index, codePointOffset)
 
@@ -3670,7 +3670,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isTitleCase(char) </seealso>
         ''' <seealso cref=     Character#toLowerCase(char) </seealso>
         ''' <seealso cref=     Character#getType(char) </seealso>
-        Public Static Boolean isLowerCase(Char ch)
+        Public Shared Boolean isLowerCase(Char ch)
 			Return isLowerCase(CInt(Fix(ch)))
 
         ''' <summary>
@@ -3700,7 +3700,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toLowerCase(int) </seealso>
         ''' <seealso cref=     Character#getType(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isLowerCase(Integer codePoint)
+        Public Shared Boolean isLowerCase(Integer codePoint)
 			Return [getType](codePoint) = Character.LOWERCASE_LETTER OrElse CharacterData.of(codePoint).isOtherLowercase(codePoint)
 
         ''' <summary>
@@ -3733,7 +3733,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toUpperCase(char) </seealso>
         ''' <seealso cref=     Character#getType(char)
         ''' @since   1.0 </seealso>
-        Public Static Boolean isUpperCase(Char ch)
+        Public Shared Boolean isUpperCase(Char ch)
 			Return isUpperCase(CInt(Fix(ch)))
 
         ''' <summary>
@@ -3761,7 +3761,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toUpperCase(int) </seealso>
         ''' <seealso cref=     Character#getType(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isUpperCase(Integer codePoint)
+        Public Shared Boolean isUpperCase(Integer codePoint)
 			Return [getType](codePoint) = Character.UPPERCASE_LETTER OrElse CharacterData.of(codePoint).isOtherUppercase(codePoint)
 
         ''' <summary>
@@ -3800,7 +3800,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toTitleCase(char) </seealso>
         ''' <seealso cref=     Character#getType(char)
         ''' @since   1.0.2 </seealso>
-        Public Static Boolean isTitleCase(Char ch)
+        Public Shared Boolean isTitleCase(Char ch)
 			Return isTitleCase(CInt(Fix(ch)))
 
         ''' <summary>
@@ -3834,7 +3834,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toTitleCase(int) </seealso>
         ''' <seealso cref=     Character#getType(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isTitleCase(Integer codePoint)
+        Public Shared Boolean isTitleCase(Integer codePoint)
 			Return [getType](codePoint) = Character.TITLECASE_LETTER
 
         ''' <summary>
@@ -3871,7 +3871,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#digit(char, int) </seealso>
         ''' <seealso cref=     Character#forDigit(int, int) </seealso>
         ''' <seealso cref=     Character#getType(char) </seealso>
-        Public Static Boolean isDigit(Char ch)
+        Public Shared Boolean isDigit(Char ch)
 			Return isDigit(CInt(Fix(ch)))
 
         ''' <summary>
@@ -3903,7 +3903,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#forDigit(int, int) </seealso>
         ''' <seealso cref=     Character#getType(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isDigit(Integer codePoint)
+        Public Shared Boolean isDigit(Integer codePoint)
 			Return [getType](codePoint) = Character.DECIMAL_DIGIT_NUMBER
 
         ''' <summary>
@@ -3930,7 +3930,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isTitleCase(char) </seealso>
         ''' <seealso cref=     Character#isUpperCase(char)
         ''' @since   1.0.2 </seealso>
-        Public Static Boolean isDefined(Char ch)
+        Public Shared Boolean isDefined(Char ch)
 			Return isDefined(CInt(Fix(ch)))
 
         ''' <summary>
@@ -3952,7 +3952,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isTitleCase(int) </seealso>
         ''' <seealso cref=     Character#isUpperCase(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isDefined(Integer codePoint)
+        Public Shared Boolean isDefined(Integer codePoint)
 			Return [getType](codePoint) <> Character.UNASSIGNED
 
         ''' <summary>
@@ -3989,7 +3989,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isTitleCase(char) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierStart(char) </seealso>
         ''' <seealso cref=     Character#isUpperCase(char) </seealso>
-        Public Static Boolean isLetter(Char ch)
+        Public Shared Boolean isLetter(Char ch)
 			Return isLetter(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4020,7 +4020,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isUnicodeIdentifierStart(int) </seealso>
         ''' <seealso cref=     Character#isUpperCase(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isLetter(Integer codePoint)
+        Public Shared Boolean isLetter(Integer codePoint)
 			Return ((((1 << Character.UPPERCASE_LETTER) Or (1 << Character.LOWERCASE_LETTER) Or (1 << Character.TITLECASE_LETTER) Or (1 << Character.MODIFIER_LETTER) Or (1 << Character.OTHER_LETTER)) >> [getType](codePoint)) And 1) <> 0
 
         ''' <summary>
@@ -4046,7 +4046,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isLetter(char) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(char)
         ''' @since   1.0.2 </seealso>
-        Public Static Boolean isLetterOrDigit(Char ch)
+        Public Shared Boolean isLetterOrDigit(Char ch)
 			Return isLetterOrDigit(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4065,7 +4065,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isLetter(int) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isLetterOrDigit(Integer codePoint)
+        Public Shared Boolean isLetterOrDigit(Integer codePoint)
 			Return ((((1 << Character.UPPERCASE_LETTER) Or (1 << Character.LOWERCASE_LETTER) Or (1 << Character.TITLECASE_LETTER) Or (1 << Character.MODIFIER_LETTER) Or (1 << Character.OTHER_LETTER) Or (1 << Character.DECIMAL_DIGIT_NUMBER)) >> [getType](codePoint)) And 1) <> 0
 
         ''' <summary>
@@ -4093,7 +4093,7 @@ Namespace java.lang
         ''' @since   1.02 </seealso>
         ''' @deprecated Replaced by isJavaIdentifierStart(char). 
         <Obsolete("Replaced by isJavaIdentifierStart(char).")>
-        Public Static Boolean isJavaLetter(Char ch)
+        Public Shared Boolean isJavaLetter(Char ch)
 			Return isJavaIdentifierStart(ch)
 
         ''' <summary>
@@ -4127,7 +4127,7 @@ Namespace java.lang
         ''' @since   1.02 </seealso>
         ''' @deprecated Replaced by isJavaIdentifierPart(char). 
         <Obsolete("Replaced by isJavaIdentifierPart(char).")>
-        Public Static Boolean isJavaLetterOrDigit(Char ch)
+        Public Shared Boolean isJavaLetterOrDigit(Char ch)
 			Return isJavaIdentifierPart(ch)
 
         ''' <summary>
@@ -4151,7 +4151,7 @@ Namespace java.lang
         ''' <returns>  <code>true</code> if the character is a Unicode alphabet
         '''          character, <code>false</code> otherwise.
         ''' @since   1.7 </returns>
-        Public Static Boolean isAlphabetic(Integer codePoint)
+        Public Shared Boolean isAlphabetic(Integer codePoint)
 			Return (((((1 << Character.UPPERCASE_LETTER) Or (1 << Character.LOWERCASE_LETTER) Or (1 << Character.TITLECASE_LETTER) Or (1 << Character.MODIFIER_LETTER) Or (1 << Character.OTHER_LETTER) Or (1 << Character.LETTER_NUMBER)) >> [getType](codePoint)) And 1) <> 0) OrElse CharacterData.of(codePoint).isOtherAlphabetic(codePoint)
 
         ''' <summary>
@@ -4163,7 +4163,7 @@ Namespace java.lang
         ''' <returns>  <code>true</code> if the character is a Unicode ideograph
         '''          character, <code>false</code> otherwise.
         ''' @since   1.7 </returns>
-        Public Static Boolean isIdeographic(Integer codePoint)
+        Public Shared Boolean isIdeographic(Integer codePoint)
 			Return CharacterData.of(codePoint).isIdeographic(codePoint)
 
         ''' <summary>
@@ -4192,7 +4192,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isUnicodeIdentifierStart(char) </seealso>
         ''' <seealso cref=     javax.lang.model.SourceVersion#isIdentifier(CharSequence)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isJavaIdentifierStart(Char ch)
+        Public Shared Boolean isJavaIdentifierStart(Char ch)
 			Return isJavaIdentifierStart(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4219,7 +4219,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isUnicodeIdentifierStart(int) </seealso>
         ''' <seealso cref=     javax.lang.model.SourceVersion#isIdentifier(CharSequence)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isJavaIdentifierStart(Integer codePoint)
+        Public Shared Boolean isJavaIdentifierStart(Integer codePoint)
 			Return CharacterData.of(codePoint).isJavaIdentifierStart(codePoint)
 
         ''' <summary>
@@ -4254,7 +4254,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(char) </seealso>
         ''' <seealso cref=     javax.lang.model.SourceVersion#isIdentifier(CharSequence)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isJavaIdentifierPart(Char ch)
+        Public Shared Boolean isJavaIdentifierPart(Char ch)
 			Return isJavaIdentifierPart(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4285,7 +4285,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(int) </seealso>
         ''' <seealso cref=     javax.lang.model.SourceVersion#isIdentifier(CharSequence)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isJavaIdentifierPart(Integer codePoint)
+        Public Shared Boolean isJavaIdentifierPart(Integer codePoint)
 			Return CharacterData.of(codePoint).isJavaIdentifierPart(codePoint)
 
         ''' <summary>
@@ -4312,7 +4312,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isLetter(char) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(char)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isUnicodeIdentifierStart(Char ch)
+        Public Shared Boolean isUnicodeIdentifierStart(Char ch)
 			Return isUnicodeIdentifierStart(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4334,7 +4334,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isLetter(int) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isUnicodeIdentifierStart(Integer codePoint)
+        Public Shared Boolean isUnicodeIdentifierStart(Integer codePoint)
 			Return CharacterData.of(codePoint).isUnicodeIdentifierStart(codePoint)
 
         ''' <summary>
@@ -4367,7 +4367,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isLetterOrDigit(char) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierStart(char)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isUnicodeIdentifierPart(Char ch)
+        Public Shared Boolean isUnicodeIdentifierPart(Char ch)
 			Return isUnicodeIdentifierPart(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4394,7 +4394,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isLetterOrDigit(int) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierStart(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isUnicodeIdentifierPart(Integer codePoint)
+        Public Shared Boolean isUnicodeIdentifierPart(Integer codePoint)
 			Return CharacterData.of(codePoint).isUnicodeIdentifierPart(codePoint)
 
         ''' <summary>
@@ -4427,7 +4427,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isJavaIdentifierPart(char) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(char)
         ''' @since   1.1 </seealso>
-        Public Static Boolean isIdentifierIgnorable(Char ch)
+        Public Shared Boolean isIdentifierIgnorable(Char ch)
 			Return isIdentifierIgnorable(CInt(Fix(ch)))
 
         ''' <summary>
@@ -4455,7 +4455,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#isJavaIdentifierPart(int) </seealso>
         ''' <seealso cref=     Character#isUnicodeIdentifierPart(int)
         ''' @since   1.5 </seealso>
-        Public Static Boolean isIdentifierIgnorable(Integer codePoint)
+        Public Shared Boolean isIdentifierIgnorable(Integer codePoint)
 			Return CharacterData.of(codePoint).isIdentifierIgnorable(codePoint)
 
         ''' <summary>
@@ -4484,7 +4484,7 @@ Namespace java.lang
         '''          otherwise, the character itself. </returns>
         ''' <seealso cref=     Character#isLowerCase(char) </seealso>
         ''' <seealso cref=     String#toLowerCase() </seealso>
-        Public Static Char ToLower(Char ch)
+        Public Shared Char ToLower(Char ch)
 			Return CChar(ToLower(CInt(Fix(ch))))
 
         ''' <summary>
@@ -4511,7 +4511,7 @@ Namespace java.lang
         ''' <seealso cref=     String#toLowerCase()
         ''' 
         ''' @since   1.5 </seealso>
-        Public Static Integer ToLower(Integer codePoint)
+        Public Shared Integer ToLower(Integer codePoint)
 			Return CharacterData.of(codePoint).ToLower(codePoint)
 
         ''' <summary>
@@ -4540,7 +4540,7 @@ Namespace java.lang
         '''          otherwise, the character itself. </returns>
         ''' <seealso cref=     Character#isUpperCase(char) </seealso>
         ''' <seealso cref=     String#toUpperCase() </seealso>
-        Public Static Char ToUpper(Char ch)
+        Public Shared Char ToUpper(Char ch)
 			Return CChar(ToUpper(CInt(Fix(ch))))
 
         ''' <summary>
@@ -4567,7 +4567,7 @@ Namespace java.lang
         ''' <seealso cref=     String#toUpperCase()
         ''' 
         ''' @since   1.5 </seealso>
-        Public Static Integer ToUpper(Integer codePoint)
+        Public Shared Integer ToUpper(Integer codePoint)
 			Return CharacterData.of(codePoint).ToUpper(codePoint)
 
         ''' <summary>
@@ -4597,7 +4597,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toLowerCase(char) </seealso>
         ''' <seealso cref=     Character#toUpperCase(char)
         ''' @since   1.0.2 </seealso>
-        Public Static Char toTitleCase(Char ch)
+        Public Shared Char toTitleCase(Char ch)
 			Return CChar(toTitleCase(CInt(Fix(ch))))
 
         ''' <summary>
@@ -4622,7 +4622,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#toLowerCase(int) </seealso>
         ''' <seealso cref=     Character#toUpperCase(int)
         ''' @since   1.5 </seealso>
-        Public Static Integer toTitleCase(Integer codePoint)
+        Public Shared Integer toTitleCase(Integer codePoint)
 			Return CharacterData.of(codePoint).toTitleCase(codePoint)
 
         ''' <summary>
@@ -4674,7 +4674,7 @@ Namespace java.lang
         '''          specified radix. </returns>
         ''' <seealso cref=     Character#forDigit(int, int) </seealso>
         ''' <seealso cref=     Character#isDigit(char) </seealso>
-        Public Static Integer digit(Char ch, Integer radix)
+        Public Shared Integer digit(Char ch, Integer radix)
 			Return digit(CInt(Fix(ch)), radix)
 
         ''' <summary>
@@ -4724,7 +4724,7 @@ Namespace java.lang
         ''' <seealso cref=     Character#forDigit(int, int) </seealso>
         ''' <seealso cref=     Character#isDigit(int)
         ''' @since   1.5 </seealso>
-        Public Static Integer digit(Integer codePoint, Integer radix)
+        Public Shared Integer digit(Integer codePoint, Integer radix)
 			Return CharacterData.of(codePoint).digit(codePoint, radix)
 
         ''' <summary>

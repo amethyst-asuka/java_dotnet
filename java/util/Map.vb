@@ -449,7 +449,7 @@ Namespace java.util
 	'		''' <returns> a comparator that compares <seealso cref="Map.Entry"/> in natural order on key. </returns>
 	'		''' <seealso cref= Comparable
 	'		''' @since 1.8 </seealso>
-	'		public static <K extends Comparable<? MyBase K>, V> Comparator<Map.Entry<K,V>> comparingByKey()
+	'		Public Shared <K extends Comparable<? MyBase K>, V> Comparator<Map.Entry<K,V>> comparingByKey()
 	'		{
 	'			Return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> c1.getKey().compareTo(c2.getKey());
 	'		}
@@ -465,7 +465,7 @@ Namespace java.util
 	'		''' <returns> a comparator that compares <seealso cref="Map.Entry"/> in natural order on value. </returns>
 	'		''' <seealso cref= Comparable
 	'		''' @since 1.8 </seealso>
-	'		public static <K, V extends Comparable<? MyBase V>> Comparator<Map.Entry<K,V>> comparingByValue()
+	'		Public Shared <K, V extends Comparable<? MyBase V>> Comparator<Map.Entry<K,V>> comparingByValue()
 	'		{
 	'			Return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> c1.getValue().compareTo(c2.getValue());
 	'		}
@@ -482,7 +482,7 @@ Namespace java.util
 	'		''' <param name="cmp"> the key <seealso cref="Comparator"/> </param>
 	'		''' <returns> a comparator that compares <seealso cref="Map.Entry"/> by the key.
 	'		''' @since 1.8 </returns>
-	'		public static <K, V> Comparator<Map.Entry<K, V>> comparingByKey(Comparator<? MyBase K> cmp)
+	'		Public Shared <K, V> Comparator<Map.Entry<K, V>> comparingByKey(Comparator<? MyBase K> cmp)
 	'		{
 	'			Objects.requireNonNull(cmp);
 	'			Return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> cmp.compare(c1.getKey(), c2.getKey());
@@ -500,7 +500,7 @@ Namespace java.util
 	'		''' <param name="cmp"> the value <seealso cref="Comparator"/> </param>
 	'		''' <returns> a comparator that compares <seealso cref="Map.Entry"/> by the value.
 	'		''' @since 1.8 </returns>
-	'		public static <K, V> Comparator<Map.Entry<K, V>> comparingByValue(Comparator<? MyBase V> cmp)
+	'		Public Shared <K, V> Comparator<Map.Entry<K, V>> comparingByValue(Comparator<? MyBase V> cmp)
 	'		{
 	'			Objects.requireNonNull(cmp);
 	'			Return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> cmp.compare(c1.getValue(), c2.getValue());

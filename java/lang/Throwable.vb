@@ -504,7 +504,7 @@ Namespace java.lang
         ''' This example was produced by running the program:
         ''' <pre>
         ''' class MyClass {
-        '''     public static  Sub  main(String[] args) {
+        '''     Public Shared  Sub  main(String[] args) {
         '''         crunch(null);
         '''     }
         '''     static  Sub  crunch(int[] a) {
@@ -544,7 +544,7 @@ Namespace java.lang
         ''' example was produced by running the program:
         ''' <pre>
         ''' public class Junk {
-        '''     public static  Sub  main(String args[]) {
+        '''     Public Shared  Sub  main(String args[]) {
         '''         try {
         '''             a();
         '''         } catch(HighLevelException e) {

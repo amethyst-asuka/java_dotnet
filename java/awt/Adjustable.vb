@@ -41,21 +41,21 @@ Namespace java.awt
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int HORIZONTAL = 0;
+'		Public Shared final int HORIZONTAL = 0;
 
 		''' <summary>
 		''' Indicates that the <code>Adjustable</code> has vertical orientation.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int VERTICAL = 1;
+'		Public Shared final int VERTICAL = 1;
 
 		''' <summary>
 		''' Indicates that the <code>Adjustable</code> has no orientation.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int NO_ORIENTATION = 2;
+'		Public Shared final int NO_ORIENTATION = 2;
 
 		''' <summary>
 		''' Gets the orientation of the adjustable object. </summary>

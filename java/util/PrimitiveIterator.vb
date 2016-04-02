@@ -79,7 +79,7 @@ Namespace java.util
 		''' @since 1.8
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static interface OfInt extends PrimitiveIterator(Of java.lang.Integer, java.util.function.IntConsumer)
+'		Public Shared interface OfInt extends PrimitiveIterator(Of java.lang.Integer, java.util.function.IntConsumer)
 	'	{
 	'
 	'		''' <summary>
@@ -156,7 +156,7 @@ Namespace java.util
 		''' @since 1.8
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static interface OfLong extends PrimitiveIterator(Of java.lang.Long, java.util.function.LongConsumer)
+'		Public Shared interface OfLong extends PrimitiveIterator(Of java.lang.Long, java.util.function.LongConsumer)
 	'	{
 	'
 	'		''' <summary>
@@ -232,7 +232,7 @@ Namespace java.util
 		''' @since 1.8
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static interface OfDouble extends PrimitiveIterator(Of java.lang.Double, java.util.function.DoubleConsumer)
+'		Public Shared interface OfDouble extends PrimitiveIterator(Of java.lang.Double, java.util.function.DoubleConsumer)
 	'	{
 	'
 	'		''' <summary>

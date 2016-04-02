@@ -660,7 +660,7 @@ Namespace java.awt.geom
 		'''          values in the specified array at the specified index.
 		''' @since 1.2 </returns>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public static double getFlatnessSq(double coords() , int offset)
+		Public Shared double getFlatnessSq(double coords() , int offset)
 			Return Line2D.ptSegDistSq(coords(offset + 0), coords(offset + 1), coords(offset + 4), coords(offset + 5), coords(offset + 2), coords(offset + 3))
 
 		''' <summary>
@@ -674,7 +674,7 @@ Namespace java.awt.geom
 		''' <returns> the flatness of a quadratic curve defined by the
 		'''          specified array at the specified offset.
 		''' @since 1.2 </returns>
-		public static Double getFlatness(Double coords() , Integer offset)
+		Public Shared Double getFlatness(Double coords() , Integer offset)
 			Return Line2D.ptSegDist(coords(offset + 0), coords(offset + 1), coords(offset + 4), coords(offset + 5), coords(offset + 2), coords(offset + 3))
 
 		''' <summary>
@@ -724,7 +724,7 @@ Namespace java.awt.geom
 		''' <param name="right"> the <code>QuadCurve2D</code> object for storing the
 		'''          right or second half of the subdivided curve
 		''' @since 1.2 </param>
-		public static  Sub  subdivide(QuadCurve2D src, QuadCurve2D left, QuadCurve2D right)
+		Public Shared  Sub  subdivide(QuadCurve2D src, QuadCurve2D left, QuadCurve2D right)
 			Dim x1_Renamed As Double = src.x1
 			Dim y1_Renamed As Double = src.y1
 			Dim ctrlx_Renamed As Double = src.ctrlX
@@ -767,7 +767,7 @@ Namespace java.awt.geom
 		''' <param name="rightoff"> the offset into the array of the beginning of the
 		''' the 6 right coordinates
 		''' @since 1.2 </param>
-		public static  Sub  subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
+		Public Shared  Sub  subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
 			Dim x1_Renamed As Double = src(srcoff + 0)
 			Dim y1_Renamed As Double = src(srcoff + 1)
 			Dim ctrlx_Renamed As Double = src(srcoff + 2)
@@ -817,7 +817,7 @@ Namespace java.awt.geom
 		''' <returns> the number of roots, or <code>-1</code> if the equation is
 		'''          a constant
 		''' @since 1.2 </returns>
-		public static Integer solveQuadratic(Double eqn())
+		Public Shared Integer solveQuadratic(Double eqn())
 			Return solveQuadratic(eqn, eqn)
 
 		''' <summary>
@@ -839,7 +839,7 @@ Namespace java.awt.geom
 		''' <returns> the number of roots, or <code>-1</code> if the equation is
 		'''  a constant.
 		''' @since 1.3 </returns>
-		public static Integer solveQuadratic(Double eqn() , Double res())
+		Public Shared Integer solveQuadratic(Double eqn() , Double res())
 			Dim a As Double = eqn(2)
 			Dim b As Double = eqn(1)
 			Dim c As Double = eqn(0)

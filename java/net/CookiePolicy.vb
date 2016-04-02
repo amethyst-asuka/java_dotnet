@@ -40,19 +40,19 @@ Namespace java.net
 		''' One pre-defined policy which accepts all cookies.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final CookiePolicy ACCEPT_ALL = New CookiePolicyAnonymousInnerClassHelper();
+'		Public Shared final CookiePolicy ACCEPT_ALL = New CookiePolicyAnonymousInnerClassHelper();
 
 		''' <summary>
 		''' One pre-defined policy which accepts no cookies.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final CookiePolicy ACCEPT_NONE = New CookiePolicyAnonymousInnerClassHelper2();
+'		Public Shared final CookiePolicy ACCEPT_NONE = New CookiePolicyAnonymousInnerClassHelper2();
 
 		''' <summary>
 		''' One pre-defined policy which only accepts cookies from original server.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final CookiePolicy ACCEPT_ORIGINAL_SERVER = New CookiePolicyAnonymousInnerClassHelper3();
+'		Public Shared final CookiePolicy ACCEPT_ORIGINAL_SERVER = New CookiePolicyAnonymousInnerClassHelper3();
 
 
 		''' <summary>

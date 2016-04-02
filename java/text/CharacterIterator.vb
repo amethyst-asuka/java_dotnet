@@ -110,7 +110,7 @@ Namespace java.text
 		''' character" value which should not occur in any valid Unicode string.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final char DONE = ChrW(&HFFFF);
+'		Public Shared final char DONE = ChrW(&HFFFF);
 
 		''' <summary>
 		''' Sets the position to getBeginIndex() and returns the character at that

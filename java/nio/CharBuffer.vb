@@ -348,7 +348,7 @@ Namespace java.nio
 		''' </returns>
 		''' <exception cref="IllegalArgumentException">
 		'''          If the <tt>capacity</tt> is a negative integer </exception>
-		public static CharBuffer allocate(Integer capacity)
+		Public Shared CharBuffer allocate(Integer capacity)
 			If capacity < 0 Then Throw New IllegalArgumentException
 			Return New HeapCharBuffer(capacity, capacity)
 
@@ -382,7 +382,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
 		'''          parameters do not hold </exception>
-		public static CharBuffer wrap(Char() array, Integer offset, Integer length)
+		Public Shared CharBuffer wrap(Char() array, Integer offset, Integer length)
 			Try
 				Return New HeapCharBuffer(array, offset, length)
 			Catch x As IllegalArgumentException
@@ -404,7 +404,7 @@ Namespace java.nio
 		'''         The array that will back this buffer
 		''' </param>
 		''' <returns>  The new char buffer </returns>
-		public static CharBuffer wrap(Char() array)
+		Public Shared CharBuffer wrap(Char() array)
 			Return wrap(array, 0, array.length)
 
 
@@ -466,7 +466,7 @@ Namespace java.nio
 		''' <exception cref="IndexOutOfBoundsException">
 		'''          If the preconditions on the <tt>start</tt> and <tt>end</tt>
 		'''          parameters do not hold </exception>
-		public static CharBuffer wrap(CharSequence csq, Integer start, Integer end)
+		Public Shared CharBuffer wrap(CharSequence csq, Integer start, Integer end)
 			Try
 				Return New StringCharBuffer(csq, start, end)
 			Catch x As IllegalArgumentException
@@ -486,7 +486,7 @@ Namespace java.nio
 		'''         be created
 		''' </param>
 		''' <returns>  The new character buffer </returns>
-		public static CharBuffer wrap(CharSequence csq)
+		Public Shared CharBuffer wrap(CharSequence csq)
 			Return wrap(csq, 0, csq.length())
 
 

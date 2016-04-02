@@ -3285,7 +3285,7 @@ Namespace java.lang
         ''' <summary>
         ''' Returns a map from simple name to enum constant.  This package-private
         ''' method is used internally by Enum to implement
-        ''' {@code public static <T extends Enum<T>> T valueOf(Class<T>, String)}
+        ''' {@code Public Shared <T extends Enum<T>> T valueOf(Class<T>, String)}
         ''' efficiently.  Note that the map is returned by this method is
         ''' created lazily on first use.  Typically it won't ever get created.
         ''' </summary>

@@ -197,11 +197,11 @@ Namespace java.lang
         ''' characters are not permitted.)
         ''' 
         ''' <p>Note that for a particular enum type {@code T}, the
-        ''' implicitly declared {@code public static T valueOf(String)}
+        ''' implicitly declared {@code Public Shared T valueOf(String)}
         ''' method on that enum may be used instead of this method to map
         ''' from a name to the corresponding enum constant.  All the
         ''' constants of an enum type can be obtained by calling the
-        ''' implicit {@code public static T[] values()} method of that
+        ''' implicit {@code Public Shared T[] values()} method of that
         ''' type.
         ''' </summary>
         ''' @param <T> The enum type whose constant is to be returned </param>

@@ -394,7 +394,7 @@ Namespace java.net
 		'''          have a numeric scope_id assigned for the given address type.
 		''' 
 		''' @since 1.5 </exception>
-		public static Inet6Address getByAddress(String host, SByte() addr, NetworkInterface nif) throws UnknownHostException
+		Public Shared Inet6Address getByAddress(String host, SByte() addr, NetworkInterface nif) throws UnknownHostException
 			If host IsNot Nothing AndAlso host.length() > 0 AndAlso host.Chars(0) = "["c Then
 				If host.Chars(host.length()-1) = "]"c Then host = host.Substring(1, host.length() -1 - 1)
 			End If
@@ -418,7 +418,7 @@ Namespace java.net
 		''' <exception cref="UnknownHostException">  if IP address is of illegal length.
 		''' 
 		''' @since 1.5 </exception>
-		public static Inet6Address getByAddress(String host, SByte() addr, Integer scope_id) throws UnknownHostException
+		Public Shared Inet6Address getByAddress(String host, SByte() addr, Integer scope_id) throws UnknownHostException
 			If host IsNot Nothing AndAlso host.length() > 0 AndAlso host.Chars(0) = "["c Then
 				If host.Chars(host.length()-1) = "]"c Then host = host.Substring(1, host.length() -1 - 1)
 			End If

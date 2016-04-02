@@ -57,7 +57,7 @@ Namespace java.io
 	''' pathname string, each name is separated from the next by a single copy of
 	''' the default <em>separator character</em>.  The default name-separator
 	''' character is defined by the system property <code>file.separator</code>, and
-	''' is made available in the public static fields <code>{@link
+	''' is made available in the Public Shared fields <code>{@link
 	''' #separator}</code> and <code><seealso cref="#separatorChar"/></code> of this class.
 	''' When a pathname string is converted into an abstract pathname, the names
 	''' within it may be separated by the default name-separator character or by any

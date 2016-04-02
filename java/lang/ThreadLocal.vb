@@ -55,7 +55,7 @@ Namespace java.lang
 	'''     };
 	''' 
 	'''     // Returns the current thread's unique ID, assigning it if necessary
-	'''     public static int get() {
+	'''     Public Shared int get() {
 	'''         return threadId.get();
 	'''     }
 	''' }

@@ -472,7 +472,7 @@ Namespace java.util
 		''' non-commutative parallel computations.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int ORDERED = &H10;
+'		Public Shared final int ORDERED = &H10;
 
 		''' <summary>
 		''' Characteristic value signifying that, for each pair of
@@ -480,7 +480,7 @@ Namespace java.util
 		''' applies for example, to a Spliterator based on a <seealso cref="Set"/>.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int DISTINCT = &H1;
+'		Public Shared final int DISTINCT = &H1;
 
 		''' <summary>
 		''' Characteristic value signifying that encounter order follows a defined
@@ -495,7 +495,7 @@ Namespace java.util
 		''' implement <seealso cref="NavigableSet"/> or <seealso cref="SortedSet"/> report {@code SORTED}.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SORTED = &H4;
+'		Public Shared final int SORTED = &H4;
 
 		''' <summary>
 		''' Characteristic value signifying that the value returned from
@@ -510,7 +510,7 @@ Namespace java.util
 		''' approximate their reported size do not.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SIZED = &H40;
+'		Public Shared final int SIZED = &H40;
 
 		''' <summary>
 		''' Characteristic value signifying that the source guarantees that
@@ -518,7 +518,7 @@ Namespace java.util
 		''' for example, to most concurrent collections, queues, and maps.)
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int NONNULL = &H100;
+'		Public Shared final int NONNULL = &H100;
 
 		''' <summary>
 		''' Characteristic value signifying that the element source cannot be
@@ -530,7 +530,7 @@ Namespace java.util
 		''' interference detected during traversal.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int IMMUTABLE = &H400;
+'		Public Shared final int IMMUTABLE = &H400;
 
 		''' <summary>
 		''' Characteristic value signifying that the element source may be safely
@@ -553,7 +553,7 @@ Namespace java.util
 		''' additions or removals.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int CONCURRENT = &H1000;
+'		Public Shared final int CONCURRENT = &H1000;
 
 		''' <summary>
 		''' Characteristic value signifying that all Spliterators resulting from
@@ -571,7 +571,7 @@ Namespace java.util
 		''' but not the exact sizes of subtrees.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SUBSIZED = &H4000;
+'		Public Shared final int SUBSIZED = &H4000;
 
 		''' <summary>
 		''' A Spliterator specialized for primitive values.

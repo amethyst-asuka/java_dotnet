@@ -45,7 +45,7 @@ Namespace java.rmi.activation
 		''' <summary>
 		''' The port to lookup the activation system. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SYSTEM_PORT = 1098;
+'		Public Shared final int SYSTEM_PORT = 1098;
 
 		''' <summary>
 		''' The <code>registerObject</code> method is used to register an

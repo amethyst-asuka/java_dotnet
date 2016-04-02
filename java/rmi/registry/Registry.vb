@@ -75,7 +75,7 @@ Namespace java.rmi.registry
 		''' <summary>
 		''' Well known port for registry. </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int REGISTRY_PORT = 1099;
+'		Public Shared final int REGISTRY_PORT = 1099;
 
 		''' <summary>
 		''' Returns the remote reference bound to the specified

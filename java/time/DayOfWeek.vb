@@ -105,7 +105,7 @@ Namespace java.time
         ''' <param name="temporal">  the temporal object to convert, not null </param>
         ''' <returns> the day-of-week, not null </returns>
         ''' <exception cref="DateTimeException"> if unable to convert to a {@code DayOfWeek} </exception>
-        '		public static DayOfWeek from(java.time.temporal.TemporalAccessor temporal)
+        '		Public Shared DayOfWeek from(java.time.temporal.TemporalAccessor temporal)
         '	{
         '		if (temporal instanceof DayOfWeek)
         '		{

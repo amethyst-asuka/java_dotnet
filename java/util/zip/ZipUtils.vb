@@ -110,21 +110,21 @@ Namespace java.util.zip
 		''' The bytes are assumed to be in Intel (little-endian) byte order.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public static final int get16(byte b() , int off)
+		Public Shared final int get16(byte b() , int off)
 			Return java.lang.[Byte].toUnsignedInt(b(off)) Or (Byte.toUnsignedInt(b(off+1)) << 8)
 
 		''' <summary>
 		''' Fetches unsigned 32-bit value from byte array at specified offset.
 		''' The bytes are assumed to be in Intel (little-endian) byte order.
 		''' </summary>
-		public static final Long get32(SByte b() , Integer off)
+		Public Shared final Long get32(SByte b() , Integer off)
 			Return (get16(b, off) Or (CLng(get16(b, off+2)) << 16)) And &HffffffffL
 
 		''' <summary>
 		''' Fetches signed 64-bit value from byte array at specified offset.
 		''' The bytes are assumed to be in Intel (little-endian) byte order.
 		''' </summary>
-		public static final Long get64(SByte b() , Integer off)
+		Public Shared final Long get64(SByte b() , Integer off)
 			Return get32(b, off) Or (get32(b, off+4) << 32)
 	End Class
 

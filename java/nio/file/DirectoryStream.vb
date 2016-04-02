@@ -129,7 +129,7 @@ Namespace java.nio.file
 		''' @since 1.7 </param>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static interface Filter(Of T)
+'		Public Shared interface Filter(Of T)
 	'	{
 	'		''' <summary>
 	'		''' Decides if the given directory entry should be accepted or filtered.

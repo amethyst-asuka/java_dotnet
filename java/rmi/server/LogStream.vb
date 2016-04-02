@@ -211,13 +211,13 @@ Namespace java.rmi.server
 
 		''' <summary>
 		''' log level constant (no logging). </summary>
-		public static final Integer SILENT = 0
+		Public Shared final Integer SILENT = 0
 		''' <summary>
 		''' log level constant (brief logging). </summary>
-		public static final Integer BRIEF = 10
+		Public Shared final Integer BRIEF = 10
 		''' <summary>
 		''' log level constant (verbose logging). </summary>
-		public static final Integer VERBOSE = 20
+		Public Shared final Integer VERBOSE = 20
 
 		''' <summary>
 		''' Convert a string name of a logging level to its internal
@@ -227,7 +227,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </returns>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement")> _
-		public static Integer parseLevel(String s)
+		Public Shared Integer parseLevel(String s)
 			If (s Is Nothing) OrElse (s.length() < 1) Then Return -1
 
 			Try

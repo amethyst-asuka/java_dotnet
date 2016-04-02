@@ -128,7 +128,7 @@ Namespace java.time.chrono
 		''' <returns> the BuddhistEra singleton, never null </returns>
 		''' <exception cref="DateTimeException"> if the era is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static ThaiBuddhistEra of(int thaiBuddhistEra)
+'		Public Shared ThaiBuddhistEra of(int thaiBuddhistEra)
 	'	{
 	'		switch (thaiBuddhistEra)
 	'		{

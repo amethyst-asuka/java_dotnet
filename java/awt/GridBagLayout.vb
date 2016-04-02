@@ -342,7 +342,7 @@ Namespace java.awt
 	'''         setSize(300, 100);
 	'''     }
 	''' 
-	'''     public static  Sub  main(String args[]) {
+	'''     Public Shared  Sub  main(String args[]) {
 	'''         Frame f = new Frame("GridBag Layout Example");
 	'''         GridBagEx1 ex1 = new GridBagEx1();
 	''' 

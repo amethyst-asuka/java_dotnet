@@ -1262,7 +1262,7 @@ Namespace java.net
 		''' <returns>  a guess as to what the content type of the object is,
 		'''          based upon its file name. </returns>
 		''' <seealso cref=     java.net.URLConnection#getContentType() </seealso>
-		public static String guessContentTypeFromName(String fname)
+		Public Shared String guessContentTypeFromName(String fname)
 			Return fileNameMap.getContentTypeFor(fname)
 
 		''' <summary>
@@ -1285,7 +1285,7 @@ Namespace java.net
 		''' <seealso cref=        java.io.InputStream#mark(int) </seealso>
 		''' <seealso cref=        java.io.InputStream#markSupported() </seealso>
 		''' <seealso cref=        java.net.URLConnection#getContentType() </seealso>
-		public static String guessContentTypeFromStream(java.io.InputStream is) throws java.io.IOException
+		Public Shared String guessContentTypeFromStream(java.io.InputStream is) throws java.io.IOException
 			' If we can't read ahead safely, just give up on guessing
 			If Not is.markSupported() Then Return Nothing
 

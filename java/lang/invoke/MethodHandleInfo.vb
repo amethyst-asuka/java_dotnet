@@ -123,7 +123,7 @@ Namespace java.lang.invoke
 		''' as defined in the <a href="MethodHandleInfo.html#refkinds">table above</a>.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int REF_getField = Constants.REF_getField, REF_getStatic = Constants.REF_getStatic, REF_putField = Constants.REF_putField, REF_putStatic = Constants.REF_putStatic, REF_invokeVirtual = Constants.REF_invokeVirtual, REF_invokeStatic = Constants.REF_invokeStatic, REF_invokeSpecial = Constants.REF_invokeSpecial, REF_newInvokeSpecial = Constants.REF_newInvokeSpecial, REF_invokeInterface = Constants.REF_invokeInterface;
+'		Public Shared final int REF_getField = Constants.REF_getField, REF_getStatic = Constants.REF_getStatic, REF_putField = Constants.REF_putField, REF_putStatic = Constants.REF_putStatic, REF_invokeVirtual = Constants.REF_invokeVirtual, REF_invokeStatic = Constants.REF_invokeStatic, REF_invokeSpecial = Constants.REF_invokeSpecial, REF_newInvokeSpecial = Constants.REF_newInvokeSpecial, REF_invokeInterface = Constants.REF_invokeInterface;
 
 		''' <summary>
 		''' Returns the reference kind of the cracked method handle, which in turn

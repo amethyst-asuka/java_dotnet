@@ -1167,7 +1167,7 @@ Namespace java.time.format
 		'''  }
 		''' </pre> </summary>
 		''' <returns> a query that provides access to whether a leap-second was parsed </returns>
-		public static final java.time.temporal.TemporalQuery(Of Boolean?) parsedLeapSecond()
+		Public Shared final java.time.temporal.TemporalQuery(Of Boolean?) parsedLeapSecond()
 			Return PARSED_LEAP_SECOND
 		private static final java.time.temporal.TemporalQuery(Of Boolean?) PARSED_LEAP_SECOND = t ->
 			If TypeOf t Is Parsed Then

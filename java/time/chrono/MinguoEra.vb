@@ -128,7 +128,7 @@ Namespace java.time.chrono
 		''' <returns> the era singleton, not null </returns>
 		''' <exception cref="DateTimeException"> if the value is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static MinguoEra of(int minguoEra)
+'		Public Shared MinguoEra of(int minguoEra)
 	'	{
 	'		switch (minguoEra)
 	'		{

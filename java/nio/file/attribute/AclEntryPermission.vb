@@ -117,19 +117,19 @@ Namespace java.nio.file.attribute
 		''' Permission to list the entries of a directory (equal to <seealso cref="#READ_DATA"/>)
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain fields in .NET:
-'		public static final AclEntryPermission LIST_DIRECTORY = READ_DATA;
+'		Public Shared final AclEntryPermission LIST_DIRECTORY = READ_DATA;
 
 		''' <summary>
 		''' Permission to add a new file to a directory (equal to <seealso cref="#WRITE_DATA"/>)
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain fields in .NET:
-'		public static final AclEntryPermission ADD_FILE = WRITE_DATA;
+'		Public Shared final AclEntryPermission ADD_FILE = WRITE_DATA;
 
 		''' <summary>
 		''' Permission to create a subdirectory to a directory (equal to <seealso cref="#APPEND_DATA"/>)
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain fields in .NET:
-'		public static final AclEntryPermission ADD_SUBDIRECTORY = APPEND_DATA;
+'		Public Shared final AclEntryPermission ADD_SUBDIRECTORY = APPEND_DATA;
 	End Enum
 
 End Namespace

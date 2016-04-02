@@ -250,7 +250,7 @@ Namespace java.awt.image
 		'''         <code>DataBuffer.TYPE_BYTE</code>, or
 		'''         <code>DataBuffer.TYPE_USHORT</code>. </exception>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public static WritableRaster createInterleavedRaster(int dataType, int w, int h, int scanlineStride, int pixelStride, int bandOffsets() , java.awt.Point location)
+		Public Shared WritableRaster createInterleavedRaster(int dataType, int w, int h, int scanlineStride, int pixelStride, int bandOffsets() , java.awt.Point location)
 			Dim d As DataBuffer
 
 			Dim size As Integer = scanlineStride * (h - 1) + pixelStride * w ' last scan -  fisrt (h - 1) scans
@@ -293,7 +293,7 @@ Namespace java.awt.image
 		'''         overflow </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>bands</code>
 		'''         is less than 1 </exception>
-		public static WritableRaster createBandedRaster(Integer dataType, Integer w, Integer h, Integer bands, java.awt.Point location)
+		Public Shared WritableRaster createBandedRaster(Integer dataType, Integer w, Integer h, Integer bands, java.awt.Point location)
 			If bands < 1 Then Throw New ArrayIndexOutOfBoundsException("Number of bands (" & bands & ") must" & " be greater than 0")
 			Dim bankIndices As Integer() = New Integer(bands - 1){}
 			Dim bandOffsets As Integer() = New Integer(bands - 1){}
@@ -339,7 +339,7 @@ Namespace java.awt.image
 		'''         or <code>DataBuffer.TYPE_INT</code> </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if <code>bankIndices</code>
 		'''         or <code>bandOffsets</code> is <code>null</code> </exception>
-		public static WritableRaster createBandedRaster(Integer dataType, Integer w, Integer h, Integer scanlineStride, Integer bankIndices() , Integer bandOffsets(), java.awt.Point location)
+		Public Shared WritableRaster createBandedRaster(Integer dataType, Integer w, Integer h, Integer scanlineStride, Integer bankIndices() , Integer bandOffsets(), java.awt.Point location)
 			Dim d As DataBuffer
 			Dim bands As Integer = bandOffsets.length
 
@@ -401,7 +401,7 @@ Namespace java.awt.image
 		'''         <code>DataBuffer.TYPE_BYTE</code>,
 		'''         <code>DataBuffer.TYPE_USHORT</code>
 		'''         or <code>DataBuffer.TYPE_INT</code> </exception>
-		public static WritableRaster createPackedRaster(Integer dataType, Integer w, Integer h, Integer bandMasks() , java.awt.Point location)
+		Public Shared WritableRaster createPackedRaster(Integer dataType, Integer w, Integer h, Integer bandMasks() , java.awt.Point location)
 			Dim d As DataBuffer
 
 			Select Case dataType
@@ -463,7 +463,7 @@ Namespace java.awt.image
 		'''         <code>DataBuffer.TYPE_BYTE</code>,
 		'''         <code>DataBuffer.TYPE_USHORT</code>
 		'''         or <code>DataBuffer.TYPE_INT</code> </exception>
-		public static WritableRaster createPackedRaster(Integer dataType, Integer w, Integer h, Integer bands, Integer bitsPerBand, java.awt.Point location)
+		Public Shared WritableRaster createPackedRaster(Integer dataType, Integer w, Integer h, Integer bands, Integer bitsPerBand, java.awt.Point location)
 			Dim d As DataBuffer
 
 			If bands <= 0 Then Throw New IllegalArgumentException("Number of bands (" & bands & ") must be greater than 0")
@@ -542,7 +542,7 @@ Namespace java.awt.image
 		''' <exception cref="RasterFormatException"> if <code>dataBuffer</code> has more
 		'''         than one bank. </exception>
 		''' <exception cref="NullPointerException"> if <code>dataBuffer</code> is null </exception>
-		public static WritableRaster createInterleavedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer scanlineStride, Integer pixelStride, Integer bandOffsets() , java.awt.Point location)
+		Public Shared WritableRaster createInterleavedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer scanlineStride, Integer pixelStride, Integer bandOffsets() , java.awt.Point location)
 			If dataBuffer_Renamed Is Nothing Then Throw New NullPointerException("DataBuffer cannot be null")
 			If location Is Nothing Then location = New java.awt.Point(0, 0)
 			Dim dataType As Integer = dataBuffer_Renamed.dataType
@@ -588,7 +588,7 @@ Namespace java.awt.image
 		'''         <code>DataBuffer.TYPE_USHORT</code>
 		'''         or <code>DataBuffer.TYPE_INT</code> </exception>
 		''' <exception cref="NullPointerException"> if <code>dataBuffer</code> is null </exception>
-		public static WritableRaster createBandedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer scanlineStride, Integer bankIndices() , Integer bandOffsets(), java.awt.Point location)
+		Public Shared WritableRaster createBandedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer scanlineStride, Integer bankIndices() , Integer bandOffsets(), java.awt.Point location)
 			If dataBuffer_Renamed Is Nothing Then Throw New NullPointerException("DataBuffer cannot be null")
 			If location Is Nothing Then location = New java.awt.Point(0,0)
 			Dim dataType As Integer = dataBuffer_Renamed.dataType
@@ -641,7 +641,7 @@ Namespace java.awt.image
 		''' <exception cref="RasterFormatException"> if <code>dataBuffer</code> has more
 		'''         than one bank. </exception>
 		''' <exception cref="NullPointerException"> if <code>dataBuffer</code> is null </exception>
-		public static WritableRaster createPackedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer scanlineStride, Integer bandMasks() , java.awt.Point location)
+		Public Shared WritableRaster createPackedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer scanlineStride, Integer bandMasks() , java.awt.Point location)
 			If dataBuffer_Renamed Is Nothing Then Throw New NullPointerException("DataBuffer cannot be null")
 			If location Is Nothing Then location = New java.awt.Point(0,0)
 			Dim dataType As Integer = dataBuffer_Renamed.dataType
@@ -689,7 +689,7 @@ Namespace java.awt.image
 		''' <exception cref="RasterFormatException"> if <code>dataBuffer</code> has more
 		'''         than one bank. </exception>
 		''' <exception cref="NullPointerException"> if <code>dataBuffer</code> is null </exception>
-		public static WritableRaster createPackedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer bitsPerPixel, java.awt.Point location)
+		Public Shared WritableRaster createPackedRaster(DataBuffer dataBuffer_Renamed, Integer w, Integer h, Integer bitsPerPixel, java.awt.Point location)
 			If dataBuffer_Renamed Is Nothing Then Throw New NullPointerException("DataBuffer cannot be null")
 			If location Is Nothing Then location = New java.awt.Point(0,0)
 			Dim dataType As Integer = dataBuffer_Renamed.dataType
@@ -727,7 +727,7 @@ Namespace java.awt.image
 		'''         or MultiPixelPackedSampleModel. </exception>
 		'''  <exception cref="NullPointerException"> if either SampleModel or DataBuffer is
 		'''          null </exception>
-		public static Raster createRaster(SampleModel sm, DataBuffer db, java.awt.Point location)
+		Public Shared Raster createRaster(SampleModel sm, DataBuffer db, java.awt.Point location)
 			If (sm Is Nothing) OrElse (db Is Nothing) Then Throw New NullPointerException("SampleModel and DataBuffer cannot be null")
 
 			If location Is Nothing Then location = New java.awt.Point(0,0)
@@ -773,7 +773,7 @@ Namespace java.awt.image
 		'''          <code>location.x + sm.getWidth()</code> or
 		'''          <code>location.y + sm.getHeight()</code> results in integer
 		'''          overflow </exception>
-		public static WritableRaster createWritableRaster(SampleModel sm, java.awt.Point location)
+		Public Shared WritableRaster createWritableRaster(SampleModel sm, java.awt.Point location)
 			If location Is Nothing Then location = New java.awt.Point(0,0)
 
 			Return createWritableRaster(sm, sm.createDataBuffer(), location)
@@ -798,7 +798,7 @@ Namespace java.awt.image
 		'''         PixelInterleavedSampleModel, SinglePixelPackedSampleModel,
 		'''         or MultiPixelPackedSampleModel. </exception>
 		''' <exception cref="NullPointerException"> if either SampleModel or DataBuffer is null </exception>
-		public static WritableRaster createWritableRaster(SampleModel sm, DataBuffer db, java.awt.Point location)
+		Public Shared WritableRaster createWritableRaster(SampleModel sm, DataBuffer db, java.awt.Point location)
 			If (sm Is Nothing) OrElse (db Is Nothing) Then Throw New NullPointerException("SampleModel and DataBuffer cannot be null")
 			If location Is Nothing Then location = New java.awt.Point(0,0)
 

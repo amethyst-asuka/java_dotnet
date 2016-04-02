@@ -67,7 +67,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int WIND_EVEN_ODD = 0;
+'		Public Shared final int WIND_EVEN_ODD = 0;
 
 		''' <summary>
 		''' The winding rule constant for specifying a non-zero rule
@@ -80,7 +80,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int WIND_NON_ZERO = 1;
+'		Public Shared final int WIND_NON_ZERO = 1;
 
 		''' <summary>
 		''' The segment type constant for a point that specifies the
@@ -88,7 +88,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SEG_MOVETO = 0;
+'		Public Shared final int SEG_MOVETO = 0;
 
 		''' <summary>
 		''' The segment type constant for a point that specifies the
@@ -97,7 +97,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SEG_LINETO = 1;
+'		Public Shared final int SEG_LINETO = 1;
 
 		''' <summary>
 		''' The segment type constant for the pair of points that specify
@@ -121,7 +121,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SEG_QUADTO = 2;
+'		Public Shared final int SEG_QUADTO = 2;
 
 		''' <summary>
 		''' The segment type constant for the set of 3 points that specify
@@ -147,7 +147,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SEG_CUBICTO = 3;
+'		Public Shared final int SEG_CUBICTO = 3;
 
 		''' <summary>
 		''' The segment type constant that specifies that
@@ -156,7 +156,7 @@ Namespace java.awt.geom
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SEG_CLOSE = 4;
+'		Public Shared final int SEG_CLOSE = 4;
 
 		''' <summary>
 		''' Returns the winding rule for determining the interior of the

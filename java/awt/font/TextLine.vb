@@ -1264,7 +1264,7 @@ Namespace java.awt.font
 			Return New TextLine(frc, newComponents, fBaselineOffsets, fChars, fCharsStart, fCharsLimit, fCharLogicalOrder, fCharLevels, fIsDirectionLTR)
 
 		' return the sum of the advances of text between the logical start and limit
-		public static Single getAdvanceBetween(sun.font.TextLineComponent() components, Integer start, Integer limit)
+		Public Shared Single getAdvanceBetween(sun.font.TextLineComponent() components, Integer start, Integer limit)
 			Dim advance As Single = 0
 
 			Dim tlcStart As Integer = 0

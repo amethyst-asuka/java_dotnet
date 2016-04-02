@@ -845,8 +845,9 @@ Namespace java.awt.geom
         '''          the specified offset.
         ''' @since 1.2 </returns>
         'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public Static Double getFlatnessSq(Double coords() , int offset)
-			Return getFlatnessSq(coords(offset + 0), coords(offset + 1), coords(offset + 2), coords(offset + 3), coords(offset + 4), coords(offset + 5), coords(offset + 6), coords(offset + 7))
+        Public Shared Function getFlatnessSq(Double coords() , int offset) As  Double
+			Return getFlatnessSq(coords(OffSet() + 0), coords(OffSet() + 1), coords(OffSet() + 2), coords(OffSet() + 3), coords(OffSet() + 4), coords(OffSet() + 5), coords(OffSet() + 6), coords(OffSet() + 7))
+        End Function
 
         ''' <summary>
         ''' Returns the flatness of the cubic curve specified
@@ -860,8 +861,9 @@ Namespace java.awt.geom
         '''          specified by the coordinates in <code>coords</code> at
         '''          the specified offset.
         ''' @since 1.2 </returns>
-        Public Static Double getFlatness(Double coords() , Integer offset)
-			Return getFlatness(coords(offset + 0), coords(offset + 1), coords(offset + 2), coords(offset + 3), coords(offset + 4), coords(offset + 5), coords(offset + 6), coords(offset + 7))
+        Public Shared Function getFlatness(Double coords() , Integer offset) As  Double
+			Return getFlatness(coords(OffSet() + 0), coords(OffSet() + 1), coords(OffSet() + 2), coords(OffSet() + 3), coords(OffSet() + 4), coords(OffSet() + 5), coords(OffSet() + 6), coords(OffSet() + 7))
+        End Function
 
         ''' <summary>
         ''' Returns the square of the flatness of this curve.  The flatness is the
@@ -869,8 +871,9 @@ Namespace java.awt.geom
         ''' end points. </summary>
         ''' <returns> the square of the flatness of this curve.
         ''' @since 1.2 </returns>
-        Public Double flatnessSq
-			Return getFlatnessSq(x1, y1, ctrlX1, ctrlY1, ctrlX2, ctrlY2, x2, y2)
+        Public Function flatnessSq() As Double
+            Return getFlatnessSq(x1, y1, ctrlX1, ctrlY1, ctrlX2, ctrlY2, x2, y2)
+        End Function
 
         ''' <summary>
         ''' Returns the flatness of this curve.  The flatness is the
@@ -878,8 +881,9 @@ Namespace java.awt.geom
         ''' end points. </summary>
         ''' <returns> the flatness of this curve.
         ''' @since 1.2 </returns>
-        Public Double flatness
-			Return getFlatness(x1, y1, ctrlX1, ctrlY1, ctrlX2, ctrlY2, x2, y2)
+        Public Function flatness() As Double
+            Return getFlatness(x1, y1, ctrlX1, ctrlY1, ctrlX2, ctrlY2, x2, y2)
+        End Function
 
         ''' <summary>
         ''' Subdivides this cubic curve and stores the resulting two
@@ -893,6 +897,7 @@ Namespace java.awt.geom
         ''' @since 1.2 </param>
         Public Sub subdivide(CubicCurve2D left, CubicCurve2D right)
             subdivide(Me, Left, Right)
+        End Sub
 
         ''' <summary>
         ''' Subdivides the cubic curve specified by the <code>src</code> parameter
@@ -906,7 +911,7 @@ Namespace java.awt.geom
         ''' <param name="right"> the cubic curve object for storing the right or
         ''' second half of the subdivided curve
         ''' @since 1.2 </param>
-        Public Static Sub subdivide(CubicCurve2D src, CubicCurve2D left, CubicCurve2D right)
+        Public Shared Sub subdivide(src As CubicCurve2D, left As CubicCurve2D, right As CubicCurve2D)
             Dim x1_Renamed As Double = src.x1
             Dim y1_Renamed As Double = src.y1
             Dim ctrlx1_Renamed As Double = src.ctrlX1
@@ -927,8 +932,9 @@ Namespace java.awt.geom
             Dim ctrly21 As Double = (ctrly2_Renamed + centery) / 2.0
             centerx = (ctrlx12 + ctrlx21) / 2.0
             centery = (ctrly12 + ctrly21) / 2.0
-            If Left() IsNot Nothing Then Left.curverve(x1_Renamed, y1_Renamed, ctrlx1_Renamed, ctrly1_Renamed, ctrlx12, ctrly12, centerx, centery)
-            If Right() IsNot Nothing Then Right.curverve(centerx, centery, ctrlx21, ctrly21, ctrlx2_Renamed, ctrly2_Renamed, x2_Renamed, y2_Renamed)
+            If left IsNot Nothing Then left.curverve(x1_Renamed, y1_Renamed, ctrlx1_Renamed, ctrly1_Renamed, ctrlx12, ctrly12, centerx, centery)
+            If right IsNot Nothing Then right.curverve(centerx, centery, ctrlx21, ctrly21, ctrlx2_Renamed, ctrly2_Renamed, x2_Renamed, y2_Renamed)
+        End Sub
 
         ''' <summary>
         ''' Subdivides the cubic curve specified by the coordinates
@@ -957,7 +963,7 @@ Namespace java.awt.geom
         ''' <param name="rightoff"> the offset into the array of the beginning of the
         ''' the 6 right coordinates
         ''' @since 1.2 </param>
-        Public Static Sub subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
+        Public Shared Sub subdivide(Double src() , Integer srcoff, Double left(), Integer leftoff, Double right(), Integer rightoff)
 			Dim x1_Renamed As Double = src(srcoff + 0)
             Dim y1_Renamed As Double = src(srcoff + 1)
             Dim ctrlx1_Renamed As Double = src(srcoff + 2)
@@ -1002,42 +1008,44 @@ Namespace java.awt.geom
                 Right(rightoff + 4) = x2_Renamed
                 Right(rightoff + 5) = y2_Renamed
             End If
+        End Sub
 
-            ''' <summary>
-            ''' Solves the cubic whose coefficients are in the <code>eqn</code>
-            ''' array and places the non-complex roots back into the same array,
-            ''' returning the number of roots.  The solved cubic is represented
-            ''' by the equation:
-            ''' <pre>
-            '''     eqn = {c, b, a, d}
-            '''     dx^3 + ax^2 + bx + c = 0
-            ''' </pre>
-            ''' A return value of -1 is used to distinguish a constant equation
-            ''' that might be always 0 or never 0 from an equation that has no
-            ''' zeroes. </summary>
-            ''' <param name="eqn"> an array containing coefficients for a cubic </param>
-            ''' <returns> the number of roots, or -1 if the equation is a constant.
-            ''' @since 1.2 </returns>
-            Public Static Integer solveCubic(Double eqn())
-			Return solveCubic(eqn, eqn)
+        ''' <summary>
+        ''' Solves the cubic whose coefficients are in the <code>eqn</code>
+        ''' array and places the non-complex roots back into the same array,
+        ''' returning the number of roots.  The solved cubic is represented
+        ''' by the equation:
+        ''' <pre>
+        '''     eqn = {c, b, a, d}
+        '''     dx^3 + ax^2 + bx + c = 0
+        ''' </pre>
+        ''' A return value of -1 is used to distinguish a constant equation
+        ''' that might be always 0 or never 0 from an equation that has no
+        ''' zeroes. </summary>
+        ''' <param name="eqn"> an array containing coefficients for a cubic </param>
+        ''' <returns> the number of roots, or -1 if the equation is a constant.
+        ''' @since 1.2 </returns>
+        Public Shared Function solveCubic(eqn() As Double) As Integer
+            Return solveCubic(eqn, eqn)
+        End Function
 
-            ''' <summary>
-            ''' Solve the cubic whose coefficients are in the <code>eqn</code>
-            ''' array and place the non-complex roots into the <code>res</code>
-            ''' array, returning the number of roots.
-            ''' The cubic solved is represented by the equation:
-            '''     eqn = {c, b, a, d}
-            '''     dx^3 + ax^2 + bx + c = 0
-            ''' A return value of -1 is used to distinguish a constant equation,
-            ''' which may be always 0 or never 0, from an equation which has no
-            ''' zeroes. </summary>
-            ''' <param name="eqn"> the specified array of coefficients to use to solve
-            '''        the cubic equation </param>
-            ''' <param name="res"> the array that contains the non-complex roots
-            '''        resulting from the solution of the cubic equation </param>
-            ''' <returns> the number of roots, or -1 if the equation is a constant
-            ''' @since 1.3 </returns>
-            Public Static Integer solveCubic(Double eqn() , Double res())
+        ''' <summary>
+        ''' Solve the cubic whose coefficients are in the <code>eqn</code>
+        ''' array and place the non-complex roots into the <code>res</code>
+        ''' array, returning the number of roots.
+        ''' The cubic solved is represented by the equation:
+        '''     eqn = {c, b, a, d}
+        '''     dx^3 + ax^2 + bx + c = 0
+        ''' A return value of -1 is used to distinguish a constant equation,
+        ''' which may be always 0 or never 0, from an equation which has no
+        ''' zeroes. </summary>
+        ''' <param name="eqn"> the specified array of coefficients to use to solve
+        '''        the cubic equation </param>
+        ''' <param name="res"> the array that contains the non-complex roots
+        '''        resulting from the solution of the cubic equation </param>
+        ''' <returns> the number of roots, or -1 if the equation is a constant
+        ''' @since 1.3 </returns>
+        Public Shared Integer solveCubic(Double eqn() , Double res())
 			' From Graphics Gems:
 			' http://tog.acm.org/resources/GraphicsGems/gems/Roots3And4.c
 			Dim d As Double = eqn(3)

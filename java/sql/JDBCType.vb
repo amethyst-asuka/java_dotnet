@@ -255,7 +255,7 @@ Namespace java.sql
 		''' the specified {@code Types} value </exception>
 		''' <seealso cref= Types </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static JDBCType valueOf(int type)
+'		Public Shared JDBCType valueOf(int type)
 	'	{
 	'		for(JDBCType sqlType : JDBCType.class.getEnumConstants())
 	'		{

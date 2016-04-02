@@ -44,7 +44,7 @@ Namespace java.lang.invoke
 	'     * interface JJ<R extends Number> extends II<R> { }
 	'     * class CC {  String impl(int i) { return "impl:"+i; }}
 	'     * class X {
-	'     *     public static  Sub  main(String[] args) {
+	'     *     Public Shared  Sub  main(String[] args) {
 	'     *         JJ<Integer> iii = (new CC())::impl;
 	'     *         System.out.printf(">>> %s\n", iii.foo(44));
 	'     * }}

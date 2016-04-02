@@ -168,7 +168,7 @@ Namespace java.time
 		''' <returns> the month-of-year, not null </returns>
 		''' <exception cref="DateTimeException"> if the month-of-year is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static Month of(int month)
+'		Public Shared Month of(int month)
 	'	{
 	'		if (month < 1 || month > 12)
 	'		{
@@ -196,7 +196,7 @@ Namespace java.time
 		''' <returns> the month-of-year, not null </returns>
 		''' <exception cref="DateTimeException"> if unable to convert to a {@code Month} </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static Month from(java.time.temporal.TemporalAccessor temporal)
+'		Public Shared Month from(java.time.temporal.TemporalAccessor temporal)
 	'	{
 	'		if (temporal instanceof Month)
 	'		{

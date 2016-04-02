@@ -83,7 +83,7 @@ Namespace java.text
 		''' @since 1.2 </seealso>
 
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static class Attribute implements java.io.Serializable
+'		Public Shared class Attribute implements java.io.Serializable
 	'	{
 	'
 	'		''' <summary>
@@ -176,7 +176,7 @@ Namespace java.text
 	'		''' Attribute key for the language of some text.
 	'		''' <p> Values are instances of <seealso cref="java.util.Locale Locale"/>. </summary>
 	'		''' <seealso cref= java.util.Locale </seealso>
-	'		public static final Attribute LANGUAGE = New Attribute("language");
+	'		Public Shared final Attribute LANGUAGE = New Attribute("language");
 	'
 	'		''' <summary>
 	'		''' Attribute key for the reading of some text. In languages where the written form
@@ -187,14 +187,14 @@ Namespace java.text
 	'		''' </summary>
 	'		''' <seealso cref= Annotation </seealso>
 	'		''' <seealso cref= java.lang.String </seealso>
-	'		public static final Attribute READING = New Attribute("reading");
+	'		Public Shared final Attribute READING = New Attribute("reading");
 	'
 	'		''' <summary>
 	'		''' Attribute key for input method segments. Input methods often break
 	'		''' up text into segments, which usually correspond to words.
 	'		''' <p>Values are instances of <seealso cref="Annotation"/> holding a {@code null} reference. </summary>
 	'		''' <seealso cref= Annotation </seealso>
-	'		public static final Attribute INPUT_METHOD_SEGMENT = New Attribute("input_method_segment");
+	'		Public Shared final Attribute INPUT_METHOD_SEGMENT = New Attribute("input_method_segment");
 	'
 	'		' make sure the serial version doesn't change between compiler versions
 	'		private static final long serialVersionUID = -9142742483513960612L;

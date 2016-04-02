@@ -136,7 +136,7 @@ Namespace java.util
 	''' providers.
 	''' 
 	''' <blockquote><pre>
-	''' public static Encoder getEncoder(String encodingName) {
+	''' Public Shared Encoder getEncoder(String encodingName) {
 	'''     for (CodecSet cp : codecSetLoader) {
 	'''         Encoder enc = cp.getEncoder(encodingName);
 	'''         if (enc != null)

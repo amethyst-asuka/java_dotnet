@@ -471,7 +471,7 @@ Namespace java.awt
 		' Rule 9 is DST which is defined above where it fits into the
 		' list logically, rather than numerically
 		'
-		' public static final int  DST             = 9;
+		' Public Shared final int  DST             = 9;
 
 		''' <summary>
 		''' The part of the source lying inside of the destination

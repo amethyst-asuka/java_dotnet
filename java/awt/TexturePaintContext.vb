@@ -277,7 +277,7 @@ Namespace java.awt
 	'     * next pixel and reset them to 0.0.
 	'     
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public static int blend(int rgbs() , int xmul, int ymul)
+		Public Shared int blend(int rgbs() , int xmul, int ymul)
 			' xmul/ymul are 31 bits wide, (0 => 2^31-1)
 			' shift them to 12 bits wide, (0 => 2^12-1)
 			xmul = (CInt(CUInt(xmul) >> 19))

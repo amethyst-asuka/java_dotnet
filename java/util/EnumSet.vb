@@ -128,7 +128,7 @@ Namespace java.util
         '''     set </param>
         ''' <returns> An enum set containing all the elements in the specified type. </returns>
         ''' <exception cref="NullPointerException"> if <tt>elementType</tt> is null </exception>
-        Public static (Of E As System.Enum(Of E)) EnumSet(Of E) allOf(Class elementType)
+        Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) allOf(Class elementType)
 			Dim result As EnumSet(Of E) = noneOf(elementType)
 			result.addAll()
 			Return result
@@ -147,7 +147,7 @@ Namespace java.util
 		''' <param name="s"> the enum set from which to initialize this enum set </param>
 		''' <returns> A copy of the specified enum set. </returns>
 		''' <exception cref="NullPointerException"> if <tt>s</tt> is null </exception>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) copyOf(EnumSet(Of E) s)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) copyOf(EnumSet(Of E) s)
 			Return s.clone()
 
 		''' <summary>
@@ -163,7 +163,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if <tt>c</tt> is not an
 		'''     <tt>EnumSet</tt> instance and contains no elements </exception>
 		''' <exception cref="NullPointerException"> if <tt>c</tt> is null </exception>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) copyOf(Collection(Of E) c)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) copyOf(Collection(Of E) c)
 			If TypeOf c Is EnumSet Then
 				Return CType(c, EnumSet(Of E)).clone()
 			Else
@@ -186,7 +186,7 @@ Namespace java.util
 		''' <param name="s"> the enum set from whose complement to initialize this enum set </param>
 		''' <returns> The complement of the specified set in this set </returns>
 		''' <exception cref="NullPointerException"> if <tt>s</tt> is null </exception>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) complementOf(EnumSet(Of E) s)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) complementOf(EnumSet(Of E) s)
 			Dim result As EnumSet(Of E) = copyOf(s)
 			result.complement()
 			Return result
@@ -204,7 +204,7 @@ Namespace java.util
 		''' <param name="e"> the element that this set is to contain initially </param>
 		''' <exception cref="NullPointerException"> if <tt>e</tt> is null </exception>
 		''' <returns> an enum set initially containing the specified element </returns>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e)
 			Dim result As EnumSet(Of E) = noneOf(e.declaringClass)
 			result.add(e)
 			Return result
@@ -223,7 +223,7 @@ Namespace java.util
 		''' <param name="e2"> another element that this set is to contain initially </param>
 		''' <exception cref="NullPointerException"> if any parameters are null </exception>
 		''' <returns> an enum set initially containing the specified elements </returns>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2)
 			Dim result As EnumSet(Of E) = noneOf(e1.declaringClass)
 			result.add(e1)
 			result.add(e2)
@@ -244,7 +244,7 @@ Namespace java.util
 		''' <param name="e3"> another element that this set is to contain initially </param>
 		''' <exception cref="NullPointerException"> if any parameters are null </exception>
 		''' <returns> an enum set initially containing the specified elements </returns>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2, E e3)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2, E e3)
 			Dim result As EnumSet(Of E) = noneOf(e1.declaringClass)
 			result.add(e1)
 			result.add(e2)
@@ -267,7 +267,7 @@ Namespace java.util
 		''' <param name="e4"> another element that this set is to contain initially </param>
 		''' <exception cref="NullPointerException"> if any parameters are null </exception>
 		''' <returns> an enum set initially containing the specified elements </returns>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2, E e3, E e4)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2, E e3, E e4)
 			Dim result As EnumSet(Of E) = noneOf(e1.declaringClass)
 			result.add(e1)
 			result.add(e2)
@@ -292,7 +292,7 @@ Namespace java.util
 		''' <param name="e5"> another element that this set is to contain initially </param>
 		''' <exception cref="NullPointerException"> if any parameters are null </exception>
 		''' <returns> an enum set initially containing the specified elements </returns>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2, E e3, E e4, E e5)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E e1, E e2, E e3, E e4, E e5)
 			Dim result As EnumSet(Of E) = noneOf(e1.declaringClass)
 			result.add(e1)
 			result.add(e2)
@@ -315,7 +315,7 @@ Namespace java.util
 		'''     or if <tt>rest</tt> is null </exception>
 		''' <returns> an enum set initially containing the specified elements </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E first, E... rest)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) [of](E first, E... rest)
 			Dim result As EnumSet(Of E) = noneOf(first.declaringClass)
 			result.add(first)
 			For Each e As E In rest
@@ -336,7 +336,7 @@ Namespace java.util
 		''' <exception cref="IllegalArgumentException"> if {@code from.compareTo(to) > 0} </exception>
 		''' <returns> an enum set initially containing all of the elements in the
 		'''         range defined by the two specified endpoints </returns>
-		public static (Of E As System.Enum(Of E)) EnumSet(Of E) range(E from, E to)
+		Public Shared (Of E As System.Enum(Of E)) EnumSet(Of E) range(E from, E to)
 			If from.CompareTo(to) > 0 Then Throw New IllegalArgumentException(from & " > " & to)
 			Dim result As EnumSet(Of E) = noneOf(from.declaringClass)
 			result.addRange(from, to)
@@ -382,7 +382,7 @@ Namespace java.util
 		''' <summary>
 		''' This class is used to serialize all EnumSet instances, regardless of
 		''' implementation type.  It captures their "logical contents" and they
-		''' are reconstructed using public static factories.  This is necessary
+		''' are reconstructed using Public Shared factories.  This is necessary
 		''' to ensure that the existence of a particular implementation type is
 		''' an implementation detail.
 		''' 

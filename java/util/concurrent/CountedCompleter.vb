@@ -139,7 +139,7 @@ Namespace java.util.concurrent
 	''' 
 	''' class ForEach<E> extends CountedCompleter<Void> {
 	''' 
-	'''   public static <E>  Sub  forEach(E[] array, MyOperation<E> op) {
+	'''   Public Shared <E>  Sub  forEach(E[] array, MyOperation<E> op) {
 	'''     new ForEach<E>(null, array, op, 0, array.length).invoke();
 	'''   }
 	''' 
@@ -254,7 +254,7 @@ Namespace java.util.concurrent
 	'''   }
 	'''   boolean matches(E e) { ... } // return true if found
 	''' 
-	'''   public static <E> E search(E[] array) {
+	'''   Public Shared <E> E search(E[] array) {
 	'''       return new Searcher<E>(null, array, new AtomicReference<E>(), 0, array.length).invoke();
 	'''   }
 	''' }}</pre>
@@ -321,7 +321,7 @@ Namespace java.util.concurrent
 	'''   }
 	'''   public E getRawResult() { return result; }
 	''' 
-	'''   public static <E> E mapReduce(E[] array, MyMapper<E> mapper, MyReducer<E> reducer) {
+	'''   Public Shared <E> E mapReduce(E[] array, MyMapper<E> mapper, MyReducer<E> reducer) {
 	'''     return new MapReducer<E>(null, array, mapper, reducer,
 	'''                              0, array.length).invoke();
 	'''   }
@@ -382,7 +382,7 @@ Namespace java.util.concurrent
 	'''   }
 	'''   public E getRawResult() { return result; }
 	''' 
-	'''   public static <E> E mapReduce(E[] array, MyMapper<E> mapper, MyReducer<E> reducer) {
+	'''   Public Shared <E> E mapReduce(E[] array, MyMapper<E> mapper, MyReducer<E> reducer) {
 	'''     return new MapReducer<E>(null, array, mapper, reducer,
 	'''                              0, array.length, null).invoke();
 	'''   }

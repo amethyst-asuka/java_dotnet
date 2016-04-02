@@ -93,7 +93,7 @@ Namespace java.awt.image
 		''' <seealso cref= Image#getWidth </seealso>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int WIDTH = 1;
+'		Public Shared final int WIDTH = 1;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -102,7 +102,7 @@ Namespace java.awt.image
 		''' <seealso cref= Image#getHeight </seealso>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int HEIGHT = 2;
+'		Public Shared final int HEIGHT = 2;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -110,7 +110,7 @@ Namespace java.awt.image
 		''' <seealso cref= Image#getProperty </seealso>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int PROPERTIES = 4;
+'		Public Shared final int PROPERTIES = 4;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -121,7 +121,7 @@ Namespace java.awt.image
 		''' <seealso cref= java.awt.Graphics#drawImage </seealso>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int SOMEBITS = 8;
+'		Public Shared final int SOMEBITS = 8;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -131,7 +131,7 @@ Namespace java.awt.image
 		''' <seealso cref= java.awt.Graphics#drawImage </seealso>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int FRAMEBITS = 16;
+'		Public Shared final int FRAMEBITS = 16;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -141,7 +141,7 @@ Namespace java.awt.image
 		''' <seealso cref= java.awt.Graphics#drawImage </seealso>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int ALLBITS = 32;
+'		Public Shared final int ALLBITS = 32;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -152,7 +152,7 @@ Namespace java.awt.image
 		''' time to indicate that the image production was aborted. </summary>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int ERROR = 64;
+'		Public Shared final int ERROR = 64;
 
 		''' <summary>
 		''' This flag in the infoflags argument to imageUpdate indicates that
@@ -164,7 +164,7 @@ Namespace java.awt.image
 		''' again, probably from the beginning. </summary>
 		''' <seealso cref= #imageUpdate </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int ABORT = 128;
+'		Public Shared final int ABORT = 128;
 	End Interface
 
 End Namespace

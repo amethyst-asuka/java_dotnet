@@ -103,7 +103,7 @@ Namespace java.text
 	''' must also implement the following class method:
 	''' <blockquote>
 	''' <pre>
-	''' public static Locale[] getAvailableLocales()
+	''' Public Shared Locale[] getAvailableLocales()
 	''' </pre>
 	''' </blockquote>
 	''' 

@@ -149,7 +149,7 @@ Namespace java.time.format
 		''' <param name="locale">  the locale, non-null </param>
 		''' <returns> the locale and Chronology specific formatting pattern </returns>
 		''' <exception cref="IllegalArgumentException"> if both dateStyle and timeStyle are null </exception>
-		public static String getLocalizedDateTimePattern(FormatStyle dateStyle, FormatStyle timeStyle, java.time.chrono.Chronology chrono, java.util.Locale locale)
+		Public Shared String getLocalizedDateTimePattern(FormatStyle dateStyle, FormatStyle timeStyle, java.time.chrono.Chronology chrono, java.util.Locale locale)
 			java.util.Objects.requireNonNull(locale, "locale")
 			java.util.Objects.requireNonNull(chrono, "chrono")
 			If dateStyle Is Nothing AndAlso timeStyle Is Nothing Then Throw New IllegalArgumentException("Either dateStyle or timeStyle must be non-null")
@@ -3303,7 +3303,7 @@ Namespace java.time.format
 			''' </summary>
 			''' <param name="context">  the parse context </param>
 			''' <returns> the tree, not null </returns>
-			public static PrefixTree newTree(DateTimeParseContext context)
+			Public Shared PrefixTree newTree(DateTimeParseContext context)
 				'if (!context.isStrict()) {
 				'    return new LENIENT("", null, null);
 				'}
@@ -3316,7 +3316,7 @@ Namespace java.time.format
 			''' <param name="keys">  a set of strings to build the prefix parsing tree, not null </param>
 			''' <param name="context">  the parse context </param>
 			''' <returns> the tree, not null </returns>
-			public static PrefixTree newTree(java.util.Set(Of String) keys, DateTimeParseContext context)
+			Public Shared PrefixTree newTree(java.util.Set(Of String) keys, DateTimeParseContext context)
 				Dim tree As PrefixTree = newTree(context)
 				For Each k As String In keys
 					tree.add0(k, k)

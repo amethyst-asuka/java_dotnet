@@ -126,7 +126,7 @@ Namespace java.time.chrono
 		''' <returns> the era singleton, not null </returns>
 		''' <exception cref="DateTimeException"> if the value is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static IsoEra of(int isoEra)
+'		Public Shared IsoEra of(int isoEra)
 	'	{
 	'		switch (isoEra)
 	'		{

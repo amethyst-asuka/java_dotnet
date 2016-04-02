@@ -181,7 +181,7 @@ Namespace java.util.regex
         '	}
 
         'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-        '		public static UnicodeProp forName(String propName)
+        '		Public Shared UnicodeProp forName(String propName)
         '	{
         '		propName = propName.toUpperCase(Locale.ENGLISH);
         '		String alias = aliases.get(propName);
@@ -198,7 +198,7 @@ Namespace java.util.regex
         '	}
 
         'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-        '		public static UnicodeProp forPOSIXName(String propName)
+        '		Public Shared UnicodeProp forPOSIXName(String propName)
         '	{
         '		propName = posix.get(propName.toUpperCase(Locale.ENGLISH));
         '		if (propName == Nothing)

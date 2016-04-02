@@ -280,7 +280,7 @@ Namespace java.lang.reflect
 		''' followed by a period, followed by the name of the field.
 		''' For example:
 		''' <pre>
-		'''    public static final int java.lang.Thread.MIN_PRIORITY
+		'''    Public Shared final int java.lang.Thread.MIN_PRIORITY
 		'''    private int java.io.FileDescriptor.fd
 		''' </pre>
 		''' 

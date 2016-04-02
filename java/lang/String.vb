@@ -2236,7 +2236,7 @@ startSearchForLastChar:
             ''' </exception>
             ''' <seealso cref= java.util.StringJoiner
             ''' @since 1.8 </seealso>
-            Public Static String join(CharSequence delimiter, CharSequence... elements)
+            Public Shared String join(CharSequence delimiter, CharSequence... elements)
 			java.util.Objects.requireNonNull(delimiter)
 			java.util.Objects.requireNonNull(elements)
 			' Number of elements not likely worth Arrays.stream overhead.
@@ -2283,7 +2283,7 @@ startSearchForLastChar:
             ''' <seealso cref=    java.util.StringJoiner
             ''' @since 1.8 </seealso>
             'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-            Public Static String join(CharSequence delimiter, Iterable(Of ? As CharSequence) elements)
+            Public Shared String join(CharSequence delimiter, Iterable(Of ? As CharSequence) elements)
 			java.util.Objects.requireNonNull(delimiter)
 			java.util.Objects.requireNonNull(elements)
 			Dim joiner As New java.util.StringJoiner(delimiter)
@@ -2684,7 +2684,7 @@ scan:
             ''' </returns>
             ''' <seealso cref=  java.util.Formatter
             ''' @since  1.5 </seealso>
-            Public Static String format(String format, Object... args)
+            Public Shared String format(String format, Object... args)
 			Return (New java.util.Formatter).format(format, args).ToString()
 
             ''' <summary>
@@ -2723,7 +2723,7 @@ scan:
             ''' </returns>
             ''' <seealso cref=  java.util.Formatter
             ''' @since  1.5 </seealso>
-            Public Static String format(java.util.Locale l, String format, Object... args)
+            Public Shared String format(java.util.Locale l, String format, Object... args)
 			Return (New java.util.Formatter(l)).format(format, args).ToString()
 
             ''' <summary>
@@ -2734,7 +2734,7 @@ scan:
             '''          {@code "null"}; otherwise, the value of
             '''          {@code obj.toString()} is returned. </returns>
             ''' <seealso cref=     java.lang.Object#toString() </seealso>
-            Public Static String valueOf(Object obj)
+            Public Shared String valueOf(Object obj)
 			Return If(obj Is Nothing, "null", obj.ToString())
 
             ''' <summary>
@@ -2746,7 +2746,7 @@ scan:
             ''' <param name="data">     the character array. </param>
             ''' <returns>  a {@code String} that contains the characters of the
             '''          character array. </returns>
-            Public Static String valueOf(Char data())
+            Public Shared String valueOf(Char data())
 			Return New String(data)
 
             ''' <summary>
@@ -2768,7 +2768,7 @@ scan:
             '''          negative, or {@code count} is negative, or
             '''          {@code offset+count} is larger than
             '''          {@code data.length}. </exception>
-            Public Static String valueOf(Char data() , Integer offset, Integer count)
+            Public Shared String valueOf(Char data() , Integer offset, Integer count)
 			Return New String(data, offset, count)
 
             ''' <summary>
@@ -2783,7 +2783,7 @@ scan:
             '''          negative, or {@code count} is negative, or
             '''          {@code offset+count} is larger than
             '''          {@code data.length}. </exception>
-            Public Static String copyValueOf(Char data() , Integer offset, Integer count)
+            Public Shared String copyValueOf(Char data() , Integer offset, Integer count)
 			Return New String(data, offset, count)
 
             ''' <summary>
@@ -2792,7 +2792,7 @@ scan:
             ''' <param name="data">   the character array. </param>
             ''' <returns>  a {@code String} that contains the characters of the
             '''          character array. </returns>
-            Public Static String copyValueOf(Char data())
+            Public Shared String copyValueOf(Char data())
 			Return New String(data)
 
             ''' <summary>
@@ -2802,7 +2802,7 @@ scan:
             ''' <returns>  if the argument is {@code true}, a string equal to
             '''          {@code "true"} is returned; otherwise, a string equal to
             '''          {@code "false"} is returned. </returns>
-            Public Static String valueOf(Boolean b)
+            Public Shared String valueOf(Boolean b)
 			Return If(b, "true", "false")
 
             ''' <summary>
@@ -2812,7 +2812,7 @@ scan:
             ''' <param name="c">   a {@code char}. </param>
             ''' <returns>  a string of length {@code 1} containing
             '''          as its single character the argument {@code c}. </returns>
-            Public Static String valueOf(Char c)
+            Public Shared String valueOf(Char c)
 			Dim data As Char() = {c}
             Return New String(data, True)
 
@@ -2825,7 +2825,7 @@ scan:
             ''' <param name="i">   an {@code int}. </param>
             ''' <returns>  a string representation of the {@code int} argument. </returns>
             ''' <seealso cref=     java.lang.Integer#toString(int, int) </seealso>
-            Public Static String valueOf(Integer i)
+            Public Shared String valueOf(Integer i)
 			Return Convert.ToString(i)
 
             ''' <summary>
@@ -2837,7 +2837,7 @@ scan:
             ''' <param name="l">   a {@code long}. </param>
             ''' <returns>  a string representation of the {@code long} argument. </returns>
             ''' <seealso cref=     java.lang.Long#toString(long) </seealso>
-            Public Static String valueOf(Long l)
+            Public Shared String valueOf(Long l)
 			Return Convert.ToString(l)
 
             ''' <summary>
@@ -2849,7 +2849,7 @@ scan:
             ''' <param name="f">   a {@code float}. </param>
             ''' <returns>  a string representation of the {@code float} argument. </returns>
             ''' <seealso cref=     java.lang.Float#toString(float) </seealso>
-            Public Static String valueOf(Single f)
+            Public Shared String valueOf(Single f)
 			Return Convert.ToString(f)
 
             ''' <summary>
@@ -2861,7 +2861,7 @@ scan:
             ''' <param name="d">   a {@code double}. </param>
             ''' <returns>  a  string representation of the {@code double} argument. </returns>
             ''' <seealso cref=     java.lang.Double#toString(double) </seealso>
-            Public Static String valueOf(Double d)
+            Public Shared String valueOf(Double d)
 			Return Convert.ToString(d)
 
             ''' <summary>

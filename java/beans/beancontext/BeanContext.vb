@@ -120,7 +120,7 @@ Namespace java.beans.beancontext
 		''' hierarchy and any service requests etc.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final Object globalHierarchyLock = New Object();
+'		Public Shared final Object globalHierarchyLock = New Object();
 	End Interface
 
 End Namespace

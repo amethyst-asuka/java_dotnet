@@ -42,14 +42,14 @@ Namespace java.lang.reflect
 		''' including inherited members.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int PUBLIC = 0;
+'		Public Shared final int PUBLIC = 0;
 
 		''' <summary>
 		''' Identifies the set of declared members of a class or interface.
 		''' Inherited members are not included.
 		''' </summary>
 'JAVA TO VB CONVERTER TODO TASK: Interfaces cannot contain fields in .NET:
-'		public static final int DECLARED = 1;
+'		Public Shared final int DECLARED = 1;
 
 		''' <summary>
 		''' Returns the Class object representing the class or interface

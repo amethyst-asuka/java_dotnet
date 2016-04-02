@@ -51,7 +51,7 @@ Namespace java.nio.file
 		''' @since 1.7 </summary>
 		''' <seealso cref= StandardWatchEventKinds </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static interface Kind(Of T)
+'		Public Shared interface Kind(Of T)
 	'	{
 	'		''' <summary>
 	'		''' Returns the name of the event kind.
@@ -76,7 +76,7 @@ Namespace java.nio.file
 		''' @since 1.7 </summary>
 		''' <seealso cref= Watchable#register </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Interface inner types are not converted:
-'		public static interface Modifier
+'		Public Shared interface Modifier
 	'	{
 	'		''' <summary>
 	'		''' Returns the name of the modifier.

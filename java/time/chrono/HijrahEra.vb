@@ -96,7 +96,7 @@ Namespace java.time.chrono
 		''' <returns> the HijrahEra.AH singleton, not null </returns>
 		''' <exception cref="DateTimeException"> if the value is invalid </exception>
 'JAVA TO VB CONVERTER TODO TASK: Enums cannot contain methods in .NET:
-'		public static HijrahEra of(int hijrahEra)
+'		Public Shared HijrahEra of(int hijrahEra)
 	'	{
 	'		if (hijrahEra == 1)
 	'		{
