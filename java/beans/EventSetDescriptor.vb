@@ -234,7 +234,7 @@ Namespace java.beans
 		''' <returns> An array of <TT>Method</TT> objects for the target methods
 		''' within the target listener interface that will get called when
 		''' events are fired. </returns>
-		public synchronized Method() listenerMethods
+		Public  Method() listenerMethods
 			Dim methods As Method() = listenerMethods0
 			If methods Is Nothing Then
 				If listenerMethodDescriptors IsNot Nothing Then
@@ -266,14 +266,14 @@ Namespace java.beans
 		''' <returns> An array of <code>MethodDescriptor</code> objects for the target methods
 		''' within the target listener interface that will get called when
 		''' events are fired. </returns>
-		public synchronized MethodDescriptor() listenerMethodDescriptors
+		Public  MethodDescriptor() listenerMethodDescriptors
 			Return If(Me.listenerMethodDescriptors IsNot Nothing, Me.listenerMethodDescriptors.clone(), Nothing)
 
 		''' <summary>
 		''' Gets the method used to add event listeners.
 		''' </summary>
 		''' <returns> The method used to register a listener at the event source. </returns>
-		public synchronized Method addListenerMethod
+		Public  Method addListenerMethod
 			Return getMethod(Me.addMethodDescriptor)
 
 		private synchronized  Sub  addListenerMethodhod(Method method)
@@ -286,7 +286,7 @@ Namespace java.beans
 		''' Gets the method used to remove event listeners.
 		''' </summary>
 		''' <returns> The method used to remove a listener at the event source. </returns>
-		public synchronized Method removeListenerMethod
+		Public  Method removeListenerMethod
 			Return getMethod(Me.removeMethodDescriptor)
 
 		private synchronized  Sub  removeListenerMethodhod(Method method)
@@ -301,7 +301,7 @@ Namespace java.beans
 		''' <returns> The method used to access the array of listeners at the event
 		'''         source or null if it doesn't exist.
 		''' @since 1.4 </returns>
-		public synchronized Method getListenerMethod
+		Public  Method getListenerMethod
 			Return getMethod(Me.getMethodDescriptor)
 
 		private synchronized  Sub  getListenerMethodhod(Method method)

@@ -138,7 +138,7 @@ Namespace java.io
         ''' </summary>
         ''' <returns>  the next byte of data, or <code>-1</code> if the end of the
         '''          stream has been reached. </returns>
-        Public synchronized Integer read()
+        Public  Integer read()
 				Dim tempVar As Integer = pos
 				pos += 1
 				Return If(pos < count, (buf(tempVar) And &Hff), -1)
@@ -171,7 +171,7 @@ Namespace java.io
 		''' <exception cref="IndexOutOfBoundsException"> If <code>off</code> is negative,
 		''' <code>len</code> is negative, or <code>len</code> is greater than
 		''' <code>b.length - off</code> </exception>
-		public synchronized Integer read(SByte b() , Integer off, Integer len)
+		Public  Integer read(SByte b() , Integer off, Integer len)
 			If b Is Nothing Then
 				Throw New NullPointerException
 			ElseIf off < 0 OrElse len < 0 OrElse len > b.length - off Then
@@ -198,7 +198,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="n">   the number of bytes to be skipped. </param>
 		''' <returns>  the actual number of bytes skipped. </returns>
-		public synchronized Long skip(Long n)
+		Public  Long skip(Long n)
 			Dim k As Long = count - pos
 			If n < k Then k = If(n < 0, 0, n)
 
@@ -214,7 +214,7 @@ Namespace java.io
 		''' </summary>
 		''' <returns>  the number of remaining bytes that can be read (or skipped
 		'''          over) from this input stream without blocking. </returns>
-		public synchronized Integer available()
+		Public  Integer available()
 			Return count - pos
 
 		''' <summary>
@@ -250,7 +250,7 @@ Namespace java.io
 		''' is 0 unless another position was marked or an offset was specified
 		''' in the constructor.
 		''' </summary>
-		public synchronized  Sub  reset()
+		Public   Sub  reset()
 			pos = mark_Renamed
 
 		''' <summary>

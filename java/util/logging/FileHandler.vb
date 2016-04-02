@@ -598,7 +598,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <param name="record">  description of the log event. A null record is
 		'''                 silently ignored and is not published </param>
-		public synchronized  Sub  publish(LogRecord record)
+		Public   Sub  publish(LogRecord record)
 			If Not isLoggable(record) Then Return
 			MyBase.publish(record)
 			flush()
@@ -609,7 +609,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <exception cref="SecurityException">  if a security manager exists and if
 		'''             the caller does not have <tt>LoggingPermission("control")</tt>. </exception>
-		public synchronized  Sub  close() throws SecurityException
+		Public   Sub  close() throws SecurityException
 			MyBase.close()
 			' Unlock any lock file.
 			If lockFileName Is Nothing Then Return

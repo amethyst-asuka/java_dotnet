@@ -201,7 +201,7 @@ Namespace java.net
 		'''          sent or from which the datagram was received. </returns>
 		''' <seealso cref=     java.net.InetAddress </seealso>
 		''' <seealso cref= #setAddress(java.net.InetAddress) </seealso>
-		public synchronized InetAddress address
+		Public  InetAddress address
 			Return address
 
 		''' <summary>
@@ -211,7 +211,7 @@ Namespace java.net
 		''' <returns>  the port number on the remote host to which this datagram is
 		'''          being sent or from which the datagram was received. </returns>
 		''' <seealso cref= #setPort(int) </seealso>
-		public synchronized Integer port
+		Public  Integer port
 			Return port
 
 		''' <summary>
@@ -221,7 +221,7 @@ Namespace java.net
 		''' </summary>
 		''' <returns>  the buffer used to receive or  send data </returns>
 		''' <seealso cref= #setData(byte[], int, int) </seealso>
-		public synchronized SByte() data
+		Public  SByte() data
 			Return buf
 
 		''' <summary>
@@ -232,7 +232,7 @@ Namespace java.net
 		'''          data received.
 		''' 
 		''' @since 1.2 </returns>
-		public synchronized Integer offset
+		Public  Integer offset
 			Return offset
 
 		''' <summary>
@@ -242,7 +242,7 @@ Namespace java.net
 		''' <returns>  the length of the data to be sent or the length of the
 		'''          data received. </returns>
 		''' <seealso cref= #setLength(int) </seealso>
-		public synchronized Integer length
+		Public  Integer length
 			Return length
 
 		''' <summary>
@@ -263,7 +263,7 @@ Namespace java.net
 		''' <seealso cref= #getLength
 		''' 
 		''' @since 1.2 </seealso>
-		public synchronized  Sub  dataata(SByte() buf, Integer offset, Integer length)
+		Public   Sub  dataata(SByte() buf, Integer offset, Integer length)
 			' this will check to see if buf is null 
 			If length < 0 OrElse offset < 0 OrElse (length + offset) < 0 OrElse ((length + offset) > buf.Length) Then Throw New IllegalArgumentException("illegal length or offset")
 			Me.buf = buf
@@ -277,7 +277,7 @@ Namespace java.net
 		''' <param name="iaddr"> the {@code InetAddress}
 		''' @since   JDK1.1 </param>
 		''' <seealso cref= #getAddress() </seealso>
-		public synchronized  Sub  addressess(InetAddress iaddr)
+		Public   Sub  addressess(InetAddress iaddr)
 			address = iaddr
 
 		''' <summary>
@@ -286,7 +286,7 @@ Namespace java.net
 		''' <param name="iport"> the port number
 		''' @since   JDK1.1 </param>
 		''' <seealso cref= #getPort() </seealso>
-		public synchronized  Sub  portort(Integer iport)
+		Public   Sub  portort(Integer iport)
 			If iport < 0 OrElse iport > &HFFFF Then Throw New IllegalArgumentException("Port out of range:" & iport)
 			port = iport
 
@@ -300,7 +300,7 @@ Namespace java.net
 		''' 
 		''' @since 1.4 </exception>
 		''' <seealso cref= #getSocketAddress </seealso>
-		public synchronized  Sub  socketAddressess(SocketAddress address)
+		Public   Sub  socketAddressess(SocketAddress address)
 			If address Is Nothing OrElse Not(TypeOf address Is InetSocketAddress) Then Throw New IllegalArgumentException("unsupported address type")
 			Dim addr As InetSocketAddress = CType(address, InetSocketAddress)
 			If addr.unresolved Then Throw New IllegalArgumentException("unresolved address")
@@ -314,7 +314,7 @@ Namespace java.net
 		''' <returns> the {@code SocketAddress}
 		''' @since 1.4 </returns>
 		''' <seealso cref= #setSocketAddress </seealso>
-		public synchronized SocketAddress socketAddress
+		Public  SocketAddress socketAddress
 			Return New InetSocketAddress(address, port)
 
 		''' <summary>
@@ -330,7 +330,7 @@ Namespace java.net
 		''' <seealso cref= #getData
 		''' 
 		''' @since JDK1.1 </seealso>
-		public synchronized  Sub  dataata(SByte() buf)
+		Public   Sub  dataata(SByte() buf)
 			If buf Is Nothing Then Throw New NullPointerException("null packet buffer")
 			Me.buf = buf
 			Me.offset = 0
@@ -354,7 +354,7 @@ Namespace java.net
 		''' <seealso cref= #setData
 		''' 
 		''' @since JDK1.1 </seealso>
-		public synchronized  Sub  lengthgth(Integer length)
+		Public   Sub  lengthgth(Integer length)
 			If (length + offset) > buf.Length OrElse length < 0 OrElse (length + offset) < 0 Then Throw New IllegalArgumentException("illegal length")
 			Me.length = length
 			Me.bufLength = Me.length

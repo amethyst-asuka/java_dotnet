@@ -587,7 +587,7 @@ Namespace java.awt.image
 		''' this method directly since that operation could result in problems
 		''' with retrieving the requested pixels. </summary>
 		''' <param name="status"> the status of image loading </param>
-		public synchronized  Sub  imageComplete(Integer status)
+		Public   Sub  imageComplete(Integer status)
 			grabbing = False
 			Select Case status
 			Case Else
@@ -615,7 +615,7 @@ Namespace java.awt.image
 		''' <returns> the bitwise OR of all relevant ImageObserver flags </returns>
 		''' <seealso cref= ImageObserver </seealso>
 		''' <seealso cref= #getStatus() </seealso>
-		public synchronized Integer status()
+		Public  Integer status()
 			Return flags
 	End Class
 

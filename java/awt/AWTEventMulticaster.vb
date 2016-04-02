@@ -39,10 +39,10 @@ Namespace java.awt
 	''' public myComponent extends Component {
 	'''     ActionListener actionListener = null;
 	''' 
-	'''     public synchronized  Sub  addActionListener(ActionListener l) {
+	'''     Public   Sub  addActionListener(ActionListener l) {
 	'''         actionListener = AWTEventMulticaster.add(actionListener, l);
 	'''     }
-	'''     public synchronized  Sub  removeActionListener(ActionListener l) {
+	'''     Public   Sub  removeActionListener(ActionListener l) {
 	'''         actionListener = AWTEventMulticaster.remove(actionListener, l);
 	'''     }
 	'''     public  Sub  processEvent(AWTEvent e) {

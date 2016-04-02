@@ -218,7 +218,7 @@ Namespace java.io
         ''' <exception cref="UnsupportedEncodingException">
         '''             If the named charset is not supported
         ''' @since      JDK1.1 </exception>
-        Public synchronized String ToString(String charsetName) throws UnsupportedEncodingException
+        Public  String ToString(String charsetName) throws UnsupportedEncodingException
 			Return New String(buf, 0, count, charsetName)
 
 		''' <summary>
@@ -243,7 +243,7 @@ Namespace java.io
 		''' <seealso cref=        java.io.ByteArrayOutputStream#toString(String) </seealso>
 		''' <seealso cref=        java.io.ByteArrayOutputStream#toString() </seealso>
 		<Obsolete("This method does not properly convert bytes into characters.")> _
-		public synchronized String ToString(Integer hibyte)
+		Public  String ToString(Integer hibyte)
 			Return New String(buf, hibyte, 0, count)
 
 		''' <summary>

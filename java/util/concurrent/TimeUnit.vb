@@ -607,7 +607,7 @@ Namespace java.util.concurrent
 		''' using:
 		''' 
 		'''  <pre> {@code
-		''' public synchronized Object poll(long timeout, TimeUnit unit)
+		''' Public  Object poll(long timeout, TimeUnit unit)
 		'''     throws InterruptedException {
 		'''   while (empty) {
 		'''     unit.timedWait(this, timeout);

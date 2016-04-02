@@ -188,7 +188,7 @@ Namespace java.io
 		'''                      the mark position becomes invalid. </param>
 		''' <seealso cref=     java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=     java.io.FilterInputStream#reset() </seealso>
-		public synchronized  Sub  mark(Integer readlimit)
+		Public   Sub  mark(Integer readlimit)
 			[in].mark(readlimit)
 
 		''' <summary>
@@ -211,7 +211,7 @@ Namespace java.io
 		'''               mark has been invalidated. </exception>
 		''' <seealso cref=        java.io.FilterInputStream#in </seealso>
 		''' <seealso cref=        java.io.FilterInputStream#mark(int) </seealso>
-		public synchronized  Sub  reset() throws IOException
+		Public   Sub  reset() throws IOException
 			[in].reset()
 
 		''' <summary>

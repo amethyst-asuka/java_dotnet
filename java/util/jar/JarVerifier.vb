@@ -592,7 +592,7 @@ Namespace java.util.jar
 			End If
 			Return signerMap_Renamed
 
-		public synchronized Enumeration(Of String) entryNames(JarFile jar, final CodeSource() cs)
+		Public  Enumeration(Of String) entryNames(JarFile jar, final CodeSource() cs)
 			Dim map As Map(Of String, CodeSigner()) = signerMap()
 			Dim itor As [Iterator](Of KeyValuePair(Of String, CodeSigner())) = map.entrySet().GetEnumerator()
 			Dim matchUnsigned As Boolean = False
@@ -653,7 +653,7 @@ Namespace java.util.jar
 			End If
 			Return jarCodeSigners
 
-		public synchronized CodeSource() getCodeSources(JarFile jar, java.net.URL url)
+		Public  CodeSource() getCodeSources(JarFile jar, java.net.URL url)
 			Dim hasUnsigned As Boolean = unsignedEntryNames(jar).hasMoreElements()
 
 			Return mapSignersToCodeSources(url, jarCodeSigners, hasUnsigned)
@@ -672,7 +672,7 @@ Namespace java.util.jar
 		public  Sub  eagerValidationion(Boolean eager)
 			eagerValidation = eager
 
-		public synchronized  ArrayList manifestDigests
+		Public   ArrayList manifestDigests
 			Return Collections.unmodifiableList(manifestDigests)
 
 		static CodeSource getUnsignedCS(java.net.URL url)

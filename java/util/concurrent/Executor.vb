@@ -89,7 +89,7 @@ Namespace java.util.concurrent
 	'''     this.executor = executor;
 	'''   }
 	''' 
-	'''   public synchronized  Sub  execute(final Runnable r) {
+	'''   Public   Sub  execute(final Runnable r) {
 	'''     tasks.offer(new Runnable() {
 	'''       public  Sub  run() {
 	'''         try {

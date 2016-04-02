@@ -148,7 +148,7 @@ Namespace java.io
 		''' This will notify any readers that bytes are waiting in the pipe.
 		''' </summary>
 		''' <exception cref="IOException"> if an I/O error occurs. </exception>
-		public synchronized  Sub  flush() throws IOException
+		Public   Sub  flush() throws IOException
 			If sink IsNot Nothing Then
 				SyncLock sink
 					sink.notifyAll()

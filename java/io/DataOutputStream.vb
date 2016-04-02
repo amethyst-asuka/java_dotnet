@@ -101,7 +101,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if an I/O error occurs. </exception>
 		''' <seealso cref=        java.io.FilterOutputStream#out </seealso>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public synchronized  Sub  write(byte b() , int off, int len) throws IOException
+		Public   Sub  write(byte b() , int off, int len) throws IOException
 			out.write(b, off, len)
 			incCount(len)
 

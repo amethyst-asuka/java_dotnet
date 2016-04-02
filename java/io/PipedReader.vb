@@ -229,7 +229,7 @@ Namespace java.io
 		'''          <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
 		'''          <seealso cref="#connect(java.io.PipedWriter) unconnected"/>, closed,
 		'''          or an I/O error occurs. </exception>
-		public synchronized Integer read() throws IOException
+		Public  Integer read() throws IOException
 			If Not connected Then
 				Throw New IOException("Pipe not connected")
 			ElseIf closedByReader Then
@@ -275,7 +275,7 @@ Namespace java.io
 		'''                  <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
 		'''                  <seealso cref="#connect(java.io.PipedWriter) unconnected"/>, closed,
 		'''                  or an I/O error occurs. </exception>
-		public synchronized Integer read(Char cbuf() , Integer off, Integer len) throws IOException
+		Public  Integer read(Char cbuf() , Integer off, Integer len) throws IOException
 			If Not connected Then
 				Throw New IOException("Pipe not connected")
 			ElseIf closedByReader Then
@@ -313,7 +313,7 @@ Namespace java.io
 		''' <exception cref="IOException">  if the pipe is
 		'''                  <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
 		'''                  <seealso cref="#connect(java.io.PipedWriter) unconnected"/>, or closed. </exception>
-		public synchronized Boolean ready() throws IOException
+		Public  Boolean ready() throws IOException
 			If Not connected Then
 				Throw New IOException("Pipe not connected")
 			ElseIf closedByReader Then

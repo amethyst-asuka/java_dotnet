@@ -292,7 +292,7 @@ Namespace java.io
 		'''           <seealso cref="#connect(java.io.PipedOutputStream) unconnected"/>,
 		'''           <a href="#BROKEN"> <code>broken</code></a>, closed,
 		'''           or if an I/O error occurs. </exception>
-		public synchronized Integer read() throws IOException
+		Public  Integer read() throws IOException
 			If Not connected Then
 				Throw New IOException("Pipe not connected")
 			ElseIf closedByReader Then
@@ -345,7 +345,7 @@ Namespace java.io
 		''' <exception cref="IOException"> if the pipe is <a href="#BROKEN"> <code>broken</code></a>,
 		'''           <seealso cref="#connect(java.io.PipedOutputStream) unconnected"/>,
 		'''           closed, or if an I/O error occurs. </exception>
-		public synchronized Integer read(SByte b() , Integer off, Integer len) throws IOException
+		Public  Integer read(SByte b() , Integer off, Integer len) throws IOException
 			If b Is Nothing Then
 				Throw New NullPointerException
 			ElseIf off < 0 OrElse len < 0 OrElse len > b.length - off Then
@@ -393,7 +393,7 @@ Namespace java.io
 		''' </returns>
 		''' <exception cref="IOException">  if an I/O error occurs.
 		''' @since   JDK1.0.2 </exception>
-		public synchronized Integer available() throws IOException
+		Public  Integer available() throws IOException
 			If [in] < 0 Then
 				Return 0
 			ElseIf [in] = out Then

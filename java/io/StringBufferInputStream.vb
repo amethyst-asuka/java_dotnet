@@ -110,7 +110,7 @@ Namespace java.io
 		'''             <code>-1</code> if there is no more data because the end of
 		'''             the stream has been reached. </returns>
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-		public synchronized int read(byte b() , int off, int len)
+		Public  int read(byte b() , int off, int len)
 			If b Is Nothing Then
 				Throw New NullPointerException
 			ElseIf (off < 0) OrElse (off > b.length) OrElse (len < 0) OrElse ((off + len) > b.length) OrElse ((off + len) < 0) Then
@@ -137,7 +137,7 @@ Namespace java.io
 		''' </summary>
 		''' <param name="n">   the number of bytes to be skipped. </param>
 		''' <returns>     the actual number of bytes skipped. </returns>
-		public synchronized Long skip(Long n)
+		Public  Long skip(Long n)
 			If n < 0 Then Return 0
 			If n > count - pos Then n = count - pos
 			pos += n
@@ -149,14 +149,14 @@ Namespace java.io
 		''' </summary>
 		''' <returns>     the value of <code>count&nbsp;-&nbsp;pos</code>, which is the
 		'''             number of bytes remaining to be read from the input buffer. </returns>
-		public synchronized Integer available()
+		Public  Integer available()
 			Return count - pos
 
 		''' <summary>
 		''' Resets the input stream to begin reading from the first character
 		''' of this input stream's underlying buffer.
 		''' </summary>
-		public synchronized  Sub  reset()
+		Public   Sub  reset()
 			pos = 0
 	End Class
 

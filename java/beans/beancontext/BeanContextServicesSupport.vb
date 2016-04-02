@@ -767,7 +767,7 @@ Namespace java.beans.beancontext
 		''' has a service, which may be delegated
 		''' </summary>
 
-		public synchronized Boolean hasService(Class serviceClass)
+		Public  Boolean hasService(Class serviceClass)
 			If serviceClass Is Nothing Then Throw New NullPointerException("serviceClass")
 
 			SyncLock BeanContext.globalHierarchyLock
