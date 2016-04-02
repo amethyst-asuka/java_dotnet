@@ -361,7 +361,7 @@ Namespace java.beans
 		'''          environment.
 		''' </returns>
 		''' <seealso cref= DesignMode </seealso>
-		Public Property Shared designTime As Boolean
+		PublicShared ReadOnly PropertydesignTime As Boolean
 			Get
 				Return ThreadGroupContext.context.designTime
 			End Get
@@ -384,7 +384,7 @@ Namespace java.beans
 		''' </returns>
 		''' <seealso cref= Visibility
 		'''  </seealso>
-		Public Property Shared guiAvailable As Boolean
+		PublicShared ReadOnly PropertyguiAvailable As Boolean
 			Get
 				Return ThreadGroupContext.context.guiAvailable
 			End Get

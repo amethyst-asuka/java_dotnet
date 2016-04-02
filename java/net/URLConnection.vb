@@ -287,7 +287,7 @@ Namespace java.net
 		''' @since 1.2 </returns>
 		''' <seealso cref= #setFileNameMap(java.net.FileNameMap) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared fileNameMap As FileNameMap
+		PublicShared ReadOnly PropertyfileNameMap As FileNameMap
 			Get
 				If (fileNameMap Is Nothing) AndAlso (Not fileNameMapLoaded) Then
 					fileNameMap = sun.net.www.MimeTable.loadTable()

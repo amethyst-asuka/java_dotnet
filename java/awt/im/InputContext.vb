@@ -81,7 +81,7 @@ Namespace java.awt.im
 		''' <summary>
 		''' Returns a new InputContext instance.
 		''' </summary>
-		Public Property Shared instance As InputContext
+		PublicShared ReadOnly Propertyinstance As InputContext
 			Get
 				Return New sun.awt.im.InputMethodContext
 			End Get

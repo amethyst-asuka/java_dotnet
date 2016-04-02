@@ -70,7 +70,7 @@ Namespace java.awt
 		''' <seealso cref=       java.awt.AWTPermission </seealso>
 		''' <returns>    location of the mouse pointer
 		''' @since     1.5 </returns>
-		Public Property Shared pointerInfo As PointerInfo
+		PublicShared ReadOnly PropertypointerInfo As PointerInfo
 			Get
 				If GraphicsEnvironment.headless Then Throw New HeadlessException
     
@@ -110,7 +110,7 @@ Namespace java.awt
 		''' <exception cref="HeadlessException"> if GraphicsEnvironment.isHeadless() returns true </exception>
 		''' <returns> number of buttons on the mouse
 		''' @since 1.5 </returns>
-		Public Property Shared numberOfButtons As Integer
+		PublicShared ReadOnly PropertynumberOfButtons As Integer
 			Get
 				If GraphicsEnvironment.headless Then Throw New HeadlessException
 				Dim prop As Object = Toolkit.defaultToolkit.getDesktopProperty("awt.mouse.numButtons")

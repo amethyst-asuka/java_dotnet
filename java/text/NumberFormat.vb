@@ -377,7 +377,7 @@ Namespace java.text
 		''' </summary>
 		''' <returns> the {@code NumberFormat} instance for general-purpose number
 		''' formatting </returns>
-		Public Property Shared instance As NumberFormat
+		PublicShared ReadOnly Propertyinstance As NumberFormat
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT), NUMBERSTYLE)
 			End Get
@@ -406,7 +406,7 @@ Namespace java.text
 		''' formatting </returns>
 		''' <seealso cref= java.util.Locale#getDefault(java.util.Locale.Category) </seealso>
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
-		Public Property Shared numberInstance As NumberFormat
+		PublicShared ReadOnly PropertynumberInstance As NumberFormat
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT), NUMBERSTYLE)
 			End Get
@@ -439,7 +439,7 @@ Namespace java.text
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
 		''' <returns> a number format for integer values
 		''' @since 1.4 </returns>
-		Public Property Shared integerInstance As NumberFormat
+		PublicShared ReadOnly PropertyintegerInstance As NumberFormat
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT), INTEGERSTYLE)
 			End Get
@@ -471,7 +471,7 @@ Namespace java.text
 		''' <returns> the {@code NumberFormat} instance for currency formatting </returns>
 		''' <seealso cref= java.util.Locale#getDefault(java.util.Locale.Category) </seealso>
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
-		Public Property Shared currencyInstance As NumberFormat
+		PublicShared ReadOnly PropertycurrencyInstance As NumberFormat
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT), CURRENCYSTYLE)
 			End Get
@@ -496,7 +496,7 @@ Namespace java.text
 		''' <returns> the {@code NumberFormat} instance for percentage formatting </returns>
 		''' <seealso cref= java.util.Locale#getDefault(java.util.Locale.Category) </seealso>
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
-		Public Property Shared percentInstance As NumberFormat
+		PublicShared ReadOnly PropertypercentInstance As NumberFormat
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT), PERCENTSTYLE)
 			End Get
@@ -542,7 +542,7 @@ Namespace java.text
 		''' </summary>
 		''' <returns> An array of locales for which localized
 		'''         <code>NumberFormat</code> instances are available. </returns>
-		Public Property Shared availableLocales As java.util.Locale()
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Locale()
 			Get
 				Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.text.spi.NumberFormatProvider))
 				Return pool.availableLocales

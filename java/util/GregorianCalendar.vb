@@ -2559,7 +2559,7 @@ Namespace java.util
 		''' and 'jeras' are set upon the return.
 		''' </summary>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Property Shared julianCalendarSystem As sun.util.calendar.BaseCalendar
+		PrivateShared ReadOnly PropertyjulianCalendarSystem As sun.util.calendar.BaseCalendar
 			Get
 				If jcal Is Nothing Then
 					jcal = CType(sun.util.calendar.CalendarSystem.forName("julian"), sun.util.calendar.JulianCalendar)

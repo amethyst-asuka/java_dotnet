@@ -279,7 +279,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> a <seealso cref="ClassLoadingMXBean"/> object for
 		''' the Java virtual machine. </returns>
-		Public Property Shared classLoadingMXBean As  [Class]LoadingMXBean
+		PublicShared ReadOnly PropertyclassLoadingMXBean As  [Class]LoadingMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.classLoadingMXBean
 			End Get
@@ -290,7 +290,7 @@ Namespace java.lang.management
 		''' the Java virtual machine.
 		''' </summary>
 		''' <returns> a <seealso cref="MemoryMXBean"/> object for the Java virtual machine. </returns>
-		Public Property Shared memoryMXBean As MemoryMXBean
+		PublicShared ReadOnly PropertymemoryMXBean As MemoryMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.memoryMXBean
 			End Get
@@ -301,7 +301,7 @@ Namespace java.lang.management
 		''' the Java virtual machine.
 		''' </summary>
 		''' <returns> a <seealso cref="ThreadMXBean"/> object for the Java virtual machine. </returns>
-		Public Property Shared threadMXBean As ThreadMXBean
+		PublicShared ReadOnly PropertythreadMXBean As ThreadMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.threadMXBean
 			End Get
@@ -313,7 +313,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> a <seealso cref="RuntimeMXBean"/> object for the Java virtual machine.
 		'''  </returns>
-		Public Property Shared runtimeMXBean As RuntimeMXBean
+		PublicShared ReadOnly PropertyruntimeMXBean As RuntimeMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.runtimeMXBean
 			End Get
@@ -327,7 +327,7 @@ Namespace java.lang.management
 		''' <returns> a <seealso cref="CompilationMXBean"/> object for the Java virtual
 		'''   machine or <tt>null</tt> if the Java virtual machine has
 		'''   no compilation system. </returns>
-		Public Property Shared compilationMXBean As CompilationMXBean
+		PublicShared ReadOnly PropertycompilationMXBean As CompilationMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.compilationMXBean
 			End Get
@@ -339,7 +339,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> an <seealso cref="OperatingSystemMXBean"/> object for
 		''' the Java virtual machine. </returns>
-		Public Property Shared operatingSystemMXBean As OperatingSystemMXBean
+		PublicShared ReadOnly PropertyoperatingSystemMXBean As OperatingSystemMXBean
 			Get
 				Return sun.management.ManagementFactoryHelper.operatingSystemMXBean
 			End Get
@@ -353,7 +353,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> a list of <tt>MemoryPoolMXBean</tt> objects.
 		'''  </returns>
-		Public Property Shared memoryPoolMXBeans As IList(Of MemoryPoolMXBean)
+		PublicShared ReadOnly PropertymemoryPoolMXBeans As IList(Of MemoryPoolMXBean)
 			Get
 				Return sun.management.ManagementFactoryHelper.memoryPoolMXBeans
 			End Get
@@ -367,7 +367,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> a list of <tt>MemoryManagerMXBean</tt> objects.
 		'''  </returns>
-		Public Property Shared memoryManagerMXBeans As IList(Of MemoryManagerMXBean)
+		PublicShared ReadOnly PropertymemoryManagerMXBeans As IList(Of MemoryManagerMXBean)
 			Get
 				Return sun.management.ManagementFactoryHelper.memoryManagerMXBeans
 			End Get
@@ -384,7 +384,7 @@ Namespace java.lang.management
 		''' </summary>
 		''' <returns> a list of <tt>GarbageCollectorMXBean</tt> objects.
 		'''  </returns>
-		Public Property Shared garbageCollectorMXBeans As IList(Of GarbageCollectorMXBean)
+		PublicShared ReadOnly PropertygarbageCollectorMXBeans As IList(Of GarbageCollectorMXBean)
 			Get
 				Return sun.management.ManagementFactoryHelper.garbageCollectorMXBeans
 			End Get
@@ -432,7 +432,7 @@ Namespace java.lang.management
 		''' <seealso cref= javax.management.MBeanServerFactory </seealso>
 		''' <seealso cref= javax.management.MBeanServerFactory#createMBeanServer </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared platformMBeanServer As javax.management.MBeanServer
+		PublicShared ReadOnly PropertyplatformMBeanServer As javax.management.MBeanServer
 			Get
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then
@@ -764,7 +764,7 @@ Namespace java.lang.management
 		''' monitoring and managing the Java platform.
 		''' 
 		''' @since 1.7 </returns>
-		Public Property Shared platformManagementInterfaces As java.util.Set(Of [Class])
+		PublicShared ReadOnly PropertyplatformManagementInterfaces As java.util.Set(Of [Class])
 			Get
 				Dim result As java.util.Set(Of [Class]) = New HashSet(Of [Class])
 				For Each component As PlatformComponent In System.Enum.GetValues(GetType(PlatformComponent))

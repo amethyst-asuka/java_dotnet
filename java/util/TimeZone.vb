@@ -524,7 +524,7 @@ Namespace java.util
 		''' Gets all the available IDs supported. </summary>
 		''' <returns> an array of IDs. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared availableIDs As String()
+		PublicShared ReadOnly PropertyavailableIDs As String()
 			Get
 				Return sun.util.calendar.ZoneInfo.availableIDs
 			End Get
@@ -569,7 +569,7 @@ Namespace java.util
 		''' </summary>
 		''' <returns> the default {@code TimeZone} </returns>
 		''' <seealso cref= #setDefault(TimeZone) </seealso>
-		Public Property Shared [default] As TimeZone
+		PublicShared ReadOnly Property[default] As TimeZone
 			Get
 				Return CType(defaultRef.clone(), TimeZone)
 			End Get

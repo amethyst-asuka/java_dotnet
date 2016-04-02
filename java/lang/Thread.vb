@@ -1481,7 +1481,7 @@ Namespace java.lang
 		''' <seealso cref= Throwable#getStackTrace
 		''' 
 		''' @since 1.5 </seealso>
-		Public Property Shared allStackTraces As IDictionary(Of Thread, StackTraceElement())
+		PublicShared ReadOnly PropertyallStackTraces As IDictionary(Of Thread, StackTraceElement())
 			Get
 				' check for getStackTrace permission
 				Dim security As SecurityManager = System.securityManager

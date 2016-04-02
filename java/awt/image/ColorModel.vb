@@ -1540,7 +1540,7 @@ Namespace java.awt.image
             Return (cs Is sun.java2d.cmm.CMSManager.GRAYspace)
         End Function
 
-        Friend Property Shared linearRGB8TosRGB8LUT As SByte()
+        FriendShared ReadOnly PropertylinearRGB8TosRGB8LUT As SByte()
             Get
                 If l8Tos8 Is Nothing Then
                     l8Tos8 = New SByte(255) {}
@@ -1582,7 +1582,7 @@ Namespace java.awt.image
             Return s8Tol8
         End Function
 
-        Friend Property Shared linearRGB16TosRGB8LUT As SByte()
+        FriendShared ReadOnly PropertylinearRGB16TosRGB8LUT As SByte()
             Get
                 If l16Tos8 Is Nothing Then
                     l16Tos8 = New SByte(65535) {}

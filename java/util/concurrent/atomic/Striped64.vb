@@ -192,7 +192,7 @@ Namespace java.util.concurrent.atomic
 		''' Returns the probe value for the current thread.
 		''' Duplicated from ThreadLocalRandom because of packaging restrictions.
 		''' </summary>
-		Friend Property Shared probe As Integer
+		FriendShared ReadOnly Propertyprobe As Integer
 			Get
 				Return UNSAFE.getInt(Thread.CurrentThread, PROBE)
 			End Get

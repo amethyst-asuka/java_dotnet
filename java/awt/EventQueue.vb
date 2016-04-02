@@ -737,33 +737,33 @@ Namespace java.awt
 		''' <seealso cref= #isDispatchThread
 		''' 
 		''' @since 1.4 </seealso>
-		Public Property Shared mostRecentEventTime As Long
-			Get
-				Return Toolkit.eventQueue.mostRecentEventTimeImpl
-			End Get
-		End Property
-		Private Property mostRecentEventTimeImpl As Long
-			Get
-				pushPopLock.lock()
-				Try
-					Return If(Thread.CurrentThread Is dispatchThread, mostRecentEventTime, System.currentTimeMillis())
-				Finally
-					pushPopLock.unlock()
-				End Try
-			End Get
-		End Property
+		PublicShared ReadOnly PropertymostRecentEventTime As Long
+        Get
+        Return Toolkit.eventQueue.mostRecentEventTimeImpl
+        End Get
+        End Property
+        Private Property mostRecentEventTimeImpl As Long
+            Get
+                pushPopLock.lock()
+                Try
+                    Return If(Thread.CurrentThread Is dispatchThread, mostRecentEventTime, System.currentTimeMillis())
+                Finally
+                    pushPopLock.unlock()
+                End Try
+            End Get
+        End Property
 
-		''' <returns> most recent event time on all threads. </returns>
-		Friend Overridable Property mostRecentEventTimeEx As Long
-			Get
-				pushPopLock.lock()
-				Try
-					Return mostRecentEventTime
-				Finally
-					pushPopLock.unlock()
-				End Try
-			End Get
-		End Property
+        ''' <returns> most recent event time on all threads. </returns>
+        Friend Overridable Property mostRecentEventTimeEx As Long
+            Get
+                pushPopLock.lock()
+                Try
+                    Return mostRecentEventTime
+                Finally
+                    pushPopLock.unlock()
+                End Try
+            End Get
+        End Property
 
 		''' <summary>
 		''' Returns the the event currently being dispatched by the
@@ -776,156 +776,156 @@ Namespace java.awt
 		''' <returns> the event currently being dispatched, or null if this method is
 		'''         invoked on a thread other than an event dispatching thread
 		''' @since 1.4 </returns>
-		Public Property Shared currentEvent As AWTEvent
-			Get
-				Return Toolkit.eventQueue.currentEventImpl
-			End Get
-		End Property
-		Private Property currentEventImpl As AWTEvent
-			Get
-				pushPopLock.lock()
-				Try
-						Return If(Thread.CurrentThread Is dispatchThread, currentEvent.get(), Nothing)
-				Finally
-					pushPopLock.unlock()
-				End Try
-			End Get
-		End Property
+		PublicShared ReadOnly PropertycurrentEvent As AWTEvent
+        Get
+        Return Toolkit.eventQueue.currentEventImpl
+        End Get
+        End Property
+        Private Property currentEventImpl As AWTEvent
+            Get
+                pushPopLock.lock()
+                Try
+                    Return If(Thread.CurrentThread Is dispatchThread, currentEvent.get(), Nothing)
+                Finally
+                    pushPopLock.unlock()
+                End Try
+            End Get
+        End Property
 
-		''' <summary>
-		''' Replaces the existing <code>EventQueue</code> with the specified one.
-		''' Any pending events are transferred to the new <code>EventQueue</code>
-		''' for processing by it.
-		''' </summary>
-		''' <param name="newEventQueue"> an <code>EventQueue</code>
-		'''          (or subclass thereof) instance to be use </param>
-		''' <seealso cref=      java.awt.EventQueue#pop </seealso>
-		''' <exception cref="NullPointerException"> if <code>newEventQueue</code> is <code>null</code>
-		''' @since           1.2 </exception>
-		Public Overridable Sub push(ByVal newEventQueue As EventQueue)
-			If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("EventQueue.push(" & newEventQueue & ")")
+        ''' <summary>
+        ''' Replaces the existing <code>EventQueue</code> with the specified one.
+        ''' Any pending events are transferred to the new <code>EventQueue</code>
+        ''' for processing by it.
+        ''' </summary>
+        ''' <param name="newEventQueue"> an <code>EventQueue</code>
+        '''          (or subclass thereof) instance to be use </param>
+        ''' <seealso cref=      java.awt.EventQueue#pop </seealso>
+        ''' <exception cref="NullPointerException"> if <code>newEventQueue</code> is <code>null</code>
+        ''' @since           1.2 </exception>
+        Public Overridable Sub push(ByVal newEventQueue As EventQueue)
+            If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("EventQueue.push(" & newEventQueue & ")")
 
-			pushPopLock.lock()
-			Try
-				Dim topQueue As EventQueue = Me
-				Do While topQueue.nextQueue IsNot Nothing
-					topQueue = topQueue.nextQueue
-				Loop
-				If topQueue.fwDispatcher IsNot Nothing Then Throw New RuntimeException("push() to queue with fwDispatcher")
-				If (topQueue.dispatchThread IsNot Nothing) AndAlso (topQueue.dispatchThread.eventQueue Is Me) Then
-					newEventQueue.dispatchThread = topQueue.dispatchThread
-					topQueue.dispatchThread.eventQueue = newEventQueue
-				End If
+            pushPopLock.lock()
+            Try
+                Dim topQueue As EventQueue = Me
+                Do While topQueue.nextQueue IsNot Nothing
+                    topQueue = topQueue.nextQueue
+                Loop
+                If topQueue.fwDispatcher IsNot Nothing Then Throw New RuntimeException("push() to queue with fwDispatcher")
+                If (topQueue.dispatchThread IsNot Nothing) AndAlso (topQueue.dispatchThread.eventQueue Is Me) Then
+                    newEventQueue.dispatchThread = topQueue.dispatchThread
+                    topQueue.dispatchThread.eventQueue = newEventQueue
+                End If
 
-				' Transfer all events forward to new EventQueue.
-				Do While topQueue.peekEvent() IsNot Nothing
-					Try
-						' Use getNextEventPrivate() as it doesn't call flushPendingEvents()
-						newEventQueue.postEventPrivate(topQueue.nextEventPrivate)
-					Catch ie As InterruptedException
-						If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("Interrupted push", ie)
-					End Try
-				Loop
+                ' Transfer all events forward to new EventQueue.
+                Do While topQueue.peekEvent() IsNot Nothing
+                    Try
+                        ' Use getNextEventPrivate() as it doesn't call flushPendingEvents()
+                        newEventQueue.postEventPrivate(topQueue.nextEventPrivate)
+                    Catch ie As InterruptedException
+                        If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("Interrupted push", ie)
+                    End Try
+                Loop
 
-				' Wake up EDT waiting in getNextEvent(), so it can
-				' pick up a new EventQueue. Post the waking event before
-				' topQueue.nextQueue is assigned, otherwise the event would
-				' go newEventQueue
-				topQueue.postEventPrivate(New InvocationEvent(topQueue, dummyRunnable))
+                ' Wake up EDT waiting in getNextEvent(), so it can
+                ' pick up a new EventQueue. Post the waking event before
+                ' topQueue.nextQueue is assigned, otherwise the event would
+                ' go newEventQueue
+                topQueue.postEventPrivate(New InvocationEvent(topQueue, dummyRunnable))
 
-				newEventQueue.previousQueue = topQueue
-				topQueue.nextQueue = newEventQueue
+                newEventQueue.previousQueue = topQueue
+                topQueue.nextQueue = newEventQueue
 
-				If appContext.get(AppContext.EVENT_QUEUE_KEY) Is topQueue Then appContext.put(AppContext.EVENT_QUEUE_KEY, newEventQueue)
+                If appContext.get(appContext.EVENT_QUEUE_KEY) Is topQueue Then appContext.put(appContext.EVENT_QUEUE_KEY, newEventQueue)
 
-				pushPopCond.signalAll()
-			Finally
-				pushPopLock.unlock()
-			End Try
-		End Sub
+                pushPopCond.signalAll()
+            Finally
+                pushPopLock.unlock()
+            End Try
+        End Sub
 
-		''' <summary>
-		''' Stops dispatching events using this <code>EventQueue</code>.
-		''' Any pending events are transferred to the previous
-		''' <code>EventQueue</code> for processing.
-		''' <p>
-		''' Warning: To avoid deadlock, do not declare this method
-		''' synchronized in a subclass.
-		''' </summary>
-		''' <exception cref="EmptyStackException"> if no previous push was made
-		'''  on this <code>EventQueue</code> </exception>
-		''' <seealso cref=      java.awt.EventQueue#push
-		''' @since           1.2 </seealso>
-		Protected Friend Overridable Sub pop()
-			If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("EventQueue.pop(" & Me & ")")
+        ''' <summary>
+        ''' Stops dispatching events using this <code>EventQueue</code>.
+        ''' Any pending events are transferred to the previous
+        ''' <code>EventQueue</code> for processing.
+        ''' <p>
+        ''' Warning: To avoid deadlock, do not declare this method
+        ''' synchronized in a subclass.
+        ''' </summary>
+        ''' <exception cref="EmptyStackException"> if no previous push was made
+        '''  on this <code>EventQueue</code> </exception>
+        ''' <seealso cref=      java.awt.EventQueue#push
+        ''' @since           1.2 </seealso>
+        Protected Friend Overridable Sub pop()
+            If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("EventQueue.pop(" & Me & ")")
 
-			pushPopLock.lock()
-			Try
-				Dim topQueue As EventQueue = Me
-				Do While topQueue.nextQueue IsNot Nothing
-					topQueue = topQueue.nextQueue
-				Loop
-				Dim prevQueue As EventQueue = topQueue.previousQueue
-				If prevQueue Is Nothing Then Throw New java.util.EmptyStackException
+            pushPopLock.lock()
+            Try
+                Dim topQueue As EventQueue = Me
+                Do While topQueue.nextQueue IsNot Nothing
+                    topQueue = topQueue.nextQueue
+                Loop
+                Dim prevQueue As EventQueue = topQueue.previousQueue
+                If prevQueue Is Nothing Then Throw New java.util.EmptyStackException
 
-				topQueue.previousQueue = Nothing
-				prevQueue.nextQueue = Nothing
+                topQueue.previousQueue = Nothing
+                prevQueue.nextQueue = Nothing
 
-				' Transfer all events back to previous EventQueue.
-				Do While topQueue.peekEvent() IsNot Nothing
-					Try
-						prevQueue.postEventPrivate(topQueue.nextEventPrivate)
-					Catch ie As InterruptedException
-						If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("Interrupted pop", ie)
-					End Try
-				Loop
+                ' Transfer all events back to previous EventQueue.
+                Do While topQueue.peekEvent() IsNot Nothing
+                    Try
+                        prevQueue.postEventPrivate(topQueue.nextEventPrivate)
+                    Catch ie As InterruptedException
+                        If eventLog.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then eventLog.fine("Interrupted pop", ie)
+                    End Try
+                Loop
 
-				If (topQueue.dispatchThread IsNot Nothing) AndAlso (topQueue.dispatchThread.eventQueue Is Me) Then
-					prevQueue.dispatchThread = topQueue.dispatchThread
-					topQueue.dispatchThread.eventQueue = prevQueue
-				End If
+                If (topQueue.dispatchThread IsNot Nothing) AndAlso (topQueue.dispatchThread.eventQueue Is Me) Then
+                    prevQueue.dispatchThread = topQueue.dispatchThread
+                    topQueue.dispatchThread.eventQueue = prevQueue
+                End If
 
-				If appContext.get(AppContext.EVENT_QUEUE_KEY) Is Me Then appContext.put(AppContext.EVENT_QUEUE_KEY, prevQueue)
+                If appContext.get(appContext.EVENT_QUEUE_KEY) Is Me Then appContext.put(appContext.EVENT_QUEUE_KEY, prevQueue)
 
-				' Wake up EDT waiting in getNextEvent(), so it can
-				' pick up a new EventQueue
-				topQueue.postEventPrivate(New InvocationEvent(topQueue, dummyRunnable))
+                ' Wake up EDT waiting in getNextEvent(), so it can
+                ' pick up a new EventQueue
+                topQueue.postEventPrivate(New InvocationEvent(topQueue, dummyRunnable))
 
-				pushPopCond.signalAll()
-			Finally
-				pushPopLock.unlock()
-			End Try
-		End Sub
+                pushPopCond.signalAll()
+            Finally
+                pushPopLock.unlock()
+            End Try
+        End Sub
 
-		''' <summary>
-		''' Creates a new {@code secondary loop} associated with this
-		''' event queue. Use the <seealso cref="SecondaryLoop#enter"/> and
-		''' <seealso cref="SecondaryLoop#exit"/> methods to start and stop the
-		''' event loop and dispatch the events from this queue.
-		''' </summary>
-		''' <returns> secondaryLoop A new secondary loop object, which can
-		'''                       be used to launch a new nested event
-		'''                       loop and dispatch events from this queue
-		''' </returns>
-		''' <seealso cref= SecondaryLoop#enter </seealso>
-		''' <seealso cref= SecondaryLoop#exit
-		''' 
-		''' @since 1.7 </seealso>
-		Public Overridable Function createSecondaryLoop() As SecondaryLoop
-			Return createSecondaryLoop(Nothing, Nothing, 0)
-		End Function
+        ''' <summary>
+        ''' Creates a new {@code secondary loop} associated with this
+        ''' event queue. Use the <seealso cref="SecondaryLoop#enter"/> and
+        ''' <seealso cref="SecondaryLoop#exit"/> methods to start and stop the
+        ''' event loop and dispatch the events from this queue.
+        ''' </summary>
+        ''' <returns> secondaryLoop A new secondary loop object, which can
+        '''                       be used to launch a new nested event
+        '''                       loop and dispatch events from this queue
+        ''' </returns>
+        ''' <seealso cref= SecondaryLoop#enter </seealso>
+        ''' <seealso cref= SecondaryLoop#exit
+        ''' 
+        ''' @since 1.7 </seealso>
+        Public Overridable Function createSecondaryLoop() As SecondaryLoop
+            Return createSecondaryLoop(Nothing, Nothing, 0)
+        End Function
 
-		Friend Overridable Function createSecondaryLoop(ByVal cond As Conditional, ByVal filter As EventFilter, ByVal interval As Long) As SecondaryLoop
-			pushPopLock.lock()
-			Try
-				If nextQueue IsNot Nothing Then Return nextQueue.createSecondaryLoop(cond, filter, interval)
-				If fwDispatcher IsNot Nothing Then Return fwDispatcher.createSecondaryLoop()
-				If dispatchThread Is Nothing Then initDispatchThread()
-				Return New WaitDispatchSupport(dispatchThread, cond, filter, interval)
-			Finally
-				pushPopLock.unlock()
-			End Try
-		End Function
+        Friend Overridable Function createSecondaryLoop(ByVal cond As Conditional, ByVal filter As EventFilter, ByVal interval As Long) As SecondaryLoop
+            pushPopLock.lock()
+            Try
+                If nextQueue IsNot Nothing Then Return nextQueue.createSecondaryLoop(cond, filter, interval)
+                If fwDispatcher IsNot Nothing Then Return fwDispatcher.createSecondaryLoop()
+                If dispatchThread Is Nothing Then initDispatchThread()
+                Return New WaitDispatchSupport(dispatchThread, cond, filter, interval)
+            Finally
+                pushPopLock.unlock()
+            End Try
+        End Function
 
 		''' <summary>
 		''' Returns true if the calling thread is
@@ -946,8 +946,8 @@ Namespace java.awt
 		''' <seealso cref=             #invokeAndWait </seealso>
 		''' <seealso cref=             Toolkit#getSystemEventQueue
 		''' @since           1.2 </seealso>
-		Public Property Shared dispatchThread As Boolean
-			Get
+		PublicShared ReadOnly PropertydispatchThread As Boolean
+        Get
 				Dim eq As EventQueue = Toolkit.eventQueue
 				Return eq.dispatchThreadImpl
 			End Get

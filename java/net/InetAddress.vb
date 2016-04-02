@@ -1154,7 +1154,7 @@ Namespace java.net
         ''' </summary>
         ''' <returns>  the InetAddress loopback instance.
         ''' @since 1.7 </returns>
-        Public Property Shared loopbackAddress As InetAddress
+        PublicShared ReadOnly PropertyloopbackAddress As InetAddress
             Get
                 Return impl.loopbackAddress()
             End Get
@@ -1398,7 +1398,7 @@ Namespace java.net
         ''' </exception>
         ''' <seealso cref= SecurityManager#checkConnect </seealso>
         ''' <seealso cref= java.net.InetAddress#getByName(java.lang.String) </seealso>
-        Public Property Shared localHost As InetAddress
+        PublicShared ReadOnly PropertylocalHost As InetAddress
             Get
 
                 Dim security As SecurityManager = System.securityManager

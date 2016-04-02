@@ -3188,7 +3188,7 @@ Namespace java.lang
         End Property
 
         ' Fetches the factory for reflective objects
-        Private Property Shared reflectionFactory As sun.reflect.ReflectionFactory
+        PrivateShared ReadOnly PropertyreflectionFactory As sun.reflect.ReflectionFactory
             Get
                 If reflectionFactory Is Nothing Then reflectionFactory = java.security.AccessController.doPrivileged(New sun.reflect.ReflectionFactory.GetReflectionFactoryAction)
                 Return reflectionFactory

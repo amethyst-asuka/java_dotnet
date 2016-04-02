@@ -258,7 +258,7 @@ Namespace java.awt
 			Return False
 		End Function
 
-		Private Property Shared treeLock As Object
+		PrivateShared ReadOnly PropertytreeLock As Object
 			Get
 				Return Component.LOCK
 			End Get

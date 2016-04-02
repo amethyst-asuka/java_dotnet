@@ -76,7 +76,7 @@ Namespace java.awt
         '     * AWTKeyStroke class.
         '     * Must be called under locked AWTKeyStro
         '     
-        Private Property Shared aWTKeyStrokeClass As [Class]
+        PrivateShared ReadOnly PropertyaWTKeyStrokeClass As [Class]
             Get
                 Dim clazz As [Class] = CType(sun.awt.AppContext.appContext.get(GetType(AWTKeyStroke)), [Class])
                 If clazz Is Nothing Then
@@ -526,7 +526,7 @@ Namespace java.awt
 			Throw New IllegalArgumentException(errmsg)
 		End Function
 
-		Private Property Shared vKCollection As VKCollection
+		PrivateShared ReadOnly PropertyvKCollection As VKCollection
 			Get
 				If vks Is Nothing Then vks = New VKCollection
 				Return vks

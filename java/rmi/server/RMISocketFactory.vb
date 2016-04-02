@@ -163,7 +163,7 @@ Namespace java.rmi.server
 		''' <returns> the default RMI socket factory
 		''' @since JDK1.1 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared defaultSocketFactory As RMISocketFactory
+		PublicShared ReadOnly PropertydefaultSocketFactory As RMISocketFactory
 			Get
 				If defaultSocketFactory Is Nothing Then defaultSocketFactory = New sun.rmi.transport.proxy.RMIMasterSocketFactory
 				Return defaultSocketFactory

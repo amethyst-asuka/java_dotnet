@@ -128,7 +128,7 @@ Namespace java.sql
 		''' <returns> a <code>java.io.PrintWriter</code> object </returns>
 		''' <seealso cref= #setLogWriter
 		''' @since 1.2 </seealso>
-		Public Property Shared logWriter As java.io.PrintWriter
+		PublicShared ReadOnly PropertylogWriter As java.io.PrintWriter
 			Get
 					Return logWriter
 			End Get
@@ -379,7 +379,7 @@ Namespace java.sql
 		''' </summary>
 		''' <returns> the list of JDBC Drivers loaded by the caller's class loader </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property Shared drivers As System.Collections.IEnumerator(Of Driver)
+		PublicShared ReadOnly Propertydrivers As System.Collections.IEnumerator(Of Driver)
 			Get
 				Dim result As New List(Of Driver)
     

@@ -483,7 +483,7 @@ Namespace java.awt
 		''' windowing system may still not support the concept of
 		''' shaping (due to the bugs in the windowing system).
 		''' </summary>
-		Friend Property Shared windowShapingSupported As Boolean
+		FriendShared ReadOnly PropertywindowShapingSupported As Boolean
 			Get
 				Dim curToolkit As Toolkit = Toolkit.defaultToolkit
 				If Not(TypeOf curToolkit Is sun.awt.SunToolkit) Then Return False
@@ -498,7 +498,7 @@ Namespace java.awt
 		''' windowing system may still not support the concept of
 		''' translucency (due to the bugs in the windowing system).
 		''' </summary>
-		Friend Property Shared windowOpacitySupported As Boolean
+		FriendShared ReadOnly PropertywindowOpacitySupported As Boolean
 			Get
 				Dim curToolkit As Toolkit = Toolkit.defaultToolkit
 				If Not(TypeOf curToolkit Is sun.awt.SunToolkit) Then Return False

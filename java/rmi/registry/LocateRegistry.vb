@@ -58,7 +58,7 @@ Namespace java.rmi.registry
 		''' <returns> reference (a stub) to the remote object registry </returns>
 		''' <exception cref="RemoteException"> if the reference could not be created
 		''' @since JDK1.1 </exception>
-		Public Property Shared registry As Registry
+		PublicShared ReadOnly Propertyregistry As Registry
 			Get
 				Return getRegistry(Nothing, Registry.REGISTRY_PORT)
 			End Get

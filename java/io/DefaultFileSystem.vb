@@ -34,7 +34,7 @@ Namespace java.io
 		''' <summary>
 		''' Return the FileSystem object for Windows platform.
 		''' </summary>
-		Public Property Shared fileSystem As FileSystem
+		PublicShared ReadOnly PropertyfileSystem As FileSystem
 			Get
 				Return New WinNTFileSystem
 			End Get

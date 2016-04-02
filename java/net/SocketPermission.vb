@@ -242,7 +242,7 @@ Namespace java.net
 		End Sub
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Property Shared debug As sun.security.util.Debug
+		PrivateShared ReadOnly Propertydebug As sun.security.util.Debug
 			Get
 				If Not debugInit Then
 					debug = sun.security.util.Debug.getInstance("access")

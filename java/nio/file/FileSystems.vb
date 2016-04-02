@@ -102,7 +102,7 @@ Namespace java.nio.file
 			End Class
 
 			' returns default provider
-			Private Property Shared defaultProvider As java.nio.file.spi.FileSystemProvider
+			PrivateShared ReadOnly PropertydefaultProvider As java.nio.file.spi.FileSystemProvider
 				Get
 					Dim provider As java.nio.file.spi.FileSystemProvider = sun.nio.fs.DefaultFileSystemProvider.create()
     
@@ -168,7 +168,7 @@ Namespace java.nio.file
 		''' returned by the first invocation.
 		''' </summary>
 		''' <returns>  the default file system </returns>
-		Public Property Shared [default] As FileSystem
+		PublicShared ReadOnly Property[default] As FileSystem
 			Get
 				Return DefaultFileSystemHolder.defaultFileSystem_Renamed
 			End Get

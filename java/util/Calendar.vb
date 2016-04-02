@@ -1511,7 +1511,7 @@ Namespace java.util
 		''' <seealso cref="Locale.Category#FORMAT FORMAT"/> locale.
 		''' </summary>
 		''' <returns> a Calendar. </returns>
-		Public Property Shared instance As Calendar
+		PublicShared ReadOnly Propertyinstance As Calendar
 			Get
 				Return createCalendar(TimeZone.default, Locale.getDefault(Locale.Category.FORMAT))
 			End Get
@@ -1604,7 +1604,7 @@ Namespace java.util
 		''' <returns> An array of locales for which localized
 		'''         <code>Calendar</code> instances are available. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared availableLocales As Locale()
+		PublicShared ReadOnly PropertyavailableLocales As Locale()
 			Get
 				Return java.text.DateFormat.availableLocales
 			End Get
@@ -2402,7 +2402,7 @@ Namespace java.util
 		''' <seealso cref= #getCalendarType() </seealso>
 		''' <seealso cref= Calendar.Builder#setCalendarType(String) </seealso>
 		''' <seealso cref= Locale#getUnicodeLocaleType(String) </seealso>
-		Public Property Shared availableCalendarTypes As [Set](Of String)
+		PublicShared ReadOnly PropertyavailableCalendarTypes As [Set](Of String)
 			Get
 				Return AvailableCalendarTypes.SET
 			End Get

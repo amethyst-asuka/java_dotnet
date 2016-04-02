@@ -112,7 +112,7 @@ Namespace java.text
 		''' <returns> an array of locales for which localized
 		'''         <code>DecimalFormatSymbols</code> instances are available.
 		''' @since 1.6 </returns>
-		Public Property Shared availableLocales As java.util.Locale()
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Locale()
 			Get
 				Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.text.spi.DecimalFormatSymbolsProvider))
 				Return pool.availableLocales
@@ -133,7 +133,7 @@ Namespace java.text
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
 		''' <returns> a <code>DecimalFormatSymbols</code> instance.
 		''' @since 1.6 </returns>
-		Public Property Shared instance As DecimalFormatSymbols
+		PublicShared ReadOnly Propertyinstance As DecimalFormatSymbols
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 			End Get

@@ -597,7 +597,7 @@ Namespace java.lang
 
 		Private Shared rootGroup As ThreadGroup = rootGroup
 
-		Private Property Shared rootGroup As ThreadGroup
+		PrivateShared ReadOnly PropertyrootGroup As ThreadGroup
 			Get
 				Dim root As ThreadGroup = Thread.CurrentThread.threadGroup
 				Do While root.parent IsNot Nothing

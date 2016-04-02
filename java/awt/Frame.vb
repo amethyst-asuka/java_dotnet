@@ -967,7 +967,7 @@ Namespace java.awt
         ''' <seealso cref= Window#getOwnerlessWindows
         '''
         ''' @since 1.2 </seealso>
-        Public Property Shared frames As Frame()
+        PublicShared ReadOnly Propertyframes As Frame()
             Get
                 Dim allWindows_Renamed As Window() = Window.windows
 

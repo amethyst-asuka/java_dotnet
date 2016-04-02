@@ -84,7 +84,7 @@ Namespace java.net
 		''' <seealso cref= #setDefault(ProxySelector) </seealso>
 		''' <returns> the system-wide {@code ProxySelector}
 		''' @since 1.5 </returns>
-		Public Property Shared [default] As ProxySelector
+		PublicShared ReadOnly Property[default] As ProxySelector
 			Get
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_PROXYSELECTOR_PERMISSION)

@@ -167,7 +167,7 @@ Namespace java.awt
 		''' <seealso cref= #isSupported </seealso>
 		''' <seealso cref= SecurityManager#checkPermission </seealso>
 		''' <seealso cref= AWTPermission </seealso>
-		Public Property Shared systemTray As SystemTray
+		PublicShared ReadOnly PropertysystemTray As SystemTray
 			Get
 				checkSystemTrayAllowed()
 				If GraphicsEnvironment.headless Then Throw New HeadlessException
@@ -204,7 +204,7 @@ Namespace java.awt
 		''' method returns <code>true</code> if the minimal system tray access is
 		''' supported but does not guarantee that all system tray
 		''' functionality is supported for the current platform </returns>
-		Public Property Shared supported As Boolean
+		PublicShared ReadOnly Propertysupported As Boolean
 			Get
 				Dim toolkit_Renamed As Toolkit = Toolkit.defaultToolkit
 				If TypeOf toolkit_Renamed Is sun.awt.SunToolkit Then

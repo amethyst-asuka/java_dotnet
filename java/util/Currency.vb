@@ -382,7 +382,7 @@ Namespace java.util
 		''' <returns> the set of available currencies.  If there is no currency
 		'''    available in the runtime, the returned set is empty.
 		''' @since 1.7 </returns>
-		Public Property Shared availableCurrencies As [Set](Of Currency)
+		PublicShared ReadOnly PropertyavailableCurrencies As [Set](Of Currency)
 			Get
 				SyncLock GetType(Currency)
 					If available Is Nothing Then

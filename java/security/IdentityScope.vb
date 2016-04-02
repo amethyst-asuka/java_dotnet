@@ -133,7 +133,7 @@ Namespace java.security
 		'''         set.
 		''' </returns>
 		''' <seealso cref= #setSystemScope </seealso>
-		Public Property Shared systemScope As IdentityScope
+		PublicShared ReadOnly PropertysystemScope As IdentityScope
 			Get
 				If scope Is Nothing Then initializeSystemScope()
 				Return scope

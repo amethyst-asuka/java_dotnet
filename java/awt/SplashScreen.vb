@@ -108,7 +108,7 @@ Namespace java.awt
 		'''         returns true </exception>
 		''' <returns> the <seealso cref="SplashScreen"/> instance, or <code>null</code> if there is
 		'''         none or it has already been closed </returns>
-		Public Property Shared splashScreen As SplashScreen
+		PublicShared ReadOnly PropertysplashScreen As SplashScreen
 			Get
 				SyncLock GetType(SplashScreen)
 					If GraphicsEnvironment.headless Then Throw New HeadlessException

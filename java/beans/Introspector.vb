@@ -270,7 +270,7 @@ Namespace java.beans
 		'''          for this array is implementation-dependent; e.g.
 		'''          Sun implementation initially sets to {"sun.beans.infos"}. </returns>
 
-		Public Property Shared beanInfoSearchPath As String()
+		PublicShared ReadOnly PropertybeanInfoSearchPath As String()
 			Get
 				Return ThreadGroupContext.context.beanInfoFinder.packages
 			End Get

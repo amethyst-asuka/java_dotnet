@@ -417,7 +417,7 @@ Namespace java.security
 		''' the providers in the array is their preference order.
 		''' </summary>
 		''' <returns> an array of all the installed providers. </returns>
-		Public Property Shared providers As Provider()
+		PublicShared ReadOnly Propertyproviders As Provider()
 			Get
 				Return Providers.fullProviderList.ToArray()
 			End Get

@@ -360,7 +360,7 @@ Namespace java.util.logging
 		''' <summary>
 		''' Returns the global LogManager object. </summary>
 		''' <returns> the global LogManager object </returns>
-		Public Property Shared logManager As LogManager
+		PublicShared ReadOnly PropertylogManager As LogManager
 			Get
 				If manager IsNot Nothing Then manager.ensureLogManagerInitialized()
 				Return manager
@@ -1661,7 +1661,7 @@ Namespace java.util.logging
 		''' <seealso cref= java.lang.management.PlatformLoggingMXBean
 		''' @since 1.5 </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared loggingMXBean As LoggingMXBean
+		PublicShared ReadOnly PropertyloggingMXBean As LoggingMXBean
 			Get
 				If loggingMXBean Is Nothing Then loggingMXBean = New Logging
 				Return loggingMXBean
@@ -1711,7 +1711,7 @@ Namespace java.util.logging
 			''' <summary>
 			''' Returns {@code true} if java.beans is present.
 			''' </summary>
-			Friend Property Shared beansPresent As Boolean
+			FriendShared ReadOnly PropertybeansPresent As Boolean
 				Get
 					Return propertyChangeListenerClass IsNot Nothing AndAlso propertyChangeEventClass IsNot Nothing
 				End Get

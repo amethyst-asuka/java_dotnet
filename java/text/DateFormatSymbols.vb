@@ -278,7 +278,7 @@ Namespace java.text
 		''' <returns> An array of locales for which localized
 		'''         <code>DateFormatSymbols</code> instances are available.
 		''' @since 1.6 </returns>
-		Public Property Shared availableLocales As java.util.Locale()
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Locale()
 			Get
 				Dim pool As sun.util.locale.provider.LocaleServiceProviderPool= sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.text.spi.DateFormatSymbolsProvider))
 				Return pool.availableLocales
@@ -298,7 +298,7 @@ Namespace java.text
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
 		''' <returns> a <code>DateFormatSymbols</code> instance.
 		''' @since 1.6 </returns>
-		Public Property Shared instance As DateFormatSymbols
+		PublicShared ReadOnly Propertyinstance As DateFormatSymbols
 			Get
 				Return getInstance(java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 			End Get

@@ -365,7 +365,7 @@ Namespace java.net
 		''' <returns> an Enumeration of NetworkInterfaces found on this machine </returns>
 		''' <exception cref="SocketException">  if an I/O error occurs. </exception>
 
-		Public Property Shared networkInterfaces As System.Collections.IEnumerator(Of NetworkInterface)
+		PublicShared ReadOnly PropertynetworkInterfaces As System.Collections.IEnumerator(Of NetworkInterface)
 			Get
 				Dim netifs As NetworkInterface() = all
     

@@ -579,7 +579,7 @@ Namespace java.rmi.server
 		''' invocation of its <code>checkPermission</code> method fails
 		''' 
 		''' @since   1.4 </exception>
-		Public Property Shared defaultProviderInstance As RMIClassLoaderSpi
+		PublicShared ReadOnly PropertydefaultProviderInstance As RMIClassLoaderSpi
 			Get
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(New RuntimePermission("setFactory"))

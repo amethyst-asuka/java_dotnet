@@ -53,7 +53,7 @@ Namespace java.lang
 		''' </summary>
 		''' <returns>  the <code>Runtime</code> object associated with the current
 		'''          Java application. </returns>
-		Public Property Shared runtime As Runtime
+		PublicShared ReadOnly Propertyruntime As Runtime
 			Get
 				Return currentRuntime
 			End Get

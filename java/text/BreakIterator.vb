@@ -413,7 +413,7 @@ Namespace java.text
 		''' for <a href="BreakIterator.html#word">word breaks</a>
 		''' for the <seealso cref="Locale#getDefault() default locale"/>. </summary>
 		''' <returns> A break iterator for word breaks </returns>
-		Public Property Shared wordInstance As BreakIterator
+		PublicShared ReadOnly PropertywordInstance As BreakIterator
 			Get
 				Return getWordInstance(java.util.Locale.default)
 			End Get
@@ -435,7 +435,7 @@ Namespace java.text
 		''' for <a href="BreakIterator.html#line">line breaks</a>
 		''' for the <seealso cref="Locale#getDefault() default locale"/>. </summary>
 		''' <returns> A break iterator for line breaks </returns>
-		Public Property Shared lineInstance As BreakIterator
+		PublicShared ReadOnly PropertylineInstance As BreakIterator
 			Get
 				Return getLineInstance(java.util.Locale.default)
 			End Get
@@ -457,7 +457,7 @@ Namespace java.text
 		''' for <a href="BreakIterator.html#character">character breaks</a>
 		''' for the <seealso cref="Locale#getDefault() default locale"/>. </summary>
 		''' <returns> A break iterator for character breaks </returns>
-		Public Property Shared characterInstance As BreakIterator
+		PublicShared ReadOnly PropertycharacterInstance As BreakIterator
 			Get
 				Return getCharacterInstance(java.util.Locale.default)
 			End Get
@@ -479,7 +479,7 @@ Namespace java.text
 		''' for <a href="BreakIterator.html#sentence">sentence breaks</a>
 		''' for the <seealso cref="Locale#getDefault() default locale"/>. </summary>
 		''' <returns> A break iterator for sentence breaks </returns>
-		Public Property Shared sentenceInstance As BreakIterator
+		PublicShared ReadOnly PropertysentenceInstance As BreakIterator
 			Get
 				Return getSentenceInstance(java.util.Locale.default)
 			End Get
@@ -546,7 +546,7 @@ Namespace java.text
 		''' <returns> An array of locales for which localized
 		'''         <code>BreakIterator</code> instances are available. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared availableLocales As java.util.Locale()
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Locale()
 			Get
 				Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.text.spi.BreakIteratorProvider))
 				Return pool.availableLocales

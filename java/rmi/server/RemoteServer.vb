@@ -69,7 +69,7 @@ Namespace java.rmi.server
 		''' is being processed in the current thread
 		''' 
 		''' @since   JDK1.1 </exception>
-		Public Property Shared clientHost As String
+		PublicShared ReadOnly PropertyclientHost As String
 			Get
 				Return sun.rmi.transport.tcp.TCPTransport.clientHost
 			End Get

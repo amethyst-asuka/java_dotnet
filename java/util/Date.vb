@@ -1158,7 +1158,7 @@ Namespace java.util
 		End Function
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Property Shared julianCalendar As sun.util.calendar.BaseCalendar
+		PrivateShared ReadOnly PropertyjulianCalendar As sun.util.calendar.BaseCalendar
 			Get
 				If jcal Is Nothing Then jcal = CType(sun.util.calendar.CalendarSystem.forName("julian"), sun.util.calendar.BaseCalendar)
 				Return jcal

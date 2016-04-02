@@ -111,7 +111,7 @@ Namespace java.rmi.server
 		''' @since JDK1.1 </seealso>
 		''' @deprecated no replacement 
 		<Obsolete("no replacement"), MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared defaultStream As PrintStream
+		PublicShared ReadOnly PropertydefaultStream As PrintStream
 			Get
 				Return defaultStream
 			End Get

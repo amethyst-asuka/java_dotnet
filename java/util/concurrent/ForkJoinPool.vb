@@ -2364,7 +2364,7 @@ Namespace java.util.concurrent
 		''' threads, that are known to have zero queued tasks, so
 		''' compensate by a factor of (#idle/#active) threads.
 		''' </summary>
-		Friend Property Shared surplusQueuedTaskCount As Integer
+		FriendShared ReadOnly PropertysurplusQueuedTaskCount As Integer
 			Get
 				Dim t As Thread
 				Dim wt As ForkJoinWorkerThread
@@ -2975,7 +2975,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <returns> the targeted parallelism level of the common pool
 		''' @since 1.8 </returns>
-		Public Property Shared commonPoolParallelism As Integer
+		PublicShared ReadOnly PropertycommonPoolParallelism As Integer
 			Get
 				Return commonParallelism
 			End Get

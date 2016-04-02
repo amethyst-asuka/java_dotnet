@@ -113,7 +113,7 @@ Namespace java.time.format
 		''' The locale 'en_US' will always be present.
 		''' </summary>
 		''' <returns> a Set of Locales for which localization is supported </returns>
-		Public Property Shared availableLocales As java.util.Set(Of java.util.Locale)
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Set(Of java.util.Locale)
 			Get
 				Dim l As java.util.Locale() = java.text.DecimalFormatSymbols.availableLocales
 				Dim locales As java.util.Set(Of java.util.Locale) = New HashSet(Of java.util.Locale)(l.Length)

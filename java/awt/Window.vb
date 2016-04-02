@@ -1581,7 +1581,7 @@ Namespace java.awt
 		''' <seealso cref= Window#getOwnerlessWindows
 		''' 
 		''' @since 1.6 </seealso>
-		Public Property Shared windows As Window()
+		PublicShared ReadOnly Propertywindows As Window()
 			Get
 				Return getWindows(sun.awt.AppContext.appContext)
 			End Get
@@ -1604,7 +1604,7 @@ Namespace java.awt
 		''' <seealso cref= Window#getWindows()
 		''' 
 		''' @since 1.6 </seealso>
-		Public Property Shared ownerlessWindows As Window()
+		PublicShared ReadOnly PropertyownerlessWindows As Window()
 			Get
 				Dim allWindows_Renamed As Window() = Window.windows
     

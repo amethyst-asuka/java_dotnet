@@ -275,7 +275,7 @@ Namespace java.lang
 		''' <returns> a new array of packages known to the callers {@code ClassLoader}
 		''' instance.  An zero length array is returned if none are known. </returns>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property Shared packages As Package()
+		PublicShared ReadOnly Propertypackages As Package()
 			Get
 				Dim l As  ClassLoader = ClassLoader.getClassLoader(sun.reflect.Reflection.callerClass)
 				If l IsNot Nothing Then

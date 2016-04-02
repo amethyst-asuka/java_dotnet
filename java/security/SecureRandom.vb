@@ -523,7 +523,7 @@ Namespace java.security
 		''' has registered a SecureRandom implementation, or null if none of the
 		''' registered providers supplies a SecureRandom implementation.
 		''' </summary>
-		Private Property Shared prngAlgorithm As String
+		PrivateShared ReadOnly PropertyprngAlgorithm As String
 			Get
 				For Each p As Provider In Providers.providerList.providers()
 					For Each s As java.security.Provider.Service In p.services
@@ -577,7 +577,7 @@ Namespace java.security
 		''' <seealso cref= Security#getProperty(String)
 		''' 
 		''' @since 1.8 </seealso>
-		Public Property Shared instanceStrong As SecureRandom
+		PublicShared ReadOnly PropertyinstanceStrong As SecureRandom
 			Get
     
 				Dim [property] As String = AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)

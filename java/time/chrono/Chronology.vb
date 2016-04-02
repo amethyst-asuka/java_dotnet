@@ -239,7 +239,7 @@ Namespace java.time.chrono
 		''' configuration.
 		''' </summary>
 		''' <returns> the independent, modifiable set of the available chronology IDs, not null </returns>
-		ReadOnly Property Shared availableChronologies As java.util.Set(Of Chronology)
+		ReadOnlyShared ReadOnly PropertyavailableChronologies As java.util.Set(Of Chronology)
 			ReadOnly Property AbstractChronology.getAvailableChronologies() As [Return]
 
 		'-----------------------------------------------------------------------

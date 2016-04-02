@@ -78,7 +78,7 @@ Namespace java.net
 		''' <returns> the system-wide {@code ResponseCache}
 		''' @since 1.5 </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared [default] As ResponseCache
+		PublicShared ReadOnly Property[default] As ResponseCache
 			Get
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_RESPONSECACHE_PERMISSION)

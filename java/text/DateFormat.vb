@@ -429,7 +429,7 @@ Namespace java.text
 		''' <seealso cref= java.util.Locale#getDefault(java.util.Locale.Category) </seealso>
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
 		''' <returns> a time formatter. </returns>
-		Public Property Shared timeInstance As DateFormat
+		PublicShared ReadOnly PropertytimeInstance As DateFormat
 			Get
 				Return [get]([DEFAULT], 0, 1, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 			End Get
@@ -470,7 +470,7 @@ Namespace java.text
 		''' <seealso cref= java.util.Locale#getDefault(java.util.Locale.Category) </seealso>
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
 		''' <returns> a date formatter. </returns>
-		Public Property Shared dateInstance As DateFormat
+		PublicShared ReadOnly PropertydateInstance As DateFormat
 			Get
 				Return [get](0, [DEFAULT], 2, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 			End Get
@@ -511,7 +511,7 @@ Namespace java.text
 		''' <seealso cref= java.util.Locale#getDefault(java.util.Locale.Category) </seealso>
 		''' <seealso cref= java.util.Locale.Category#FORMAT </seealso>
 		''' <returns> a date/time formatter. </returns>
-		Public Property Shared dateTimeInstance As DateFormat
+		PublicShared ReadOnly PropertydateTimeInstance As DateFormat
 			Get
 				Return [get]([DEFAULT], [DEFAULT], 3, java.util.Locale.getDefault(java.util.Locale.Category.FORMAT))
 			End Get
@@ -550,7 +550,7 @@ Namespace java.text
 		''' date and the time.
 		''' </summary>
 		''' <returns> a date/time formatter </returns>
-		Public Property Shared instance As DateFormat
+		PublicShared ReadOnly Propertyinstance As DateFormat
 			Get
 				Return getDateTimeInstance([SHORT], [SHORT])
 			End Get
@@ -568,7 +568,7 @@ Namespace java.text
 		''' </summary>
 		''' <returns> An array of locales for which localized
 		'''         <code>DateFormat</code> instances are available. </returns>
-		Public Property Shared availableLocales As java.util.Locale()
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Locale()
 			Get
 				Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.text.spi.DateFormatProvider))
 				Return pool.availableLocales

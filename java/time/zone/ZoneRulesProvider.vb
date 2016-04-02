@@ -182,7 +182,7 @@ Namespace java.time.zone
 		''' These IDs are the string form of a <seealso cref="ZoneId"/>.
 		''' </summary>
 		''' <returns> a modifiable copy of the set of zone IDs, not null </returns>
-		Public Property Shared availableZoneIds As java.util.Set(Of String)
+		PublicShared ReadOnly PropertyavailableZoneIds As java.util.Set(Of String)
 			Get
 				Return New HashSet(Of )(ZONES.Keys)
 			End Get

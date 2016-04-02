@@ -83,7 +83,7 @@ Namespace java.rmi.dgc
 		''' <returns> true if host address can be determined, false otherwise
 		''' @deprecated </returns>
 		<Obsolete> _
-		Public Property Shared unique As Boolean
+		PublicShared ReadOnly Propertyunique As Boolean
 			Get
 				Return True
 			End Get

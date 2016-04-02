@@ -56,7 +56,7 @@ Namespace java.awt.print
 		''' <exception cref="SecurityException"> if a security manager exists and its
 		'''          <seealso cref="java.lang.SecurityManager#checkPrintJobAccess"/>
 		'''          method disallows this thread from creating a print job request </exception>
-		Public Property Shared printerJob As PrinterJob
+		PublicShared ReadOnly PropertyprinterJob As PrinterJob
 			Get
 				Dim security As SecurityManager = System.securityManager
 				If security IsNot Nothing Then security.checkPrintJobAccess()

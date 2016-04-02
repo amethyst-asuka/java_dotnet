@@ -902,7 +902,7 @@ Namespace java.util.concurrent
 		''' initialization. Note that invoking ThreadLocalRandom.current()
 		''' can be used to force initialization on zero return.
 		''' </summary>
-		Friend Property Shared probe As Integer
+		FriendShared ReadOnly Propertyprobe As Integer
 			Get
 				Return UNSAFE.getInt(Thread.CurrentThread, PROBE)
 			End Get

@@ -273,7 +273,7 @@ Namespace java.security.cert
 		''' <returns> the default {@code CertPathBuilder} type as specified
 		''' by the {@code certpathbuilder.type} security property, or the string
 		''' {@literal "PKIX"} if no such property exists. </returns>
-		Public Property Shared defaultType As String
+		PublicShared ReadOnly PropertydefaultType As String
 			Get
 				Dim cpbtype As String = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 				Return If(cpbtype Is Nothing, "PKIX", cpbtype)

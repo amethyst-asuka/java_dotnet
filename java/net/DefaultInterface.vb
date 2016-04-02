@@ -35,7 +35,7 @@ Namespace java.net
 
 	Friend Class DefaultInterface
 
-		Friend Property Shared [default] As NetworkInterface
+		FriendShared ReadOnly Property[default] As NetworkInterface
 			Get
 				Return Nothing
 			End Get

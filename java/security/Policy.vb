@@ -110,7 +110,7 @@ Namespace java.security
 
 		''' <summary>
 		''' package private for AccessControlContext and ProtectionDomain </summary>
-		Friend Property Shared [set] As Boolean
+		FriendShared ReadOnly Property[set] As Boolean
 			Get
 				Dim pi As PolicyInfo = policy_Renamed.get()
 				Return pi.policy_Renamed IsNot Nothing AndAlso pi.initialized = True
@@ -139,7 +139,7 @@ Namespace java.security
 		''' </exception>
 		''' <seealso cref= SecurityManager#checkPermission(Permission) </seealso>
 		''' <seealso cref= #setPolicy(java.security.Policy) </seealso>
-		Public Property Shared policy As Policy
+		PublicShared ReadOnly Propertypolicy As Policy
 			Get
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_POLICY_PERMISSION)

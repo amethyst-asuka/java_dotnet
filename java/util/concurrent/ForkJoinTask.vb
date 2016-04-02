@@ -1142,7 +1142,7 @@ Namespace java.util.concurrent
 		''' </summary>
 		''' <seealso cref= #inForkJoinPool </seealso>
 		''' <returns> the pool, or {@code null} if none </returns>
-		Public Property Shared pool As ForkJoinPool
+		PublicShared ReadOnly Propertypool As ForkJoinPool
 			Get
 				Dim t As Thread = Thread.CurrentThread
 				Return If(TypeOf t Is ForkJoinWorkerThread, CType(t, ForkJoinWorkerThread).pool, Nothing)
@@ -1182,7 +1182,7 @@ Namespace java.util.concurrent
 		''' fork other tasks.
 		''' </summary>
 		''' <returns> the number of tasks </returns>
-		Public Property Shared queuedTaskCount As Integer
+		PublicShared ReadOnly PropertyqueuedTaskCount As Integer
 			Get
 				Dim t As Thread
 				Dim q As ForkJoinPool.WorkQueue
@@ -1208,7 +1208,7 @@ Namespace java.util.concurrent
 		''' exceeded.
 		''' </summary>
 		''' <returns> the surplus number of tasks, which may be negative </returns>
-		Public Property Shared surplusQueuedTaskCount As Integer
+		PublicShared ReadOnly PropertysurplusQueuedTaskCount As Integer
 			Get
 				Return ForkJoinPool.surplusQueuedTaskCount
 			End Get

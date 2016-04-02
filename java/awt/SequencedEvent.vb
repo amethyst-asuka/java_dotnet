@@ -165,7 +165,7 @@ Namespace java.awt
 		End Property
 
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Property Shared first As SequencedEvent
+		PrivateShared ReadOnly Propertyfirst As SequencedEvent
 			Get
 				Return CType(list_Renamed.First.Value, SequencedEvent)
 			End Get
@@ -174,7 +174,7 @@ Namespace java.awt
 	'     Disposes all events from disposed AppContext
 	'     * return first valid event
 	'     
-		Private Property Shared firstWithContext As SequencedEvent
+		PrivateShared ReadOnly PropertyfirstWithContext As SequencedEvent
 			Get
 				Dim first_Renamed As SequencedEvent = first
 				Do While isOwnerAppContextDisposed(first_Renamed)

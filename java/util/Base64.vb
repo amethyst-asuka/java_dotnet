@@ -81,7 +81,7 @@ Namespace java.util
 		''' <a href="#basic">Basic</a> type base64 encoding scheme.
 		''' </summary>
 		''' <returns>  A Base64 encoder. </returns>
-		Public Property Shared encoder As Encoder
+		PublicShared ReadOnly Propertyencoder As Encoder
 			Get
 				 Return Encoder.RFC4648
 			End Get
@@ -93,7 +93,7 @@ Namespace java.util
 		''' encoding scheme.
 		''' </summary>
 		''' <returns>  A Base64 encoder. </returns>
-		Public Property Shared urlEncoder As Encoder
+		PublicShared ReadOnly PropertyurlEncoder As Encoder
 			Get
 				 Return Encoder.RFC4648_URLSAFE
 			End Get
@@ -104,7 +104,7 @@ Namespace java.util
 		''' <a href="#mime">MIME</a> type base64 encoding scheme.
 		''' </summary>
 		''' <returns>  A Base64 encoder. </returns>
-		Public Property Shared mimeEncoder As Encoder
+		PublicShared ReadOnly PropertymimeEncoder As Encoder
 			Get
 				Return Encoder.RFC2045
 			End Get
@@ -142,7 +142,7 @@ Namespace java.util
 		''' <a href="#basic">Basic</a> type base64 encoding scheme.
 		''' </summary>
 		''' <returns>  A Base64 decoder. </returns>
-		Public Property Shared decoder As Decoder
+		PublicShared ReadOnly Propertydecoder As Decoder
 			Get
 				 Return Decoder.RFC4648
 			End Get
@@ -154,7 +154,7 @@ Namespace java.util
 		''' encoding scheme.
 		''' </summary>
 		''' <returns>  A Base64 decoder. </returns>
-		Public Property Shared urlDecoder As Decoder
+		PublicShared ReadOnly PropertyurlDecoder As Decoder
 			Get
 				 Return Decoder.RFC4648_URLSAFE
 			End Get
@@ -165,7 +165,7 @@ Namespace java.util
 		''' <a href="#mime">MIME</a> type base64 decoding scheme.
 		''' </summary>
 		''' <returns>  A Base64 decoder. </returns>
-		Public Property Shared mimeDecoder As Decoder
+		PublicShared ReadOnly PropertymimeDecoder As Decoder
 			Get
 				 Return Decoder.RFC2045
 			End Get

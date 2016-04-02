@@ -1180,7 +1180,7 @@ Namespace java.lang
 		End Class
 
 		' Returns the URLClassPath that is used for finding system resources.
-		Friend Property Shared bootstrapClassPath As sun.misc.URLClassPath
+		FriendShared ReadOnly PropertybootstrapClassPath As sun.misc.URLClassPath
 			Get
 				Return sun.misc.Launcher.bootstrapClassPath
 			End Get
@@ -1322,7 +1322,7 @@ Namespace java.lang
 		''' 
 		''' @revised  1.4 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property Shared systemClassLoader As  ClassLoader
+		PublicShared ReadOnly PropertysystemClassLoader As  ClassLoader
 			Get
 				initSystemClassLoader()
 				If scl Is Nothing Then Return Nothing
@@ -1627,7 +1627,7 @@ Namespace java.lang
 			End Sub
 			' Invoked in the VM to determine the context class in
 			' JNI_Load/JNI_Unload
-			Friend Property Shared fromClass As  [Class]
+			FriendShared ReadOnly PropertyfromClass As  [Class]
 				Get
 					Return ClassLoader.nativeLibraryContext.Peek().fromClass
 				End Get

@@ -291,7 +291,7 @@ Namespace java.util.logging
 		''' </summary>
 		''' <returns> global logger object
 		''' @since 1.7 </returns>
-		Public Property Shared [global] As Logger
+		PublicShared ReadOnly Property[global] As Logger
 			Get
 				' In order to break a cyclic dependence between the LogManager
 				' and Logger static initializers causing deadlocks, the global
@@ -593,7 +593,7 @@ Namespace java.util.logging
 		''' <p>
 		''' </summary>
 		''' <returns> a newly created private Logger </returns>
-		Public Property Shared anonymousLogger As Logger
+		PublicShared ReadOnly PropertyanonymousLogger As Logger
 			Get
 				Return getAnonymousLogger(Nothing)
 			End Get

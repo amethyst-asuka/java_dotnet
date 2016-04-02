@@ -26,7 +26,7 @@ Imports [event]
 ' *
 ' *
 ' *
-' 
+'
 Namespace java.awt
 
 
@@ -58,7 +58,7 @@ Namespace java.awt
     ''' one of the defined action-key identifiers in the
     ''' <code>Event</code> class (<code>PGUP</code>,
     ''' <code>PGDN</code>, <code>F1</code>, <code>F2</code>, etc).
-    ''' 
+    '''
     ''' @author     Sami Shaio
     ''' @since      JDK1.0
     ''' </summary>
@@ -67,7 +67,7 @@ Namespace java.awt
         <NonSerialized>
         Private data As Long
 
-        ' Modifier constants 
+        ' Modifier constants
 
         ''' <summary>
         ''' This flag indicates that the Shift key was down when the event
@@ -95,7 +95,7 @@ Namespace java.awt
         ''' </summary>
         Public Shared ReadOnly ALT_MASK As Integer = 1 << 3
 
-        ' Action keys 
+        ' Action keys
 
         ''' <summary>
         ''' The Home key, a non-ASCII action key.
@@ -227,7 +227,7 @@ Namespace java.awt
         ''' </summary>
         Public Const INSERT As Integer = 1025
 
-        ' Non-action keys 
+        ' Non-action keys
 
         ''' <summary>
         ''' The Enter key.
@@ -255,7 +255,7 @@ Namespace java.awt
         Public Const DELETE As Integer = 127
 
 
-        ' Base for all window events. 
+        ' Base for all window events.
         Private Const WINDOW_EVENT As Integer = 200
 
         ''' <summary>
@@ -283,7 +283,7 @@ Namespace java.awt
         ''' </summary>
         Public Shared ReadOnly WINDOW_MOVED As Integer = 5 + WINDOW_EVENT
 
-        ' Base for all keyboard events. 
+        ' Base for all keyboard events.
         Private Const KEY_EVENT As Integer = 400
 
         ''' <summary>
@@ -316,7 +316,7 @@ Namespace java.awt
         ''' </summary>
         Public Shared ReadOnly KEY_ACTION_RELEASE As Integer = 4 + KEY_EVENT
 
-        ' Base for all mouse events. 
+        ' Base for all mouse events.
         Private Const MOUSE_EVENT As Integer = 500
 
         ''' <summary>
@@ -362,7 +362,7 @@ Namespace java.awt
         Public Shared ReadOnly MOUSE_DRAG As Integer = 6 + MOUSE_EVENT
 
 
-        ' Scrolling events 
+        ' Scrolling events
         Private Const SCROLL_EVENT As Integer = 600
 
         ''' <summary>
@@ -406,7 +406,7 @@ Namespace java.awt
         ''' </summary>
         Public Shared ReadOnly SCROLL_END As Integer = 7 + SCROLL_EVENT
 
-        ' List Events 
+        ' List Events
         Private Const LIST_EVENT As Integer = 700
 
         ''' <summary>
@@ -419,7 +419,7 @@ Namespace java.awt
         ''' </summary>
         Public Shared ReadOnly LIST_DESELECT As Integer = 2 + LIST_EVENT
 
-        ' Misc Event 
+        ' Misc Event
         Private Const MISC_EVENT As Integer = 1000
 
         ''' <summary>
@@ -451,7 +451,7 @@ Namespace java.awt
         ''' The target component. This indicates the component over which the
         ''' event occurred or with which the event is associated.
         ''' This object has been replaced by AWTEvent.getSource()
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.AWTEvent#getSource() </seealso>
         Public target As Object
@@ -459,7 +459,7 @@ Namespace java.awt
         ''' <summary>
         ''' The time stamp.
         ''' Replaced by InputEvent.getWhen().
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.event.InputEvent#getWhen() </seealso>
         Public [when] As Long
@@ -468,7 +468,7 @@ Namespace java.awt
         ''' Indicates which type of event the event is, and which
         ''' other <code>Event</code> variables are relevant for the event.
         ''' This has been replaced by AWTEvent.getID()
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.AWTEvent#getID() </seealso>
         Public id As Integer
@@ -476,7 +476,7 @@ Namespace java.awt
         ''' <summary>
         ''' The <i>x</i> coordinate of the event.
         ''' Replaced by MouseEvent.getX()
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.event.MouseEvent#getX() </seealso>
         Public x As Integer
@@ -484,7 +484,7 @@ Namespace java.awt
         ''' <summary>
         ''' The <i>y</i> coordinate of the event.
         ''' Replaced by MouseEvent.getY()
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.event.MouseEvent#getY() </seealso>
         Public y As Integer
@@ -492,7 +492,7 @@ Namespace java.awt
         ''' <summary>
         ''' The key code of the key that was pressed in a keyboard event.
         ''' This has been replaced by KeyEvent.getKeyCode()
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.event.KeyEvent#getKeyCode() </seealso>
         Public key As Integer
@@ -507,7 +507,7 @@ Namespace java.awt
         ''' This is replaced with InputEvent.getModifiers()
         ''' In java 1.1 MouseEvent and KeyEvent are subclasses
         ''' of InputEvent.
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.event.InputEvent#getModifiers() </seealso>
         Public modifiers As Integer
@@ -517,7 +517,7 @@ Namespace java.awt
         ''' number of consecutive clicks. For other events, its value is
         ''' <code>0</code>.
         ''' This field has been replaced by MouseEvent.getClickCount().
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.event.MouseEvent#getClickCount() </seealso>
         Public clickCount As Integer
@@ -526,7 +526,7 @@ Namespace java.awt
         ''' An arbitrary argument of the event. The value of this field
         ''' depends on the type of event.
         ''' <code>arg</code> has been replaced by event specific property.
-        ''' 
+        '''
         ''' @serial
         ''' </summary>
         Public arg As Object
@@ -535,30 +535,30 @@ Namespace java.awt
         ''' The next event. This field is set when putting events into a
         ''' linked list.
         ''' This has been replaced by EventQueue.
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= java.awt.EventQueue </seealso>
         Public evt As [event]
 
-        ' table for mapping old Event action keys to KeyEvent virtual keys. 
-        Private Shared ReadOnly actionKeyCodes As Integer()() = {New Integer() {KeyEvent.VK_HOME, [event].HOME}, New Integer() {KeyEvent.VK_END, Event.END }, New Integer() {KeyEvent.VK_PAGE_UP, Event.PGUP }, New Integer() {KeyEvent.VK_PAGE_DOWN, Event.PGDN }, New Integer() {KeyEvent.VK_UP, Event.UP }, New Integer() {KeyEvent.VK_DOWN, Event.DOWN }, New Integer() {KeyEvent.VK_LEFT, Event.LEFT }, New Integer() {KeyEvent.VK_RIGHT, Event.RIGHT }, New Integer() {KeyEvent.VK_F1, Event.F1 }, New Integer() {KeyEvent.VK_F2, Event.F2 }, New Integer() {KeyEvent.VK_F3, Event.F3 }, New Integer() {KeyEvent.VK_F4, Event.F4 }, New Integer() {KeyEvent.VK_F5, Event.F5 }, New Integer() {KeyEvent.VK_F6, Event.F6 }, New Integer() {KeyEvent.VK_F7, Event.F7 }, New Integer() {KeyEvent.VK_F8, Event.F8 }, New Integer() {KeyEvent.VK_F9, Event.F9 }, New Integer() {KeyEvent.VK_F10, Event.F10 }, New Integer() {KeyEvent.VK_F11, Event.F11 }, New Integer() {KeyEvent.VK_F12, Event.F12 }, New Integer() {KeyEvent.VK_PRINTSCREEN, Event.PRINT_SCREEN }, New Integer() {KeyEvent.VK_SCROLL_LOCK, Event.SCROLL_LOCK }, New Integer() {KeyEvent.VK_CAPS_LOCK, Event.CAPS_LOCK }, New Integer() {KeyEvent.VK_NUM_LOCK, Event.NUM_LOCK }, New Integer() {KeyEvent.VK_PAUSE, Event.PAUSE }, New Integer() {KeyEvent.VK_INSERT, Event.INSERT }}
+        ' table for mapping old Event action keys to KeyEvent virtual keys.
+        Private Shared ReadOnly actionKeyCodes As Integer()() '= {New Integer() {KeyEvent.VK_HOME, [event].HOME}, New Integer() {KeyEvent.VK_END, Event.END }, New Integer() {KeyEvent.VK_PAGE_UP, Event.PGUP }, New Integer() {KeyEvent.VK_PAGE_DOWN, Event.PGDN }, New Integer() {KeyEvent.VK_UP, Event.UP }, New Integer() {KeyEvent.VK_DOWN, Event.DOWN }, New Integer() {KeyEvent.VK_LEFT, Event.LEFT }, New Integer() {KeyEvent.VK_RIGHT, Event.RIGHT }, New Integer() {KeyEvent.VK_F1, Event.F1 }, New Integer() {KeyEvent.VK_F2, Event.F2 }, New Integer() {KeyEvent.VK_F3, Event.F3 }, New Integer() {KeyEvent.VK_F4, Event.F4 }, New Integer() {KeyEvent.VK_F5, Event.F5 }, New Integer() {KeyEvent.VK_F6, Event.F6 }, New Integer() {KeyEvent.VK_F7, Event.F7 }, New Integer() {KeyEvent.VK_F8, Event.F8 }, New Integer() {KeyEvent.VK_F9, Event.F9 }, New Integer() {KeyEvent.VK_F10, Event.F10 }, New Integer() {KeyEvent.VK_F11, Event.F11 }, New Integer() {KeyEvent.VK_F12, Event.F12 }, New Integer() {KeyEvent.VK_PRINTSCREEN, Event.PRINT_SCREEN }, New Integer() {KeyEvent.VK_SCROLL_LOCK, Event.SCROLL_LOCK }, New Integer() {KeyEvent.VK_CAPS_LOCK, Event.CAPS_LOCK }, New Integer() {KeyEvent.VK_NUM_LOCK, Event.NUM_LOCK }, New Integer() {KeyEvent.VK_PAUSE, Event.PAUSE }, New Integer() {KeyEvent.VK_INSERT, Event.INSERT }}
 
         ''' <summary>
         ''' This field controls whether or not the event is sent back
         ''' down to the peer once the target has processed it -
         ''' false means it's sent to the peer, true means it's not.
-        ''' 
+        '''
         ''' @serial </summary>
         ''' <seealso cref= #isConsumed() </seealso>
         Private consumed As Boolean = False
 
-        '    
+        '
         '     * JDK 1.1 serialVersionUID
-        '     
+        '
         Private Const serialVersionUID As Long = 5488922509400504703L
 
         Shared Sub New()
-            ' ensure that the necessary native libraries are loaded 
+            ' ensure that the necessary native libraries are loaded
             Toolkit.loadLibraries()
             If Not GraphicsEnvironment.headless Then initIDs()
         End Sub
@@ -732,14 +732,14 @@ Namespace java.awt
             End Get
         End Property
 
-        '    
+        '
         '     * <b>NOTE:</b> The <code>Event</code> class is obsolete and is
         '     * available only for backwards compatibility.  It has been replaced
         '     * by the <code>AWTEvent</code> class and its subclasses.
         '     * <p>
         '     * Returns the integer key-code associated with the key in this event,
         '     * as described in java.awt.Event.
-        '     
+        '
         Friend Shared Function getOldEventKey(ByVal e As KeyEvent) As Integer
             Dim keyCode As Integer = e.keyCode
             For i As Integer = 0 To actionKeyCodes.Length - 1
@@ -748,14 +748,14 @@ Namespace java.awt
             Return AscW(e.keyChar)
         End Function
 
-        '    
+        '
         '     * <b>NOTE:</b> The <code>Event</code> class is obsolete and is
         '     * available only for backwards compatibility.  It has been replaced
         '     * by the <code>AWTEvent</code> class and its subclasses.
         '     * <p>
         '     * Returns a new KeyEvent char which corresponds to the int key
         '     * of this old event.
-        '     
+        '
         Friend Overridable ReadOnly Property keyEventChar As Char
             Get
                 For i As Integer = 0 To actionKeyCodes.Length - 1

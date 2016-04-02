@@ -179,7 +179,7 @@ Namespace java.awt
 		''' </summary>
 		''' <returns> this thread's context's KeyboardFocusManager </returns>
 		''' <seealso cref= #setCurrentKeyboardFocusManager </seealso>
-		Public Property Shared currentKeyboardFocusManager As KeyboardFocusManager
+		PublicShared ReadOnly PropertycurrentKeyboardFocusManager As KeyboardFocusManager
 			Get
 				Return getCurrentKeyboardFocusManager(sun.awt.AppContext.appContext)
 			End Get
@@ -2066,7 +2066,7 @@ Namespace java.awt
 			Return Nothing
 		End Function
 
-		Friend Property Shared autoFocusTransferEnabled As Boolean
+		FriendShared ReadOnly PropertyautoFocusTransferEnabled As Boolean
 			Get
 				SyncLock heavyweightRequests
 					Return (heavyweightRequests.Count = 0) AndAlso (Not disableRestoreFocus) AndAlso (Nothing Is currentLightweightRequests)
@@ -2465,7 +2465,7 @@ Namespace java.awt
 			End If
 		End Function
 
-		Private Property Shared lastHWRequest As HeavyweightFocusRequest
+		PrivateShared ReadOnly PropertylastHWRequest As HeavyweightFocusRequest
 			Get
 				SyncLock heavyweightRequests
 					Return If(heavyweightRequests.Count > 0, heavyweightRequests.Last.Value, Nothing)
@@ -2473,7 +2473,7 @@ Namespace java.awt
 			End Get
 		End Property
 
-		Private Property Shared firstHWRequest As HeavyweightFocusRequest
+		PrivateShared ReadOnly PropertyfirstHWRequest As HeavyweightFocusRequest
 			Get
 				SyncLock heavyweightRequests
 					Return If(heavyweightRequests.Count > 0, heavyweightRequests.First.Value, Nothing)

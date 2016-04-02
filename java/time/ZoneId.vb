@@ -266,7 +266,7 @@ Namespace java.time
 		''' the set of IDs is fixed. Each call to this method is thread-safe.
 		''' </summary>
 		''' <returns> a modifiable copy of the set of zone IDs, not null </returns>
-		Public Property Shared availableZoneIds As java.util.Set(Of String)
+		PublicShared ReadOnly PropertyavailableZoneIds As java.util.Set(Of String)
 			Get
 				Return java.time.zone.ZoneRulesProvider.availableZoneIds
 			End Get

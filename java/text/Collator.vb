@@ -208,7 +208,7 @@ Namespace java.text
 		''' <returns> the Collator for the default locale.(for example, en_US) </returns>
 		''' <seealso cref= java.util.Locale#getDefault </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared instance As Collator
+		PublicShared ReadOnly Propertyinstance As Collator
 			Get
 				Return getInstance(java.util.Locale.default)
 			End Get
@@ -369,7 +369,7 @@ Namespace java.text
 		''' <returns> An array of locales for which localized
 		'''         <code>Collator</code> instances are available. </returns>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared availableLocales As java.util.Locale()
+		PublicShared ReadOnly PropertyavailableLocales As java.util.Locale()
 			Get
 				Dim pool As sun.util.locale.provider.LocaleServiceProviderPool = sun.util.locale.provider.LocaleServiceProviderPool.getPool(GetType(java.text.spi.CollatorProvider))
 				Return pool.availableLocales

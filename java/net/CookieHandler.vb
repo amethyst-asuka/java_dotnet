@@ -67,7 +67,7 @@ Namespace java.net
 		''' <seealso cref="NetPermission"/>{@code ("getCookieHandler")} </exception>
 		''' <seealso cref= #setDefault(CookieHandler) </seealso>
 		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Public Property Shared [default] As CookieHandler
+		PublicShared ReadOnly Property[default] As CookieHandler
 			Get
 				Dim sm As SecurityManager = System.securityManager
 				If sm IsNot Nothing Then sm.checkPermission(sun.security.util.SecurityConstants.GET_COOKIEHANDLER_PERMISSION)

@@ -378,7 +378,7 @@ Namespace java.security.cert
 		''' <returns> the default {@code CertStore} type as specified by the
 		''' {@code certstore.type} security property, or the string
 		''' {@literal "LDAP"} if no such property exists. </returns>
-		Public Property Shared defaultType As String
+		PublicShared ReadOnly PropertydefaultType As String
 			Get
 				Dim cstype As String
 				cstype = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)

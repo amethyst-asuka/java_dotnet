@@ -93,7 +93,7 @@ Namespace java.beans
 		'''          order to find property editors.
 		''' <p>     The default value for this array is implementation-dependent,
 		'''         e.g. Sun implementation initially sets to  {"sun.beans.editors"}. </returns>
-		Public Property Shared editorSearchPath As String()
+		PublicShared ReadOnly PropertyeditorSearchPath As String()
 			Get
 				Return ThreadGroupContext.context.propertyEditorFinder.packages
 			End Get

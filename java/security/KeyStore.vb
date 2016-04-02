@@ -896,7 +896,7 @@ Namespace java.security
 		''' {@code keystore.type} security property, or the string {@literal "jks"}
 		''' if no such property exists. </returns>
 		''' <seealso cref= java.security.Security security properties </seealso>
-		Public Property Shared defaultType As String
+		PublicShared ReadOnly PropertydefaultType As String
 			Get
 				Dim kstype As String
 				kstype = AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)

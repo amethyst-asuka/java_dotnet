@@ -272,7 +272,7 @@ Namespace java.beans
 
             Private Shared ReadOnly getNanosMethod_Renamed As Method = nanosMethod
 
-            Private Property Shared nanosMethod As Method
+            PrivateShared ReadOnly PropertynanosMethod As Method
                 Get
                     Try
                         Dim c As [Class] = Type.GetType("java.sql.Timestamp", True, Nothing)
