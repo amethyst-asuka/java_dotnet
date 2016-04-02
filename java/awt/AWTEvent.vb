@@ -1,6 +1,7 @@
 Imports System
 Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
+Imports [event]
 
 '
 ' * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
@@ -31,547 +32,547 @@ Namespace java.awt
 
 
 
-	''' <summary>
-	''' The root event class for all AWT events.
-	''' This class and its subclasses supercede the original
-	''' java.awt.Event class.
-	''' Subclasses of this root AWTEvent class defined outside of the
-	''' java.awt.event package should define event ID values greater than
-	''' the value defined by RESERVED_ID_MAX.
-	''' <p>
-	''' The event masks defined in this class are needed by Component subclasses
-	''' which are using Component.enableEvents() to select for event types not
-	''' selected by registered listeners. If a listener is registered on a
-	''' component, the appropriate event mask is already set internally by the
-	''' component.
-	''' <p>
-	''' The masks are also used to specify to which types of events an
-	''' AWTEventListener should listen. The masks are bitwise-ORed together
-	''' and passed to Toolkit.addAWTEventListener.
-	''' </summary>
-	''' <seealso cref= Component#enableEvents </seealso>
-	''' <seealso cref= Toolkit#addAWTEventListener
-	''' </seealso>
-	''' <seealso cref= java.awt.event.ActionEvent </seealso>
-	''' <seealso cref= java.awt.event.AdjustmentEvent </seealso>
-	''' <seealso cref= java.awt.event.ComponentEvent </seealso>
-	''' <seealso cref= java.awt.event.ContainerEvent </seealso>
-	''' <seealso cref= java.awt.event.FocusEvent </seealso>
-	''' <seealso cref= java.awt.event.InputMethodEvent </seealso>
-	''' <seealso cref= java.awt.event.InvocationEvent </seealso>
-	''' <seealso cref= java.awt.event.ItemEvent </seealso>
-	''' <seealso cref= java.awt.event.HierarchyEvent </seealso>
-	''' <seealso cref= java.awt.event.KeyEvent </seealso>
-	''' <seealso cref= java.awt.event.MouseEvent </seealso>
-	''' <seealso cref= java.awt.event.MouseWheelEvent </seealso>
-	''' <seealso cref= java.awt.event.PaintEvent </seealso>
-	''' <seealso cref= java.awt.event.TextEvent </seealso>
-	''' <seealso cref= java.awt.event.WindowEvent
-	''' 
-	''' @author Carl Quinn
-	''' @author Amy Fowler
-	''' @since 1.1 </seealso>
-	Public MustInherit Class AWTEvent
-		Inherits java.util.EventObject
+    ''' <summary>
+    ''' The root event class for all AWT events.
+    ''' This class and its subclasses supercede the original
+    ''' java.awt.Event class.
+    ''' Subclasses of this root AWTEvent class defined outside of the
+    ''' java.awt.event package should define event ID values greater than
+    ''' the value defined by RESERVED_ID_MAX.
+    ''' <p>
+    ''' The event masks defined in this class are needed by Component subclasses
+    ''' which are using Component.enableEvents() to select for event types not
+    ''' selected by registered listeners. If a listener is registered on a
+    ''' component, the appropriate event mask is already set internally by the
+    ''' component.
+    ''' <p>
+    ''' The masks are also used to specify to which types of events an
+    ''' AWTEventListener should listen. The masks are bitwise-ORed together
+    ''' and passed to Toolkit.addAWTEventListener.
+    ''' </summary>
+    ''' <seealso cref= Component#enableEvents </seealso>
+    ''' <seealso cref= Toolkit#addAWTEventListener
+    ''' </seealso>
+    ''' <seealso cref= java.awt.event.ActionEvent </seealso>
+    ''' <seealso cref= java.awt.event.AdjustmentEvent </seealso>
+    ''' <seealso cref= java.awt.event.ComponentEvent </seealso>
+    ''' <seealso cref= java.awt.event.ContainerEvent </seealso>
+    ''' <seealso cref= java.awt.event.FocusEvent </seealso>
+    ''' <seealso cref= java.awt.event.InputMethodEvent </seealso>
+    ''' <seealso cref= java.awt.event.InvocationEvent </seealso>
+    ''' <seealso cref= java.awt.event.ItemEvent </seealso>
+    ''' <seealso cref= java.awt.event.HierarchyEvent </seealso>
+    ''' <seealso cref= java.awt.event.KeyEvent </seealso>
+    ''' <seealso cref= java.awt.event.MouseEvent </seealso>
+    ''' <seealso cref= java.awt.event.MouseWheelEvent </seealso>
+    ''' <seealso cref= java.awt.event.PaintEvent </seealso>
+    ''' <seealso cref= java.awt.event.TextEvent </seealso>
+    ''' <seealso cref= java.awt.event.WindowEvent
+    ''' 
+    ''' @author Carl Quinn
+    ''' @author Amy Fowler
+    ''' @since 1.1 </seealso>
+    Public MustInherit Class AWTEvent
+        Inherits java.util.EventObject
 
-		Private Shared ReadOnly log As sun.util.logging.PlatformLogger = sun.util.logging.PlatformLogger.getLogger("java.awt.AWTEvent")
-		Private bdata As SByte()
+        Private Shared ReadOnly log As sun.util.logging.PlatformLogger = sun.util.logging.PlatformLogger.getLogger("java.awt.AWTEvent")
+        Private bdata As SByte()
 
-		''' <summary>
-		''' The event's id.
-		''' @serial </summary>
-		''' <seealso cref= #getID() </seealso>
-		''' <seealso cref= #AWTEvent </seealso>
-		Protected Friend id As Integer
+        ''' <summary>
+        ''' The event's id.
+        ''' @serial </summary>
+        ''' <seealso cref= #getID() </seealso>
+        ''' <seealso cref= #AWTEvent </seealso>
+        Protected Friend id As Integer
 
-		''' <summary>
-		''' Controls whether or not the event is sent back down to the peer once the
-		''' source has processed it - false means it's sent to the peer; true means
-		''' it's not. Semantic events always have a 'true' value since they were
-		''' generated by the peer in response to a low-level event.
-		''' @serial </summary>
-		''' <seealso cref= #consume </seealso>
-		''' <seealso cref= #isConsumed </seealso>
-		Protected Friend consumed As Boolean = False
+        ''' <summary>
+        ''' Controls whether or not the event is sent back down to the peer once the
+        ''' source has processed it - false means it's sent to the peer; true means
+        ''' it's not. Semantic events always have a 'true' value since they were
+        ''' generated by the peer in response to a low-level event.
+        ''' @serial </summary>
+        ''' <seealso cref= #consume </seealso>
+        ''' <seealso cref= #isConsumed </seealso>
+        Protected Friend consumed As Boolean = False
 
-	'   
-	'    * The event's AccessControlContext.
-	'    
-'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
-		<NonSerialized> _
-		Private acc As java.security.AccessControlContext = java.security.AccessController.context
+        '   
+        '    * The event's AccessControlContext.
+        '    
+        'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
+        <NonSerialized>
+        Private acc As java.security.AccessControlContext = java.security.AccessController.context
 
-	'   
-	'    * Returns the acc this event was constructed with.
-	'    
-		Friend Property accessControlContext As java.security.AccessControlContext
-			Get
-				If acc Is Nothing Then Throw New SecurityException("AWTEvent is missing AccessControlContext")
-				Return acc
-			End Get
-		End Property
+        '   
+        '    * Returns the acc this event was constructed with.
+        '    
+        Friend Property accessControlContext As java.security.AccessControlContext
+            Get
+                If acc Is Nothing Then Throw New SecurityException("AWTEvent is missing AccessControlContext")
+                Return acc
+            End Get
+        End Property
 
-		<NonSerialized> _
-		Friend focusManagerIsDispatching As Boolean = False
-		<NonSerialized> _
-		Friend isPosted As Boolean
+        <NonSerialized>
+        Friend focusManagerIsDispatching As Boolean = False
+        <NonSerialized>
+        Friend isPosted As Boolean
 
-		''' <summary>
-		''' Indicates whether this AWTEvent was generated by the system as
-		''' opposed to by user code.
-		''' </summary>
-		<NonSerialized> _
-		Private isSystemGenerated As Boolean
+        ''' <summary>
+        ''' Indicates whether this AWTEvent was generated by the system as
+        ''' opposed to by user code.
+        ''' </summary>
+        <NonSerialized>
+        Private isSystemGenerated As Boolean
 
-		''' <summary>
-		''' The event mask for selecting component events.
-		''' </summary>
-		Public Const COMPONENT_EVENT_MASK As Long = &H1
+        ''' <summary>
+        ''' The event mask for selecting component events.
+        ''' </summary>
+        Public Const COMPONENT_EVENT_MASK As Long = &H1
 
-		''' <summary>
-		''' The event mask for selecting container events.
-		''' </summary>
-		Public Const CONTAINER_EVENT_MASK As Long = &H2
+        ''' <summary>
+        ''' The event mask for selecting container events.
+        ''' </summary>
+        Public Const CONTAINER_EVENT_MASK As Long = &H2
 
-		''' <summary>
-		''' The event mask for selecting focus events.
-		''' </summary>
-		Public Const FOCUS_EVENT_MASK As Long = &H4
+        ''' <summary>
+        ''' The event mask for selecting focus events.
+        ''' </summary>
+        Public Const FOCUS_EVENT_MASK As Long = &H4
 
-		''' <summary>
-		''' The event mask for selecting key events.
-		''' </summary>
-		Public Const KEY_EVENT_MASK As Long = &H8
+        ''' <summary>
+        ''' The event mask for selecting key events.
+        ''' </summary>
+        Public Const KEY_EVENT_MASK As Long = &H8
 
-		''' <summary>
-		''' The event mask for selecting mouse events.
-		''' </summary>
-		Public Const MOUSE_EVENT_MASK As Long = &H10
+        ''' <summary>
+        ''' The event mask for selecting mouse events.
+        ''' </summary>
+        Public Const MOUSE_EVENT_MASK As Long = &H10
 
-		''' <summary>
-		''' The event mask for selecting mouse motion events.
-		''' </summary>
-		Public Const MOUSE_MOTION_EVENT_MASK As Long = &H20
+        ''' <summary>
+        ''' The event mask for selecting mouse motion events.
+        ''' </summary>
+        Public Const MOUSE_MOTION_EVENT_MASK As Long = &H20
 
-		''' <summary>
-		''' The event mask for selecting window events.
-		''' </summary>
-		Public Const WINDOW_EVENT_MASK As Long = &H40
+        ''' <summary>
+        ''' The event mask for selecting window events.
+        ''' </summary>
+        Public Const WINDOW_EVENT_MASK As Long = &H40
 
-		''' <summary>
-		''' The event mask for selecting action events.
-		''' </summary>
-		Public Const ACTION_EVENT_MASK As Long = &H80
+        ''' <summary>
+        ''' The event mask for selecting action events.
+        ''' </summary>
+        Public Const ACTION_EVENT_MASK As Long = &H80
 
-		''' <summary>
-		''' The event mask for selecting adjustment events.
-		''' </summary>
-		Public Const ADJUSTMENT_EVENT_MASK As Long = &H100
+        ''' <summary>
+        ''' The event mask for selecting adjustment events.
+        ''' </summary>
+        Public Const ADJUSTMENT_EVENT_MASK As Long = &H100
 
-		''' <summary>
-		''' The event mask for selecting item events.
-		''' </summary>
-		Public Const ITEM_EVENT_MASK As Long = &H200
+        ''' <summary>
+        ''' The event mask for selecting item events.
+        ''' </summary>
+        Public Const ITEM_EVENT_MASK As Long = &H200
 
-		''' <summary>
-		''' The event mask for selecting text events.
-		''' </summary>
-		Public Const TEXT_EVENT_MASK As Long = &H400
+        ''' <summary>
+        ''' The event mask for selecting text events.
+        ''' </summary>
+        Public Const TEXT_EVENT_MASK As Long = &H400
 
-		''' <summary>
-		''' The event mask for selecting input method events.
-		''' </summary>
-		Public Const INPUT_METHOD_EVENT_MASK As Long = &H800
+        ''' <summary>
+        ''' The event mask for selecting input method events.
+        ''' </summary>
+        Public Const INPUT_METHOD_EVENT_MASK As Long = &H800
 
-		''' <summary>
-		''' The pseudo event mask for enabling input methods.
-		''' We're using one bit in the eventMask so we don't need
-		''' a separate field inputMethodsEnabled.
-		''' </summary>
-		Friend Const INPUT_METHODS_ENABLED_MASK As Long = &H1000
+        ''' <summary>
+        ''' The pseudo event mask for enabling input methods.
+        ''' We're using one bit in the eventMask so we don't need
+        ''' a separate field inputMethodsEnabled.
+        ''' </summary>
+        Friend Const INPUT_METHODS_ENABLED_MASK As Long = &H1000
 
-		''' <summary>
-		''' The event mask for selecting paint events.
-		''' </summary>
-		Public Const PAINT_EVENT_MASK As Long = &H2000
+        ''' <summary>
+        ''' The event mask for selecting paint events.
+        ''' </summary>
+        Public Const PAINT_EVENT_MASK As Long = &H2000
 
-		''' <summary>
-		''' The event mask for selecting invocation events.
-		''' </summary>
-		Public Const INVOCATION_EVENT_MASK As Long = &H4000
+        ''' <summary>
+        ''' The event mask for selecting invocation events.
+        ''' </summary>
+        Public Const INVOCATION_EVENT_MASK As Long = &H4000
 
-		''' <summary>
-		''' The event mask for selecting hierarchy events.
-		''' </summary>
-		Public Const HIERARCHY_EVENT_MASK As Long = &H8000
+        ''' <summary>
+        ''' The event mask for selecting hierarchy events.
+        ''' </summary>
+        Public Const HIERARCHY_EVENT_MASK As Long = &H8000
 
-		''' <summary>
-		''' The event mask for selecting hierarchy bounds events.
-		''' </summary>
-		Public Const HIERARCHY_BOUNDS_EVENT_MASK As Long = &H10000
+        ''' <summary>
+        ''' The event mask for selecting hierarchy bounds events.
+        ''' </summary>
+        Public Const HIERARCHY_BOUNDS_EVENT_MASK As Long = &H10000
 
-		''' <summary>
-		''' The event mask for selecting mouse wheel events.
-		''' @since 1.4
-		''' </summary>
-		Public Const MOUSE_WHEEL_EVENT_MASK As Long = &H20000
+        ''' <summary>
+        ''' The event mask for selecting mouse wheel events.
+        ''' @since 1.4
+        ''' </summary>
+        Public Const MOUSE_WHEEL_EVENT_MASK As Long = &H20000
 
-		''' <summary>
-		''' The event mask for selecting window state events.
-		''' @since 1.4
-		''' </summary>
-		Public Const WINDOW_STATE_EVENT_MASK As Long = &H40000
+        ''' <summary>
+        ''' The event mask for selecting window state events.
+        ''' @since 1.4
+        ''' </summary>
+        Public Const WINDOW_STATE_EVENT_MASK As Long = &H40000
 
-		''' <summary>
-		''' The event mask for selecting window focus events.
-		''' @since 1.4
-		''' </summary>
-		Public Const WINDOW_FOCUS_EVENT_MASK As Long = &H80000
+        ''' <summary>
+        ''' The event mask for selecting window focus events.
+        ''' @since 1.4
+        ''' </summary>
+        Public Const WINDOW_FOCUS_EVENT_MASK As Long = &H80000
 
-		''' <summary>
-		''' WARNING: there are more mask defined privately.  See
-		''' SunToolkit.GRAB_EVENT_MASK.
-		''' </summary>
+        ''' <summary>
+        ''' WARNING: there are more mask defined privately.  See
+        ''' SunToolkit.GRAB_EVENT_MASK.
+        ''' </summary>
 
-		''' <summary>
-		''' The maximum value for reserved AWT event IDs. Programs defining
-		''' their own event IDs should use IDs greater than this value.
-		''' </summary>
-		Public Const RESERVED_ID_MAX As Integer = 1999
+        ''' <summary>
+        ''' The maximum value for reserved AWT event IDs. Programs defining
+        ''' their own event IDs should use IDs greater than this value.
+        ''' </summary>
+        Public Const RESERVED_ID_MAX As Integer = 1999
 
-		' security stuff
-		Private Shared inputEvent_CanAccessSystemClipboard_Field As Field = Nothing
+        ' security stuff
+        Private Shared inputEvent_CanAccessSystemClipboard_Field As Field = Nothing
 
-	'    
-	'     * JDK 1.1 serialVersionUID
-	'     
-		Private Const serialVersionUID As Long = -1825314779160409405L
+        '    
+        '     * JDK 1.1 serialVersionUID
+        '     
+        Private Const serialVersionUID As Long = -1825314779160409405L
 
-		Shared Sub New()
-			' ensure that the necessary native libraries are loaded 
-			Toolkit.loadLibraries()
-			If Not GraphicsEnvironment.headless Then initIDs()
-'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
-'			sun.awt.AWTAccessor.setAWTEventAccessor(New sun.awt.AWTAccessor.AWTEventAccessor()
-	'		{
-	'				public  Sub  setPosted(AWTEvent ev)
-	'				{
-	'					ev.isPosted = True;
-	'				}
-	'
-	'				public  Sub  setSystemGenerated(AWTEvent ev)
-	'				{
-	'					ev.isSystemGenerated = True;
-	'				}
-	'
-	'				public boolean isSystemGenerated(AWTEvent ev)
-	'				{
-	'					Return ev.isSystemGenerated;
-	'				}
-	'
-	'				public AccessControlContext getAccessControlContext(AWTEvent ev)
-	'				{
-	'					Return ev.getAccessControlContext();
-	'				}
-	'
-	'				public byte[] getBData(AWTEvent ev)
-	'				{
-	'					Return ev.bdata;
-	'				}
-	'
-	'				public  Sub  setBData(AWTEvent ev, byte[] bdata)
-	'				{
-	'					ev.bdata = bdata;
-	'				}
-	'
-	'			});
-		End Sub
+        Shared Sub New()
+            ' ensure that the necessary native libraries are loaded 
+            Toolkit.loadLibraries()
+            If Not GraphicsEnvironment.headless Then initIDs()
+            'JAVA TO VB CONVERTER TODO TASK: Anonymous inner classes are not converted to VB if the base type is not defined in the code being converted:
+            '			sun.awt.AWTAccessor.setAWTEventAccessor(New sun.awt.AWTAccessor.AWTEventAccessor()
+            '		{
+            '				public  Sub  setPosted(AWTEvent ev)
+            '				{
+            '					ev.isPosted = True;
+            '				}
+            '
+            '				public  Sub  setSystemGenerated(AWTEvent ev)
+            '				{
+            '					ev.isSystemGenerated = True;
+            '				}
+            '
+            '				public boolean isSystemGenerated(AWTEvent ev)
+            '				{
+            '					Return ev.isSystemGenerated;
+            '				}
+            '
+            '				public AccessControlContext getAccessControlContext(AWTEvent ev)
+            '				{
+            '					Return ev.getAccessControlContext();
+            '				}
+            '
+            '				public byte[] getBData(AWTEvent ev)
+            '				{
+            '					Return ev.bdata;
+            '				}
+            '
+            '				public  Sub  setBData(AWTEvent ev, byte[] bdata)
+            '				{
+            '					ev.bdata = bdata;
+            '				}
+            '
+            '			});
+        End Sub
 
-		<MethodImpl(MethodImplOptions.Synchronized)> _
-		Private Shared Function get_InputEvent_CanAccessSystemClipboard() As Field
-			If inputEvent_CanAccessSystemClipboard_Field Is Nothing Then inputEvent_CanAccessSystemClipboard_Field = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
+        <MethodImpl(MethodImplOptions.Synchronized)>
+        Private Shared Function get_InputEvent_CanAccessSystemClipboard() As Field
+            If inputEvent_CanAccessSystemClipboard_Field Is Nothing Then inputEvent_CanAccessSystemClipboard_Field = java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 
-			Return inputEvent_CanAccessSystemClipboard_Field
-		End Function
+            Return inputEvent_CanAccessSystemClipboard_Field
+        End Function
 
-		Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
-			Implements PrivilegedAction(Of T)
+        Private Class PrivilegedActionAnonymousInnerClassHelper(Of T)
+            Implements PrivilegedAction(Of T)
 
-			Public Overridable Function run() As Field
-				Dim field As Field = Nothing
-				Try
-					field = GetType(InputEvent).getDeclaredField("canAccessSystemClipboard")
-					field.accessible = True
-					Return field
-				Catch e As SecurityException
-					If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.get_InputEvent_CanAccessSystemClipboard() got SecurityException ", e)
-				Catch e As NoSuchFieldException
-					If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.get_InputEvent_CanAccessSystemClipboard() got NoSuchFieldException ", e)
-				End Try
-				Return Nothing
-			End Function
-		End Class
+            Public Overridable Function run() As Field
+                Dim field As Field = Nothing
+                Try
+                    field = GetType(InputEvent).getDeclaredField("canAccessSystemClipboard")
+                    field.accessible = True
+                    Return field
+                Catch e As SecurityException
+                    If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.get_InputEvent_CanAccessSystemClipboard() got SecurityException ", e)
+                Catch e As NoSuchFieldException
+                    If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.get_InputEvent_CanAccessSystemClipboard() got NoSuchFieldException ", e)
+                End Try
+                Return Nothing
+            End Function
+        End Class
 
-		''' <summary>
-		''' Initialize JNI field and method IDs for fields that may be
-		''' accessed from C.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
-		Private Shared Sub initIDs()
-		End Sub
+        ''' <summary>
+        ''' Initialize JNI field and method IDs for fields that may be
+        ''' accessed from C.
+        ''' </summary>
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")>
+        Private Shared Sub initIDs()
+        End Sub
 
-		''' <summary>
-		''' Constructs an AWTEvent object from the parameters of a 1.0-style event. </summary>
-		''' <param name="event"> the old-style event </param>
-		Public Sub New(ByVal [event] As [Event])
-			Me.New(event_Renamed.target, event_Renamed.id)
-		End Sub
+        ''' <summary>
+        ''' Constructs an AWTEvent object from the parameters of a 1.0-style event. </summary>
+        ''' <param name="event"> the old-style event </param>
+        Public Sub New(ByVal [event] As [event])
+            Me.New(event_Renamed.target, event_Renamed.id)
+        End Sub
 
-		''' <summary>
-		''' Constructs an AWTEvent object with the specified source object and type.
-		''' </summary>
-		''' <param name="source"> the object where the event originated </param>
-		''' <param name="id"> the event type </param>
-		Public Sub New(ByVal source As Object, ByVal id As Integer)
-			MyBase.New(source)
-			Me.id = id
-			Select Case id
-			  Case ActionEvent.ACTION_PERFORMED, ItemEvent.ITEM_STATE_CHANGED, AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, TextEvent.TEXT_VALUE_CHANGED
-				consumed = True
-			  Case Else
-			End Select
-		End Sub
+        ''' <summary>
+        ''' Constructs an AWTEvent object with the specified source object and type.
+        ''' </summary>
+        ''' <param name="source"> the object where the event originated </param>
+        ''' <param name="id"> the event type </param>
+        Public Sub New(ByVal source As Object, ByVal id As Integer)
+            MyBase.New(source)
+            Me.id = id
+            Select Case id
+                Case ActionEvent.ACTION_PERFORMED, ItemEvent.ITEM_STATE_CHANGED, AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, TextEvent.TEXT_VALUE_CHANGED
+                    consumed = True
+                Case Else
+            End Select
+        End Sub
 
-		''' <summary>
-		''' Retargets an event to a new source. This method is typically used to
-		''' retarget an event to a lightweight child Component of the original
-		''' heavyweight source.
-		''' <p>
-		''' This method is intended to be used only by event targeting subsystems,
-		''' such as client-defined KeyboardFocusManagers. It is not for general
-		''' client use.
-		''' </summary>
-		''' <param name="newSource"> the new Object to which the event should be dispatched
-		''' @since 1.4 </param>
-		Public Overridable Property source As Object
-			Set(ByVal newSource As Object)
-				If source Is newSource Then Return
-    
-				Dim comp As Component = Nothing
-				If TypeOf newSource Is Component Then
-					comp = CType(newSource, Component)
-					Do While comp IsNot Nothing AndAlso comp.peer IsNot Nothing AndAlso (TypeOf comp.peer Is java.awt.peer.LightweightPeer)
-						comp = comp.parent
-					Loop
-				End If
-    
-				SyncLock Me
-					source = newSource
-					If comp IsNot Nothing Then
-						Dim peer As java.awt.peer.ComponentPeer = comp.peer
-						If peer IsNot Nothing Then nativeSetSource(peer)
-					End If
-				End SyncLock
-			End Set
-		End Property
+        ''' <summary>
+        ''' Retargets an event to a new source. This method is typically used to
+        ''' retarget an event to a lightweight child Component of the original
+        ''' heavyweight source.
+        ''' <p>
+        ''' This method is intended to be used only by event targeting subsystems,
+        ''' such as client-defined KeyboardFocusManagers. It is not for general
+        ''' client use.
+        ''' </summary>
+        ''' <param name="newSource"> the new Object to which the event should be dispatched
+        ''' @since 1.4 </param>
+        Public Overridable Property source As Object
+            Set(ByVal newSource As Object)
+                If source Is newSource Then Return
 
-'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
-		<DllImport("unknown")> _
-		Private Sub nativeSetSource(ByVal peer As java.awt.peer.ComponentPeer)
-		End Sub
+                Dim comp As Component = Nothing
+                If TypeOf newSource Is Component Then
+                    comp = CType(newSource, Component)
+                    Do While comp IsNot Nothing AndAlso comp.peer IsNot Nothing AndAlso (TypeOf comp.peer Is java.awt.peer.LightweightPeer)
+                        comp = comp.parent
+                    Loop
+                End If
 
-		''' <summary>
-		''' Returns the event type.
-		''' </summary>
-		Public Overridable Property iD As Integer
-			Get
-				Return id
-			End Get
-		End Property
+                SyncLock Me
+                    source = newSource
+                    If comp IsNot Nothing Then
+                        Dim peer As java.awt.peer.ComponentPeer = comp.peer
+                        If peer IsNot Nothing Then nativeSetSource(peer)
+                    End If
+                End SyncLock
+            End Set
+        End Property
 
-		''' <summary>
-		''' Returns a String representation of this object.
-		''' </summary>
-		Public Overrides Function ToString() As String
-			Dim srcName As String = Nothing
-			If TypeOf source Is Component Then
-				srcName = CType(source, Component).name
-			ElseIf TypeOf source Is MenuComponent Then
-				srcName = CType(source, MenuComponent).name
-			End If
-			Return Me.GetType().name & "[" & paramString() & "] on " & (If(srcName IsNot Nothing, srcName, source))
-		End Function
+        'JAVA TO VB CONVERTER TODO TASK: Replace 'unknown' with the appropriate dll name:
+        <DllImport("unknown")>
+        Private Sub nativeSetSource(ByVal peer As java.awt.peer.ComponentPeer)
+        End Sub
 
-		''' <summary>
-		''' Returns a string representing the state of this <code>Event</code>.
-		''' This method is intended to be used only for debugging purposes, and the
-		''' content and format of the returned string may vary between
-		''' implementations. The returned string may be empty but may not be
-		''' <code>null</code>.
-		''' </summary>
-		''' <returns>  a string representation of this event </returns>
-		Public Overridable Function paramString() As String
-			Return ""
-		End Function
+        ''' <summary>
+        ''' Returns the event type.
+        ''' </summary>
+        Public Overridable Property iD As Integer
+            Get
+                Return iD
+            End Get
+        End Property
 
-		''' <summary>
-		''' Consumes this event, if this event can be consumed. Only low-level,
-		''' system events can be consumed
-		''' </summary>
-		Protected Friend Overridable Sub consume()
-			Select Case id
-			  Case KeyEvent.KEY_PRESSED, KeyEvent.KEY_RELEASED, MouseEvent.MOUSE_PRESSED, MouseEvent.MOUSE_RELEASED, MouseEvent.MOUSE_MOVED, MouseEvent.MOUSE_DRAGGED, MouseEvent.MOUSE_ENTERED, MouseEvent.MOUSE_EXITED, MouseEvent.MOUSE_WHEEL, InputMethodEvent.INPUT_METHOD_TEXT_CHANGED, InputMethodEvent.CARET_POSITION_CHANGED
-				  consumed = True
-			  Case Else
-				  ' event type cannot be consumed
-			End Select
-		End Sub
+        ''' <summary>
+        ''' Returns a String representation of this object.
+        ''' </summary>
+        Public Overrides Function ToString() As String
+            Dim srcName As String = Nothing
+            If TypeOf source Is Component Then
+                srcName = CType(source, Component).name
+            ElseIf TypeOf source Is MenuComponent Then
+                srcName = CType(source, MenuComponent).name
+            End If
+            Return Me.GetType().Name & "[" & paramString() & "] on " & (If(srcName IsNot Nothing, srcName, source))
+        End Function
 
-		''' <summary>
-		''' Returns whether this event has been consumed.
-		''' </summary>
-		Protected Friend Overridable Property consumed As Boolean
-			Get
-				Return consumed
-			End Get
-		End Property
+        ''' <summary>
+        ''' Returns a string representing the state of this <code>Event</code>.
+        ''' This method is intended to be used only for debugging purposes, and the
+        ''' content and format of the returned string may vary between
+        ''' implementations. The returned string may be empty but may not be
+        ''' <code>null</code>.
+        ''' </summary>
+        ''' <returns>  a string representation of this event </returns>
+        Public Overridable Function paramString() As String
+            Return ""
+        End Function
 
-		''' <summary>
-		''' Converts a new event to an old one (used for compatibility).
-		''' If the new event cannot be converted (because no old equivalent
-		''' exists) then this returns null.
-		''' 
-		''' Note: this method is here instead of in each individual new
-		''' event class in java.awt.event because we don't want to make
-		''' it public and it needs to be called from java.awt.
-		''' </summary>
-		Friend Overridable Function convertToOld() As [Event]
-			Dim src As Object = source
-			Dim newid As Integer = id
+        ''' <summary>
+        ''' Consumes this event, if this event can be consumed. Only low-level,
+        ''' system events can be consumed
+        ''' </summary>
+        Protected Friend Overridable Sub consume()
+            Select Case id
+                Case KeyEvent.KEY_PRESSED, KeyEvent.KEY_RELEASED, MouseEvent.MOUSE_PRESSED, MouseEvent.MOUSE_RELEASED, MouseEvent.MOUSE_MOVED, MouseEvent.MOUSE_DRAGGED, MouseEvent.MOUSE_ENTERED, MouseEvent.MOUSE_EXITED, MouseEvent.MOUSE_WHEEL, InputMethodEvent.INPUT_METHOD_TEXT_CHANGED, InputMethodEvent.CARET_POSITION_CHANGED
+                    consumed = True
+                Case Else
+                    ' event type cannot be consumed
+            End Select
+        End Sub
 
-			Select Case id
-			  Case KeyEvent.KEY_PRESSED, KeyEvent.KEY_RELEASED
-				  Dim ke As KeyEvent = CType(Me, KeyEvent)
-				  If ke.actionKey Then newid = (If(id = KeyEvent.KEY_PRESSED, Event.KEY_ACTION, Event.KEY_ACTION_RELEASE))
-				  Dim keyCode As Integer = ke.keyCode
-				  If keyCode = KeyEvent.VK_SHIFT OrElse keyCode = KeyEvent.VK_CONTROL OrElse keyCode = KeyEvent.VK_ALT Then Return Nothing ' suppress modifier keys in old event model.
-				  ' no mask for button1 existed in old Event - strip it out
-				  Return New [Event](src, ke.when, newid, 0, 0, Event.getOldEventKey(ke), (ke.modifiers And (Not InputEvent.BUTTON1_MASK)))
+        ''' <summary>
+        ''' Returns whether this event has been consumed.
+        ''' </summary>
+        Protected Friend Overridable Property consumed As Boolean
+            Get
+                Return consumed
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' Converts a new event to an old one (used for compatibility).
+        ''' If the new event cannot be converted (because no old equivalent
+        ''' exists) then this returns null.
+        ''' 
+        ''' Note: this method is here instead of in each individual new
+        ''' event class in java.awt.event because we don't want to make
+        ''' it public and it needs to be called from java.awt.
+        ''' </summary>
+        Friend Overridable Function convertToOld() As [event]
+            Dim src As Object = source
+            Dim newid As Integer = id
+
+            Select Case id
+                Case KeyEvent.KEY_PRESSED, KeyEvent.KEY_RELEASED
+                    Dim ke As KeyEvent = CType(Me, KeyEvent)
+                    If ke.actionKey Then newid = (If(id = KeyEvent.KEY_PRESSED, Event.KEY_ACTION, Event.KEY_ACTION_RELEASE))
+                    Dim keyCode As Integer = ke.keyCode
+                    If keyCode = KeyEvent.VK_SHIFT OrElse keyCode = KeyEvent.VK_CONTROL OrElse keyCode = KeyEvent.VK_ALT Then Return Nothing ' suppress modifier keys in old event model.
+                    ' no mask for button1 existed in old Event - strip it out
+                    Return New [event](src, ke.when, newid, 0, 0, Event.getOldEventKey(ke), (ke.modifiers And (Not InputEvent.BUTTON1_MASK)))
 
 			  Case MouseEvent.MOUSE_PRESSED, MouseEvent.MOUSE_RELEASED, MouseEvent.MOUSE_MOVED, MouseEvent.MOUSE_DRAGGED, MouseEvent.MOUSE_ENTERED, MouseEvent.MOUSE_EXITED
-				  Dim [me] As MouseEvent = CType(Me, MouseEvent)
-				  ' no mask for button1 existed in old Event - strip it out
-				  Dim olde As New [Event](src, [me].when, newid, [me].x, [me].y, 0, ([me].modifiers And (Not InputEvent.BUTTON1_MASK)))
-				  olde.clickCount = [me].clickCount
-				  Return olde
+                    Dim [me] As MouseEvent = CType(Me, MouseEvent)
+                    ' no mask for button1 existed in old Event - strip it out
+                    Dim olde As New [event](src, [me].when, newid, [me].x, [me].y, 0, ([me].modifiers And (Not InputEvent.BUTTON1_MASK)))
+                    olde.clickCount = [me].clickCount
+                    Return olde
 
-			  Case FocusEvent.FOCUS_GAINED
-				  Return New [Event](src, Event.GOT_FOCUS, Nothing)
+                Case FocusEvent.FOCUS_GAINED
+                    Return New [event](src, Event.GOT_FOCUS, Nothing)
 
-			  Case FocusEvent.FOCUS_LOST
-				  Return New [Event](src, Event.LOST_FOCUS, Nothing)
+                Case FocusEvent.FOCUS_LOST
+                    Return New [event](src, Event.LOST_FOCUS, Nothing)
 
-			  Case WindowEvent.WINDOW_CLOSING, WindowEvent.WINDOW_ICONIFIED, WindowEvent.WINDOW_DEICONIFIED
-				  Return New [Event](src, newid, Nothing)
+                Case WindowEvent.WINDOW_CLOSING, WindowEvent.WINDOW_ICONIFIED, WindowEvent.WINDOW_DEICONIFIED
+                    Return New [event](src, newid, Nothing)
 
-			  Case ComponentEvent.COMPONENT_MOVED
-				  If TypeOf src Is Frame OrElse TypeOf src Is Dialog Then
-					  Dim p As Point = CType(src, Component).location
-					  Return New [Event](src, 0, Event.WINDOW_MOVED, p.x, p.y, 0, 0)
-				  End If
+                Case ComponentEvent.COMPONENT_MOVED
+                    If TypeOf src Is Frame OrElse TypeOf src Is Dialog Then
+                        Dim p As Point = CType(src, Component).location
+                        Return New [event](src, 0, Event.WINDOW_MOVED, p.x, p.y, 0, 0)
+                    End If
 
-			  Case ActionEvent.ACTION_PERFORMED
-				  Dim ae As ActionEvent = CType(Me, ActionEvent)
-				  Dim cmd As String
-				  If TypeOf src Is Button Then
-					  cmd = CType(src, Button).label
-				  ElseIf TypeOf src Is MenuItem Then
-					  cmd = CType(src, MenuItem).label
-				  Else
-					  cmd = ae.actionCommand
-				  End If
-				  Return New [Event](src, 0, newid, 0, 0, 0, ae.modifiers, cmd)
+                Case ActionEvent.ACTION_PERFORMED
+                    Dim ae As ActionEvent = CType(Me, ActionEvent)
+                    Dim cmd As String
+                    If TypeOf src Is Button Then
+                        cmd = CType(src, Button).label
+                    ElseIf TypeOf src Is MenuItem Then
+                        cmd = CType(src, MenuItem).label
+                    Else
+                        cmd = ae.actionCommand
+                    End If
+                    Return New [event](src, 0, newid, 0, 0, 0, ae.modifiers, cmd)
 
-			  Case ItemEvent.ITEM_STATE_CHANGED
-				  Dim ie As ItemEvent = CType(Me, ItemEvent)
-				  Dim arg As Object
-				  If TypeOf src Is List Then
-					  newid = (If(ie.stateChange = ItemEvent.SELECTED, Event.LIST_SELECT, Event.LIST_DESELECT))
-					  arg = ie.item
-				  Else
-					  newid = Event.ACTION_EVENT
+                Case ItemEvent.ITEM_STATE_CHANGED
+                    Dim ie As ItemEvent = CType(Me, ItemEvent)
+                    Dim arg As Object
+                    If TypeOf src Is List Then
+                        newid = (If(ie.stateChange = ItemEvent.SELECTED, Event.LIST_SELECT, Event.LIST_DESELECT))
+                        arg = ie.item
+                    Else
+                        newid = Event.ACTION_EVENT
 					  If TypeOf src Is Choice Then
-						  arg = ie.item
- ' Checkbox
-					  Else
-						  arg = Convert.ToBoolean(ie.stateChange = ItemEvent.SELECTED)
-					  End If
-				  End If
-				  Return New [Event](src, newid, arg)
+                            arg = ie.item
+                            ' Checkbox
+                        Else
+                            arg = Convert.ToBoolean(ie.stateChange = ItemEvent.SELECTED)
+                        End If
+                    End If
+                    Return New [event](src, newid, arg)
 
-			  Case AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED
-				  Dim aje As AdjustmentEvent = CType(Me, AdjustmentEvent)
-				  Select Case aje.adjustmentType
-					Case AdjustmentEvent.UNIT_INCREMENT
-					  newid = Event.SCROLL_LINE_DOWN
+                Case AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED
+                    Dim aje As AdjustmentEvent = CType(Me, AdjustmentEvent)
+                    Select Case aje.adjustmentType
+                        Case AdjustmentEvent.UNIT_INCREMENT
+                            newid = Event.SCROLL_LINE_DOWN
 					Case AdjustmentEvent.UNIT_DECREMENT
-					  newid = Event.SCROLL_LINE_UP
+                            newid = Event.SCROLL_LINE_UP
 					Case AdjustmentEvent.BLOCK_INCREMENT
-					  newid = Event.SCROLL_PAGE_DOWN
+                            newid = Event.SCROLL_PAGE_DOWN
 					Case AdjustmentEvent.BLOCK_DECREMENT
-					  newid = Event.SCROLL_PAGE_UP
+                            newid = Event.SCROLL_PAGE_UP
 					Case AdjustmentEvent.TRACK
-					  If aje.valueIsAdjusting Then
-						  newid = Event.SCROLL_ABSOLUTE
+                            If aje.valueIsAdjusting Then
+                                newid = Event.SCROLL_ABSOLUTE
 					  Else
-						  newid = Event.SCROLL_END
+                                newid = Event.SCROLL_END
 					  End If
-					Case Else
-					  Return Nothing
-				  End Select
-				  Return New [Event](src, newid, Convert.ToInt32(aje.value))
+                        Case Else
+                            Return Nothing
+                    End Select
+                    Return New [event](src, newid, Convert.ToInt32(aje.value))
 
-			  Case Else
-			End Select
-			Return Nothing
-		End Function
+                Case Else
+            End Select
+            Return Nothing
+        End Function
 
-		''' <summary>
-		''' Copies all private data from this event into that.
-		''' Space is allocated for the copied data that will be
-		''' freed when the that is finalized. Upon completion,
-		''' this event is not changed.
-		''' </summary>
-		Friend Overridable Sub copyPrivateDataInto(ByVal that As AWTEvent)
-			that.bdata = Me.bdata
-			' Copy canAccessSystemClipboard value from this into that.
-			If TypeOf Me Is InputEvent AndAlso TypeOf that Is InputEvent Then
-				Dim field As Field = get_InputEvent_CanAccessSystemClipboard()
-				If field IsNot Nothing Then
-					Try
-						Dim b As Boolean = field.getBoolean(Me)
-						field.booleanean(that, b)
-					Catch e As IllegalAccessException
-						If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.copyPrivateDataInto() got IllegalAccessException ", e)
-					End Try
-				End If
-			End If
-			that.isSystemGenerated = Me.isSystemGenerated
-		End Sub
+        ''' <summary>
+        ''' Copies all private data from this event into that.
+        ''' Space is allocated for the copied data that will be
+        ''' freed when the that is finalized. Upon completion,
+        ''' this event is not changed.
+        ''' </summary>
+        Friend Overridable Sub copyPrivateDataInto(ByVal that As AWTEvent)
+            that.bdata = Me.bdata
+            ' Copy canAccessSystemClipboard value from this into that.
+            If TypeOf Me Is InputEvent AndAlso TypeOf that Is InputEvent Then
+                Dim field As Field = get_InputEvent_CanAccessSystemClipboard()
+                If field IsNot Nothing Then
+                    Try
+                        Dim b As Boolean = field.getBoolean(Me)
+                        field.booleanean(that, b)
+                    Catch e As IllegalAccessException
+                        If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.copyPrivateDataInto() got IllegalAccessException ", e)
+                    End Try
+                End If
+            End If
+            that.isSystemGenerated = Me.isSystemGenerated
+        End Sub
 
-		Friend Overridable Sub dispatched()
-			If TypeOf Me Is InputEvent Then
-				Dim field As Field = get_InputEvent_CanAccessSystemClipboard()
-				If field IsNot Nothing Then
-					Try
-						field.booleanean(Me, False)
-					Catch e As IllegalAccessException
-						If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.dispatched() got IllegalAccessException ", e)
-					End Try
-				End If
-			End If
-		End Sub
-	End Class ' class AWTEvent
+        Friend Overridable Sub dispatched()
+            If TypeOf Me Is InputEvent Then
+                Dim field As Field = get_InputEvent_CanAccessSystemClipboard()
+                If field IsNot Nothing Then
+                    Try
+                        field.booleanean(Me, False)
+                    Catch e As IllegalAccessException
+                        If log.isLoggable(sun.util.logging.PlatformLogger.Level.FINE) Then log.fine("AWTEvent.dispatched() got IllegalAccessException ", e)
+                    End Try
+                End If
+            End If
+        End Sub
+    End Class ' class AWTEvent
 
 End Namespace

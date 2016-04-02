@@ -28,7 +28,7 @@ Imports java.util
 ' *
 ' *
 ' *
-' 
+'
 
 Namespace java.lang.invoke
 
@@ -321,9 +321,9 @@ Namespace java.lang.invoke
             mv.visitEnd()
         End Sub
 
-        '    
+        '
         '     * Low-level emit helpers.
-        '     
+        '
         Private Sub emitConst(ByVal con As Object)
             If con Is Nothing Then
                 mv.visitInsn(Opcodes.ACONST_NULL)
@@ -393,9 +393,9 @@ Namespace java.lang.invoke
             mv.visitInsn(opcode)
         End Sub
 
-        '    
+        '
         '     * NOTE: These load/store methods use the localsMap to find the correct index!
-        '     
+        '
         Private Sub emitLoadInsn(ByVal type As BasicType, ByVal index As Integer)
             Dim opcode As Integer = loadInsnOpcode(type)
             mv.visitVarInsn(opcode, localsMap(index))
@@ -826,15 +826,15 @@ Namespace java.lang.invoke
             If cls_Renamed.array OrElse cls_Renamed.primitive Then Return False ' FIXME
             If cls_Renamed.anonymousClass OrElse cls_Renamed.localClass Then Return False ' inner class of some sort
             If cls_Renamed.classLoader IsNot GetType(MethodHandle).classLoader Then Return False ' not on BCP
-            If sun.reflect.misc.ReflectUtil.isVMAnonymousClass(cls_Renamed) Then ' FIXME: switch to supported API once it is added Return False
-                Dim mtype As MethodType = member.methodOrFieldType
-                If Not isStaticallyNameable(mtype.returnType()) Then Return False
-                For Each ptype As [Class] In mtype.parameterArray()
-                    If Not isStaticallyNameable(ptype) Then Return False
-                Next ptype
-                If (Not member.private) AndAlso sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls_Renamed) Then Return True ' in java.lang.invoke package
-                If member.public AndAlso isStaticallyNameable(cls_Renamed) Then Return True
-                Return False
+            If sun.reflect.misc.ReflectUtil.isVMAnonymousClass(cls_Renamed) Then Return False  ' FIXME: switch to supported API once it is added Return False
+            Dim mtype As MethodType = member.methodOrFieldType
+            If Not isStaticallyNameable(mtype.returnType()) Then Return False
+            For Each ptype As [Class] In mtype.parameterArray()
+                If Not isStaticallyNameable(ptype) Then Return False
+            Next ptype
+            If (Not member.private) AndAlso sun.invoke.util.VerifyAccess.isSamePackage(GetType(MethodHandle), cls_Renamed) Then Return True ' in java.lang.invoke package
+            If member.public AndAlso isStaticallyNameable(cls_Renamed) Then Return True
+            Return False
         End Function
 
         Friend Shared Function isStaticallyNameable(ByVal cls As [Class]) As Boolean
@@ -1014,7 +1014,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Emit bytecode for the selectAlternative idiom.
-        ''' 
+        '''
         ''' The pattern looks like (Cf. MethodHandleImpl.makeGuardWithTest):
         ''' <blockquote><pre>{@code
         '''   Lambda(a0:L,a1:I)=>{
@@ -1065,7 +1065,7 @@ Namespace java.lang.invoke
 
         ''' <summary>
         ''' Emit bytecode for the guardWithCatch idiom.
-        '''  
+        '''
         ''' The pattern looks like (Cf. MethodHandleImpl.makeGuardWithCatch):
         ''' <blockquote><pre>{@code
         '''  guardWithCatch=Lambda(a0:L,a1:L,a2:L,a3:L,a4:L,a5:L,a6:L,a7:L)=>{
@@ -1073,7 +1073,7 @@ Namespace java.lang.invoke
         '''    t9:L=MethodHandleImpl.guardWithCatch(a1:L,a2:L,a3:L,t8:L);
         '''   t10:I=MethodHandle.invokeBasic(a5:L,t9:L);t10:I}
         ''' }</pre></blockquote>
-        '''  
+        '''
         ''' It is compiled into bytecode equivalent of the following code:
         ''' <blockquote><pre>{@code
         '''  try {

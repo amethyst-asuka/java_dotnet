@@ -26,11 +26,11 @@ Imports System.Collections.Generic
 ' *
 ' *
 ' *
-' 
+'
 
 '
 ' * (C) Copyright IBM Corp. 1999,  All rights reserved.
-' 
+'
 Namespace java.awt.font
 
 
@@ -146,31 +146,29 @@ Namespace java.awt.font
 		'''     insertion </param>
 		Public Shared Function insertChar(ByVal aci As java.text.AttributedCharacterIterator, ByVal chars As Char(), ByVal insertPos As Integer, ByVal oldParagraph As StyledParagraph) As StyledParagraph
 
-			' If the styles at insertPos match those at insertPos-1,
-			' oldParagraph will be reused.  Otherwise we create a new
-			' paragraph.
+            '			' If the styles at insertPos match those at insertPos-1,
+            '			' oldParagraph will be reused.  Otherwise we create a new
+            '			' paragraph.
 
-			Dim ch As Char = aci.indexdex(insertPos)
-			Dim relativePos As Integer = System.Math.Max(insertPos - aci.beginIndex - 1, 0)
+            '			Dim ch As Char = aci.indexdex(insertPos)
+            '			Dim relativePos As Integer = System.Math.Max(insertPos - aci.beginIndex - 1, 0)
+            '			Dim attributes As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?) = addInputMethodAttrs(aci.attributes)
+            '			Dim d As sun.font.Decoration = sun.font.Decoration.getDecoration(attributes)
+            '			If Not oldParagraph.getDecorationAt(relativePos).Equals(d) Then Return New StyledParagraph(aci, chars)
+            '			Dim f As Object = getGraphicOrFont(attributes)
+            '			If f Is Nothing Then
+            '				Dim resolver As sun.font.FontResolver = sun.font.FontResolver.instance
+            '				Dim fontIndex As Integer = resolver.getFontIndex(ch)
+            '				f = resolver.getFont(fontIndex, attributes)
+            '			End If
+            '			If Not oldParagraph.getFontOrGraphicAt(relativePos).Equals(f) Then Return New StyledParagraph(aci, chars)
 
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Dim attributes As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?) = addInputMethodAttrs(aci.attributes)
-			Dim d As sun.font.Decoration = sun.font.Decoration.getDecoration(attributes)
-			If Not oldParagraph.getDecorationAt(relativePos).Equals(d) Then Return New StyledParagraph(aci, chars)
-			Dim f As Object = getGraphicOrFont(attributes)
-			If f Is Nothing Then
-				Dim resolver As sun.font.FontResolver = sun.font.FontResolver.instance
-				Dim fontIndex As Integer = resolver.getFontIndex(ch)
-				f = resolver.getFont(fontIndex, attributes)
-			End If
-			If Not oldParagraph.getFontOrGraphicAt(relativePos).Equals(f) Then Return New StyledParagraph(aci, chars)
-
-			' insert into existing paragraph
-			oldParagraph.length += 1
-			If oldParagraph.decorations IsNot Nothing Then insertInto(relativePos, oldParagraph.decorationStarts, oldParagraph.decorations.Count)
-			If oldParagraph.fonts IsNot Nothing Then insertInto(relativePos, oldParagraph.fontStarts, oldParagraph.fonts.Count)
-			Return oldParagraph
-		End Function
+            '			' insert into existing paragraph
+            '			oldParagraph.length += 1
+            '			If oldParagraph.decorations IsNot Nothing Then insertInto(relativePos, oldParagraph.decorationStarts, oldParagraph.decorations.Count)
+            '			If oldParagraph.fonts IsNot Nothing Then insertInto(relativePos, oldParagraph.fontStarts, oldParagraph.fonts.Count)
+            '			Return oldParagraph
+        End Function
 
 		''' <summary>
 		''' Adjust indices in starts to reflect a deletion after deleteAt.
@@ -355,79 +353,74 @@ Namespace java.awt.font
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
 		Private Sub addFonts(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal chars As Char(), ByVal attributes As IDictionary(Of T1), ByVal start As Integer, ByVal limit As Integer)
 
-			Dim resolver As sun.font.FontResolver = sun.font.FontResolver.instance
-			Dim iter As sun.text.CodePointIterator = sun.text.CodePointIterator.create(chars, start, limit)
-			Dim runStart As Integer = iter.charIndex()
-			Do While runStart < limit
-				Dim fontIndex As Integer = resolver.nextFontRunIndex(iter)
-				addFont(resolver.getFont(fontIndex, attributes), runStart)
-				runStart = iter.charIndex()
-			Loop
+			'Dim resolver As sun.font.FontResolver = sun.font.FontResolver.instance
+			'Dim iter As sun.text.CodePointIterator = sun.text.CodePointIterator.create(chars, start, limit)
+			'Dim runStart As Integer = iter.charIndex()
+			'Do While runStart < limit
+			'	Dim fontIndex As Integer = resolver.nextFontRunIndex(iter)
+			'	addFont(resolver.getFont(fontIndex, attributes), runStart)
+			'	runStart = iter.charIndex()
+			'Loop
 		End Sub
 
-		''' <summary>
-		''' Return a Map with entries from oldStyles, as well as input
-		''' method entries, if any.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Friend Shared Function addInputMethodAttrs(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal oldStyles As IDictionary(Of T1)) As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?)
+        ''' <summary>
+        ''' Return a Map with entries from oldStyles, as well as input
+        ''' method entries, if any.
+        ''' </summary>
+        Friend Shared Function addInputMethodAttrs(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal oldStyles As IDictionary(Of T1)) As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?)
 
-			Dim value As Object = oldStyles(TextAttribute.INPUT_METHOD_HIGHLIGHT)
+			'Dim value As Object = oldStyles(TextAttribute.INPUT_METHOD_HIGHLIGHT)
 
-			Try
-				If value IsNot Nothing Then
-					If TypeOf value Is java.text.Annotation Then value = CType(value, java.text.Annotation).value
+			'Try
+			'	If value IsNot Nothing Then
+			'		If TypeOf value Is java.text.Annotation Then value = CType(value, java.text.Annotation).value
 
-					Dim hl As java.awt.im.InputMethodHighlight
-					hl = CType(value, java.awt.im.InputMethodHighlight)
+			'		Dim hl As java.awt.im.InputMethodHighlight
+			'		hl = CType(value, java.awt.im.InputMethodHighlight)
 
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-					Dim imStyles As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?) = Nothing
-					Try
-						imStyles = hl.style
-					Catch e As NoSuchMethodError
-					End Try
+   '                 Dim imStyles As IDictionary(Of ? As java.text.AttributedCharacterIterator.Attribute, ?) = Nothing
+			'		Try
+			'			imStyles = hl.style
+			'		Catch e As NoSuchMethodError
+			'		End Try
 
-					If imStyles Is Nothing Then
-						Dim tk As java.awt.Toolkit = java.awt.Toolkit.defaultToolkit
-						imStyles = tk.mapInputMethodHighlight(hl)
-					End If
+			'		If imStyles Is Nothing Then
+			'			Dim tk As java.awt.Toolkit = java.awt.Toolkit.defaultToolkit
+			'			imStyles = tk.mapInputMethodHighlight(hl)
+			'		End If
 
-					If imStyles IsNot Nothing Then
-						Dim newStyles As New Dictionary(Of java.text.AttributedCharacterIterator.Attribute, Object)(5, CSng(0.9))
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET Dictionary equivalent to the Java 'putAll' method:
-						newStyles.putAll(oldStyles)
+			'		If imStyles IsNot Nothing Then
+			'			Dim newStyles As New Dictionary(Of java.text.AttributedCharacterIterator.Attribute, Object)(5, CSng(0.9))
 
-'JAVA TO VB CONVERTER TODO TASK: There is no .NET Dictionary equivalent to the Java 'putAll' method:
-						newStyles.putAll(imStyles)
+   '                     newStyles.putAll(oldStyles)
+   '                     newStyles.putAll(imStyles)
 
-						Return newStyles
-					End If
-				End If
-			Catch e As  ClassCastException
-			End Try
+			'			Return newStyles
+			'		End If
+			'	End If
+			'Catch e As  ClassCastException
+			'End Try
 
-			Return oldStyles
+			'Return oldStyles
 		End Function
 
-		''' <summary>
-		''' Extract a GraphicAttribute or Font from the given attributes.
-		''' If attributes does not contain a GraphicAttribute, Font, or
-		''' Font family entry this method returns null.
-		''' </summary>
-'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-		Private Shared Function getGraphicOrFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As IDictionary(Of T1)) As Object
+        ''' <summary>
+        ''' Extract a GraphicAttribute or Font from the given attributes.
+        ''' If attributes does not contain a GraphicAttribute, Font, or
+        ''' Font family entry this method returns null.
+        ''' </summary>
+        Private Shared Function getGraphicOrFont(Of T1 As java.text.AttributedCharacterIterator.Attribute, ?)(ByVal attributes As IDictionary(Of T1)) As Object
 
-			Dim value As Object = attributes(TextAttribute.CHAR_REPLACEMENT)
-			If value IsNot Nothing Then Return value
-			value = attributes(TextAttribute.FONT)
-			If value IsNot Nothing Then Return value
+			'Dim value As Object = attributes(TextAttribute.CHAR_REPLACEMENT)
+			'If value IsNot Nothing Then Return value
+			'value = attributes(TextAttribute.FONT)
+			'If value IsNot Nothing Then Return value
 
-			If attributes(TextAttribute.FAMILY) IsNot Nothing Then
-				Return java.awt.Font.getFont(attributes)
-			Else
-				Return Nothing
-			End If
+			'If attributes(TextAttribute.FAMILY) IsNot Nothing Then
+			'	Return java.awt.Font.getFont(attributes)
+			'Else
+			'	Return Nothing
+			'End If
 		End Function
 	End Class
 
