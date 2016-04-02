@@ -43,31 +43,31 @@ Namespace java.lang.invoke
 			Me.referenceKind = referenceKind
 		End Sub
 
-		Public Property Overrides declaringClass As  [Class] Implements MethodHandleInfo.getDeclaringClass
+		Public  Overrides ReadOnly Property  declaringClass As  [Class] Implements MethodHandleInfo.getDeclaringClass
 			Get
 				Return member.declaringClass
 			End Get
 		End Property
 
-		Public Property Overrides name As String Implements MethodHandleInfo.getName
+		Public  Overrides ReadOnly Property  name As String Implements MethodHandleInfo.getName
 			Get
 				Return member.name
 			End Get
 		End Property
 
-		Public Property Overrides methodType As MethodType Implements MethodHandleInfo.getMethodType
+		Public  Overrides ReadOnly Property  methodType As MethodType Implements MethodHandleInfo.getMethodType
 			Get
 				Return member.methodOrFieldType
 			End Get
 		End Property
 
-		Public Property Overrides modifiers As Integer Implements MethodHandleInfo.getModifiers
+		Public  Overrides ReadOnly Property  modifiers As Integer Implements MethodHandleInfo.getModifiers
 			Get
 				Return member.modifiers
 			End Get
 		End Property
 
-		Public Property Overrides referenceKind As Integer Implements MethodHandleInfo.getReferenceKind
+		Public  Overrides ReadOnly Property  referenceKind As Integer Implements MethodHandleInfo.getReferenceKind
 			Get
 				Return referenceKind
 			End Get

@@ -791,7 +791,7 @@ Namespace java.time
 		''' This is the offset of the local date-time from UTC/Greenwich.
 		''' </summary>
 		''' <returns> the zone offset, not null </returns>
-		Public Property Overrides offset As ZoneOffset
+		Public  Overrides ReadOnly Property  offset As ZoneOffset
 			Get
 				Return offset
 			End Get
@@ -858,7 +858,7 @@ Namespace java.time
 		''' See also <seealso cref="#withFixedOffsetZone()"/>.
 		''' </summary>
 		''' <returns> the time-zone, not null </returns>
-		Public Property Overrides zone As ZoneId
+		Public  Overrides ReadOnly Property  zone As ZoneId
 			Get
 				Return zone
 			End Get

@@ -74,7 +74,7 @@ Namespace java.lang.reflect
 		End Property
 
 		' Accessor for generic info repository
-		Friend Property Overrides genericInfo As sun.reflect.generics.repository.ConstructorRepository
+		Friend  Overrides ReadOnly Property  genericInfo As sun.reflect.generics.repository.ConstructorRepository
 			Get
 				' lazily initialize repository if necessary
 				If genericInfo Is Nothing Then genericInfo = sun.reflect.generics.repository.ConstructorRepository.make(signature, factory)
@@ -95,7 +95,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' Used by Excecutable for annotation sharing.
 		''' </summary>
-		Friend Property Overrides root As Executable
+		Friend  Overrides ReadOnly Property  root As Executable
 			Get
 				Return root
 			End Get
@@ -143,7 +143,7 @@ Namespace java.lang.reflect
 			Return (signature IsNot Nothing)
 		End Function
 
-		Friend Property Overrides annotationBytes As SByte()
+		Friend  Overrides ReadOnly Property  annotationBytes As SByte()
 			Get
 				Return annotations
 			End Get
@@ -152,7 +152,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides declaringClass As  [Class]
+		Public  Overrides ReadOnly Property  declaringClass As  [Class]
 			Get
 				Return clazz
 			End Get
@@ -162,7 +162,7 @@ Namespace java.lang.reflect
 		''' Returns the name of this constructor, as a string.  This is
 		''' the binary name of the constructor's declaring class.
 		''' </summary>
-		Public Property Overrides name As String
+		Public  Overrides ReadOnly Property  name As String
 			Get
 				Return declaringClass.name
 			End Get
@@ -171,7 +171,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides modifiers As Integer
+		Public  Overrides ReadOnly Property  modifiers As Integer
 			Get
 				Return modifiers
 			End Get
@@ -182,7 +182,7 @@ Namespace java.lang.reflect
 		''' <exception cref="GenericSignatureFormatError"> {@inheritDoc}
 		''' @since 1.5 </exception>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property Overrides typeParameters As TypeVariable(Of Constructor(Of T))()
+		Public  Overrides ReadOnly Property  typeParameters As TypeVariable(Of Constructor(Of T))()
 			Get
 			  If signature IsNot Nothing Then
 				Return CType(genericInfo.typeParameters, TypeVariable(Of Constructor(Of T))())
@@ -196,7 +196,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides parameterTypes As  [Class]()
+		Public  Overrides ReadOnly Property  parameterTypes As  [Class]()
 			Get
 				Return parameterTypes.clone()
 			End Get
@@ -205,7 +205,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides parameterCount As Integer
+		Public  Overrides ReadOnly Property  parameterCount As Integer
 			Get
 				Return parameterTypes.Length
 			End Get
@@ -217,7 +217,7 @@ Namespace java.lang.reflect
 		''' <exception cref="TypeNotPresentException"> {@inheritDoc} </exception>
 		''' <exception cref="MalformedParameterizedTypeException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Property Overrides genericParameterTypes As Type()
+		Public  Overrides ReadOnly Property  genericParameterTypes As Type()
 			Get
 				Return MyBase.genericParameterTypes
 			End Get
@@ -226,7 +226,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides exceptionTypes As  [Class]()
+		Public  Overrides ReadOnly Property  exceptionTypes As  [Class]()
 			Get
 				Return exceptionTypes.clone()
 			End Get
@@ -239,7 +239,7 @@ Namespace java.lang.reflect
 		''' <exception cref="TypeNotPresentException"> {@inheritDoc} </exception>
 		''' <exception cref="MalformedParameterizedTypeException"> {@inheritDoc}
 		''' @since 1.5 </exception>
-		Public Property Overrides genericExceptionTypes As Type()
+		Public  Overrides ReadOnly Property  genericExceptionTypes As Type()
 			Get
 				Return MyBase.genericExceptionTypes
 			End Get
@@ -402,7 +402,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc}
 		''' @since 1.5
 		''' </summary>
-		Public Property Overrides varArgs As Boolean
+		Public  Overrides ReadOnly Property  varArgs As Boolean
 			Get
 				Return MyBase.varArgs
 			End Get
@@ -413,7 +413,7 @@ Namespace java.lang.reflect
 		''' @jls 13.1 The Form of a Binary
 		''' @since 1.5
 		''' </summary>
-		Public Property Overrides synthetic As Boolean
+		Public  Overrides ReadOnly Property  synthetic As Boolean
 			Get
 				Return MyBase.synthetic
 			End Get
@@ -493,7 +493,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc}
 		''' @since 1.5
 		''' </summary>
-		Public Property Overrides declaredAnnotations As Annotation()
+		Public  Overrides ReadOnly Property  declaredAnnotations As Annotation()
 			Get
 				Return MyBase.GetCustomAttributes(False)
 			End Get
@@ -503,7 +503,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc}
 		''' @since 1.5
 		''' </summary>
-		Public Property Overrides parameterAnnotations As Annotation()()
+		Public  Overrides ReadOnly Property  parameterAnnotations As Annotation()()
 			Get
 				Return sharedGetParameterAnnotations(parameterTypes, parameterAnnotations)
 			End Get
@@ -522,7 +522,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc}
 		''' @since 1.8
 		''' </summary>
-		Public Property Overrides annotatedReturnType As AnnotatedType
+		Public  Overrides ReadOnly Property  annotatedReturnType As AnnotatedType
 			Get
 				Return getAnnotatedReturnType0(declaringClass)
 			End Get
@@ -532,7 +532,7 @@ Namespace java.lang.reflect
 		''' {@inheritDoc}
 		''' @since 1.8
 		''' </summary>
-		Public Property Overrides annotatedReceiverType As AnnotatedType
+		Public  Overrides ReadOnly Property  annotatedReceiverType As AnnotatedType
 			Get
 				If declaringClass.enclosingClass Is Nothing Then Return MyBase.annotatedReceiverType
     

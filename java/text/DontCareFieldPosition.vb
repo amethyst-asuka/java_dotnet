@@ -51,7 +51,7 @@ Namespace java.text
 			MyBase.New(0)
 		End Sub
 
-		Friend Property Overrides fieldDelegate As Format.FieldDelegate
+		Friend  Overrides ReadOnly Property  fieldDelegate As Format.FieldDelegate
 			Get
 				Return noDelegate
 			End Get

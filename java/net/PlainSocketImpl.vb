@@ -117,25 +117,25 @@ Namespace java.net
 
 		' Override methods in SocketImpl that access impl's fields.
 
-		Protected Friend Property Overrides fileDescriptor As FileDescriptor
+		Protected Friend  Overrides ReadOnly Property  fileDescriptor As FileDescriptor
 			Get
 				Return impl.fileDescriptor
 			End Get
 		End Property
 
-		Protected Friend Property Overrides inetAddress As InetAddress
+		Protected Friend  Overrides ReadOnly Property  inetAddress As InetAddress
 			Get
 				Return impl.inetAddress
 			End Get
 		End Property
 
-		Protected Friend Property Overrides port As Integer
+		Protected Friend  Overrides ReadOnly Property  port As Integer
 			Get
 				Return impl.port
 			End Get
 		End Property
 
-		Protected Friend Property Overrides localPort As Integer
+		Protected Friend  Overrides ReadOnly Property  localPort As Integer
 			Get
 				Return impl.localPort
 			End Get

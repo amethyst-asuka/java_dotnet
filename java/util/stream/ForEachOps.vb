@@ -127,7 +127,7 @@ Namespace java.util.stream
 
 			' TerminalOp
 
-			Public Property Overrides opFlags As Integer Implements TerminalOp(Of T, Void).getOpFlags
+			Public  Overrides ReadOnly Property  opFlags As Integer Implements TerminalOp(Of T, Void).getOpFlags
 				Get
 					Return If(ordered, 0, StreamOpFlag.NOT_ORDERED)
 				End Get

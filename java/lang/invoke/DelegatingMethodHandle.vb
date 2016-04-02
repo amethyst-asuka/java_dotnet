@@ -59,7 +59,7 @@ Namespace java.lang.invoke
 			Return target.internalMemberName()
 		End Function
 
-		Friend Property Overrides invokeSpecial As Boolean
+		Friend  Overrides ReadOnly Property  invokeSpecial As Boolean
 			Get
 				Return target.invokeSpecial
 			End Get

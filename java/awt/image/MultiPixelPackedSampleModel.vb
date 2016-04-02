@@ -195,7 +195,7 @@ Namespace java.awt.image
 		''' methods.  For a <code>MultiPixelPackedSampleModel</code>, this is
 		''' one. </summary>
 		''' <returns> the number of data elements. </returns>
-		Public Property Overrides numDataElements As Integer
+		Public  Overrides ReadOnly Property  numDataElements As Integer
 			Get
 				Return 1
 			End Get
@@ -204,7 +204,7 @@ Namespace java.awt.image
 		''' <summary>
 		''' Returns the number of bits per sample for all bands. </summary>
 		''' <returns> the number of bits per sample. </returns>
-		Public Property Overrides sampleSize As Integer()
+		Public  Overrides ReadOnly Property  sampleSize As Integer()
 			Get
 				Dim sampleSize_Renamed As Integer() = {pixelBitStride}
 				Return sampleSize_Renamed
@@ -279,7 +279,7 @@ Namespace java.awt.image
 		'''  DataBuffer.TYPE_BYTE, DataBuffer.TYPE_USHORT,
 		'''  or DataBuffer.TYPE_INT. </summary>
 		'''  <returns> the transfertype. </returns>
-		Public Property Overrides transferType As Integer
+		Public  Overrides ReadOnly Property  transferType As Integer
 			Get
 				If pixelBitStride > 16 Then
 					Return DataBuffer.TYPE_INT

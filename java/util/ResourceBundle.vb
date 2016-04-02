@@ -282,7 +282,7 @@ Namespace java.util
 		Private Class ResourceBundleAnonymousInnerClassHelper
 			Inherits ResourceBundle
 
-			Public Property Overrides keys As Enumeration(Of String)
+			Public  Overrides ReadOnly Property  keys As Enumeration(Of String)
 				Get
 					Return Nothing
 				End Get

@@ -146,7 +146,7 @@ Namespace java.nio
 
 
 
-		Public Property Overrides [readOnly] As Boolean
+		Public  Overrides ReadOnly Property  [readOnly] As Boolean
 			Get
 				Return True
 			End Get

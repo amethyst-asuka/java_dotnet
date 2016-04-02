@@ -123,7 +123,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> the chronology ID - 'ISO' </returns>
 		''' <seealso cref= #getCalendarType() </seealso>
-		Public Property Overrides id As String
+		Public  Overrides ReadOnly Property  id As String
 			Get
 				Return "ISO"
 			End Get
@@ -140,7 +140,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> the calendar system type - 'iso8601' </returns>
 		''' <seealso cref= #getId() </seealso>
-		Public Property Overrides calendarType As String
+		Public  Overrides ReadOnly Property  calendarType As String
 			Get
 				Return "iso8601"
 			End Get

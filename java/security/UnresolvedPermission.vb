@@ -379,7 +379,7 @@ Namespace java.security
 		''' itself is never considered to have any actions.
 		''' </summary>
 		''' <returns> the empty string "". </returns>
-		Public Property Overrides actions As String
+		Public  Overrides ReadOnly Property  actions As String
 			Get
 				Return ""
 			End Get

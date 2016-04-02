@@ -438,7 +438,7 @@ Namespace java.time
         ''' The implementation class is immutable, thread-safe and serializable.
         ''' </summary>
         ''' <returns> the rules, not null </returns>
-        Public Property Overrides rules As java.time.zone.ZoneRules
+        Public  Overrides ReadOnly Property  rules As java.time.zone.ZoneRules
 			Get
 				Return java.time.zone.ZoneRules.of(Me)
 			End Get

@@ -68,7 +68,7 @@ Namespace java.util.logging
 			CType(logger_Renamed, Logger).log(CType(level_Renamed, Level), msg, params)
 		End Sub
 
-		Public Property Overrides loggerNames As IList(Of String)
+		Public  Overrides ReadOnly Property  loggerNames As IList(Of String)
 			Get
 				Return LogManager.loggingMXBean.loggerNames
 			End Get

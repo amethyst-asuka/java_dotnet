@@ -722,7 +722,7 @@ Namespace java.awt
 		''' <returns>     the preferred dimensions for displaying this scrolling list </returns>
 		''' <seealso cref=        java.awt.Component#getPreferredSize
 		''' @since      JDK1.1 </seealso>
-		Public Property Overrides preferredSize As Dimension
+		Public  Overrides ReadOnly Property  preferredSize As Dimension
 			Get
 				Return preferredSize()
 			End Get
@@ -765,7 +765,7 @@ Namespace java.awt
 		'''                        to display this scrolling list </returns>
 		''' <seealso cref=          java.awt.Component#getMinimumSize()
 		''' @since        JDK1.1 </seealso>
-		Public Property Overrides minimumSize As Dimension
+		Public  Overrides ReadOnly Property  minimumSize As Dimension
 			Get
 				Return minimumSize()
 			End Get
@@ -1174,7 +1174,7 @@ Namespace java.awt
 		''' <returns> an <code>AccessibleAWTList</code> that serves as the
 		'''         <code>AccessibleContext</code> of this <code>List</code>
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTList(Me)
 				Return accessibleContext

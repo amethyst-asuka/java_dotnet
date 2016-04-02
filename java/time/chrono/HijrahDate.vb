@@ -269,7 +269,7 @@ Namespace java.time.chrono
 		''' The era and other fields in <seealso cref="ChronoField"/> are defined by the chronology.
 		''' </summary>
 		''' <returns> the Hijrah chronology, not null </returns>
-		Public Property Overrides chronology As HijrahChronology
+		Public  Overrides ReadOnly Property  chronology As HijrahChronology
 			Get
 				Return chrono
 			End Get
@@ -282,7 +282,7 @@ Namespace java.time.chrono
 		''' defined by <seealso cref="HijrahEra"/>.
 		''' </summary>
 		''' <returns> the era applicable at this date, not null </returns>
-		Public Property Overrides era As HijrahEra
+		Public  Overrides ReadOnly Property  era As HijrahEra
 			Get
 				Return HijrahEra.AH
 			End Get
@@ -502,7 +502,7 @@ Namespace java.time.chrono
 		''' Checks if the year is a leap year, according to the Hijrah calendar system rules.
 		''' </summary>
 		''' <returns> true if this date is in a leap year </returns>
-		Public Property Overrides leapYear As Boolean Implements ChronoLocalDate.isLeapYear
+		Public  Overrides ReadOnly Property  leapYear As Boolean Implements ChronoLocalDate.isLeapYear
 			Get
 				Return chrono.isLeapYear(prolepticYear)
 			End Get

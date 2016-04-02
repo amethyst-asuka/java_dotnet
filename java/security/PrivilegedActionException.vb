@@ -96,7 +96,7 @@ Namespace java.security
 		''' </summary>
 		''' <returns>  the cause of this exception.
 		''' @since   1.4 </returns>
-		Public Property Overrides cause As Throwable
+		Public  Overrides ReadOnly Property  cause As Throwable
 			Get
 				Return exception_Renamed
 			End Get

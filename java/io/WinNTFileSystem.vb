@@ -65,13 +65,13 @@ Namespace java.io
 
 		' -- Normalization and construction -- 
 
-		Public Property Overrides separator As Char
+		Public  Overrides ReadOnly Property  separator As Char
 			Get
 				Return slash
 			End Get
 		End Property
 
-		Public Property Overrides pathSeparator As Char
+		Public  Overrides ReadOnly Property  pathSeparator As Char
 			Get
 				Return semicolon
 			End Get
@@ -263,7 +263,7 @@ Namespace java.io
 			Return New String(theChars)
 		End Function
 
-		Public Property Overrides defaultParent As String
+		Public  Overrides ReadOnly Property  defaultParent As String
 			Get
 				Return ("" & AscW(slash))
 			End Get

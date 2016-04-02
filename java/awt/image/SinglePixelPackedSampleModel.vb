@@ -181,7 +181,7 @@ Namespace java.awt.image
 		''' via the getDataElements and setDataElements methods.
 		''' For a SinglePixelPackedSampleModel, this is one.
 		''' </summary>
-		Public Property Overrides numDataElements As Integer
+		Public  Overrides ReadOnly Property  numDataElements As Integer
 			Get
 				Return 1
 			End Get
@@ -238,7 +238,7 @@ Namespace java.awt.image
 
 		''' <summary>
 		''' Returns the number of bits per sample for all bands. </summary>
-		Public Property Overrides sampleSize As Integer()
+		Public  Overrides ReadOnly Property  sampleSize As Integer()
 			Get
 				Return bitSizes.clone()
 			End Get

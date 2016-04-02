@@ -338,7 +338,7 @@ Namespace java.awt
 		''' <returns>     the preferred dimensions for
 		'''                         displaying this text field.
 		''' @since      JDK1.1 </returns>
-		Public Property Overrides preferredSize As Dimension
+		Public  Overrides ReadOnly Property  preferredSize As Dimension
 			Get
 				Return preferredSize()
 			End Get
@@ -378,7 +378,7 @@ Namespace java.awt
 		''' <returns>     the minimum dimensions for
 		'''                  displaying this text field.
 		''' @since      JDK1.1 </returns>
-		Public Property Overrides minimumSize As Dimension
+		Public  Overrides ReadOnly Property  minimumSize As Dimension
 			Get
 				Return minimumSize()
 			End Get
@@ -645,7 +645,7 @@ Namespace java.awt
 		''' <returns> an AccessibleAWTTextField that serves as the
 		'''         AccessibleContext of this TextField
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTTextField(Me)
 				Return accessibleContext

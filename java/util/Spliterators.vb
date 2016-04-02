@@ -1013,7 +1013,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As Comparator(Of ?)
+			Public  Overrides ReadOnly Property  comparator As Comparator(Of ?)
 				Get
 					If hasCharacteristics(Spliterator.SORTED) Then Return Nothing
 					Throw New IllegalStateException
@@ -1099,7 +1099,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As Comparator(Of ?)
+			Public  Overrides ReadOnly Property  comparator As Comparator(Of ?)
 				Get
 					If hasCharacteristics(Spliterator.SORTED) Then Return Nothing
 					Throw New IllegalStateException
@@ -1185,7 +1185,7 @@ Namespace java.util
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As Comparator(Of ?)
+			Public  Overrides ReadOnly Property  comparator As Comparator(Of ?)
 				Get
 					If hasCharacteristics(Spliterator.SORTED) Then Return Nothing
 					Throw New IllegalStateException
@@ -1876,7 +1876,7 @@ Namespace java.util
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As Comparator(Of ?)
+			Public  Overrides ReadOnly Property  comparator As Comparator(Of ?)
 				Get
 					If hasCharacteristics(Spliterator.SORTED) Then Return Nothing
 					Throw New IllegalStateException
@@ -1966,7 +1966,7 @@ Namespace java.util
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As Comparator(Of ?)
+			Public  Overrides ReadOnly Property  comparator As Comparator(Of ?)
 				Get
 					If hasCharacteristics(Spliterator.SORTED) Then Return Nothing
 					Throw New IllegalStateException
@@ -2056,7 +2056,7 @@ Namespace java.util
 			End Function
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As Comparator(Of ?)
+			Public  Overrides ReadOnly Property  comparator As Comparator(Of ?)
 				Get
 					If hasCharacteristics(Spliterator.SORTED) Then Return Nothing
 					Throw New IllegalStateException

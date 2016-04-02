@@ -172,7 +172,7 @@ Namespace java.sql
 	   ''' <exception cref="java.lang.IllegalArgumentException"> if this method is invoked </exception>
 	   ''' <seealso cref= #setHours </seealso>
 		<Obsolete> _
-		Public Property Overrides hours As Integer
+		Public  Overrides ReadOnly Property  hours As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get
@@ -189,7 +189,7 @@ Namespace java.sql
 	   ''' <exception cref="java.lang.IllegalArgumentException"> if this method is invoked </exception>
 	   ''' <seealso cref= #setMinutes </seealso>
 		<Obsolete> _
-		Public Property Overrides minutes As Integer
+		Public  Overrides ReadOnly Property  minutes As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get
@@ -206,7 +206,7 @@ Namespace java.sql
 	   ''' <exception cref="java.lang.IllegalArgumentException"> if this method is invoked </exception>
 	   ''' <seealso cref= #setSeconds </seealso>
 		<Obsolete> _
-		Public Property Overrides seconds As Integer
+		Public  Overrides ReadOnly Property  seconds As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get

@@ -429,7 +429,7 @@ Namespace java.awt
 		''' <returns> an AccessibleAWTMenuBar that serves as the
 		'''         AccessibleContext of this MenuBar
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTMenuBar(Me)
 				Return accessibleContext

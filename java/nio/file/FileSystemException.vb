@@ -105,7 +105,7 @@ Namespace java.nio.file
 		''' <summary>
 		''' Returns the detail message string.
 		''' </summary>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				If file Is Nothing AndAlso other Is Nothing Then Return reason
 				Dim sb As New StringBuilder

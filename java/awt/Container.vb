@@ -1517,7 +1517,7 @@ Namespace java.awt
 		''' <seealso cref=       #getLayout </seealso>
 		''' <seealso cref=       LayoutManager#preferredLayoutSize(Container) </seealso>
 		''' <seealso cref=       Component#getPreferredSize </seealso>
-		Public Property Overrides preferredSize As Dimension
+		Public  Overrides ReadOnly Property  preferredSize As Dimension
 			Get
 				Return preferredSize()
 			End Get
@@ -1565,7 +1565,7 @@ Namespace java.awt
 		''' <seealso cref=       LayoutManager#minimumLayoutSize(Container) </seealso>
 		''' <seealso cref=       Component#getMinimumSize
 		''' @since     JDK1.1 </seealso>
-		Public Property Overrides minimumSize As Dimension
+		Public  Overrides ReadOnly Property  minimumSize As Dimension
 			Get
 				Return minimumSize()
 			End Get
@@ -1613,7 +1613,7 @@ Namespace java.awt
 		''' <seealso cref=       #getLayout </seealso>
 		''' <seealso cref=       LayoutManager2#maximumLayoutSize(Container) </seealso>
 		''' <seealso cref=       Component#getMaximumSize </seealso>
-		Public Property Overrides maximumSize As Dimension
+		Public  Overrides ReadOnly Property  maximumSize As Dimension
 			Get
 		'         Avoid grabbing the lock if a reasonable cached size value
 		'         * is available.
@@ -1645,7 +1645,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Public Property Overrides alignmentX As Single
+		Public  Overrides ReadOnly Property  alignmentX As Single
 			Get
 				Dim xAlign As Single
 				If TypeOf layoutMgr Is LayoutManager2 Then
@@ -1667,7 +1667,7 @@ Namespace java.awt
 		''' where 0 represents alignment along the origin, 1 is aligned
 		''' the furthest away from the origin, 0.5 is centered, etc.
 		''' </summary>
-		Public Property Overrides alignmentY As Single
+		Public  Overrides ReadOnly Property  alignmentY As Single
 			Get
 				Dim yAlign As Single
 				If TypeOf layoutMgr Is LayoutManager2 Then

@@ -541,13 +541,13 @@ Namespace java.lang.invoke
 				Me.asCollectorCache = target.asCollector(arrayType, 0)
 			End Sub
 
-			Public Property Overrides varargsCollector As Boolean
+			Public  Overrides ReadOnly Property  varargsCollector As Boolean
 				Get
 					Return True
 				End Get
 			End Property
 
-			Protected Friend Property Overrides target As MethodHandle
+			Protected Friend  Overrides ReadOnly Property  target As MethodHandle
 				Get
 					Return target
 				End Get
@@ -858,7 +858,7 @@ Namespace java.lang.invoke
 			End Sub
 
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-			Protected Friend Property Overrides target As MethodHandle
+			Protected Friend  Overrides ReadOnly Property  target As MethodHandle
 				Get
 					Return target
 				End Get
@@ -1279,12 +1279,12 @@ Namespace java.lang.invoke
 			Friend Overrides Function internalCallerClass() As  [Class]
 				Return callerClass
 			End Function
-			Friend Property Overrides invokeSpecial As Boolean
+			Friend  Overrides ReadOnly Property  invokeSpecial As Boolean
 				Get
 					Return isInvokeSpecial_Renamed
 				End Get
 			End Property
-			Protected Friend Property Overrides target As MethodHandle
+			Protected Friend  Overrides ReadOnly Property  target As MethodHandle
 				Get
 					Return target
 				End Get
@@ -1332,7 +1332,7 @@ Namespace java.lang.invoke
 				Me.intrinsicName_Renamed = intrinsicName
 			End Sub
 
-			Protected Friend Property Overrides target As MethodHandle
+			Protected Friend  Overrides ReadOnly Property  target As MethodHandle
 				Get
 					Return target
 				End Get

@@ -91,7 +91,7 @@ Namespace java.awt
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides parent As MenuContainer
+		Public  Overrides ReadOnly Property  parent As MenuContainer
 			Get
 				If isTrayIconPopup Then Return Nothing
 				Return MyBase.parent
@@ -188,7 +188,7 @@ Namespace java.awt
 		''' <returns> the <code>AccessibleContext</code> of this
 		'''                <code>PopupMenu</code>
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTPopupMenu(Me)
 				Return accessibleContext

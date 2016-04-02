@@ -102,7 +102,7 @@ Namespace java.nio
 			End Try
 		End Function
 
-		Public Property Overrides direct As Boolean
+		Public  Overrides ReadOnly Property  direct As Boolean
 			Get
 				Return False
 			End Get

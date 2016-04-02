@@ -632,7 +632,7 @@ Namespace java.time
 		''' system, in which today's rules for leap years are applied for all time.
 		''' </summary>
 		''' <returns> the ISO chronology, not null </returns>
-		Public Property Overrides chronology As java.time.chrono.IsoChronology
+		Public  Overrides ReadOnly Property  chronology As java.time.chrono.IsoChronology
 			Get
 				Return java.time.chrono.IsoChronology.INSTANCE
 			End Get
@@ -655,7 +655,7 @@ Namespace java.time
 		''' in <seealso cref="IsoChronology"/> using the {@code ==} operator.
 		''' </summary>
 		''' <returns> the {@code IsoChronology} era constant applicable at this date, not null </returns>
-		Public Property Overrides era As java.time.chrono.Era
+		Public  Overrides ReadOnly Property  era As java.time.chrono.Era
 			Get
 				Return outerInstance.era
 			End Get
@@ -768,7 +768,7 @@ Namespace java.time
 		''' This is historically inaccurate, but is correct for the ISO-8601 standard.
 		''' </summary>
 		''' <returns> true if the year is leap, false otherwise </returns>
-		Public Property Overrides leapYear As Boolean
+		Public  Overrides ReadOnly Property  leapYear As Boolean
 			Get
 				Return java.time.chrono.IsoChronology.INSTANCE.isLeapYear(year)
 			End Get

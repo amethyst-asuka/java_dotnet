@@ -130,7 +130,7 @@ Namespace java.security
 		''' list of dot-separated integers.
 		''' </summary>
 		''' <returns> the attribute's identifier </returns>
-		Public Property Overrides name As String
+		Public  Overrides ReadOnly Property  name As String
 			Get
 				Return name
 			End Get
@@ -157,7 +157,7 @@ Namespace java.security
 		''' <seealso cref="Arrays#toString(java.lang.Object[])"/>.
 		''' </summary>
 		''' <returns> the attribute value's string encoding </returns>
-		Public Property Overrides value As String
+		Public  Overrides ReadOnly Property  value As String
 			Get
 				Return value
 			End Get

@@ -108,7 +108,7 @@ Namespace java.awt.font
 		''' ascent of an <code>ImageGraphicAttribute</code> is the distance
 		''' from the top of the image to the origin. </summary>
 		''' <returns> the ascent of this <code>ImageGraphicAttribute</code>. </returns>
-		Public Property Overrides ascent As Single
+		Public  Overrides ReadOnly Property  ascent As Single
 			Get
     
 				Return System.Math.Max(0, fOriginY)
@@ -120,7 +120,7 @@ Namespace java.awt.font
 		''' The descent of an <code>ImageGraphicAttribute</code> is the
 		''' distance from the origin to the bottom of the image. </summary>
 		''' <returns> the descent of this <code>ImageGraphicAttribute</code>. </returns>
-		Public Property Overrides descent As Single
+		Public  Overrides ReadOnly Property  descent As Single
 			Get
     
 				Return System.Math.Max(0, fImageHeight-fOriginY)
@@ -132,7 +132,7 @@ Namespace java.awt.font
 		''' The advance of an <code>ImageGraphicAttribute</code> is the
 		''' distance from the origin to the right edge of the image. </summary>
 		''' <returns> the advance of this <code>ImageGraphicAttribute</code>. </returns>
-		Public Property Overrides advance As Single
+		Public  Overrides ReadOnly Property  advance As Single
 			Get
     
 				Return System.Math.Max(0, fImageWidth-fOriginX)
@@ -147,7 +147,7 @@ Namespace java.awt.font
 		''' method's implementation must indicate where the graphic is rendered. </summary>
 		''' <returns> a <code>Rectangle2D</code> that encloses all of the bits
 		''' rendered by this <code>ImageGraphicAttribute</code>. </returns>
-		Public Property Overrides bounds As java.awt.geom.Rectangle2D
+		Public  Overrides ReadOnly Property  bounds As java.awt.geom.Rectangle2D
 			Get
     
 				Return New java.awt.geom.Rectangle2D.Float(-fOriginX, -fOriginY, fImageWidth, fImageHeight)

@@ -1341,7 +1341,7 @@ Namespace java.awt
 		''' <seealso cref=       Toolkit </seealso>
 		''' <seealso cref=       Toolkit#getDefaultToolkit </seealso>
 		''' <seealso cref=       Component#getToolkit </seealso>
-		Public Property Overrides toolkit As Toolkit
+		Public  Overrides ReadOnly Property  toolkit As Toolkit
 			Get
 				Return Toolkit.defaultToolkit
 			End Get
@@ -1390,7 +1390,7 @@ Namespace java.awt
 		''' <returns>    the locale that is set for this window. </returns>
 		''' <seealso cref=       java.util.Locale
 		''' @since     JDK1.1 </seealso>
-		Public Property Overrides locale As java.util.Locale
+		Public  Overrides ReadOnly Property  locale As java.util.Locale
 			Get
 			  If Me.locale Is Nothing Then Return java.util.Locale.default
 			  Return Me.locale
@@ -1402,7 +1402,7 @@ Namespace java.awt
 		''' which is shared by subcomponents unless they create and set their own. </summary>
 		''' <seealso cref= Component#getInputContext
 		''' @since 1.2 </seealso>
-		Public Property Overrides inputContext As java.awt.im.InputContext
+		Public  Overrides ReadOnly Property  inputContext As java.awt.im.InputContext
 			Get
 				SyncLock inputContextLock
 					If inputContext Is Nothing Then inputContext = java.awt.im.InputContext.instance
@@ -2569,7 +2569,7 @@ Namespace java.awt
 		''' <returns> {@code true}
 		''' @since 1.7 </returns>
 		''' <seealso cref= java.awt.Container#isValidateRoot </seealso>
-		Public Property Overrides validateRoot As Boolean
+		Public  Overrides ReadOnly Property  validateRoot As Boolean
 			Get
 				Return True
 			End Get
@@ -2600,7 +2600,7 @@ Namespace java.awt
 		''' <summary>
 		''' Checks if this Window is showing on screen. </summary>
 		''' <seealso cref= Component#setVisible </seealso>
-		Public Property Overrides showing As Boolean
+		Public  Overrides ReadOnly Property  showing As Boolean
 			Get
 				Return visible
 			End Get
@@ -2923,7 +2923,7 @@ Namespace java.awt
 		''' <returns> an AccessibleAWTWindow that serves as the
 		'''         AccessibleContext of this Window
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTWindow(Me)
 				Return accessibleContext
@@ -3167,7 +3167,7 @@ Namespace java.awt
 		''' <returns> the buffer strategy used by this component </returns>
 		''' <seealso cref= #createBufferStrategy
 		''' @since 1.4 </seealso>
-		Public Property Overrides bufferStrategy As java.awt.image.BufferStrategy
+		Public  Overrides ReadOnly Property  bufferStrategy As java.awt.image.BufferStrategy
 			Get
 				Return MyBase.bufferStrategy
 			End Get
@@ -3324,7 +3324,7 @@ Namespace java.awt
 		''' Determines whether this component will be displayed on the screen. </summary>
 		''' <returns> {@code true} if the component and all of its ancestors
 		'''          until a toplevel window are visible, {@code false} otherwise </returns>
-		Friend Property Overrides recursivelyVisible As Boolean
+		Friend  Overrides ReadOnly Property  recursivelyVisible As Boolean
 			Get
 				' 5079694 fix: for a toplevel to be displayed, its parent doesn't have to be visible.
 				' We're overriding isRecursivelyVisible to implement this policy.
@@ -3414,7 +3414,7 @@ Namespace java.awt
 		''' <seealso cref= Window#setBackground(Color) </seealso>
 		''' <seealso cref= Window#isOpaque </seealso>
 		''' <seealso cref= GraphicsDevice.WindowTranslucency </seealso>
-		Public Property Overrides background As Color
+		Public  Overrides ReadOnly Property  background As Color
 			Get
 				Return MyBase.background
 			End Get
@@ -3455,7 +3455,7 @@ Namespace java.awt
 		''' <seealso cref= Window#getBackground </seealso>
 		''' <seealso cref= Window#setBackground(Color)
 		''' @since 1.7 </seealso>
-		Public Property Overrides opaque As Boolean
+		Public  Overrides ReadOnly Property  opaque As Boolean
 			Get
 				Dim bg As Color = background
 				Return If(bg IsNot Nothing, bg.alpha = 255, True)

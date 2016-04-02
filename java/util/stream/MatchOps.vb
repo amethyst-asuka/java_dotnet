@@ -223,7 +223,7 @@ Namespace java.util.stream
 				Me.sinkSupplier = sinkSupplier
 			End Sub
 
-			Public Property Overrides opFlags As Integer Implements TerminalOp(Of T, Boolean?).getOpFlags
+			Public  Overrides ReadOnly Property  opFlags As Integer Implements TerminalOp(Of T, Boolean?).getOpFlags
 				Get
 					Return StreamOpFlag.IS_SHORT_CIRCUIT Or StreamOpFlag.NOT_ORDERED
 				End Get
@@ -312,7 +312,7 @@ Namespace java.util.stream
 				Return Nothing
 			End Function
 
-			Protected Friend Property Overrides emptyResult As Boolean?
+			Protected Friend  Overrides ReadOnly Property  emptyResult As Boolean?
 				Get
 					Return Not op.matchKind.shortCircuitResult
 				End Get

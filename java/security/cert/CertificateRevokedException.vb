@@ -165,7 +165,7 @@ Namespace java.security.cert
 			End Get
 		End Property
 
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Return "Certificate has been revoked, reason: " & reason & ", revocation date: " & revocationDate & ", authority: " & authority & ", extension OIDs: " & extensions.Keys
 			End Get

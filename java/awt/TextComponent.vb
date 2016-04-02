@@ -163,7 +163,7 @@ Namespace java.awt
 			Return (eventMask And AWTEvent.INPUT_METHODS_ENABLED_MASK) <> 0
 		End Function
 
-		Public Property Overrides inputMethodRequests As java.awt.im.InputMethodRequests
+		Public  Overrides ReadOnly Property  inputMethodRequests As java.awt.im.InputMethodRequests
 			Get
 				Dim peer_Renamed As java.awt.peer.TextComponentPeer = CType(Me.peer, java.awt.peer.TextComponentPeer)
 				If peer_Renamed IsNot Nothing Then
@@ -275,7 +275,7 @@ Namespace java.awt
 		'''         the background color of its parent is returned. </returns>
 		''' <seealso cref= #setBackground(Color)
 		''' @since JDK1.0 </seealso>
-		Public Property Overrides background As Color
+		Public  Overrides ReadOnly Property  background As Color
 			Get
 				If (Not editable) AndAlso (Not backgroundSetByClientCode) Then Return SystemColor.control
     
@@ -711,7 +711,7 @@ Namespace java.awt
 		''' <returns> an AccessibleAWTTextComponent that serves as the
 		'''         AccessibleContext of this TextComponent
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTTextComponent(Me)
 				Return accessibleContext

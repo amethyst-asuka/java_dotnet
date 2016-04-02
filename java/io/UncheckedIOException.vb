@@ -65,7 +65,7 @@ Namespace java.io
 		''' Returns the cause of this exception.
 		''' </summary>
 		''' <returns>  the {@code IOException} which is the cause of this exception. </returns>
-		Public Property Overrides cause As IOException
+		Public  Overrides ReadOnly Property  cause As IOException
 			Get
 				Return CType(MyBase.cause, IOException)
 			End Get

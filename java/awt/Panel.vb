@@ -103,7 +103,7 @@ Namespace java.awt
 		''' <returns> an AccessibleAWTPanel that serves as the
 		'''         AccessibleContext of this Panel
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTPanel(Me)
 				Return accessibleContext

@@ -889,7 +889,7 @@ Namespace java.awt.image
 		''' <returns> the <seealso cref="ImageProducer"/> that is used to produce the
 		''' pixels for this image. </returns>
 		''' <seealso cref= ImageProducer </seealso>
-		Public Property Overrides source As ImageProducer
+		Public  Overrides ReadOnly Property  source As ImageProducer
 			Get
 				If osis Is Nothing Then
 					If properties Is Nothing Then properties = New Hashtable
@@ -944,7 +944,7 @@ Namespace java.awt.image
 		''' <code>Graphics2D</code>. </summary>
 		''' <returns> a <code>Graphics2D</code>, which can be used to draw into
 		'''          this image. </returns>
-		Public Property Overrides graphics As java.awt.Graphics
+		Public  Overrides ReadOnly Property  graphics As java.awt.Graphics
 			Get
 				Return createGraphics()
 			End Get

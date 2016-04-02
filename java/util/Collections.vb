@@ -1742,7 +1742,7 @@ Namespace java.util
 						Return s.estimateSize()
 					End Function
 
-					Public Property Overrides exactSizeIfKnown As Long Implements Spliterator(Of Entry(Of K, V)).getExactSizeIfKnown
+					Public  Overrides ReadOnly Property  exactSizeIfKnown As Long Implements Spliterator(Of Entry(Of K, V)).getExactSizeIfKnown
 						Get
 							Return s.exactSizeIfKnown
 						End Get

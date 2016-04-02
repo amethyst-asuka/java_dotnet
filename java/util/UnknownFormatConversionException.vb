@@ -62,7 +62,7 @@ Namespace java.util
 		End Property
 
 		' javadoc inherited from Throwable.java
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Return String.Format("Conversion = '{0}'", s)
 			End Get

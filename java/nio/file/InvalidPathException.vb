@@ -116,7 +116,7 @@ Namespace java.nio.file
         ''' character.
         ''' </summary>
         ''' <returns>  a string describing the error </returns>
-        Public Property Overrides message As String
+        Public  Overrides ReadOnly Property  message As String
             Get
                 Dim sb As New StringBuffer
                 sb.append(reason)

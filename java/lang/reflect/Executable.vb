@@ -574,7 +574,7 @@ Namespace java.lang.reflect
 		''' <summary>
 		''' {@inheritDoc}
 		''' </summary>
-		Public Property Overrides declaredAnnotations As Annotation() Implements AnnotatedElement.getDeclaredAnnotations
+		Public  Overrides ReadOnly Property  declaredAnnotations As Annotation() Implements AnnotatedElement.getDeclaredAnnotations
 			Get
 				Return sun.reflect.annotation.AnnotationParser.ToArray(declaredAnnotations())
 			End Get

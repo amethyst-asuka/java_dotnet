@@ -186,9 +186,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlX1 As Double
+            Public Overrides ReadOnly Property ctrlX1 As Double
                 Get
-                    Return CDbl(ctrlx1)
+                    Return CDbl(ctrlX1)
                 End Get
             End Property
 
@@ -196,9 +196,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlY1 As Double
+            Public Overrides ReadOnly Property ctrlY1 As Double
                 Get
-                    Return CDbl(ctrly1)
+                    Return CDbl(ctrlY1)
                 End Get
             End Property
 
@@ -206,7 +206,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlP1 As Point2D
+            Public Overrides ReadOnly Property ctrlP1 As Point2D
                 Get
                     Return New Point2D.Float(ctrlx1, ctrly1)
                 End Get
@@ -216,9 +216,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlX2 As Double
+            Public Overrides ReadOnly Property ctrlX2 As Double
                 Get
-                    Return CDbl(ctrlx2)
+                    Return CDbl(ctrlX2)
                 End Get
             End Property
 
@@ -226,9 +226,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlY2 As Double
+            Public Overrides ReadOnly Property ctrlY2 As Double
                 Get
-                    Return CDbl(ctrly2)
+                    Return CDbl(ctrlY2)
                 End Get
             End Property
 
@@ -236,7 +236,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlP2 As Point2D
+            Public Overrides ReadOnly Property ctrlP2 As Point2D
                 Get
                     Return New Point2D.Float(ctrlx2, ctrly2)
                 End Get
@@ -246,7 +246,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides x2 As Double
+            Public Overrides ReadOnly Property x2 As Double
                 Get
                     Return CDbl(x2)
                 End Get
@@ -256,7 +256,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides y2 As Double
+            Public Overrides ReadOnly Property y2 As Double
                 Get
                     Return CDbl(y2)
                 End Get
@@ -266,7 +266,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides p2 As Point2D
+            Public Overrides ReadOnly Property p2 As Point2D
                 Get
                     Return New Point2D.Float(x2, y2)
                 End Get
@@ -449,7 +449,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides x1 As Double
+            Public Overrides ReadOnly Property x1 As Double
                 Get
                     Return x1
                 End Get
@@ -459,7 +459,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides y1 As Double
+            Public Overrides ReadOnly Property y1 As Double
                 Get
                     Return y1
                 End Get
@@ -469,7 +469,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides p1 As Point2D
+            Public Overrides ReadOnly Property p1 As Point2D
                 Get
                     Return New Point2D.Double(x1, y1)
                 End Get
@@ -479,9 +479,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlX1 As Double
+            Public Overrides ReadOnly Property ctrlX1 As Double
                 Get
-                    Return ctrlx1
+                    Return ctrlX1
                 End Get
             End Property
 
@@ -489,9 +489,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlY1 As Double
+            Public Overrides ReadOnly Property ctrlY1 As Double
                 Get
-                    Return ctrly1
+                    Return ctrlY1
                 End Get
             End Property
 
@@ -499,7 +499,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlP1 As Point2D
+            Public Overrides ReadOnly Property ctrlP1 As Point2D
                 Get
                     Return New Point2D.Double(ctrlx1, ctrly1)
                 End Get
@@ -509,9 +509,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlX2 As Double
+            Public Overrides ReadOnly Property ctrlX2 As Double
                 Get
-                    Return ctrlx2
+                    Return ctrlX2
                 End Get
             End Property
 
@@ -519,9 +519,9 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlY2 As Double
+            Public Overrides ReadOnly Property ctrlY2 As Double
                 Get
-                    Return ctrly2
+                    Return ctrlY2
                 End Get
             End Property
 
@@ -529,7 +529,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides ctrlP2 As Point2D
+            Public Overrides ReadOnly Property ctrlP2 As Point2D
                 Get
                     Return New Point2D.Double(ctrlx2, ctrly2)
                 End Get
@@ -539,7 +539,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides x2 As Double
+            Public Overrides ReadOnly Property x2 As Double
                 Get
                     Return x2
                 End Get
@@ -549,7 +549,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides y2 As Double
+            Public Overrides ReadOnly Property y2 As Double
                 Get
                     Return y2
                 End Get
@@ -559,7 +559,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides p2 As Point2D
+            Public Overrides ReadOnly Property p2 As Point2D
                 Get
                     Return New Point2D.Double(x2, y2)
                 End Get
@@ -1049,40 +1049,40 @@ Namespace java.awt.geom
 			' From Graphics Gems:
 			' http://tog.acm.org/resources/GraphicsGems/gems/Roots3And4.c
 			Dim d As Double = eqn(3)
-            If d = 0 Then Return QuadCurve2D.solveQuadratic(eqn, Res)
+        If d = 0 Then Return QuadCurve2D.solveQuadratic(eqn, Res)
 
             ' normal form: x^3 + Ax^2 + Bx + C = 0
             Dim A As Double = eqn(2) / d
-            Dim B As Double = eqn(1) / d
-            Dim C As Double = eqn(0) / d
+        Dim B As Double = eqn(1) / d
+        Dim C As Double = eqn(0) / d
 
 
-            '  substitute x = y - A/3 to eliminate quadratic term:
-            '     x^3 +Px + Q = 0
-            '
-            ' Since we actually need P/3 and Q/2 for all of the
-            ' calculations that follow, we will calculate
-            ' p = P/3
-            ' q = Q/2
-            ' instead and use those values for simplicity of the code.
-            Dim sq_A As Double = A * A
-            Dim p As Double = 1.0 / 3 * (-1.0 / 3 * sq_A + B)
-            Dim q As Double = 1.0 / 2 * (2.0 / 27 * A * sq_A - 1.0 / 3 * A * B + C)
+        '  substitute x = y - A/3 to eliminate quadratic term:
+        '     x^3 +Px + Q = 0
+        '
+        ' Since we actually need P/3 and Q/2 for all of the
+        ' calculations that follow, we will calculate
+        ' p = P/3
+        ' q = Q/2
+        ' instead and use those values for simplicity of the code.
+        Dim sq_A As Double = A * A
+        Dim p As Double = 1.0 / 3 * (-1.0 / 3 * sq_A + B)
+        Dim q As Double = 1.0 / 2 * (2.0 / 27 * A * sq_A - 1.0 / 3 * A * B + C)
 
-            ' use Cardano's formula
+        ' use Cardano's formula
 
-            Dim cb_p As Double = p * p * p
-            Dim D_Renamed As Double = q * q + cb_p
+        Dim cb_p As Double = p * p * p
+        Dim D_Renamed As Double = q * q + cb_p
 
-            Dim [sub] As Double = 1.0 / 3 * A
+        Dim [sub] As Double = 1.0 / 3 * A
 
-            Dim num As Integer
-            If D_Renamed < 0 Then ' Casus irreducibilis: three real solutions
-                ' see: http://en.wikipedia.org/wiki/Cubic_function#Trigonometric_.28and_hyperbolic.29_method
-                Dim phi As Double = 1.0 / 3 * System.Math.Acos(-q / System.Math.Sqrt(-cb_p))
-                Dim t As Double = 2 * System.Math.Sqrt(-p)
+        Dim num As Integer
+        If D_Renamed < 0 Then ' Casus irreducibilis: three real solutions
+        ' see: http://en.wikipedia.org/wiki/Cubic_function#Trigonometric_.28and_hyperbolic.29_method
+        Dim phi As Double = 1.0 / 3 * System.Math.Acos(-q / System.Math.Sqrt(-cb_p))
+        Dim t As Double = 2 * System.Math.Sqrt(-p)
 
-                If Res = eqn Then eqn = java.util.Arrays.copyOf(eqn, 4)
+        If Res = eqn Then eqn = java.util.Arrays.copyOf(eqn, 4)
 
                 Res(0) = (t * System.Math.Cos(phi))
                 Res(1) = (-t * System.Math.Cos(phi + System.Math.PI / 3))
@@ -1093,19 +1093,19 @@ Namespace java.awt.geom
                     Res(i) -= [sub]
                 Next i
 
-            Else
-                ' Please see the comment in fixRoots marked 'XXX' before changing
-                ' any of the code in this case.
-                Dim sqrt_D As Double = System.Math.Sqrt(D_Renamed)
-                Dim u As Double = System.Math.cbrt(sqrt_D - q)
-                Dim v As Double = -System.Math.cbrt(sqrt_D + q)
-                Dim uv As Double = u + v
+        Else
+        ' Please see the comment in fixRoots marked 'XXX' before changing
+        ' any of the code in this case.
+        Dim sqrt_D As Double = System.Math.Sqrt(D_Renamed)
+        Dim u As Double = System.Math.cbrt(sqrt_D - q)
+        Dim v As Double = -System.Math.cbrt(sqrt_D + q)
+        Dim uv As Double = u + v
 
                 num = 1
 
                 Dim err As Double = 1200000000 * ulp(abs(uv) + abs([sub]))
-                If iszero(D_Renamed, err) OrElse within(u, v, err) Then
-                    If Res = eqn Then eqn = java.util.Arrays.copyOf(eqn, 4)
+        If iszero(D_Renamed, err) OrElse within(u, v, err) Then
+        If Res = eqn Then eqn = java.util.Arrays.copyOf(eqn, 4)
                     Res(1) = -(uv / 2) - [sub]
                     num = 2
                 End If
@@ -1113,44 +1113,44 @@ Namespace java.awt.geom
                 Res(0) = uv - [sub]
             End If
 
-            If num > 1 Then ' num == 3 || num == 2 num = fixRoots(eqn, res, num)
-                If num > 2 AndAlso (Res(2) = Res(1) OrElse Res(2) = Res(0)) Then num -= 1
+        If num > 1 Then ' num == 3 || num == 2 num = fixRoots(eqn, res, num)
+        If num > 2 AndAlso (Res(2) = Res(1) OrElse Res(2) = Res(0)) Then num -= 1
                 If num > 1 AndAlso Res(1) = Res(0) Then
                     num -= 1
                     Res(1) = Res(num)
                 End If
-                Return num
+        Return num
 
-                ' preconditions: eqn != res && eqn[3] != 0 && num > 1
-                ' This method tries to improve the accuracy of the roots of eqn (which
-                ' should be in res). It also might eliminate roots in res if it decideds
-                ' that they're not real roots. It will not check for roots that the
-                ' computation of res might have missed, so this method should only be
-                ' used when the roots in res have been computed using an algorithm
-                ' that never underestimates the number of roots (such as solveCubic above)
-                Private Static Integer fixRoots(Double() eqn, Double() res, Integer num)
+        ' preconditions: eqn != res && eqn[3] != 0 && num > 1
+        ' This method tries to improve the accuracy of the roots of eqn (which
+        ' should be in res). It also might eliminate roots in res if it decideds
+        ' that they're not real roots. It will not check for roots that the
+        ' computation of res might have missed, so this method should only be
+        ' used when the roots in res have been computed using an algorithm
+        ' that never underestimates the number of roots (such as solveCubic above)
+        Private Static Integer fixRoots(Double() eqn, Double() res, Integer num)
 			Dim intervals As Double() = {eqn(1), 2 * eqn(2), 3 * eqn(3)}
-                Dim critCount As Integer = QuadCurve2D.solveQuadratic(intervals, intervals)
-                If critCount = 2 AndAlso intervals(0) = intervals(1) Then critCount -= 1
+        Dim critCount As Integer = QuadCurve2D.solveQuadratic(intervals, intervals)
+        If critCount = 2 AndAlso intervals(0) = intervals(1) Then critCount -= 1
                 If critCount = 2 AndAlso intervals(0) > intervals(1) Then
-                    Dim tmp As Double = intervals(0)
+        Dim tmp As Double = intervals(0)
                     intervals(0) = intervals(1)
                     intervals(1) = tmp
                 End If
 
-                ' below we use critCount to possibly filter out roots that shouldn't
-                ' have been computed. We require that eqn[3] != 0, so eqn is a proper
-                ' cubic, which means that its limits at -/+inf are -/+inf or +/-inf.
-                ' Therefore, if critCount==2, the curve is shaped like a sideways S,
-                ' and it could have 1-3 roots. If critCount==0 it is monotonic, and
-                ' if critCount==1 it is monotonic with a single point where it is
-                ' flat. In the last 2 cases there can only be 1 root. So in cases
-                ' where num > 1 but critCount < 2, we eliminate all roots in res
-                ' except one.
+        ' below we use critCount to possibly filter out roots that shouldn't
+        ' have been computed. We require that eqn[3] != 0, so eqn is a proper
+        ' cubic, which means that its limits at -/+inf are -/+inf or +/-inf.
+        ' Therefore, if critCount==2, the curve is shaped like a sideways S,
+        ' and it could have 1-3 roots. If critCount==0 it is monotonic, and
+        ' if critCount==1 it is monotonic with a single point where it is
+        ' flat. In the last 2 cases there can only be 1 root. So in cases
+        ' where num > 1 but critCount < 2, we eliminate all roots in res
+        ' except one.
 
-                If num = 3 Then
-                    Dim xe As Double = getRootUpperBound(eqn)
-                    Dim x0 As Double = -xe
+        If num = 3 Then
+        Dim xe As Double = getRootUpperBound(eqn)
+        Dim x0 As Double = -xe
 
                     java.util.Arrays.sort(Res, 0, num)
                     If critCount = 2 Then
@@ -1160,97 +1160,97 @@ Namespace java.awt.geom
                         Res(1) = refineRootWithHint(eqn, intervals(0), intervals(1), Res(1))
                         Res(2) = refineRootWithHint(eqn, intervals(1), xe, Res(2))
                         Return 3
-                    ElseIf critCount = 1 Then
-                        ' we only need fx0 and fxe for the sign of the polynomial
-                        ' at -inf and +inf respectively, so we don't need to do
-                        ' fx0 = solveEqn(eqn, 3, x0); fxe = solveEqn(eqn, 3, xe)
-                        Dim fxe As Double = eqn(3)
-                        Dim fx0 As Double = -fxe
+        ElseIf critCount = 1 Then
+        ' we only need fx0 and fxe for the sign of the polynomial
+        ' at -inf and +inf respectively, so we don't need to do
+        ' fx0 = solveEqn(eqn, 3, x0); fxe = solveEqn(eqn, 3, xe)
+        Dim fxe As Double = eqn(3)
+        Dim fx0 As Double = -fxe
 
-                        Dim x1_Renamed As Double = intervals(0)
-                        Dim fx1 As Double = solveEqn(eqn, 3, x1_Renamed)
+        Dim x1_Renamed As Double = intervals(0)
+        Dim fx1 As Double = solveEqn(eqn, 3, x1_Renamed)
 
-                        ' if critCount == 1 or critCount == 0, but num == 3 then
-                        ' something has gone wrong. This branch and the one below
-                        ' would ideally never execute, but if they do we can't know
-                        ' which of the computed roots is closest to the real root;
-                        ' therefore, we can't use refineRootWithHint. But even if
-                        ' we did know, being here most likely means that the
-                        ' curve is very flat close to two of the computed roots
-                        ' (or maybe even all three). This might make Newton's method
-                        ' fail altogether, which would be a pain to detect and fix.
-                        ' This is why we use a very stable bisection method.
-                        If oppositeSigns(fx0, fx1) Then
+        ' if critCount == 1 or critCount == 0, but num == 3 then
+        ' something has gone wrong. This branch and the one below
+        ' would ideally never execute, but if they do we can't know
+        ' which of the computed roots is closest to the real root;
+        ' therefore, we can't use refineRootWithHint. But even if
+        ' we did know, being here most likely means that the
+        ' curve is very flat close to two of the computed roots
+        ' (or maybe even all three). This might make Newton's method
+        ' fail altogether, which would be a pain to detect and fix.
+        ' This is why we use a very stable bisection method.
+        If oppositeSigns(fx0, fx1) Then
                             Res(0) = bisectRootWithHint(eqn, x0, x1_Renamed, Res(0))
                         ElseIf oppositeSigns(fx1, fxe) Then
                             Res(0) = bisectRootWithHint(eqn, x1_Renamed, xe, Res(2)) ' fx1 must be 0
                         Else
                             Res(0) = x1_Renamed
                         End If
-                        ' return 1
-                    ElseIf critCount = 0 Then
+        ' return 1
+        ElseIf critCount = 0 Then
                         Res(0) = bisectRootWithHint(eqn, x0, xe, Res(1))
                         ' return 1
                     End If
-                ElseIf num = 2 AndAlso critCount = 2 Then
-                    ' XXX: here we assume that res[0] has better accuracy than res[1].
-                    ' This is true because this method is only used from solveCubic
-                    ' which puts in res[0] the root that it would compute anyway even
-                    ' if num==1. If this method is ever used from any other method, or
-                    ' if the solveCubic implementation changes, this assumption should
-                    ' be reevaluated, and the choice of goodRoot might have to become
-                    ' goodRoot = (abs(eqn'(res[0])) > abs(eqn'(res[1]))) ? res[0] : res[1]
-                    ' where eqn' is the derivative of eqn.
-                    Dim goodRoot As Double = Res(0)
-                    Dim badRoot As Double = Res(1)
-                    Dim x1_Renamed As Double = intervals(0)
-                    Dim x2_Renamed As Double = intervals(1)
-                    ' If a cubic curve really has 2 roots, one of those roots must be
-                    ' at a critical point. That can't be goodRoot, so we compute x to
-                    ' be the farthest critical point from goodRoot. If there are two
-                    ' roots, x must be the second one, so we evaluate eqn at x, and if
-                    ' it is zero (or close enough) we put x in res[1] (or badRoot, if
-                    ' |solveEqn(eqn, 3, badRoot)| < |solveEqn(eqn, 3, x)| but this
-                    ' shouldn't happen often).
-                    Dim x As Double = If(abs(x1_Renamed - goodRoot) > abs(x2_Renamed - goodRoot), x1_Renamed, x2_Renamed)
-                    Dim fx As Double = solveEqn(eqn, 3, x)
+        ElseIf num = 2 AndAlso critCount = 2 Then
+        ' XXX: here we assume that res[0] has better accuracy than res[1].
+        ' This is true because this method is only used from solveCubic
+        ' which puts in res[0] the root that it would compute anyway even
+        ' if num==1. If this method is ever used from any other method, or
+        ' if the solveCubic implementation changes, this assumption should
+        ' be reevaluated, and the choice of goodRoot might have to become
+        ' goodRoot = (abs(eqn'(res[0])) > abs(eqn'(res[1]))) ? res[0] : res[1]
+        ' where eqn' is the derivative of eqn.
+        Dim goodRoot As Double = Res(0)
+        Dim badRoot As Double = Res(1)
+        Dim x1_Renamed As Double = intervals(0)
+        Dim x2_Renamed As Double = intervals(1)
+        ' If a cubic curve really has 2 roots, one of those roots must be
+        ' at a critical point. That can't be goodRoot, so we compute x to
+        ' be the farthest critical point from goodRoot. If there are two
+        ' roots, x must be the second one, so we evaluate eqn at x, and if
+        ' it is zero (or close enough) we put x in res[1] (or badRoot, if
+        ' |solveEqn(eqn, 3, badRoot)| < |solveEqn(eqn, 3, x)| but this
+        ' shouldn't happen often).
+        Dim x As Double = If(abs(x1_Renamed - goodRoot) > abs(x2_Renamed - goodRoot), x1_Renamed, x2_Renamed)
+        Dim fx As Double = solveEqn(eqn, 3, x)
 
-                    If iszero(fx, 10000000 * ulp(x)) Then
-                        Dim badRootVal As Double = solveEqn(eqn, 3, badRoot)
+        If iszero(fx, 10000000 * ulp(x)) Then
+        Dim badRootVal As Double = solveEqn(eqn, 3, badRoot)
                         Res(1) = If(abs(badRootVal) < abs(fx), badRoot, x)
                         Return 2
-                    End If
-                End If ' else there can only be one root - goodRoot, and it is already in res[0]
+        End If
+        End If ' else there can only be one root - goodRoot, and it is already in res[0]
 
-                Return 1
+        Return 1
 
-                ' use newton's method.
-                Private Static Double refineRootWithHint(Double() eqn, Double min, Double max, Double t)
+        ' use newton's method.
+        Private Static Double refineRootWithHint(Double() eqn, Double min, Double max, Double t)
 			If Not inInterval(t, min, max) Then Return t
                 Dim deriv As Double() = {eqn(1), 2 * eqn(2), 3 * eqn(3)}
-                Dim origt As Double = t
-                For i As Integer = 0 To 2
-                    Dim slope As Double = solveEqn(deriv, 2, t)
-                    Dim y As Double = solveEqn(eqn, 3, t)
-                    Dim delta As Double = -(y / slope)
-                    Dim newt As Double = t + delta
+        Dim origt As Double = t
+        For i As Integer = 0 To 2
+        Dim slope As Double = solveEqn(deriv, 2, t)
+        Dim y As Double = solveEqn(eqn, 3, t)
+        Dim delta As Double = -(y / slope)
+        Dim newt As Double = t + delta
 
-                    If slope = 0 OrElse y = 0 OrElse t = newt Then Exit For
+        If slope = 0 OrElse y = 0 OrElse t = newt Then Exit For
 
                     t = newt
                 Next i
-                If within(t, origt, 1000 * ulp(origt)) AndAlso inInterval(t, min, max) Then Return t
+        If within(t, origt, 1000 * ulp(origt)) AndAlso inInterval(t, min, max) Then Return t
                 Return origt
 
-                Private Static Double bisectRootWithHint(Double() eqn, Double x0, Double xe, Double hint)
+        Private Static Double bisectRootWithHint(Double() eqn, Double x0, Double xe, Double hint)
 			Dim delta1 As Double = System.Math.Min(abs(hint - x0) / 64, 0.0625)
-                Dim delta2 As Double = System.Math.Min(abs(hint - xe) / 64, 0.0625)
-                Dim x02 As Double = hint - delta1
-                Dim xe2 As Double = hint + delta2
-                Dim fx02 As Double = solveEqn(eqn, 3, x02)
-                Dim fxe2 As Double = solveEqn(eqn, 3, xe2)
-                Do While oppositeSigns(fx02, fxe2)
-                    If x02 >= xe2 Then Return x02
+        Dim delta2 As Double = System.Math.Min(abs(hint - xe) / 64, 0.0625)
+        Dim x02 As Double = hint - delta1
+        Dim xe2 As Double = hint + delta2
+        Dim fx02 As Double = solveEqn(eqn, 3, x02)
+        Dim fxe2 As Double = solveEqn(eqn, 3, xe2)
+        Do While oppositeSigns(fx02, fxe2)
+        If x02 >= xe2 Then Return x02
                     x0 = x02
                     xe = xe2
                     delta1 /= 64
@@ -1260,17 +1260,17 @@ Namespace java.awt.geom
                     fx02 = solveEqn(eqn, 3, x02)
                     fxe2 = solveEqn(eqn, 3, xe2)
                 Loop
-                If fx02 = 0 Then Return x02
+        If fx02 = 0 Then Return x02
                 If fxe2 = 0 Then Return xe2
 
                 Return bisectRoot(eqn, x0, xe)
 
-                Private Static Double bisectRoot(Double() eqn, Double x0, Double xe)
+        Private Static Double bisectRoot(Double() eqn, Double x0, Double xe)
 			Dim fx0 As Double = solveEqn(eqn, 3, x0)
-                Dim m As Double = x0 + (xe - x0) / 2
-                Do While m <> x0 AndAlso m <> xe
-                    Dim fm As Double = solveEqn(eqn, 3, m)
-                    If fm = 0 Then Return m
+        Dim m As Double = x0 + (xe - x0) / 2
+        Do While m <> x0 AndAlso m <> xe
+        Dim fm As Double = solveEqn(eqn, 3, m)
+        If fm = 0 Then Return m
                     If oppositeSigns(fx0, fm) Then
                         xe = m
                     Else
@@ -1279,181 +1279,181 @@ Namespace java.awt.geom
                     End If
                     m = x0 + (xe - x0) / 2
                 Loop
-                Return m
+        Return m
 
-                Private Static Boolean inInterval(Double t, Double min, Double max)
+        Private Static Boolean inInterval(Double t, Double min, Double max)
 			Return min <= t AndAlso t <= max
 
-                Private Static Boolean within(Double x, Double y, Double err)
+        Private Static Boolean within(Double x, Double y, Double err)
 			Dim d As Double = y - x
-                Return (d <= Err() AndAlso d >= -Err())
+        Return (d <= Err() AndAlso d >= -Err())
 
-                Private Static Boolean iszero(Double x, Double err)
+        Private Static Boolean iszero(Double x, Double err)
 			Return within(x, 0, Err)
 
-                Private Static Boolean oppositeSigns(Double x1, Double x2)
+        Private Static Boolean oppositeSigns(Double x1, Double x2)
 			Return (x1 < 0 AndAlso x2 > 0) OrElse (x1 > 0 AndAlso x2 < 0)
 
-                Private Static Double solveEqn(Double eqn() , Integer order, Double t)
+        Private Static Double solveEqn(Double eqn() , Integer order, Double t)
 			Dim v As Double = eqn(order)
                 order -= 1
                 Do While order >= 0
                     v = v * t + eqn(order)
                     order -= 1
                 Loop
-                Return v
+        Return v
 
-                '
-                '     * Computes M+1 where M is an upper bound for all the roots in of eqn.
-                '     * See: http://en.wikipedia.org/wiki/Sturm%27s_theorem#Applications.
-                '     * The above link doesn't contain a proof, but I [dlila] proved it myself
-                '     * so the result is reliable. The proof isn't difficult, but it's a bit
-                '     * long to include here.
-                '     * Precondition: eqn must represent a cubic polynomial
-                '
-                Private static Double getRootUpperBound(Double() eqn)
+        '
+        '     * Computes M+1 where M is an upper bound for all the roots in of eqn.
+        '     * See: http://en.wikipedia.org/wiki/Sturm%27s_theorem#Applications.
+        '     * The above link doesn't contain a proof, but I [dlila] proved it myself
+        '     * so the result is reliable. The proof isn't difficult, but it's a bit
+        '     * long to include here.
+        '     * Precondition: eqn must represent a cubic polynomial
+        '
+        Private Static Double getRootUpperBound(Double() eqn)
 			Dim d As Double = eqn(3)
-			Dim a As Double = eqn(2)
-			Dim b As Double = eqn(1)
-			Dim c As Double = eqn(0)
+        Dim a As Double = eqn(2)
+        Dim b As Double = eqn(1)
+        Dim c As Double = eqn(0)
 
-			Dim M As Double = 1 + max(max(abs(a), abs(b)), abs(c)) / abs(d)
+        Dim M As Double = 1 + max(max(abs(A), abs(B)), abs(C)) / abs(d)
 			M += ulp(M) + 1
 			Return M
 
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public Boolean contains(Double x, Double y)
-			If Not(x * 0.0 + y * 0.0 = 0.0) Then Return False
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Boolean contains(Double x, Double y)
+			If Not (x * 0.0 + y * 0.0 = 0.0) Then Return False
 			' We count the "Y" crossings to determine if the point is
 			' inside the curve bounded by its closing line.
 			Dim x1_Renamed As Double = x1
-			Dim y1_Renamed As Double = y1
-			Dim x2_Renamed As Double = x2
-			Dim y2_Renamed As Double = y2
-			Dim crossings As Integer = (sun.awt.geom.Curve.pointCrossingsForLine(x, y, x1_Renamed, y1_Renamed, x2_Renamed, y2_Renamed) + sun.awt.geom.Curve.pointCrossingsForCubic(x, y, x1_Renamed, y1_Renamed, ctrlX1, ctrlY1, ctrlX2, ctrlY2, x2_Renamed, y2_Renamed, 0))
-			Return ((crossings And 1) = 1)
+        Dim y1_Renamed As Double = y1
+        Dim x2_Renamed As Double = x2
+        Dim y2_Renamed As Double = y2
+        Dim crossings As Integer = (sun.awt.geom.Curve.pointCrossingsForLine(x, y, x1_Renamed, y1_Renamed, x2_Renamed, y2_Renamed) + sun.awt.geom.Curve.pointCrossingsForCubic(x, y, x1_Renamed, y1_Renamed, ctrlX1, ctrlY1, ctrlX2, ctrlY2, x2_Renamed, y2_Renamed, 0))
+        Return ((crossings And 1) = 1)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public Boolean contains(Point2D p)
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Boolean contains(Point2D p)
 			Return contains(p.x, p.y)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public Boolean intersects(Double x, Double y, Double w, Double h)
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Boolean intersects(Double x, Double y, Double w, Double h)
 			' Trivially reject non-existant rectangles
 			If w <= 0 OrElse h <= 0 Then Return False
 
 			Dim numCrossings As Integer = rectCrossings(x, y, w, h)
-			' the intended return value is
-			' numCrossings != 0 || numCrossings == Curve.RECT_INTERSECTS
-			' but if (numCrossings != 0) numCrossings == INTERSECTS won't matter
-			' and if !(numCrossings != 0) then numCrossings == 0, so
-			' numCrossings != RECT_INTERSECT
-			Return numCrossings <> 0
+        ' the intended return value is
+        ' numCrossings != 0 || numCrossings == Curve.RECT_INTERSECTS
+        ' but if (numCrossings != 0) numCrossings == INTERSECTS won't matter
+        ' and if !(numCrossings != 0) then numCrossings == 0, so
+        ' numCrossings != RECT_INTERSECT
+        Return numCrossings <> 0
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public Boolean intersects(Rectangle2D r)
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Boolean intersects(Rectangle2D r)
 			Return intersects(r.x, r.y, r.width, r.height)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public Boolean contains(Double x, Double y, Double w, Double h)
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Boolean contains(Double x, Double y, Double w, Double h)
 			If w <= 0 OrElse h <= 0 Then Return False
 
 			Dim numCrossings As Integer = rectCrossings(x, y, w, h)
-			Return Not(numCrossings = 0 OrElse numCrossings = sun.awt.geom.Curve.RECT_INTERSECTS)
+        Return Not (numCrossings = 0 OrElse numCrossings = sun.awt.geom.Curve.RECT_INTERSECTS)
 
-		private Integer rectCrossings(Double x, Double y, Double w, Double h)
+        Private Integer rectCrossings(Double x, Double y, Double w, Double h)
 			Dim crossings As Integer = 0
-			If Not(x1 = x2 AndAlso y1 = y2) Then
+        If Not (x1 = x2 AndAlso y1 = y2) Then
 				crossings = sun.awt.geom.Curve.rectCrossingsForLine(crossings, x, y, x+w, y+h, x1, y1, x2, y2)
 				If crossings = sun.awt.geom.Curve.RECT_INTERSECTS Then Return crossings
 			End If
-			' we call this with the curve's direction reversed, because we wanted
-			' to call rectCrossingsForLine first, because it's cheaper.
-			Return sun.awt.geom.Curve.rectCrossingsForCubic(crossings, x, y, x+w, y+h, x2, y2, ctrlX2, ctrlY2, ctrlX1, ctrlY1, x1, y1, 0)
+        ' we call this with the curve's direction reversed, because we wanted
+        ' to call rectCrossingsForLine first, because it's cheaper.
+        Return sun.awt.geom.Curve.rectCrossingsForCubic(crossings, x, y, x + w, y + h, x2, y2, ctrlX2, ctrlY2, ctrlX1, ctrlY1, x1, y1, 0)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public Boolean contains(Rectangle2D r)
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public Boolean contains(Rectangle2D r)
 			Return contains(r.x, r.y, r.width, r.height)
 
-		''' <summary>
-		''' {@inheritDoc}
-		''' @since 1.2
-		''' </summary>
-		public java.awt.Rectangle bounds
+        ''' <summary>
+        ''' {@inheritDoc}
+        ''' @since 1.2
+        ''' </summary>
+        Public java.awt.Rectangle bounds
 			Return bounds2D.bounds
 
-		''' <summary>
-		''' Returns an iteration object that defines the boundary of the
-		''' shape.
-		''' The iterator for this class is not multi-threaded safe,
-		''' which means that this <code>CubicCurve2D</code> class does not
-		''' guarantee that modifications to the geometry of this
-		''' <code>CubicCurve2D</code> object do not affect any iterations of
-		''' that geometry that are already in process. </summary>
-		''' <param name="at"> an optional <code>AffineTransform</code> to be applied to the
-		''' coordinates as they are returned in the iteration, or <code>null</code>
-		''' if untransformed coordinates are desired </param>
-		''' <returns>    the <code>PathIterator</code> object that returns the
-		'''          geometry of the outline of this <code>CubicCurve2D</code>, one
-		'''          segment at a time.
-		''' @since 1.2 </returns>
-		public PathIterator getPathIterator(AffineTransform at)
+        ''' <summary>
+        ''' Returns an iteration object that defines the boundary of the
+        ''' shape.
+        ''' The iterator for this class is not multi-threaded safe,
+        ''' which means that this <code>CubicCurve2D</code> class does not
+        ''' guarantee that modifications to the geometry of this
+        ''' <code>CubicCurve2D</code> object do not affect any iterations of
+        ''' that geometry that are already in process. </summary>
+        ''' <param name="at"> an optional <code>AffineTransform</code> to be applied to the
+        ''' coordinates as they are returned in the iteration, or <code>null</code>
+        ''' if untransformed coordinates are desired </param>
+        ''' <returns>    the <code>PathIterator</code> object that returns the
+        '''          geometry of the outline of this <code>CubicCurve2D</code>, one
+        '''          segment at a time.
+        ''' @since 1.2 </returns>
+        Public PathIterator getPathIterator(AffineTransform at)
 			Return New CubicIterator(Me, at)
 
-		''' <summary>
-		''' Return an iteration object that defines the boundary of the
-		''' flattened shape.
-		''' The iterator for this class is not multi-threaded safe,
-		''' which means that this <code>CubicCurve2D</code> class does not
-		''' guarantee that modifications to the geometry of this
-		''' <code>CubicCurve2D</code> object do not affect any iterations of
-		''' that geometry that are already in process. </summary>
-		''' <param name="at"> an optional <code>AffineTransform</code> to be applied to the
-		''' coordinates as they are returned in the iteration, or <code>null</code>
-		''' if untransformed coordinates are desired </param>
-		''' <param name="flatness"> the maximum amount that the control points
-		''' for a given curve can vary from colinear before a subdivided
-		''' curve is replaced by a straight line connecting the end points </param>
-		''' <returns>    the <code>PathIterator</code> object that returns the
-		''' geometry of the outline of this <code>CubicCurve2D</code>,
-		''' one segment at a time.
-		''' @since 1.2 </returns>
-		public PathIterator getPathIterator(AffineTransform at, Double flatness)
+        ''' <summary>
+        ''' Return an iteration object that defines the boundary of the
+        ''' flattened shape.
+        ''' The iterator for this class is not multi-threaded safe,
+        ''' which means that this <code>CubicCurve2D</code> class does not
+        ''' guarantee that modifications to the geometry of this
+        ''' <code>CubicCurve2D</code> object do not affect any iterations of
+        ''' that geometry that are already in process. </summary>
+        ''' <param name="at"> an optional <code>AffineTransform</code> to be applied to the
+        ''' coordinates as they are returned in the iteration, or <code>null</code>
+        ''' if untransformed coordinates are desired </param>
+        ''' <param name="flatness"> the maximum amount that the control points
+        ''' for a given curve can vary from colinear before a subdivided
+        ''' curve is replaced by a straight line connecting the end points </param>
+        ''' <returns>    the <code>PathIterator</code> object that returns the
+        ''' geometry of the outline of this <code>CubicCurve2D</code>,
+        ''' one segment at a time.
+        ''' @since 1.2 </returns>
+        Public PathIterator getPathIterator(AffineTransform at, Double flatness)
 			Return New FlatteningPathIterator(getPathIterator(at), flatness)
 
-		''' <summary>
-		''' Creates a new object of the same class as this object.
-		''' </summary>
-		''' <returns>     a clone of this instance. </returns>
-		''' <exception cref="OutOfMemoryError">            if there is not enough memory. </exception>
-		''' <seealso cref=        java.lang.Cloneable
-		''' @since      1.2 </seealso>
-		public Object clone()
+        ''' <summary>
+        ''' Creates a new object of the same class as this object.
+        ''' </summary>
+        ''' <returns>     a clone of this instance. </returns>
+        ''' <exception cref="OutOfMemoryError">            if there is not enough memory. </exception>
+        ''' <seealso cref=        java.lang.Cloneable
+        ''' @since      1.2 </seealso>
+        Public Object clone()
 			Try
-				Return MyBase.clone()
-			Catch e As CloneNotSupportedException
-				' this shouldn't happen, since we are Cloneable
-				Throw New InternalError(e)
-			End Try
-	End Class
+        Return MyBase.clone()
+        Catch e As CloneNotSupportedException
+        ' this shouldn't happen, since we are Cloneable
+        Throw New InternalError(e)
+        End Try
+    End Class
 
 End Namespace

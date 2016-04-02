@@ -121,7 +121,7 @@ Namespace java.security.cert
 		''' </summary>
 		''' <returns> {@code true} if forward checking is supported,
 		''' {@code false} otherwise </returns>
-		Public MustOverride ReadOnly Property Overrides forwardCheckingSupported As Boolean Implements CertPathChecker.isForwardCheckingSupported
+		Public MustOverride ReadOnly  Overrides ReadOnly Property  forwardCheckingSupported As Boolean Implements CertPathChecker.isForwardCheckingSupported
 
 		''' <summary>
 		''' Returns an immutable {@code Set} of X.509 certificate extensions

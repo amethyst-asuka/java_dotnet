@@ -101,7 +101,7 @@ Namespace java.util.stream
 
 		' Shape-specific methods
 
-		Friend Property Overrides outputShape As StreamShape
+		Friend  Overrides ReadOnly Property  outputShape As StreamShape
 			Get
 				Return StreamShape.LONG_VALUE
 			End Get

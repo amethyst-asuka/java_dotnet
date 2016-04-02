@@ -199,7 +199,7 @@ Namespace java.util.stream
 		''' </summary>
 		''' <returns> local result for this node previously stored with
 		''' <seealso cref="#setLocalResult"/> </returns>
-		Public Property Overrides rawResult As R
+		Public  Overrides ReadOnly Property  rawResult As R
 			Get
 				Return localResult
 			End Get

@@ -954,25 +954,25 @@ Namespace java.time.temporal
 				Return name
 			End Function
 
-			Public Property Overrides baseUnit As TemporalUnit Implements TemporalField.getBaseUnit
+			Public  Overrides ReadOnly Property  baseUnit As TemporalUnit Implements TemporalField.getBaseUnit
 				Get
 					Return baseUnit
 				End Get
 			End Property
 
-			Public Property Overrides rangeUnit As TemporalUnit Implements TemporalField.getRangeUnit
+			Public  Overrides ReadOnly Property  rangeUnit As TemporalUnit Implements TemporalField.getRangeUnit
 				Get
 					Return rangeUnit
 				End Get
 			End Property
 
-			Public Property Overrides dateBased As Boolean Implements TemporalField.isDateBased
+			Public  Overrides ReadOnly Property  dateBased As Boolean Implements TemporalField.isDateBased
 				Get
 					Return True
 				End Get
 			End Property
 
-			Public Property Overrides timeBased As Boolean Implements TemporalField.isTimeBased
+			Public  Overrides ReadOnly Property  timeBased As Boolean Implements TemporalField.isTimeBased
 				Get
 					Return False
 				End Get

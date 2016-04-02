@@ -1022,7 +1022,7 @@ Namespace java.net
 		''' connect, listen, accept, resolve.
 		''' </summary>
 		''' <returns> the canonical string representation of the actions. </returns>
-		Public Property Overrides actions As String
+		Public  Overrides ReadOnly Property  actions As String
 			Get
 				If actions Is Nothing Then actions = getActions(Me.mask)
     

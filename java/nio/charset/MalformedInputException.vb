@@ -61,7 +61,7 @@ Namespace java.nio.charset
 		''' <summary>
 		''' Returns the message. </summary>
 		''' <returns> the message </returns>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Return "Input length = " & inputLength
 			End Get

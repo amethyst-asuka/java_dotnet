@@ -180,7 +180,7 @@ Namespace java.util.stream
 				Return New ReducingSink
 			End Function
 
-			Public Property Overrides opFlags As Integer
+			Public  Overrides ReadOnly Property  opFlags As Integer
 				Get
 					Return If(collector.characteristics().contains(Collector.Characteristics.UNORDERED), StreamOpFlag.NOT_ORDERED, 0)
 				End Get

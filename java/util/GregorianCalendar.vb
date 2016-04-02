@@ -751,7 +751,7 @@ Namespace java.util
 		''' </summary>
 		''' <returns> {@code "gregory"}
 		''' @since 1.8 </returns>
-		Public Property Overrides calendarType As String
+		Public  Overrides ReadOnly Property  calendarType As String
 			Get
 				Return "gregory"
 			End Get
@@ -1733,7 +1733,7 @@ Namespace java.util
 			Return other
 		End Function
 
-		Public Property Overrides timeZone As TimeZone
+		Public  Overrides ReadOnly Property  timeZone As TimeZone
 			Get
 				Dim zone_Renamed As TimeZone = MyBase.timeZone
 				' To share the zone by CalendarDates
@@ -1786,7 +1786,7 @@ Namespace java.util
 		''' <seealso cref= Calendar#getFirstDayOfWeek() </seealso>
 		''' <seealso cref= Calendar#getMinimalDaysInFirstWeek()
 		''' @since 1.7 </seealso>
-		Public Property Overrides weekYear As Integer
+		Public  Overrides ReadOnly Property  weekYear As Integer
 			Get
 				Dim year_Renamed As Integer = [get](YEAR) ' implicitly calls complete()
 				If internalGetEra() = BCE Then year_Renamed = 1 - year_Renamed
@@ -1941,7 +1941,7 @@ Namespace java.util
 		''' <seealso cref= #getWeekYear() </seealso>
 		''' <seealso cref= #getActualMaximum(int)
 		''' @since 1.7 </seealso>
-		Public Property Overrides weeksInWeekYear As Integer
+		Public  Overrides ReadOnly Property  weeksInWeekYear As Integer
 			Get
 				Dim gc As GregorianCalendar = normalizedCalendar
 				Dim weekYear_Renamed As Integer = gc.weekYear

@@ -698,7 +698,7 @@ Namespace java.util.stream
 				Me.size = left.count() + right.count()
 			End Sub
 
-			Public Property Overrides childCount As Integer Implements Node(Of T).getChildCount
+			Public  Overrides ReadOnly Property  childCount As Integer Implements Node(Of T).getChildCount
 				Get
 					Return 2
 				End Get

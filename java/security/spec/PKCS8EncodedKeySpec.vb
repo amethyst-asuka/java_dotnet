@@ -78,7 +78,7 @@ Namespace java.security.spec
 		''' </summary>
 		''' <returns> the PKCS #8 encoding of the key. Returns a new array
 		''' each time this method is called. </returns>
-		Public Property Overrides encoded As SByte()
+		Public  Overrides ReadOnly Property  encoded As SByte()
 			Get
 				Return MyBase.encoded
 			End Get

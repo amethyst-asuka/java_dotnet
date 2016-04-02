@@ -336,7 +336,7 @@ Namespace java.util.stream
 			End If
 		End Function
 
-		Public Property Overrides parallel As Boolean Implements BaseStream(Of E_OUT, S).isParallel
+		Public  Overrides ReadOnly Property  parallel As Boolean Implements BaseStream(Of E_OUT, S).isParallel
 			Get
 				Return sourceStage.parallel_Renamed
 			End Get
@@ -417,7 +417,7 @@ Namespace java.util.stream
 
 		' PipelineHelper
 
-		Friend Property Overrides sourceShape As StreamShape
+		Friend  Overrides ReadOnly Property  sourceShape As StreamShape
 			Get
 	'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 				Dim p As AbstractPipeline = AbstractPipeline.this
@@ -461,7 +461,7 @@ Namespace java.util.stream
 			wrappedSink.end()
 		End Sub
 
-		Friend Property Overrides streamAndOpFlags As Integer
+		Friend  Overrides ReadOnly Property  streamAndOpFlags As Integer
 			Get
 				Return combinedFlags
 			End Get

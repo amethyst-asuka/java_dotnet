@@ -230,7 +230,7 @@ Namespace java.util.concurrent
 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
             Public Overrides Function getContextClassLoader() As  ClassLoader ' to always report system loaderJavaToDotNetTempPropertyGetcontextClassLoader
-			Public Property Overrides contextClassLoader As  ClassLoader
+			Public  Overrides ReadOnly Property  contextClassLoader As  ClassLoader
 				Get
 					Return ClassLoader.systemClassLoader
 				End Get

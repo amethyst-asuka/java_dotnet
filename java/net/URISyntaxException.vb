@@ -119,7 +119,7 @@ Namespace java.net
 		''' character.
 		''' </summary>
 		''' <returns>  A string describing the parse error </returns>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Dim sb As New StringBuffer
 				sb.append(reason)

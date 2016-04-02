@@ -64,7 +64,7 @@ Namespace java.util
 			End Get
 		End Property
 
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 	'JAVA TO VB CONVERTER TODO TASK: The following line has a Java format specifier which cannot be directly translated to .NET:
 				Return String.Format("Code point = %#x", c)

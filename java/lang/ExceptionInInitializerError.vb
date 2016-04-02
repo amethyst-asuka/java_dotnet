@@ -120,7 +120,7 @@ Namespace java.lang
 		''' <returns>  the cause of this error or <code>null</code> if the
 		'''          cause is nonexistent or unknown.
 		''' @since   1.4 </returns>
-		Public Property Overrides cause As Throwable
+		Public  Overrides ReadOnly Property  cause As Throwable
 			Get
 				Return exception_Renamed
 			End Get

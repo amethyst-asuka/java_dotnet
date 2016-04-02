@@ -102,7 +102,7 @@ Namespace java.util.regex
 		''' visual indication of the error index within the pattern.
 		''' </summary>
 		''' <returns>  The full detail message </returns>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Dim sb As New StringBuffer
 				sb.append(desc)

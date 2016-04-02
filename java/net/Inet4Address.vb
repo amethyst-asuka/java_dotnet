@@ -161,7 +161,7 @@ Namespace java.net
 		''' <returns> a {@code boolean} indicating if the InetAddress is
 		''' an IP multicast address
 		''' @since   JDK1.1 </returns>
-		Public Property Overrides multicastAddress As Boolean
+		Public  Overrides ReadOnly Property  multicastAddress As Boolean
 			Get
 				Return ((holder().address And &Hf0000000L) = &He0000000L)
 			End Get
@@ -172,7 +172,7 @@ Namespace java.net
 		''' <returns> a {@code boolean} indicating if the Inetaddress is
 		'''         a wildcard address.
 		''' @since 1.4 </returns>
-		Public Property Overrides anyLocalAddress As Boolean
+		Public  Overrides ReadOnly Property  anyLocalAddress As Boolean
 			Get
 				Return holder().address = 0
 			End Get
@@ -184,7 +184,7 @@ Namespace java.net
 		''' <returns> a {@code boolean} indicating if the InetAddress is
 		''' a loopback address; or false otherwise.
 		''' @since 1.4 </returns>
-		Public Property Overrides loopbackAddress As Boolean
+		Public  Overrides ReadOnly Property  loopbackAddress As Boolean
 			Get
 				' 127.x.x.x 
 				Dim byteAddr As SByte() = address
@@ -198,7 +198,7 @@ Namespace java.net
 		''' <returns> a {@code boolean} indicating if the InetAddress is
 		''' a link local address; or false if address is not a link local unicast address.
 		''' @since 1.4 </returns>
-		Public Property Overrides linkLocalAddress As Boolean
+		Public  Overrides ReadOnly Property  linkLocalAddress As Boolean
 			Get
 				' link-local unicast in IPv4 (169.254.0.0/16)
 				' defined in "Documenting Special Use IPv4 Address Blocks
@@ -215,7 +215,7 @@ Namespace java.net
 		''' <returns> a {@code boolean} indicating if the InetAddress is
 		''' a site local address; or false if address is not a site local unicast address.
 		''' @since 1.4 </returns>
-		Public Property Overrides siteLocalAddress As Boolean
+		Public  Overrides ReadOnly Property  siteLocalAddress As Boolean
 			Get
 				' refer to RFC 1918
 				' 10/8 prefix
@@ -233,7 +233,7 @@ Namespace java.net
 		'''         is a multicast address of global scope, false if it is not
 		'''         of global scope or it is not a multicast address
 		''' @since 1.4 </returns>
-		Public Property Overrides mCGlobal As Boolean
+		Public  Overrides ReadOnly Property  mCGlobal As Boolean
 			Get
 				' 224.0.1.0 to 238.255.255.255
 				Dim byteAddr As SByte() = address
@@ -248,7 +248,7 @@ Namespace java.net
 		'''         is a multicast address of node-local scope, false if it is not
 		'''         of node-local scope or it is not a multicast address
 		''' @since 1.4 </returns>
-		Public Property Overrides mCNodeLocal As Boolean
+		Public  Overrides ReadOnly Property  mCNodeLocal As Boolean
 			Get
 				' unless ttl == 0
 				Return False
@@ -262,7 +262,7 @@ Namespace java.net
 		'''         is a multicast address of link-local scope, false if it is not
 		'''         of link-local scope or it is not a multicast address
 		''' @since 1.4 </returns>
-		Public Property Overrides mCLinkLocal As Boolean
+		Public  Overrides ReadOnly Property  mCLinkLocal As Boolean
 			Get
 				' 224.0.0/24 prefix and ttl == 1
 				Dim address_Renamed As Integer = holder().address
@@ -277,7 +277,7 @@ Namespace java.net
 		'''         is a multicast address of site-local scope, false if it is not
 		'''         of site-local scope or it is not a multicast address
 		''' @since 1.4 </returns>
-		Public Property Overrides mCSiteLocal As Boolean
+		Public  Overrides ReadOnly Property  mCSiteLocal As Boolean
 			Get
 				' 239.255/16 prefix or ttl < 32
 				Dim address_Renamed As Integer = holder().address
@@ -293,7 +293,7 @@ Namespace java.net
 		'''         false if it is not of organization-local scope
 		'''         or it is not a multicast address
 		''' @since 1.4 </returns>
-		Public Property Overrides mCOrgLocal As Boolean
+		Public  Overrides ReadOnly Property  mCOrgLocal As Boolean
 			Get
 				' 239.192 - 239.195
 				Dim address_Renamed As Integer = holder().address
@@ -307,7 +307,7 @@ Namespace java.net
 		''' byte of the address is in {@code getAddress()[0]}.
 		''' </summary>
 		''' <returns>  the raw IP address of this object. </returns>
-		Public Property Overrides address As SByte()
+		Public  Overrides ReadOnly Property  address As SByte()
 			Get
 				Dim address_Renamed As Integer = holder().address
 				Dim addr As SByte() = New SByte(INADDRSZ - 1){}
@@ -325,7 +325,7 @@ Namespace java.net
 		''' </summary>
 		''' <returns>  the raw IP address in a string format.
 		''' @since   JDK1.0.2 </returns>
-		Public Property Overrides hostAddress As String
+		Public  Overrides ReadOnly Property  hostAddress As String
 			Get
 				Return numericToTextFormat(address)
 			End Get

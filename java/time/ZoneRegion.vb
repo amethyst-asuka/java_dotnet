@@ -153,13 +153,13 @@ Namespace java.time
 		End Sub
 
 		'-----------------------------------------------------------------------
-		Public Property Overrides id As String
+		Public  Overrides ReadOnly Property  id As String
 			Get
 				Return id
 			End Get
 		End Property
 
-		Public Property Overrides rules As java.time.zone.ZoneRules
+		Public  Overrides ReadOnly Property  rules As java.time.zone.ZoneRules
 			Get
 				' additional query for group provider when null allows for possibility
 				' that the provider was updated after the ZoneId was created

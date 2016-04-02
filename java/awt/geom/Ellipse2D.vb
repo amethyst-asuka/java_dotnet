@@ -110,7 +110,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x As Double
+			Public  Overrides ReadOnly Property  x As Double
 				Get
 					Return CDbl(x)
 				End Get
@@ -120,7 +120,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y As Double
+			Public  Overrides ReadOnly Property  y As Double
 				Get
 					Return CDbl(y)
 				End Get
@@ -130,7 +130,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides width As Double
+			Public  Overrides ReadOnly Property  width As Double
 				Get
 					Return CDbl(width)
 				End Get
@@ -140,7 +140,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides height As Double
+			Public  Overrides ReadOnly Property  height As Double
 				Get
 					Return CDbl(height)
 				End Get
@@ -150,7 +150,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides empty As Boolean
+			Public  Overrides ReadOnly Property  empty As Boolean
 				Get
 					Return (width <= 0.0 OrElse height <= 0.0)
 				End Get
@@ -307,7 +307,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides empty As Boolean
+            Public  Overrides ReadOnly Property  empty As Boolean
 				Get
 					Return (width <= 0.0 OrElse height <= 0.0)
 				End Get

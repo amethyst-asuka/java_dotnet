@@ -561,7 +561,7 @@ Namespace java.io
 		''' will return the string "read,write".
 		''' </summary>
 		''' <returns> the canonical string representation of the actions. </returns>
-		Public Property Overrides actions As String
+		Public  Overrides ReadOnly Property  actions As String
 			Get
 				If actions Is Nothing Then actions = getActions(Me.mask)
     

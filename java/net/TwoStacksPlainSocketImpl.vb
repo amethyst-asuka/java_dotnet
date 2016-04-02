@@ -180,7 +180,7 @@ Namespace java.net
 	'    
 	'     * Return true if already closed or close is pending
 	'     
-		Public Property Overrides closedOrPending As Boolean
+		Public  Overrides ReadOnly Property  closedOrPending As Boolean
 			Get
 		'        
 		'         * Lock on fdLock to ensure that we wait if a

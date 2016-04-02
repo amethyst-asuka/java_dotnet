@@ -219,7 +219,7 @@ Namespace java.net
 		''' There is no white space in the returned String. If header-names is empty
 		''' then the colon separator will not be present.
 		''' </summary>
-		Public Property Overrides actions As String
+		Public  Overrides ReadOnly Property  actions As String
 			Get
 				Return actions_Renamed
 			End Get

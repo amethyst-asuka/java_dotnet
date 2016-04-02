@@ -293,7 +293,7 @@ Namespace java.util.jar
 					Me.outerInstance = outerInstance
 				MyBase.New(ze)
 			End Sub
-			Public Property Overrides attributes As Attributes
+			Public  Overrides ReadOnly Property  attributes As Attributes
 				Get
 					Dim man As Manifest = outerInstance.manifest
 					If man IsNot Nothing Then
@@ -303,7 +303,7 @@ Namespace java.util.jar
 					End If
 				End Get
 			End Property
-			Public Property Overrides certificates As java.security.cert.Certificate()
+			Public  Overrides ReadOnly Property  certificates As java.security.cert.Certificate()
 				Get
 					Try
 						outerInstance.maybeInstantiateVerifier()
@@ -314,7 +314,7 @@ Namespace java.util.jar
 					Return If(certs Is Nothing, Nothing, certs.clone())
 				End Get
 			End Property
-			Public Property Overrides codeSigners As java.security.CodeSigner()
+			Public  Overrides ReadOnly Property  codeSigners As java.security.CodeSigner()
 				Get
 					Try
 						outerInstance.maybeInstantiateVerifier()

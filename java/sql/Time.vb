@@ -152,7 +152,7 @@ Namespace java.sql
 	   '''           method is invoked </exception>
 	   ''' <seealso cref= #setYear </seealso>
 		<Obsolete> _
-		Public Property Overrides year As Integer
+		Public  Overrides ReadOnly Property  year As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get
@@ -170,7 +170,7 @@ Namespace java.sql
 	   '''           method is invoked </exception>
 	   ''' <seealso cref= #setMonth </seealso>
 		<Obsolete> _
-		Public Property Overrides month As Integer
+		Public  Overrides ReadOnly Property  month As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get
@@ -187,7 +187,7 @@ Namespace java.sql
 	   ''' <exception cref="java.lang.IllegalArgumentException"> if this
 	   '''           method is invoked </exception>
 		<Obsolete> _
-		Public Property Overrides day As Integer
+		Public  Overrides ReadOnly Property  day As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get
@@ -202,7 +202,7 @@ Namespace java.sql
 	   '''           method is invoked </exception>
 	   ''' <seealso cref= #setDate </seealso>
 		<Obsolete> _
-		Public Property Overrides [date] As Integer
+		Public  Overrides ReadOnly Property  [date] As Integer
 			Get
 				Throw New System.ArgumentException
 			End Get

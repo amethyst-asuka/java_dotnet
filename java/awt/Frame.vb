@@ -1100,7 +1100,7 @@ Namespace java.awt
         ''' <returns> an AccessibleAWTFrame that serves as the
         '''         AccessibleContext of this Frame
         ''' @since 1.3 </returns>
-        Public Property Overrides accessibleContext As AccessibleContext
+        Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
             Get
                 If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTFrame(Me)
                 Return accessibleContext

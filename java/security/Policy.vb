@@ -703,17 +703,17 @@ Namespace java.security
 				Me.params = params
 			End Sub
 
-			Public Property Overrides type As String
+			Public  Overrides ReadOnly Property  type As String
 				Get
 					Return type
 				End Get
 			End Property
-			Public Property Overrides parameters As Policy.Parameters
+			Public  Overrides ReadOnly Property  parameters As Policy.Parameters
 				Get
 					Return params
 				End Get
 			End Property
-			Public Property Overrides provider As Provider
+			Public  Overrides ReadOnly Property  provider As Provider
 				Get
 					Return p
 				End Get

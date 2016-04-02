@@ -141,7 +141,7 @@ Namespace java.time.chrono
 		''' to access the entire state of the period.
 		''' </summary>
 		''' <returns> a list containing the supported units, not null </returns>
-		ReadOnly Property Overrides units As IList(Of java.time.temporal.TemporalUnit)
+		ReadOnly  Overrides ReadOnly Property  units As IList(Of java.time.temporal.TemporalUnit)
 
 		''' <summary>
 		''' Gets the chronology that defines the meaning of the supported units.

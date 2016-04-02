@@ -116,7 +116,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x1 As Double
+			Public  Overrides ReadOnly Property  x1 As Double
 				Get
 					Return CDbl(x1)
 				End Get
@@ -126,7 +126,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y1 As Double
+			Public  Overrides ReadOnly Property  y1 As Double
 				Get
 					Return CDbl(y1)
 				End Get
@@ -136,7 +136,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides p1 As Point2D
+			Public  Overrides ReadOnly Property  p1 As Point2D
 				Get
 					Return New Point2D.Float(x1, y1)
 				End Get
@@ -146,7 +146,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x2 As Double
+			Public  Overrides ReadOnly Property  x2 As Double
 				Get
 					Return CDbl(x2)
 				End Get
@@ -156,7 +156,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y2 As Double
+			Public  Overrides ReadOnly Property  y2 As Double
 				Get
 					Return CDbl(y2)
 				End Get
@@ -166,7 +166,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides p2 As Point2D
+			Public  Overrides ReadOnly Property  p2 As Point2D
 				Get
 					Return New Point2D.Float(x2, y2)
 				End Get
@@ -298,7 +298,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x1 As Double
+			Public  Overrides ReadOnly Property  x1 As Double
 				Get
 					Return x1
 				End Get
@@ -308,7 +308,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y1 As Double
+			Public  Overrides ReadOnly Property  y1 As Double
 				Get
 					Return y1
 				End Get
@@ -318,7 +318,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides p1 As Point2D
+			Public  Overrides ReadOnly Property  p1 As Point2D
 				Get
 					Return New Point2D.Double(x1, y1)
 				End Get
@@ -328,7 +328,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x2 As Double
+			Public  Overrides ReadOnly Property  x2 As Double
 				Get
 					Return x2
 				End Get
@@ -338,7 +338,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y2 As Double
+			Public  Overrides ReadOnly Property  y2 As Double
 				Get
 					Return y2
 				End Get
@@ -348,7 +348,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides p2 As Point2D
+			Public  Overrides ReadOnly Property  p2 As Point2D
 				Get
 					Return New Point2D.Double(x2, y2)
 				End Get

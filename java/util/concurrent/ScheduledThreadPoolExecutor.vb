@@ -712,7 +712,7 @@ Namespace java.util.concurrent
 		''' which they will execute.
 		''' </summary>
 		''' <returns> the task queue </returns>
-		Public Property Overrides queue As BlockingQueue(Of Runnable)
+		Public  Overrides ReadOnly Property  queue As BlockingQueue(Of Runnable)
 			Get
 				Return MyBase.queue
 			End Get

@@ -100,7 +100,7 @@ Namespace java.rmi
 		''' any, of this exception.
 		''' </summary>
 		''' <returns> the detail message </returns>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				If detail Is Nothing Then
 					Return MyBase.message
@@ -116,7 +116,7 @@ Namespace java.rmi
 		''' </summary>
 		''' <returns>  the cause, which may be <tt>null</tt>.
 		''' @since   1.4 </returns>
-		Public Property Overrides cause As Throwable
+		Public  Overrides ReadOnly Property  cause As Throwable
 			Get
 				Return detail
 			End Get

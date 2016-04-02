@@ -130,26 +130,26 @@ Namespace java.time.chrono
 			End If
 		End Function
 
-		Public Property Overrides units As IList(Of java.time.temporal.TemporalUnit) Implements ChronoPeriod.getUnits
+		Public  Overrides ReadOnly Property  units As IList(Of java.time.temporal.TemporalUnit) Implements ChronoPeriod.getUnits
 			Get
 				Return ChronoPeriodImpl.SUPPORTED_UNITS
 			End Get
 		End Property
 
-		Public Property Overrides chronology As Chronology Implements ChronoPeriod.getChronology
+		Public  Overrides ReadOnly Property  chronology As Chronology Implements ChronoPeriod.getChronology
 			Get
 				Return chrono
 			End Get
 		End Property
 
 		'-----------------------------------------------------------------------
-		Public Property Overrides zero As Boolean Implements ChronoPeriod.isZero
+		Public  Overrides ReadOnly Property  zero As Boolean Implements ChronoPeriod.isZero
 			Get
 				Return years = 0 AndAlso months = 0 AndAlso days = 0
 			End Get
 		End Property
 
-		Public Property Overrides negative As Boolean Implements ChronoPeriod.isNegative
+		Public  Overrides ReadOnly Property  negative As Boolean Implements ChronoPeriod.isNegative
 			Get
 				Return years < 0 OrElse months < 0 OrElse days < 0
 			End Get

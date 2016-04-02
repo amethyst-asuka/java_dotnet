@@ -353,7 +353,7 @@ Namespace java.lang.invoke
 			Private Sub New(ByVal mtype As MethodType, ByVal form As LambdaForm, ByVal member As MemberName)
 				MyBase.New(mtype, form, member)
 			End Sub
-			Friend Property Overrides invokeSpecial As Boolean
+			Friend  Overrides ReadOnly Property  invokeSpecial As Boolean
 				Get
 					Return True
 				End Get

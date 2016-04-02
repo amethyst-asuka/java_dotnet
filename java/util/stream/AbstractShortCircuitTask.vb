@@ -168,7 +168,7 @@ Namespace java.util.stream
 		''' <summary>
 		''' Retrieves the local result for this task
 		''' </summary>
-		Public Property Overrides rawResult As R
+		Public  Overrides ReadOnly Property  rawResult As R
 			Get
 				Return localResult
 			End Get

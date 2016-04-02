@@ -199,7 +199,7 @@ Namespace java.time.chrono
 		End Sub
 
 		'-----------------------------------------------------------------------
-		Public Property Overrides offset As java.time.ZoneOffset Implements ChronoZonedDateTime(Of D).getOffset
+		Public  Overrides ReadOnly Property  offset As java.time.ZoneOffset Implements ChronoZonedDateTime(Of D).getOffset
 			Get
 				Return offset
 			End Get
@@ -228,7 +228,7 @@ Namespace java.time.chrono
 			Return dateTime
 		End Function
 
-		Public Property Overrides zone As java.time.ZoneId Implements ChronoZonedDateTime(Of D).getZone
+		Public  Overrides ReadOnly Property  zone As java.time.ZoneId Implements ChronoZonedDateTime(Of D).getZone
 			Get
 				Return zone
 			End Get

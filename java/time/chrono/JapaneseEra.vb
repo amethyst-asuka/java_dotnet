@@ -265,7 +265,7 @@ Namespace java.time.chrono
 		''' Earlier eras are numbered 0 (<seealso cref="#TAISHO"/>), -1 (<seealso cref="#MEIJI"/>)).
 		''' </summary>
 		''' <returns> the era value </returns>
-		Public Property Overrides value As Integer Implements Era.getValue
+		Public  Overrides ReadOnly Property  value As Integer Implements Era.getValue
 			Get
 				Return eraValue
 			End Get

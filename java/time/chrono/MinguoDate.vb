@@ -194,7 +194,7 @@ Namespace java.time.chrono
 		''' The era and other fields in <seealso cref="ChronoField"/> are defined by the chronology.
 		''' </summary>
 		''' <returns> the Minguo chronology, not null </returns>
-		Public Property Overrides chronology As MinguoChronology
+		Public  Overrides ReadOnly Property  chronology As MinguoChronology
 			Get
 				Return MinguoChronology.INSTANCE
 			End Get
@@ -207,7 +207,7 @@ Namespace java.time.chrono
 		''' defined by <seealso cref="MinguoEra"/>.
 		''' </summary>
 		''' <returns> the era applicable at this date, not null </returns>
-		Public Property Overrides era As MinguoEra
+		Public  Overrides ReadOnly Property  era As MinguoEra
 			Get
 				[Return] (If(prolepticYear >= 1, MinguoEra.ROC, MinguoEra.BEFORE_ROC))
 			End Get

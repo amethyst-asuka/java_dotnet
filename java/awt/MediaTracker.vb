@@ -886,7 +886,7 @@ Namespace java.awt
 			Return (image_Renamed Is img AndAlso width = w AndAlso height = h)
 		End Function
 
-		Friend Property Overrides media As Object
+		Friend  Overrides ReadOnly Property  media As Object
 			Get
 				Return image_Renamed
 			End Get

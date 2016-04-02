@@ -191,7 +191,7 @@ Namespace java.awt.image
 		''' this Image. </returns>
 		''' <seealso cref= ImageProducer </seealso>
 		''' <seealso cref= #getSnapshot() </seealso>
-		Public Property Overrides source As ImageProducer
+		Public  Overrides ReadOnly Property  source As ImageProducer
 			Get
 				' REMIND: Make sure this functionality is in line with the
 				' spec.  In particular, we are returning the Source for a
@@ -218,7 +218,7 @@ Namespace java.awt.image
 		''' <code>Graphics2D</code>. </summary>
 		''' <returns> a <code>Graphics2D</code>, which can be used to draw into
 		'''          this image. </returns>
-		Public Property Overrides graphics As java.awt.Graphics
+		Public  Overrides ReadOnly Property  graphics As java.awt.Graphics
 			Get
 				Return createGraphics()
 			End Get

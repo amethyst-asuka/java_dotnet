@@ -378,7 +378,7 @@ Namespace java.time.chrono
 		''' </summary>
 		''' <returns> the chronology ID, non-null </returns>
 		''' <seealso cref= #getCalendarType() </seealso>
-		Public Property Overrides id As String
+		Public  Overrides ReadOnly Property  id As String
 			Get
 				Return typeId
 			End Get
@@ -394,7 +394,7 @@ Namespace java.time.chrono
 		''' <returns> the calendar system type; non-null if the calendar has
 		'''    a standard type, otherwise null </returns>
 		''' <seealso cref= #getId() </seealso>
-		Public Property Overrides calendarType As String
+		Public  Overrides ReadOnly Property  calendarType As String
 			Get
 				Return calendarType
 			End Get

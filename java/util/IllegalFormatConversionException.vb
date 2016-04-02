@@ -79,7 +79,7 @@ Namespace java.util
 		End Property
 
 		' javadoc inherited from Throwable.java
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Return String.Format("{0} != {1}", c, arg.name)
 			End Get

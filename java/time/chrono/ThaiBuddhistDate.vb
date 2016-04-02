@@ -194,7 +194,7 @@ Namespace java.time.chrono
 		''' The era and other fields in <seealso cref="ChronoField"/> are defined by the chronology.
 		''' </summary>
 		''' <returns> the Thai Buddhist chronology, not null </returns>
-		Public Property Overrides chronology As ThaiBuddhistChronology
+		Public  Overrides ReadOnly Property  chronology As ThaiBuddhistChronology
 			Get
 				Return ThaiBuddhistChronology.INSTANCE
 			End Get
@@ -207,7 +207,7 @@ Namespace java.time.chrono
 		''' defined by <seealso cref="ThaiBuddhistEra"/>.
 		''' </summary>
 		''' <returns> the era applicable at this date, not null </returns>
-		Public Property Overrides era As ThaiBuddhistEra
+		Public  Overrides ReadOnly Property  era As ThaiBuddhistEra
 			Get
 				[Return] (If(prolepticYear >= 1, ThaiBuddhistEra.BE, ThaiBuddhistEra.BEFORE_BE))
 			End Get

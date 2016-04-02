@@ -127,7 +127,7 @@ Namespace java.util.jar
 		''' <exception cref="IOException"> if an I/O error has occurred </exception>
 		''' <exception cref="SecurityException"> if any of the jar file entries
 		'''         are incorrectly signed. </exception>
-		Public Property Overrides nextEntry As ZipEntry
+		Public  Overrides ReadOnly Property  nextEntry As ZipEntry
 			Get
 				Dim e As JarEntry
 				If first Is Nothing Then

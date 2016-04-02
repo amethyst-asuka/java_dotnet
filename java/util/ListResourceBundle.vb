@@ -140,7 +140,7 @@ Namespace java.util
 		''' <returns> an <code>Enumeration</code> of the keys contained in
 		'''         this <code>ResourceBundle</code> and its parent bundles. </returns>
 		''' <seealso cref= #keySet() </seealso>
-		Public Property Overrides keys As Enumeration(Of String)
+		Public  Overrides ReadOnly Property  keys As Enumeration(Of String)
 			Get
 				' lazily load the lookup hashtable.
 				If lookup Is Nothing Then loadLookup()

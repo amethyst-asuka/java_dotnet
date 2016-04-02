@@ -3297,7 +3297,7 @@ Namespace java.util.concurrent
 		''' Returns {@code true} if all tasks have completed following shut down.
 		''' </summary>
 		''' <returns> {@code true} if all tasks have completed following shut down </returns>
-		Public Property Overrides terminated As Boolean
+		Public  Overrides ReadOnly Property  terminated As Boolean
 			Get
 				Return (runState And TERMINATED) <> 0
 			End Get
@@ -3326,7 +3326,7 @@ Namespace java.util.concurrent
 		''' Returns {@code true} if this pool has been shut down.
 		''' </summary>
 		''' <returns> {@code true} if this pool has been shut down </returns>
-		Public Property Overrides shutdown As Boolean
+		Public  Overrides ReadOnly Property  shutdown As Boolean
 			Get
 				Return (runState And SHUTDOWN_Renamed) <> 0
 			End Get

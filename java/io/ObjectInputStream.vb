@@ -1864,7 +1864,7 @@ Namespace java.io
 				objHandles = New Integer(objVals.Length - 1){}
 			End Sub
 
-			Public Property Overrides objectStreamClass As ObjectStreamClass
+			Public  Overrides ReadOnly Property  objectStreamClass As ObjectStreamClass
 				Get
 					Return desc
 				End Get

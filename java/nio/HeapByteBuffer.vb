@@ -137,7 +137,7 @@ Namespace java.nio
             Return Me
         End Function
 
-        Public Property Overrides direct As Boolean
+        Public  Overrides ReadOnly Property  direct As Boolean
             Get
                 Return False
             End Get
@@ -145,7 +145,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides [readOnly] As Boolean
+        Public  Overrides ReadOnly Property  [readOnly] As Boolean
             Get
                 Return False
             End Get
@@ -237,7 +237,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides [char] As Char
+        Public  Overrides ReadOnly Property  [char] As Char
             Get
                 Return Bits.getChar(Me, ix(nextGetIndex(2)), bigEndian)
             End Get
@@ -278,7 +278,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides [short] As Short
+        Public  Overrides ReadOnly Property  [short] As Short
             Get
                 Return Bits.getShort(Me, ix(nextGetIndex(2)), bigEndian)
             End Get
@@ -319,7 +319,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides int As Integer
+        Public  Overrides ReadOnly Property  int As Integer
             Get
                 Return Bits.getInt(Me, ix(nextGetIndex(4)), bigEndian)
             End Get
@@ -360,7 +360,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides [long] As Long
+        Public  Overrides ReadOnly Property  [long] As Long
             Get
                 Return Bits.getLong(Me, ix(nextGetIndex(8)), bigEndian)
             End Get
@@ -401,7 +401,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides float As Single
+        Public  Overrides ReadOnly Property  float As Single
             Get
                 Return Bits.getFloat(Me, ix(nextGetIndex(4)), bigEndian)
             End Get
@@ -442,7 +442,7 @@ Namespace java.nio
 
 
 
-        Public Property Overrides [double] As Double
+        Public  Overrides ReadOnly Property  [double] As Double
             Get
                 Return Bits.getDouble(Me, ix(nextGetIndex(8)), bigEndian)
             End Get

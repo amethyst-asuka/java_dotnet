@@ -260,7 +260,7 @@ Namespace java.util
 		''' JapaneseImperialCalendar}.
 		''' </summary>
 		''' <returns> {@code "japanese"} </returns>
-		Public Property Overrides calendarType As String
+		Public  Overrides ReadOnly Property  calendarType As String
 			Get
 				Return "japanese"
 			End Get
@@ -1244,7 +1244,7 @@ Namespace java.util
 			Return other
 		End Function
 
-		Public Property Overrides timeZone As TimeZone
+		Public  Overrides ReadOnly Property  timeZone As TimeZone
 			Get
 				Dim zone_Renamed As TimeZone = MyBase.timeZone
 				' To share the zone by the CalendarDate

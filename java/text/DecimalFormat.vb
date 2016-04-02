@@ -3153,7 +3153,7 @@ Namespace java.text
 		''' </summary>
 		''' <returns> the currency used by this decimal format, or <code>null</code>
 		''' @since 1.4 </returns>
-		Public Property Overrides currency As java.util.Currency
+		Public  Overrides ReadOnly Property  currency As java.util.Currency
 			Get
 				Return symbols.currency
 			End Get
@@ -3173,7 +3173,7 @@ Namespace java.text
 		''' <returns> The <code>RoundingMode</code> used for this DecimalFormat. </returns>
 		''' <seealso cref= #setRoundingMode(RoundingMode)
 		''' @since 1.6 </seealso>
-		Public Property Overrides roundingMode As java.math.RoundingMode
+		Public  Overrides ReadOnly Property  roundingMode As java.math.RoundingMode
 			Get
 				Return roundingMode
 			End Get

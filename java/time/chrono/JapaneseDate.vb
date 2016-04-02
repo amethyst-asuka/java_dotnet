@@ -317,7 +317,7 @@ Namespace java.time.chrono
 		''' The era and other fields in <seealso cref="ChronoField"/> are defined by the chronology.
 		''' </summary>
 		''' <returns> the Japanese chronology, not null </returns>
-		Public Property Overrides chronology As JapaneseChronology
+		Public  Overrides ReadOnly Property  chronology As JapaneseChronology
 			Get
 				Return JapaneseChronology.INSTANCE
 			End Get
@@ -329,7 +329,7 @@ Namespace java.time.chrono
 		''' The Japanese calendar system has multiple eras defined by <seealso cref="JapaneseEra"/>.
 		''' </summary>
 		''' <returns> the era applicable at this date, not null </returns>
-		Public Property Overrides era As JapaneseEra
+		Public  Overrides ReadOnly Property  era As JapaneseEra
 			Get
 				Return era
 			End Get

@@ -532,7 +532,7 @@ Namespace java.net
 		''' <returns> a {@code SocketPermission} object representing the
 		'''         permission necessary to connect to the destination
 		'''         host and port. </returns>
-		Public Property Overrides permission As java.security.Permission
+		Public  Overrides ReadOnly Property  permission As java.security.Permission
 			Get
 				Dim port As Integer = url.port
 				port = If(port < 0, 80, port)

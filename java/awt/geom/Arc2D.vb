@@ -215,7 +215,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x As Double
+			Public  Overrides ReadOnly Property  x As Double
 				Get
 					Return CDbl(x)
 				End Get
@@ -229,7 +229,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y As Double
+			Public  Overrides ReadOnly Property  y As Double
 				Get
 					Return CDbl(y)
 				End Get
@@ -243,7 +243,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides width As Double
+			Public  Overrides ReadOnly Property  width As Double
 				Get
 					Return CDbl(width)
 				End Get
@@ -257,7 +257,7 @@ Namespace java.awt.geom
 			''' 
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides height As Double
+			Public  Overrides ReadOnly Property  height As Double
 				Get
 					Return CDbl(height)
 				End Get
@@ -503,7 +503,7 @@ Namespace java.awt.geom
             ''' 
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides x As Double
+            Public  Overrides ReadOnly Property  x As Double
                 Get
                     Return x
                 End Get
@@ -517,7 +517,7 @@ Namespace java.awt.geom
             ''' 
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides y As Double
+            Public  Overrides ReadOnly Property  y As Double
                 Get
                     Return y
                 End Get
@@ -531,7 +531,7 @@ Namespace java.awt.geom
             ''' 
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides width As Double
+            Public  Overrides ReadOnly Property  width As Double
                 Get
                     Return width
                 End Get
@@ -545,7 +545,7 @@ Namespace java.awt.geom
             ''' 
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides height As Double
+            Public  Overrides ReadOnly Property  height As Double
                 Get
                     Return height
                 End Get
@@ -557,7 +557,7 @@ Namespace java.awt.geom
             ''' </summary>
             'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
             Public Overrides Function getAngleStart() As Double 'JavaToDotNetTempPropertyGetangleStart
-            Public Property Overrides angleStart As Double
+            Public  Overrides ReadOnly Property  angleStart As Double
                 Get
                     Return start
                 End Get
@@ -570,7 +570,7 @@ Namespace java.awt.geom
             ''' </summary>
             'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
             Public Overrides Function getAngleExtent() As Double 'JavaToDotNetTempPropertyGetangleExtent
-            Public Property Overrides angleExtent As Double
+            Public  Overrides ReadOnly Property  angleExtent As Double
                 Get
                     Return extent
                 End Get
@@ -581,7 +581,7 @@ Namespace java.awt.geom
             ''' {@inheritDoc}
             ''' @since 1.2
             ''' </summary>
-            Public Property Overrides empty As Boolean
+            Public  Overrides ReadOnly Property  empty As Boolean
                 Get
                     Return (width <= 0.0 OrElse height <= 0.0)
                 End Get
@@ -996,7 +996,7 @@ Namespace java.awt.geom
 		''' <returns> the <CODE>Rectangle2D</CODE> that represents the arc's
 		''' framing rectangle.
 		''' @since 1.2 </returns>
-		Public Property Overrides bounds2D As Rectangle2D
+		Public  Overrides ReadOnly Property  bounds2D As Rectangle2D
 			Get
 				If empty Then Return makeBounds(x, y, width, height)
 				Dim x1, y1, x2, y2 As Double

@@ -647,12 +647,12 @@ Namespace java.util.concurrent
 			Public Overrides Function shutdownNow() As List(Of Runnable)
 				Return e.shutdownNow()
 			End Function
-			Public Property Overrides shutdown As Boolean
+			Public  Overrides ReadOnly Property  shutdown As Boolean
 				Get
 					Return e.shutdown
 				End Get
 			End Property
-			Public Property Overrides terminated As Boolean
+			Public  Overrides ReadOnly Property  terminated As Boolean
 				Get
 					Return e.terminated
 				End Get

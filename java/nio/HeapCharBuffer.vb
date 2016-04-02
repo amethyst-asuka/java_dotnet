@@ -136,7 +136,7 @@ Namespace java.nio
 			Return Me
 		End Function
 
-		Public Property Overrides direct As Boolean
+		Public  Overrides ReadOnly Property  direct As Boolean
 			Get
 				Return False
 			End Get
@@ -144,7 +144,7 @@ Namespace java.nio
 
 
 
-		Public Property Overrides [readOnly] As Boolean
+		Public  Overrides ReadOnly Property  [readOnly] As Boolean
 			Get
 				Return False
 			End Get

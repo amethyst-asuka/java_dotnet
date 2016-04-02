@@ -501,7 +501,7 @@ Namespace java.time
 		''' to access the entire state of the duration.
 		''' </summary>
 		''' <returns> a list containing the seconds and nanos units, not null </returns>
-		Public Property Overrides units As IList(Of java.time.temporal.TemporalUnit)
+		Public  Overrides ReadOnly Property  units As IList(Of java.time.temporal.TemporalUnit)
 			Get
 				Return DurationUnits.UNITS
 			End Get

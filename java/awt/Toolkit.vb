@@ -2281,7 +2281,7 @@ Namespace java.awt
             End Sub
 
             <MethodImpl(MethodImplOptions.Synchronized)>
-            Public Property Overrides propertyChangeListeners As java.beans.PropertyChangeListener()
+            Public  Overrides ReadOnly Property  propertyChangeListeners As java.beans.PropertyChangeListener()
                 Get
                     Dim pcs As java.beans.PropertyChangeSupport = CType(sun.awt.AppContext.appContext.get(PROP_CHANGE_SUPPORT_KEY), java.beans.PropertyChangeSupport)
                     If Nothing IsNot pcs Then

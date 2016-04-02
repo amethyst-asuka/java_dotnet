@@ -944,7 +944,7 @@ Namespace java.util.prefs
 		''' <returns> <tt>true</tt> if this preference node is in the user
 		'''         preference tree, <tt>false</tt> if it's in the system
 		'''         preference tree. </returns>
-		Public Property Overrides userNode As Boolean
+		Public  Overrides ReadOnly Property  userNode As Boolean
 			Get
 				Return java.security.AccessController.doPrivileged(New PrivilegedActionAnonymousInnerClassHelper(Of T)
 			End Get

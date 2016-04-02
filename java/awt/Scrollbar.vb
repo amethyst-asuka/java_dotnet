@@ -993,7 +993,7 @@ Namespace java.awt
 		''' <returns> an <code>AccessibleAWTScrollBar</code> that serves as the
 		'''         <code>AccessibleContext</code> of this <code>ScrollBar</code>
 		''' @since 1.3 </returns>
-		Public Property Overrides accessibleContext As AccessibleContext
+		Public  Overrides ReadOnly Property  accessibleContext As AccessibleContext
 			Get
 				If accessibleContext Is Nothing Then accessibleContext = New AccessibleAWTScrollBar(Me)
 				Return accessibleContext

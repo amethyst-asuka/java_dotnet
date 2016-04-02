@@ -117,7 +117,7 @@ Namespace java.util.stream
 				Me.sinkSupplier = sinkSupplier
 			End Sub
 
-			Public Property Overrides opFlags As Integer Implements TerminalOp(Of T, O).getOpFlags
+			Public  Overrides ReadOnly Property  opFlags As Integer Implements TerminalOp(Of T, O).getOpFlags
 				Get
 					Return StreamOpFlag.IS_SHORT_CIRCUIT Or (If(mustFindFirst, 0, StreamOpFlag.NOT_ORDERED))
 				End Get
@@ -247,7 +247,7 @@ Namespace java.util.stream
 				Return New FindTask(Of )(Me, spliterator)
 			End Function
 
-			Protected Friend Property Overrides emptyResult As O
+			Protected Friend  Overrides ReadOnly Property  emptyResult As O
 				Get
 					Return op.emptyValue
 				End Get

@@ -140,7 +140,7 @@ Namespace java.net
 
 		End Sub
 
-		Protected Friend Property Overrides closed As Boolean
+		Protected Friend  Overrides ReadOnly Property  closed As Boolean
 			Get
 				Return If(fd Is Nothing AndAlso fd1 Is Nothing, True, False)
 			End Get

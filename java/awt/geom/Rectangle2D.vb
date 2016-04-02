@@ -139,7 +139,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x As Double
+			Public  Overrides ReadOnly Property  x As Double
 				Get
 					Return CDbl(x)
 				End Get
@@ -149,7 +149,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y As Double
+			Public  Overrides ReadOnly Property  y As Double
 				Get
 					Return CDbl(y)
 				End Get
@@ -159,7 +159,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides width As Double
+			Public  Overrides ReadOnly Property  width As Double
 				Get
 					Return CDbl(width)
 				End Get
@@ -169,7 +169,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides height As Double
+			Public  Overrides ReadOnly Property  height As Double
 				Get
 					Return CDbl(height)
 				End Get
@@ -179,7 +179,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides empty As Boolean
+			Public  Overrides ReadOnly Property  empty As Boolean
 				Get
 					Return (width <= 0.0f) OrElse (height <= 0.0f)
 				End Get
@@ -264,7 +264,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides bounds2D As Rectangle2D
+			Public  Overrides ReadOnly Property  bounds2D As Rectangle2D
 				Get
 					Return New Float(x, y, width, height)
 				End Get
@@ -382,7 +382,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides x As Double
+			Public  Overrides ReadOnly Property  x As Double
 				Get
 					Return x
 				End Get
@@ -392,7 +392,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides y As Double
+			Public  Overrides ReadOnly Property  y As Double
 				Get
 					Return y
 				End Get
@@ -402,7 +402,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides width As Double
+			Public  Overrides ReadOnly Property  width As Double
 				Get
 					Return width
 				End Get
@@ -412,7 +412,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides height As Double
+			Public  Overrides ReadOnly Property  height As Double
 				Get
 					Return height
 				End Get
@@ -422,7 +422,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides empty As Boolean
+			Public  Overrides ReadOnly Property  empty As Boolean
 				Get
 					Return (width <= 0.0) OrElse (height <= 0.0)
 				End Get
@@ -479,7 +479,7 @@ Namespace java.awt.geom
 			''' {@inheritDoc}
 			''' @since 1.2
 			''' </summary>
-			Public Property Overrides bounds2D As Rectangle2D
+			Public  Overrides ReadOnly Property  bounds2D As Rectangle2D
 				Get
 					Return New Double?(x, y, width, height)
 				End Get
@@ -665,7 +665,7 @@ Namespace java.awt.geom
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Property Overrides bounds2D As Rectangle2D
+		Public  Overrides ReadOnly Property  bounds2D As Rectangle2D
 			Get
 				Return CType(clone(), Rectangle2D)
 			End Get

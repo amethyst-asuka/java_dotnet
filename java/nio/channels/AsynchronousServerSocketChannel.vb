@@ -303,7 +303,7 @@ Namespace java.nio.channels
 		''' </returns>
 		''' <exception cref="ClosedChannelException">     {@inheritDoc} </exception>
 		''' <exception cref="IOException">                {@inheritDoc} </exception>
-		Public MustOverride ReadOnly Property Overrides localAddress As java.net.SocketAddress Implements NetworkChannel.getLocalAddress
+		Public MustOverride ReadOnly  Overrides ReadOnly Property  localAddress As java.net.SocketAddress Implements NetworkChannel.getLocalAddress
 	End Class
 
 End Namespace

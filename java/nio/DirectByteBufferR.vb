@@ -380,13 +380,13 @@ Namespace java.nio
 
 		End Function
 
-		Public Property Overrides direct As Boolean
+		Public  Overrides ReadOnly Property  direct As Boolean
 			Get
 				Return True
 			End Get
 		End Property
 
-		Public Property Overrides [readOnly] As Boolean
+		Public  Overrides ReadOnly Property  [readOnly] As Boolean
 			Get
 				Return True
 			End Get

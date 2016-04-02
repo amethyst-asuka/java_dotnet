@@ -258,7 +258,7 @@ Namespace java.awt
 		''' Returns the X coordinate of the bounding <code>Rectangle</code> in
 		''' <code>double</code> precision. </summary>
 		''' <returns> the X coordinate of the bounding <code>Rectangle</code>. </returns>
-		Public Property Overrides x As Double
+		Public  Overrides ReadOnly Property  x As Double
 			Get
 				Return x
 			End Get
@@ -268,7 +268,7 @@ Namespace java.awt
 		''' Returns the Y coordinate of the bounding <code>Rectangle</code> in
 		''' <code>double</code> precision. </summary>
 		''' <returns> the Y coordinate of the bounding <code>Rectangle</code>. </returns>
-		Public Property Overrides y As Double
+		Public  Overrides ReadOnly Property  y As Double
 			Get
 				Return y
 			End Get
@@ -278,7 +278,7 @@ Namespace java.awt
 		''' Returns the width of the bounding <code>Rectangle</code> in
 		''' <code>double</code> precision. </summary>
 		''' <returns> the width of the bounding <code>Rectangle</code>. </returns>
-		Public Property Overrides width As Double
+		Public  Overrides ReadOnly Property  width As Double
 			Get
 				Return width
 			End Get
@@ -288,7 +288,7 @@ Namespace java.awt
 		''' Returns the height of the bounding <code>Rectangle</code> in
 		''' <code>double</code> precision. </summary>
 		''' <returns> the height of the bounding <code>Rectangle</code>. </returns>
-		Public Property Overrides height As Double
+		Public  Overrides ReadOnly Property  height As Double
 			Get
 				Return height
 			End Get
@@ -307,7 +307,7 @@ Namespace java.awt
 		''' <seealso cref=       #setBounds(int, int, int, int)
 		''' @since     1.1 </seealso>
 'JAVA TO VB CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-		Public Property Overrides bounds As Rectangle Implements Shape.getBounds
+		Public  Overrides ReadOnly Property  bounds As Rectangle Implements Shape.getBounds
 			Get
 				Return New Rectangle(x, y, width, height)
 			End Get
@@ -320,7 +320,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Property Overrides bounds2D As java.awt.geom.Rectangle2D Implements Shape.getBounds2D
+		Public  Overrides ReadOnly Property  bounds2D As java.awt.geom.Rectangle2D Implements Shape.getBounds2D
 			Get
 				Return New Rectangle(x, y, width, height)
 			End Get
@@ -1042,7 +1042,7 @@ Namespace java.awt
 		''' {@inheritDoc}
 		''' @since 1.2
 		''' </summary>
-		Public Property Overrides empty As Boolean
+		Public  Overrides ReadOnly Property  empty As Boolean
 			Get
 				Return (width <= 0) OrElse (height <= 0)
 			End Get

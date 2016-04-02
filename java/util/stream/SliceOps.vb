@@ -529,7 +529,7 @@ Namespace java.util.stream
 				Return New SliceTask(Of )(Me, spliterator)
 			End Function
 
-			Protected Friend Property Overrides emptyResult As Node(Of P_OUT)
+			Protected Friend  Overrides ReadOnly Property  emptyResult As Node(Of P_OUT)
 				Get
 					Return Nodes.emptyNode(op.outputShape)
 				End Get

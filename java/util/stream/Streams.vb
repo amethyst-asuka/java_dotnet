@@ -134,7 +134,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As IComparer(Of ?)
+			Public  Overrides ReadOnly Property  comparator As IComparer(Of ?)
 				Get
 					Return Nothing
 				End Get
@@ -252,7 +252,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As IComparer(Of ?)
+			Public  Overrides ReadOnly Property  comparator As IComparer(Of ?)
 				Get
 					Return Nothing
 				End Get
@@ -739,7 +739,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As IComparer(Of ?)
+			Public  Overrides ReadOnly Property  comparator As IComparer(Of ?)
 				Get
 					If beforeSplit Then Throw New IllegalStateException
 					Return bSpliterator.comparator

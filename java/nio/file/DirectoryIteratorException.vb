@@ -56,7 +56,7 @@ Namespace java.nio.file
 		''' Returns the cause of this exception.
 		''' </summary>
 		''' <returns>  the cause </returns>
-		Public Property Overrides cause As java.io.IOException
+		Public  Overrides ReadOnly Property  cause As java.io.IOException
 			Get
 				Return CType(MyBase.cause, java.io.IOException)
 			End Get

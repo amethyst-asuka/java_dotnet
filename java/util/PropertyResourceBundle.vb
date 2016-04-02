@@ -168,7 +168,7 @@ Namespace java.util
 		''' <returns> an <code>Enumeration</code> of the keys contained in
 		'''         this <code>ResourceBundle</code> and its parent bundles. </returns>
 		''' <seealso cref= #keySet() </seealso>
-		Public Property Overrides keys As Enumeration(Of String)
+		Public  Overrides ReadOnly Property  keys As Enumeration(Of String)
 			Get
 				Dim parent_Renamed As ResourceBundle = Me.parent
 				Return New sun.util.ResourceBundleEnumeration(lookup.Keys,If(parent_Renamed IsNot Nothing, parent_Renamed.keys, Nothing))

@@ -158,7 +158,7 @@ Namespace java.security
 		''' Keystore domains do not support a protection parameter.
 		''' </summary>
 		''' <returns> always returns {@code null} </returns>
-		Public Property Overrides protectionParameter As KeyStore.ProtectionParameter
+		Public  Overrides ReadOnly Property  protectionParameter As KeyStore.ProtectionParameter
 			Get
 				Return Nothing
 			End Get

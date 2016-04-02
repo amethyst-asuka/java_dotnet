@@ -430,7 +430,7 @@ Namespace java.time
 			Friend Sub New(ByVal zone As ZoneId)
 				Me.zone = zone
 			End Sub
-			Public Property Overrides zone As ZoneId
+			Public  Overrides ReadOnly Property  zone As ZoneId
 				Get
 					Return zone
 				End Get
@@ -474,7 +474,7 @@ Namespace java.time
 				Me.instant_Renamed = fixedInstant
 				Me.zone = zone
 			End Sub
-			Public Property Overrides zone As ZoneId
+			Public  Overrides ReadOnly Property  zone As ZoneId
 				Get
 					Return zone
 				End Get
@@ -520,7 +520,7 @@ Namespace java.time
 				Me.baseClock = baseClock
 				Me.offset = offset
 			End Sub
-			Public Property Overrides zone As ZoneId
+			Public  Overrides ReadOnly Property  zone As ZoneId
 				Get
 					Return baseClock.zone
 				End Get
@@ -566,7 +566,7 @@ Namespace java.time
 				Me.baseClock = baseClock
 				Me.tickNanos = tickNanos
 			End Sub
-			Public Property Overrides zone As ZoneId
+			Public  Overrides ReadOnly Property  zone As ZoneId
 				Get
 					Return baseClock.zone
 				End Get

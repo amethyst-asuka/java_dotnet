@@ -215,7 +215,7 @@ Namespace java.security
 		''' a BasicPermission.
 		''' </summary>
 		''' <returns> the empty string "". </returns>
-		Public Property Overrides actions As String
+		Public  Overrides ReadOnly Property  actions As String
 			Get
 				Return ""
 			End Get

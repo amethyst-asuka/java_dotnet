@@ -61,7 +61,7 @@ Namespace java.util
 			End Get
 		End Property
 
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				Return "Flags = '" & flags & "'"
 			End Get

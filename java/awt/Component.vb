@@ -3728,7 +3728,7 @@ Namespace java.awt
             End Sub
 
             ''' <returns> the buffering capabilities of this strategy </returns>
-            Public Property Overrides capabilities As BufferCapabilities
+            Public  Overrides ReadOnly Property  capabilities As BufferCapabilities
                 Get
                     If TypeOf caps Is ProxyCapabilities Then
                         Return CType(caps, ProxyCapabilities).orig
@@ -3742,7 +3742,7 @@ Namespace java.awt
             ''' be synchronized for performance reasons; use of this method by multiple
             ''' threads should be handled at the application level.  Disposal of the
             ''' graphics object must be handled by the application. </returns>
-            Public Property Overrides drawGraphics As Graphics
+            Public  Overrides ReadOnly Property  drawGraphics As Graphics
                 Get
                     revalidate()
                     Return drawBuffer.graphics
@@ -3936,14 +3936,14 @@ Namespace java.awt
             End Sub
 
             ''' <returns> the buffering capabilities of this strategy </returns>
-            Public Property Overrides capabilities As BufferCapabilities
+            Public  Overrides ReadOnly Property  capabilities As BufferCapabilities
                 Get
                     Return caps
                 End Get
             End Property
 
             ''' <returns> the draw graphics </returns>
-            Public Property Overrides drawGraphics As Graphics
+            Public  Overrides ReadOnly Property  drawGraphics As Graphics
                 Get
                     revalidate()
                     Dim backBuffer_Renamed As image = backBuffer
@@ -4144,12 +4144,12 @@ Namespace java.awt
                 Me.outerInstance = outerInstance
                 Me.caps = caps
             End Sub
-            Public Property Overrides capabilities As BufferCapabilities
+            Public  Overrides ReadOnly Property  capabilities As BufferCapabilities
                 Get
                     Return caps
                 End Get
             End Property
-            Public Property Overrides drawGraphics As Graphics
+            Public  Overrides ReadOnly Property  drawGraphics As Graphics
                 Get
                     Return outerInstance.graphics
                 End Get

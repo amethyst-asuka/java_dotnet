@@ -71,7 +71,7 @@ Namespace java.io
 		''' <summary>
 		''' Produce the message and include the classname, if present.
 		''' </summary>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				If classname Is Nothing Then
 					Return MyBase.message

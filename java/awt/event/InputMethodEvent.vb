@@ -312,7 +312,7 @@ Namespace java.awt.event
 		''' <summary>
 		''' Returns whether or not this event has been consumed. </summary>
 		''' <seealso cref= #consume </seealso>
-		Public Property Overrides consumed As Boolean
+		Public  Overrides ReadOnly Property  consumed As Boolean
 			Get
 				Return consumed
 			End Get

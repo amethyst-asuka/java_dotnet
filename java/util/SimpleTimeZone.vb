@@ -688,7 +688,7 @@ Namespace java.util
 		''' Gets the GMT offset for this time zone. </summary>
 		''' <returns> the GMT offset value in milliseconds </returns>
 		''' <seealso cref= #setRawOffset </seealso>
-		Public Property Overrides rawOffset As Integer
+		Public  Overrides ReadOnly Property  rawOffset As Integer
 			Get
 				' The given date will be taken into account while
 				' we have the historical time zone data in place.

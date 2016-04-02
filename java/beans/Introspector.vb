@@ -1386,37 +1386,37 @@ Namespace java.beans
 			Me.targetBeanInfoRef = old.targetBeanInfoRef
 		End Sub
 
-		Public Property Overrides propertyDescriptors As PropertyDescriptor()
+		Public  Overrides ReadOnly Property  propertyDescriptors As PropertyDescriptor()
 			Get
 				Return properties
 			End Get
 		End Property
 
-		Public Property Overrides defaultPropertyIndex As Integer
+		Public  Overrides ReadOnly Property  defaultPropertyIndex As Integer
 			Get
 				Return defaultProperty
 			End Get
 		End Property
 
-		Public Property Overrides eventSetDescriptors As EventSetDescriptor()
+		Public  Overrides ReadOnly Property  eventSetDescriptors As EventSetDescriptor()
 			Get
 				Return events
 			End Get
 		End Property
 
-		Public Property Overrides defaultEventIndex As Integer
+		Public  Overrides ReadOnly Property  defaultEventIndex As Integer
 			Get
 				Return defaultEvent
 			End Get
 		End Property
 
-		Public Property Overrides methodDescriptors As MethodDescriptor()
+		Public  Overrides ReadOnly Property  methodDescriptors As MethodDescriptor()
 			Get
 				Return methods
 			End Get
 		End Property
 
-		Public Property Overrides beanDescriptor As BeanDescriptor
+		Public  Overrides ReadOnly Property  beanDescriptor As BeanDescriptor
 			Get
 				Return beanDescriptor
 			End Get

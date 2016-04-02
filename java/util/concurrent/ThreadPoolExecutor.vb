@@ -641,7 +641,7 @@ Namespace java.util.concurrent
 			' The value 0 represents the unlocked state.
 			' The value 1 represents the locked state.
 
-			Protected Friend Property Overrides heldExclusively As Boolean
+			Protected Friend  Overrides ReadOnly Property  heldExclusively As Boolean
 				Get
 					Return state <> 0
 				End Get
@@ -1393,7 +1393,7 @@ Namespace java.util.concurrent
 			Return tasks
 		End Function
 
-		Public Property Overrides shutdown As Boolean
+		Public  Overrides ReadOnly Property  shutdown As Boolean
 			Get
 				Return Not isRunning(ctl.get())
 			End Get
@@ -1416,7 +1416,7 @@ Namespace java.util.concurrent
 			End Get
 		End Property
 
-		Public Property Overrides terminated As Boolean
+		Public  Overrides ReadOnly Property  terminated As Boolean
 			Get
 				Return runStateAtLeast(ctl.get(), TERMINATED_Renamed)
 			End Get

@@ -367,13 +367,13 @@ Namespace java.nio
 
 		End Function
 
-		Public Property Overrides direct As Boolean
+		Public  Overrides ReadOnly Property  direct As Boolean
 			Get
 				Return True
 			End Get
 		End Property
 
-		Public Property Overrides [readOnly] As Boolean
+		Public  Overrides ReadOnly Property  [readOnly] As Boolean
 			Get
 				Return False
 			End Get
@@ -465,7 +465,7 @@ Namespace java.nio
 			Return Bits.getChar(a, bigEndian)
 		End Function
 
-		Public Property Overrides [char] As Char
+		Public  Overrides ReadOnly Property  [char] As Char
 			Get
 				Return getChar(ix(nextGetIndex((1 << 1))))
 			End Get
@@ -534,7 +534,7 @@ Namespace java.nio
 			Return Bits.getShort(a, bigEndian)
 		End Function
 
-		Public Property Overrides [short] As Short
+		Public  Overrides ReadOnly Property  [short] As Short
 			Get
 				Return getShort(ix(nextGetIndex((1 << 1))))
 			End Get
@@ -603,7 +603,7 @@ Namespace java.nio
 			Return Bits.getInt(a, bigEndian)
 		End Function
 
-		Public Property Overrides int As Integer
+		Public  Overrides ReadOnly Property  int As Integer
 			Get
 				Return getInt(ix(nextGetIndex((1 << 2))))
 			End Get
@@ -672,7 +672,7 @@ Namespace java.nio
 			Return Bits.getLong(a, bigEndian)
 		End Function
 
-		Public Property Overrides [long] As Long
+		Public  Overrides ReadOnly Property  [long] As Long
 			Get
 				Return getLong(ix(nextGetIndex((1 << 3))))
 			End Get
@@ -741,7 +741,7 @@ Namespace java.nio
 			Return Bits.getFloat(a, bigEndian)
 		End Function
 
-		Public Property Overrides float As Single
+		Public  Overrides ReadOnly Property  float As Single
 			Get
 				Return getFloat(ix(nextGetIndex((1 << 2))))
 			End Get
@@ -810,7 +810,7 @@ Namespace java.nio
 			Return Bits.getDouble(a, bigEndian)
 		End Function
 
-		Public Property Overrides [double] As Double
+		Public  Overrides ReadOnly Property  [double] As Double
 			Get
 				Return getDouble(ix(nextGetIndex((1 << 3))))
 			End Get

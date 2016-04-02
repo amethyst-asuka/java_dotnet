@@ -76,7 +76,7 @@ Namespace java.io
 		''' Produce the message and include the message from the nested
 		''' exception, if there is one.
 		''' </summary>
-		Public Property Overrides message As String
+		Public  Overrides ReadOnly Property  message As String
 			Get
 				If detail Is Nothing Then
 					Return MyBase.message
@@ -92,7 +92,7 @@ Namespace java.io
 		''' <returns>  the exception that terminated the operation (the <i>cause</i>),
 		'''          which may be null.
 		''' @since   1.4 </returns>
-		Public Property Overrides cause As Throwable
+		Public  Overrides ReadOnly Property  cause As Throwable
 			Get
 				Return detail
 			End Get

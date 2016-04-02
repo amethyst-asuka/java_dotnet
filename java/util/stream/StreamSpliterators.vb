@@ -206,7 +206,7 @@ Namespace java.util.stream
 				Return spliterator.estimateSize()
 			End Function
 
-			Public Property Overrides exactSizeIfKnown As Long
+			Public  Overrides ReadOnly Property  exactSizeIfKnown As Long
 				Get
 					init()
 					Return If(StreamOpFlag.SIZED.isKnown(ph.streamAndOpFlags), spliterator.exactSizeIfKnown, -1)
@@ -235,7 +235,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As IComparer(Of ?)
+			Public  Overrides ReadOnly Property  comparator As IComparer(Of ?)
 				Get
 					If Not hasCharacteristics(SORTED) Then Throw New IllegalStateException
 					Return Nothing
@@ -486,13 +486,13 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As IComparer(Of ?)
+			Public  Overrides ReadOnly Property  comparator As IComparer(Of ?)
 				Get
 					Return [get]().comparator
 				End Get
 			End Property
 
-			Public Property Overrides exactSizeIfKnown As Long
+			Public  Overrides ReadOnly Property  exactSizeIfKnown As Long
 				Get
 					Return [get]().exactSizeIfKnown
 				End Get
@@ -1206,7 +1206,7 @@ Namespace java.util.stream
 
 'JAVA TO VB CONVERTER TODO TASK: There is no .NET equivalent to the Java 'super' constraint:
 'JAVA TO VB CONVERTER TODO TASK: Java wildcard generics are not converted to .NET:
-			Public Property Overrides comparator As IComparer(Of ?)
+			Public  Overrides ReadOnly Property  comparator As IComparer(Of ?)
 				Get
 					Return s.comparator
 				End Get

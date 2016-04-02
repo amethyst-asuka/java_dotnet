@@ -573,7 +573,7 @@ Namespace java.security
 			''' <returns> an unmodifiable {@code Set} of attributes, possibly empty
 			''' 
 			''' @since 1.8 </returns>
-			Public Property Overrides attributes As [Set](Of Attribute)
+			Public  Overrides ReadOnly Property  attributes As [Set](Of Attribute)
 				Get
 					Return attributes
 				End Get
@@ -657,7 +657,7 @@ Namespace java.security
 			''' <returns> an unmodifiable {@code Set} of attributes, possibly empty
 			''' 
 			''' @since 1.8 </returns>
-			Public Property Overrides attributes As [Set](Of Attribute)
+			Public  Overrides ReadOnly Property  attributes As [Set](Of Attribute)
 				Get
 					Return attributes
 				End Get
@@ -734,7 +734,7 @@ Namespace java.security
 			''' <returns> an unmodifiable {@code Set} of attributes, possibly empty
 			''' 
 			''' @since 1.8 </returns>
-			Public Property Overrides attributes As [Set](Of Attribute)
+			Public  Overrides ReadOnly Property  attributes As [Set](Of Attribute)
 				Get
 					Return attributes
 				End Get
@@ -1495,7 +1495,7 @@ Namespace java.security
 'JAVA TO VB CONVERTER TODO TASK: There is no VB equivalent to 'volatile':
 				Private getCalled As Boolean
 
-				Public Property Overrides keyStore As KeyStore
+				Public  Overrides ReadOnly Property  keyStore As KeyStore
 					Get
 						getCalled = True
 						Return keyStore
@@ -1581,7 +1581,7 @@ Namespace java.security
 				End Sub
 
 				<MethodImpl(MethodImplOptions.Synchronized)> _
-				Public Property Overrides keyStore As KeyStore
+				Public  Overrides ReadOnly Property  keyStore As KeyStore
 					Get
 						If keyStore_Renamed IsNot Nothing Then Return keyStore_Renamed
 						If oldException IsNot Nothing Then Throw New KeyStoreException("Previous KeyStore instantiation failed", oldException)
@@ -1734,7 +1734,7 @@ Namespace java.security
 				End Class
 
 				<MethodImpl(MethodImplOptions.Synchronized)> _
-				Public Property Overrides keyStore As KeyStore
+				Public  Overrides ReadOnly Property  keyStore As KeyStore
 					Get
 						If oldException IsNot Nothing Then Throw New KeyStoreException("Previous KeyStore instantiation failed", oldException)
 						Try

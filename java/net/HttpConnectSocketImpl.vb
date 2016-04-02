@@ -174,7 +174,7 @@ Namespace java.net
 			End Try
 		End Sub
 
-		Protected Friend Property Overrides inetAddress As InetAddress
+		Protected Friend  Overrides ReadOnly Property  inetAddress As InetAddress
 			Get
 				If external_address IsNot Nothing Then
 					Return external_address.address
@@ -184,7 +184,7 @@ Namespace java.net
 			End Get
 		End Property
 
-		Protected Friend Property Overrides port As Integer
+		Protected Friend  Overrides ReadOnly Property  port As Integer
 			Get
 				If external_address IsNot Nothing Then
 					Return external_address.port
@@ -194,7 +194,7 @@ Namespace java.net
 			End Get
 		End Property
 
-		Protected Friend Property Overrides localPort As Integer
+		Protected Friend  Overrides ReadOnly Property  localPort As Integer
 			Get
 				If socket_Renamed IsNot Nothing Then Return MyBase.localPort
 				If external_address IsNot Nothing Then
