@@ -268,7 +268,7 @@ Namespace java.awt.image
 		''' <returns> a filtered pixel in the default RGB color model. </returns>
 		''' <seealso cref= ColorModel#getRGBdefault </seealso>
 		''' <seealso cref= #filterRGBPixels </seealso>
-		public abstract Integer filterRGB(Integer x, Integer y, Integer rgb)
+		Public MustOverride Integer filterRGB(Integer x, Integer y, Integer rgb)
 	End Class
 
 End Namespace

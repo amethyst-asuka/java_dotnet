@@ -49,20 +49,20 @@ Namespace java.lang
 		Implements Appendable, CharSequence
 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return intStream(() -> java.util.Spliterators.spliteratorUnknownSize(New CodePointIterator, java.util.Spliterator.ORDERED), java.util.Spliterator.ORDERED, False);
+			Public MustOverride Return intStream(() -> java.util.Spliterators.spliteratorUnknownSize(New CodePointIterator, java.util.Spliterator.ORDERED), java.util.Spliterator.ORDERED, False);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return toCodePoint(c1, c2);
+			Public MustOverride Return toCodePoint(c1, c2);
 			Public Function [if](Character.isHighSurrogate(c1) AndAlso cur < ByVal length As ) As [MustOverride]
 			Public Function [if](cur >= ByVal length As ) As [MustOverride]
 			Public Function accept(Character.toCodePoint(c1, c2) ByVal As ) As [MustOverride]
 			Public Function [if](Character.isLowSurrogate(c2) ByVal As ) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract  accept(c1);
+			Public MustOverride  accept(c1);
 			Public Function [if]((Not Character.isHighSurrogate(c1)) OrElse i >= ByVal length As ) As [MustOverride]
 			Public Function [while](i < ByVal length As ) As [MustOverride]
 			Public MustOverride Function codePoints() As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return intStream(() -> java.util.Spliterators.spliterator(New CharIterator, length(), java.util.Spliterator.ORDERED), java.util.Spliterator.SUBSIZED | java.util.Spliterator.SIZED | java.util.Spliterator.ORDERED, False);
+			Public MustOverride Return intStream(() -> java.util.Spliterators.spliterator(New CharIterator, length(), java.util.Spliterator.ORDERED), java.util.Spliterator.SUBSIZED | java.util.Spliterator.SIZED | java.util.Spliterator.ORDERED, False);
 			Public Function accept(charAt(cur) ByVal As ) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: Assignments within expressions are not supported in VB
 			Public Function [for](; cur < length(); cur += ByVal 1 As ) As [MustOverride]
@@ -70,12 +70,12 @@ Namespace java.lang
 			Public MustOverride Function NoSuchElementException() As throw
 				Friend ByVal += 1
 				Public MustOverride Function charAt(cur ByVal As ) As [Return] Implements CharSequence.charAt
-			public abstract [if](hasNext())
-			public abstract Integer nextInt()
-			public abstract Boolean hasNext()
-			public abstract default chars()
-			public abstract Appendable append(CharSequence csq, Integer start, Integer end)
-			public abstract Appendable append(CharSequence csq)
+			Public MustOverride [if](hasNext())
+			Public MustOverride Integer nextInt()
+			Public MustOverride Boolean hasNext()
+			Public MustOverride default chars()
+			Public MustOverride Appendable append(CharSequence csq, Integer start, Integer end)
+			Public MustOverride Appendable append(CharSequence csq)
 		''' <summary>
 		''' The value is used for character storage.
 		''' </summary>
@@ -1300,7 +1300,7 @@ Namespace java.lang
 		''' {@code String}.
 		''' </summary>
 		''' <returns>  a string representation of this sequence of characters. </returns>
-		public abstract String ToString()
+		Public MustOverride String ToString()
 
 		''' <summary>
 		''' Needed by {@code String} for the contentEquals method.

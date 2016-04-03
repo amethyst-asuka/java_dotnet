@@ -92,14 +92,14 @@ Namespace java.time.chrono
 		Implements Chronology
 
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return ChronoPeriodImpl(Me, years, months, days);
+			Public MustOverride Return ChronoPeriodImpl(Me, years, months, days);
 			Public MustOverride Function period(ByVal years As Integer, ByVal months As Integer, ByVal days As Integer) As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return DateTimeFormatterBuilder(temporal);
+			Public MustOverride Return DateTimeFormatterBuilder(temporal);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return query(query);
+			Public MustOverride Return query(query);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract  Return(R);
+			Public MustOverride  Return(R);
 			Public Function [if](query = java.time.temporal.TemporalQueries.chronology() ByVal As ) As [MustOverride]
 			Public MustOverride Function query(ByVal query As java.time.temporal.TemporalQuery(Of R)) As R Implements Chronology.query
 			Public MustOverride Function UnsupportedTemporalTypeException("Unsupported field: " & ByVal field As ) As throw
@@ -112,25 +112,25 @@ Namespace java.time.chrono
 			Public MustOverride Function prolepticYear(ByVal era As Era, ByVal yearOfEra As Integer) As Integer Implements Chronology.prolepticYear
 			Public MustOverride Function isLeapYear(ByVal prolepticYear As Long) As Boolean Implements Chronology.isLeapYear
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return ofInstant(Me, instant, zone);
+			Public MustOverride Return ofInstant(Me, instant, zone);
 			Public MustOverride Function zonedDateTime(ByVal instant As java.time.Instant, ByVal zone As java.time.ZoneId) As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract throw java.time.DateTimeException("Unable to obtain ChronoZonedDateTime from TemporalAccessor: " & temporal.getClass(), ex);
+			Public MustOverride throw java.time.DateTimeException("Unable to obtain ChronoZonedDateTime from TemporalAccessor: " & temporal.getClass(), ex);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return ofBest(cldt, zone, Nothing);
+			Public MustOverride Return ofBest(cldt, zone, Nothing);
 			Public Function [catch](ByVal ex1 As java.time.DateTimeException) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return zonedDateTime(instant, zone);
+			Public MustOverride Return zonedDateTime(instant, zone);
 			Public MustOverride Function zonedDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As default
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract throw java.time.DateTimeException("Unable to obtain ChronoLocalDateTime from TemporalAccessor: " & temporal.getClass(), ex);
+			Public MustOverride throw java.time.DateTimeException("Unable to obtain ChronoLocalDateTime from TemporalAccessor: " & temporal.getClass(), ex);
 			Public Function [catch](ByVal ex As java.time.DateTimeException) As [MustOverride]
 			Public MustOverride Function [date](java.time.LocalTime.from(temporal) ByVal As ) As [Return] Implements Chronology.date
 			Public MustOverride Function localDateTime(ByVal temporal As java.time.temporal.TemporalAccessor) As default
 			Public MustOverride Function [date](ByVal temporal As java.time.temporal.TemporalAccessor) As ChronoLocalDate Implements Chronology.date
 			Public MustOverride Function [date](java.time.LocalDate.now(clock) ByVal As ) As [Return] Implements Chronology.date
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract  requireNonNull(clock, "clock");
+			Public MustOverride  requireNonNull(clock, "clock");
 			Public MustOverride Function dateNow(ByVal clock As java.time.Clock) As default
 			Public MustOverride Function dateNow(java.time.Clock.system(zone) ByVal As ) As [Return] Implements Chronology.dateNow
 			Public MustOverride Function dateNow(ByVal zone As java.time.ZoneId) As default
@@ -139,21 +139,21 @@ Namespace java.time.chrono
 			Public MustOverride Function dateEpochDay(ByVal epochDay As Long) As ChronoLocalDate Implements Chronology.dateEpochDay
 			Public MustOverride Function dateYearDay(ByVal prolepticYear As Integer, ByVal dayOfYear As Integer) As ChronoLocalDate Implements Chronology.dateYearDay
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear);
+			Public MustOverride Return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear);
 			Public MustOverride Function dateYearDay(ByVal era As Era, ByVal yearOfEra As Integer, ByVal dayOfYear As Integer) As default
 			Public MustOverride Function [date](ByVal prolepticYear As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As ChronoLocalDate Implements Chronology.date
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return date(prolepticYear(era, yearOfEra), month, dayOfMonth);
+			Public MustOverride Return date(prolepticYear(era, yearOfEra), month, dayOfMonth);
 			Public MustOverride Function [date](ByVal era As Era, ByVal yearOfEra As Integer, ByVal month As Integer, ByVal dayOfMonth As Integer) As default
 			Public MustOverride ReadOnly Property calendarType As String Implements Chronology.getCalendarType
 			Public MustOverride ReadOnly Property id As String Implements Chronology.getId
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return of(id);
+			Public MustOverride Return of(id);
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract Return ofLocale(locale);
+			Public MustOverride Return ofLocale(locale);
 			Public Function [Return](obj <> Nothing ? obj : ByVal IsoChronology.INSTANCE As ) As [MustOverride]
 'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-			public abstract  requireNonNull(temporal, "temporal");
+			Public MustOverride  requireNonNull(temporal, "temporal");
 			Public MustOverride Function [from](ByVal temporal As java.time.temporal.TemporalAccessor) As Chronology Implements Chronology.from
 
 		''' <summary>

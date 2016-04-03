@@ -105,8 +105,8 @@ Namespace java.util
 	''' this case it is an abstract class with two abstract methods:
 	''' 
 	''' <blockquote><pre>
-	''' public abstract Encoder getEncoder(String encodingName);
-	''' public abstract Decoder getDecoder(String encodingName);</pre></blockquote>
+	''' Public MustOverride Encoder getEncoder(String encodingName);
+	''' Public MustOverride Decoder getDecoder(String encodingName);</pre></blockquote>
 	''' 
 	''' Each method returns an appropriate object or <tt>null</tt> if the provider
 	''' does not support the given encoding.  Typical providers support more than

@@ -788,7 +788,7 @@ Namespace java.awt
 		''' <seealso cref=      java.awt.Image </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int) </seealso>
-		public abstract Boolean drawImage(Image img, Integer x, Integer y, java.awt.image.ImageObserver observer)
+		Public MustOverride Boolean drawImage(Image img, Integer x, Integer y, java.awt.image.ImageObserver observer)
 
 		''' <summary>
 		''' Draws as much of the specified image as has already been scaled
@@ -825,7 +825,7 @@ Namespace java.awt
 		''' <seealso cref=      java.awt.Image </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int) </seealso>
-		public abstract Boolean drawImage(Image img, Integer x, Integer y, Integer width, Integer height, java.awt.image.ImageObserver observer)
+		Public MustOverride Boolean drawImage(Image img, Integer x, Integer y, Integer width, Integer height, java.awt.image.ImageObserver observer)
 
 		''' <summary>
 		''' Draws as much of the specified image as is currently available.
@@ -864,7 +864,7 @@ Namespace java.awt
 		''' <seealso cref=      java.awt.Image </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int) </seealso>
-		public abstract Boolean drawImage(Image img, Integer x, Integer y, Color bgcolor, java.awt.image.ImageObserver observer)
+		Public MustOverride Boolean drawImage(Image img, Integer x, Integer y, Color bgcolor, java.awt.image.ImageObserver observer)
 
 		''' <summary>
 		''' Draws as much of the specified image as has already been scaled
@@ -906,7 +906,7 @@ Namespace java.awt
 		''' <seealso cref=      java.awt.Image </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=      java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int) </seealso>
-		public abstract Boolean drawImage(Image img, Integer x, Integer y, Integer width, Integer height, Color bgcolor, java.awt.image.ImageObserver observer)
+		Public MustOverride Boolean drawImage(Image img, Integer x, Integer y, Integer width, Integer height, Color bgcolor, java.awt.image.ImageObserver observer)
 
 		''' <summary>
 		''' Draws as much of the specified area of the specified image as is
@@ -957,7 +957,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=         java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int)
 		''' @since       JDK1.1 </seealso>
-		public abstract Boolean drawImage(Image img, Integer dx1, Integer dy1, Integer dx2, Integer dy2, Integer sx1, Integer sy1, Integer sx2, Integer sy2, java.awt.image.ImageObserver observer)
+		Public MustOverride Boolean drawImage(Image img, Integer dx1, Integer dy1, Integer dx2, Integer dy2, Integer sx1, Integer sy1, Integer sx2, Integer sy2, java.awt.image.ImageObserver observer)
 
 		''' <summary>
 		''' Draws as much of the specified area of the specified image as is
@@ -1014,7 +1014,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.image.ImageObserver </seealso>
 		''' <seealso cref=         java.awt.image.ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int)
 		''' @since       JDK1.1 </seealso>
-		public abstract Boolean drawImage(Image img, Integer dx1, Integer dy1, Integer dx2, Integer dy2, Integer sx1, Integer sy1, Integer sx2, Integer sy2, Color bgcolor, java.awt.image.ImageObserver observer)
+		Public MustOverride Boolean drawImage(Image img, Integer dx1, Integer dy1, Integer dx2, Integer dy2, Integer sx1, Integer sy1, Integer sx2, Integer sy2, Color bgcolor, java.awt.image.ImageObserver observer)
 
 		''' <summary>
 		''' Disposes of this graphics context and releases
@@ -1042,7 +1042,7 @@ Namespace java.awt
 		''' <seealso cref=         java.awt.Component#update </seealso>
 		''' <seealso cref=         java.awt.Component#getGraphics </seealso>
 		''' <seealso cref=         java.awt.Graphics#create </seealso>
-		public abstract  Sub  Dispose()
+		Public MustOverride  Sub  Dispose()
 
 		''' <summary>
 		''' Disposes of this graphics context once it is no longer referenced. </summary>

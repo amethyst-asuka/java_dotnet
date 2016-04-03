@@ -62,7 +62,7 @@ Namespace java.security
         Implements Principal
 
         'JAVA TO VB CONVERTER TODO TASK: The following line could not be converted:
-        Public abstract Return getPrincipals(Me);
+        Public MustOverride Return getPrincipals(Me);
 			Public Function [if](subject = ByVal [Nothing] As ) As [MustOverride]
             Public MustOverride Function implies(ByVal subject As javax.security.auth.Subject) As default
 			Public MustOverride Function Equals(ByVal another As Object) As Boolean

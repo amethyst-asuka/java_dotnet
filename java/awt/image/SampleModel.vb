@@ -1227,7 +1227,7 @@ Namespace java.awt.image
 		''' <exception cref="NullPointerException"> if data is null. </exception>
 		''' <exception cref="ArrayIndexOutOfBoundsException"> if the coordinates or
 		''' the band index are not in bounds. </exception>
-		public abstract  Sub  sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
+		Public MustOverride  Sub  sampleple(Integer x, Integer y, Integer b, Integer s, DataBuffer data)
 
 		''' <summary>
 		''' Sets a sample in the specified band for the pixel located at (x,y)
@@ -1382,7 +1382,7 @@ Namespace java.awt.image
 		'''  <returns> a <code>SampleModel</code> describing the same image
 		'''          data as this <code>SampleModel</code>, but with a
 		'''          different size. </returns>
-		public abstract SampleModel createCompatibleSampleModel(Integer w, Integer h)
+		Public MustOverride SampleModel createCompatibleSampleModel(Integer w, Integer h)
 
 		''' <summary>
 		''' Creates a new SampleModel
@@ -1391,25 +1391,25 @@ Namespace java.awt.image
 		''' <param name="bands"> the subset of bands of this <code>SampleModel</code> </param>
 		''' <returns> a <code>SampleModel</code> with a subset of bands of this
 		'''         <code>SampleModel</code>. </returns>
-		public abstract SampleModel createSubsetSampleModel(Integer bands())
+		Public MustOverride SampleModel createSubsetSampleModel(Integer bands())
 
 		''' <summary>
 		''' Creates a DataBuffer that corresponds to this SampleModel.
 		''' The DataBuffer's width and height will match this SampleModel's. </summary>
 		''' <returns> a <code>DataBuffer</code> corresponding to this
 		'''         <code>SampleModel</code>. </returns>
-		public abstract DataBuffer createDataBuffer()
+		Public MustOverride DataBuffer createDataBuffer()
 
 		''' <summary>
 		''' Returns the size in bits of samples for all bands. </summary>
 		'''  <returns> the size of samples for all bands. </returns>
-		public abstract Integer() sampleSize
+		Public MustOverride Integer() sampleSize
 
 		''' <summary>
 		''' Returns the size in bits of samples for the specified band. </summary>
 		'''  <param name="band"> the specified band </param>
 		'''  <returns> the size of the samples of the specified band. </returns>
-		public abstract Integer getSampleSize(Integer band)
+		Public MustOverride Integer getSampleSize(Integer band)
 
 	End Class
 
